@@ -1,0 +1,32 @@
+﻿@model MusicShareWeb.Models.BaseModel
+@{
+    Layout = null;
+}
+@using(@Html.BeginForm("Search", "MainPage", FormMethod.Get)) {
+    <div class="mp__search">
+        <div class="mp-search__standart">
+            <div class="mp-search__order">
+                <input type="text" class="mp-search__option" name="brand" placeholder="Марка" />
+                <div class="inline mp-search__caret"></div>
+                <input type="text" class="mp-search__option" name="form" placeholder="Форма" />
+                <div class="inline mp-search__caret"></div>
+                <input type="text" class="mp-search__option" name="model" placeholder="Модель" />
+                <div class="inline mp-search__caret"></div>
+                <input type="text" class="mp-search__option" name="manufacturer" placeholder="Производство" />
+                <div class="inline mp-search__caret"></div>
+                <input type="text" class="mp-search__option" name="color" placeholder="Цвет" />
+                <div class="inline mp-search__caret"></div><br />
+                <div class="inline" style="width: 289px;">
+                    Цена от&nbsp;<input type="text" class="mp-search__option mp-search__option-price" name="priceFrom" />
+                    до&nbsp;<input type="text" class="mp-search__option mp-search__option-price" name="priceTo" />&nbsp;руб.
+                </div>
+            </div>
+            <div class="mp-search__sample-result">
+                <img src="../../Content/Image/index.jpg" alt="" style="height: 145px; width: inherit;"/>
+                <input type="submit" value="Найти" style="width: inherit; height: 24px;"/>
+            </div><br/>
+            <div class="mp-search__wide-sarch-show">Расширенный поиск</div>
+        </div>
+        <div class="mp-search__wide"></div>
+    </div>
+}

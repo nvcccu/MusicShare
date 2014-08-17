@@ -1,0 +1,14 @@
+﻿@model MusicShareWeb.Models.BaseModel
+@{
+    Layout = null;
+}
+
+<div class="mp__result">
+    @if (Model != null && Model.Test.Count != 0) {
+        foreach (var str in Model.Test) {
+             <div>
+                 @str
+             </div>
+         }
+    }
+</div>

@@ -1,0 +1,17 @@
+﻿.mp__left-block {
+    width: 220px;
+    height: 400px;
+    display: inline-block;
+    background-color: yellow;
+
+}
+
+.mp__middle-block {
+    width: 460px;
+    display: inline-block;
+}
+
+.mp__result {
+    height: 500px;
+    background-color: green;
+}

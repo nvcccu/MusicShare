@@ -1,0 +1,22 @@
+﻿input {
+    border: 1px solid #CCCCCC;
+    padding: 1px;
+}
+
+body {
+    margin: 0;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.all-space {
+    background: #ffffff url(../Image/1.jpg) repeat repeat;
+}
+
+.content {
+    margin: 0 auto;
+    width: 940px;
+    background-color: #123456;
+}

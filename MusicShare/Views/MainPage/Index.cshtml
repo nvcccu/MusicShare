@@ -1,0 +1,15 @@
+﻿@model MusicShareWeb.Models.BaseModel
+
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+
+<div style="margin: 0 auto;">
+    <div class="mp__left-block">left</div>
+    <div class="mp__middle-block" style="display: inline-block; vertical-align: top;">
+        @Html.Partial("Search", Model)
+        @Html.Partial("SearchResults", Model)
+    </div>
+    <div class="mp__offers" style="display: inline-block; vertical-align: top;"> </div>
+</div>

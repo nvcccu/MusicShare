@@ -1,0 +1,23 @@
+﻿@*@model = FiveCreepsWithSomeSkills.Models.BaseModel*@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+@Html.Partial("ContentHelper")
+
+<html>
+<head>
+    <title>MS</title>
+</head>
+<body>
+    <div class="all-space">
+        @Html.Partial("Header")
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
