@@ -102,7 +102,8 @@ namespace DAO {
                     var cur = new T();
                     var properties = typeof (T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
                     for (int i = 0; i < properties.Count(); i++) {
-                        if (properties[i] != null) {
+                        var val = _dbAdapter.DataReader.GetValue(i);
+                        if (properties[i] != null && !(val is DBNull)) {
                             properties[i].SetValue(cur, _dbAdapter.DataReader.GetValue(i), null);
                         }
                     }
@@ -161,11 +162,11 @@ namespace DAO {
         /// <returns></returns>
         private void TranslateWhere() {
             string where = "WHERE ";
-            where += _conditionsWhere.First().Field + GetMathOper(_conditionsWhere.First().Oper) +
-                     _conditionsWhere.First().Value + " ";
+            where += _conditionsWhere.First().Field + GetMathOper(_conditionsWhere.First().Oper) + "'" +
+                     _conditionsWhere.First().Value + "' ";
             for (int i = 1; i < _conditionsWhere.Count; i++) {
-                where += "AND " + _conditionsWhere[i].Field + GetMathOper(_conditionsWhere[i].Oper) +
-                         _conditionsWhere[i].Value + " ";
+                where += "AND " + _conditionsWhere[i].Field + GetMathOper(_conditionsWhere[i].Oper) + "'" +
+                         _conditionsWhere[i].Value + "' ";
             }
             _query += where;
             _conditionsWhere = new List<FilterWhere>();

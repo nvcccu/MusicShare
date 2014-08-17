@@ -2,13 +2,8 @@
 using BusinessLogic;
 using CommonUtils;
 
-namespace MusicShareWeb.Controllers
-{
-    public class BaseController : Controller
-    {
-
-
-        public BaseController() {
-        }
-	}
+namespace MusicShareWeb.Controllers {
+    public class BaseController : Controller {
+        public BaseController() {}
+    }
 }

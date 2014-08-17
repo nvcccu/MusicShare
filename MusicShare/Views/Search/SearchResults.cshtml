@@ -1,0 +1,16 @@
+﻿@model MusicShareWeb.Models.SearchResultModel
+@{
+    Layout = null;
+}
+
+<div class="mp__result">
+    @if (Model != null && Model.SearchResults.Count != 0) {
+        foreach (var str in Model.SearchResults) {
+            <div>
+                <span>@str.Brand</span>
+                <span>@str.Model</span>
+                <span>@str.Color</span>
+            </div>
+         }
+    }
+</div>

@@ -160,15 +160,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\MainPageController.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\PlacardController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\SearchQueryModel.cs" />
+    <Compile Include="Models\SearchResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,21 +225,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\MainPage\Search.cshtml">
+    <Content Include="Views\Search\Search.cshtml">
       <LastGenOutput>Search.generated.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\MainPage\Index.cshtml">
+    <Content Include="Views\Search\Index.cshtml">
       <LastGenOutput>Index.generated.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\Search\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\MainPage\SearchResults.cshtml">
+    <Content Include="Views\Search\SearchResults.cshtml">
       <LastGenOutput>SearchResults.generated.cs</LastGenOutput>
     </Content>
   </ItemGroup>
@@ -249,6 +249,19 @@
       <Project>{42c4b4ea-522d-4a79-bdd5-c9238b6f72cd}</Project>
       <Name>CommonUtils</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{045c9f24-e693-4d0b-b934-72737dccc844}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Article\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Placard\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Forum\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
