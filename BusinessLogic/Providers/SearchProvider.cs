@@ -7,6 +7,13 @@ using DAO.Enums;
 
 namespace BusinessLogic.Providers {
     public class SearchProvider : ISearchProvider {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <param name="model"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
         public List<GuitarTransportType> Search(string brand, string model, string color) {
             return new Guitar("guitar")
                 .Select()
@@ -18,6 +25,13 @@ namespace BusinessLogic.Providers {
                 .ToList();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <param name="model"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
         public GuitarTransportType GetSampleGuitar(string brand, string model, string color) {
             return new Guitar("guitar")
                 .Select()
@@ -28,6 +42,30 @@ namespace BusinessLogic.Providers {
                 .Select(g => g.ToTransport())
                 .ToList()
                 .First();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<BrandTransportType> GetAllBrand() {
+            return new Brand()
+                .Select()
+                .GetData()
+                .Select(b => b.ToTransport())
+                .ToList();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<FormTransportType> GetAllForm() {
+            return new Form()
+                .Select()
+                .GetData()
+                .Select(b => b.ToTransport())
+                .ToList();
         }
     }
 }

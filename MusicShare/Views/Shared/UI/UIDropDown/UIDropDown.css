@@ -1,5 +1,8 @@
 ﻿.ui__drop-down {
     display: inline-block;
+    background-color: #000000;
+    width: 200px;
+    height: 100px;
 }
 
 .dd__title {

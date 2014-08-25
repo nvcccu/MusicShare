@@ -5,44 +5,51 @@
     this.cssDdElemBlock = config.cssDdElemBlock;
     this.cssDdElem = config.cssDdElem;
     this.defaultText = config.defaultText;
-    this.elements = config.elements;
-    this.UiDropDown = context.find('.ui__drop-down');
-    this.DdTitle = context.find('.dd__title');
-    this.DdElemBlock = context.find('.dd__elem-block');
-    this.DdElem = context.find('.dd__elem');
+    this.elementsText = config.elementsText;
+    this.uiDropDown = context.find('.ui__drop-down');
+    this.ddTitle = context.find('.dd__title');
+    this.ddElemBlock = context.find('.dd__elem-block');
+    this.ddElem = context.find('.dd__elem');
     var that = this;
 
     this.AddClasses = function() {
         if (that.cssUiDropDown) {
-            that.UiDropDown.addClass();
+            that.uiDropDown.addClass();
         }
         if (that.cssDdTitle) {
-            that.DdTitle.addClass();
+            that.ddTitle.addClass();
         }
         if (that.cssDdElemBlock) {
-            that.DdElemBlock.addClass();
+            that.ddElemBlock.addClass();
         }
         if (that.cssDdElem) {
-            that.DdElem.addClass();
+            that.ddElem.addClass();
         }
     };
 
     this.InitValues = function() {
-        var template = context.find('.dd__elem .tmpl');
+        var template = context.find('.dd__elem .ui-tmpl');
         var elem = template.clone();
-        elem.removeClass('tmpl');
+        elem.removeClass('ui-tmpl');
         elem.text(that.defaultText);
-        that.DdElemBlock.append(elem);
-        that.elements.forEach(function(e) {
+        that.ddElemBlock.append(elem);
+        that.elementsText.forEach(function(e) {
             elem = template.clone();
             elem.text(e);
-            elem.removeClass('tmpl');
-            that.DdElemBlock.append(elem);
+            elem.removeClass('ui-tmpl');
+            that.ddElemBlock.append(elem);
         });
+        that.ddElem = context.find('.dd__elem');
+    };
+
+    this.Toggle = function() {
+        that.ddElem.toggleClass('ui-hide');
     };
 
     this.BindEvents = function() {
-
+        that.ddTitle.on('click', function() {
+            that.Toggle();
+        });
     };
 
     this.Init = function () {

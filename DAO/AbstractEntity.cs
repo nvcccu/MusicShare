@@ -161,6 +161,9 @@ namespace DAO {
         /// </summary>
         /// <returns></returns>
         private void TranslateWhere() {
+            if (!_conditionsWhere.Any()) {
+                return;
+            }
             string where = "WHERE ";
             where += _conditionsWhere.First().Field + GetMathOper(_conditionsWhere.First().Oper) + "'" +
                      _conditionsWhere.First().Value + "' ";

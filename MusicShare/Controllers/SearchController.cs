@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using BusinessLogic.Interfaces;
 using CommonUtils;
+using Core.TransportTypes;
 using MusicShareWeb.Models;
 
 namespace MusicShareWeb.Controllers {
@@ -9,13 +10,10 @@ namespace MusicShareWeb.Controllers {
         public ActionResult Index() {
             return View("Index");
         }
-        public ActionResult Index1() {
-            return View("Index1");
-        }
 
         [HttpPost]
-        public ActionResult Search(string brand = null, string form = null, string model = null, string manufacturer = null, string color = null, int? priceFrom = null, int? priceTo = null) {
-            var sr = ServiceManager<IBusinessLogic>.Instance.Service.Search(brand, model, color);
+        public ActionResult Search(GuitarTransportType gtp) {
+            var sr = ServiceManager<IBusinessLogic>.Instance.Service.Search(gtp.Brand, gtp.Model, gtp.Color);
             var dataModel = new SearchResultModel(sr);
             return View("Index", dataModel);
         }
