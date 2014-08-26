@@ -39,7 +39,7 @@
     <Compile Include="AbstractEntity.cs" />
     <Compile Include="Attributes\DbType.cs" />
     <Compile Include="DbAdapter.cs" />
-    <Compile Include="Enums\OperMath.cs" />
+    <Compile Include="Enums\OperPredicate.cs" />
     <Compile Include="Sandbox.cs" />
     <Compile Include="TableEntity.cs" />
   </ItemGroup>

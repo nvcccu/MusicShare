@@ -3,46 +3,36 @@
     /// <summary>
     /// Бинарные операторы в условии Where
     /// </summary>
-    public enum OperMath {
+    public enum OperPredicate {
         /// <summary>
-        /// Равно
+        /// Равно =
         /// </summary>
         Equal,
 
         /// <summary>
-        /// Не равно
+        /// Не равно <>
         /// </summary>
         NotEqual,
 
         /// <summary>
-        /// Больше
+        /// Больше >
         /// </summary>
         Greater,
 
         /// <summary>
-        /// Меньше
+        /// Меньше <
         /// </summary>
         Less,
 
         /// <summary>
-        /// Больше или равно
+        /// Больше или равно >=
         /// </summary>
         GreaterOrEqual,
 
         /// <summary>
-        /// Меньше или равно
+        /// Меньше или равно <=
         /// </summary>
         LessOrEqual,
-
-        /// <summary>
-        /// Битовое И
-        /// </summary>
-        BitwiseAnd,
-
-        /// <summary>
-        /// Битовое ИЛИ
-        /// </summary>
-        BitwiseOr,
 
         /// <summary>
         /// Условие вхождения IN
@@ -53,5 +43,10 @@
         /// Условие невхождения NOT IN
         /// </summary>
         NotIn,
+
+        /// <summary>
+        /// условие вхождение строки LIKE
+        /// </summary>
+        Like
     }
 }

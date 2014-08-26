@@ -29,6 +29,11 @@ namespace DAO {
         private List<FilterWhere> _conditionsWhere;
 
         /// <summary>
+        /// набор join'ов
+        /// </summary>
+        private List<FilterJoin> _filterJoin; 
+
+        /// <summary>
         /// sql-запрос
         /// </summary>
         private string _query;
@@ -122,11 +127,9 @@ namespace DAO {
         /// </summary>
         /// <param name="oper"></param>
         /// <returns></returns>
-        private string GetMathOper(OperMath oper) {
+        private string GetMathOper(OperPredicate oper) {
             switch (oper) {
-                case OperMath.BitwiseAnd:
-                    return "&";
-                case OperMath.Equal:
+                case OperPredicate.Equal:
                     return "=";
                     // todo: лень сразу писать все операторы :-)
                 default:
@@ -141,7 +144,7 @@ namespace DAO {
         /// <param name="oper">Бинарный оператор</param>
         /// <param name="value">Конкретное значение</param>
         /// <returns></returns>
-        public AbstractEntity<T> Where(Enum field, OperMath oper, object value) {
+        public AbstractEntity<T> Where(Enum field, OperPredicate oper, object value) {
             _conditionsWhere.Add(new FilterWhere(field, oper, value));
             return this;
         }
@@ -176,6 +179,70 @@ namespace DAO {
         }
     }
 
+    /// <summary>
+    /// Типы join'ов
+    /// </summary>
+    public enum JoinType : short {
+        Inner,
+        Left,
+        Right,
+        Outer,
+        Cross
+    }
+
+    /// <summary>
+    /// Настройки извлечения данных присоединенных сущностей
+    /// </summary>
+    public enum RetrieveMode : short {
+        /// <summary>
+        /// Извлекать данные присоединенных сущностей
+        /// </summary>
+        Retrtieve,
+
+        /// <summary>
+        /// Не извлекать данные присоединенных сущностей
+        /// </summary>
+        NonRetrieve
+    }
+
+    public class JoinCondition {
+        /// <summary>
+        /// Поле исходной таблицы
+        /// </summary>
+        public Enum FieldFrom { get; set; }
+
+        /// <summary>
+        /// Оператор проверки в предикате
+        /// </summary>
+        public OperPredicate Oper { get; set; }
+
+        /// <summary>
+        /// Поле целевой таблицы
+        /// </summary>
+        public Enum FieldTarget { get; set; }
+
+    }
+
+    /// <summary>
+    /// Джоин к таблице
+    /// </summary>
+    public class FilterJoin<T> where T : new() {
+        /// <summary>
+        /// Тип join'а
+        /// </summary>
+        public JoinType JoinType { get; set; }
+
+        /// <summary>
+        /// К чему осуществляется join
+        /// </summary>
+        public AbstractEntity<T> TargetTable { get; set; }
+
+        /// <summary>
+        /// Условия join'а
+        /// </summary>
+        public List<JoinCondition> JoinConditions { get; set; }
+    }
+
     public class FilterWhere {
         /// <summary>
         /// 
@@ -185,14 +252,14 @@ namespace DAO {
         /// <summary>
         /// 
         /// </summary>
-        public OperMath Oper { get; private set; }
+        public OperPredicate Oper { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
         public object Value { get; private set; }
 
-        public FilterWhere(Enum field, OperMath oper, object value) {
+        public FilterWhere(Enum field, OperPredicate oper, object value) {
             Field = field;
             Oper = oper;
             Value = value;
