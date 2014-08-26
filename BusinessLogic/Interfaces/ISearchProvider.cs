@@ -32,5 +32,11 @@ namespace BusinessLogic.Interfaces {
         /// </summary>
         /// <returns></returns>
         List<FormTransportType> GetAllForm();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        List<ColorTransportType> GetAllColor();
     }
 }

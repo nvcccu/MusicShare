@@ -8,7 +8,7 @@ namespace BusinessLogic {
         private readonly SearchProvider _searchProvider = new SearchProvider();
 
         public void Initial() {
-            
+            // todo: инициализация, если нужна
         }
 
         public List<GuitarTransportType> Search(string brand, string model, string color) {
@@ -25,6 +25,10 @@ namespace BusinessLogic {
 
         public List<FormTransportType> GetAllForm() {
             return _searchProvider.GetAllForm();
+        }
+
+        public List<ColorTransportType> GetAllColor() {
+            return _searchProvider.GetAllColor();
         }
     }
 }

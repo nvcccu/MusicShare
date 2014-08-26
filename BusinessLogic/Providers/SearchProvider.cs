@@ -67,5 +67,17 @@ namespace BusinessLogic.Providers {
                 .Select(b => b.ToTransport())
                 .ToList();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<ColorTransportType> GetAllColor() {
+            return new Color()
+                .Select()
+                .GetData()
+                .Select(b => b.ToTransport())
+                .ToList();
+        }
     }
 }

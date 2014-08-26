@@ -8,15 +8,22 @@ namespace MusicShareWeb.Models {
         /// <summary>
         /// 
         /// </summary>
-        public List<BrandTransportType> Brands { get; set; }
+        public List<BrandTransportType> Brands { get; private set; }
+
         /// <summary>
         /// 
         /// </summary>
-        public List<FormTransportType> Forms { get; set; }
+        public List<FormTransportType> Forms { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<ColorTransportType> Colors { get; private set; }
 
         public SearchModel() {
             Brands = ServiceManager<IBusinessLogic>.Instance.Service.GetAllBrand();
             Forms = ServiceManager<IBusinessLogic>.Instance.Service.GetAllForm();
+            Colors = ServiceManager<IBusinessLogic>.Instance.Service.GetAllColor();
         }
     }
 }

@@ -22,6 +22,13 @@
                         <option value="@form.Id">@form.Name</option>
                     }
                 </select>
+                
+                <select name="Color">
+                    <option selected="selected">Выберите цвет</option>
+                    @foreach (var color in Model.Colors) {
+                        <option value="@color.Id">@color.Name</option>
+                    }
+                </select>
 
 
                 @*                <input type="text" class="mp-search__option" name="form" placeholder="Форма" />*@

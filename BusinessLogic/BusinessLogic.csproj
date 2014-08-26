@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="DaoEntities\Brand.cs" />
+    <Compile Include="DaoEntities\Color.cs" />
     <Compile Include="DaoEntities\Form.cs" />
     <Compile Include="DaoEntities\Guitar.cs" />
     <Compile Include="Enums\Brands.cs" />
