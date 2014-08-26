@@ -7,10 +7,10 @@ namespace BusinessLogic.Interfaces {
         /// 
         /// </summary>
         /// <param name="brand"></param>
-        /// <param name="model"></param>
+        /// <param name="form"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        List<GuitarTransportType> Search(string brand, string model, string color);
+        List<GuitarTransportType> Search(short brand, short form, short color);
 
         /// <summary>
         /// 
@@ -19,7 +19,7 @@ namespace BusinessLogic.Interfaces {
         /// <param name="model"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        GuitarTransportType GetSampleGuitar(string brand, string model, string color);
+        GuitarTransportType GetSampleGuitar(short? brand, short? model, short? color);
 
         /// <summary>
         /// 

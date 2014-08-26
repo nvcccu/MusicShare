@@ -6,43 +6,26 @@
     <div class="mp__search">
         <div class="mp-search__standart">
             <div class="mp-search__order">
-                <input type="text" class="mp-search__option" name="brand" placeholder="Марка" />
-                <div class="inline mp-search__caret"></div>
-                
-                <select name="Brand">
+                <select class="guitar-param" name="Brand">
                     <option selected="selected">Выберите марку</option>
                     @foreach (var brand in Model.Brands) {
                         <option value="@brand.Id">@brand.Name</option>
                     }
                 </select>
                 
-                <select name="Form">
+                <select class="guitar-param" name="Form">
                     <option selected="selected">Выберите форму корпуса</option>
                     @foreach (var form in Model.Forms) {
                         <option value="@form.Id">@form.Name</option>
                     }
                 </select>
                 
-                <select name="Color">
+                <select class="guitar-param" name="Color">
                     <option selected="selected">Выберите цвет</option>
                     @foreach (var color in Model.Colors) {
                         <option value="@color.Id">@color.Name</option>
                     }
                 </select>
-
-
-                @*                <input type="text" class="mp-search__option" name="form" placeholder="Форма" />*@
-@*                <div class="inline mp-search__caret"></div>*@
-@*                <input type="text" class="mp-search__option" name="model" placeholder="Модель" />*@
-@*                <div class="inline mp-search__caret"></div>*@
-@*                <input type="text" class="mp-search__option" name="manufacturer" placeholder="Производство" />*@
-@*                <div class="inline mp-search__caret"></div>*@
-@*                <input type="text" class="mp-search__option" name="color" placeholder="Цвет" />*@
-@*                <div class="inline mp-search__caret"></div><br />*@
-@*                <div class="inline" style="width: 289px;">*@
-@*                    Цена от&nbsp;<input type="text" class="mp-search__option mp-search__option-price" name="priceFrom" />*@
-@*                    до&nbsp;<input type="text" class="mp-search__option mp-search__option-price" name="priceTo" />&nbsp;руб.*@
-@*                </div>*@
             </div>
             <div class="mp-search__sample-result">
                 <img src="../../Content/Image/index.jpg" alt="" style="height: 145px; width: inherit;"/>
@@ -53,3 +36,20 @@
         <div class="mp-search__wide"></div>
     </div>
 }
+
+<script type="text/javascript">
+    $('.guitar-param').on('change', function() {
+        $.ajax({
+            url: '@Url.Action("GetSampleGuitar", "Search")',
+            type: 'GET',
+            data: {
+                brand: $('[name="Brand"]').val(),
+                form: $('[name="Form"]').val(),
+                color: $('[name="Color"]').val(),
+            },
+            success: function (data) {
+                alert(data);
+            }
+        });
+    });
+</script>

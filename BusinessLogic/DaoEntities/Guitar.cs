@@ -7,32 +7,23 @@ namespace BusinessLogic.DaoEntities {
     internal class Guitar : AbstractEntity<Guitar> {
         public Guitar(string tableName) : base(tableName) {}
 
-        public Guitar() : base("ElectronicGuitar") { }
+        public Guitar() : base("Guitar") { }
 
         public enum Fields {
             [DbType(typeof(Int64))]
             Id = 0,
 
-            [DbType(typeof(string))]
+            [DbType(typeof(short))]
             Brand = 1,
 
-            [DbType(typeof(string))]
-            Model = 2,
+            [DbType(typeof(short))]
+            Color = 2,
+
+            [DbType(typeof(short))]
+            Form = 3,
 
             [DbType(typeof(string))]
-            Color = 3,
-
-            [DbType(typeof(string))]
-            Form = 4,
-
-            [DbType(typeof(string))]
-            Image = 15,
-
-            [DbType(typeof(decimal))]
-            Price = 16,
-
-            [DbType(typeof(string))]
-            Url = 17
+            Image = 4,
         };
 
         /// <summary>
@@ -43,48 +34,31 @@ namespace BusinessLogic.DaoEntities {
         /// <summary>
         /// 
         /// </summary>
-        public string Brand { get; set; }
+        public short Brand { get; set; }
+
 
         /// <summary>
         /// 
         /// </summary>
-        public string Model { get; set; }
+        public short Color { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public string Color { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Form { get; set; }
+        public short Form { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         public string Image { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal Price { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Url { get; set; }
-
         public GuitarTransportType ToTransport() {
             return new GuitarTransportType {
                 Id = Id,
                 Brand = Brand,
-                Model = Model,
                 Color = Color,
                 Form = Form,
                 Image = Image,
-                Price = Price,
-                Url = Url,
             };
         }
     }

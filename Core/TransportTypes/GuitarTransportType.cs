@@ -8,36 +8,21 @@
         /// <summary>
         /// 
         /// </summary>
-        public string Brand { get; set; }
+        public short Brand { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public string Model { get; set; }
+        public short Color { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public string Color { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Form { get; set; }
+        public short Form { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         public string Image { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public decimal Price { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Url { get; set; }
     }
 }

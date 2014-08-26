@@ -11,12 +11,12 @@ namespace BusinessLogic {
             // todo: инициализация, если нужна
         }
 
-        public List<GuitarTransportType> Search(string brand, string model, string color) {
-            return _searchProvider.Search(brand, model, color);
+        public List<GuitarTransportType> Search(short brand, short form, short color) {
+            return _searchProvider.Search(brand, form, color);
         }
 
-        public GuitarTransportType GetSampleGuitar(string brand, string model, string color) {
-            return _searchProvider.GetSampleGuitar(brand, model, color);
+        public GuitarTransportType GetSampleGuitar(short? brand, short? form, short? color) {
+            return _searchProvider.GetSampleGuitar(brand, form, color);
         }
 
         public List<BrandTransportType> GetAllBrand() {

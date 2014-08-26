@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
 using Core.TransportTypes;
+using DAO;
 using DAO.Enums;
 
 namespace BusinessLogic.Providers {
@@ -11,33 +13,39 @@ namespace BusinessLogic.Providers {
         /// 
         /// </summary>
         /// <param name="brand"></param>
-        /// <param name="model"></param>
+        /// <param name="form"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        public List<GuitarTransportType> Search(string brand, string model, string color) {
+        public List<GuitarTransportType> Search(short brand, short form, short color) {
             return new Guitar("guitar")
                 .Select()
                 .Where(Guitar.Fields.Brand, OperMath.Equal, brand)
-                .Where(Guitar.Fields.Model, OperMath.Equal, model)
+                .Where(Guitar.Fields.Form, OperMath.Equal, form)
                 .Where(Guitar.Fields.Color, OperMath.Equal, color)
                 .GetData()
                 .Select(g => g.ToTransport())
                 .ToList();
         }
 
+        private void AddWhereIfNotNull<T>(AbstractEntity<T> ds, Enum field, OperMath oper,  object value) where T : new()  {
+            if (value != null) {
+                ds.Where(field, oper, value);
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="brand"></param>
-        /// <param name="model"></param>
+        /// <param name="form"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        public GuitarTransportType GetSampleGuitar(string brand, string model, string color) {
-            return new Guitar("guitar")
-                .Select()
-                .Where(Guitar.Fields.Brand, OperMath.Equal, brand)
-                .Where(Guitar.Fields.Model, OperMath.Equal, model)
-                .Where(Guitar.Fields.Color, OperMath.Equal, color)
+        public GuitarTransportType GetSampleGuitar(short? brand, short? form, short? color) {
+            var sample = new Guitar("guitar") .Select();
+            AddWhereIfNotNull(sample, Guitar.Fields.Brand, OperMath.Equal, brand);
+            AddWhereIfNotNull(sample, Guitar.Fields.Form, OperMath.Equal, form);
+            AddWhereIfNotNull(sample, Guitar.Fields.Color, OperMath.Equal, color);
+            return sample
                 .GetData()
                 .Select(g => g.ToTransport())
                 .ToList()
