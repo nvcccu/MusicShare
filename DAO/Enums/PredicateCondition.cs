@@ -3,7 +3,7 @@
     /// <summary>
     /// Бинарные операторы в условии Where
     /// </summary>
-    public enum OperPredicate {
+    public enum PredicateCondition {
         /// <summary>
         /// Равно =
         /// </summary>

@@ -57,13 +57,13 @@ namespace DAO
 //        } catch (Exception ex) {
 //                Console.WriteLine(ex);
 //            }
-//            con.Close();   TableEntity.Fields.Id, OperPredicate.Equal, 1
+//            con.Close();   TableEntity.Fields.Id, PredicateCondition.Equal, 1
             var test = new TableEntity("test");
             var results = test
                 .Select()
                 .Where(new[] {
-                    new FilterWhere(TableEntity.Fields.Id, OperPredicate.Equal, 1),
-                    new FilterWhere(TableEntity.Fields.Id, OperPredicate.Equal, 1) })
+                    new FilterWhere(TableEntity.Fields.Id, PredicateCondition.Equal, 1),
+                    new FilterWhere(TableEntity.Fields.Id, PredicateCondition.Equal, 1) })
                 .GetData();
 //            foreach (var result in results) {
 //                Console.WriteLine(result.Id + " " + result.Data);
@@ -71,7 +71,7 @@ namespace DAO
             test.Id = 55765;
             test.Data = "saved";
             test.Save();
-            results = test.Select().Where(TableEntity.Fields.Id, OperPredicate.Equal, 55).GetData();
+            results = test.Select().Where(TableEntity.Fields.Id, PredicateCondition.Equal, 55).GetData();
             foreach (var result in results)
             {
                 Console.WriteLine(result.Id + " " + result.Data);

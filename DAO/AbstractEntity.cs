@@ -127,9 +127,9 @@ namespace DAO {
         /// </summary>
         /// <param name="oper"></param>
         /// <returns></returns>
-        private string GetMathOper(OperPredicate oper) {
+        private string GetMathOper(PredicateCondition oper) {
             switch (oper) {
-                case OperPredicate.Equal:
+                case PredicateCondition.Equal:
                     return "=";
                     // todo: лень сразу писать все операторы :-)
                 default:
@@ -144,7 +144,7 @@ namespace DAO {
         /// <param name="oper">Бинарный оператор</param>
         /// <param name="value">Конкретное значение</param>
         /// <returns></returns>
-        public AbstractEntity<T> Where(Enum field, OperPredicate oper, object value) {
+        public AbstractEntity<T> Where(Enum field, PredicateCondition oper, object value) {
             _conditionsWhere.Add(new FilterWhere(field, oper, value));
             return this;
         }
@@ -214,7 +214,7 @@ namespace DAO {
         /// <summary>
         /// Оператор проверки в предикате
         /// </summary>
-        public OperPredicate Oper { get; set; }
+        public PredicateCondition Oper { get; set; }
 
         /// <summary>
         /// Поле целевой таблицы
@@ -226,7 +226,7 @@ namespace DAO {
     /// <summary>
     /// Джоин к таблице
     /// </summary>
-    public class FilterJoin<T> where T : new() {
+    public class FilterJoin {
         /// <summary>
         /// Тип join'а
         /// </summary>
@@ -235,7 +235,7 @@ namespace DAO {
         /// <summary>
         /// К чему осуществляется join
         /// </summary>
-        public AbstractEntity<T> TargetTable { get; set; }
+//        public AbstractEntity TargetTable { get; set; }
 
         /// <summary>
         /// Условия join'а
@@ -252,14 +252,14 @@ namespace DAO {
         /// <summary>
         /// 
         /// </summary>
-        public OperPredicate Oper { get; private set; }
+        public PredicateCondition Oper { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
         public object Value { get; private set; }
 
-        public FilterWhere(Enum field, OperPredicate oper, object value) {
+        public FilterWhere(Enum field, PredicateCondition oper, object value) {
             Field = field;
             Oper = oper;
             Value = value;
