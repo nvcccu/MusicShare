@@ -27,12 +27,12 @@ namespace MusicShareWeb {
                 "{controller}/{action}/{id}",
                 new {controller = "Search", action = "Index", id = UrlParameter.Optional}
                 );
-//
-//            routes.MapRoute(
-//                "Error",
-//                "{controller}/{action}/{id}",
-//                new {controller = "Error", action = "NotFound", id = UrlParameter.Optional}
-//                );
+
+            routes.MapRoute(
+                "Error",
+                "{controller}/{action}/{id}",
+                new {controller = "Error", action = "NotFound", id = UrlParameter.Optional}
+                );
         }
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters) {
@@ -41,8 +41,12 @@ namespace MusicShareWeb {
 
         protected void Application_Error(object sender, EventArgs e) {
             Exception ex = Server.GetLastError();
-            if (ex is HttpException && ((HttpException) ex).GetHttpCode() == 404) {
-                Response.Redirect("Error/NotFound");
+            if (ex is HttpException) {
+                if (((HttpException) ex).GetHttpCode() == 404) {
+                    Response.Redirect("Error/NotFound");
+                } else {
+                    Response.Redirect("Error/InternalError");
+                }
             }
         }
     }

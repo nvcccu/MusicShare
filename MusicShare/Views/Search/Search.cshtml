@@ -1,41 +1,34 @@
 ﻿@model MusicShareWeb.Models.SearchModel
-@{
-    Layout = null;
-}
-@using(@Html.BeginForm("Search", "Search", FormMethod.Post)) {
-    <div class="mp__search">
-        <div class="mp-search__standart">
-            <div class="mp-search__order">
-                <select class="guitar-param" name="Brand">
-                    <option selected="selected">Выберите марку</option>
-                    @foreach (var brand in Model.Brands) {
-                        <option value="@brand.Id">@brand.Name</option>
-                    }
-                </select>
+
+<div class="mp__search">
+    <div class="mp-search__standart">
+        <div class="mp-search__order">
+            <select class="guitar-param" name="Brand">
+                <option selected="selected">Выберите марку</option>
+                @foreach (var brand in Model.Brands) {
+                    <option value="@brand.Id">@brand.Name</option>
+                }
+            </select>
                 
-                <select class="guitar-param" name="Form">
-                    <option selected="selected">Выберите форму корпуса</option>
-                    @foreach (var form in Model.Forms) {
-                        <option value="@form.Id">@form.Name</option>
-                    }
-                </select>
+            <select class="guitar-param" name="Form">
+                <option selected="selected">Выберите форму корпуса</option>
+                @foreach (var form in Model.Forms) {
+                    <option value="@form.Id">@form.Name</option>
+                }
+            </select>
                 
-                <select class="guitar-param" name="Color">
-                    <option selected="selected">Выберите цвет</option>
-                    @foreach (var color in Model.Colors) {
-                        <option value="@color.Id">@color.Name</option>
-                    }
-                </select>
-            </div>
-            <div class="mp-search__sample-result">
-                <img src="../../Content/Image/index.jpg" alt="" style="height: 145px; width: inherit;"/>
-                <input type="submit" value="Найти" style="width: inherit; height: 24px;"/>
-            </div><br/>
-            <div class="mp-search__wide-sarch-show">Расширенный поиск</div>
+            <select class="guitar-param" name="Color">
+                <option selected="selected">Выберите цвет</option>
+                @foreach (var color in Model.Colors) {
+                    <option value="@color.Id">@color.Name</option>
+                }
+            </select>
         </div>
-        <div class="mp-search__wide"></div>
+        <div class="mp-search__sample-result">
+            <img class="smpl" src="../../Content/Image/index.jpg" alt="" style="height: 145px; width: inherit;"/>
+        </div><br/>
     </div>
-}
+</div>
 
 <script type="text/javascript">
     $('.guitar-param').on('change', function() {
@@ -47,8 +40,8 @@
                 form: $('[name="Form"]').val(),
                 color: $('[name="Color"]').val(),
             },
-            success: function (data) {
-                alert(data);
+            success: function(data) {
+                $('.smpl').attr('src', data.Value);
             }
         });
     });

@@ -5,13 +5,7 @@
     Layout = "../Shared/Layout.cshtml";
 }
 
-
-<div style="margin: 0 auto;">
-    <div class="mp__left-block">left</div>
-    <div class="mp__middle-block" style="display: inline-block; vertical-align: top;">
-        @Html.Partial("Search", new SearchModel())
-        @Html.Partial("SearchResults", Model)
-@*        @Html.Partial("../../Views/Shared/UI/UIDropDown/UIDropDown", new List<string>() {"qqe", "wqcxw"})*@
-    </div>
-    <div class="mp__offers" style="display: inline-block; vertical-align: top;"> </div>
+<div class="mp__left-block">left</div>
+<div class="mp__right-block">
+    @Html.Partial("Search", new SearchModel())
 </div>

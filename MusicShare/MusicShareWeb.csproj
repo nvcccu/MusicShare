@@ -179,7 +179,6 @@
     <Content Include="Content\Css\Global.css" />
     <Content Include="Content\Css\Header.css" />
     <Content Include="Content\Css\MainPage\MainPage.css" />
-    <Content Include="Content\Css\MainPage\Offers.css" />
     <Content Include="Content\Css\MainPage\Result.css" />
     <Content Include="Content\Css\MainPage\Search.css" />
     <Content Include="Content\Image\1.jpg" />
@@ -268,6 +267,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Forum\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Footer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Error\Error500.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

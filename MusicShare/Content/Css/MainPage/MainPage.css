@@ -6,9 +6,11 @@
 
 }
 
-.mp__middle-block {
-    width: 460px;
+.mp__right-block {
+    width: 720px;
     display: inline-block;
+    margin-left: -4px;
+    vertical-align: top;
 }
 
 .mp__result {

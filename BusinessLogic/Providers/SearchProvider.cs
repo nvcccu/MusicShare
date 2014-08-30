@@ -17,7 +17,7 @@ namespace BusinessLogic.Providers {
         /// <param name="color"></param>
         /// <returns></returns>
         public List<GuitarTransportType> Search(short brand, short form, short color) {
-            return new Guitar("guitar")
+            return new Guitar()
                 .Select()
                 .Where(Guitar.Fields.Brand, PredicateCondition.Equal, brand)
                 .Where(Guitar.Fields.Form, PredicateCondition.Equal, form)
@@ -41,7 +41,7 @@ namespace BusinessLogic.Providers {
         /// <param name="color"></param>
         /// <returns></returns>
         public GuitarTransportType GetSampleGuitar(short? brand, short? form, short? color) {
-            var sample = new Guitar("guitar") .Select();
+            var sample = new SampleGuitar() .Select();
             AddWhereIfNotNull(sample, Guitar.Fields.Brand, PredicateCondition.Equal, brand);
             AddWhereIfNotNull(sample, Guitar.Fields.Form, PredicateCondition.Equal, form);
             AddWhereIfNotNull(sample, Guitar.Fields.Color, PredicateCondition.Equal, color);

@@ -44,6 +44,7 @@
     <Compile Include="DaoEntities\Color.cs" />
     <Compile Include="DaoEntities\Form.cs" />
     <Compile Include="DaoEntities\Guitar.cs" />
+    <Compile Include="DaoEntities\SampleGuitar.cs" />
     <Compile Include="Enums\Brands.cs" />
     <Compile Include="Interfaces\IBusinessLogic.cs" />
     <Compile Include="Interfaces\ISearchProvider.cs" />
