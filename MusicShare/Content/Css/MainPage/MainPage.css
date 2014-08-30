@@ -1,19 +1,6 @@
-﻿.mp__left-block {
-    width: 220px;
-    height: 400px;
-    display: inline-block;
-    background-color: yellow;
-
-}
-
-.mp__right-block {
+﻿.search-block {
     width: 720px;
     display: inline-block;
     margin-left: -4px;
     vertical-align: top;
-}
-
-.mp__result {
-    height: 500px;
-    background-color: green;
 }

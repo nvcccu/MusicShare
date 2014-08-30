@@ -12,8 +12,11 @@
     <body>
         <div class="all-space">
             @Html.Partial("Header")
-            <div class="content">
-                @RenderBody()
+            <div class="usefull-space">
+                <div class="left-block">left</div>
+                <div class="content">
+                    @RenderBody()
+                </div>
             </div>
             @Html.Partial("Footer")
         </div>

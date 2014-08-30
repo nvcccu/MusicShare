@@ -1,0 +1,32 @@
+﻿.all-space {
+    background: #ffffff url(../Image/1.jpg) repeat repeat;
+}
+
+.usefull-space {
+    margin: 0 auto;
+    width: 940px;
+    background-color: #0000ff;
+}
+
+.content {
+    display: inline-block;
+}
+
+.left-block {
+    width: 220px;
+    height: 400px;
+    display: inline-block;
+    background-color: #ffff00;
+}
+
+.header {
+    height: 50px;
+    background-color: #00ff00;
+    text-align: center;
+}
+
+.footer {
+    height: 50px;
+    background-color: #ff0000;
+    text-align: center;
+}
