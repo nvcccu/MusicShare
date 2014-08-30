@@ -10,6 +10,8 @@
 
 .content {
     display: inline-block;
+    vertical-align: top;
+    margin-left: -4px;
 }
 
 .left-block {
