@@ -1,0 +1,37 @@
+﻿.article-preview {
+    background-color: #ff0000;
+    width: 150px;
+    height: 300px;
+}
+
+.ap__header {
+    height: 150px;
+    width: inherit;
+    background-image: url("../../Image/index.jpg");
+    font-size: 20px;
+    color: #ffffff;
+    position: relative;
+}
+
+.ap__header__name {
+    position: absolute;
+    bottom: 0;
+}
+
+.ap__title {
+    font-size: 16px;
+}
+
+.ap__info {
+    
+}
+
+.ap__info__view-number {
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.ap__info__comment-number {
+    padding-left: 20px;
+    font-size: 14px;
+}
