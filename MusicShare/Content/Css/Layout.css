@@ -11,7 +11,6 @@
 .content {
     display: inline-block;
     vertical-align: top;
-    margin-left: -4px;
 }
 
 .left-block {
@@ -29,6 +28,7 @@
 
 .header-content {
     height: inherit;
+    width: 940px;
     margin: auto;
 }
 
