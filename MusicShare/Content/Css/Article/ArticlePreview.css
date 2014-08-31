@@ -16,6 +16,8 @@
 .ap__header__name {
     position: absolute;
     bottom: 0;
+    width: inherit;
+    text-align: center;
 }
 
 .ap__title {

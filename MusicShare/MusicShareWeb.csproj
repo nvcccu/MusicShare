@@ -302,12 +302,6 @@
     <Content Include="Views\Error\Error500.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\NavigationBlock.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\Navigation.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Shared\ArticlePreview.cshtml" />
   </ItemGroup>
   <PropertyGroup>

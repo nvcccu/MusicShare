@@ -27,6 +27,48 @@
     text-align: center;
 }
 
+.header-content {
+    height: inherit;
+    margin: auto;
+}
+
+.header__navigation-zone {
+    height: inherit;
+    display: inline-block;
+    width: 600px;
+    background-color: #00a000;
+    text-align: right
+}
+
+.nav-zone__elem {
+    display: inline-block;
+    height: inherit;
+    width: 100px;
+    text-align: center;
+    margin-left: -4px;
+}
+
+.nav-zone__elem:nth-child(1) {
+    margin-left: 0;
+}
+
+.nav-zone__elem__logo {
+    background-color: #006000;
+    width: 70px;
+}
+
+.nav-zone__elem__active {
+    background-color: #00d000;
+}
+
+.header__account-zone {
+    height: inherit;
+    display: inline-block;
+    margin-left: -4px;
+    width: 340px;
+    background-color: #008000;
+}
+
 .footer {
     height: 50px;
     background-color: #ff0000;
