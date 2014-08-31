@@ -41,7 +41,7 @@ namespace BusinessLogic.Providers {
         /// <param name="color"></param>
         /// <returns></returns>
         public GuitarTransportType GetSampleGuitar(short? brand, short? form, short? color) {
-            var sample = new SampleGuitar() .Select();
+            var sample = new SampleGuitar().Select();
             AddWhereIfNotNull(sample, Guitar.Fields.Brand, PredicateCondition.Equal, brand);
             AddWhereIfNotNull(sample, Guitar.Fields.Form, PredicateCondition.Equal, form);
             AddWhereIfNotNull(sample, Guitar.Fields.Color, PredicateCondition.Equal, color);
@@ -50,6 +50,17 @@ namespace BusinessLogic.Providers {
                 .Select(g => g.ToTransport())
                 .ToList()
                 .First();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<SearchHintTransportType> GetSearchHints() {
+            return new SearchHint().Select()
+                .GetData()
+                .Select(h => h.ToTransport())
+                .ToList();
         }
 
         /// <summary>

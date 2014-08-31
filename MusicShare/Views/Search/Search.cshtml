@@ -1,23 +1,35 @@
-﻿@model MusicShareWeb.Models.SearchModel
+﻿@using System.Web.Script.Serialization
+@model MusicShareWeb.Models.SearchModel
+           
+@{
+    var searchHint = "{";
+    Model.SearchHints.Select(sh => new {
+        stepId = sh.SearchStepId,
+        text = sh.Text
+    }).ToList().ForEach(sh => {
+        searchHint += string.Format("\"{0}\":\"{1}\",", sh.stepId, sh.text);
+    });
+    searchHint += "}";
+}
 
 <div class="mp__search">
     <div class="mp-search__standart">
         <div class="mp-search__order">
-            <select class="guitar-param" name="Brand">
+            <select class="guitar-param" name="Form" data-step-id="1">
+                <option selected="selected">Выберите форму корпуса</option>
+                @foreach (var form in Model.Forms) {
+                    <option value="@form.Id">@form.Name</option>
+                }
+            </select>
+
+            <select class="guitar-param" name="Brand" data-step-id="2">
                 <option selected="selected">Выберите марку</option>
                 @foreach (var brand in Model.Brands) {
                     <option value="@brand.Id">@brand.Name</option>
                 }
             </select>
                 
-            <select class="guitar-param" name="Form">
-                <option selected="selected">Выберите форму корпуса</option>
-                @foreach (var form in Model.Forms) {
-                    <option value="@form.Id">@form.Name</option>
-                }
-            </select>
-                
-            <select class="guitar-param" name="Color">
+            <select class="guitar-param" name="Color" data-step-id="3">
                 <option selected="selected">Выберите цвет</option>
                 @foreach (var color in Model.Colors) {
                     <option value="@color.Id">@color.Name</option>
@@ -27,22 +39,34 @@
         <div class="mp-search__sample-result">
             <img class="smpl" src="../../Content/Image/index.jpg" alt="" style="height: 145px; width: inherit;"/>
         </div><br/>
+        <div class="search__step-hint">jhgjkg</div>
     </div>
 </div>
 
 <script type="text/javascript">
-    $('.guitar-param').on('change', function() {
-        $.ajax({
-            url: '@Url.Action("GetSampleGuitar", "Search")',
-            type: 'GET',
-            data: {
-                brand: $('[name="Brand"]').val(),
-                form: $('[name="Form"]').val(),
-                color: $('[name="Color"]').val(),
-            },
-            success: function(data) {
-                $('.smpl').attr('src', data.Value);
-            }
+    Search = function () {
+        this.hints = @Html.Raw(searchHint);
+        var that = this;
+
+        $('.guitar-param').on('change', function() {
+            $.ajax({
+                url: '@Url.Action("GetSampleGuitar", "Search")',
+                type: 'GET',
+                data: {
+                    brand: $('[name="Brand"]').val(),
+                    form: $('[name="Form"]').val(),
+                    color: $('[name="Color"]').val(),
+                },
+                success: function(data) {
+                    $('.smpl').attr('src', data.Value);
+                }
+            });
         });
-    });
+
+        $('.guitar-param').on('click', function() {
+            $('.search__step-hint').text(that.hints[$(this).data('step-id')]);
+        });
+    };
+
+    var search = new Search();
 </script>

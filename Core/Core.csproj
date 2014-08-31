@@ -44,6 +44,7 @@
     <Compile Include="TransportTypes\ColorTransportType.cs" />
     <Compile Include="TransportTypes\FormTransportType.cs" />
     <Compile Include="TransportTypes\GuitarTransportType.cs" />
+    <Compile Include="TransportTypes\SearchHintTransportType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

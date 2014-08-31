@@ -20,10 +20,16 @@ namespace MusicShareWeb.Models {
         /// </summary>
         public List<ColorTransportType> Colors { get; private set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<SearchHintTransportType> SearchHints { get; private set; } 
+
         public SearchModel() {
             Brands = ServiceManager<IBusinessLogic>.Instance.Service.GetAllBrand();
             Forms = ServiceManager<IBusinessLogic>.Instance.Service.GetAllForm();
             Colors = ServiceManager<IBusinessLogic>.Instance.Service.GetAllColor();
+            SearchHints = ServiceManager<IBusinessLogic>.Instance.Service.GetSearchHints();
         }
     }
 }

@@ -19,6 +19,10 @@ namespace BusinessLogic {
             return _searchProvider.GetSampleGuitar(brand, form, color);
         }
 
+        public List<SearchHintTransportType> GetSearchHints() {
+            return _searchProvider.GetSearchHints();
+        }
+
         public List<BrandTransportType> GetAllBrand() {
             return _searchProvider.GetAllBrand();
         }
