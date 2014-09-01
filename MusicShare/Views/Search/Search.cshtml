@@ -1,5 +1,4 @@
-﻿@using System.Web.Script.Serialization
-@model MusicShareWeb.Models.SearchModel
+﻿@model MusicShareWeb.Models.SearchModel
            
 @{
     var searchHint = "{";
@@ -13,33 +12,37 @@
 }
 
 <div class="mp__search">
-    <div class="mp-search__standart">
-        <div class="mp-search__order">
+    <div class="mp-search__hint-zone">
+        <div class="hint-zone__hint">Подсказка</div>
+    </div>
+    <div class="mp-search__order">
+        <div>
             <select class="guitar-param" name="Form" data-step-id="1">
-                <option selected="selected">Выберите форму корпуса</option>
+                <option selected="selected">Выбрать форму корпуса</option>
                 @foreach (var form in Model.Forms) {
                     <option value="@form.Id">@form.Name</option>
                 }
             </select>
-
+        </div>
+        <div>
             <select class="guitar-param" name="Brand" data-step-id="2">
-                <option selected="selected">Выберите марку</option>
+                <option selected="selected">Выбрать фирму</option>
                 @foreach (var brand in Model.Brands) {
                     <option value="@brand.Id">@brand.Name</option>
                 }
             </select>
-                
+        </div>
+        <div>
             <select class="guitar-param" name="Color" data-step-id="3">
-                <option selected="selected">Выберите цвет</option>
+                <option selected="selected">Выбрать цвет</option>
                 @foreach (var color in Model.Colors) {
                     <option value="@color.Id">@color.Name</option>
                 }
             </select>
-        </div>
-        <div class="mp-search__sample-result">
-            <img class="smpl" src="../../Content/Image/index.jpg" alt="" style="height: 145px; width: inherit;"/>
-        </div><br/>
-        <div class="search__step-hint">jhgjkg</div>
+        </div>   
+    </div>
+    <div class="mp-search__sample-result">
+        <img class="smpl" src="../../Content/Image/index.jpg" alt="" style="height: 145px; width: inherit;"/>
     </div>
 </div>
 
@@ -64,7 +67,13 @@
         });
 
         $('.guitar-param').on('click', function() {
-            $('.search__step-hint').text(that.hints[$(this).data('step-id')]);
+            var jThis = $(this);
+            var hint = $('.hint-zone__hint');
+            hint.text(that.hints[jThis.data('step-id')]);
+//            hint.css('top', jThis.css('top'));
+            hint.offset({
+                top: jThis.offset().top,
+            });
         });
     };
 

@@ -1,25 +1,40 @@
 ﻿.mp__search {
-    height: 202px;
+    width: inherit;
     background-color: white;
     padding: 10px 10px 10px 10px;
 }
 
-.mp-search__standart {
-    width: 440px;
+.mp-search__hint-zone{
+    display: inline-block;
+    height: 300px;
+    width: 200px;
+    background-color: #aaaaaa;
+    vertical-align: top;
+}
+
+.hint-zone__hint {
+    border: 1px solid #888888;
+    width: 100px;
 }
 
 .mp-search__order {
     display: inline-block;
+    margin-left: -4px;
     height: 180px;
     width: 290px;
     vertical-align: top;
+}
+
+.guitar-param {
+    width: 200px;
 }
 
 .mp-search__sample-result {
     display: inline-block;
     width: 145px;
     height: 180px;
-    margin-left: 1px
+    margin-left: -4px;
+    vertical-align: top;
 }
 
 .mp-search__option {

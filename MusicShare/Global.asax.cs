@@ -9,7 +9,10 @@ using CommonUtils;
 
 namespace MusicShareWeb {
     public class MvcApplication : HttpApplication {
+        private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+
         protected void Application_Start() {
+            _logger.Info("Application start");
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
@@ -41,6 +44,7 @@ namespace MusicShareWeb {
 
         protected void Application_Error(object sender, EventArgs e) {
             Exception ex = Server.GetLastError();
+            _logger.Info(ex);
             if (ex is HttpException) {
                 if (((HttpException) ex).GetHttpCode() == 404) {
                     Response.Redirect("Error/NotFound");

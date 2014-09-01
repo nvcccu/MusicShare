@@ -53,6 +53,9 @@
     <Reference Include="Mono.Security">
       <HintPath>bin\Mono.Security.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.3.1.0.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql">
       <HintPath>bin\Npgsql.dll</HintPath>
     </Reference>
