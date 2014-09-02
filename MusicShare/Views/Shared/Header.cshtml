@@ -1,15 +1,29 @@
 ﻿@{
     Layout = null;
+    var controllerName = ViewContext.RouteData.Values["controller"].ToString();
+    
+  
 }
+
+@functions {
+
+    private string IsActive(string curName, string name) {
+        return curName == name ? "nav-zone__elem__active" : string.Empty;
+    }
+
+}
+
+
+
 
 <div id="header" class="header">
     <div class="header-content">
         <div class="header__navigation-zone">
             <a class="nav-zone__elem nav-zone__elem__logo" href="@Url.Action("Index", "Search")">LOGO</a>
-            <a class="nav-zone__elem nav-zone__elem__active" href="@Url.Action("Index", "Search")">Поиск</a>
-            <a class="nav-zone__elem" href="@Url.Action("Index", "Article")">Статьи</a>
-            <a class="nav-zone__elem" href="@Url.Action("Index", "Forum")">Форум</a>
-            <a class="nav-zone__elem" href="@Url.Action("Index", "Placard")">Афиша</a>
+            <a class="nav-zone__elem @IsActive(controllerName, "Search")" href="@Url.Action("Index", "Search")">Поиск</a>
+            <a class="nav-zone__elem @IsActive(controllerName, "Article")" href="@Url.Action("Index", "Article")">Статьи</a>
+            <a class="nav-zone__elem @IsActive(controllerName, "Forum")" href="@Url.Action("Index", "Forum")">Форум</a>
+            <a class="nav-zone__elem @IsActive(controllerName, "Placard")" href="@Url.Action("Index", "Placard")">Афиша</a>
         </div>
         <div class="header__account-zone">Навигация по аккаунту</div>
     </div>
