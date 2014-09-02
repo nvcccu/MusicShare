@@ -1,6 +1,8 @@
 ﻿.mp__search {
     width: 600px;
     background-color: white;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .mp-search__hint-zone{

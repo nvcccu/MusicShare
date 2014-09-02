@@ -1,0 +1,22 @@
+﻿.promo-block {
+    width: 340px;
+    min-height: 500px;
+    display: inline-block;
+    margin-left: -4px;
+    background-color: #777777;
+    text-align: center;
+}
+
+.promo-block__new-block {
+    height: 200px;
+    width: 300px;
+    background-color: #999999;
+    margin: 0 auto;
+}
+
+.promo-block__offer-block {
+    height: 200px;
+    width: 300px;
+    background-color: #9ff999;
+    margin: 20px auto 0;
+}

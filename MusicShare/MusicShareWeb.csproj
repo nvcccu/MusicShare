@@ -183,6 +183,7 @@
     <Content Include="Content\Css\Global.css" />
     <Content Include="Content\Css\Layout.css" />
     <Content Include="Content\Css\MainPage\Search.css" />
+    <Content Include="Content\Css\PromoBlock\PromoBlock.css" />
     <Content Include="Content\Image\1.jpg" />
     <Content Include="Content\Image\index.jpg" />
     <Content Include="Content\Image\list.png" />
@@ -305,6 +306,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\ArticlePreview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\PromoBlock\PromoBlock.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\PromoBlock\News.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\PromoBlock\RelevantOffer.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
