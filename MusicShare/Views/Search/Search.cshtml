@@ -12,37 +12,59 @@
 }
 
 <div class="mp__search">
-    <div class="mp-search__hint-zone">
-        <div class="hint-zone__hint">Подсказка</div>
-    </div>
-    <div class="mp-search__order">
+@*    <div class="mp-search__hint-zone">*@
+@*        <div class="hint-zone__hint">Подсказка</div>*@
+@*    </div>*@
+    <div class="mp-search__order hide">
         <div>
-            <select class="guitar-param" name="Form" data-step-id="1">
+            <select class="guitar-param guitar-param__hidden" name="Form" data-step-id="1">
                 <option selected="selected">Выбрать форму корпуса</option>
-                @foreach (var form in Model.Forms) {
+                @foreach (var form in Model.Forms)
+                {
                     <option value="@form.Id">@form.Name</option>
                 }
             </select>
         </div>
         <div>
-            <select class="guitar-param" name="Brand" data-step-id="2">
+            <select class="guitar-param guitar-param__hidden" name="Brand" data-step-id="2">
                 <option selected="selected">Выбрать фирму</option>
-                @foreach (var brand in Model.Brands) {
+                @foreach (var brand in Model.Brands)
+                {
                     <option value="@brand.Id">@brand.Name</option>
                 }
             </select>
         </div>
         <div>
-            <select class="guitar-param" name="Color" data-step-id="3">
+            <select class="guitar-param guitar-param__hidden" name="Color" data-step-id="3">
                 <option selected="selected">Выбрать цвет</option>
-                @foreach (var color in Model.Colors) {
+                @foreach (var color in Model.Colors)
+                {
                     <option value="@color.Id">@color.Name</option>
                 }
             </select>
         </div>   
     </div>
+    <div class="mp-search__params">
+        <div class="mp-search__params__param" data-step-id="1">Форма</div>
+        <div class="mp-search__params__param" data-step-id="2">Фирма</div>
+        <div class="mp-search__params__param" data-step-id="3">Цвет</div>
+    </div>
     <div class="mp-search__sample-result">
-        <img class="smpl" src="../../Content/Image/index.jpg" alt="" style="height: 145px; width: inherit;"/>
+        <img class="smpl" src="../../Content/Image/index.jpg" alt="" style="height: inherit; width: inherit;" />
+    </div>
+    <div class="search__list-sample">
+        <div class="list-sample__sample" data-sample-num="0">
+            <img src="../../Content/Image/index.jpg" alt="" style="height: inherit; width: inherit;" />
+        </div>
+        <div class="list-sample__sample" data-sample-num="1">
+            <img src="../../Content/Image/index.jpg" alt="" style="height: inherit; width: inherit;" />
+        </div>
+        <div class="list-sample__sample" data-sample-num="2">
+            <img src="../../Content/Image/index.jpg" alt="" style="height: inherit; width: inherit;" />
+        </div>
+        <div class="list-sample__sample" data-sample-num="3">
+            <img src="../../Content/Image/index.jpg" alt="" style="height: inherit; width: inherit;" />
+        </div>
     </div>
 </div>
 
@@ -62,17 +84,30 @@
                 },
                 success: function(data) {
                     $('.smpl').attr('src', data.Value);
+                    $('.search__list-sample').removeClass('hide');
+                    $('.mp-search__order').addClass('hide');
                 }
             });
         });
 
-        $('.guitar-param').on('click', function() {
+//        $('.guitar-param').on('click', function() {
+//            var jThis = $(this);
+//            var hint = $('.hint-zone__hint');
+//            hint.text(that.hints[jThis.data('step-id')]);
+//            hint.offset({
+//                top: jThis.offset().top,
+//            });
+//        });
+
+        $('.mp-search__params__param').on('click', function() {
             var jThis = $(this);
-            var hint = $('.hint-zone__hint');
-            hint.text(that.hints[jThis.data('step-id')]);
-            hint.offset({
-                top: jThis.offset().top,
-            });
+            $('.mp-search__params__param').removeClass('mp-search__params__param__active');
+            jThis.addClass('mp-search__params__param__active');
+            $('.mp-search__order').removeClass('hide');
+            $('.search__list-sample').addClass('hide');
+            $('.guitar-param').addClass('guitar-param__hidden');
+            $('.guitar-param[data-step-id="' + jThis.data('step-id') + '"]')
+                .removeClass('guitar-param__hidden');
         });
     };
 

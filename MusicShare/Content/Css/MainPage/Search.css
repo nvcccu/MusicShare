@@ -1,4 +1,8 @@
-﻿.mp__search {
+﻿.hide {
+    display: none !important;
+}
+
+.mp__search {
     width: 600px;
     background-color: white;
     display: inline-block;
@@ -22,18 +26,40 @@
     display: inline-block;
     margin-left: -4px;
     height: 180px;
-    width: 250px;
+    width: 200px;
     vertical-align: top;
 }
 
 .guitar-param {
     width: 200px;
+    display: inline-block;
+}
+
+.guitar-param__active {
+    display: block;
+}
+
+.guitar-param__hidden {
+    display: none;
+}
+
+.mp-search__params {
+    width: 150px;
+    display: inline-block;
+}
+
+.mp-search__params__param {
+    background-color: #888888;
+}
+
+.mp-search__params__param__active {
+    background-color: #aaaaaa;
 }
 
 .mp-search__sample-result {
     display: inline-block;
-    width: 145px;
-    height: 180px;
+    width: 250px;
+    height: 200px;
     margin-left: -4px;
     vertical-align: top;
 }
@@ -67,4 +93,18 @@
     border: 1px solid #CCCCCC;
     border-radius: 3px;
     text-align: center;
+}
+
+.search__list-sample {
+    display: inline-block;
+    width: 200px;
+    vertical-align: top;
+    margin-left: -4px;
+    text-align: center;
+}
+
+.list-sample__sample {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
 }
