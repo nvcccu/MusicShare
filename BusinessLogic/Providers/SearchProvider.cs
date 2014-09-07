@@ -27,7 +27,7 @@ namespace BusinessLogic.Providers {
                 .ToList();
         }
 
-        private void AddWhereIfNotNull<T>(AbstractEntity<T> ds, Enum field, PredicateCondition oper,  object value) where T : new()  {
+        private void AddWhereIfNotNull<T>(AbstractEntity<T> ds, Enum field, PredicateCondition oper, object value) where T : new()  {
             if (value != null) {
                 ds.Where(field, oper, value);
             }
