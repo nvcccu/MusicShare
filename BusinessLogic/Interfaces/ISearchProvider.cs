@@ -19,7 +19,7 @@ namespace BusinessLogic.Interfaces {
         /// <param name="model"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        GuitarTransportType GetSampleGuitar(short? brand, short? model, short? color);
+        List<GuitarTransportType> GetSampleGuitars(short? brand, short? model, short? color);
 
         /// <summary>
         /// 

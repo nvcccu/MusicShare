@@ -40,7 +40,7 @@ namespace BusinessLogic.Providers {
         /// <param name="form"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        public GuitarTransportType GetSampleGuitar(short? brand, short? form, short? color) {
+        public List<GuitarTransportType> GetSampleGuitars(short? brand, short? form, short? color) {
             var sample = new SampleGuitar().Select();
             AddWhereIfNotNull(sample, Guitar.Fields.Brand, PredicateCondition.Equal, brand);
             AddWhereIfNotNull(sample, Guitar.Fields.Form, PredicateCondition.Equal, form);
@@ -48,8 +48,7 @@ namespace BusinessLogic.Providers {
             return sample
                 .GetData()
                 .Select(g => g.ToTransport())
-                .ToList()
-                .First();
+                .ToList();
         }
 
         /// <summary>

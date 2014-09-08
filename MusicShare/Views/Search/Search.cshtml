@@ -83,9 +83,18 @@
                     color: $('[name="Color"]').val(),
                 },
                 success: function(data) {
-                    $('.smpl').attr('src', data.Value);
+                    var bigImg = $('.smpl');
+                    var littleImgs = $('.list-sample__sample');
+                    bigImg.attr('src', data[0].Image);
                     $('.search__list-sample').removeClass('hide');
                     $('.mp-search__order').addClass('hide');
+                    for (var i = 0; i < data.length && i < littleImgs.length; i++) {
+                        $(littleImgs[i]).children('img').attr('src', data[i].Image);
+                    }
+                    for (var i = data.length; i < littleImgs.length; i++) {
+                        $(littleImgs[i]).children('img').attr('src', '../../Content/Image/index.jpg');
+                        
+                    }
                 }
             });
         });

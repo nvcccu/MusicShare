@@ -15,8 +15,8 @@ namespace BusinessLogic {
             return _searchProvider.Search(brand, form, color);
         }
 
-        public GuitarTransportType GetSampleGuitar(short? brand, short? form, short? color) {
-            return _searchProvider.GetSampleGuitar(brand, form, color);
+        public List<GuitarTransportType> GetSampleGuitars(short? brand, short? form, short? color) {
+            return _searchProvider.GetSampleGuitars(brand, form, color);
         }
 
         public List<SearchHintTransportType> GetSearchHints() {
