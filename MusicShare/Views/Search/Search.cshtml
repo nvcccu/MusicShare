@@ -53,18 +53,10 @@
         <img class="smpl" src="../../Content/Image/index.jpg" alt="" style="height: inherit; width: inherit;" />
     </div>
     <div class="search__list-sample">
-        <div class="list-sample__sample" data-sample-num="0">
-            <img src="../../Content/Image/index.jpg" alt="" style="height: inherit; width: inherit;" />
-        </div>
-        <div class="list-sample__sample" data-sample-num="1">
-            <img src="../../Content/Image/index.jpg" alt="" style="height: inherit; width: inherit;" />
-        </div>
-        <div class="list-sample__sample" data-sample-num="2">
-            <img src="../../Content/Image/index.jpg" alt="" style="height: inherit; width: inherit;" />
-        </div>
-        <div class="list-sample__sample" data-sample-num="3">
-            <img src="../../Content/Image/index.jpg" alt="" style="height: inherit; width: inherit;" />
-        </div>
+        <img class="list-sample__sample" src="../../Content/Image/index.jpg" alt="" data-sample-num="1"/>
+        <img class="list-sample__sample" src="../../Content/Image/index.jpg" alt="" data-sample-num="2"/>
+        <img class="list-sample__sample" src="../../Content/Image/index.jpg" alt="" data-sample-num="3"/>
+        <img class="list-sample__sample" src="../../Content/Image/index.jpg" alt="" data-sample-num="5"/>
     </div>
 </div>
 
@@ -89,11 +81,10 @@
                     $('.search__list-sample').removeClass('hide');
                     $('.mp-search__order').addClass('hide');
                     for (var i = 0; i < data.length && i < littleImgs.length; i++) {
-                        $(littleImgs[i]).children('img').attr('src', data[i].Image);
+                        $(littleImgs[i]).attr('src', data[i].Image);
                     }
                     for (var i = data.length; i < littleImgs.length; i++) {
-                        $(littleImgs[i]).children('img').attr('src', '../../Content/Image/index.jpg');
-                        
+                        $(littleImgs[i]).attr('src', '../../Content/Image/index.jpg');
                     }
                 }
             });
