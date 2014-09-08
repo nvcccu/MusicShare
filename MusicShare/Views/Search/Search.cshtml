@@ -49,9 +49,7 @@
         <div class="mp-search__params__param" data-step-id="2">Фирма</div>
         <div class="mp-search__params__param" data-step-id="3">Цвет</div>
     </div>
-    <div class="mp-search__sample-result">
-        <img class="smpl" src="../../Content/Image/index.jpg" alt="" style="height: inherit; width: inherit;" />
-    </div>
+    <img class="mp-search__sample-result" src="../../Content/Image/index.jpg" alt=""/>
     <div class="search__list-sample">
         <img class="list-sample__sample" src="../../Content/Image/index.jpg" alt="" data-sample-num="1"/>
         <img class="list-sample__sample" src="../../Content/Image/index.jpg" alt="" data-sample-num="2"/>
@@ -75,7 +73,7 @@
                     color: $('[name="Color"]').val(),
                 },
                 success: function(data) {
-                    var bigImg = $('.smpl');
+                    var bigImg = $('.mp-search__sample-result');
                     var littleImgs = $('.list-sample__sample');
                     bigImg.attr('src', data[0].Image);
                     $('.search__list-sample').removeClass('hide');
@@ -91,7 +89,7 @@
         });
 
         $('.list-sample__sample').on('click', function() {
-            $('.smpl').attr('src', $(this).attr('src'));
+            $('.mp-search__sample-result').attr('src', $(this).attr('src'));
         });
 
 //        $('.guitar-param').on('click', function() {
