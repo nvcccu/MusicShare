@@ -26,12 +26,17 @@ namespace DAO {
         /// <summary>
         /// Содержит набор where условий
         /// </summary>
-        private List<FilterWhere> _conditionsWhere;
+        private List<FilterWhere> _filterWhere;
 
         /// <summary>
         /// набор join'ов
         /// </summary>
-        private List<FilterJoin> _filterJoin; 
+        private List<FilterJoin> _filterJoin;
+
+        /// <summary>
+        /// набор сортировок
+        /// </summary>
+        private List<FilterOrder> _filterOrder;
 
         /// <summary>
         /// sql-запрос
@@ -45,7 +50,8 @@ namespace DAO {
         protected AbstractEntity(string tableName) {
             _dbAdapter = new DbAdapter();
             _tableName = tableName;
-            _conditionsWhere = new List<FilterWhere>();
+            _filterWhere = new List<FilterWhere>();
+            _filterOrder = new List<FilterOrder>();
         }
 
         /// <summary>
@@ -98,6 +104,7 @@ namespace DAO {
         /// <returns></returns>
         public IEnumerable<T> GetData() {
             TranslateWhere();
+            TranslateOrder();
             var ret = new List<T>();
             _dbAdapter.OpenConnection();
             _dbAdapter.Command = new NpgsqlCommand(_query, _dbAdapter.Connection);
@@ -131,6 +138,8 @@ namespace DAO {
             switch (oper) {
                 case PredicateCondition.Equal:
                     return "=";
+                case PredicateCondition.Greater:
+                    return ">";
                     // todo: лень сразу писать все операторы :-)
                 default:
                     return null;
@@ -145,7 +154,7 @@ namespace DAO {
         /// <param name="value">Конкретное значение</param>
         /// <returns></returns>
         public AbstractEntity<T> Where(Enum field, PredicateCondition oper, object value) {
-            _conditionsWhere.Add(new FilterWhere(field, oper, value));
+            _filterWhere.Add(new FilterWhere(field, oper, value));
             return this;
         }
 
@@ -155,7 +164,18 @@ namespace DAO {
         /// <param name="filterWhere"></param>
         /// <returns></returns>
         public AbstractEntity<T> Where(IEnumerable<FilterWhere> filterWhere) {
-            _conditionsWhere.AddRange(filterWhere);
+            _filterWhere.AddRange(filterWhere);
+            return this;
+        }
+
+        /// <summary>
+        /// добавляет условие ORDER BY
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="orderType"></param>
+        /// <returns></returns>
+        public AbstractEntity<T> OrderBy(Enum field, OrderType orderType) {
+            _filterOrder.Add(new FilterOrder(field, orderType));
             return this;
         }
 
@@ -164,18 +184,36 @@ namespace DAO {
         /// </summary>
         /// <returns></returns>
         private void TranslateWhere() {
-            if (!_conditionsWhere.Any()) {
+            if (!_filterWhere.Any()) {
                 return;
             }
             string where = "WHERE ";
-            where += _conditionsWhere.First().Field + GetMathOper(_conditionsWhere.First().Oper) + "'" +
-                     _conditionsWhere.First().Value + "' ";
-            for (int i = 1; i < _conditionsWhere.Count; i++) {
-                where += "AND " + _conditionsWhere[i].Field + GetMathOper(_conditionsWhere[i].Oper) + "'" +
-                         _conditionsWhere[i].Value + "' ";
+            where += _filterWhere.First().Field + GetMathOper(_filterWhere.First().Oper) + "'" +
+                     _filterWhere.First().Value + "' ";
+            for (var i = 1; i < _filterWhere.Count; i++) {
+                where += "AND " + _filterWhere[i].Field + GetMathOper(_filterWhere[i].Oper) + "'" +
+                         _filterWhere[i].Value + "' ";
             }
             _query += where;
-            _conditionsWhere = new List<FilterWhere>();
+            _filterWhere = new List<FilterWhere>();
+        }
+
+        /// <summary>
+        /// транслирует все условия ORDER BY в sql
+        /// </summary>
+        private void TranslateOrder() {
+            if (!_filterOrder.Any()) {
+                return;
+            }
+            var order = "ORDER BY ";
+            var firstOrder = _filterOrder.First();
+            order += firstOrder.Field + " " + firstOrder.OrderType + " ";
+            for (var i = 1; i < _filterOrder.Count; i++) {
+                var curOrder = _filterOrder[i];
+                order += ", " + curOrder.Field + " " + curOrder.OrderType + " ";
+            }
+            _query += order;
+            _filterOrder = new List<FilterOrder>();
         }
     }
 
@@ -221,6 +259,42 @@ namespace DAO {
         /// </summary>
         public Enum FieldTarget { get; set; }
 
+    }
+
+    /// <summary>
+    /// тип сортировки
+    /// </summary>
+    public enum OrderType : short {
+        /// <summary>
+        /// по возрастанию
+        /// </summary>
+        /// 
+        Asc = 0,
+
+        /// <summary>
+        /// по убыванию
+        /// </summary>
+        Desc = 1
+    }
+
+    /// <summary>
+    /// сортировка
+    /// </summary>
+    public class FilterOrder {
+        /// <summary>
+        /// сортируемое поле
+        /// </summary>
+        public Enum Field;
+
+        /// <summary>
+        /// тип сортировки
+        /// </summary>
+        public OrderType OrderType;
+
+        public FilterOrder(Enum field, OrderType orderType) {
+            Field = field;
+            OrderType = orderType;
+        }
     }
 
     /// <summary>

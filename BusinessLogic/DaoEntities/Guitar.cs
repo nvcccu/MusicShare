@@ -4,7 +4,7 @@ using DAO;
 using DAO.Attributes;
 
 namespace BusinessLogic.DaoEntities {
-    internal class Guitar : AbstractEntity<Guitar> {
+    public class Guitar : AbstractEntity<Guitar> {
         public Guitar(string tableName) : base(tableName) {}
 
         public Guitar() : base("Guitar") { }
