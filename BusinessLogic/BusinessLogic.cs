@@ -34,5 +34,10 @@ namespace BusinessLogic {
         public List<ColorTransportType> GetAllColor() {
             return _searchProvider.GetAllColor();
         }
+
+        public List<NewsTransportType> GetLastNews()
+        {
+            return _searchProvider.GetLastNews();
+        }
     }
 }

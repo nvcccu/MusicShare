@@ -44,5 +44,11 @@ namespace BusinessLogic.Interfaces {
         /// </summary>
         /// <returns></returns>
         List<ColorTransportType> GetAllColor();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        List<NewsTransportType> GetLastNews();
     }
 }

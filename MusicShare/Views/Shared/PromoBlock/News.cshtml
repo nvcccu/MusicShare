@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@using MusicShareWeb.Models
+@model PromoModel
 
 <div class="promo-block__new-block">
     Новости
@@ -6,7 +7,11 @@
     <br/>
     <br/>
     <br/>
-    <br/>
-    <br/>
+    
+    @using (Html.BeginForm())
+    {
+        <h1>@Model.News[0].Title</h1>
+        @Html.TextArea("News", Model.News[0].Text, new { @class = "form-control" })
+    }
     ааааааааааа ставьте лайки -- мы в сети
 </div>

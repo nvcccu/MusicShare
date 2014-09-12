@@ -97,5 +97,18 @@ namespace BusinessLogic.Providers {
                 .Select(b => b.ToTransport())
                 .ToList();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<NewsTransportType> GetLastNews()
+        {
+            return new News()
+                .SelectLast()
+                .GetData()
+                .Select(n => n.ToTransport())
+                .ToList();
+        }
     }
 }
