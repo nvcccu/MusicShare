@@ -3,37 +3,32 @@ using Core.TransportTypes;
 using DAO;
 using DAO.Attributes;
 
-namespace BusinessLogic.DaoEntities
-{
-    class News: AbstractEntity<News> {
+namespace BusinessLogic.DaoEntities {
+    internal class News : AbstractEntity<News> {
         public News(string tableName) : base(tableName) {}
 
-        public News() : base("News") { }
+        public News() : base("News") {}
 
         public enum Fields {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int32))]
-            Id = 0,
+            [DbType(typeof (Int32))] Id = 0,
 
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (string))]
-            Title = 1,
+            [DbType(typeof (string))] Title = 1,
 
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof(string))]
-            Text = 2,
+            [DbType(typeof (string))] Text = 2,
 
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof(string))]
-            Image = 3,
+            [DbType(typeof (string))] Image = 3,
         }
 
         /// <summary>
@@ -56,10 +51,8 @@ namespace BusinessLogic.DaoEntities
         /// </summary>
         public string Image { get; set; }
 
-        public NewsTransportType ToTransport()
-        {
-            return new NewsTransportType
-            {
+        public NewsTransportType ToTransport() {
+            return new NewsTransportType {
                 Id = Id,
                 Title = Title,
                 Text = Text,

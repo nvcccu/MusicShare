@@ -95,16 +95,7 @@ namespace DAO {
             _query = "SELECT * FROM " + _tableName + " ";
             return this;
         }
-        
-        /// <summary>
-        /// Удалить
-        /// </summary>
-        /// <returns></returns>
-        public AbstractEntity<T> SelectLast() {
-            _query = "SELECT * FROM " + _tableName + " ORDER BY id DESC LIMIT 1";
-            return this;
-        }
-
+       
         /// <summary>
         /// Получение данных из таблицы
         /// todo: запилить возможность получения только нужных полей, указание полей поместить в Select()

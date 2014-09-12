@@ -1,7 +1,5 @@
-﻿namespace Core.TransportTypes
-{
-    public class NewsTransportType
-    {
+﻿namespace Core.TransportTypes {
+    public class NewsTransportType {
         /// <summary>
         /// 
         /// </summary>

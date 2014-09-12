@@ -102,10 +102,9 @@ namespace BusinessLogic.Providers {
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<NewsTransportType> GetLastNews()
-        {
+        public List<NewsTransportType> GetLastNews() {
             return new News()
-                .SelectLast()
+                .Select()
                 .GetData()
                 .Select(n => n.ToTransport())
                 .ToList();

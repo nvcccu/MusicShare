@@ -1,6 +1,12 @@
 ﻿@using MusicShareWeb.Models
 @model PromoModel
 
+@{
+    if (!Model.News.Any()) {
+        return;
+    }
+}
+
 <div class="promo-block__new-block">
     Новости
     <br/>
