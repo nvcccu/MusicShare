@@ -47,6 +47,7 @@
     <Compile Include="TransportTypes\ColorTransportType.cs" />
     <Compile Include="TransportTypes\FormTransportType.cs" />
     <Compile Include="TransportTypes\GuitarTransportType.cs" />
+    <Compile Include="TransportTypes\NewsTransportType.cs" />
     <Compile Include="TransportTypes\SearchHintTransportType.cs" />
   </ItemGroup>
   <ItemGroup>
