@@ -3,9 +3,25 @@ using System.Collections.Generic;
 using System.Xml;
 
 namespace BusinessLogic.Parser {
-    public class DynatoneParser :IParser {
+    public class DynatoneParser : ParserBase {
         private const string FILE_NAME = "D:\\Dynatone.xml";
         private string _xml;
+
+        public override short GetBrand() {
+            throw new NotImplementedException();
+        }
+
+        public short GetColor() {
+            throw new NotImplementedException();
+        }
+
+        public short GetForm() {
+            throw new NotImplementedException();
+        }
+
+        public string GetImage() {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// получает данные откуда-то там

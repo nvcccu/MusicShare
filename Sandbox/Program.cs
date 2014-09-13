@@ -136,11 +136,7 @@ namespace Sandbox {
 
 
         private static void Main(string[] args) {
-            new TaskShedulerByInterval(() => Console.WriteLine("interval"), new TimeSpan(0, 0, 15));
-            for (int i = 0; i < 20; i++) {
-                Thread.Sleep(3000);
-                Console.WriteLine("main");
-            }
+           
 //            new DynatoneParser().Parse();
             Console.ReadKey();
         }
