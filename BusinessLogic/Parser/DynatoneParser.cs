@@ -4,19 +4,20 @@ using System.Xml;
 
 namespace BusinessLogic.Parser {
     public class DynatoneParser :IParser {
-        private const string FILE_NAME = "Dynatone.xml";
+        private const string FILE_NAME = "D:\\Dynatone.xml";
         private string _xml;
 
         /// <summary>
         /// получает данные откуда-то там
         /// </summary>
         public void GetSource() {
-            _xml = "blablabla";
+            _xml = "D:\\Dynatone.xml";
         }
 
         public void Parse() {
+            GetSource();
             var xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(_xml);
+            xmlDoc.Load("D:\\Dynatone.xml");
             var brands = new Dictionary<int, string>();
             var products = new Dictionary<int, XmlNode>();
             var categoriesXml = xmlDoc.GetElementsByTagName("category");

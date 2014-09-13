@@ -42,6 +42,7 @@
     <Compile Include="ServiceManager.cs" />
     <Compile Include="ServiceManagerBase.cs" />
     <Compile Include="Singleton.cs" />
+    <Compile Include="TaskSheduler\TaskSheduler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
