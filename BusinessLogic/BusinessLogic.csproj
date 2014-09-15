@@ -48,10 +48,11 @@
     <Compile Include="DaoEntities\SampleGuitar.cs" />
     <Compile Include="DaoEntities\SearchHint.cs" />
     <Compile Include="Enums\Brands.cs" />
+    <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Interfaces\IBusinessLogic.cs" />
     <Compile Include="Interfaces\ISearchProvider.cs" />
     <Compile Include="Parser\DynatoneParser.cs" />
-    <Compile Include="Parser\IParser.cs" />
+    <Compile Include="Parser\ParserBase.cs" />
     <Compile Include="Providers\SearchProvider.cs" />
   </ItemGroup>
   <ItemGroup>
