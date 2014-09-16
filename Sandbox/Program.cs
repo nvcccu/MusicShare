@@ -136,9 +136,9 @@ namespace Sandbox {
 
 
         private static void Main(string[] args) {
-           
-            new DynatoneParser().Parse();
-            Console.ReadKey();
+
+            new DynatoneParser();
+
         }
     }
 } 

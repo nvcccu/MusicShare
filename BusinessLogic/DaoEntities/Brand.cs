@@ -21,6 +21,12 @@ namespace BusinessLogic.DaoEntities {
             /// </summary>
             [DbType(typeof (string))]
             Name = 1,
+
+            /// <summary>
+            /// 
+            /// </summary>
+            [DbType(typeof (long))]
+            Code = 1,
         }
 
         /// <summary>
@@ -33,10 +39,16 @@ namespace BusinessLogic.DaoEntities {
         /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public long Code { get; set; }
+
         public BrandTransportType ToTransport() {
             return new BrandTransportType {
                 Id = Id,
-                Name = Name
+                Name = Name,
+                Code = Code
             };
         }
     }

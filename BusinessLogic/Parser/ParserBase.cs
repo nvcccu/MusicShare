@@ -6,6 +6,7 @@ namespace BusinessLogic.Parser {
         protected List<object> Items;
 
         protected ParserBase() {
+            Items = new List<object>();
             GetData();
             ActualizeItems();
         }
