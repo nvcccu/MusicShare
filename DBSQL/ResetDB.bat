@@ -1,0 +1,1 @@
+"c:\Program Files\PostgreSQL\9.3\bin\psql.exe" --dbname=%1_master -f %~dp0\Scripts\ResetDB.sql postgres

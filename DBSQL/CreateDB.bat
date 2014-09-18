@@ -1,0 +1,1 @@
+"c:\Program Files\PostgreSQL\9.3\bin\psql.exe" -v DB_PREFIX=%1 -f %~dp0\Scripts\CreateDB.sql postgres postgres

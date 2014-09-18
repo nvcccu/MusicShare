@@ -1,0 +1,6 @@
+\set DBNAME '"':DB_PREFIX'_master"'
+
+
+CREATE DATABASE :DBNAME ENCODING 'UTF8';
+
+\c :DBNAME
