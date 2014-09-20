@@ -5,9 +5,8 @@ namespace DAO {
     public class DbAdapter {
         /// <summary>
         /// Connection string
-        /// todo: читать из конфигов
         /// </summary>
-        public readonly NpgsqlConnection Connection = new NpgsqlConnection("Server=localhost;Port=5432;User=postgres;Password=postgres;Database=postgres;");
+        public readonly NpgsqlConnection Connection = new NpgsqlConnection(Connector.ConnectionString);
 
         /// <summary>
         /// Обращалка к базе

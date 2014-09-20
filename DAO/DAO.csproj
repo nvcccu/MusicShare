@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="AbstractEntity.cs" />
     <Compile Include="Attributes\DbType.cs" />
+    <Compile Include="Connector.cs" />
     <Compile Include="DbAdapter.cs" />
     <Compile Include="Enums\PredicateCondition.cs" />
     <Compile Include="Sandbox.cs" />

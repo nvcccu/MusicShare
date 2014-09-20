@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using BusinessLogic.DaoEntities;
+using DAO;
+using NUnit.Environment;
 using NUnit.Framework;
 
-namespace NUnit.Providers
-{
-   
-    class SearchProviderTest
-    {
+namespace NUnit.Providers {
+    [TestFixture]
+    internal class SearchProviderTest : DbResetBase {
         [Test]
         public void A() {
-            var q = 1;
-            q++;
-            Assert.AreEqual(2, q);
+            var count = new Guitar()
+                .Select()
+                .OrderBy(Guitar.Fields.Id, OrderType.Asc)
+                .GetData()
+                .ToList()
+                .Count;
+            Assert.AreEqual(1, count);
         }
     }
 }

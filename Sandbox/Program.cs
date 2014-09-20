@@ -10,7 +10,9 @@ using System.Threading;
 using System.Xml;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Parser;
+using CommonUtils;
 using CommonUtils.TaskSheduler;
+using DAO;
 
 namespace Sandbox {
     // todo разобраться есть ли тут что-то полезное
@@ -136,7 +138,10 @@ namespace Sandbox {
 
 
         private static void Main(string[] args) {
-
+            ConfigHelper.LoadXml(false);
+            Connector.ConnectionString = ConfigHelper.FirstTagWithPropertyText("db-connection", "db-name", "master");
+            new Guitar()//.Select().GetData();
+                .Truncate();
             new DynatoneParser();
 
         }

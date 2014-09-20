@@ -95,6 +95,20 @@ namespace DAO {
             _query = "SELECT * FROM " + _tableName + " ";
             return this;
         }
+
+        /// <summary>
+        /// Выполняет запрос здесь и сейчас без ожидания результата
+        /// </summary>
+        private void RunScript() {
+            _dbAdapter.OpenConnection();
+            _dbAdapter.Command = new NpgsqlCommand(_query, _dbAdapter.Connection);
+            try {
+                _dbAdapter.Command.ExecuteScalar();
+            } catch (Exception ex) {
+                Console.WriteLine(ex);
+            }
+            _dbAdapter.CloseConnection();
+        }
        
         /// <summary>
         /// Получение данных из таблицы
@@ -177,6 +191,15 @@ namespace DAO {
         public AbstractEntity<T> OrderBy(Enum field, OrderType orderType) {
             _filterOrder.Add(new FilterOrder(field, orderType));
             return this;
+        }
+
+        /// <summary>
+        /// Удаляет все данные из базы
+        /// </summary>
+        /// <returns></returns>
+        public void Truncate() {
+            _query = "TRUNCATE TABLE " + _tableName + ";";
+            RunScript();
         }
 
         /// <summary>
