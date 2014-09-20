@@ -138,11 +138,10 @@ namespace Sandbox {
 
 
         private static void Main(string[] args) {
-            ConfigHelper.LoadXml(false);
-            Connector.ConnectionString = ConfigHelper.FirstTagWithPropertyText("db-connection", "db-name", "master");
-            new Guitar()//.Select().GetData();
-                .Truncate();
-            new DynatoneParser();
+            var q = 1;
+            var p = ++q;
+            var w = 1;
+
 
         }
     }

@@ -116,6 +116,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CookieBaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\PlacardController.cs" />

@@ -8,6 +8,11 @@ using DAO;
 namespace BusinessLogic {
     public class BusinessLogic : IBusinessLogic{
         private readonly SearchProvider _searchProvider = new SearchProvider();
+        private readonly UserProvider _userProvider = new UserProvider();
+
+        public BusinessLogic() {
+            Initial();
+        }
 
         public void Initial() {
             ConfigHelper.LoadXml(false);
@@ -38,9 +43,12 @@ namespace BusinessLogic {
             return _searchProvider.GetAllColor();
         }
 
-        public List<NewsTransportType> GetLastNews()
-        {
+        public List<NewsTransportType> GetLastNews() {
             return _searchProvider.GetLastNews();
+        }
+
+        public long GetNextGuestId(string userAgent) {
+            return _userProvider.GetNextGuestId(userAgent);
         }
     }
 }

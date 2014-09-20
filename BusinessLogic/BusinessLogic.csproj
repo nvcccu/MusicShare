@@ -43,6 +43,7 @@
     <Compile Include="DaoEntities\Brand.cs" />
     <Compile Include="DaoEntities\Color.cs" />
     <Compile Include="DaoEntities\Form.cs" />
+    <Compile Include="DaoEntities\Guest.cs" />
     <Compile Include="DaoEntities\Guitar.cs" />
     <Compile Include="DaoEntities\News.cs" />
     <Compile Include="DaoEntities\SampleGuitar.cs" />
@@ -52,9 +53,11 @@
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Interfaces\IBusinessLogic.cs" />
     <Compile Include="Interfaces\ISearchProvider.cs" />
+    <Compile Include="Interfaces\IUserProvider.cs" />
     <Compile Include="Parser\DynatoneParser.cs" />
     <Compile Include="Parser\ParserBase.cs" />
     <Compile Include="Providers\SearchProvider.cs" />
+    <Compile Include="Providers\UserProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
