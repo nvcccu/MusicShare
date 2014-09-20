@@ -1,1 +1,1 @@
-"c:\Program Files\PostgreSQL\9.3\bin\psql.exe" --dbname=%1_master -f %~dp0\1.0.1_init_script.sql postgres
+rem "c:\Program Files\PostgreSQL\9.3\bin\psql.exe" --dbname=%1_master -f %~dp0\1.0.1_init_script.sql postgres

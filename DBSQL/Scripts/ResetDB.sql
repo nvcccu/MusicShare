@@ -1,3 +1,4 @@
+drop table if exists schemaversion;
 drop table if exists article;
 drop table if exists brand;
 drop table if exists color;

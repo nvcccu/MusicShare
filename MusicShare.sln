@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit", "NUnit\NUnit.csproj", "{F3329D2D-DAFB-4287-9319-D156C056D0B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateDB", "UpdateDB\UpdateDB.csproj", "{9BB03537-C77C-44F9-9D10-CFA73993AC27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,16 @@ Global
 		{F3329D2D-DAFB-4287-9319-D156C056D0B3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F3329D2D-DAFB-4287-9319-D156C056D0B3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F3329D2D-DAFB-4287-9319-D156C056D0B3}.Release|Win32.ActiveCfg = Release|Any CPU
+		{9BB03537-C77C-44F9-9D10-CFA73993AC27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BB03537-C77C-44F9-9D10-CFA73993AC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BB03537-C77C-44F9-9D10-CFA73993AC27}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9BB03537-C77C-44F9-9D10-CFA73993AC27}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9BB03537-C77C-44F9-9D10-CFA73993AC27}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{9BB03537-C77C-44F9-9D10-CFA73993AC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BB03537-C77C-44F9-9D10-CFA73993AC27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BB03537-C77C-44F9-9D10-CFA73993AC27}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9BB03537-C77C-44F9-9D10-CFA73993AC27}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9BB03537-C77C-44F9-9D10-CFA73993AC27}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,5 +121,6 @@ Global
 		{045C9F24-E693-4D0B-B934-72737DCCC844} = {278463DD-716D-4DBA-8695-646C62CDCF58}
 		{80F0A1A3-0914-4D38-99B5-D18EA9DC3E2F} = {278463DD-716D-4DBA-8695-646C62CDCF58}
 		{F3329D2D-DAFB-4287-9319-D156C056D0B3} = {278463DD-716D-4DBA-8695-646C62CDCF58}
+		{9BB03537-C77C-44F9-9D10-CFA73993AC27} = {278463DD-716D-4DBA-8695-646C62CDCF58}
 	EndGlobalSection
 EndGlobal

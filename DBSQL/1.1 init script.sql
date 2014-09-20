@@ -1,3 +1,16 @@
+CREATE SEQUENCE SchemaVersion_id_seq;
+CREATE TABLE SchemaVersion (
+  id smallint NOT NULL DEFAULT nextval('SchemaVersion_id_seq'::regclass),
+  CurrentMajorVersion smallint NOT NULL,
+  LastMinorUpdate smallint NOT NULL,
+  CONSTRAINT pk_SchemaVersion PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE SchemaVersion
+  OWNER TO postgres;
+
 CREATE TABLE article (
   id bigserial NOT NULL,
   name character varying(256),
