@@ -1,3 +1,16 @@
+CREATE TABLE UserActionLog (
+  id bigserial NOT NULL,
+  guestId bigint NOT NULL,
+  actionId int NOT NULL,
+  target int,
+  CONSTRAINT pk_UserActionLog PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE UserActionLog
+  OWNER TO postgres;
+
 CREATE TABLE guest (
   guestid bigserial NOT NULL,
   useragent character varying(1024),

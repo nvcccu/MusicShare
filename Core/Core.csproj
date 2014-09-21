@@ -50,6 +50,7 @@
     <Compile Include="TransportTypes\GuitarTransportType.cs" />
     <Compile Include="TransportTypes\NewsTransportType.cs" />
     <Compile Include="TransportTypes\SearchHintTransportType.cs" />
+    <Compile Include="TransportTypes\UserActionLogTransportType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

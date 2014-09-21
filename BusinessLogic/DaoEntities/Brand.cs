@@ -26,7 +26,7 @@ namespace BusinessLogic.DaoEntities {
             /// 
             /// </summary>
             [DbType(typeof (long))]
-            Code = 1,
+            Code = 2,
         }
 
         /// <summary>

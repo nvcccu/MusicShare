@@ -10,15 +10,20 @@ namespace BusinessLogic.DaoEntities {
         public SampleGuitar() : base("SampleGuitar") {}
 
         public enum Fields {
-            [DbType(typeof (Int64))] Id = 0,
+            [DbType(typeof (Int64))]
+            Id = 0,
 
-            [DbType(typeof (short))] Brand = 1,
+            [DbType(typeof (short))]
+            Brand = 1,
 
-            [DbType(typeof (short))] Color = 2,
+            [DbType(typeof (short))]
+            Color = 2,
 
-            [DbType(typeof (short))] Form = 3,
+            [DbType(typeof (short))]
+            Form = 3,
 
-            [DbType(typeof (string))] Image = 4,
+            [DbType(typeof (string))]
+            Image = 4,
         };
 
         /// <summary>

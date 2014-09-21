@@ -13,12 +13,14 @@ namespace BusinessLogic.DaoEntities {
             /// <summary>
             /// уникальный идентификатор гостя
             /// </summary>
-            [DbType(typeof (Int64))] GuestId = 0,
+            [DbType(typeof (Int64))]
+            GuestId = 0,
 
             /// <summary>
             /// его useragent
             /// </summary>
-            [DbType(typeof (string))] UserAgent = 0,
+            [DbType(typeof (string))]
+            UserAgent = 1,
         }
 
         /// <summary>
