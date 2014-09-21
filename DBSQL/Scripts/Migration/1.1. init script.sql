@@ -1,3 +1,14 @@
+CREATE TABLE guest (
+  guestid bigserial NOT NULL,
+  useragent character varying(1024),
+  CONSTRAINT pk_guest PRIMARY KEY (guestid)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE guest
+  OWNER TO postgres;
+
 CREATE SEQUENCE SchemaVersion_id_seq;
 CREATE TABLE SchemaVersion (
   id smallint NOT NULL DEFAULT nextval('SchemaVersion_id_seq'::regclass),
