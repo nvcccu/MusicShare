@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Xml;
-using BusinessLogic.DaoEntities;
-using BusinessLogic.Parser;
+using BusinessLogic.Interfaces;
+using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 using CommonUtils;
-using CommonUtils.TaskSheduler;
-using DAO;
+using Core.Enums;
 
 namespace Sandbox {
     // todo разобраться есть ли тут что-то полезное
@@ -141,7 +139,13 @@ namespace Sandbox {
             var q = 1;
             var p = ++q;
             var w = 1;
-
+            var container = new WindsorContainer();
+            container.Register(
+                Component.For<IBusinessLogic>().LifestyleSingleton().Instance(new BusinessLogic.BusinessLogic()));
+            ServiceManager<IBusinessLogic>.Instance.DependencyContainer = container;
+            ServiceManager<IBusinessLogic>.Instance.Service.AddUserAction(1, ActionId.OpenSearch);
+            ServiceManager<IBusinessLogic>.Instance.Service.AddUserAction(1, ActionId.OpenSearch, 2);
+            Console.ReadKey();
 
         }
     }

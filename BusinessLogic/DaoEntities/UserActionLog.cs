@@ -7,7 +7,7 @@ namespace BusinessLogic.DaoEntities {
     internal class UserActionLog : AbstractEntity<UserActionLog> {
         public UserActionLog(string tableName) : base(tableName) {}
 
-        public UserActionLog() : base("Brand") {}
+        public UserActionLog() : base("UserActionLog") { }
 
         public enum Fields {
             /// <summary>
@@ -49,7 +49,7 @@ namespace BusinessLogic.DaoEntities {
         /// <summary>
         /// дополнительный параметр. куда именно нажал, что именно выбрал и т. п.
         /// </summary>
-        public int Target { get; set; }
+        public long? Target { get; set; }
 
         public UserActionLogTransportType ToTransport() {
             return new UserActionLogTransportType {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using Castle.Core.Internal;
 using DAO.Enums;
 using Npgsql;
 
@@ -67,12 +68,15 @@ namespace DAO {
             }
             _query += properties[properties.Count() - 1].Name + ") ";
             _query += "VALUES (";
+            string propValue;
             for (int i = 1; i < properties.Count() - 1; i++) {
                 property = properties[i];
-                _query += "'" + Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture) + "', ";
+                propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
+                _query += propValue.IsNullOrEmpty() ? "NULL, " : ("'" + propValue + "', ");
             }
             property = properties[properties.Count() - 1];
-            _query += "'" + property.GetValue(this, null) + "'";
+            propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
+            _query += propValue.IsNullOrEmpty() ? "NULL" : ("'" + propValue + "'");
             _query += ")";
             Console.WriteLine(_query);
             _dbAdapter.Command = new NpgsqlCommand(_query, _dbAdapter.Connection);

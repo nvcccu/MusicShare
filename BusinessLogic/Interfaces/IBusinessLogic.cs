@@ -1,7 +1,8 @@
 ﻿namespace BusinessLogic.Interfaces {
     public interface IBusinessLogic :
         ISearchProvider,
-        IUserProvider {
+        IUserProvider,
+        ILogProvider {
         void Initial();
     }
 }

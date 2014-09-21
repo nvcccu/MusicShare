@@ -2,7 +2,7 @@ CREATE TABLE UserActionLog (
   id bigserial NOT NULL,
   guestId bigint NOT NULL,
   actionId int NOT NULL,
-  target int,
+  target bigint,
   CONSTRAINT pk_UserActionLog PRIMARY KEY (id)
 )
 WITH (

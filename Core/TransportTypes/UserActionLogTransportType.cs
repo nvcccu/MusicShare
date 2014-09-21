@@ -3,6 +3,6 @@
         public long Id { get; set; }
         public long GuestId { get; set; }
         public int ActionId { get; set; }
-        public int Target { get; set; }
+        public long? Target { get; set; }
     }
 }

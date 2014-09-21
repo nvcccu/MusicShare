@@ -119,6 +119,7 @@
     <Compile Include="Controllers\CookieBaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\PlacardController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">

@@ -2,6 +2,7 @@
 using BusinessLogic.Interfaces;
 using BusinessLogic.Providers;
 using CommonUtils;
+using Core.Enums;
 using Core.TransportTypes;
 using DAO;
 
@@ -9,6 +10,7 @@ namespace BusinessLogic {
     public class BusinessLogic : IBusinessLogic{
         private readonly SearchProvider _searchProvider = new SearchProvider();
         private readonly UserProvider _userProvider = new UserProvider();
+        private readonly LogProvider _logProvider = new LogProvider();
 
         public BusinessLogic() {
             Initial();
@@ -49,6 +51,10 @@ namespace BusinessLogic {
 
         public long GetNextGuestId(string userAgent) {
             return _userProvider.GetNextGuestId(userAgent);
+        }
+
+        public void AddUserAction(long guestId, ActionId actionId, long? target = null) {
+            _logProvider.AddUserAction(guestId, actionId, target);
         }
     }
 }
