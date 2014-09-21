@@ -142,6 +142,8 @@
     <Content Include="Content\Image\1.jpg" />
     <Content Include="Content\Image\index.jpg" />
     <Content Include="Content\Image\list.png" />
+    <Content Include="Content\Script\CommonScripts\Log.js" />
+    <Content Include="Content\Script\CommonScripts\MusicShare.js" />
     <Content Include="Content\Script\MainPage\Search.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Script\jquery-1.10.2.js" />

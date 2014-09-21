@@ -8,6 +8,15 @@
     <head>
         @Html.Partial("ContentHelper")
         <title>MS</title>
+        <script>
+            var musicShare;
+            $(document).ready(function() {
+                musicShare = new MusicShare({
+                    logUrl: '@Url.Action("LogAction", "Log")'
+                });
+            });
+            
+        </script>
     </head>
     <body>
         <div class="all-space">
