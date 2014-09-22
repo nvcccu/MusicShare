@@ -54,7 +54,7 @@ CREATE SEQUENCE brand_id_seq;
 CREATE TABLE brand (
   id smallint NOT NULL DEFAULT nextval('brand_id_seq'::regclass),
   name character varying(64) NOT NULL,
-  code character varying(64) NOT NULL DEFAULT (-1),
+  logo character varying(512) NOT NULL,
   CONSTRAINT pk_brand PRIMARY KEY (id)
 )
 WITH (

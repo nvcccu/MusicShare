@@ -12,11 +12,11 @@ namespace BusinessLogic.Parser {
         protected override short GetBrand(object obj) {
             var xml = (XmlNode)obj;
             var brandId = Convert.ToInt64(xml["categoryId"].InnerText);
-            foreach (var brand in BrandHelper.Brands) {
-                if (brandId == brand.Value) {
-                    return brand.Key;
-                }
-            }
+//            foreach (var brand in BrandHelper.Brands) {
+//                if (brandId == brand.Value) {
+//                    return brand.Key;
+//                }
+//            }
             return -1;
         }
 

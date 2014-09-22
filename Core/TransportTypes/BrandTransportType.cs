@@ -13,6 +13,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public long Code { get; set; }
+        public string Logo { get; set; }
     }
 }
