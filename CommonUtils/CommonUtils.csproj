@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigHelper.cs" />
+    <Compile Include="Metrics\Mixpanel.cs" />
     <Compile Include="ServiceManager.cs" />
     <Compile Include="ServiceManagerBase.cs" />
     <Compile Include="Singleton.cs" />
