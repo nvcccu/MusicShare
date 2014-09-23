@@ -16,8 +16,7 @@ namespace BusinessLogic.Providers {
         /// <param name="formId"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        public List<GuitarTransportType> Search(int brandId, int formId, int color)
-        {
+        public List<GuitarTransportType> Search(int brandId, int formId, int color) {
             return new Guitar()
                 .Select()
                 .Where(Guitar.Fields.BrandId, PredicateCondition.Equal, brandId)
@@ -27,7 +26,8 @@ namespace BusinessLogic.Providers {
                 .ToList();
         }
 
-        private void AddWhereIfNotNull<T>(AbstractEntity<T> ds, Enum field, PredicateCondition oper, object value) where T : new()  {
+        private void AddWhereIfNotNull<T>(AbstractEntity<T> ds, Enum field, PredicateCondition oper, object value)
+            where T : new() {
             if (value != null) {
                 ds.Where(field, oper, value);
             }
@@ -40,8 +40,7 @@ namespace BusinessLogic.Providers {
         /// <param name="form"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        public List<GuitarTransportType> GetSampleGuitars(int? brandId, int? form, int? color)
-        {
+        public List<GuitarTransportType> GetSampleGuitars(int? brandId, int? form, int? color) {
             var sample = new Guitar().Select();
             AddWhereIfNotNull(sample, Guitar.Fields.BrandId, PredicateCondition.Equal, brandId);
             AddWhereIfNotNull(sample, Guitar.Fields.FormId, PredicateCondition.Equal, form);

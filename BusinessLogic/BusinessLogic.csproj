@@ -46,9 +46,11 @@
     <Compile Include="DaoEntities\Form.cs" />
     <Compile Include="DaoEntities\Guest.cs" />
     <Compile Include="DaoEntities\Guitar.cs" />
+    <Compile Include="DaoEntities\GuitarInShop.cs" />
     <Compile Include="DaoEntities\GuitarWithColor.cs" />
     <Compile Include="DaoEntities\News.cs" />
     <Compile Include="DaoEntities\SearchHint.cs" />
+    <Compile Include="DaoEntities\Shop.cs" />
     <Compile Include="DaoEntities\UserActionLog.cs" />
     <Compile Include="Enums\Brands.cs" />
     <Compile Include="Helpers\BrandHelper.cs" />
