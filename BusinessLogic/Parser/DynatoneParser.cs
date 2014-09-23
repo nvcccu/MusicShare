@@ -9,7 +9,8 @@ namespace BusinessLogic.Parser {
         private string _xml;
         private readonly Dictionary<long, string> _brands = new Dictionary<long, string>();
 
-        protected override short GetBrand(object obj) {
+        protected override int GetBrand(object obj)
+        {
             var xml = (XmlNode)obj;
             var brandId = Convert.ToInt64(xml["categoryId"].InnerText);
 //            foreach (var brand in BrandHelper.Brands) {
@@ -20,7 +21,8 @@ namespace BusinessLogic.Parser {
             return -1;
         }
 
-        protected override short GetColor(object obj) {
+        protected override int GetColor(object obj)
+        {
             var xml = (XmlNode)obj;
             var source = xml["name"].InnerText;
             var potentialColorStart = source.IndexOf("/", StringComparison.Ordinal);
@@ -40,7 +42,8 @@ namespace BusinessLogic.Parser {
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        protected override short GetForm(object obj) {
+        protected override int GetForm(object obj)
+        {
             return -1;
         }
 

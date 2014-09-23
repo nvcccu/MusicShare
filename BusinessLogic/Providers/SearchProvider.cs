@@ -12,16 +12,16 @@ namespace BusinessLogic.Providers {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="brand"></param>
-        /// <param name="form"></param>
+        /// <param name="brandId"></param>
+        /// <param name="formId"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        public List<GuitarTransportType> Search(short brand, short form, short color) {
+        public List<GuitarTransportType> Search(int brandId, int formId, int color)
+        {
             return new Guitar()
                 .Select()
-                .Where(Guitar.Fields.Brand, PredicateCondition.Equal, brand)
-                .Where(Guitar.Fields.Form, PredicateCondition.Equal, form)
-                .Where(Guitar.Fields.Color, PredicateCondition.Equal, color)
+                .Where(Guitar.Fields.BrandId, PredicateCondition.Equal, brandId)
+                .Where(Guitar.Fields.FormId, PredicateCondition.Equal, formId)
                 .GetData()
                 .Select(g => g.ToTransport())
                 .ToList();
@@ -36,15 +36,15 @@ namespace BusinessLogic.Providers {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="brand"></param>
+        /// <param name="brandId"></param>
         /// <param name="form"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        public List<GuitarTransportType> GetSampleGuitars(short? brand, short? form, short? color) {
-            var sample = new SampleGuitar().Select();
-            AddWhereIfNotNull(sample, Guitar.Fields.Brand, PredicateCondition.Equal, brand);
-            AddWhereIfNotNull(sample, Guitar.Fields.Form, PredicateCondition.Equal, form);
-            AddWhereIfNotNull(sample, Guitar.Fields.Color, PredicateCondition.Equal, color);
+        public List<GuitarTransportType> GetSampleGuitars(int? brandId, int? form, int? color)
+        {
+            var sample = new Guitar().Select();
+            AddWhereIfNotNull(sample, Guitar.Fields.BrandId, PredicateCondition.Equal, brandId);
+            AddWhereIfNotNull(sample, Guitar.Fields.FormId, PredicateCondition.Equal, form);
             return sample
                 .GetData()
                 .Select(g => g.ToTransport())
@@ -90,8 +90,8 @@ namespace BusinessLogic.Providers {
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<ColorTransportType> GetAllColor() {
-            return new Color()
+        public List<ColorSimpleTransportType> GetAllColor() {
+            return new ColorSimple()
                 .Select()
                 .GetData()
                 .Select(b => b.ToTransport())

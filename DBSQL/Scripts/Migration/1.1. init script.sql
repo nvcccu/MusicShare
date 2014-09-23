@@ -22,11 +22,10 @@ WITH (
 ALTER TABLE guest
   OWNER TO postgres;
 
-CREATE SEQUENCE SchemaVersion_id_seq;
 CREATE TABLE SchemaVersion (
-  id smallint NOT NULL DEFAULT nextval('SchemaVersion_id_seq'::regclass),
-  CurrentMajorVersion smallint NOT NULL,
-  LastMinorUpdate smallint NOT NULL,
+  id serial NOT NULL,
+  CurrentMajorVersion int NOT NULL,
+  LastMinorUpdate int NOT NULL,
   CONSTRAINT pk_SchemaVersion PRIMARY KEY (id)
 )
 WITH (
@@ -50,9 +49,9 @@ WITH (
 ALTER TABLE article
   OWNER TO postgres;
 
-CREATE SEQUENCE brand_id_seq;
+
 CREATE TABLE brand (
-  id smallint NOT NULL DEFAULT nextval('brand_id_seq'::regclass),
+  id serial NOT NULL,
   name character varying(64) NOT NULL,
   logo character varying(512) NOT NULL,
   CONSTRAINT pk_brand PRIMARY KEY (id)
@@ -63,9 +62,9 @@ WITH (
 ALTER TABLE brand
   OWNER TO postgres;
 
-CREATE SEQUENCE color_id_seq;
+
 CREATE TABLE color (
-  id smallint NOT NULL DEFAULT nextval('color_id_seq'::regclass),
+  id serial NOT NULL,
   code character varying(64) NOT NULL DEFAULT (-1),
   name character varying(64) NOT NULL,
   CONSTRAINT pk_color PRIMARY KEY (id)
@@ -76,9 +75,9 @@ WITH (
 ALTER TABLE color
   OWNER TO postgres;
 
-CREATE SEQUENCE form_id_seq;
+
 CREATE TABLE form (
-  id smallint NOT NULL DEFAULT nextval('form_id_seq'::regclass),
+  id serial NOT NULL,
   name character varying(64) NOT NULL,
   CONSTRAINT pk_form PRIMARY KEY (id)
 )
@@ -90,9 +89,9 @@ ALTER TABLE form
 
 CREATE TABLE guitar (
   id bigserial NOT NULL,
-  brand smallint,
-  color smallint,
-  form smallint,
+  brand int,
+  color int,
+  form int,
   image character varying(512),
   CONSTRAINT pk_guitar PRIMARY KEY (id)
 )
@@ -102,9 +101,9 @@ WITH (
 ALTER TABLE guitar
   OWNER TO postgres;
 
-CREATE SEQUENCE news_id_seq;
+
 CREATE TABLE news (
-  id integer NOT NULL DEFAULT nextval('news_id_seq'::regclass),
+  id serial NOT NULL
   title character varying(1024),
   text character varying(16384),
   image character varying(512),
@@ -114,20 +113,6 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE news
-  OWNER TO postgres;
-
-CREATE TABLE sampleguitar (
-  id serial NOT NULL,
-  brand smallint,
-  color smallint,
-  form smallint,
-  image character varying(512),
-  CONSTRAINT pk_sampleguitar PRIMARY KEY (id)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE sampleguitar
   OWNER TO postgres;
 
 CREATE TABLE searchhint (
@@ -142,7 +127,7 @@ WITH (
 ALTER TABLE searchhint
   OWNER TO postgres;
 
-insert into sampleguitar values 
+insert into guitar values 
 (1, 1, 1, 1, '../../ImgStore/1.bmp'),
 (2, 1, 2, 1, '../../ImgStore/2.bmp'),
 (3, 1, 3, 1, '../../ImgStore/3.bmp'),

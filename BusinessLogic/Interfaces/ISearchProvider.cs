@@ -7,19 +7,19 @@ namespace BusinessLogic.Interfaces {
         /// 
         /// </summary>
         /// <param name="brand"></param>
-        /// <param name="form"></param>
+        /// <param name="formId"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        List<GuitarTransportType> Search(short brand, short form, short color);
+        List<GuitarTransportType> Search(int brand, int formId, int color);
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="brand"></param>
+        /// <param name="brandId"></param>
         /// <param name="model"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        List<GuitarTransportType> GetSampleGuitars(short? brand, short? model, short? color);
+        List<GuitarTransportType> GetSampleGuitars(int? brandId, int? model, int? color);
 
         /// <summary>
         /// 
@@ -43,7 +43,7 @@ namespace BusinessLogic.Interfaces {
         /// 
         /// </summary>
         /// <returns></returns>
-        List<ColorTransportType> GetAllColor();
+        List<ColorSimpleTransportType> GetAllColor();
 
         /// <summary>
         /// 

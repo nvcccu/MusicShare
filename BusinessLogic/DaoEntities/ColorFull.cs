@@ -4,35 +4,44 @@ using DAO;
 using DAO.Attributes;
 
 namespace BusinessLogic.DaoEntities {
-    public class Color : AbstractEntity<Color> {
-        public Color(string tableName) : base(tableName) {}
+    internal class ColorFull : AbstractEntity<ColorFull> {
+        public ColorFull(string tableName) : base(tableName) {}
 
-        public Color() : base("Color") {}
+        public ColorFull() : base("ColorFull") { }
 
         public enum Fields {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int16))]
+            [DbType(typeof(Int32))]
             Id = 0,
 
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (string))]
-            Code = 1,
+            [DbType(typeof(Int32))]
+            ColorSimpleId = 1,
 
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (string))]
-            Name = 2,
+            [DbType(typeof (string))] Code = 2,
+
+            /// <summary>
+            /// 
+            /// </summary>
+            [DbType(typeof (string))] Name = 3,
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public short Id { get; set; }
+        public int Id { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int ColorSimpleId { get; set; }
 
         /// <summary>
         /// 
@@ -44,10 +53,11 @@ namespace BusinessLogic.DaoEntities {
         /// </summary>
         public string Name { get; set; }
 
-        public ColorTransportType ToTransport() {
-            return new ColorTransportType {
+        public ColorFullTransportType ToTransport() {
+            return new ColorFullTransportType {
                 Id = Id,
                 Code = Code,
+                ColorSimpleId = ColorSimpleId,
                 Name = Name,
             };
         }

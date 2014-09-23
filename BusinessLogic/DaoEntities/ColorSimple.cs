@@ -4,10 +4,10 @@ using DAO;
 using DAO.Attributes;
 
 namespace BusinessLogic.DaoEntities {
-    public class Form : AbstractEntity<Form> {
-        public Form(string tableName) : base(tableName) {}
+    public class ColorSimple : AbstractEntity<ColorSimple> {
+        public ColorSimple(string tableName) : base(tableName) {}
 
-        public Form() : base("Form") {}
+        public ColorSimple() : base("ColorSimple") { }
 
         public enum Fields {
             /// <summary>
@@ -19,7 +19,8 @@ namespace BusinessLogic.DaoEntities {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (string))] Name = 1,
+            [DbType(typeof (string))]
+            Name = 2,
         }
 
         /// <summary>
@@ -32,10 +33,10 @@ namespace BusinessLogic.DaoEntities {
         /// </summary>
         public string Name { get; set; }
 
-        public FormTransportType ToTransport() {
-            return new FormTransportType {
+        public ColorSimpleTransportType ToTransport() {
+            return new ColorSimpleTransportType {
                 Id = Id,
-                Name = Name
+                Name = Name,
             };
         }
     }

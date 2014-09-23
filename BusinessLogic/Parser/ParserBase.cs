@@ -11,19 +11,17 @@ namespace BusinessLogic.Parser {
             ActualizeItems();
         }
 
-        protected abstract short GetBrand(object obj);
-        protected abstract short GetColor(object obj);
-        protected abstract short GetForm(object obj);
+        protected abstract int GetBrand(object obj);
+        protected abstract int GetColor(object obj);
+        protected abstract int GetForm(object obj);
         protected abstract string GetImage(object obj);
 
         protected abstract void GetData();
 
         private void ActualizeItems() {
             Items.ForEach(i => new Guitar {
-                Brand = GetBrand(i),
-                Color = GetColor(i),
-                Form = GetForm(i),
-                Image = GetImage(i),
+                BrandId = GetBrand(i),
+                FormId = GetForm(i),
             }.Save());
             
         }

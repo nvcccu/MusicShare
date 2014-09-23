@@ -18,7 +18,7 @@ namespace MusicShareWeb.Models {
         /// <summary>
         /// 
         /// </summary>
-        public List<ColorTransportType> Colors { get; private set; }
+        public List<ColorSimpleTransportType> Colors { get; private set; }
 
         /// <summary>
         /// 

@@ -18,13 +18,14 @@ namespace MusicShareWeb.Controllers {
 
         [HttpPost]
         public ActionResult Search(GuitarTransportType gtp) {
-            var sr = ServiceManager<IBusinessLogic>.Instance.Service.Search(gtp.Brand, gtp.Form, gtp.Color);
+            var sr = ServiceManager<IBusinessLogic>.Instance.Service.Search(gtp.BrandId, gtp.FormId, 1);
             var dataModel = new SearchResultModel(sr);
             return View("Index", dataModel);
         }
 
         [HttpGet]
-        public JsonResult GetSampleGuitar(short? brand, short? form, short? color) {
+        public JsonResult GetSampleGuitar(int? brand, int? form, int? color)
+        {
             var sample = ServiceManager<IBusinessLogic>.Instance.Service.GetSampleGuitars(brand, form, color);
             return new JsonResult {
                 Data = sample,

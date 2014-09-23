@@ -13,7 +13,7 @@ namespace BusinessLogic.DaoEntities {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int16))]
+            [DbType(typeof (Int32))]
             Id = 0,
 
             /// <summary>
@@ -32,7 +32,7 @@ namespace BusinessLogic.DaoEntities {
         /// <summary>
         /// 
         /// </summary>
-        public short Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// 

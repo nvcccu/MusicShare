@@ -21,12 +21,14 @@ namespace BusinessLogic {
             Connector.ConnectionString = ConfigHelper.FirstTagWithPropertyText("db-connection", "db-name", "master");
         }
 
-        public List<GuitarTransportType> Search(short brand, short form, short color) {
-            return _searchProvider.Search(brand, form, color);
+        public List<GuitarTransportType> Search(int brand, int formId, int color)
+        {
+            return _searchProvider.Search(brand, formId, color);
         }
 
-        public List<GuitarTransportType> GetSampleGuitars(short? brand, short? form, short? color) {
-            return _searchProvider.GetSampleGuitars(brand, form, color);
+        public List<GuitarTransportType> GetSampleGuitars(int? brandId, int? form, int? color)
+        {
+            return _searchProvider.GetSampleGuitars(brandId, form, color);
         }
 
         public List<SearchHintTransportType> GetSearchHints() {
@@ -41,7 +43,7 @@ namespace BusinessLogic {
             return _searchProvider.GetAllForm();
         }
 
-        public List<ColorTransportType> GetAllColor() {
+        public List<ColorSimpleTransportType> GetAllColor() {
             return _searchProvider.GetAllColor();
         }
 

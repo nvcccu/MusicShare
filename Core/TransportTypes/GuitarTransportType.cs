@@ -8,21 +8,16 @@
         /// <summary>
         /// 
         /// </summary>
-        public short Brand { get; set; }
+        public int BrandId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public short Color { get; set; }
+        public int FormId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public short Form { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Image { get; set; }
+        public string Model{ get; set; }
     }
 }

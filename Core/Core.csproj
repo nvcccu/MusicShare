@@ -45,10 +45,12 @@
     <Compile Include="Enums\ActionId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransportTypes\BrandTransportType.cs" />
-    <Compile Include="TransportTypes\ColorTransportType.cs" />
+    <Compile Include="TransportTypes\ColorFullTransportType.cs" />
+    <Compile Include="TransportTypes\ColorSimpleTransportType.cs" />
     <Compile Include="TransportTypes\FormTransportType.cs" />
     <Compile Include="TransportTypes\GuestTransportType.cs" />
     <Compile Include="TransportTypes\GuitarTransportType.cs" />
+    <Compile Include="TransportTypes\GuitarWithColorTransportType.cs" />
     <Compile Include="TransportTypes\NewsTransportType.cs" />
     <Compile Include="TransportTypes\SearchHintTransportType.cs" />
     <Compile Include="TransportTypes\UserActionLogTransportType.cs" />

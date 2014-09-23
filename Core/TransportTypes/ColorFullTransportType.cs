@@ -1,5 +1,5 @@
 ﻿namespace Core.TransportTypes {
-    public class BrandTransportType {
+    public class ColorFullTransportType {
         /// <summary>
         /// 
         /// </summary>
@@ -8,11 +8,16 @@
         /// <summary>
         /// 
         /// </summary>
-        public string Name { get; set; }
+        public int ColorSimpleId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public string Logo { get; set; }
+        public string Code { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Name { get; set; }
     }
 }

@@ -17,23 +17,26 @@ namespace UpdateDB {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int16))] Id = 0,
+            [DbType(typeof(Int32))]
+            Id = 0,
 
             /// <summary>
             /// Текущая основная нумерация скриптов миграции -- чтобы не было номера 2538 и более
             /// </summary>
-            [DbType(typeof (short))] CurrentMajorVersion = 1,
+            [DbType(typeof(int))]
+            CurrentMajorVersion = 1,
 
             /// <summary>
             /// Минорный номер последнего примененного скрипта
             /// </summary>
-            [DbType(typeof (short))] LastMinorUpdate = 1,
+            [DbType(typeof(int))]
+            LastMinorUpdate = 1,
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public short Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// 

@@ -10,55 +10,45 @@ namespace BusinessLogic.DaoEntities {
         public Guitar() : base("Guitar") { }
 
         public enum Fields {
-            [DbType(typeof(Int64))]
+            [DbType(typeof(Int32))]
             Id = 0,
 
-            [DbType(typeof(short))]
-            Brand = 1,
+            [DbType(typeof(Int32))]
+            BrandId = 1,
 
-            [DbType(typeof(short))]
-            Color = 2,
-
-            [DbType(typeof(short))]
-            Form = 3,
+            [DbType(typeof(Int32))]
+            FormId = 3,
 
             [DbType(typeof(string))]
-            Image = 4,
+            Model = 4,
         };
 
         /// <summary>
         /// 
         /// </summary>
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public short Brand { get; set; }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public short Color { get; set; }
+        public int BrandId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public short Form { get; set; }
+        public int FormId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public string Image { get; set; }
+        public string Model { get; set; }
 
         public GuitarTransportType ToTransport() {
             return new GuitarTransportType {
                 Id = Id,
-                Brand = Brand,
-                Color = Color,
-                Form = Form,
-                Image = Image,
+                BrandId = BrandId,
+                FormId = FormId,
+                Model = Model,
             };
         }
     }

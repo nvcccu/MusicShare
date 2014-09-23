@@ -5,15 +5,16 @@ using DAO;
 
 namespace BusinessLogic.Helpers {
     public static class ColorHelper {
-        private static Dictionary<short, string> _colors;
+        private static Dictionary<int, string> _colors;
 
-        public static Dictionary<short, string> Colors {
+        public static Dictionary<int, string> Colors
+        {
             get {
-                return _colors ?? (_colors = new Color()
+                return _colors ?? (_colors = new ColorSimple()
                     .Select()
-                    .OrderBy(Color.Fields.Id, OrderType.Asc)
+                    .OrderBy(ColorSimple.Fields.Id, OrderType.Asc)
                     .GetData()
-                    .ToDictionary(c => c.Id, c => c.Code));
+                    .ToDictionary(c => c.Id, c => c.Name));
             }
         }
     }

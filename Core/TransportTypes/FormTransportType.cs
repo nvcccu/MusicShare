@@ -3,7 +3,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public short Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// 

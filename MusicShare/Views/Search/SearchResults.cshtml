@@ -7,9 +7,8 @@
     @if (Model != null && Model.SearchResults.Count != 0) {
         foreach (var str in Model.SearchResults) {
             <div>
-                <span>@str.Brand</span>
-                <span>@str.Form</span>
-                <span>@str.Color</span>
+                <span>@str.BrandId</span>
+                <span>@str.FormId</span>
             </div>
          }
     }
