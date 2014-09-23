@@ -13,13 +13,12 @@ namespace BusinessLogic.DaoEntities {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof(Int32))]
-            Id = 0,
+            [DbType(typeof (Int32))] Id,
 
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (string))] Name = 1,
+            [DbType(typeof (string))] Name,
         }
 
         /// <summary>

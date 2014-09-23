@@ -11,16 +11,16 @@ namespace BusinessLogic.DaoEntities {
 
         public enum Fields {
             [DbType(typeof(Int32))]
-            Id = 0,
+            Id,
 
             [DbType(typeof(Int32))]
-            BrandId = 1,
+            BrandId,
 
             [DbType(typeof(Int32))]
-            FormId = 3,
+            FormId,
 
             [DbType(typeof(string))]
-            Model = 4,
+            Model,
         };
 
         /// <summary>

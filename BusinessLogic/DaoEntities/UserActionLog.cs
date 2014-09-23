@@ -13,22 +13,22 @@ namespace BusinessLogic.DaoEntities {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int64))] Id = 0,
+            [DbType(typeof (Int64))] Id,
 
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int64))] GuestId = 1,
+            [DbType(typeof (Int64))] GuestId,
 
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int32))] ActionId = 2,
+            [DbType(typeof (Int32))] ActionId,
 
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int32))] Target = 3,
+            [DbType(typeof (Int32))] Target,
         }
 
         /// <summary>
