@@ -8,11 +8,17 @@ using DAO.Enums;
 using Npgsql;
 
 namespace DAO {
+    public interface IAbstractEntity {
+        List<IAbstractEntity> JoinedEntities { get; set; }
+        void Update();
+        void Insert();
+    }
+
     /// <summary>
     /// Шаблон для класса-сущности таблицы
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class AbstractEntity<T> where T : new() {
+    public abstract class AbstractEntity<T> : IAbstractEntity where T: new() {
         /// <summary>
         /// Адаптер доступа к базе
         /// </summary>
@@ -20,7 +26,6 @@ namespace DAO {
 
         /// <summary>
         /// Название таблицы, на которую смотрит
-        /// todo: сделать атрибутом
         /// </summary>
         private readonly string _tableName;
 
@@ -39,6 +44,8 @@ namespace DAO {
         /// </summary>
         private List<FilterOrder> _filterOrder;
 
+        public List<IAbstractEntity> JoinedEntities { get; set; }
+
         /// <summary>
         /// sql-запрос
         /// </summary>
@@ -55,10 +62,14 @@ namespace DAO {
             _filterOrder = new List<FilterOrder>();
         }
 
+        public void Update() {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Сохраняет сущность в базу
         /// </summary>
-        public void Save() {
+        public void Insert() {
             PropertyInfo property;
             var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
             _query = "INSERT INTO " + _tableName + " (";
@@ -336,7 +347,7 @@ namespace DAO {
         /// <summary>
         /// К чему осуществляется join
         /// </summary>
-//        public AbstractEntity TargetTable { get; set; }
+        public IAbstractEntity TargetTable { get; set; }
 
         /// <summary>
         /// Условия join'а

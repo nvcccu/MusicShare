@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using BusinessLogic.Interfaces;
 using CommonUtils;
+using CommonUtils.ServiceManager;
 using Core.Enums;
 
 namespace MusicShareWeb.Controllers {

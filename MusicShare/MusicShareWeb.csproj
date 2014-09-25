@@ -175,6 +175,9 @@
     <Content Include="ImgStore\7.bmp" />
     <Content Include="ImgStore\8.bmp" />
     <Content Include="ImgStore\9.bmp" />
+    <Content Include="ImgStore\BrandLogo\Fender.jpg" />
+    <Content Include="ImgStore\BrandLogo\Gibson.jpg" />
+    <Content Include="ImgStore\BrandLogo\Jackson.jpg" />
     <Content Include="Views\Shared\UI\Global\UIGlobal.css" />
     <Content Include="Views\Shared\UI\UIDropDown\UIDropDown_round.png" />
     <Content Include="Views\Shared\UI\UIDropDown\UIDropDown.css" />

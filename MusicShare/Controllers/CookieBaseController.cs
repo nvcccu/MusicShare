@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using BusinessLogic.Interfaces;
 using CommonUtils;
+using CommonUtils.ServiceManager;
 
 namespace MusicShareWeb.Controllers {
     public class CookieBaseController : Controller {

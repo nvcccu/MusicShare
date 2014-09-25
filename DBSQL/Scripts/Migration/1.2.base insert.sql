@@ -31,3 +31,8 @@ insert into searchhint values
 (1, 1, 'Выбрать форму'),
 (2, 2, 'Выбрать фирму'),
 (3, 3, 'Выбрать цвет');
+
+insert into Brand values
+(1, 'Fender', '../../ImgStore/BrandLogo/Fender.jpg'),
+(2, 'Gibson', '../../ImgStore/BrandLogo/Gibson.jpg'),
+(3, 'Jackson', '../../ImgStore/BrandLogo/Jackson.jpg');

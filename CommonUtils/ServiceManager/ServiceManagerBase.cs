@@ -1,6 +1,7 @@
 ﻿using Castle.Windsor;
+using CommonUtils.Patterns;
 
-namespace CommonUtils {
+namespace CommonUtils.ServiceManager {
     public class ServiceManagerBase<T> : Singleton<T> where T : class, new() {
         public IWindsorContainer DependencyContainer { private get; set; }
 

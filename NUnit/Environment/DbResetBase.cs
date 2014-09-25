@@ -2,6 +2,8 @@
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using CommonUtils;
+using CommonUtils.Config;
+using CommonUtils.ServiceManager;
 using DAO;
 using NUnit.Framework;
 

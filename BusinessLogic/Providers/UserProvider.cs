@@ -59,7 +59,7 @@ namespace BusinessLogic.Providers {
             new Guest {
                 GuestId = ++lastGuestId,
                 UserAgent = userAgent
-            }.Save();
+            }.Insert();
             return lastGuestId;
         }
     }

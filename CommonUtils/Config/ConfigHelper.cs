@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml;
 
-namespace CommonUtils {
+namespace CommonUtils.Config {
     /// <summary>
     /// гнилой класс для неправильной работы с конфигами
     /// </summary>

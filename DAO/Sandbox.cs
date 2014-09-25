@@ -70,7 +70,7 @@ namespace DAO
 //            }
             test.Id = 55765;
             test.Data = "saved";
-            test.Save();
+            test.Insert();
             results = test.Select().Where(TableEntity.Fields.Id, PredicateCondition.Equal, 55).GetData();
             foreach (var result in results)
             {

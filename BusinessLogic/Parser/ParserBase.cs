@@ -22,7 +22,7 @@ namespace BusinessLogic.Parser {
             Items.ForEach(i => new Guitar {
                 BrandId = GetBrand(i),
                 FormId = GetForm(i),
-            }.Save());
+            }.Insert());
             
         }
     }

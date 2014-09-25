@@ -15,7 +15,7 @@ namespace BusinessLogic.Providers {
                 GuestId = guestId,
                 ActionId = (int)actionId,
                 Target = target
-            }.Save();
+            }.Insert();
         }
     }
 }

@@ -10,7 +10,10 @@ using BusinessLogic.Interfaces;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using CommonUtils;
+using CommonUtils.Log;
+using CommonUtils.ServiceManager;
 using Core.Enums;
+using MusicShareWeb;
 
 namespace Sandbox {
     // todo разобраться есть ли тут что-то полезное
@@ -87,7 +90,7 @@ namespace Sandbox {
             //                    eg.Model = productNode["name"].InnerText;
             //                    eg.Price = decimal.Parse(productNode["price"].InnerText, CultureInfo.InvariantCulture);
             //                    eg.Url = productNode["url"].InnerText;
-            //                    eg.Save();
+            //                    eg.Insert();
             //                }
             //            }
         }
@@ -129,13 +132,20 @@ namespace Sandbox {
 //                    eg.Model = productNode["name"].InnerText;
 //                    eg.Price = decimal.Parse(productNode["price"].InnerText, CultureInfo.InvariantCulture);
 //                    eg.Url = productNode["url"].InnerText;
-//                    eg.Save();
+//                    eg.Insert();
                 }
             }
         }
 
-
+        private static readonly LoggerWrapper _logger = LoggerManager.GetLogger(typeof(Program).FullName);
+        private static readonly LoggerWrapper _logger1 = LoggerManager.GetLogger(typeof(ActionId).FullName);
         private static void Main(string[] args) {
+
+            var ex = new Exception("hihihi");
+            _logger.Info("ex");
+            var ex1 = new Exception("hsfdgihidsgfhi");
+            _logger1.Info(ex1);
+
             var q = 1;
             var p = ++q;
             var w = 1;

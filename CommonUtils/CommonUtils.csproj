@@ -39,11 +39,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigHelper.cs" />
+    <Compile Include="Config\ConfigHelper.cs" />
+    <Compile Include="Log\LoggerManager.cs" />
+    <Compile Include="Log\LoggerWrapper.cs" />
     <Compile Include="Metrics\Mixpanel.cs" />
-    <Compile Include="ServiceManager.cs" />
-    <Compile Include="ServiceManagerBase.cs" />
-    <Compile Include="Singleton.cs" />
+    <Compile Include="ServiceManager\ServiceManager.cs" />
+    <Compile Include="ServiceManager\ServiceManagerBase.cs" />
+    <Compile Include="Patterns\Singleton.cs" />
     <Compile Include="TaskSheduler\TaskSheduler.cs" />
   </ItemGroup>
   <ItemGroup>

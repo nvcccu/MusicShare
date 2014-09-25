@@ -1,4 +1,4 @@
-﻿namespace CommonUtils {
+﻿namespace CommonUtils.ServiceManager {
     public class ServiceManager<T> : ServiceManagerBase<ServiceManager<T>> where T : class {
         private T _service;
 

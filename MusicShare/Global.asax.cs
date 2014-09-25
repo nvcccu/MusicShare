@@ -5,11 +5,12 @@ using System.Web.Routing;
 using BusinessLogic.Interfaces;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using CommonUtils;
+using CommonUtils.Log;
+using CommonUtils.ServiceManager;
 
 namespace MusicShareWeb {
     public class MvcApplication : HttpApplication {
-        private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly LoggerWrapper _logger = LoggerManager.GetLogger(typeof (MvcApplication).FullName);
 
         protected void Application_Start() {
             _logger.Info("Application start");
