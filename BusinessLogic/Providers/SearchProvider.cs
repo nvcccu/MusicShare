@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
+using Castle.MicroKernel.Registration;
 using Core.TransportTypes;
 using DAO;
 using DAO.Enums;
@@ -42,10 +43,20 @@ namespace BusinessLogic.Providers {
         /// <returns></returns>
         public List<GuitarWithColorTransportType> GetSampleGuitars(int? brandId, int? formId, int? simpleColorId) {
             var sample = new GuitarWithColor()
-                .Select();
-//                .Join();
-            AddWhereIfNotNull(sample, Guitar.Fields.BrandId, PredicateCondition.Equal, brandId);
-            AddWhereIfNotNull(sample, Guitar.Fields.FormId, PredicateCondition.Equal, formId);
+                .Select()
+                .InnerJoin(new ColorFull(), RetrieveMode.NonRetrieve)
+                .On(GuitarWithColor.Fields.ColorFullId, PredicateCondition.Equal, ColorFull.Fields.Id)
+                .InnerJoin(new ColorSimple(), RetrieveMode.NonRetrieve)
+                .On(ColorFull.Fields.ColorSimpleId, PredicateCondition.Equal, ColorSimple.Fields.Id)
+                .InnerJoin(new Guitar(), RetrieveMode.NonRetrieve)
+                .On(GuitarWithColor.Fields.GuitarId, PredicateCondition.Equal, Guitar.Fields.Id)
+                .InnerJoin(new Brand(), RetrieveMode.NonRetrieve)
+                .On(Guitar.Fields.BrandId, PredicateCondition.Equal, Brand.Fields.Id)
+                .InnerJoin(new Form(), RetrieveMode.NonRetrieve)
+                .On(Guitar.Fields.FormId, PredicateCondition.Equal, Form.Fields.Id);
+            AddWhereIfNotNull(sample, Brand.Fields.Id, PredicateCondition.Equal, brandId);
+            AddWhereIfNotNull(sample, Form.Fields.Id, PredicateCondition.Equal, formId);
+            AddWhereIfNotNull(sample, ColorSimple.Fields.Id, PredicateCondition.Equal, simpleColorId);
             return sample
                 .GetData()
                 .Select(g => g.ToTransport())

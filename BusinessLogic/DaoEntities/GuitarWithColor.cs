@@ -23,7 +23,7 @@ namespace BusinessLogic.DaoEntities {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int32))] ColorId,
+            [DbType(typeof (Int32))] ColorFullId,
 
             /// <summary>
             /// 
@@ -49,7 +49,7 @@ namespace BusinessLogic.DaoEntities {
         /// <summary>
         /// 
         /// </summary>
-        public int ColorId { get; set; }
+        public int ColorFullId { get; set; }
 
         /// <summary>
         /// 
@@ -65,7 +65,7 @@ namespace BusinessLogic.DaoEntities {
             return new GuitarWithColorTransportType {
                 Id = Id,
                 GuitarId = GuitarId,
-                ColorId = ColorId,
+                ColorId = ColorFullId,
                 PhotoUrl = PhotoUrl,
                 IsGreatQualityPhoto = IsGreatQualityPhoto
             };

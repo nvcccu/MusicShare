@@ -324,10 +324,12 @@ namespace DAO {
                 return;
             }
             var where = "WHERE ";
-            where += _filterWhere.First().Field.GetType().DeclaringType.Name + "." + _filterWhere.First().Field + GetMathOper(_filterWhere.First().Oper) + "'" +
+            var field = _filterWhere.First().Field;
+            where += field.GetType().DeclaringType.Name + "." + field + GetMathOper(_filterWhere.First().Oper) + "'" +
                      _filterWhere.First().Value + "' ";
             for (var i = 1; i < _filterWhere.Count; i++) {
-                where += "AND " + _filterWhere.First().Field.GetType().DeclaringType.Name + "." + _filterWhere[i].Field + GetMathOper(_filterWhere[i].Oper) + "'" +
+                field = _filterWhere[i].Field;
+                where += "AND " + field.GetType().DeclaringType.Name + "." + field + GetMathOper(_filterWhere[i].Oper) + "'" +
                          _filterWhere[i].Value + "' ";
             }
             _query += where;
@@ -345,10 +347,10 @@ namespace DAO {
             foreach (var filterJoin in _filterJoin) {
                 join += GetJoinType(filterJoin.JoinType) + "JOIN " + filterJoin.TargetTable.TableName + " ON ";
                 var joinCondition = filterJoin.JoinConditions.First();
-                    join += filterJoin.TargetTable.TableName + "." + joinCondition.FieldTarget + GetMathOper(joinCondition.Oper) + TableName + "." + joinCondition.FieldFrom + " ";
+                join += filterJoin.TargetTable.TableName + "." + joinCondition.FieldTarget + GetMathOper(joinCondition.Oper) + joinCondition.FieldFrom.GetType().DeclaringType.Name + "." + joinCondition.FieldFrom + " ";
                 for (var i = 1; i < filterJoin.JoinConditions.Count; i++) {
                     joinCondition = filterJoin.JoinConditions[i];
-                    join += "AND " + filterJoin.TargetTable.TableName + "." + joinCondition.FieldTarget + GetMathOper(joinCondition.Oper) + TableName + "." + joinCondition.FieldFrom + " ";
+                    join += "AND " + filterJoin.TargetTable.TableName + "." + joinCondition.FieldTarget + GetMathOper(joinCondition.Oper) + joinCondition.FieldFrom.GetType().DeclaringType.Name + "." + joinCondition.FieldFrom + " ";
                 }
             }
             _query += join;

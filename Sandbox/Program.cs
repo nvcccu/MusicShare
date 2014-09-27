@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
+using BusinessLogic.Providers;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using CommonUtils;
@@ -142,6 +144,9 @@ namespace Sandbox {
 
        
         private static void Main(string[] args) {
+
+            var yyy = new SearchProvider().GetSampleGuitars(1, 2, 3);
+
 
             var qq = new Guitar()
                 .Select()

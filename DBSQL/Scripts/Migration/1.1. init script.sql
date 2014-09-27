@@ -87,7 +87,7 @@ ALTER TABLE GuitarInShop
 CREATE TABLE GuitarWithColor (
   id bigserial NOT NULL,
   GuitarId int,
-  ColorId int,
+  ColorFullId int,
   PhotoUrl character varying(1024),
   IsGreatQualityPhoto boolean,
   CONSTRAINT pk_GuitarWithColor PRIMARY KEY (id)
