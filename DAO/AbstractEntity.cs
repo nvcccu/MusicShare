@@ -9,6 +9,7 @@ using Npgsql;
 
 namespace DAO {
     public interface IAbstractEntity {
+        string TableName { get; set; }
         List<IAbstractEntity> JoinedEntities { get; set; }
         void Update();
         void Insert();
@@ -27,7 +28,7 @@ namespace DAO {
         /// <summary>
         /// Название таблицы, на которую смотрит
         /// </summary>
-        private readonly string _tableName;
+        public string TableName { get; set; }
 
         /// <summary>
         /// Содержит набор where условий
@@ -57,9 +58,10 @@ namespace DAO {
         /// <param name="tableName"></param>
         protected AbstractEntity(string tableName) {
             _dbAdapter = new DbAdapter();
-            _tableName = tableName;
+            TableName = tableName;
             _filterWhere = new List<FilterWhere>();
             _filterOrder = new List<FilterOrder>();
+            _filterJoin = new List<FilterJoin>();
         }
 
         public void Update() {
@@ -72,15 +74,15 @@ namespace DAO {
         public void Insert() {
             PropertyInfo property;
             var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            _query = "INSERT INTO " + _tableName + " (";
-            for (int i = 1; i < properties.Count() - 1; i++) {
+            _query = "INSERT INTO " + TableName + " (";
+            for (var i = 1; i < properties.Count() - 1; i++) {
                 property = properties[i];
                 _query += property.Name + ", ";
             }
             _query += properties[properties.Count() - 1].Name + ") ";
             _query += "VALUES (";
             string propValue;
-            for (int i = 1; i < properties.Count() - 1; i++) {
+            for (var i = 1; i < properties.Count() - 1; i++) {
                 property = properties[i];
                 propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
                 _query += propValue.IsNullOrEmpty() ? "NULL, " : ("'" + propValue + "', ");
@@ -107,7 +109,7 @@ namespace DAO {
         /// </summary>
         /// <returns></returns>
         public AbstractEntity<T> Select() {
-            _query = "SELECT * FROM " + _tableName + " ";
+            _query = "SELECT * FROM " + TableName + " ";
             return this;
         }
 
@@ -132,6 +134,7 @@ namespace DAO {
         /// </summary>
         /// <returns></returns>
         public IEnumerable<T> GetData() {
+            TranslateJoin();
             TranslateWhere();
             TranslateOrder();
             var ret = new List<T>();
@@ -142,7 +145,7 @@ namespace DAO {
                 while (_dbAdapter.DataReader.Read()) {
                     var cur = new T();
                     var properties = typeof (T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-                    for (int i = 0; i < properties.Count(); i++) {
+                    for (var i = 0; i < properties.Count(); i++) {
                         var val = _dbAdapter.DataReader.GetValue(i);
                         if (properties[i] != null && !(val is DBNull)) {
                             properties[i].SetValue(cur, _dbAdapter.DataReader.GetValue(i), null);
@@ -166,10 +169,33 @@ namespace DAO {
         private string GetMathOper(PredicateCondition oper) {
             switch (oper) {
                 case PredicateCondition.Equal:
-                    return "=";
+                    return " = ";
                 case PredicateCondition.Greater:
-                    return ">";
+                    return " > ";
                     // todo: лень сразу писать все операторы :-)
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Преобразует енамку типа джоина в символьное значение
+        /// todo: Эта штука явно должна быть не здесь
+        /// </summary>
+        /// <param name="joinType"></param>
+        /// <returns></returns>
+        private string GetJoinType(JoinType joinType) {
+            switch (joinType) {
+                case JoinType.Cross:
+                    return " CROSS ";
+                case JoinType.Inner:
+                    return " INNER ";
+                case JoinType.Left:
+                    return " LEFT ";
+                case JoinType.Outer:
+                    return " OUTER ";
+                case JoinType.Right:
+                    return " RIGHT ";
                 default:
                     return null;
             }
@@ -198,6 +224,48 @@ namespace DAO {
         }
 
         /// <summary>
+        /// добавляет join
+        /// </summary>
+        /// <param name="filterJoin"></param>
+        /// <returns></returns>
+        public AbstractEntity<T> Join(IEnumerable<FilterJoin> filterJoin) {
+            _filterJoin.AddRange(filterJoin);
+            return this;
+        }
+
+        /// <summary>
+        /// добавляет join по нескольким условиям
+        /// </summary>
+        /// <param name="joinType"></param>
+        /// <param name="targetTable"></param>
+        /// <param name="joinConditions"></param>
+        /// <returns></returns>
+        public AbstractEntity<T> Join(JoinType joinType, IAbstractEntity targetTable, List<JoinCondition> joinConditions) {
+            _filterJoin.Add(new FilterJoin {
+                JoinType = joinType,
+                TargetTable = targetTable,
+                JoinConditions = joinConditions
+            });
+            return this;
+        }
+
+        /// <summary>
+        /// добавляет join по единственному условию
+        /// </summary>
+        /// <param name="joinType"></param>
+        /// <param name="targetTable"></param>
+        /// <param name="joinCondition"></param>
+        /// <returns></returns>
+        public AbstractEntity<T> Join(JoinType joinType, IAbstractEntity targetTable, JoinCondition joinCondition) {
+            _filterJoin.Add(new FilterJoin {
+                JoinType = joinType,
+                TargetTable = targetTable,
+                JoinConditions = new List<JoinCondition> {joinCondition}
+            });
+            return this;
+        }
+
+        /// <summary>
         /// добавляет условие ORDER BY
         /// </summary>
         /// <param name="field"></param>
@@ -213,7 +281,7 @@ namespace DAO {
         /// </summary>
         /// <returns></returns>
         public void Truncate() {
-            _query = "TRUNCATE TABLE " + _tableName + ";";
+            _query = "TRUNCATE TABLE " + TableName + ";";
             RunScript();
         }
 
@@ -225,15 +293,36 @@ namespace DAO {
             if (!_filterWhere.Any()) {
                 return;
             }
-            string where = "WHERE ";
-            where += _filterWhere.First().Field + GetMathOper(_filterWhere.First().Oper) + "'" +
+            var where = "WHERE ";
+            where += _filterWhere.First().Field.GetType().DeclaringType.Name + "." + _filterWhere.First().Field + GetMathOper(_filterWhere.First().Oper) + "'" +
                      _filterWhere.First().Value + "' ";
             for (var i = 1; i < _filterWhere.Count; i++) {
-                where += "AND " + _filterWhere[i].Field + GetMathOper(_filterWhere[i].Oper) + "'" +
+                where += "AND " + _filterWhere.First().Field.GetType().DeclaringType.Name + "." + _filterWhere[i].Field + GetMathOper(_filterWhere[i].Oper) + "'" +
                          _filterWhere[i].Value + "' ";
             }
             _query += where;
             _filterWhere = new List<FilterWhere>();
+        }
+
+        /// <summary>
+        /// транслирует join в sql
+        /// </summary>
+        private void TranslateJoin() {
+            if (!_filterJoin.Any()) {
+                return;
+            }
+            var join = string.Empty;
+            foreach (var filterJoin in _filterJoin) {
+                join += GetJoinType(filterJoin.JoinType) + "JOIN " + filterJoin.TargetTable.TableName + " ON ";
+                var joinCondition = filterJoin.JoinConditions.First();
+                    join += filterJoin.TargetTable.TableName + "." + joinCondition.FieldTarget + GetMathOper(joinCondition.Oper) + TableName + "." + joinCondition.FieldFrom + " ";
+                for (var i = 1; i < filterJoin.JoinConditions.Count; i++) {
+                    joinCondition = filterJoin.JoinConditions[i];
+                    join += "AND" + filterJoin.TargetTable.TableName + "." + joinCondition.FieldTarget + GetMathOper(joinCondition.Oper) + TableName + "." + joinCondition.FieldFrom + " ";
+                }
+            }
+            _query += join;
+            _filterJoin = new List<FilterJoin>();
         }
 
         /// <summary>
@@ -353,6 +442,10 @@ namespace DAO {
         /// Условия join'а
         /// </summary>
         public List<JoinCondition> JoinConditions { get; set; }
+
+        public FilterJoin() {
+            JoinConditions = new List<JoinCondition>();
+        }
     }
 
     public class FilterWhere {

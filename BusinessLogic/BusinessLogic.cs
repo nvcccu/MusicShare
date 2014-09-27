@@ -8,7 +8,7 @@ using Core.TransportTypes;
 using DAO;
 
 namespace BusinessLogic {
-    public class BusinessLogic : IBusinessLogic{
+    public class BusinessLogic : IBusinessLogic {
         private readonly SearchProvider _searchProvider = new SearchProvider();
         private readonly UserProvider _userProvider = new UserProvider();
         private readonly LogProvider _logProvider = new LogProvider();
@@ -22,14 +22,12 @@ namespace BusinessLogic {
             Connector.ConnectionString = ConfigHelper.FirstTagWithPropertyText("db-connection", "db-name", "master");
         }
 
-        public List<GuitarTransportType> Search(int brand, int formId, int color)
-        {
+        public List<GuitarTransportType> Search(int brand, int formId, int color) {
             return _searchProvider.Search(brand, formId, color);
         }
 
-        public List<GuitarTransportType> GetSampleGuitars(int? brandId, int? form, int? color)
-        {
-            return _searchProvider.GetSampleGuitars(brandId, form, color);
+        public List<GuitarTransportType> GetSampleGuitars(int? brandId, int? formId, int? simpleColorId) {
+            return _searchProvider.GetSampleGuitars(brandId, formId, simpleColorId);
         }
 
         public List<SearchHintTransportType> GetSearchHints() {

@@ -16,10 +16,10 @@ namespace BusinessLogic.Interfaces {
         /// 
         /// </summary>
         /// <param name="brandId"></param>
-        /// <param name="model"></param>
-        /// <param name="color"></param>
+        /// <param name="formId"></param>
+        /// <param name="simpleColorId"></param>
         /// <returns></returns>
-        List<GuitarTransportType> GetSampleGuitars(int? brandId, int? model, int? color);
+        List<GuitarTransportType> GetSampleGuitars(int? brandId, int? formId, int? simpleColorId);
 
         /// <summary>
         /// 

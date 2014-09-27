@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
@@ -13,6 +14,8 @@ using CommonUtils;
 using CommonUtils.Log;
 using CommonUtils.ServiceManager;
 using Core.Enums;
+using DAO;
+using DAO.Enums;
 using MusicShareWeb;
 
 namespace Sandbox {
@@ -137,14 +140,21 @@ namespace Sandbox {
             }
         }
 
-        private static readonly LoggerWrapper _logger = LoggerManager.GetLogger(typeof(Program).FullName);
-        private static readonly LoggerWrapper _logger1 = LoggerManager.GetLogger(typeof(ActionId).FullName);
+       
         private static void Main(string[] args) {
 
-            var ex = new Exception("hihihi");
-            _logger.Info("ex");
-            var ex1 = new Exception("hsfdgihidsgfhi");
-            _logger1.Info(ex1);
+            var qq = new Guitar()
+                .Select()
+                .Join(JoinType.Inner, new Brand(),
+                    new JoinCondition {
+                        FieldFrom = Guitar.Fields.BrandId,
+                        FieldTarget = Brand.Fields.Id,
+                        Oper = PredicateCondition.Equal
+                    })
+                .Where(Brand.Fields.Id, PredicateCondition.Greater, 1)
+                .Where(Guitar.Fields.Id, PredicateCondition.Greater, 1)
+                .GetData()
+                .ToList();
 
             var q = 1;
             var p = ++q;

@@ -5,9 +5,7 @@
     Model.SearchHints.Select(sh => new {
         stepId = sh.SearchStepId,
         text = sh.Text
-    }).ToList().ForEach(sh => {
-        searchHint += string.Format("\"{0}\":\"{1}\",", sh.stepId, sh.text);
-    });
+    }).ToList().ForEach(sh => { searchHint += string.Format("\"{0}\":\"{1}\",", sh.stepId, sh.text); });
     searchHint += "}";
 }
 
@@ -66,7 +64,7 @@
 
         $('.guitar-param').on('change', function() {
             $.ajax({
-                url: '@Url.Action("GetSampleGuitar", "Search")',
+                url: '@Url.Action("GetSampleGuitars", "Search")',
                 type: 'GET',
                 data: {
                     brand: $('[name="Brand"]').val(),

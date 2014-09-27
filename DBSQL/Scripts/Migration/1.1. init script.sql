@@ -37,6 +37,7 @@ ALTER TABLE ColorSimple
 CREATE TABLE Form (
   id serial NOT NULL,
   name character varying(64) NOT NULL,
+  image character varying(1024) NOT NULL,
   CONSTRAINT pk_Form PRIMARY KEY (id)
 )
 WITH (

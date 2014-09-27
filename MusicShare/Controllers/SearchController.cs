@@ -25,9 +25,8 @@ namespace MusicShareWeb.Controllers {
         }
 
         [HttpGet]
-        public JsonResult GetSampleGuitar(int? brand, int? form, int? color)
-        {
-            var sample = ServiceManager<IBusinessLogic>.Instance.Service.GetSampleGuitars(brand, form, color);
+        public JsonResult GetSampleGuitars(int? brandId, int? formId, int? simpleColorIdColor) {
+            var sample = ServiceManager<IBusinessLogic>.Instance.Service.GetSampleGuitars(brandId, formId, simpleColorIdColor);
             return new JsonResult {
                 Data = sample,
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,

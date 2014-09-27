@@ -19,6 +19,12 @@ namespace BusinessLogic.DaoEntities {
             /// 
             /// </summary>
             [DbType(typeof (string))] Name,
+
+            /// <summary>
+            /// 
+            /// </summary>
+            [DbType(typeof(string))]
+            Image,
         }
 
         /// <summary>
@@ -31,10 +37,16 @@ namespace BusinessLogic.DaoEntities {
         /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Image { get; set; }
+
         public FormTransportType ToTransport() {
             return new FormTransportType {
                 Id = Id,
-                Name = Name
+                Name = Name,
+                Image = Image
             };
         }
     }

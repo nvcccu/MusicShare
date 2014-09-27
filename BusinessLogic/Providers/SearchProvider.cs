@@ -37,13 +37,13 @@ namespace BusinessLogic.Providers {
         /// 
         /// </summary>
         /// <param name="brandId"></param>
-        /// <param name="form"></param>
-        /// <param name="color"></param>
+        /// <param name="formId"></param>
+        /// <param name="simpleColorId"></param>
         /// <returns></returns>
-        public List<GuitarTransportType> GetSampleGuitars(int? brandId, int? form, int? color) {
+        public List<GuitarTransportType> GetSampleGuitars(int? brandId, int? formId, int? simpleColorId) {
             var sample = new Guitar().Select();
             AddWhereIfNotNull(sample, Guitar.Fields.BrandId, PredicateCondition.Equal, brandId);
-            AddWhereIfNotNull(sample, Guitar.Fields.FormId, PredicateCondition.Equal, form);
+            AddWhereIfNotNull(sample, Guitar.Fields.FormId, PredicateCondition.Equal, formId);
             return sample
                 .GetData()
                 .Select(g => g.ToTransport())
@@ -57,7 +57,7 @@ namespace BusinessLogic.Providers {
         public List<SearchHintTransportType> GetSearchHints() {
             return new SearchHint().Select()
                 .GetData()
-                .Select(h => h.ToTransport())
+                .Select(sh => sh.ToTransport())
                 .ToList();
         }
 
