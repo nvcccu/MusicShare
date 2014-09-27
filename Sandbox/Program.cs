@@ -145,16 +145,21 @@ namespace Sandbox {
 
             var qq = new Guitar()
                 .Select()
-                .Join(JoinType.Inner, new Brand(),
-                    new JoinCondition {
-                        FieldFrom = Guitar.Fields.BrandId,
-                        FieldTarget = Brand.Fields.Id,
-                        Oper = PredicateCondition.Equal
-                    })
+                .Join(JoinType.Inner, new Brand(), RetrieveMode.Retrieve)
+                .On(Guitar.Fields.BrandId, PredicateCondition.Equal, Brand.Fields.Id)
+                .InnerJoin(new Form(), RetrieveMode.NonRetrieve)
+                .On(Guitar.Fields.FormId, PredicateCondition.Equal, Form.Fields.Id)
+                .On( Guitar.Fields.Model, PredicateCondition.Equal, Form.Fields.Name)
                 .Where(Brand.Fields.Id, PredicateCondition.Greater, 1)
                 .Where(Guitar.Fields.Id, PredicateCondition.Greater, 1)
                 .GetData()
                 .ToList();
+
+//            new JoinCondition {
+//                        FieldFrom = Guitar.Fields.BrandId,
+//                        FieldTarget = Brand.Fields.Id,
+//                        Oper = PredicateCondition.Equal
+//                    })
 
             var q = 1;
             var p = ++q;

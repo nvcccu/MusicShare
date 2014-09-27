@@ -62,6 +62,7 @@ namespace DAO {
             _filterWhere = new List<FilterWhere>();
             _filterOrder = new List<FilterOrder>();
             _filterJoin = new List<FilterJoin>();
+            JoinedEntities = new List<IAbstractEntity>();
         }
 
         public void Update() {
@@ -226,41 +227,70 @@ namespace DAO {
         /// <summary>
         /// добавляет join
         /// </summary>
-        /// <param name="filterJoin"></param>
-        /// <returns></returns>
-        public AbstractEntity<T> Join(IEnumerable<FilterJoin> filterJoin) {
-            _filterJoin.AddRange(filterJoin);
-            return this;
-        }
-
-        /// <summary>
-        /// добавляет join по нескольким условиям
-        /// </summary>
         /// <param name="joinType"></param>
         /// <param name="targetTable"></param>
-        /// <param name="joinConditions"></param>
+        /// <param name="retrieveMode"></param>
         /// <returns></returns>
-        public AbstractEntity<T> Join(JoinType joinType, IAbstractEntity targetTable, List<JoinCondition> joinConditions) {
+        public AbstractEntity<T> Join(JoinType joinType, IAbstractEntity targetTable, RetrieveMode retrieveMode) {
+            JoinedEntities.Add(targetTable);
             _filterJoin.Add(new FilterJoin {
                 JoinType = joinType,
                 TargetTable = targetTable,
-                JoinConditions = joinConditions
+                RetrieveMode = retrieveMode
             });
             return this;
         }
 
         /// <summary>
-        /// добавляет join по единственному условию
+        /// добавляет inner join
+        /// todo: допаисать все остальные джоины
         /// </summary>
         /// <param name="joinType"></param>
         /// <param name="targetTable"></param>
+        /// <param name="retrieveMode"></param>
+        /// <returns></returns>
+        public AbstractEntity<T> InnerJoin(IAbstractEntity targetTable, RetrieveMode retrieveMode) {
+            JoinedEntities.Add(targetTable);
+            _filterJoin.Add(new FilterJoin {
+                JoinType = JoinType.Inner,
+                TargetTable = targetTable,
+                RetrieveMode = retrieveMode
+            });
+            return this;
+        }
+
+        /// <summary>
+        /// добавляет к последнему джоину условия присоединения
+        /// </summary>
+        /// <param name="joinConditions"></param>
+        /// <returns></returns>
+        public AbstractEntity<T> On(List<JoinCondition> joinConditions) {
+            _filterJoin.Last().JoinConditions.AddRange(joinConditions);
+            return this;
+        }
+
+        /// <summary>
+        /// добавляет к последнему джоину одно условие присоединения
+        /// </summary>
         /// <param name="joinCondition"></param>
         /// <returns></returns>
-        public AbstractEntity<T> Join(JoinType joinType, IAbstractEntity targetTable, JoinCondition joinCondition) {
-            _filterJoin.Add(new FilterJoin {
-                JoinType = joinType,
-                TargetTable = targetTable,
-                JoinConditions = new List<JoinCondition> {joinCondition}
+        public AbstractEntity<T> On(JoinCondition joinCondition) {
+            _filterJoin.Last().JoinConditions.Add(joinCondition);
+            return this;
+        }
+
+        /// <summary>
+        /// добавляет к последнему джоину одно условие присоединения
+        /// </summary>
+        /// <param name="fieldFrom"></param>
+        /// <param name="oper"></param>
+        /// <param name="fieldTarget"></param>
+        /// <returns></returns>
+        public AbstractEntity<T> On(Enum fieldFrom, PredicateCondition oper, Enum fieldTarget) {
+            _filterJoin.Last().JoinConditions.Add(new JoinCondition {
+                FieldFrom = fieldFrom,
+                Oper = oper,
+                FieldTarget = fieldTarget
             });
             return this;
         }
@@ -318,7 +348,7 @@ namespace DAO {
                     join += filterJoin.TargetTable.TableName + "." + joinCondition.FieldTarget + GetMathOper(joinCondition.Oper) + TableName + "." + joinCondition.FieldFrom + " ";
                 for (var i = 1; i < filterJoin.JoinConditions.Count; i++) {
                     joinCondition = filterJoin.JoinConditions[i];
-                    join += "AND" + filterJoin.TargetTable.TableName + "." + joinCondition.FieldTarget + GetMathOper(joinCondition.Oper) + TableName + "." + joinCondition.FieldFrom + " ";
+                    join += "AND " + filterJoin.TargetTable.TableName + "." + joinCondition.FieldTarget + GetMathOper(joinCondition.Oper) + TableName + "." + joinCondition.FieldFrom + " ";
                 }
             }
             _query += join;
@@ -362,7 +392,7 @@ namespace DAO {
         /// <summary>
         /// Извлекать данные присоединенных сущностей
         /// </summary>
-        Retrtieve,
+        Retrieve,
 
         /// <summary>
         /// Не извлекать данные присоединенных сущностей
@@ -442,6 +472,11 @@ namespace DAO {
         /// Условия join'а
         /// </summary>
         public List<JoinCondition> JoinConditions { get; set; }
+
+        /// <summary>
+        /// извлекать ли присоединенные сущности
+        /// </summary>
+        public RetrieveMode RetrieveMode { get; set; }
 
         public FilterJoin() {
             JoinConditions = new List<JoinCondition>();

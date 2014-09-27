@@ -40,8 +40,10 @@ namespace BusinessLogic.Providers {
         /// <param name="formId"></param>
         /// <param name="simpleColorId"></param>
         /// <returns></returns>
-        public List<GuitarTransportType> GetSampleGuitars(int? brandId, int? formId, int? simpleColorId) {
-            var sample = new Guitar().Select();
+        public List<GuitarWithColorTransportType> GetSampleGuitars(int? brandId, int? formId, int? simpleColorId) {
+            var sample = new GuitarWithColor()
+                .Select();
+//                .Join();
             AddWhereIfNotNull(sample, Guitar.Fields.BrandId, PredicateCondition.Equal, brandId);
             AddWhereIfNotNull(sample, Guitar.Fields.FormId, PredicateCondition.Equal, formId);
             return sample
