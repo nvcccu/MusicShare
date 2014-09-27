@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
-using Castle.MicroKernel.Registration;
 using Core.TransportTypes;
 using DAO;
 using DAO.Enums;

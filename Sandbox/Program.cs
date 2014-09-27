@@ -145,7 +145,7 @@ namespace Sandbox {
        
         private static void Main(string[] args) {
 
-            var yyy = new SearchProvider().GetSampleGuitars(1, 2, 3);
+            var yyy = new SearchProvider().GetSampleGuitars(1, null, 3);
 
 
             var qq = new Guitar()
