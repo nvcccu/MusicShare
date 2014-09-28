@@ -28,7 +28,7 @@ namespace BusinessLogic.DaoEntities {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int32))] Target,
+            [DbType(typeof (Int64))] Target,
         }
 
         /// <summary>

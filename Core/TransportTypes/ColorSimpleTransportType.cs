@@ -9,5 +9,10 @@
         /// 
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Image { get; set; }
     }
 }

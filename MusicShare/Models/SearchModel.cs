@@ -18,7 +18,7 @@ namespace MusicShareWeb.Models {
         /// <summary>
         /// 
         /// </summary>
-        public List<ColorSimpleTransportType> Colors { get; private set; }
+        public List<ColorSimpleTransportType> SimpleColors { get; private set; }
 
         /// <summary>
         /// 
@@ -28,7 +28,7 @@ namespace MusicShareWeb.Models {
         public SearchModel() {
             Brands = ServiceManager<IBusinessLogic>.Instance.Service.GetAllBrand();
             Forms = ServiceManager<IBusinessLogic>.Instance.Service.GetAllForm();
-            Colors = ServiceManager<IBusinessLogic>.Instance.Service.GetAllColor();
+            SimpleColors = ServiceManager<IBusinessLogic>.Instance.Service.GetAllColor();
             SearchHints = ServiceManager<IBusinessLogic>.Instance.Service.GetSearchHints();
         }
     }

@@ -7,6 +7,7 @@
     background-color: white;
     display: inline-block;
     vertical-align: top;
+    position: relative;
 }
 
 .mp-search__hint-zone{
@@ -62,6 +63,17 @@
     height: 200px;
     margin-left: -4px;
     vertical-align: top;
+    z-index: 10;
+}
+
+.mp-search__brand {
+    z-index: 11;
+    opacity: 0.6;
+    left: 150px;
+    margin-left: 0;
+    color: white;
+    position: absolute;
+    background-color: #000000;
 }
 
 .mp-search__option {

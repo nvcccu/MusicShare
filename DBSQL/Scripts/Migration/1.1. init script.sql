@@ -26,6 +26,7 @@ ALTER TABLE pk_ColorFull
 CREATE TABLE ColorSimple (
   id serial NOT NULL,
   name character varying(64) NOT NULL,
+  image character varying(1024) NOT NULL,
   CONSTRAINT pk_ColorSimple PRIMARY KEY (id)
 )
 WITH (
@@ -58,7 +59,7 @@ ALTER TABLE Guest
   OWNER TO postgres;
 
 CREATE TABLE Guitar (
-  id bigserial NOT NULL,
+  id serial NOT NULL,
   brandId int,
   FormId int,
   Model character varying(128),
@@ -71,7 +72,7 @@ ALTER TABLE Guitar
   OWNER TO postgres;
 
 CREATE TABLE GuitarInShop (
-  id bigserial NOT NULL,
+  id serial NOT NULL,
   GuitarId int,
   StoreId int,
   Available boolean,
@@ -85,7 +86,7 @@ ALTER TABLE GuitarInShop
   OWNER TO postgres;
 
 CREATE TABLE GuitarWithColor (
-  id bigserial NOT NULL,
+  id serial NOT NULL,
   GuitarId int,
   ColorFullId int,
   PhotoUrl character varying(1024),
@@ -124,7 +125,7 @@ ALTER TABLE SearchHint
   OWNER TO postgres;
 
 CREATE TABLE Shop (
-  id bigserial NOT NULL,
+  id serial NOT NULL,
   Name character varying(128),
   Email character varying(256),
   Phone character varying(16),

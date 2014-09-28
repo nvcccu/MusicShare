@@ -36,3 +36,29 @@ insert into Brand values
 (1, 'Fender', '../../ImgStore/BrandLogo/Fender.jpg'),
 (2, 'Gibson', '../../ImgStore/BrandLogo/Gibson.jpg'),
 (3, 'Jackson', '../../ImgStore/BrandLogo/Jackson.jpg');
+
+insert into Form values
+(1, 'Stratocaster', '../../ImgStore/Form/Stratocaster.jpg'),
+(2, 'Explorer', '../../ImgStore/Form/Explorer.jpg'),
+(3, 'RandyRhoads', '../../ImgStore/Form/RandyRhoads.jpg');
+
+insert into ColorSimple values
+(1, 'White', '../../ImgStore/ColorSimple/White.jpg'),
+(2, 'Black', '../../ImgStore/ColorSimple/Black.jpg'),
+(3, 'Red', '../../ImgStore/ColorSimple/Red.jpg');
+
+insert into ColorFull values 
+(1, 1, 'lbk', 'Light Black'),
+(2, 1, 'bk', 'Black'),
+(3, 2, 'slv', 'Silver'),
+(4, 2, 'wh', 'White'),
+(5, 3, 'rd', 'Red'),
+(6, 3, 'or', 'Orange');
+
+insert into Guitar values 
+(1, 1, 1, '1'),
+(2, 1, 2, '2'),
+(3, 2, 2, '3'),
+(4, 2, 1, '4'),
+(5, 3, 2, '5'),
+(6, 3, 3, '6');
