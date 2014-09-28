@@ -17,16 +17,19 @@
     </div>
     <img class="mp-search__sample-result" src="../../Content/Image/index.jpg" alt=""/>
     <div class="mp-search__sample-result mp-search__brand hide" data-action-id="1">
+        <div class="mp-search__form-sample" data-param-id="">любой</div>
         @foreach (var brand in Model.Brands) {
             <div class="mp-search__form-sample" data-param-id="@brand.Id">@brand.Name</div>
         }
     </div>
     <div class="mp-search__sample-result mp-search__brand mp-search__form hide" data-action-id="2">
+        <div class="mp-search__form-sample" data-param-id="">любой</div>
         @foreach (var form in Model.Forms) {
             <div class="mp-search__form-sample" data-param-id="@form.Id">@form.Name</div>
         }
     </div>
-    <div class="mp-search__sample-result mp-search__brand mp-search__color" data-action-id="3">
+    <div class="mp-search__sample-result mp-search__brand mp-search__color hide" data-action-id="3">
+        <div class="mp-search__form-sample" data-param-id="">любой</div>
         @foreach (var color in Model.SimpleColors) {
             <div class="mp-search__form-sample" data-param-id="@color.Id">@color.Name</div>
         }
@@ -49,18 +52,22 @@
         var that = this;
 
         $('.mp-search__form-sample').on('click', function () {
-            var jThis = $(this);
+            that.SelectParamEvent(this);
+        });
+
+        this.SelectParamEvent = function(argThis) {
+            var jThis = $(argThis);
             switch (jThis.parent().data('action-id')) {
-            case 1:
-                that.brand = parseInt(jThis.data('param-id'), 10);
-                break;
-            case 2:
-                that.form = parseInt(jThis.data('param-id'), 10);
-                break;
-            case 3:
-                that.colorSimple = parseInt(jThis.data('param-id'), 10);
-                break;
-            default:
+                case 1:
+                    that.brand = parseInt(jThis.data('param-id'), 10);
+                    break;
+                case 2:
+                    that.form = parseInt(jThis.data('param-id'), 10);
+                    break;
+                case 3:
+                    that.colorSimple = parseInt(jThis.data('param-id'), 10);
+                    break;
+                default:
             }
             $.ajax({
                 url: '@Url.Action("GetSampleGuitars", "Search")',
@@ -70,7 +77,7 @@
                     formId: that.form,
                     simpleColorIdColor: that.colorSimple,
                 },
-                success: function(data) {
+                success: function (data) {
                     var bigImg = $('.mp-search__sample-result');
                     var littleImgs = $('.list-sample__sample');
                     if (data.length > 0) {
@@ -78,6 +85,8 @@
                         for (var i = 0; i < data.length && i < littleImgs.length; i++) {
                             $(littleImgs[i]).attr('src', data[i].PhotoUrl);
                         }
+                    } else {
+                        bigImg.attr('src', '../../Content/Image/index.jpg');
                     }
                     for (var i = data.length; i < littleImgs.length; i++) {
                         $(littleImgs[i]).attr('src', '../../Content/Image/index.jpg');
@@ -85,7 +94,9 @@
                 }
             });
             jThis.parent().addClass('hide');
-        });
+        };
+
+        that.SelectParamEvent(this);
 
         $('.list-sample__sample').on('click', function() {
             $('.mp-search__sample-result').attr('src', $(this).attr('src'));

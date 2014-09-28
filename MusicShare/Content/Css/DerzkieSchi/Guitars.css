@@ -1,0 +1,36 @@
+﻿.guitar-list {
+    background-color: #fff;
+}
+
+.guitar-list__guitar-node {
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
+}
+
+.guitar-list__guitar-node>div {
+    display: inline-block;
+}
+
+.guitar-node__image {
+    
+}
+
+.guitar-node__brand {
+    
+}
+
+.guitar-node__model-name {
+    
+}
+
+.guitar-node__form {
+    
+}
+
+.guitar-node__color-full {
+    
+}
+
+.guitar-node__available {
+    
+}

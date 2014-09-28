@@ -4,7 +4,7 @@ using DAO;
 using DAO.Attributes;
 
 namespace BusinessLogic.DaoEntities {
-    internal class ColorFull : AbstractEntity<ColorFull> {
+    public class ColorFull : AbstractEntity<ColorFull> {
         public ColorFull(string tableName) : base(tableName) {}
 
         public ColorFull() : base("ColorFull") { }

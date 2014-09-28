@@ -13,6 +13,7 @@ using BusinessLogic.Providers;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using CommonUtils;
+using CommonUtils.Config;
 using CommonUtils.Log;
 using CommonUtils.ServiceManager;
 using Core.Enums;
@@ -144,21 +145,24 @@ namespace Sandbox {
 
        
         private static void Main(string[] args) {
-
+            ConfigHelper.LoadXml(false);
+            Connector.ConnectionString = ConfigHelper.FirstTagWithPropertyText("db-connection", "db-name", "master");
             var yyy = new SearchProvider().GetSampleGuitars(1, null, 3);
 
 
-            var qq = new Guitar()
-                .Select()
-                .Join(JoinType.Inner, new Brand(), RetrieveMode.Retrieve)
-                .On(Guitar.Fields.BrandId, PredicateCondition.Equal, Brand.Fields.Id)
-                .InnerJoin(new Form(), RetrieveMode.NonRetrieve)
-                .On(Guitar.Fields.FormId, PredicateCondition.Equal, Form.Fields.Id)
-                .On( Guitar.Fields.Model, PredicateCondition.Equal, Form.Fields.Name)
-                .Where(Brand.Fields.Id, PredicateCondition.Greater, 1)
-                .Where(Guitar.Fields.Id, PredicateCondition.Greater, 1)
-                .GetData()
-                .ToList();
+//            var sample = new GuitarWithColor()
+//                .Select()
+//                .InnerJoin(new ColorFull(), RetrieveMode.NonRetrieve)
+//                .On(GuitarWithColor.Fields.ColorFullId, PredicateCondition.Equal, ColorFull.Fields.Id)
+//                .InnerJoin(new ColorSimple(), RetrieveMode.NonRetrieve)
+//                .On(ColorFull.Fields.ColorSimpleId, PredicateCondition.Equal, ColorSimple.Fields.Id)
+//                .InnerJoin(new Guitar(), RetrieveMode.NonRetrieve)
+//                .On(GuitarWithColor.Fields.GuitarId, PredicateCondition.Equal, Guitar.Fields.Id)
+//                .InnerJoin(new Brand(), RetrieveMode.NonRetrieve)
+//                .On(Guitar.Fields.BrandId, PredicateCondition.Equal, Brand.Fields.Id)
+//                .InnerJoin(new Form(), RetrieveMode.NonRetrieve)
+//                .GetData()
+//                .ToList();
 
 //            new JoinCondition {
 //                        FieldFrom = Guitar.Fields.BrandId,

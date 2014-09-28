@@ -117,6 +117,7 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CookieBaseController.cs" />
+    <Compile Include="Controllers\DerzkieSchiController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\LogController.cs" />
@@ -134,6 +135,7 @@
   <ItemGroup>
     <Content Include="Content\Css\Article\ArticlePreview.css" />
     <Content Include="Content\Css\Button.css" />
+    <Content Include="Content\Css\DerzkieSchi\Guitars.css" />
     <Content Include="Content\Css\Global.css" />
     <Content Include="Content\Css\Layout.css" />
     <Content Include="Content\Css\MainPage\Search.css" />
@@ -148,33 +150,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Script\jquery-1.10.2.js" />
     <Content Include="Content\Script\jquery-1.10.2.min.js" />
-    <Content Include="ImgStore\1.bmp" />
-    <Content Include="ImgStore\10.bmp" />
-    <Content Include="ImgStore\11.bmp" />
-    <Content Include="ImgStore\12.bmp" />
-    <Content Include="ImgStore\13.bmp" />
-    <Content Include="ImgStore\14.bmp" />
-    <Content Include="ImgStore\15.bmp" />
-    <Content Include="ImgStore\16.bmp" />
-    <Content Include="ImgStore\17.bmp" />
-    <Content Include="ImgStore\18.bmp" />
-    <Content Include="ImgStore\19.bmp" />
-    <Content Include="ImgStore\2.bmp" />
-    <Content Include="ImgStore\20.bmp" />
-    <Content Include="ImgStore\21.bmp" />
-    <Content Include="ImgStore\22.bmp" />
-    <Content Include="ImgStore\23.bmp" />
-    <Content Include="ImgStore\24.bmp" />
-    <Content Include="ImgStore\25.bmp" />
-    <Content Include="ImgStore\26.bmp" />
-    <Content Include="ImgStore\27.bmp" />
-    <Content Include="ImgStore\3.bmp" />
-    <Content Include="ImgStore\4.bmp" />
-    <Content Include="ImgStore\5.bmp" />
-    <Content Include="ImgStore\6.bmp" />
-    <Content Include="ImgStore\7.bmp" />
-    <Content Include="ImgStore\8.bmp" />
-    <Content Include="ImgStore\9.bmp" />
     <Content Include="ImgStore\BrandLogo\Fender.jpg" />
     <Content Include="ImgStore\BrandLogo\Gibson.jpg" />
     <Content Include="ImgStore\BrandLogo\Jackson.jpg" />
@@ -284,6 +259,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\OuterOffer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ImgStore\Guitars\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DerzkieSchi\Guitars.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
