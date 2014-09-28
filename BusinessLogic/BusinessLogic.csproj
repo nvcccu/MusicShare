@@ -52,7 +52,7 @@
     <Compile Include="DaoEntities\SearchHint.cs" />
     <Compile Include="DaoEntities\Shop.cs" />
     <Compile Include="DaoEntities\UserActionLog.cs" />
-    <Compile Include="Enums\Brands.cs" />
+    <Compile Include="Helpers\Enums\Brands.cs" />
     <Compile Include="Helpers\BrandHelper.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Interfaces\IBusinessLogic.cs" />

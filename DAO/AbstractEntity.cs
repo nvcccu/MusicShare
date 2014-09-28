@@ -145,7 +145,7 @@ namespace DAO {
                 _dbAdapter.DataReader = _dbAdapter.Command.ExecuteReader();
                 while (_dbAdapter.DataReader.Read()) {
                     var cur = new T();
-                    var properties = typeof (T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                    var properties = typeof (T).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
                     for (var i = 0; i < properties.Count(); i++) {
                         var val = _dbAdapter.DataReader.GetValue(i);
                         if (properties[i] != null && !(val is DBNull)) {

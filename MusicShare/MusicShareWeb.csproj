@@ -178,6 +178,9 @@
     <Content Include="ImgStore\BrandLogo\Fender.jpg" />
     <Content Include="ImgStore\BrandLogo\Gibson.jpg" />
     <Content Include="ImgStore\BrandLogo\Jackson.jpg" />
+    <Content Include="ImgStore\Form\Explorer.jpg" />
+    <Content Include="ImgStore\Form\RandyRhoads.jpg" />
+    <Content Include="ImgStore\Form\Stratocaster.jpg" />
     <Content Include="Views\Shared\UI\Global\UIGlobal.css" />
     <Content Include="Views\Shared\UI\UIDropDown\UIDropDown_round.png" />
     <Content Include="Views\Shared\UI\UIDropDown\UIDropDown.css" />
