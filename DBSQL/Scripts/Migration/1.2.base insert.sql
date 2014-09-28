@@ -1,36 +1,25 @@
 insert into GuitarWithColor values 
-(1, 1, 1, '../../ImgStore/1.bmp', true),
-(2, 1, 2, '../../ImgStore/2.bmp', true),
-(3, 1, 3, '../../ImgStore/3.bmp', true),
-(4, 1, 1, '../../ImgStore/4.bmp', true),
-(5, 1, 2, '../../ImgStore/5.bmp', true),
-(6, 1, 3, '../../ImgStore/6.bmp', true),
-(7, 1, 1, '../../ImgStore/7.bmp', true),
-(8, 1, 2, '../../ImgStore/8.bmp', true),
-(9, 1, 3, '../../ImgStore/9.bmp', true),
-(10, 2, 1, '../../ImgStore/10.bmp', true),
-(11, 2, 2, '../../ImgStore/11.bmp', true),
-(12, 2, 3, '../../ImgStore/12.bmp', true),
-(13, 2, 1, '../../ImgStore/13.bmp', true),
-(14, 2, 2, '../../ImgStore/14.bmp', true),
-(15, 2, 3, '../../ImgStore/15.bmp', true),
-(16, 2, 1, '../../ImgStore/16.bmp', true),
-(17, 2, 2, '../../ImgStore/17.bmp', true),
-(18, 2, 3, '../../ImgStore/18.bmp', true),
-(19, 3, 1, '../../ImgStore/19.bmp', true),
-(20, 3, 2, '../../ImgStore/20.bmp', true),
-(21, 3, 3, '../../ImgStore/21.bmp', true),
-(22, 3, 1, '../../ImgStore/22.bmp', true),
-(23, 3, 2, '../../ImgStore/23.bmp', true),
-(24, 3, 3, '../../ImgStore/24.bmp', true),
-(25, 3, 1, '../../ImgStore/25.bmp', true),
-(26, 3, 2, '../../ImgStore/26.bmp', true),
-(27, 3, 3, '../../ImgStore/27.bmp', true);
-
-insert into searchhint values
-(1, 1, 'Выбрать форму'),
-(2, 2, 'Выбрать фирму'),
-(3, 3, 'Выбрать цвет');
+(1, 1, 1, '../../ImgStore/1.jpg', true),
+(2, 1, 2, '../../ImgStore/2.jpg', true),
+(3, 1, 3, '../../ImgStore/3.jpg', true),
+(4, 2, 2, '../../ImgStore/4.jpg', true),
+(5, 2, 3, '../../ImgStore/5.jpg', true),
+(6, 2, 5, '../../ImgStore/6.jpg', true),
+(7, 2, 6, '../../ImgStore/7.jpg', true),
+(8, 3, 5, '../../ImgStore/8.jpg', true),
+(9, 3, 2, '../../ImgStore/9.jpg', true),
+(10, 3, 1, '../../ImgStore/10.jpg', true),
+(11, 4, 2, '../../ImgStore/11.jpg', true),
+(12, 4, 3, '../../ImgStore/12.jpg', true),
+(13, 5, 1, '../../ImgStore/13.jpg', true),
+(14, 5, 2, '../../ImgStore/14.jpg', true),
+(15, 5, 3, '../../ImgStore/15.jpg', true),
+(16, 5, 4, '../../ImgStore/16.jpg', true),
+(17, 5, 5, '../../ImgStore/17.jpg', true),
+(18, 5, 6, '../../ImgStore/18.jpg', true),
+(19, 6, 1, '../../ImgStore/19.jpg', true),
+(20, 6, 2, '../../ImgStore/20.jpg', true),
+(21, 6, 5, '../../ImgStore/21.jpg', true);
 
 insert into Brand values
 (1, 'Fender', '../../ImgStore/BrandLogo/Fender.jpg'),
@@ -39,12 +28,15 @@ insert into Brand values
 
 insert into Form values
 (1, 'Stratocaster', '../../ImgStore/Form/Stratocaster.jpg'),
-(2, 'Explorer', '../../ImgStore/Form/Explorer.jpg'),
-(3, 'RandyRhoads', '../../ImgStore/Form/RandyRhoads.jpg');
+(2, 'Telecaster', '../../ImgStore/Form/Stratocaster.jpg'),
+(3, 'Explorer', '../../ImgStore/Form/Explorer.jpg'),
+(4, 'Les Paul', '../../ImgStore/Form/Les_Paul.jpg'),
+(5, 'RandyRhoads', '../../ImgStore/Form/RandyRhoads.jpg'),
+(6, 'Flying V', '../../ImgStore/Form/Flying_V.jpg');
 
 insert into ColorSimple values
-(1, 'White', '../../ImgStore/ColorSimple/White.jpg'),
-(2, 'Black', '../../ImgStore/ColorSimple/Black.jpg'),
+(1, 'Black', '../../ImgStore/ColorSimple/Black.jpg'),
+(2, 'White', '../../ImgStore/ColorSimple/White.jpg'),
 (3, 'Red', '../../ImgStore/ColorSimple/Red.jpg');
 
 insert into ColorFull values 
@@ -56,9 +48,14 @@ insert into ColorFull values
 (6, 3, 'or', 'Orange');
 
 insert into Guitar values 
-(1, 1, 1, '1'),
-(2, 1, 2, '2'),
-(3, 2, 2, '3'),
-(4, 2, 1, '4'),
-(5, 3, 2, '5'),
-(6, 3, 3, '6');
+(1, 1, 1, '11'),
+(2, 1, 2, '12'),
+(3, 2, 3, '23'),
+(4, 2, 4, '24'),
+(5, 3, 5, '36'),
+(6, 3, 6, '35');
+
+insert into searchhint values
+(1, 1, 'Выбрать форму'),
+(2, 2, 'Выбрать фирму'),
+(3, 3, 'Выбрать цвет');

@@ -11,8 +11,8 @@
 
 <div class="mp__search">
     <div class="mp-search__params">
-        <div class="mp-search__params__param" data-action-id="1">Форма</div>
-        <div class="mp-search__params__param" data-action-id="2">Фирма</div>
+        <div class="mp-search__params__param" data-action-id="1">Фирма</div>
+        <div class="mp-search__params__param" data-action-id="2">Форма</div>
         <div class="mp-search__params__param" data-action-id="3">Цвет</div>
     </div>
     <img class="mp-search__sample-result" src="../../Content/Image/index.jpg" alt=""/>
@@ -73,9 +73,11 @@
                 success: function(data) {
                     var bigImg = $('.mp-search__sample-result');
                     var littleImgs = $('.list-sample__sample');
-                    bigImg.attr('src', data[0].PhotoUrl);
-                    for (var i = 0; i < data.length && i < littleImgs.length; i++) {
-                        $(littleImgs[i]).attr('src', data[i].PhotoUrl);
+                    if (data.length > 0) {
+                        bigImg.attr('src', data[0].PhotoUrl);
+                        for (var i = 0; i < data.length && i < littleImgs.length; i++) {
+                            $(littleImgs[i]).attr('src', data[i].PhotoUrl);
+                        }
                     }
                     for (var i = data.length; i < littleImgs.length; i++) {
                         $(littleImgs[i]).attr('src', '../../Content/Image/index.jpg');
