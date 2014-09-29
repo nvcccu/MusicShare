@@ -146,12 +146,30 @@ namespace DAO {
                 while (_dbAdapter.DataReader.Read()) {
                     var cur = new T();
                     var properties = typeof (T).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-                    for (var i = 0; i < properties.Count(); i++) {
+                    int i = 0;
+                    int j = 0;
+                    int k = 0;
+                    for (i = 0; i < properties.Count(); i++) {
                         var val = _dbAdapter.DataReader.GetValue(i);
                         if (properties[i] != null && !(val is DBNull)) {
-                            properties[i].SetValue(cur, _dbAdapter.DataReader.GetValue(i), null);
+                            properties[i].SetValue(cur, val, null);
                         }
                     }
+                    foreach (var joinedEntity in JoinedEntities) {
+                        var type = joinedEntity.GetType();
+                        var entity = Activator.CreateInstance(type);
+                        properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+                        for (j = 0; j < properties.Count(); j++) {
+                            var val = _dbAdapter.DataReader.GetValue(j + i);
+                            if (properties[j] != null && !(val is DBNull)) {
+                                properties[j].SetValue(entity, val, null);
+                            }
+                        }
+                        i += j;
+                        ((IAbstractEntity) cur).JoinedEntities.Add((entity as IAbstractEntity));
+                        k++;
+                    }
+                    
                     ret.Add(cur);
                 }
             } catch (Exception ex) {
@@ -159,6 +177,15 @@ namespace DAO {
             }
             _dbAdapter.CloseConnection();
             return ret;
+        }
+
+        public E GetJoinedEntity<E>() where E : class {
+            foreach (var joinedEntity in JoinedEntities) {
+                if (joinedEntity is E) {
+                    return joinedEntity as E;
+                }
+            }
+            return null;
         }
 
         /// <summary>

@@ -28,7 +28,7 @@ insert into Brand values
 
 insert into Form values
 (1, 'Stratocaster', '../../ImgStore/Form/Stratocaster.jpg'),
-(2, 'Telecaster', '../../ImgStore/Form/Stratocaster.jpg'),
+(2, 'Telecaster', '../../ImgStore/Form/Telecaster.jpg'),
 (3, 'Explorer', '../../ImgStore/Form/Explorer.jpg'),
 (4, 'Les Paul', '../../ImgStore/Form/Les_Paul.jpg'),
 (5, 'RandyRhoads', '../../ImgStore/Form/RandyRhoads.jpg'),
