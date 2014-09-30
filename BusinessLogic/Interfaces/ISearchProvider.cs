@@ -25,6 +25,12 @@ namespace BusinessLogic.Interfaces {
         /// 
         /// </summary>
         /// <returns></returns>
+        List<GuitarSummaryTransportType> GetGuitarsSummary();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         List<SearchHintTransportType> GetSearchHints();
 
         /// <summary>

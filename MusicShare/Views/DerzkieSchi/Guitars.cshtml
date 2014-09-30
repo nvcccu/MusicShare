@@ -1,24 +1,18 @@
-﻿@model dynamic
+﻿@model MusicShareWeb.Models.DerzkieSchi.GuitarsModel
            
 @{
     Layout = "../Shared/Layout.cshtml";
 }
 
 <div class="guitar-list">
-    <div class="guitar-list__guitar-node">
-        <img class="guitar-node__image" alt="noImg"/>
-        <div class="guitar-node__brand">fghj</div>
-        <div class="guitar-node__model-name">jhf</div>
-        <div class="guitar-node__form">fghj</div>
-        <div class="guitar-node__color-full">jhf</div>
-        <div class="guitar-node__available">fgjh</div>
-    </div> 
-    <div class="guitar-list__guitar-node">
-        <img class="guitar-node__image" alt="noImg"/>
-        <div class="guitar-node__brand">fghj</div>
-        <div class="guitar-node__model-name">jhf</div>
-        <div class="guitar-node__form">fghj</div>
-        <div class="guitar-node__color-full">jhf</div>
-        <div class="guitar-node__available">fgjh</div>
-    </div>
+    @foreach (var guitarSummary in Model.GuitarsSummary) {
+        <div class="guitar-list__guitar-node">
+            <img class="guitar-node__image" src="@guitarSummary.ImageUrl" alt="noImg"/>
+            <div class="guitar-node__brand">@guitarSummary.BrandName</div>
+            <div class="guitar-node__model-name">@guitarSummary.Model</div>
+            <div class="guitar-node__form">@guitarSummary.FormName</div>
+            <div class="guitar-node__color-full">@guitarSummary.ColorFullName</div>
+            <div class="guitar-node__available">@guitarSummary.Available</div>
+        </div> 
+    } 
 </div>

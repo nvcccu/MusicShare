@@ -66,6 +66,43 @@ namespace BusinessLogic.Providers {
         /// 
         /// </summary>
         /// <returns></returns>
+        public List<GuitarSummaryTransportType> GetGuitarsSummary() {
+            var allGuitars = new GuitarWithColor()
+                .Select()
+                .InnerJoin(new ColorFull(), RetrieveMode.NonRetrieve)
+                .On(GuitarWithColor.Fields.ColorFullId, PredicateCondition.Equal, ColorFull.Fields.Id)
+                .InnerJoin(new ColorSimple(), RetrieveMode.NonRetrieve)
+                .On(ColorFull.Fields.ColorSimpleId, PredicateCondition.Equal, ColorSimple.Fields.Id)
+                .InnerJoin(new Guitar(), RetrieveMode.NonRetrieve)
+                .On(GuitarWithColor.Fields.GuitarId, PredicateCondition.Equal, Guitar.Fields.Id)
+                .InnerJoin(new Brand(), RetrieveMode.NonRetrieve)
+                .On(Guitar.Fields.BrandId, PredicateCondition.Equal, Brand.Fields.Id)
+                .InnerJoin(new Form(), RetrieveMode.NonRetrieve)
+                .On(Guitar.Fields.FormId, PredicateCondition.Equal, Form.Fields.Id)
+                .GetData();
+            return allGuitars.Select(ag => {
+                var brand = ag.GetJoinedEntity<Brand>();
+                var form = ag.GetJoinedEntity<Form>();
+                var colorFullName = ag.GetJoinedEntity<ColorFull>().Name;
+                var guitarModel = ag.GetJoinedEntity<Guitar>().Model;
+                return new GuitarSummaryTransportType {
+                    ImageUrl = ag.PhotoUrl,
+                    BrandId = brand.Id,
+                    BrandName = brand.Name,
+                    FormId = form.Id,
+                    FormName = form.Name,
+                    ColorFullId = ag.ColorFullId,
+                    ColorFullName = colorFullName,
+                    Model = guitarModel,
+                    Available = true
+                };
+            }).ToList();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<SearchHintTransportType> GetSearchHints() {
             return new SearchHint().Select()
                 .GetData()

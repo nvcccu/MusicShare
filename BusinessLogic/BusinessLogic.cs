@@ -30,6 +30,10 @@ namespace BusinessLogic {
             return _searchProvider.GetSampleGuitars(brandId, formId, simpleColorId);
         }
 
+        public List<GuitarSummaryTransportType> GetGuitarsSummary() {
+            return _searchProvider.GetGuitarsSummary();
+        }
+
         public List<SearchHintTransportType> GetSearchHints() {
             return _searchProvider.GetSearchHints();
         }

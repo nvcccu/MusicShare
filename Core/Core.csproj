@@ -50,6 +50,7 @@
     <Compile Include="TransportTypes\FormTransportType.cs" />
     <Compile Include="TransportTypes\GuestTransportType.cs" />
     <Compile Include="TransportTypes\GuitarInShopTransportType.cs" />
+    <Compile Include="TransportTypes\GuitarSummaryTransportType.cs" />
     <Compile Include="TransportTypes\GuitarTransportType.cs" />
     <Compile Include="TransportTypes\GuitarWithColorTransportType.cs" />
     <Compile Include="TransportTypes\NewsTransportType.cs" />
