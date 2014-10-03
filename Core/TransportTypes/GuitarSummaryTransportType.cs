@@ -1,6 +1,6 @@
 ﻿namespace Core.TransportTypes {
     public class GuitarSummaryTransportType {
-        public int GuitarId { get; set; }
+        public int GuitarWithColorId { get; set; }
         public string ImageUrl { get; set; }
         public int BrandId { get; set; }
         public string BrandName { get; set; }

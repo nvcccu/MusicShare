@@ -86,7 +86,7 @@ namespace BusinessLogic.Providers {
                 var colorFullName = ag.GetJoinedEntity<ColorFull>().Name;
                 var guitarModel = ag.GetJoinedEntity<Guitar>().Model;
                 return new GuitarSummaryTransportType {
-                    GuitarId = ag.Id,
+                    GuitarWithColorId = ag.Id,
                     ImageUrl = ag.PhotoUrl,
                     BrandId = brand.Id,
                     BrandName = brand.Name,

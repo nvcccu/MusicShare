@@ -182,7 +182,7 @@ namespace Sandbox {
 //                .InnerJoin(new ColorSimple(), RetrieveMode.NonRetrieve)
 //                .On(ColorFull.Fields.ColorSimpleId, PredicateCondition.Equal, ColorSimple.Fields.Id)
 //                .InnerJoin(new Guitar(), RetrieveMode.NonRetrieve)
-//                .On(GuitarWithColor.Fields.GuitarId, PredicateCondition.Equal, Guitar.Fields.Id)
+//                .On(GuitarWithColor.Fields.GuitarWithColorId, PredicateCondition.Equal, Guitar.Fields.Id)
 //                .InnerJoin(new Brand(), RetrieveMode.NonRetrieve)
 //                .On(Guitar.Fields.BrandId, PredicateCondition.Equal, Brand.Fields.Id)
 //                .InnerJoin(new Form(), RetrieveMode.NonRetrieve)
