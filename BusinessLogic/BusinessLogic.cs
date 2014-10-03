@@ -34,6 +34,10 @@ namespace BusinessLogic {
             return _searchProvider.GetGuitarsSummary();
         }
 
+        public bool SaveGuitarSummary(GuitarSummaryTransportType guitarSummary) {
+            return _searchProvider.SaveGuitarSummary(guitarSummary);
+        }
+
         public List<SearchHintTransportType> GetSearchHints() {
             return _searchProvider.GetSearchHints();
         }
@@ -46,8 +50,16 @@ namespace BusinessLogic {
             return _searchProvider.GetAllForm();
         }
 
-        public List<ColorSimpleTransportType> GetAllColor() {
-            return _searchProvider.GetAllColor();
+        public List<ColorSimpleTransportType> GetAllSimpleColors() {
+            return _searchProvider.GetAllSimpleColors();
+        }
+
+        public List<ColorFullTransportType> GetAllFullColors() {
+            return _searchProvider.GetAllFullColors();
+        }
+
+        public List<GuitarTransportType> GetAllGuitars() {
+            return _searchProvider.GetAllGuitars();
         }
 
         public List<NewsTransportType> GetLastNews() {

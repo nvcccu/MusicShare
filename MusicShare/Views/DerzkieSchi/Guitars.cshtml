@@ -1,18 +1,55 @@
-﻿@model MusicShareWeb.Models.DerzkieSchi.GuitarsModel
+﻿@using System.Globalization
+@using Microsoft.Ajax.Utilities
+@using MusicShareWeb.Models
+@model MusicShareWeb.Models.DerzkieSchi.GuitarsModel
            
 @{
     Layout = "../Shared/Layout.cshtml";
 }
 
 <div class="guitar-list">
+    @{var i = 0;}
     @foreach (var guitarSummary in Model.GuitarsSummary) {
-        <div class="guitar-list__guitar-node">
-            <img class="guitar-node__image" src="@guitarSummary.ImageUrl" alt="noImg"/>
-            <div class="guitar-node__brand">@guitarSummary.BrandName</div>
-            <div class="guitar-node__model-name">@guitarSummary.Model</div>
-            <div class="guitar-node__form">@guitarSummary.FormName</div>
-            <div class="guitar-node__color-full">@guitarSummary.ColorFullName</div>
-            <div class="guitar-node__available">@guitarSummary.Available</div>
-        </div> 
+        i++;
+        using (Html.BeginForm("SaveGuitarSummary", "DerzkieSchi", FormMethod.Post, new {id="form" + @i, onsubmit="return SaveGuitar('form" + @i.ToString(CultureInfo.InvariantCulture) + "');"})) {
+            <div class="guitar-list__guitar-node">
+                <img class="guitar-node__image" src="@guitarSummary.ImageUrl" alt="noImg"/>
+                @Html.Partial("DropDown", new DropDownModel {
+               Name = "guitarSummary.BrandId",
+                    SelectedId = guitarSummary.BrandId.ToString(CultureInfo.InvariantCulture),
+                    KeyValues = Model.Brands.Select(b => b.Id.ToString(CultureInfo.InvariantCulture)).Zip(Model.Brands.Select(b => b.Name), (brandId, brandName) => new {key = brandId, value = brandName})
+                        .ToDictionary(x => x.key, x => x.value)
+                })
+                @Html.Partial("DropDown", new DropDownModel {
+               Name = "guitarSummary.FormId",
+                    SelectedId = guitarSummary.FormId.ToString(CultureInfo.InvariantCulture),
+                    KeyValues = Model.Forms.Select(b => b.Id.ToString(CultureInfo.InvariantCulture)).Zip(Model.Forms.Select(b => b.Name), (formId, FormName) => new { key = formId, value = FormName })
+                        .ToDictionary(x => x.key, x => x.value)
+                })
+                <div class="guitar-node__model-name">@guitarSummary.Model</div>
+                @Html.Partial("DropDown", new DropDownModel {
+               Name = "guitarSummary.ColorFullId",
+                    SelectedId = guitarSummary.ColorFullId.ToString(CultureInfo.InvariantCulture),
+                    KeyValues = Model.FullColors.Select(b => b.Id.ToString(CultureInfo.InvariantCulture)).Zip(Model.FullColors.Select(b => b.Name), (colorFullId, colorFullName) => new {key = colorFullId, value = colorFullName})
+                        .ToDictionary(x => x.key, x => x.value)
+                })
+                @Html.EditorFor(x => guitarSummary.Available)
+                <input type="submit" value="сохранить"/>
+            </div>
+        }
     } 
 </div>
+
+<script type="text/javascript">
+    SaveGuitar = function(formId) {
+        $('#' + formId).ajaxSubmit({
+            success: function () {
+                alert('success');
+            },
+            error: function() {
+                alert('error');
+            }
+        });
+        return false;
+    };
+</script>

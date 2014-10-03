@@ -4,7 +4,7 @@ using CommonUtils.ServiceManager;
 using Core.TransportTypes;
 
 namespace MusicShareWeb.Models.DerzkieSchi {
-    public class GuitarsModel : BaseModel {
+    public class GuitarsModel : GuitarTotalDataModel {
         public List<GuitarSummaryTransportType> GuitarsSummary { get; set; }
 
         public GuitarsModel() {

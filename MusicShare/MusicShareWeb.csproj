@@ -128,8 +128,9 @@
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\DerzkieSchi\GuitarsModel.cs" />
+    <Compile Include="Models\DropDownModel.cs" />
     <Compile Include="Models\PromoModel.cs" />
-    <Compile Include="Models\SearchModel.cs" />
+    <Compile Include="Models\GuitarTotalDataModel.cs" />
     <Compile Include="Models\SearchResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -147,6 +148,7 @@
     <Content Include="Content\Image\list.png" />
     <Content Include="Content\Script\CommonScripts\Log.js" />
     <Content Include="Content\Script\CommonScripts\MusicShare.js" />
+    <Content Include="Content\Script\jquery.form.js" />
     <Content Include="Content\Script\MainPage\Search.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Script\jquery-1.10.2.js" />
@@ -266,6 +268,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DerzkieSchi\Guitars.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\DropDown.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

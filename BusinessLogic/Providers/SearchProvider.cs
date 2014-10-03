@@ -86,6 +86,7 @@ namespace BusinessLogic.Providers {
                 var colorFullName = ag.GetJoinedEntity<ColorFull>().Name;
                 var guitarModel = ag.GetJoinedEntity<Guitar>().Model;
                 return new GuitarSummaryTransportType {
+                    GuitarId = ag.Id,
                     ImageUrl = ag.PhotoUrl,
                     BrandId = brand.Id,
                     BrandName = brand.Name,
@@ -97,6 +98,15 @@ namespace BusinessLogic.Providers {
                     Available = true
                 };
             }).ToList();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="guitarSummary"></param>
+        /// <returns></returns>
+        public bool SaveGuitarSummary(GuitarSummaryTransportType guitarSummary) {
+            return true;
         }
 
         /// <summary>
@@ -138,8 +148,32 @@ namespace BusinessLogic.Providers {
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<ColorSimpleTransportType> GetAllColor() {
+        public List<ColorSimpleTransportType> GetAllSimpleColors() {
             return new ColorSimple()
+                .Select()
+                .GetData()
+                .Select(b => b.ToTransport())
+                .ToList();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<ColorFullTransportType> GetAllFullColors() {
+            return new ColorFull()
+                .Select()
+                .GetData()
+                .Select(b => b.ToTransport())
+                .ToList();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<GuitarTransportType> GetAllGuitars() {
+            return new Guitar()
                 .Select()
                 .GetData()
                 .Select(b => b.ToTransport())

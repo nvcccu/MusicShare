@@ -30,6 +30,13 @@ namespace BusinessLogic.Interfaces {
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="guitarSummary"></param>
+        /// <returns></returns>
+        bool SaveGuitarSummary(GuitarSummaryTransportType guitarSummary);
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         List<SearchHintTransportType> GetSearchHints();
 
@@ -49,7 +56,19 @@ namespace BusinessLogic.Interfaces {
         /// 
         /// </summary>
         /// <returns></returns>
-        List<ColorSimpleTransportType> GetAllColor();
+        List<ColorSimpleTransportType> GetAllSimpleColors();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        List<ColorFullTransportType> GetAllFullColors();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        List<GuitarTransportType> GetAllGuitars();
 
         /// <summary>
         /// 
