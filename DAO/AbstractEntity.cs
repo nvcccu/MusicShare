@@ -11,7 +11,6 @@ namespace DAO {
     public interface IAbstractEntity {
         string TableName { get; set; }
         List<IAbstractEntity> JoinedEntities { get; set; }
-        void Update();
         void Insert();
     }
 
@@ -34,6 +33,11 @@ namespace DAO {
         /// Содержит набор where условий
         /// </summary>
         private List<FilterWhere> _filterWhere;
+        
+        /// <summary>
+        /// Содержит набор SET для апдейта
+        /// </summary>
+        private List<FilterSet> _filterSet;
 
         /// <summary>
         /// набор join'ов
@@ -62,11 +66,13 @@ namespace DAO {
             _filterWhere = new List<FilterWhere>();
             _filterOrder = new List<FilterOrder>();
             _filterJoin = new List<FilterJoin>();
+            _filterSet = new List<FilterSet>();
             JoinedEntities = new List<IAbstractEntity>();
         }
 
-        public void Update() {
-            throw new NotImplementedException();
+        public AbstractEntity<T> Update() {
+            _query = "UPDATE " + TableName + " ";
+            return this;
         }
 
         /// <summary>
@@ -127,6 +133,24 @@ namespace DAO {
             }
             _dbAdapter.CloseConnection();
         }
+
+        /// <summary>
+        /// выполняет запрос без возвращения данных
+        /// </summary>
+        public void ExecuteScalar() {
+            TranslateJoin();
+            TranslateSet();
+            TranslateWhere();
+            TranslateOrder();
+            _dbAdapter.Command = new NpgsqlCommand(_query, _dbAdapter.Connection);
+            _dbAdapter.OpenConnection();
+            try {
+                _dbAdapter.Command.ExecuteScalar();
+            } catch (Exception ex) {
+                Console.WriteLine(ex);
+            }
+            _dbAdapter.CloseConnection();
+        }
        
         /// <summary>
         /// Получение данных из таблицы
@@ -138,6 +162,7 @@ namespace DAO {
             TranslateJoin();
             TranslateWhere();
             TranslateOrder();
+            TranslateSet();
             var ret = new List<T>();
             _dbAdapter.OpenConnection();
             _dbAdapter.Command = new NpgsqlCommand(_query, _dbAdapter.Connection);
@@ -334,6 +359,37 @@ namespace DAO {
         }
 
         /// <summary>
+        /// Добавляет SET к UPDATE
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public AbstractEntity<T> Set(Enum field, object value) {
+            _filterSet.Add(new FilterSet(field, value));
+            return this;
+        }
+
+        /// <summary>
+        /// Добавляет SET к UPDATE
+        /// </summary>
+        /// <param name="filterSet"></param>
+        /// <returns></returns>
+        public AbstractEntity<T> Set(FilterSet filterSet) {
+            _filterSet.Add(filterSet);
+            return this;
+        }
+
+        /// <summary>
+        /// Добавляет набор SET к UPDATE
+        /// </summary>
+        /// <param name="filterSet"></param>
+        /// <returns></returns>
+        public AbstractEntity<T> Set(IEnumerable<FilterSet> filterSet) {
+            _filterSet.AddRange(filterSet);
+            return this;
+        }
+
+        /// <summary>
         /// Удаляет все данные из базы
         /// </summary>
         /// <returns></returns>
@@ -400,6 +456,24 @@ namespace DAO {
             }
             _query += order;
             _filterOrder = new List<FilterOrder>();
+        }
+
+        /// <summary>
+        /// транслирует все условия SET в sql
+        /// </summary>
+        private void TranslateSet() {
+            if (!_filterSet.Any()) {
+                return;
+            }
+            var set = "SET ";
+            var firstSet = _filterSet.First();
+            set += firstSet.Field + " = '" + firstSet.Value + "'";
+            for (var i = 1; i < _filterSet.Count; i++) {
+                var curSet = _filterSet[i];
+                set += ", " + curSet.Field + " = '" + curSet.Value + "'";
+            }
+            _query += set;
+            _filterSet = new List<FilterSet>();
         }
     }
 
@@ -531,6 +605,23 @@ namespace DAO {
         public FilterWhere(Enum field, PredicateCondition oper, object value) {
             Field = field;
             Oper = oper;
+            Value = value;
+        }
+    }
+
+    public class FilterSet {
+        /// <summary>
+        /// 
+        /// </summary>
+        public Enum Field { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object Value { get; private set; }
+
+        public FilterSet(Enum field, Object value) {
+            Field = field;
             Value = value;
         }
     }

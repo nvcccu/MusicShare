@@ -152,28 +152,20 @@ namespace Sandbox {
         }
        
         private static void Main(string[] args) {
+            // НЕ УДАЛЯТЬ
             ConfigHelper.LoadXml(false);
             Connector.ConnectionString = ConfigHelper.FirstTagWithPropertyText("db-connection", "db-name", "master");
-            var sample = new GuitarWithColor()
-                .Select()
-                .InnerJoin(new ColorFull(), RetrieveMode.NonRetrieve)
-                .On(GuitarWithColor.Fields.ColorFullId, PredicateCondition.Equal, ColorFull.Fields.Id)
-                .InnerJoin(new ColorSimple(), RetrieveMode.NonRetrieve)
-                .On(ColorFull.Fields.ColorSimpleId, PredicateCondition.Equal, ColorSimple.Fields.Id)
-                .InnerJoin(new Guitar(), RetrieveMode.NonRetrieve)
-                .On(GuitarWithColor.Fields.GuitarId, PredicateCondition.Equal, Guitar.Fields.Id)
-                .InnerJoin(new Brand(), RetrieveMode.NonRetrieve)
-                .On(Guitar.Fields.BrandId, PredicateCondition.Equal, Brand.Fields.Id)
-                .InnerJoin(new Form(), RetrieveMode.NonRetrieve)
-                .On(Guitar.Fields.FormId, PredicateCondition.Equal, Form.Fields.Id);
-            AddWhereIfNotNull(sample, Brand.Fields.Id, PredicateCondition.Equal, 1);
-            AddWhereIfNotNull(sample, Form.Fields.Id, PredicateCondition.Equal, null);
-            AddWhereIfNotNull(sample, ColorSimple.Fields.Id, PredicateCondition.Equal, 3);
-            IEnumerable<GuitarWithColor> qqsample = sample
-                .GetData()
-                .ToList();
-            var qq = qqsample.First().GetJoinedEntity<ColorFull>();
-            var qqq = 9;
+            // НЕ УДАЛЯТЬ
+
+
+            new Brand()
+                .Update()
+                .Set(Brand.Fields.Logo, "newLogo")
+                .Set(Brand.Fields.Name, "newName")
+                .Where(Brand.Fields.Id, PredicateCondition.Equal, 3825)
+                .ExecuteScalar();
+
+
 
 //            var sample = new GuitarWithColor()
 //                .Select()
