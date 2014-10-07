@@ -44,6 +44,20 @@ namespace BusinessLogic.Interfaces {
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="guitarModel"></param>
+        /// <returns></returns>
+        bool UpdateGuitarModel(GuitarWithModelTransportType guitarModel);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="guitarModel"></param>
+        /// <returns></returns>
+        bool SaveNewGuitarModel(GuitarWithModelTransportType guitarModel);
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         List<SearchHintTransportType> GetSearchHints();
 

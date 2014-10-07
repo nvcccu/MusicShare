@@ -272,6 +272,12 @@
   <ItemGroup>
     <Content Include="Views\Shared\DropDown.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DerzkieSchi\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DerzkieSchi\Models.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -42,6 +42,14 @@ namespace BusinessLogic {
             return _searchProvider.SaveNewGuitar(guitarSummary);
         }
 
+        public bool UpdateGuitarModel(GuitarWithModelTransportType guitarModel) {
+            return _searchProvider.UpdateGuitarModel(guitarModel);
+        }
+
+        public bool SaveNewGuitarModel(GuitarWithModelTransportType guitarModel) {
+            return _searchProvider.SaveNewGuitarModel(guitarModel);
+        }
+
         public List<SearchHintTransportType> GetSearchHints() {
             return _searchProvider.GetSearchHints();
         }

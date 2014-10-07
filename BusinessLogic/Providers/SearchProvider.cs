@@ -196,6 +196,25 @@ namespace BusinessLogic.Providers {
             return true;
         }
 
+        public bool UpdateGuitarModel(GuitarWithModelTransportType guitarModel) {
+            new GuitarWithModel()
+                .Update()
+                .Set(GuitarWithModel.Fields.Model, guitarModel.Model)
+                .Where(GuitarWithModel.Fields.Id, PredicateCondition.Equal, guitarModel.Id)
+                .ExecuteScalar();
+
+            return true;
+        }
+
+        public bool SaveNewGuitarModel(GuitarWithModelTransportType guitarModel) {
+            new GuitarWithModel {
+                GuitarId = guitarModel.GuitarId,
+                Model = guitarModel.Model
+            }.Insert();
+
+            return true;
+        }
+
         /// <summary>
         /// 
         /// </summary>
