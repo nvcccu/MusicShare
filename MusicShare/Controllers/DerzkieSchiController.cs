@@ -16,7 +16,11 @@ namespace MusicShareWeb.Controllers {
         }
         
         public ActionResult Models() {
-            return View("Models", new GuitarsModel());
+            return View("Models", new GuitarTotalDataModel());
+        }
+        
+        public ActionResult Colors() {
+            return View("Colors", new GuitarTotalDataModel());
         }
 
         [HttpPost]
@@ -44,6 +48,20 @@ namespace MusicShareWeb.Controllers {
         public JsonResult SaveNewGuitarModel(GuitarWithModelTransportType guitarModel) {
             return new JsonResult {
                 Data = ServiceManager<IBusinessLogic>.Instance.Service.SaveNewGuitarModel(guitarModel)
+            };
+        }
+
+        [HttpPost]
+        public JsonResult UpdateGuitarColor(GuitarWithColorTransportType guitarColor) {
+            return new JsonResult {
+                Data = ServiceManager<IBusinessLogic>.Instance.Service.UpdateGuitarColor(guitarColor)
+            };
+        }
+
+        [HttpPost]
+        public JsonResult SaveNewGuitarColor(GuitarWithColorTransportType guitarColor) {
+            return new JsonResult {
+                Data = ServiceManager<IBusinessLogic>.Instance.Service.SaveNewGuitarColor(guitarColor)
             };
         }
     }

@@ -2,7 +2,8 @@
     public interface IBusinessLogic :
         ISearchProvider,
         IUserProvider,
-        ILogProvider {
+        ILogProvider,
+        IDerzkieSchiProvider {
         void Initial();
     }
 }
