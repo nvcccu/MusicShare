@@ -24,7 +24,32 @@ insert into GuitarWithColor values
 insert into Brand values
 (1, 'Fender', '../../ImgStore/BrandLogo/Fender.jpg'),
 (2, 'Gibson', '../../ImgStore/BrandLogo/Gibson.jpg'),
-(3, 'Jackson', '../../ImgStore/BrandLogo/Jackson.jpg');
+(3, 'Jackson', '../../ImgStore/BrandLogo/Jackson.jpg'),
+(4, 'Cruiser', '../../ImgStore/BrandLogo/Cruiser.jpg'),
+(5, 'Jet', '../../ImgStore/BrandLogo/Jet.jpg'),
+(6, 'Lag', '../../ImgStore/BrandLogo/Lag.jpg'),
+(7, 'Flight', '../../ImgStore/BrandLogo/Flight.jpg'),
+(8, 'Yamaha', '../../ImgStore/BrandLogo/Yamaha.jpg'),
+(9, 'Ibanez', '../../ImgStore/BrandLogo/Ibanez.jpg'),
+(10, 'Epihone', '../../ImgStore/BrandLogo/Epihone.jpg'),
+(11, 'Hohner', '../../ImgStore/BrandLogo/Hohner.jpg'),
+(12, 'Terris', '../../ImgStore/BrandLogo/Terris.jpg'),
+(13, 'Godin', '../../ImgStore/BrandLogo/Godin.jpg'),
+(14, 'Erg', '../../ImgStore/BrandLogo/Erg.jpg'),
+(15, 'Aria', '../../ImgStore/BrandLogo/Aria.jpg'),
+(16, 'Ashtone', '../../ImgStore/BrandLogo/Ashtone.jpg'),
+(17, 'Burny', '../../ImgStore/BrandLogo/Burny.jpg'),
+(18, 'B.C.Rich', '../../ImgStore/BrandLogo/B_C_Rich.jpg'),
+(19, 'Fernandes', '../../ImgStore/BrandLogo/Fernandes.jpg'),
+(20, 'Greg Bennett', '../../ImgStore/BrandLogo/Greg_Bennett.jpg'),
+(21, 'LTD by ESP', '../../ImgStore/BrandLogo/LTD_by_ESP.jpg'),
+(22, 'Magna', '../../ImgStore/BrandLogo/Magna.jpg'),
+(23, 'Pignose', '../../ImgStore/BrandLogo/Pignose.jpg'),
+(24, 'Samic', '../../ImgStore/BrandLogo/Samic.jpg'),
+(25, 'Shecter', '../../ImgStore/BrandLogo/Shecter.jpg'),
+(26, 'Stagg', '../../ImgStore/BrandLogo/Stagg.jpg'),
+(27, 'Washburn', '../../ImgStore/BrandLogo/Washburn.jpg'),
+(28, 'Zombie', '../../ImgStore/BrandLogo/Zombie.jpg');
 
 insert into Form values
 (1, 'Stratocaster', '../../ImgStore/Form/Stratocaster.jpg'),
