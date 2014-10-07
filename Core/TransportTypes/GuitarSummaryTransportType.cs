@@ -8,7 +8,8 @@
         public string FormName { get; set; }
         public int ColorFullId { get; set; }
         public string ColorFullName { get; set; }
-        public string Model { get; set; }
+        public int ModelId { get; set; }
         public bool Available { get; set; }
+        public bool IsGreatQualityPhoto { get; set; }
     }
 }

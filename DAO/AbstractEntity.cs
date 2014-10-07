@@ -449,10 +449,10 @@ namespace DAO {
             }
             var order = "ORDER BY ";
             var firstOrder = _filterOrder.First();
-            order += firstOrder.Field + " " + firstOrder.OrderType + " ";
+            order += firstOrder.Field.GetType().DeclaringType.Name + "." + firstOrder.Field + " " + firstOrder.OrderType + " ";
             for (var i = 1; i < _filterOrder.Count; i++) {
                 var curOrder = _filterOrder[i];
-                order += ", " + curOrder.Field + " " + curOrder.OrderType + " ";
+                order += ", " + curOrder.Field.GetType().DeclaringType.Name + "." + curOrder.Field + " " + curOrder.OrderType + " ";
             }
             _query += order;
             _filterOrder = new List<FilterOrder>();

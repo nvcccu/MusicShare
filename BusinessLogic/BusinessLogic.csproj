@@ -48,6 +48,7 @@
     <Compile Include="DaoEntities\Guitar.cs" />
     <Compile Include="DaoEntities\GuitarInShop.cs" />
     <Compile Include="DaoEntities\GuitarWithColor.cs" />
+    <Compile Include="DaoEntities\GuitarWithModel.cs" />
     <Compile Include="DaoEntities\News.cs" />
     <Compile Include="DaoEntities\SearchHint.cs" />
     <Compile Include="DaoEntities\Shop.cs" />

@@ -62,7 +62,6 @@ CREATE TABLE Guitar (
   id serial NOT NULL,
   brandId int,
   FormId int,
-  Model character varying(128),
   CONSTRAINT pk_Guitar PRIMARY KEY (id)
 )
 WITH (
@@ -71,23 +70,21 @@ WITH (
 ALTER TABLE Guitar
   OWNER TO postgres;
 
-CREATE TABLE GuitarInShop (
+CREATE TABLE GuitarWithModel (
   id serial NOT NULL,
-  GuitarId int,
-  StoreId int,
-  Available boolean,
-  Price int,
-  CONSTRAINT pk_GuitarInShop PRIMARY KEY (id)
+  guitarId int,
+  Model character varying(128),
+  CONSTRAINT pk_GuitarWithModel PRIMARY KEY (id)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE GuitarInShop
+ALTER TABLE GuitarWithModel
   OWNER TO postgres;
 
 CREATE TABLE GuitarWithColor (
   id serial NOT NULL,
-  GuitarId int,
+  GuitarWithModelId int,
   ColorFullId int,
   PhotoUrl character varying(1024),
   IsGreatQualityPhoto boolean,
@@ -97,6 +94,20 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE GuitarWithColor
+  OWNER TO postgres;
+
+CREATE TABLE GuitarInShop (
+  id serial NOT NULL,
+  GuitarWithColorId int,
+  StoreId int,
+  Available boolean,
+  Price int,
+  CONSTRAINT pk_GuitarInShop PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE GuitarInShop
   OWNER TO postgres;
 
 CREATE TABLE News (

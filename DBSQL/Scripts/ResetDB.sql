@@ -6,6 +6,7 @@ drop table if exists Guest;
 drop table if exists Guitar;
 drop table if exists GuitarInShop;
 drop table if exists GuitarWithColor;
+drop table if exists GuitarWithModel;
 drop table if exists News;
 drop table if exists SearchHint;
 drop table if exists Shop;

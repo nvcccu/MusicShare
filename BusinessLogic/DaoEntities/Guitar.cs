@@ -18,9 +18,6 @@ namespace BusinessLogic.DaoEntities {
 
             [DbType(typeof(Int32))]
             FormId,
-
-            [DbType(typeof(string))]
-            Model,
         };
 
         /// <summary>
@@ -38,17 +35,11 @@ namespace BusinessLogic.DaoEntities {
         /// </summary>
         public int FormId { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Model { get; set; }
-
         public GuitarTransportType ToTransport() {
             return new GuitarTransportType {
                 Id = Id,
                 BrandId = BrandId,
-                FormId = FormId,
-                Model = Model,
+                FormId = FormId
             };
         }
     }

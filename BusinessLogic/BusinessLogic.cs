@@ -62,6 +62,10 @@ namespace BusinessLogic {
             return _searchProvider.GetAllGuitars();
         }
 
+        public List<GuitarWithModelTransportType> GetAllGuitarsWithModel() {
+            return _searchProvider.GetAllGuitarsWithModel();
+        }
+
         public List<NewsTransportType> GetLastNews() {
             return _searchProvider.GetLastNews();
         }

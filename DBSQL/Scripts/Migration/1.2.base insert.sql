@@ -48,12 +48,20 @@ insert into ColorFull values
 (6, 3, 'or', 'Orange');
 
 insert into Guitar values 
-(1, 1, 1, '11'),
-(2, 1, 2, '12'),
-(3, 2, 3, '23'),
-(4, 2, 4, '24'),
-(5, 3, 5, '36'),
-(6, 3, 6, '35');
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 3),
+(4, 2, 4),
+(5, 3, 5),
+(6, 3, 6);
+
+insert into GuitarWithModel values 
+(1, 1, 'Fender Strat'),
+(2, 2, 'Fender Telec'),
+(3, 3, 'Gibson Explorer'),
+(4, 4, 'Gibson LP'),
+(5, 5, 'Jackson RR'),
+(6, 6, 'Jackson FV');
 
 insert into searchhint values
 (1, 1, 'Выбрать форму'),

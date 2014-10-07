@@ -20,7 +20,8 @@
                 <div style="display: inline-block;">
                     <input type="hidden" name="guitarsummary.ImageUrl" value="@guitarSummary.ImageUrl" />
                     <input type="text" class="imgUrl" placeholder="Новое изображение"/><br/>
-                    <input type="button" value="Обновить изображение" onclick=" UpdateImage('@form') " />
+                    @Html.EditorFor(x => guitarSummary.IsGreatQualityPhoto) Очень качественное фото<br/>
+                    <input type="button" value="Обновить изображение" onclick="UpdateImage('@form')" />
                 </div>
                 <div style="display: inline-block; margin-left: 30px;">
                     @Html.Partial("DropDown", new DropDownModel {
@@ -35,7 +36,13 @@
                         KeyValues = Model.Forms.Select(b => b.Id.ToString(CultureInfo.InvariantCulture)).Zip(Model.Forms.Select(b => b.Name), (formId, formName) => new {key = formId, value = formName})
                             .ToDictionary(x => x.key, x => x.value)
                     })<br/>
-                    <input type="text" name="guitarsummary.Model" value="@guitarSummary.Model" /><br/>
+@*                    <input type="text" name="guitarsummary.ModelId" value="@guitarSummary.ModelId" /><br/>*@
+                    @Html.Partial("DropDown", new DropDownModel {
+                        Name = "guitarSummary.ModelId",
+                        SelectedId = guitarSummary.ModelId.ToString(CultureInfo.InvariantCulture),
+                        KeyValues = Model.GuitarsWithModel.Select(b => b.Id.ToString(CultureInfo.InvariantCulture)).Zip(Model.GuitarsWithModel.Select(b => b.Model), (guitarWithModelId, guitarModel) => new { key = guitarWithModelId, value = guitarModel })
+                            .ToDictionary(x => x.key, x => x.value)
+                    })<br />
                     @Html.Partial("DropDown", new DropDownModel {
                         Name = "guitarSummary.ColorFullId",
                         SelectedId = guitarSummary.ColorFullId.ToString(CultureInfo.InvariantCulture),
@@ -54,8 +61,12 @@
 <script type="text/javascript">
     SaveGuitar = function(formId) {
         $('#' + formId).ajaxSubmit({
-            success: function() {
-                alert('success');
+            success: function (data) {
+                if (data == true) {
+                    alert('success');
+                } else {
+                    alert('ты лещ и сохраняешь корявые данные');
+                }
             },
             error: function() {
                 alert('error');

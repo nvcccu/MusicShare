@@ -1,7 +1,8 @@
 ﻿@model MusicShareWeb.Models.DropDownModel
            
 <select name="@Model.Name">
-    @foreach (var keyValuePair in Model.KeyValues) {
+    @foreach (var keyValuePair in Model.KeyValues)
+    {
         <option @(keyValuePair.Key == Model.SelectedId ? "selected" : string.Empty) value="@keyValuePair.Key">@keyValuePair.Value</option>
     }
 </select>

@@ -74,6 +74,12 @@ namespace BusinessLogic.Interfaces {
         /// 
         /// </summary>
         /// <returns></returns>
+        List<GuitarWithModelTransportType> GetAllGuitarsWithModel();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         List<NewsTransportType> GetLastNews();
     }
 }

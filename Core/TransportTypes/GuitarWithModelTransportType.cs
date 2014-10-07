@@ -1,18 +1,18 @@
 ﻿namespace Core.TransportTypes {
-    public class GuitarTransportType {
+    public class GuitarWithModelTransportType {
         /// <summary>
         /// 
         /// </summary>
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public int BrandId { get; set; }
+        public int GuitarId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public int FormId { get; set; }
+        public string Model { get; set; }
     }
 }

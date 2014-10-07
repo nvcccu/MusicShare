@@ -93,7 +93,7 @@ namespace Sandbox {
             //                    products.Add(Convert.ToInt32(productNode.Attributes["id"].InnerText), productNode);
             //                    var eg = new Guitar();
             //                    eg.Brand = brands[Convert.ToInt32(productNode["categoryId"].InnerText)];
-            //                    eg.Model = productNode["name"].InnerText;
+            //                    eg.ModelId = productNode["name"].InnerText;
             //                    eg.Price = decimal.Parse(productNode["price"].InnerText, CultureInfo.InvariantCulture);
             //                    eg.Url = productNode["url"].InnerText;
             //                    eg.Insert();
@@ -135,7 +135,7 @@ namespace Sandbox {
                     products.Add(Convert.ToInt32(productNode.Attributes["id"].InnerText), productNode);
 //                    var eg = new Guitar();
 //                    eg.Brand = brands[Convert.ToInt32(productNode["categoryId"].InnerText)];
-//                    eg.Model = productNode["name"].InnerText;
+//                    eg.ModelId = productNode["name"].InnerText;
 //                    eg.Price = decimal.Parse(productNode["price"].InnerText, CultureInfo.InvariantCulture);
 //                    eg.Url = productNode["url"].InnerText;
 //                    eg.Insert();

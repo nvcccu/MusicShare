@@ -18,7 +18,7 @@ namespace BusinessLogic.DaoEntities {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int32))] GuitarId,
+            [DbType(typeof (Int32))] GuitarWithModelId,
 
             /// <summary>
             /// 
@@ -44,7 +44,7 @@ namespace BusinessLogic.DaoEntities {
         /// <summary>
         /// 
         /// </summary>
-        public int GuitarId { get; set; }
+        public int GuitarWithModelId { get; set; }
 
         /// <summary>
         /// 
@@ -64,7 +64,7 @@ namespace BusinessLogic.DaoEntities {
         public GuitarWithColorTransportType ToTransport() {
             return new GuitarWithColorTransportType {
                 Id = Id,
-                GuitarId = GuitarId,
+                GuitarWithModelId = GuitarWithModelId,
                 ColorId = ColorFullId,
                 PhotoUrl = PhotoUrl,
                 IsGreatQualityPhoto = IsGreatQualityPhoto

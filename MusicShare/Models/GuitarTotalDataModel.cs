@@ -28,6 +28,12 @@ namespace MusicShareWeb.Models {
         /// <summary>
         /// 
         /// </summary>
+        public List<GuitarWithModelTransportType> GuitarsWithModel { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// NOTE: пока не успользуется
         public List<SearchHintTransportType> SearchHints { get; private set; } 
 
         /// <summary>
@@ -42,6 +48,7 @@ namespace MusicShareWeb.Models {
             FullColors = ServiceManager<IBusinessLogic>.Instance.Service.GetAllFullColors();
             SearchHints = ServiceManager<IBusinessLogic>.Instance.Service.GetSearchHints();
             Guitars = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitars();
+            GuitarsWithModel = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarsWithModel();
         }
     }
 }

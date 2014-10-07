@@ -12,7 +12,6 @@ namespace MusicShareWeb.Controllers {
 
         [HttpPost]
         public JsonResult SaveGuitarSummary(GuitarSummaryTransportType guitarSummary) {
-            ServiceManager<IBusinessLogic>.Instance.Service.SaveGuitarSummary(guitarSummary);
             return new JsonResult {
                 Data = ServiceManager<IBusinessLogic>.Instance.Service.SaveGuitarSummary(guitarSummary)
             };
