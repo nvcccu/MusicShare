@@ -38,6 +38,10 @@ namespace BusinessLogic {
             return _searchProvider.SaveGuitarSummary(guitarSummary);
         }
 
+        public bool SaveNewGuitar(GuitarSummaryTransportType guitarSummary) {
+            return _searchProvider.SaveNewGuitar(guitarSummary);
+        }
+
         public List<SearchHintTransportType> GetSearchHints() {
             return _searchProvider.GetSearchHints();
         }

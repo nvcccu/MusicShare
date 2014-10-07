@@ -80,7 +80,7 @@ namespace DAO {
         /// </summary>
         public void Insert() {
             PropertyInfo property;
-            var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
             _query = "INSERT INTO " + TableName + " (";
             for (var i = 1; i < properties.Count() - 1; i++) {
                 property = properties[i];

@@ -120,8 +120,7 @@ namespace BusinessLogic.Providers {
             if (!guitarIdData.Any()) {
                 return false;
             }
-            var guitarId = guitarIdData.First()
-                .Id;
+            var guitarId = guitarIdData.First().Id;
             var guitarWithModelData = new GuitarWithModel()
                .Select()
                .InnerJoin(new Guitar(), RetrieveMode.NonRetrieve)
@@ -130,7 +129,6 @@ namespace BusinessLogic.Providers {
                .Where(Guitar.Fields.Id, PredicateCondition.Equal, guitarId)
                .GetData()
                .ToList();
-
             // на случай поиска gibson superstrat-tx-hzchto
             if (!guitarWithModelData.Any()) {
                 return false;
@@ -151,6 +149,49 @@ namespace BusinessLogic.Providers {
             .Set(GuitarWithModel.Fields.Model, guitarWithModel.Model)
             .Where(GuitarWithModel.Fields.Id, PredicateCondition.Equal, guitarSummary.ModelId)
             .ExecuteScalar();
+
+            return true;
+        }
+
+        /// <summary>
+        /// сохраняет новую гитару в базу
+        /// </summary>
+        /// <param name="guitarSummary"></param>
+        /// <returns></returns>
+        public bool SaveNewGuitar(GuitarSummaryTransportType guitarSummary) {
+            if (guitarSummary.ImageUrl == null) {
+                return false;
+            }
+            var guitarIdData = new Guitar()
+                .Select()
+                .Where(Guitar.Fields.BrandId, PredicateCondition.Equal, guitarSummary.BrandId)
+                .Where(Guitar.Fields.FormId, PredicateCondition.Equal, guitarSummary.FormId)
+                .GetData()
+                .ToList();
+            if (!guitarIdData.Any()) {
+                return false;
+            }
+            var guitarId = guitarIdData.First().Id;
+            var guitarWithModelData = new GuitarWithModel()
+               .Select()
+               .InnerJoin(new Guitar(), RetrieveMode.NonRetrieve)
+               .On(GuitarWithModel.Fields.GuitarId, PredicateCondition.Equal, Guitar.Fields.Id)
+               .Where(GuitarWithModel.Fields.Id, PredicateCondition.Equal, guitarSummary.ModelId)
+               .Where(Guitar.Fields.Id, PredicateCondition.Equal, guitarId)
+               .GetData()
+               .ToList();
+            // на случай добавления gibson superstrat-tx-hzchto
+            if (!guitarWithModelData.Any()) {
+                return false;
+            }
+            var guitarWithModel = guitarWithModelData.First();
+
+            new GuitarWithColor() {
+                 GuitarWithModelId = guitarWithModel.Id,
+                 ColorFullId = guitarSummary.ColorFullId,
+                 PhotoUrl = guitarSummary.ImageUrl,
+                 IsGreatQualityPhoto = guitarSummary.IsGreatQualityPhoto
+            }.Insert();
 
             return true;
         }
