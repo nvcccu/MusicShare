@@ -57,7 +57,9 @@ insert into Form values
 (3, 'Explorer', '../../ImgStore/Form/Explorer.jpg'),
 (4, 'Les Paul', '../../ImgStore/Form/Les_Paul.jpg'),
 (5, 'RandyRhoads', '../../ImgStore/Form/RandyRhoads.jpg'),
-(6, 'Flying V', '../../ImgStore/Form/Flying_V.jpg');
+(6, 'Flying V', '../../ImgStore/Form/Flying_V.jpg'),
+(7, 'SG', '../../ImgStore/Form/SG.jpg'),
+(6, 'PRS Santana', '../../ImgStore/Form/PRS_Santana.jpg')
 
 insert into ColorSimple values
 (1, 'Black', '../../ImgStore/ColorSimple/Black.jpg'),
