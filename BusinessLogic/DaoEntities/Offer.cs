@@ -69,7 +69,7 @@ namespace BusinessLogic.DaoEntities {
         /// <summary>
         /// 
         /// </summary>
-        public bool Available { get; set; }
+        public bool? Available { get; set; }
             
         /// <summary>
         /// 
