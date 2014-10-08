@@ -11,3 +11,5 @@ drop table if exists News;
 drop table if exists SearchHint;
 drop table if exists Shop;
 drop table if exists UserActionLog;
+drop table if exists Offer;
+drop table if exists OfferCategory;

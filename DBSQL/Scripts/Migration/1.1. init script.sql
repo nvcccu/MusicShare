@@ -161,6 +161,37 @@ WITH (
 ALTER TABLE UserActionLog
   OWNER TO postgres;
 
+CREATE TABLE Offer (
+  id bigserial NOT NULL,
+  available boolean,
+  price int,
+  categoryid bigint,
+  picture character varying(1024),
+  store boolean,
+  pickup boolean,
+  delivery boolean,
+  name character varying(128),
+  description character varying(1024),
+  CONSTRAINT pk_Offer PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Offer
+  OWNER TO postgres;
+
+CREATE TABLE OfferCategory (
+  id bigserial NOT NULL,
+  parentId bigint,
+  name character varying(128),
+  CONSTRAINT pk_OfferCategory PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE OfferCategory
+  OWNER TO postgres;
+
 
 /*
 CREATE TABLE SchemaVersion (

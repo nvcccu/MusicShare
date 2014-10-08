@@ -1,94 +1,70 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
+using BusinessLogic.DaoEntities;
 using BusinessLogic.Helpers;
+using Castle.Core.Internal;
+using DAO.Enums;
 
 namespace BusinessLogic.Parser {
-    public class DynatoneParser : ParserBase {
-        private const string FILE_NAME = "D:\\Dynatone.xml";
-        private string _xml;
-        private readonly Dictionary<long, string> _brands = new Dictionary<long, string>();
-
-        protected override int GetBrand(object obj)
-        {
-            var xml = (XmlNode)obj;
-            var brandId = Convert.ToInt64(xml["categoryId"].InnerText);
-//            foreach (var brand in BrandHelper.Brands) {
-//                if (brandId == brand.Value) {
-//                    return brand.Key;
-//                }
-//            }
-            return -1;
+    public class DynatoneParser {
+        private XmlDocument ReadXml() {
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load("D:\\Dynatone.xml");
+            return xmlDoc;
         }
 
-        protected override int GetColor(object obj)
-        {
-            var xml = (XmlNode)obj;
-            var source = xml["name"].InnerText;
-            var potentialColorStart = source.IndexOf("/", StringComparison.Ordinal);
-            if (potentialColorStart > -1) {
-                source = source.Substring(potentialColorStart);
-            }
-            foreach (var color in ColorHelper.Colors) {
-                if (source.IndexOf(color.Value, StringComparison.OrdinalIgnoreCase) > -1) {
-                    return color.Key;
+        private void ParseCategory() {
+            var xmlDoc = ReadXml();
+            var categoriesXml = xmlDoc.GetElementsByTagName("category");
+            for (var i = 0; i < categoriesXml.Count; i++) {
+                var category = categoriesXml[i];
+                if (category.Attributes != null) {
+                    long id = Convert.ToInt64(category.Attributes["id"].InnerText);
+                    if (!StoreHelper.Instance.AllOfferCategories.Any(c => c.Id == id)) {
+                        var parentIdAttr = (category.Attributes["parentId"] != null)
+                            ? category.Attributes["parentId"].InnerText
+                            : string.Empty;
+                        long? parentId = null;
+                        if (!string.IsNullOrEmpty(parentIdAttr)) {
+                            parentId = Convert.ToInt64(parentIdAttr);
+                        }
+                        new OfferCategory {
+                            Id = id,
+                            ParentId = parentId,
+                            Name = category.InnerText
+                        }.Insert();
+                    } else {
+                        var curCategory = StoreHelper.Instance.AllOfferCategories.First(c => c.Id == id);
+                        var parentIdAttr = (category.Attributes["parentId"] != null)
+                            ? category.Attributes["parentId"].InnerText
+                            : string.Empty;
+                        long? parentId = null;
+                        if (!string.IsNullOrEmpty(parentIdAttr)) {
+                            parentId = Convert.ToInt64(parentIdAttr);
+                        }
+                        var name = category.InnerText;
+                        if (curCategory.ParentId != parentId
+                            || curCategory.Name != name) {
+                            new OfferCategory()
+                                .Update()
+                                .Set(OfferCategory.Fields.ParentId, parentId)
+                                .Set(OfferCategory.Fields.Name, name)
+                                .Where(OfferCategory.Fields.Id, PredicateCondition.Equal, id)
+                                .ExecuteScalar();
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
-        /// <summary>
-        /// так жить нельзя
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        protected override int GetForm(object obj)
-        {
-            return -1;
-        }
-
-        protected override string GetImage(object obj) {
-            var xml = (XmlNode)obj;
-            return xml["picture"].InnerText;
-        }
-
-        protected override void GetData() {
-            Parse();
-        }
-
-        /// <summary>
-        /// получает данные откуда-то там
-        /// </summary>
-        public void GetSource() {
-            _xml = "D:\\Dynatone.xml";
+        private void ParseOffer() {
+            
         }
 
         public void Parse() {
-            GetSource();
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load("D:\\Dynatone.xml");
-            var categoriesXml = xmlDoc.GetElementsByTagName("category");
-            int guitars = 0;
-            for (var i = 0; i < categoriesXml.Count; i++) {
-                if (categoriesXml[i].InnerXml == "Электрогитары") {
-                    guitars = Convert.ToInt32(categoriesXml[i].Attributes["id"].InnerText);
-                }
-            }
-            for (var i = 0; i < categoriesXml.Count; i++) {
-                var category = categoriesXml[i];
-                if (category.Attributes.Count > 1 &&
-                    Convert.ToInt64(category.Attributes["parentId"].InnerText) == guitars) {
-                    _brands.Add(Convert.ToInt32(categoriesXml[i].Attributes["id"].InnerText),
-                        categoriesXml[i].InnerText);
-                }
-            }
-            var productsXml = xmlDoc.GetElementsByTagName("offer");
-            for (var i = 0; i < productsXml.Count; i++) {
-                XmlNode productNode = productsXml[i];
-                if (_brands.ContainsKey(Convert.ToInt64(productNode["categoryId"].InnerText))) {
-                    Items.Add(productNode);
-                }
-            }
+            ParseCategory();
+            ParseOffer();
         }
     }
 }

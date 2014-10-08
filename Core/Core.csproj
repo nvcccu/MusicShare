@@ -55,6 +55,8 @@
     <Compile Include="TransportTypes\GuitarWithColorTransportType.cs" />
     <Compile Include="TransportTypes\GuitarWithModelTransportType.cs" />
     <Compile Include="TransportTypes\NewsTransportType.cs" />
+    <Compile Include="TransportTypes\OfferCategoryTransportType.cs" />
+    <Compile Include="TransportTypes\OfferTransportType.cs" />
     <Compile Include="TransportTypes\SearchHintTransportType.cs" />
     <Compile Include="TransportTypes\ShopTransportType.cs" />
     <Compile Include="TransportTypes\UserActionLogTransportType.cs" />

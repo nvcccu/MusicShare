@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using BusinessLogic.DaoEntities;
 
-namespace BusinessLogic.Parser {
-    public abstract class ParserBase {
+namespace BusinessLogic.ParserOld {
+    public abstract class ParserBaseOld {
         protected List<object> Items;
 
-        protected ParserBase() {
+        protected ParserBaseOld() {
             Items = new List<object>();
             GetData();
             ActualizeItems();

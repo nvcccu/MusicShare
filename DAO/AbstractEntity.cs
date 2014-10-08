@@ -92,11 +92,11 @@ namespace DAO {
             for (var i = 1; i < properties.Count() - 1; i++) {
                 property = properties[i];
                 propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
-                _query += propValue.IsNullOrEmpty() ? "NULL, " : ("'" + propValue + "', ");
+                _query += propValue.IsNullOrEmpty() ? "NULL, " : ("'" + propValue.Replace("'", "''") + "', ");
             }
             property = properties[properties.Count() - 1];
             propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
-            _query += propValue.IsNullOrEmpty() ? "NULL" : ("'" + propValue + "'");
+            _query += propValue.IsNullOrEmpty() ? "NULL" : ("'" + propValue.Replace("'", "''") + "'");
             _query += ")";
             Console.WriteLine(_query);
             _dbAdapter.Command = new NpgsqlCommand(_query, _dbAdapter.Connection);
