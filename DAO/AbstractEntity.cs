@@ -76,7 +76,7 @@ namespace DAO {
         }
 
         /// <summary>
-        /// Сохраняет сущность в базу
+        /// Сохраняет сущность в базу БЕЗ АЙДИШКИ
         /// </summary>
         public void Insert() {
             PropertyInfo property;
@@ -90,6 +90,40 @@ namespace DAO {
             _query += "VALUES (";
             string propValue;
             for (var i = 1; i < properties.Count() - 1; i++) {
+                property = properties[i];
+                propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
+                _query += propValue.IsNullOrEmpty() ? "NULL, " : ("'" + propValue.Replace("'", "''") + "', ");
+            }
+            property = properties[properties.Count() - 1];
+            propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
+            _query += propValue.IsNullOrEmpty() ? "NULL" : ("'" + propValue.Replace("'", "''") + "'");
+            _query += ")";
+            Console.WriteLine(_query);
+            _dbAdapter.Command = new NpgsqlCommand(_query, _dbAdapter.Connection);
+            _dbAdapter.OpenConnection();
+            try {
+                _dbAdapter.Command.ExecuteScalar();
+            } catch (Exception ex) {
+                Console.WriteLine(ex);
+            }
+            _dbAdapter.CloseConnection();
+        }
+
+        /// <summary>
+        /// Сохраняет сущность в базу С АЙДИШКОЙ
+        /// </summary>
+        public void Save() {
+            PropertyInfo property;
+            var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            _query = "INSERT INTO " + TableName + " (";
+            for (var i = 0; i < properties.Count() - 1; i++) {
+                property = properties[i];
+                _query += property.Name + ", ";
+            }
+            _query += properties[properties.Count() - 1].Name + ") ";
+            _query += "VALUES (";
+            string propValue;
+            for (var i = 0; i < properties.Count() - 1; i++) {
                 property = properties[i];
                 propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
                 _query += propValue.IsNullOrEmpty() ? "NULL, " : ("'" + propValue.Replace("'", "''") + "', ");

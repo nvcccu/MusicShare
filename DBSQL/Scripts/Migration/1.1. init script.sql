@@ -170,7 +170,7 @@ CREATE TABLE Offer (
   store boolean,
   pickup boolean,
   delivery boolean,
-  name character varying(128),
+  name character varying(256),
   description character varying(1024),
   CONSTRAINT pk_Offer PRIMARY KEY (id)
 )

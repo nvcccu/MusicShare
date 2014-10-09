@@ -7,14 +7,15 @@ using DAO.Enums;
 
 namespace BusinessLogic.Parser {
     public class DynatoneParser {
-        private XmlDocument ReadXml() {
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load("D:\\Dynatone.xml");
-            return xmlDoc;
+        private XmlDocument _xmlDoc;
+
+        private void ReadXml() {
+            _xmlDoc = new XmlDocument();
+            _xmlDoc.Load("D:\\Dynatone.xml");
         }
 
         private void ParseCategory() {
-            var xmlDoc = ReadXml();
+            var xmlDoc = _xmlDoc;
             var categoriesXml = xmlDoc.GetElementsByTagName("category");
             for (var i = 0; i < categoriesXml.Count; i++) {
                 var category = categoriesXml[i];
@@ -32,7 +33,7 @@ namespace BusinessLogic.Parser {
                             Id = id,
                             ParentId = parentId,
                             Name = category.InnerText
-                        }.Insert();
+                        }.Save();
                     } else {
                         var curCategory = StoreHelper.Instance.AllOfferCategories.First(c => c.Id == id);
                         var parentIdAttr = (category.Attributes["parentId"] != null)
@@ -58,7 +59,7 @@ namespace BusinessLogic.Parser {
         }
 
         private void ParseOffer() {
-            var xmlDoc = ReadXml();
+            var xmlDoc =_xmlDoc;
             var offersXml = xmlDoc.GetElementsByTagName("offer");
             for (var i = 0; i < offersXml.Count; i++) {
                 try {
@@ -74,10 +75,10 @@ namespace BusinessLogic.Parser {
                     var nameData = offer["name"];
                     var descriptionData = offer["description"];
 
-                    var id = idData != null ? Convert.ToInt32(idData) : -1;
+                    var id = idData != null ? Convert.ToInt64(idData) : -1;
                     var available = !string.IsNullOrEmpty(availableData) && Convert.ToBoolean(availableData);
-                    var price = priceData != null ? Convert.ToInt32(priceData.InnerText) : -1;
-                    var categoryId = categoryIdData != null ? Convert.ToInt32(categoryIdData.InnerText) : -1;
+                    var price = priceData != null ? Convert.ToInt32(priceData.InnerText.Substring(0, priceData.InnerText.IndexOf('.'))) : -1;
+                    var categoryId = categoryIdData != null ? Convert.ToInt64(categoryIdData.InnerText) : -1;
                     var picture = pictureData != null ? pictureData.InnerText : string.Empty;
                     var store = storeData != null && Convert.ToBoolean(storeData.InnerText);
                     var pickup = pickupData != null && Convert.ToBoolean(pickupData.InnerText);
@@ -96,7 +97,7 @@ namespace BusinessLogic.Parser {
                             Delivery = delivery,
                             Name = name,
                             Description = description
-                        }.Insert();
+                        }.Save();
                     } else {
                         var curOffer = StoreHelper.Instance.AllOffers.First(c => c.Id == id);
                         if (curOffer.Available != available || curOffer.Price != price || curOffer.CategoryId != categoryId ||
@@ -123,6 +124,7 @@ namespace BusinessLogic.Parser {
         }
 
         public void Parse() {
+            ReadXml();
             ParseCategory();
             ParseOffer();
         }
