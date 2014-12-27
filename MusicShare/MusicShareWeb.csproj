@@ -123,6 +123,7 @@
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\PlacardController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -132,6 +133,7 @@
     <Compile Include="Models\PromoModel.cs" />
     <Compile Include="Models\GuitarTotalDataModel.cs" />
     <Compile Include="Models\SearchResultModel.cs" />
+    <Compile Include="Models\Store\CategoriesModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -144,8 +146,10 @@
     <Content Include="Content\Css\PromoBlock\PromoBlock.css" />
     <Content Include="Content\Css\Search\Offers.css" />
     <Content Include="Content\Image\1.jpg" />
+    <Content Include="Content\Image\header-img.png" />
     <Content Include="Content\Image\index.jpg" />
     <Content Include="Content\Image\list.png" />
+    <Content Include="Content\Image\logo.png" />
     <Content Include="Content\Script\CommonScripts\Log.js" />
     <Content Include="Content\Script\CommonScripts\MusicShare.js" />
     <Content Include="Content\Script\jquery.form.js" />
@@ -280,6 +284,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DerzkieSchi\Colors.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Store\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Store\Category.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

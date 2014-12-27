@@ -3,7 +3,8 @@
         ISearchProvider,
         IUserProvider,
         ILogProvider,
-        IDerzkieSchiProvider {
+        IDerzkieSchiProvider,
+        IStoreProvider {
         void Initial();
     }
 }

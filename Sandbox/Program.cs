@@ -152,12 +152,40 @@ namespace Sandbox {
                 ds.Where(field, oper, value);
             }
         }
+
+        private static void A() {
+            var strs = File.ReadAllLines(@"d:\cat1.txt");
+            foreach (var str in strs) {
+                var pair = str.Split(',');
+                new OfferCategory {
+                    Id = Convert.ToInt64(pair.First()),
+                    ParentId = Convert.ToInt64(pair.Last())
+                }.Save();
+            }
+        }
+
+        private static void B() {
+            var strs = File.ReadAllLines(@"d:\cat2.txt");
+            foreach (var str in strs) {
+                var pair = str.Split(',');
+                new OfferCategory()
+                    .Update()
+                    .Set(OfferCategory.Fields.Name, pair.Last())
+                    .Where(OfferCategory.Fields.Id, PredicateCondition.Equal, Convert.ToInt64(pair.First()))
+                    .ExecuteScalar();
+            }
+        }
        
         private static void Main(string[] args) {
             // НЕ УДАЛЯТЬ
             ConfigHelper.LoadXml(false);
             Connector.ConnectionString = ConfigHelper.FirstTagWithPropertyText("db-connection", "db-name", "master");
             // НЕ УДАЛЯТЬ
+
+            B();
+            Console.WriteLine("end");
+            Console.ReadKey();
+            return;
 
             new DynatoneParser().Parse();
 

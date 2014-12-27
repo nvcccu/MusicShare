@@ -12,6 +12,7 @@ namespace BusinessLogic {
         private readonly UserProvider _userProvider = new UserProvider();
         private readonly LogProvider _logProvider = new LogProvider();
         private readonly DerzkieSchiProvider _derzkieSchiProvider = new DerzkieSchiProvider();
+        private readonly StoreProvider _storeProvider = new StoreProvider();
 
         public BusinessLogic() {
             Initial();
@@ -96,6 +97,10 @@ namespace BusinessLogic {
 
         public void AddUserAction(long guestId, ActionId actionId, long? target = null) {
             _logProvider.AddUserAction(guestId, actionId, target);
+        }
+
+        public List<OfferCategoryTransportType> GetAllOfferCategories() {
+            return _storeProvider.GetAllOfferCategories();
         }
     }
 }
