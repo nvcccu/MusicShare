@@ -15,16 +15,13 @@
                     logUrl: '@Url.Action("LogAction", "Log")'
                 });
             });
-            
         </script>
     </head>
     <body>
         <div class="all-space">
             @Html.Partial("Header")
-            <div class="usefull-space">
-                <div class="content">
-                    @RenderBody()
-                </div>
+            <div class="content">
+                @RenderBody()
             </div>
             @Html.Partial("Footer")
         </div>

@@ -1,5 +1,5 @@
 ﻿namespace Core.TransportTypes {
-    public class FormTransportType {
+    public class ColorTransportType {
         /// <summary>
         /// 
         /// </summary>

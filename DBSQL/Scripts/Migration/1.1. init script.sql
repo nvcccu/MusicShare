@@ -35,16 +35,42 @@ WITH (
 ALTER TABLE ColorSimple
   OWNER TO postgres;
 
+CREATE TABLE Color (
+  Id serial NOT NULL,
+  Name character varying(64) NOT NULL,
+  ImagePreview character varying(1024) NOT NULL,
+  CONSTRAINT pk_Color PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Color
+  OWNER TO postgres;
+
 CREATE TABLE Form (
-  id serial NOT NULL,
-  name character varying(64) NOT NULL,
-  image character varying(1024) NOT NULL,
+  Id serial NOT NULL,
+  Name character varying(64) NOT NULL,
+  ImagePreview character varying(1024) NOT NULL,
   CONSTRAINT pk_Form PRIMARY KEY (id)
 )
 WITH (
   OIDS=FALSE
 );
 ALTER TABLE Form
+  OWNER TO postgres;
+
+CREATE TABLE FormWithColor (
+  Id serial NOT NULL,
+  FormId int NOT NULL,
+  ColorId int NOT NULL,
+  Name character varying(64) NOT NULL,
+  Image character varying(1024) NOT NULL,
+  CONSTRAINT pk_FormWithColor PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE FormWithColor
   OWNER TO postgres;
 
 CREATE TABLE Guest (

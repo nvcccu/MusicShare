@@ -12,12 +12,12 @@
         });
     });
 
-    this.LogAction = function(actioId, target) {
+    this.LogAction = function(actinId, target) {
         $.ajax({
             url: that.logUrl,
             type: 'POST',
             data: {
-                actionId: actioId,
+                actionId: actinId,
                 target: target
             }
         });

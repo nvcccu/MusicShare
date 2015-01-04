@@ -85,12 +85,22 @@ namespace BusinessLogic.Providers {
                 .ToList();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<FormTransportType> GetAllForm() {
+        public List<FormTransportType> GetAllForms() {
             return new Form()
+                .Select()
+                .GetData()
+                .Select(b => b.ToTransport())
+                .ToList();
+        }
+        public List<ColorTransportType> GetAllColors() {
+            return new Color()
+                .Select()
+                .GetData()
+                .Select(b => b.ToTransport())
+                .ToList();
+        }
+        public List<FormWithColorTransportType> GetAllFormsWithColor() {
+            return new FormWithColor()
                 .Select()
                 .GetData()
                 .Select(b => b.ToTransport())

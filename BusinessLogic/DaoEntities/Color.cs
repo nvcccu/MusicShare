@@ -4,16 +4,17 @@ using DAO;
 using DAO.Attributes;
 
 namespace BusinessLogic.DaoEntities {
-    public class Form : AbstractEntity<Form> {
-        public Form(string tableName) : base(tableName) {}
+    public class Color : AbstractEntity<Color> {
+        public Color(string tableName) : base(tableName) {}
 
-        public Form() : base("Form") {}
+        public Color() : base("Color") { }
 
         public enum Fields {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof (Int32))] Id,
+            [DbType(typeof(Int32))]
+            Id,
 
             /// <summary>
             /// 
@@ -23,8 +24,7 @@ namespace BusinessLogic.DaoEntities {
             /// <summary>
             /// 
             /// </summary>
-            [DbType(typeof(string))]
-            ImagePreview,
+            [DbType(typeof (string))] ImagePreview,
         }
 
         /// <summary>
@@ -42,8 +42,8 @@ namespace BusinessLogic.DaoEntities {
         /// </summary>
         public string ImagePreview { get; set; }
 
-        public FormTransportType ToTransport() {
-            return new FormTransportType {
+        public ColorTransportType ToTransport() {
+            return new ColorTransportType {
                 Id = Id,
                 Name = Name,
                 ImagePreview = ImagePreview

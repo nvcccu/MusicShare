@@ -66,11 +66,15 @@ namespace BusinessLogic {
         public List<BrandTransportType> GetAllBrand() {
             return _searchProvider.GetAllBrand();
         }
-
-        public List<FormTransportType> GetAllForm() {
-            return _searchProvider.GetAllForm();
+        public List<FormTransportType> GetAllForms() {
+            return _searchProvider.GetAllForms();
         }
-
+        public List<ColorTransportType> GetAllColors() {
+            return _searchProvider.GetAllColors();
+        }
+        public List<FormWithColorTransportType> GetAllFormsWithColor() {
+            return _searchProvider.GetAllFormsWithColor();
+        }
         public List<ColorSimpleTransportType> GetAllSimpleColors() {
             return _searchProvider.GetAllSimpleColors();
         }

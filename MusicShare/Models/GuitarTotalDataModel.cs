@@ -43,7 +43,7 @@ namespace MusicShareWeb.Models {
 
         public GuitarTotalDataModel() {
             Brands = ServiceManager<IBusinessLogic>.Instance.Service.GetAllBrand();
-            Forms = ServiceManager<IBusinessLogic>.Instance.Service.GetAllForm();
+            Forms = ServiceManager<IBusinessLogic>.Instance.Service.GetAllForms();
             SimpleColors = ServiceManager<IBusinessLogic>.Instance.Service.GetAllSimpleColors();
             FullColors = ServiceManager<IBusinessLogic>.Instance.Service.GetAllFullColors();
             SearchHints = ServiceManager<IBusinessLogic>.Instance.Service.GetSearchHints();

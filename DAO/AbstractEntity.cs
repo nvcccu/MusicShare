@@ -190,6 +190,7 @@ namespace DAO {
         /// Получение данных из таблицы
         /// todo: запилить возможность получения только нужных полей, указание полей поместить в Select()
         /// todo: продумать, как вытащить логику обращения к базе из этого метода
+        /// todo: AHTUNG! АТТЕНШН! Последовательность столбцов в базе должна совпадать с послдеовательностью филдов в DaoEntity'е. ПОФИКСИТЬ!!
         /// </summary>
         /// <returns></returns>
         public IEnumerable<T> GetData() {
@@ -202,12 +203,12 @@ namespace DAO {
             _dbAdapter.Command = new NpgsqlCommand(_query, _dbAdapter.Connection);
             try {
                 _dbAdapter.DataReader = _dbAdapter.Command.ExecuteReader();
+                int k = 0;
                 while (_dbAdapter.DataReader.Read()) {
                     var cur = new T();
                     var properties = typeof (T).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-                    int i = 0;
-                    int j = 0;
-                    int k = 0;
+                    int i;
+                    int j;
                     for (i = 0; i < properties.Count(); i++) {
                         var val = _dbAdapter.DataReader.GetValue(i);
                         if (properties[i] != null && !(val is DBNull)) {

@@ -51,15 +51,32 @@ insert into Brand values
 (27, 'Washburn', '../../ImgStore/BrandLogo/Washburn.jpg'),
 (28, 'Zombie', '../../ImgStore/BrandLogo/Zombie.jpg');
 
+
+insert into Color values
+(1, 'Белый', '/ImgStore/Color/White.jpg'),
+(2, 'Черный', '/ImgStore/Color/Black.jpg'),
+(3, 'Красный', '/ImgStore/Color/Red.jpg');
+
 insert into Form values
-(1, 'Stratocaster', '../../ImgStore/Form/Stratocaster.jpg'),
-(2, 'Telecaster', '../../ImgStore/Form/Telecaster.jpg'),
-(3, 'Explorer', '../../ImgStore/Form/Explorer.jpg'),
-(4, 'Les Paul', '../../ImgStore/Form/Les_Paul.jpg'),
-(5, 'RandyRhoads', '../../ImgStore/Form/RandyRhoads.jpg'),
-(6, 'Flying V', '../../ImgStore/Form/Flying_V.jpg'),
-(7, 'SG', '../../ImgStore/Form/SG.jpg'),
-(6, 'PRS Santana', '../../ImgStore/Form/PRS_Santana.jpg')
+(1, 'Stratocaster', '/ImgStore/Form/Stratocaster.jpg'),
+(2, 'Telecaster', '/ImgStore/Form/Telecaster.jpg'),
+(3, 'Explorer', '/ImgStore/Form/Explorer.jpg'),
+(4, 'Les Paul', '/ImgStore/Form/Les_Paul.jpg'),
+(5, 'RandyRhoads', '/ImgStore/Form/RandyRhoads.jpg'),
+(6, 'Flying V', '/ImgStore/Form/Flying_V.jpg'),
+(7, 'SG', '/ImgStore/Form/SG.jpg'),
+(8, 'PRS Santana', '/ImgStore/Form/PRS_Santana.jpg');
+
+insert into FormWithColor values
+(1, 1, 3, 'Red Stratocaster', '/ImgStore/FormWithColor/Stratocaster_Red.jpg'),
+(2, 1, 1, 'White Stratocaster', '/ImgStore/FormWithColor/Stratocaster_White.jpg'),
+(3, 1, 2, 'Black Stratocaster', '/ImgStore/FormWithColor/Stratocaster_Black.jpg'),
+(4, 3, 3, 'Red Explorer', '/ImgStore/FormWithColor/Explorer_Red.jpg'),
+(5, 3, 1, 'White Explorer', '/ImgStore/FormWithColor/Explorer_White.jpg'),
+(6, 3, 2, 'Black Explorer', '/ImgStore/FormWithColor/Explorer_Black.jpg'),
+(7, 5, 3, 'Red RandyRhoads', '/ImgStore/FormWithColor/RandyRhoads_Red.jpg'),
+(8, 5, 1, 'White RandyRhoads', '/ImgStore/FormWithColor/RandyRhoads_White.jpg'),
+(9, 5, 2, 'Black RandyRhoads', '/ImgStore/FormWithColor/RandyRhoads_Black.jpg');
 
 insert into ColorSimple values
 (1, 'Black', '../../ImgStore/ColorSimple/Black.jpg'),
