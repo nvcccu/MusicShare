@@ -1,20 +1,22 @@
-﻿@model MusicShareWeb.Models.DesignerModel
+﻿@using Newtonsoft.Json;
+@model MusicShareWeb.Models.DesignerModel
 
 @{
     Layout = "../Shared/Layout.cshtml";
 }
-<div class="designer">
-    @Html.Partial("Navigation/ChooseInstrument")
-@*    <div id="" class="designer__navigation">*@
-@*        <div class="designer-nav__cur-param">*@
-@*            Настройка <span class="designer-nav__cur-param-name">формы</span>*@
-@*            <div class="designer-nav__drop-param"></div>*@
-@*        </div>*@
-@*        <div class="designer-nav__param-category">Цвет</div>*@
-@*        <div class="designer-nav__param-category designer-nav__param-category--active">Форма</div>*@
-@*        <div class="designer-nav__param-category">Материал</div>*@
-@*        <input type="button" class="designer-nav__submit" value="Сохранить" />*@
-@*    </div>*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ko.applyBindings(getDesigner(   @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.Name)),
+                                        @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.Forms)),
+                                        @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.Colors)),
+                                        @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.FormsWithColor))), document.getElementById("Designer"));
+    });
+</script>
+
+<div id="Designer" class="designer">
+@*    @Html.Partial("Navigation/ChooseInstrument")*@
+    @Html.Partial("Navigation/SubparameterNavigation")
     <div class="designer__form">
         <div class="designer-form__param-value">
             <img class="designer-form__param-img" src="/Content/Image/form.png"/>

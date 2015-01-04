@@ -7,7 +7,7 @@ namespace MusicShareWeb.Models {
 
         public DesignerModel() {
             FormParameter = new FormParameter {
-                Name = "корпуса",
+                Name = "корпус",
                 Forms = ServiceManager<IBusinessLogic>.Instance.Service.GetAllForms(),
                 Colors = ServiceManager<IBusinessLogic>.Instance.Service.GetAllColors(),
                 FormsWithColor = ServiceManager<IBusinessLogic>.Instance.Service.GetAllFormsWithColor()
