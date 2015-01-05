@@ -309,6 +309,12 @@
   <ItemGroup>
     <Content Include="Views\Designer\Navigation\SubparameterNavigation.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Designer\Form\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Designer\Form\SubparameterValues.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -15,28 +15,9 @@
 </script>
 
 <div id="Designer" class="designer">
-@*    @Html.Partial("Navigation/ChooseInstrument")*@
+    @Html.Partial("Navigation/ChooseInstrument")
     @Html.Partial("Navigation/SubparameterNavigation")
-    <div class="designer__form">
-        <div class="designer-form__param-value">
-            <img class="designer-form__param-img" src="/Content/Image/form.png"/>
-            <div class="designer-form__param-name">Les Paul</div>
-        </div>
-        <div class="designer-form__param-value">
-            <img class="designer-form__param-img" src="/Content/Image/form.png"/>
-            <div class="designer-form__param-name">Les Paul</div>
-        </div>
-        <div class="designer-form__param-value">
-            <img class="designer-form__param-img" src="/Content/Image/form.png"/>
-            <div class="designer-form__param-name">Les Paul</div>
-        </div>
-        <div class="designer-form__param-value">
-            <img class="designer-form__param-img" src="/Content/Image/form.png"/>
-            <div class="designer-form__param-name">Les Paul</div>
-        </div>
-        <div class="designer-form__param-value">
-            <img class="designer-form__param-img" src="/Content/Image/form.png"/>
-            <div class="designer-form__param-name">Les Paul</div>
-        </div>
-    </div>
+
+    @Html.Partial("Form/Overview")
+    @Html.Partial("Form/SubparameterValues")
 </div>

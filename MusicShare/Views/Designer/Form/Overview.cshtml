@@ -1,0 +1,9 @@
+﻿<div id="Overview" class="designer__form" data-bind="visible: subparameterNavigationModel.isOverviewMode() == true">
+    <div data-bind="foreach: subparameterNavigationModel.parameters">
+        <div data-bind="text: name, click: $root.subparameterNavigationModel.setEditParam"></div>
+    </div>
+
+    <span data-bind="">Brand</span>
+    <img id="FormOverview" data-bind="attr: {src: $root.subparameterNavigationModel.parameters[0].selectedImage }" />
+    <img id="BridgeOverview" src="" />
+</div>
