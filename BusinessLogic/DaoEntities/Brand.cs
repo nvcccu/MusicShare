@@ -10,38 +10,16 @@ namespace BusinessLogic.DaoEntities {
         public Brand() : base("Brand") {}
 
         public enum Fields {
-            /// <summary>
-            /// 
-            /// </summary>
             [DbType(typeof (Int32))]
             Id,
-
-            /// <summary>
-            /// 
-            /// </summary>
             [DbType(typeof (string))]
             Name,
-
-            /// <summary>
-            /// 
-            /// </summary>
             [DbType(typeof (string))]
             Logo,
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public int Id { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public string Name { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public string Logo { get; set; }
 
         public BrandTransportType ToTransport() {

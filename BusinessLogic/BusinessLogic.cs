@@ -75,6 +75,9 @@ namespace BusinessLogic {
         public List<FormWithColorTransportType> GetAllFormsWithColor() {
             return _searchProvider.GetAllFormsWithColor();
         }
+        public List<BridgeTransportType> GetAllBridges() {
+            return _searchProvider.GetAllBridges();
+        }
         public List<ColorSimpleTransportType> GetAllSimpleColors() {
             return _searchProvider.GetAllSimpleColors();
         }

@@ -1,7 +1,7 @@
 ﻿namespace Core.TransportTypes {
-    public class ColorSimpleTransportType {
+    public class BridgeTransportType {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Image { get; set; }
+        public string ImagePreview { get; set; }
     }
 }

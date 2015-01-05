@@ -1,4 +1,4 @@
-﻿getDesigner = function(name, forms, colors, formsWithColor) {
+﻿getDesigner = function(name, forms, colors, formsWithColor, bridgeParamName, bridges) {
     var model = {};
   
     var getChooseInstrumentModel = function() {
@@ -37,6 +37,18 @@
         }
         return images;
     };
+    var getBridgeImages = function (values) {
+        var images = [];
+        for (var i = 0; i < values.length; i++) {
+            var value = values[i];
+            images.push({
+                id: value.Id,
+                image: value.ImagePreview,
+            });
+        }
+        return images;
+
+    };
     var getSubparameterNavigationModel = function () {
         var model = {};
 
@@ -71,10 +83,31 @@
             model.parameters.push(formParameter);
             model.currentEditingParameter(model.parameters[0]);
             model.currentEditingSubparameter(model.parameters[0].subparameters[0]);
+
+            var bridgeParameter = {};
+            bridgeParameter.name = bridgeParamName;
+            bridgeParameter.subparameters = [];
+            var bridge_bridge = getSubparameter("Бридж", bridges);
+            bridgeParameter.subparameters.push(bridge_bridge);
+            bridgeParameter.images = getBridgeImages(bridges);
+            bridgeParameter.selectedImage = ko.computed(function () {
+                var bridgeId = bridgeParameter.subparameters[0].selectedId();
+                if (bridgeId == 0) {
+                    return null;
+                }
+                return bridgeParameter.images.filter(function (i) {
+                    return i.id == bridgeId;
+                })[0].image;
+            });
+            model.parameters.push(bridgeParameter);
         };
         model.setEditParam = function(parameter) {
             model.currentEditingParameter(parameter);
+            model.currentEditingSubparameter(parameter.subparameters[0]);
             model.isOverviewMode(false);
+        };
+        model.backToOverview = function() {
+            model.isOverviewMode(true);
         };
         model.setEditSubparam = function (subparameter) {
             model.currentEditingSubparameter(subparameter);

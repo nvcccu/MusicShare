@@ -131,6 +131,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\DerzkieSchi\GuitarsModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
+    <Compile Include="Models\Designer\BridgeParameter.cs" />
     <Compile Include="Models\Designer\FormParameter.cs" />
     <Compile Include="Models\DropDownModel.cs" />
     <Compile Include="Models\PromoModel.cs" />

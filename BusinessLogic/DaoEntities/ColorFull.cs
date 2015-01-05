@@ -10,47 +10,19 @@ namespace BusinessLogic.DaoEntities {
         public ColorFull() : base("ColorFull") { }
 
         public enum Fields {
-            /// <summary>
-            /// 
-            /// </summary>
             [DbType(typeof(Int32))]
             Id,
-
-            /// <summary>
-            /// 
-            /// </summary>
             [DbType(typeof(Int32))]
             ColorSimpleId,
-
-            /// <summary>
-            /// 
-            /// </summary>
-            [DbType(typeof (string))] Code,
-
-            /// <summary>
-            /// 
-            /// </summary>
-            [DbType(typeof (string))] Name,
+            [DbType(typeof (string))]
+            Code,
+            [DbType(typeof (string))]
+            Name,
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public int Id { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public int ColorSimpleId { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public string Code { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public string Name { get; set; }
 
         public ColorFullTransportType ToTransport() {

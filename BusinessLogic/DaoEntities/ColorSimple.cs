@@ -10,38 +10,16 @@ namespace BusinessLogic.DaoEntities {
         public ColorSimple() : base("ColorSimple") { }
 
         public enum Fields {
-            /// <summary>
-            /// 
-            /// </summary>
             [DbType(typeof(Int32))]
             Id,
-
-            /// <summary>
-            /// 
-            /// </summary>
             [DbType(typeof (string))]
             Name,
-
-            /// <summary>
-            /// 
-            /// </summary>
             [DbType(typeof (string))]
             Image,
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public int Id { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public string Name { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public string Image { get; set; }
 
         public ColorSimpleTransportType ToTransport() {

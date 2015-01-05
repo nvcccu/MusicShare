@@ -58,25 +58,28 @@ insert into Color values
 (3, 'Красный', '/ImgStore/Color/Red.jpg');
 
 insert into Form values
-(1, 'Stratocaster', '/ImgStore/Form/Stratocaster.jpg'),
-(2, 'Telecaster', '/ImgStore/Form/Telecaster.jpg'),
-(3, 'Explorer', '/ImgStore/Form/Explorer.jpg'),
-(4, 'Les Paul', '/ImgStore/Form/Les_Paul.jpg'),
-(5, 'RandyRhoads', '/ImgStore/Form/RandyRhoads.jpg'),
-(6, 'Flying V', '/ImgStore/Form/Flying_V.jpg'),
-(7, 'SG', '/ImgStore/Form/SG.jpg'),
-(8, 'PRS Santana', '/ImgStore/Form/PRS_Santana.jpg');
+(1, 'Stratocaster', '/ImgStore/Form/Stratocaster.png'),
+(3, 'Explorer', '/ImgStore/Form/Explorer.png'),
+(5, 'Les Paul', '/ImgStore/Form/Les_Paul.png');
 
 insert into FormWithColor values
-(1, 1, 3, 'Red Stratocaster', '/ImgStore/FormWithColor/Stratocaster_Red.jpg'),
-(2, 1, 1, 'White Stratocaster', '/ImgStore/FormWithColor/Stratocaster_White.jpg'),
-(3, 1, 2, 'Black Stratocaster', '/ImgStore/FormWithColor/Stratocaster_Black.jpg'),
-(4, 3, 3, 'Red Explorer', '/ImgStore/FormWithColor/Explorer_Red.jpg'),
-(5, 3, 1, 'White Explorer', '/ImgStore/FormWithColor/Explorer_White.jpg'),
-(6, 3, 2, 'Black Explorer', '/ImgStore/FormWithColor/Explorer_Black.jpg'),
-(7, 5, 3, 'Red RandyRhoads', '/ImgStore/FormWithColor/RandyRhoads_Red.jpg'),
-(8, 5, 1, 'White RandyRhoads', '/ImgStore/FormWithColor/RandyRhoads_White.jpg'),
-(9, 5, 2, 'Black RandyRhoads', '/ImgStore/FormWithColor/RandyRhoads_Black.jpg');
+(10, 1, 0, 'Stratocaster', '/ImgStore/FormWithColor/Stratocaster_NoColor.png'),
+(11, 3, 0, 'Explorer', '/ImgStore/FormWithColor/Explorer_NoColor.png'),
+(12, 5, 0, 'Les Paul', '/ImgStore/FormWithColor/LesPaul_NoColor.png'),
+(1, 1, 3, 'Red Stratocaster', '/ImgStore/FormWithColor/Stratocaster_Red.png'),
+(2, 1, 1, 'White Stratocaster', '/ImgStore/FormWithColor/Stratocaster_White.png'),
+(3, 1, 2, 'Black Stratocaster', '/ImgStore/FormWithColor/Stratocaster_Black.png'),
+(4, 3, 3, 'Red Explorer', '/ImgStore/FormWithColor/Explorer_Red.png'),
+(5, 3, 1, 'White Explorer', '/ImgStore/FormWithColor/Explorer_White.png'),
+(6, 3, 2, 'Black Explorer', '/ImgStore/FormWithColor/Explorer_Black.png'),
+(7, 5, 3, 'Red Les Paul', '/ImgStore/FormWithColor/LesPaul_Red.png'),
+(8, 5, 1, 'White Les Paul', '/ImgStore/FormWithColor/LesPaul_White.png'),
+(9, 5, 2, 'Black Les Paul', '/ImgStore/FormWithColor/LesPaul_Black.png');
+
+insert into Bridge values
+(1, 'Floyd Rose', '/ImgStore/Bridge/FloydRose.png'),
+(2, 'Tune-o-Matic', '/ImgStore/Bridge/TuneOMatic.png'),
+(3, 'Vintage Tremolo', '/ImgStore/Bridge/VintageTremolo.png');
 
 insert into ColorSimple values
 (1, 'Black', '../../ImgStore/ColorSimple/Black.jpg'),

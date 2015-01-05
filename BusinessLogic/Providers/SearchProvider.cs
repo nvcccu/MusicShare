@@ -106,6 +106,13 @@ namespace BusinessLogic.Providers {
                 .Select(b => b.ToTransport())
                 .ToList();
         }
+        public List<BridgeTransportType> GetAllBridges() {
+            return new Bridge()
+                .Select()
+                .GetData()
+                .Select(b => b.ToTransport())
+                .ToList();
+        }
 
         /// <summary>
         /// 

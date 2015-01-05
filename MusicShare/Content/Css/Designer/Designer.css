@@ -35,6 +35,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-color: #92A903;
+    cursor: pointer;
 }
 .designer-nav__param-category {
     position: relative;
@@ -83,10 +84,16 @@
 .designer-form__param-value {
     display: inline-block;
     margin-left: 4px;
+    cursor: pointer;
 }
 .designer-form__param-img {
     text-align: center;
 }
 .designer-form__param-name {
-    
+    text-align: center
+}
+.designer-form__bridge {
+    position: absolute;
+    left: 550px;
+    top: 197px;
 }

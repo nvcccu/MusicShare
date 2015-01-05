@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
+    <Compile Include="DaoEntities\Bridge.cs" />
     <Compile Include="DaoEntities\Brand.cs" />
     <Compile Include="DaoEntities\Color.cs" />
     <Compile Include="DaoEntities\ColorFull.cs" />

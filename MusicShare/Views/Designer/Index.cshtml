@@ -10,7 +10,9 @@
         ko.applyBindings(getDesigner(   @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.Name)),
                                         @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.Forms)),
                                         @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.Colors)),
-                                        @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.FormsWithColor))), document.getElementById("Designer"));
+                                        @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.FormsWithColor)),
+                                        @Html.Raw(JsonConvert.SerializeObject(Model.BridgeParameter.Name)),
+                                        @Html.Raw(JsonConvert.SerializeObject(Model.BridgeParameter.Bridges))), document.getElementById("Designer"));
     });
 </script>
 

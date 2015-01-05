@@ -1,7 +1,7 @@
 ﻿<div id="SubparameterNavigation" class="designer__navigation" data-bind="visible: subparameterNavigationModel.isOverviewMode() == false">
     <div class="designer-nav__cur-param">
-        Настройка <span data-bind="text: subparameterNavigationModel.parameterName"></span>
-        <div class="designer-nav__drop-param"></div>
+        Настройка <span data-bind="text: subparameterNavigationModel.currentEditingParameter().name"></span>
+        <div class="designer-nav__drop-param" data-bind="click: subparameterNavigationModel.backToOverview"></div>
     </div>
     <div data-bind="foreach: subparameterNavigationModel.currentEditingParameter().subparameters">
         <div class="designer-nav__param-category" data-bind="text: name,
@@ -10,7 +10,5 @@
                 : 'designer-nav__param-category' },
             click: $root.subparameterNavigationModel.setEditSubparam"></div>
     </div>
-    @*    <div class="designer-nav__param-category designer-nav__param-category--active">Форма</div>*@
-
     <input type="button" class="designer-nav__submit" value="Сохранить" />
 </div>

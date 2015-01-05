@@ -4,17 +4,17 @@ using DAO;
 using DAO.Attributes;
 
 namespace BusinessLogic.DaoEntities {
-    public class Color : AbstractEntity<Color> {
-        public Color(string tableName) : base(tableName) {}
+    public class Bridge : AbstractEntity<Bridge> {
+        public Bridge(string tableName) : base(tableName) {}
 
-        public Color() : base("Color") { }
+        public Bridge() : base("Bridge") {}
 
         public enum Fields {
-            [DbType(typeof(Int32))]
+            [DbType(typeof (Int32))]
             Id,
             [DbType(typeof (string))]
             Name,
-            [DbType(typeof (string))]
+            [DbType(typeof(string))]
             ImagePreview,
         }
 
@@ -22,8 +22,8 @@ namespace BusinessLogic.DaoEntities {
         public string Name { get; set; }
         public string ImagePreview { get; set; }
 
-        public ColorTransportType ToTransport() {
-            return new ColorTransportType {
+        public BridgeTransportType ToTransport() {
+            return new BridgeTransportType {
                 Id = Id,
                 Name = Name,
                 ImagePreview = ImagePreview

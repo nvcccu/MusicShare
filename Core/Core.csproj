@@ -48,6 +48,7 @@
     <Compile Include="TransportTypes\ColorFullTransportType.cs" />
     <Compile Include="TransportTypes\ColorSimpleTransportType.cs" />
     <Compile Include="TransportTypes\ColorTransportType.cs" />
+    <Compile Include="TransportTypes\BridgeTransportType.cs" />
     <Compile Include="TransportTypes\FormTransportType.cs" />
     <Compile Include="TransportTypes\FormWithColorTransportType.cs" />
     <Compile Include="TransportTypes\GuestTransportType.cs" />

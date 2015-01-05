@@ -73,6 +73,18 @@ WITH (
 ALTER TABLE FormWithColor
   OWNER TO postgres;
 
+CREATE TABLE Bridge (
+  Id serial NOT NULL,
+  Name character varying(64) NOT NULL,
+  ImagePreview character varying(1024) NOT NULL,
+  CONSTRAINT pk_Bridge PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Bridge
+  OWNER TO postgres;
+
 CREATE TABLE Guest (
   guestid bigserial NOT NULL,
   useragent character varying(1024),
