@@ -179,7 +179,7 @@ namespace Sandbox {
         private static void Main(string[] args) {
             // НЕ УДАЛЯТЬ
             ConfigHelper.LoadXml(false);
-            Connector.ConnectionString = ConfigHelper.FirstTagWithPropertyText("db-connection", "db-name", "master");
+            Connector.ConnectionString = ConfigHelper.FirstTagWithTagNameInnerText("db-connection");
             // НЕ УДАЛЯТЬ
 
             B();

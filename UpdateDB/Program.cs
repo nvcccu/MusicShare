@@ -59,7 +59,7 @@ namespace UpdateDB {
             }
             var dbPrefix = args[0];
             ConfigHelper.LoadXml(dbPrefix == "test");
-            Connector.ConnectionString = ConfigHelper.FirstTagWithPropertyText("db-connection", "db-name", "master");
+            Connector.ConnectionString = ConfigHelper.FirstTagWithTagNameInnerText("db-connection");
             var schemaVersionAll = new SchemaVersion()
                 .Select()
                 .GetData()

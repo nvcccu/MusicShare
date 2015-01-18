@@ -20,7 +20,7 @@ namespace BusinessLogic {
 
         public void Initial() {
             ConfigHelper.LoadXml(false);
-            Connector.ConnectionString = ConfigHelper.FirstTagWithPropertyText("db-connection", "db-name", "master");
+            Connector.ConnectionString = ConfigHelper.FirstTagWithTagNameInnerText("db-connection");
         }
 
         public List<GuitarTransportType> Search(int brand, int formId, int color) {

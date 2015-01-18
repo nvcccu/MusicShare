@@ -12,7 +12,7 @@ namespace NUnit.Environment {
         [SetUp]
         public void SetUp() {
             ConfigHelper.LoadXml(true);
-            Connector.ConnectionString = ConfigHelper.FirstTagWithPropertyText("db-connection", "db-name", "master");
+            Connector.ConnectionString = ConfigHelper.FirstTagWithTagNameInnerText("db-connection");
             InitBusinessLogic();
         }
 

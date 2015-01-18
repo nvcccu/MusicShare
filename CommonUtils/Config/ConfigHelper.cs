@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Xml;
 
 namespace CommonUtils.Config {
@@ -6,33 +7,48 @@ namespace CommonUtils.Config {
     /// гнилой класс для неправильной работы с конфигами
     /// </summary>
     public static class ConfigHelper {
-        private static readonly XmlDocument _configXml;
+        private static readonly XmlDocument _remotingMainConfig;
         private static string _configPath;
 
         static ConfigHelper() {
-            _configXml = new XmlDocument();
+            _remotingMainConfig = new XmlDocument();
         }
 
         public static void LoadXml(bool isTest) {
-            _configPath = isTest
-                ? "D:\\Projects\\MusicShare\\Config\\Test.xml"
-                : "D:\\Projects\\MusicShare\\Config\\Master.xml";
-            _configXml.Load(_configPath);
+            var _remotingConfigPath = Environment.GetEnvironmentVariable("mg_config");
+            if (string.IsNullOrEmpty(_remotingConfigPath)) {
+                throw new Exception("Не указан путь до конфигов проекта.");
+            }
+            if (isTest) {
+                _remotingConfigPath = Path.Combine(_remotingConfigPath, "Test");
+            }
+            _remotingConfigPath = Path.Combine(_remotingConfigPath, "Remoting.xml");
+            var remotingConfig = new XmlDocument();
+            remotingConfig.Load(_remotingConfigPath);
+            var remotingMainConfigPath = remotingConfig.FirstTagWithTagNameInnerText("path");
+            remotingMainConfigPath = Path.Combine(remotingMainConfigPath, "RemotingMain.xml");
+            _remotingMainConfig.Load(remotingMainConfigPath);
+            if (_remotingMainConfig.InnerText == null) {
+                throw new Exception("Конфигурационный файл пуст или не прочитан.");
+            }
         }
 
-        /// <summary>
-        /// накостыленное обращение к конфигам
-        /// </summary>
-        /// <param name="tagName"></param>
-        /// <param name="attributeName"></param>
-        /// <param name="attributeValue"></param>
-        /// <returns></returns>
         [Obsolete("Временное решение, ибо агила")]
-        public static string FirstTagWithPropertyText(string tagName, string attributeName, string attributeValue) {
-            if (_configXml.InnerText == null) {
-                throw new Exception("Не указан конфиг для чтения");
-            }
-            return _configXml.GetElementsByTagName(tagName)[0].InnerText;
+        public static string FirstTagWithTagNameInnerText(string tagName) {
+//            try {
+                return _remotingMainConfig.GetElementsByTagName(tagName)[0].InnerText;
+//            } catch (Exception ex) {
+//                // todo: log here
+//            }
+        }
+
+        [Obsolete("Временное решение, ибо агила")]
+        private static string FirstTagWithTagNameInnerText(this XmlDocument xmlDocument, string tagName) {
+//            try {
+                return xmlDocument.GetElementsByTagName(tagName)[0].InnerText;
+//            } catch (Exception ex) {
+//                // todo: log here
+//            }
         }
     }
 }
