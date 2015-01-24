@@ -61,6 +61,20 @@ WITH (
 ALTER TABLE ParameterValue
   OWNER TO postgres;
 
+CREATE TABLE IncompatibleParameter (
+  Id serial NOT NULL,
+  ParameterId serial NOT NULL,
+  ParameterValue serial NOT NULL,
+  IncompatibleParameterId serial NOT NULL,
+  IncompatibleParameterValue serial NOT NULL,
+  CONSTRAINT pk_IncompatibleParameter PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE IncompatibleParameter
+  OWNER TO postgres;
+
 CREATE TABLE DesignerImage (
   Id serial NOT NULL,
   Url character varying(1024) NOT NULL,
@@ -84,20 +98,6 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE DesignerImagePosition
-  OWNER TO postgres;
-
-CREATE TABLE IncompatibleParameter (
-  Id serial NOT NULL,
-  ParameterId serial NOT NULL,
-  ParameterValue serial NOT NULL,
-  IncompatibleParameterId serial NOT NULL,
-  IncompatibleParameterValue serial NOT NULL,
-  CONSTRAINT pk_IncompatibleParam PRIMARY KEY (Id)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE IncompatibleParam
   OWNER TO postgres;
 
 CREATE TABLE Guest (
