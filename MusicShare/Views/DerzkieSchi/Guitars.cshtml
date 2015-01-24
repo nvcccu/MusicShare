@@ -33,8 +33,8 @@
                     @Html.Partial("DropDown", new DropDownModel {
                         Name = "guitarSummary.FormId",
                         SelectedId = guitarSummary.FormId.ToString(CultureInfo.InvariantCulture),
-                        KeyValues = Model.Forms.Select(b => b.Id.ToString(CultureInfo.InvariantCulture)).Zip(Model.Forms.Select(b => b.Name), (formId, formName) => new {key = formId, value = formName})
-                            .ToDictionary(x => x.key, x => x.value)
+//                        KeyValues = Model.Forms.Select(b => b.Id.ToString(CultureInfo.InvariantCulture)).Zip(Model.Forms.Select(b => b.Name), (formId, formName) => new {key = formId, value = formName})
+//                            .ToDictionary(x => x.key, x => x.value)
                     })<br/>
 @*                    <input type="text" name="guitarsummary.ModelId" value="@guitarSummary.ModelId" /><br/>*@
                     @Html.Partial("DropDown", new DropDownModel {
@@ -76,8 +76,8 @@
                 })<br />
                 @Html.Partial("DropDown", new DropDownModel {
                     Name = "guitarSummary.FormId",
-                    KeyValues = Model.Forms.Select(b => b.Id.ToString(CultureInfo.InvariantCulture)).Zip(Model.Forms.Select(b => b.Name), (formId, formName) => new {key = formId, value = formName})
-                        .ToDictionary(x => x.key, x => x.value)
+//                    KeyValues = Model.Forms.Select(b => b.Id.ToString(CultureInfo.InvariantCulture)).Zip(Model.Forms.Select(b => b.Name), (formId, formName) => new {key = formId, value = formName})
+//                        .ToDictionary(x => x.key, x => x.value)
                 })<br />
                 @Html.Partial("DropDown", new DropDownModel {
                     Name = "guitarSummary.ModelId",

@@ -34,11 +34,8 @@ namespace BusinessLogic.Providers {
                 .InnerJoin(new Guitar(), RetrieveMode.NonRetrieve)
                 .On(GuitarWithColor.Fields.GuitarWithModelId, PredicateCondition.Equal, Guitar.Fields.Id)
                 .InnerJoin(new Brand(), RetrieveMode.NonRetrieve)
-                .On(Guitar.Fields.BrandId, PredicateCondition.Equal, Brand.Fields.Id)
-                .InnerJoin(new Form(), RetrieveMode.NonRetrieve)
-                .On(Guitar.Fields.FormId, PredicateCondition.Equal, Form.Fields.Id);
+                .On(Guitar.Fields.BrandId, PredicateCondition.Equal, Brand.Fields.Id);
             AddWhereIfNotNull(sample, Brand.Fields.Id, PredicateCondition.Equal, brandId);
-            AddWhereIfNotNull(sample, Form.Fields.Id, PredicateCondition.Equal, formId);
             AddWhereIfNotNull(sample, ColorSimple.Fields.Id, PredicateCondition.Equal, simpleColorId);
             return sample
                 .GetData()
@@ -58,36 +55,8 @@ namespace BusinessLogic.Providers {
                 .Select(b => b.ToTransport())
                 .ToList();
         }
-        public List<FormTransportType> GetAllForms() {
-            return new Form()
-                .Select()
-                .GetData()
-                .Select(b => b.ToTransport())
-                .ToList();
-        }
         public List<ColorTransportType> GetAllColors() {
             return new Color()
-                .Select()
-                .GetData()
-                .Select(b => b.ToTransport())
-                .ToList();
-        }
-        public List<FormWithColorTransportType> GetAllFormsWithColor() {
-            return new FormWithColor()
-                .Select()
-                .GetData()
-                .Select(b => b.ToTransport())
-                .ToList();
-        }
-        public List<BridgeTransportType> GetAllBridges() {
-            return new Bridge()
-                .Select()
-                .GetData()
-                .Select(b => b.ToTransport())
-                .ToList();
-        }
-        public List<BridgeOnFormTransportType> GetAllBridgesOnForms() {
-            return new BridgeOnForm()
                 .Select()
                 .GetData()
                 .Select(b => b.ToTransport())

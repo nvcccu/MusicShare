@@ -10,7 +10,6 @@
         var guitar = Model.Guitars.First(g => g.Id == guitarModel.GuitarId);
         <input type="hidden" name="guitarModel.Id" value="@guitarModel.Id" />
         <div style="background-color: white;">
-            <span style="width: 400px;">@Model.Brands.First(b => b.Id == guitar.BrandId).Name _ @Model.Forms.First(f => f.Id == guitar.FormId).Name</span>
             @Html.TextBoxFor(m => guitarModel.Model)
             <input type="submit" value="Сохранить" />
         </div>
@@ -23,9 +22,9 @@
     <div style="background-color: white;">
         @Html.Partial("DropDown", new DropDownModel {
             Name = "guitarModel.GuitarId",
-            KeyValues = Model.Guitars.Select(g => g.Id.ToString(CultureInfo.InvariantCulture))
-                .Zip(Model.Guitars.Select(g => Model.Brands.First(b => b.Id == g.BrandId).Name + " _ " +  Model.Forms.First(b => b.Id == g.FormId).Name), (guitarId, BrandAndModel) => new {key = guitarId, value = BrandAndModel})
-                .ToDictionary(x => x.key, x => x.value)
+//            KeyValues = Model.Guitars.Select(g => g.Id.ToString(CultureInfo.InvariantCulture))
+//                .Zip(Model.Guitars.Select(g => Model.Brands.First(b => b.Id == g.BrandId).Name + " _ " +  Model.Forms.First(b => b.Id == g.FormId).Name), (guitarId, BrandAndModel) => new {key = guitarId, value = BrandAndModel})
+//                .ToDictionary(x => x.key, x => x.value)
         })
         @Html.TextBox("guitarModel.Model")
         <input type="submit" value="Добавить" />

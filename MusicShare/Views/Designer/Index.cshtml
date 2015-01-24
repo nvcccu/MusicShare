@@ -7,13 +7,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        ko.applyBindings(getDesigner(   @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.Name)),
-                                        @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.Forms)),
-                                        @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.Colors)),
-                                        @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.FormsWithColor)),
-                                        @Html.Raw(JsonConvert.SerializeObject(Model.BridgeParameter.Name)),
-                                        @Html.Raw(JsonConvert.SerializeObject(Model.BridgeParameter.Bridges))),
-                                        @Html.Raw(JsonConvert.SerializeObject(Model.BridgeParameter.BridgOnFormPositions)), document.getElementById("Designer"));
+        ko.applyBindings(getDesigner(document.getElementById("Designer")));
     });
 </script>
 

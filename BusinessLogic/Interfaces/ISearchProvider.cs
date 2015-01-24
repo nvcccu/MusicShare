@@ -7,11 +7,7 @@ namespace BusinessLogic.Interfaces {
         List<GuitarWithColorTransportType> GetSampleGuitars(int? brandId, int? formId, int? simpleColorId);
         List<SearchHintTransportType> GetSearchHints();
         List<BrandTransportType> GetAllBrand();
-        List<FormTransportType> GetAllForms();
         List<ColorTransportType> GetAllColors();
-        List<FormWithColorTransportType> GetAllFormsWithColor();
-        List<BridgeTransportType> GetAllBridges();
-        List<BridgeOnFormTransportType> GetAllBridgesOnForms();
         List<ColorSimpleTransportType> GetAllSimpleColors();
         List<ColorFullTransportType> GetAllFullColors();
         List<GuitarTransportType> GetAllGuitars();

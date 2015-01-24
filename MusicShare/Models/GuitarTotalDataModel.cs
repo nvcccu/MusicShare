@@ -13,11 +13,6 @@ namespace MusicShareWeb.Models {
         /// <summary>
         /// 
         /// </summary>
-        public List<FormTransportType> Forms { get; private set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public List<ColorSimpleTransportType> SimpleColors { get; private set; }
 
         /// <summary>
@@ -43,7 +38,6 @@ namespace MusicShareWeb.Models {
 
         public GuitarTotalDataModel() {
             Brands = ServiceManager<IBusinessLogic>.Instance.Service.GetAllBrand();
-            Forms = ServiceManager<IBusinessLogic>.Instance.Service.GetAllForms();
             SimpleColors = ServiceManager<IBusinessLogic>.Instance.Service.GetAllSimpleColors();
             FullColors = ServiceManager<IBusinessLogic>.Instance.Service.GetAllFullColors();
             SearchHints = ServiceManager<IBusinessLogic>.Instance.Service.GetSearchHints();

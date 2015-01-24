@@ -53,20 +53,8 @@ namespace BusinessLogic {
         public List<BrandTransportType> GetAllBrand() {
             return _searchProvider.GetAllBrand();
         }
-        public List<FormTransportType> GetAllForms() {
-            return _searchProvider.GetAllForms();
-        }
         public List<ColorTransportType> GetAllColors() {
             return _searchProvider.GetAllColors();
-        }
-        public List<FormWithColorTransportType> GetAllFormsWithColor() {
-            return _searchProvider.GetAllFormsWithColor();
-        }
-        public List<BridgeTransportType> GetAllBridges() {
-            return _searchProvider.GetAllBridges();
-        }
-        public List<BridgeOnFormTransportType> GetAllBridgesOnForms() {
-            return _searchProvider.GetAllBridgesOnForms();
         }
         public List<ColorSimpleTransportType> GetAllSimpleColors() {
             return _searchProvider.GetAllSimpleColors();

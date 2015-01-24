@@ -25,14 +25,10 @@ namespace BusinessLogic.Providers {
                 .On(GuitarWithModel.Fields.GuitarId, PredicateCondition.Equal, Guitar.Fields.Id)
                 .InnerJoin(new Brand(), RetrieveMode.NonRetrieve)
                 .On(Guitar.Fields.BrandId, PredicateCondition.Equal, Brand.Fields.Id)
-                .InnerJoin(new Form(), RetrieveMode.NonRetrieve)
-                .On(Guitar.Fields.FormId, PredicateCondition.Equal, Form.Fields.Id)
-                .OrderBy(GuitarWithColor.Fields.Id, OrderType.Asc)
                 .OrderBy(GuitarWithColor.Fields.ColorFullId, OrderType.Asc)
                 .GetData();
             return allGuitars.Select(ag => {
                 var brand = ag.GetJoinedEntity<Brand>();
-                var form = ag.GetJoinedEntity<Form>();
                 var colorFullName = ag.GetJoinedEntity<ColorFull>().Name;
                 var guitarModel = ag.GetJoinedEntity<GuitarWithModel>().Id;
                 return new GuitarSummaryTransportType {
@@ -40,8 +36,6 @@ namespace BusinessLogic.Providers {
                     ImageUrl = ag.PhotoUrl,
                     BrandId = brand.Id,
                     BrandName = brand.Name,
-                    FormId = form.Id,
-                    FormName = form.Name,
                     ColorFullId = ag.ColorFullId,
                     ColorFullName = colorFullName,
                     ModelId = guitarModel,

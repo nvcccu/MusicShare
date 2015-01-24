@@ -64,7 +64,7 @@ ALTER TABLE ParameterValue
 CREATE TABLE IncompatibleParameter (
   Id serial NOT NULL,
   ParameterId serial NOT NULL,
-  ParameterValue serial NOT NULL,
+  ParameterValueId serial NOT NULL,
   IncompatibleParameterId serial NOT NULL,
   IncompatibleParameterValue serial NOT NULL,
   CONSTRAINT pk_IncompatibleParameter PRIMARY KEY (Id)
