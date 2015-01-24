@@ -13,6 +13,7 @@ namespace BusinessLogic {
         private readonly LogProvider _logProvider = new LogProvider();
         private readonly DerzkieSchiProvider _derzkieSchiProvider = new DerzkieSchiProvider();
         private readonly StoreProvider _storeProvider = new StoreProvider();
+        private readonly DesignerProvider _designerProvider = new DesignerProvider();
         public BusinessLogic() {
             Initial();
         }
@@ -79,6 +80,18 @@ namespace BusinessLogic {
         }
         public List<OfferCategoryTransportType> GetAllOfferCategories() {
             return _storeProvider.GetAllOfferCategories();
+        }
+        public List<ParameterDto> GetParameters() {
+            return _designerProvider.GetParameters();
+        }
+        public List<ParameterValueDto> GetParameterValues() {
+            return _designerProvider.GetParameterValues();
+        }
+        public List<IncompatibleParameterDto> GetIncompatibleParameters() {
+            return _designerProvider.GetIncompatibleParameters();
+        }
+        public List<DesignerImageTransportType> GetDesignerImages() {
+            return _designerProvider.GetDesignerImages();
         }
     }
 }

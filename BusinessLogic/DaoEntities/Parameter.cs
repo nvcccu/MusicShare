@@ -12,7 +12,7 @@ namespace BusinessLogic.DaoEntities {
         public enum Fields {
             [DbType(typeof (Int32))]
             Id,
-            [DbType(typeof (Int32))]
+            [DbType(typeof (Int32?))]
             ParentId,
             [DbType(typeof (string))]
             NameNominative,
@@ -21,7 +21,7 @@ namespace BusinessLogic.DaoEntities {
         }
 
         public int Id { get; set; }
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
         public string NameNominative { get; set; }
         public string NameGenitive { get; set; }
 

@@ -66,6 +66,7 @@
     <Compile Include="Helpers\StoreHelper.cs" />
     <Compile Include="Interfaces\IBusinessLogic.cs" />
     <Compile Include="Interfaces\IDerzkieSchiProvider.cs" />
+    <Compile Include="Interfaces\IDesignerProvider.cs" />
     <Compile Include="Interfaces\ILogProvider.cs" />
     <Compile Include="Interfaces\ISearchProvider.cs" />
     <Compile Include="Interfaces\IStoreProvider.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="ParserOld\ParserBaseOld.cs" />
     <Compile Include="Parser\DynatoneParser.cs" />
     <Compile Include="Providers\DerzkieSchiProvider.cs" />
+    <Compile Include="Providers\DesignerProvider.cs" />
     <Compile Include="Providers\LogProvider.cs" />
     <Compile Include="Providers\SearchProvider.cs" />
     <Compile Include="Providers\StoreProvider.cs" />

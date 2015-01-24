@@ -4,7 +4,8 @@
         IUserProvider,
         ILogProvider,
         IDerzkieSchiProvider,
-        IStoreProvider {
+        IStoreProvider,
+        IDesignerProvider {
         void Initial();
     }
 }
