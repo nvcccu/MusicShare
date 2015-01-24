@@ -15,7 +15,8 @@ namespace MusicShareWeb.Models {
             };
             BridgeParameter = new BridgeParameter {
                 Name = "бриджа",
-                Bridges = ServiceManager<IBusinessLogic>.Instance.Service.GetAllBridges()
+                Bridges = ServiceManager<IBusinessLogic>.Instance.Service.GetAllBridges(),
+                BridgOnFormPositions = ServiceManager<IBusinessLogic>.Instance.Service.GetAllBridgesOnForms(),
             };
         }
     }

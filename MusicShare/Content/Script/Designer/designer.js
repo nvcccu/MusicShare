@@ -1,4 +1,4 @@
-﻿getDesigner = function(name, forms, colors, formsWithColor, bridgeParamName, bridges) {
+﻿getDesigner = function (name, forms, colors, formsWithColor, bridgeParamName, bridges, bridgOnFormPositions) {
     var model = {};
   
     var getChooseInstrumentModel = function() {
@@ -7,20 +7,34 @@
         return model;
     };
 
-    var getSubparameter = function(name, values) {
+    var getSubparameter = function(id, nameNominative, nameGenitive, images, incompatibleParamsList) {
         var subparameter = {};
-        subparameter.name = name;
+        subparameter.id = id;
+        subparameter.nameNominative = nameNominative;
+        subparameter.nameGenitive = nameGenitive;
         subparameter.selectedId = ko.observable(0);
-        subparameter.values = [];
-        for (var i = 0; i < values.length; i++) {
-            var value = values[i];
-            subparameter.values.push({
-                id: value.Id,
-                name: value.Name,
-                imagePreview: value.ImagePreview
-            });
+        subparameter.previews = [];
+        for (var i = 0; i < images.length; i++) {
+            var preview = {};
+            preview.Image = images[i];
+            preview.incompatibleParams = [];
+            var incompatibleParams = incompatibleParamsList[i];
+            for (var j = 0; j < incompatibleParams.length; j++) {
+                var incompatibleParam = incompatibleParams[j];
+                incompatibleParams.push({
+                    subparameterId: incompatibleParam.SubparameterId,
+                    subparameterValueId: incompatibleParam.SubparameterValueId,
+                });
+            }
+            subparameter.previews.push(preview);
         }
         return subparameter;
+    };
+    var getParameter = function(id, subparameters) {
+        var parameter = {};
+        parameter.id = id;
+        parameter.subparameters = subparameters;
+        return parameter;
     };
     var getFormImages = function(values) {
         var images = [];

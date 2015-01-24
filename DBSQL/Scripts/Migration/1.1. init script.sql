@@ -35,54 +35,69 @@ WITH (
 ALTER TABLE ColorSimple
   OWNER TO postgres;
 
-CREATE TABLE Color (
+CREATE TABLE Parameter (
   Id serial NOT NULL,
-  Name character varying(64) NOT NULL,
-  ImagePreview character varying(1024) NOT NULL,
-  CONSTRAINT pk_Color PRIMARY KEY (id)
+  ParentId serial,
+  NameNominative character varying(64) NOT NULL,
+  NameGenitive character varying(64) NOT NULL,
+  CONSTRAINT pk_Parameter PRIMARY KEY (Id)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE Color
+ALTER TABLE Parameter
   OWNER TO postgres;
 
-CREATE TABLE Form (
+CREATE TABLE ParameterValue (
   Id serial NOT NULL,
-  Name character varying(64) NOT NULL,
-  ImagePreview character varying(1024) NOT NULL,
-  CONSTRAINT pk_Form PRIMARY KEY (id)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE Form
-  OWNER TO postgres;
-
-CREATE TABLE FormWithColor (
-  Id serial NOT NULL,
-  FormId int NOT NULL,
-  ColorId int NOT NULL,
+  ParameterId serial NOT NULL,
   Name character varying(64) NOT NULL,
   Image character varying(1024) NOT NULL,
-  CONSTRAINT pk_FormWithColor PRIMARY KEY (id)
+  CONSTRAINT pk_ParameterValue PRIMARY KEY (Id)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE FormWithColor
+ALTER TABLE ParameterValue
   OWNER TO postgres;
 
-CREATE TABLE Bridge (
+CREATE TABLE DesignerImage (
   Id serial NOT NULL,
-  Name character varying(64) NOT NULL,
-  ImagePreview character varying(1024) NOT NULL,
-  CONSTRAINT pk_Bridge PRIMARY KEY (id)
+  Url character varying(1024) NOT NULL,
+  CONSTRAINT pk_DesignerImage PRIMARY KEY (Id)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE Bridge
+ALTER TABLE DesignerImage
+  OWNER TO postgres;
+
+CREATE TABLE DesignerImagePosition (
+  Id serial NOT NULL,
+  DesignerImageId serial NOT NULL,
+  Parameters character varying(1024) NOT NULL,
+  X serial NOT NULL,
+  Y serial NOT NULL,
+  CONSTRAINT pk_DesignerImagePosition PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE DesignerImagePosition
+  OWNER TO postgres;
+
+CREATE TABLE IncompatibleParameter (
+  Id serial NOT NULL,
+  ParameterId serial NOT NULL,
+  ParameterValue serial NOT NULL,
+  IncompatibleParameterId serial NOT NULL,
+  IncompatibleParameterValue serial NOT NULL,
+  CONSTRAINT pk_IncompatibleParam PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE IncompatibleParam
   OWNER TO postgres;
 
 CREATE TABLE Guest (

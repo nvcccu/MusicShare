@@ -12,7 +12,8 @@
                                         @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.Colors)),
                                         @Html.Raw(JsonConvert.SerializeObject(Model.FormParameter.FormsWithColor)),
                                         @Html.Raw(JsonConvert.SerializeObject(Model.BridgeParameter.Name)),
-                                        @Html.Raw(JsonConvert.SerializeObject(Model.BridgeParameter.Bridges))), document.getElementById("Designer"));
+                                        @Html.Raw(JsonConvert.SerializeObject(Model.BridgeParameter.Bridges))),
+                                        @Html.Raw(JsonConvert.SerializeObject(Model.BridgeParameter.BridgOnFormPositions)), document.getElementById("Designer"));
     });
 </script>
 

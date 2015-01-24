@@ -78,8 +78,26 @@ insert into FormWithColor values
 
 insert into Bridge values
 (1, 'Floyd Rose', '/ImgStore/Bridge/FloydRose.png'),
-(2, 'Tune-o-Matic', '/ImgStore/Bridge/TuneOMatic.png'),
-(3, 'Vintage Tremolo', '/ImgStore/Bridge/VintageTremolo.png');
+(3, 'Tune-o-Matic', '/ImgStore/Bridge/TuneOMatic.png'),
+(5, 'Vintage Tremolo', '/ImgStore/Bridge/VintageTremolo.png');
+
+insert into Parameter values
+(1, NULL, 'корпус', 'корпуса'),
+(2, 1, 'форма', 'формы'),
+(3, 1, 'цвет', 'цвета'),
+(4, NULL, 'бридж', 'бриджа'),
+
+
+insert into BridgeOnForm values
+(1, 1, 1, 100, 200),
+(2, 1, 2, 200, 100),
+(3, 1, 3, 200, 400),
+(4, 2, 1, 200, 200),
+(5, 2, 2, 200, 300),
+(6, 2, 3, 100, 400),
+(7, 3, 1, 300, 200),
+(8, 3, 2, 400, 100),
+(9, 3, 3, 300, 100);
 
 insert into ColorSimple values
 (1, 'Black', '../../ImgStore/ColorSimple/Black.jpg'),
