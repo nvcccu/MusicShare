@@ -39,8 +39,7 @@ namespace BusinessLogic.Providers {
                 .GetData()
                 .ToList();
             return images.Select(i => new DesignerImageTransportType {
-                Id = i.Id,
-                Url = i.Url,
+                DesignerImage = i.ToDto(),
                 DesignerImagePositions = imagePositions
                     .Where(dip => dip.ImageId == i.Id)
                     .Select(dip => dip.ToDto()).ToList()

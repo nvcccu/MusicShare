@@ -1,14 +1,14 @@
-﻿<div id="SubparameterNavigation" class="designer__navigation" data-bind="visible: subparameterNavigationModel.isOverviewMode() == false">
+﻿<div id="SubparameterNavigation" class="designer__navigation" data-bind="visible: $root.parameterModel.isOverviewMode() == false">
     <div class="designer-nav__cur-param">
-        Настройка <span data-bind="text: subparameterNavigationModel.currentEditingParameter().name"></span>
-        <div class="designer-nav__drop-param" data-bind="click: subparameterNavigationModel.backToOverview"></div>
+        Настройка <span data-bind="text: $root.parameterModel.currentEditingParameter().NameGenitive"></span>
+        <div class="designer-nav__drop-param" data-bind="click: $root.parameterModel.goToOverview"></div>
     </div>
-    <div data-bind="foreach: subparameterNavigationModel.currentEditingParameter().subparameters">
-        <div class="designer-nav__param-category" data-bind="text: name,
-            attr: {class: name == $root.subparameterNavigationModel.currentEditingSubparameter().name
-                ? 'designer-nav__param-category designer-nav__param-category--active'
-                : 'designer-nav__param-category' },
-            click: $root.subparameterNavigationModel.setEditSubparam"></div>
+    <div data-bind="foreach: $root.parameterModel.currentEditingSubparameters()">
+        <div class="designer-nav__param-category" data-bind="text: NameNominative"></div>
+@*            attr: {class: name == $root.subparameterNavigationModel.currentEditingSubparameter().name*@
+@*                ? 'designer-nav__param-category designer-nav__param-category--active'*@
+@*                : 'designer-nav__param-category' },*@
+@*            click: $root.subparameterNavigationModel.setEditSubparam"></div>*@
     </div>
     <input type="button" class="designer-nav__submit" value="Сохранить" />
 </div>

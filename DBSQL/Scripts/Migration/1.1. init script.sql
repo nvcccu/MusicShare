@@ -37,7 +37,7 @@ ALTER TABLE ColorSimple
 
 CREATE TABLE Parameter (
   Id serial NOT NULL,
-  ParentId serial,
+  ParentId int,
   NameNominative character varying(64) NOT NULL,
   NameGenitive character varying(64) NOT NULL,
   CONSTRAINT pk_Parameter PRIMARY KEY (Id)
@@ -50,9 +50,9 @@ ALTER TABLE Parameter
 
 CREATE TABLE ParameterValue (
   Id serial NOT NULL,
-  ParameterId serial NOT NULL,
+  ParameterId int NOT NULL,
   Name character varying(64) NOT NULL,
-  Image character varying(1024) NOT NULL,
+  ImagePreviewUrl character varying(1024) NOT NULL,
   CONSTRAINT pk_ParameterValue PRIMARY KEY (Id)
 )
 WITH (
@@ -63,10 +63,10 @@ ALTER TABLE ParameterValue
 
 CREATE TABLE IncompatibleParameter (
   Id serial NOT NULL,
-  ParameterId serial NOT NULL,
-  ParameterValueId serial NOT NULL,
-  IncompatibleParameterId serial NOT NULL,
-  IncompatibleParameterValue serial NOT NULL,
+  ParameterId int NOT NULL,
+  ParameterValueId int NOT NULL,
+  IncompatibleParameterId int NOT NULL,
+  IncompatibleParameterValue int NOT NULL,
   CONSTRAINT pk_IncompatibleParameter PRIMARY KEY (Id)
 )
 WITH (
@@ -77,6 +77,7 @@ ALTER TABLE IncompatibleParameter
 
 CREATE TABLE DesignerImage (
   Id serial NOT NULL,
+  Parameters character varying(1024) NOT NULL,
   Url character varying(1024) NOT NULL,
   CONSTRAINT pk_DesignerImage PRIMARY KEY (Id)
 )
@@ -88,10 +89,10 @@ ALTER TABLE DesignerImage
 
 CREATE TABLE DesignerImagePosition (
   Id serial NOT NULL,
-  DesignerImageId serial NOT NULL,
+  DesignerImageId int NOT NULL,
   Parameters character varying(1024) NOT NULL,
-  X serial NOT NULL,
-  Y serial NOT NULL,
+  X int NOT NULL,
+  Y int NOT NULL,
   CONSTRAINT pk_DesignerImagePosition PRIMARY KEY (Id)
 )
 WITH (

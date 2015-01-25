@@ -2,14 +2,16 @@
 using System.Linq;
 using BusinessLogic.Interfaces;
 using CommonUtils.ServiceManager;
+using Core.TransportTypes;
 
 namespace MusicShareWeb.Models {
     public class IncompatibleParameterModel {
         public int ParameterId { get; set; }
-        public int ParameterValueId { get; set; } 
+        public int ParameterValueId { get; set; }
     }
     public class ParameterValueModel {
         public int Id { get; set; }
+        public string Name { get; set; }
         public string ImagePreviewUrl { get; set; }
         public List<IncompatibleParameterModel> IncompatibleParameters { get; set; }
     }
@@ -26,14 +28,12 @@ namespace MusicShareWeb.Models {
         public int Y { get; set; }
     }
     public class DesignerImageModel {
-        public int Id { get; set; }
-        public string Url { get; set; }
+        public DesignerImageDto DesignerImage { get; set; }
         public List<DesignerImagePositionModel> Position { get; set; }
     }
     public class DesignerModel : BaseModel {
-        List<ParameterModel> Parameters { get; set; }
-        List<DesignerImageModel> DesignerImages { get; set; }
-
+        public List<ParameterModel> Parameters { get; set; }
+        public List<DesignerImageModel> DesignerImages { get; set; }
         public DesignerModel() {
             var parameters = ServiceManager<IBusinessLogic>.Instance.Service.GetParameters();
             var parameterValues = ServiceManager<IBusinessLogic>.Instance.Service.GetParameterValues();
@@ -44,25 +44,28 @@ namespace MusicShareWeb.Models {
                 ParentId = p.ParentId,
                 NameNominative = p.NameNominative,
                 NameGenitive = p.NameGenitive,
-                ParameterValues = parameterValues.Where(pv => pv.ParameterId == p.Id).ToList().Select(pv => new ParameterValueModel {
-                    Id = pv.Id,
-                    ImagePreviewUrl = pv.ImagePreviewUrl,
-                    IncompatibleParameters = incompatibleParameters
-                        .Where(ip => ip.ParameterId == p.Id && ip.ParameterValueId == pv.Id)
-                        .Select(ip => new IncompatibleParameterModel {
-                            ParameterId = ip.IncompatibleParameterId,
-                            ParameterValueId = ip.IncompatibleParameterValueId
+                ParameterValues =
+                    parameterValues.Where(pv => pv.ParameterId == p.Id).ToList().Select(pv => new ParameterValueModel {
+                        Id = pv.Id,
+                        Name = pv.Name,
+                        ImagePreviewUrl = pv.ImagePreviewUrl,
+                        IncompatibleParameters = incompatibleParameters
+                            .Where(ip => ip.ParameterId == p.Id && ip.ParameterValueId == pv.Id)
+                            .Select(ip => new IncompatibleParameterModel {
+                                ParameterId = ip.IncompatibleParameterId,
+                                ParameterValueId = ip.IncompatibleParameterValueId
+                            }).ToList()
                     }).ToList()
-                }).ToList()
             }).ToList();
             DesignerImages = designerImages.Select(di => new DesignerImageModel {
-                Id = di.Id,
-                Url = di.Url,
-                Position = di.DesignerImagePositions.Select(dip => new DesignerImagePositionModel {
-                    Parameters = dip.Parameters,
-                    X = dip.X,
-                    Y = dip.Y
-                }).ToList()
+                DesignerImage = di.DesignerImage,
+                Position =
+                    di.DesignerImagePositions.Where(dip => dip.ImageId == di.DesignerImage.Id)
+                        .Select(dip => new DesignerImagePositionModel {
+                            Parameters = dip.Parameters,
+                            X = dip.X,
+                            Y = dip.Y
+                        }).ToList()
             }).ToList();
         }
     }

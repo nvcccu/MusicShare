@@ -7,7 +7,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        ko.applyBindings(getDesigner(document.getElementById("Designer")));
+        ko.applyBindings(getDesigner(@Html.Raw(JsonConvert.SerializeObject(Model)), document.getElementById("Designer")));
     });
 </script>
 

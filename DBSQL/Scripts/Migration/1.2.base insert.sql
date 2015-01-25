@@ -86,7 +86,59 @@ insert into Parameter values
 (2, 1, 'форма', 'формы'),
 (3, 1, 'цвет', 'цвета'),
 (4, NULL, 'бридж', 'бриджа'),
+(5, NULL, 'производитель', 'производителя');
 
+insert into ParameterValue values
+(1, 2, 'Stratocaster', '/ImgStore/FormWithColor/Stratocaster_NoColor.png'),
+(2, 2, 'Explorer', '/ImgStore/FormWithColor/Explorer_NoColor.png'),
+(3, 2, 'Les Paul', '/ImgStore/FormWithColor/LesPaul_NoColor.png'),
+(4, 3, 'Белый', '/ImgStore/Color/White.jpg'),
+(5, 3, 'Черный', '/ImgStore/Color/Black.jpg'),
+(6, 3, 'Красный', '/ImgStore/Color/Red.jpg'),
+(7, 4, 'Floyd Rose', '/ImgStore/Bridge/FloydRose.png'),
+(8, 4, 'Tune-o-Matic', '/ImgStore/Bridge/TuneOMatic.png'),
+(9, 4, 'Vintage Tremolo', '/ImgStore/Bridge/VintageTremolo.png'),
+(10, 5, 'Fender', '/ImgStore/BrandLogo/Fender.jpg'),
+(11, 5, 'Gibson', '/ImgStore/BrandLogo/Gibson.jpg');
+
+insert into IncompatibleParameter values
+(1, 5, 10, 2, 2),
+(2, 5, 10, 3, 2),
+(3, 5, 11, 1, 2);
+
+insert into DesignerImage values
+(1, '2:1;3:6;', '/ImgStore/FormWithColor/Stratocaster_Red.png'),
+(2, '2:1;3:4;', '/ImgStore/FormWithColor/Stratocaster_White.png'),
+(3, '2:1;3:5;', '/ImgStore/FormWithColor/Stratocaster_Black.png'),
+(4, '2:2;3:6;', '/ImgStore/FormWithColor/Explorer_Red.png'),
+(5, '2:2;3:4;', '/ImgStore/FormWithColor/Explorer_White.png'),
+(6, '2:2;3:5;', '/ImgStore/FormWithColor/Explorer_Black.png'),
+(7, '2:3;3:6;', '/ImgStore/FormWithColor/LesPaul_Red.png'),
+(8, '2:3;3:4;', '/ImgStore/FormWithColor/LesPaul_White.png'),
+(9, '2:3;3:5;', '/ImgStore/FormWithColor/LesPaul_Black.png'),
+(10, '4:7;', '/ImgStore/Bridge/FloydRose.png'),
+(11, '4:8;', '/ImgStore/Bridge/TuneOMatic.png'),
+(12, '4:9;', '/ImgStore/Bridge/VintageTremolo.png');
+
+insert into DesignerImagePosition values
+(1, 1, '', 0, 0),
+(2, 2, '', 0, 0),
+(3, 3, '', 0, 0),
+(4, 4, '', 0, 0),
+(5, 5, '', 0, 0),
+(6, 6, '', 0, 0),
+(7, 7, '', 0, 0),
+(8, 8, '', 0, 0),
+(9, 9, '', 0, 0),
+(10, 10, '2:1;', 100, 100),
+(11, 10, '2:2', 50, 100),
+(12, 10, '2:3', 100, 50),
+(13, 11, '2:1;', 100, 100),
+(14, 11, '2:2;', 50, 100),
+(15, 11, '2:3;', 100, 50),
+(16, 12, '2:1;', 100, 100),
+(17, 12, '2:2;', 50, 100),
+(18, 12, '2:3;', 100, 50);
 
 insert into BridgeOnForm values
 (1, 1, 1, 100, 200),
@@ -100,9 +152,18 @@ insert into BridgeOnForm values
 (9, 3, 3, 300, 100);
 
 insert into ColorSimple values
-(1, 'Black', '../../ImgStore/ColorSimple/Black.jpg'),
-(2, 'White', '../../ImgStore/ColorSimple/White.jpg'),
-(3, 'Red', '../../ImgStore/ColorSimple/Red.jpg');
+(1, 1 '/ImgStore/FormWithColor/Stratocaster_Red.png', 0, 0),
+(2, 2 '/ImgStore/FormWithColor/Stratocaster_White.png', 0, 0),
+(3, 3 '/ImgStore/FormWithColor/Stratocaster_Black.png', 0, 0),
+(4, 4 '/ImgStore/FormWithColor/Explorer_Red.png', 0, 0),
+(5, 5 '/ImgStore/FormWithColor/Explorer_White.png', 0, 0),
+(6, 6 '/ImgStore/FormWithColor/Explorer_Black.png', 0, 0),
+(7, 7 '/ImgStore/FormWithColor/LesPaul_Red.png', 0, 0),
+(8, 8 '/ImgStore/FormWithColor/LesPaul_White.png', 0, 0),
+(9, 9 '/ImgStore/FormWithColor/LesPaul_Black.png', 0, 0),
+(10, 10 '/ImgStore/Bridge/FloydRose.png', 0, 0),
+(11, 11 '/ImgStore/Bridge/TuneOMatic.png', 0, 0),
+(12, 12 '/ImgStore/Bridge/VintageTremolo.png', 0, 0);
 
 insert into ColorFull values 
 (1, 1, 'lbk', 'Light Black'),

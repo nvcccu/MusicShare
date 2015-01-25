@@ -32,6 +32,12 @@ namespace BusinessLogic.DaoEntities {
 
         private Dictionary<int, int> ParseParameters(string parametersString) {
             var parsedParameters = new Dictionary<int, int>();
+            if (string.IsNullOrEmpty(parametersString)) {
+                return parsedParameters;
+            }
+            if (parametersString.EndsWith(";")) {
+                parametersString = parametersString.Substring(0, parametersString.Length - 1);
+            }
             var parameterBlocks = parametersString.Split(';');
             foreach (var parameterBlock in parameterBlocks) {
                 var parsedParameter = parameterBlock.Split(':');
