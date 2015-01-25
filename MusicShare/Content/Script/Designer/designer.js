@@ -22,29 +22,44 @@
 
         model.isOverviewMode = ko.observable(true);
         model.currentEditingParameter = ko.observable();
-        model.currentEditingSubparameters = ko.observableArray(null);
+        model.currentAvailableSubparameters = ko.observableArray(null);
+        model.currentEditingSubparameter = ko.observable(null);
         model.globalParameters = getGlobalParameters();
         model.subparameters = getSubparameters();
 
-        var setEditingParameter = function (parameter) {
-            var editingParameter = data.Parameters.filter(function(e) {
-                return e.Id == parameter.Id;
+        var setEditingParameter = function (parameterId) {
+            var parameter = data.Parameters.filter(function(e) {
+                return e.Id == parameterId;
             })[0];
-            model.currentEditingParameter(editingParameter);
-            model.setEditingSubparameters(editingParameter.Id);
+            model.currentEditingParameter(parameter);
+            model.setEditingSubparameters(parameter.Id);
+        };
+        var setEditingSubparameter = function (subparameterId) {
+            var subparameter = model.currentAvailableSubparameters().filter(function (e) {
+                return e.Id == subparameterId;
+            })[0];
+            model.currentEditingSubparameter(subparameter);
         };
         model.setEditingSubparameters = function (globalParameterId) {
-            model.currentEditingSubparameters.removeAll();
+            model.currentAvailableSubparameters.removeAll();
             var subparameters = data.Parameters.filter(function (e) {
                 return e.ParentId == globalParameterId;
             });
-            model.currentEditingSubparameters(subparameters);
+            if (subparameters.length == 0) {
+                subparameters = data.Parameters.filter(function (e) {
+                    return e.Id == globalParameterId;
+                });
+            }
+            model.currentAvailableSubparameters(subparameters);
+            setEditingSubparameter(model.currentAvailableSubparameters()[0].Id);
         };
-        model.editParameter = function (parameterId) {
-            setEditingParameter(parameterId);
+        model.editParameter = function (parameter) {
+            setEditingParameter(parameter.Id);
             model.isOverviewMode(false);
         };
-
+        model.editSubarameter = function (subparameter) {
+            setEditingSubparameter(subparameter.Id);
+        };
         model.goToOverview = function() {
             model.isOverviewMode(true);
         };
@@ -65,7 +80,7 @@
                 return f.subparameterIds.formId == formId && f.subparameterIds.colorId == colorId;
             }).image;
         };
-        setEditingParameter(data.Parameters[0]);
+        setEditingParameter(data.Parameters[0].Id);
         return model;
     };
 

@@ -1,7 +1,7 @@
-﻿@*<div id="SubparameterValues" class="designer__form" data-bind="visible: subparameterNavigationModel.isOverviewMode() == false, foreach: subparameterNavigationModel.currentEditingSubparameter().values">*@
-@**@
-@*    <div class="designer-form__param-value" data-bind="click: $root.subparameterNavigationModel.selectSubparamValue">*@
-@*        <img class="designer-form__param-img" data-bind="attr: { src: imagePreview }" />*@
-@*        <div class="designer-form__param-name" data-bind="text: name"></div>*@
-@*    </div>*@
-@*</div>*@
+﻿<div id="SubparameterValues" class="designer__form" data-bind="visible: $root.parameterModel.isOverviewMode() == false, foreach: $root.parameterModel.currentEditingSubparameter().ParameterValues">
+    @*    <div class="designer-form__param-value" data-bind="click: $root.parameterModel.selectSubparamValue">*@
+    <div class="designer-form__param-value">
+        <img class="designer-form__param-img" data-bind="attr: { src: ImagePreviewUrl }" />
+        <div class="designer-form__param-name" data-bind="text: Name"></div>
+    </div>
+</div>
