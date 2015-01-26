@@ -5,7 +5,7 @@
     </div>
     <div data-bind="foreach: $root.parameterModel.currentAvailableSubparameters()">
         <div class="designer-nav__param-category" data-bind="text: NameNominative,
-            attr: { class: NameNominative == $root.parameterModel.currentEditingSubparameter().Name
+            attr: { class: NameNominative == $root.parameterModel.currentEditingSubparameter().NameNominative
                 ? 'designer-nav__param-category designer-nav__param-category--active'
                 : 'designer-nav__param-category' },
             click: $root.parameterModel.editSubarameter">

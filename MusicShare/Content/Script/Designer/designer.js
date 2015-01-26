@@ -1,10 +1,5 @@
 ﻿getDesigner = function (data) {
     var model = {};
-  
-    var getChooseInstrumentModel = function() {
-        var model = {};
-        return model;
-    };
 
     var getParameterModel = function () {
         var model = {};
@@ -24,8 +19,10 @@
         model.currentEditingParameter = ko.observable();
         model.currentAvailableSubparameters = ko.observableArray(null);
         model.currentEditingSubparameter = ko.observable(null);
+        model.selectedParametersValues = ko.observableArray(null);
         model.globalParameters = getGlobalParameters();
         model.subparameters = getSubparameters();
+        model.designerImageBundles = data.DesignerImageBundles;
 
         var setEditingParameter = function (parameterId) {
             var parameter = data.Parameters.filter(function(e) {
@@ -45,11 +42,6 @@
             var subparameters = data.Parameters.filter(function (e) {
                 return e.ParentId == globalParameterId;
             });
-            if (subparameters.length == 0) {
-                subparameters = data.Parameters.filter(function (e) {
-                    return e.Id == globalParameterId;
-                });
-            }
             model.currentAvailableSubparameters(subparameters);
             setEditingSubparameter(model.currentAvailableSubparameters()[0].Id);
         };
@@ -63,28 +55,61 @@
         model.goToOverview = function() {
             model.isOverviewMode(true);
         };
-        
+        model.setParameterValue = function (parameterValue) {
+            model.selectedParametersValues()[model.currentEditingSubparameter().Id](parameterValue.Id);
+        };
+        model.isActiveSubparameterValue = function (subparameterValue) {
+            return model.selectedParametersValues()[model.currentEditingSubparameter().Id]() == subparameterValue.Id;
+        };
+        model.getGlobalParamResultImage = function (parameter) {
+            var subparameters = model.subparameters.filter(function(e) {
+                return e.ParentId == parameter.Id;
+            });
+            var subparametersValues = [];
+            subparameters.forEach(function (subparameter) {
+                subparametersValues[subparameter.Id] = model.selectedParametersValues()[subparameter.Id]();
+            });
+            for (var i = 0; i < model.designerImageBundles.length; i++) {
+                var isGoodImage = true;
+                var image = model.designerImageBundles[i].DesignerImage;
+                for (var j = 0; j < Object.keys(image.Parameters).length; j++) {
+                    var key = Object.keys(image.Parameters)[j];
+                    var parameterValue = image.Parameters[key];
+                    if (subparametersValues[key] != parameterValue) {
+                        isGoodImage = false;
+                    }
+                }
+                if (isGoodImage) {
+                    return image.Url;
+                }
+            }
+//            var image = model.designerImageBundles.filter(function(dip) {
+//                var res = false;
+//                for (var key in dip.DesignerImage.Parameters) {
+//                    if (model.selectedParametersValues()[key]() && model.selectedParametersValues()[key]() == dip.DesignerImage.Parameters[key]) {
+//                        res = true;
+//                    }
+//                }
+//                return res; 
+//            })[0].DesignerImage;
 
 
-
-        model.selectSubparamValue = function (subparameterValue) {
-            model.currentEditingSubparameter().selectedId(subparameterValue.id);
-            model.isOverviewMode(true);
+            //DesignerImage
+//            return image.Url;
+            return '';
+        };
+        model.init = function() {
+            setEditingParameter(data.Parameters[0].Id);
+            for (var i = 0; i < model.subparameters.length; i++) {
+                var subparameter = model.subparameters[i];
+                model.selectedParametersValues()[subparameter.Id] = ko.observable(undefined);
+            }
         };
 
-        model.getFormOverview = function () {
-           
-            var formId = formSubparameter.selectedId;
-            var colorId = colorSubparameter.selectedId;
-            return formParameter.images.filter(function(f) {
-                return f.subparameterIds.formId == formId && f.subparameterIds.colorId == colorId;
-            }).image;
-        };
-        setEditingParameter(data.Parameters[0].Id);
+        model.init();
         return model;
     };
 
-    model.chooseInstrumentModel = getChooseInstrumentModel();
     model.parameterModel = getParameterModel();
 
     return model;

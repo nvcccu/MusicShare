@@ -1,7 +1,12 @@
 ﻿<div id="SubparameterValues" class="designer__form" data-bind="visible: $root.parameterModel.isOverviewMode() == false, foreach: $root.parameterModel.currentEditingSubparameter().ParameterValues">
-    @*    <div class="designer-form__param-value" data-bind="click: $root.parameterModel.selectSubparamValue">*@
-    <div class="designer-form__param-value">
+    <div data-bind="click: $root.parameterModel.setParameterValue,
+                attr: { class: $root.parameterModel.isActiveSubparameterValue($data)
+                ? 'designer-form__param-value designer-form__param-value--active'
+                : 'designer-form__param-value' }">
         <img class="designer-form__param-img" data-bind="attr: { src: ImagePreviewUrl }" />
         <div class="designer-form__param-name" data-bind="text: Name"></div>
     </div>
 </div>
+
+
+model.selectedParametersValues

@@ -33,7 +33,7 @@ namespace MusicShareWeb.Models {
     }
     public class DesignerModel : BaseModel {
         public List<ParameterModel> Parameters { get; set; }
-        public List<DesignerImageModel> DesignerImages { get; set; }
+        public List<DesignerImageModel> DesignerImageBundles { get; set; }
         public DesignerModel() {
             var parameters = ServiceManager<IBusinessLogic>.Instance.Service.GetParameters();
             var parameterValues = ServiceManager<IBusinessLogic>.Instance.Service.GetParameterValues();
@@ -57,7 +57,7 @@ namespace MusicShareWeb.Models {
                             }).ToList()
                     }).ToList()
             }).ToList();
-            DesignerImages = designerImages.Select(di => new DesignerImageModel {
+            DesignerImageBundles = designerImages.Select(di => new DesignerImageModel {
                 DesignerImage = di.DesignerImage,
                 Position =
                     di.DesignerImagePositions.Where(dip => dip.ImageId == di.DesignerImage.Id)

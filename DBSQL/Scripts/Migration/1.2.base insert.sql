@@ -51,42 +51,14 @@ insert into Brand values
 (27, 'Washburn', '../../ImgStore/BrandLogo/Washburn.jpg'),
 (28, 'Zombie', '../../ImgStore/BrandLogo/Zombie.jpg');
 
-
-insert into Color values
-(1, 'Белый', '/ImgStore/Color/White.jpg'),
-(2, 'Черный', '/ImgStore/Color/Black.jpg'),
-(3, 'Красный', '/ImgStore/Color/Red.jpg');
-
-insert into Form values
-(1, 'Stratocaster', '/ImgStore/Form/Stratocaster.png'),
-(3, 'Explorer', '/ImgStore/Form/Explorer.png'),
-(5, 'Les Paul', '/ImgStore/Form/Les_Paul.png');
-
-insert into FormWithColor values
-(10, 1, 0, 'Stratocaster', '/ImgStore/FormWithColor/Stratocaster_NoColor.png'),
-(11, 3, 0, 'Explorer', '/ImgStore/FormWithColor/Explorer_NoColor.png'),
-(12, 5, 0, 'Les Paul', '/ImgStore/FormWithColor/LesPaul_NoColor.png'),
-(1, 1, 3, 'Red Stratocaster', '/ImgStore/FormWithColor/Stratocaster_Red.png'),
-(2, 1, 1, 'White Stratocaster', '/ImgStore/FormWithColor/Stratocaster_White.png'),
-(3, 1, 2, 'Black Stratocaster', '/ImgStore/FormWithColor/Stratocaster_Black.png'),
-(4, 3, 3, 'Red Explorer', '/ImgStore/FormWithColor/Explorer_Red.png'),
-(5, 3, 1, 'White Explorer', '/ImgStore/FormWithColor/Explorer_White.png'),
-(6, 3, 2, 'Black Explorer', '/ImgStore/FormWithColor/Explorer_Black.png'),
-(7, 5, 3, 'Red Les Paul', '/ImgStore/FormWithColor/LesPaul_Red.png'),
-(8, 5, 1, 'White Les Paul', '/ImgStore/FormWithColor/LesPaul_White.png'),
-(9, 5, 2, 'Black Les Paul', '/ImgStore/FormWithColor/LesPaul_Black.png');
-
-insert into Bridge values
-(1, 'Floyd Rose', '/ImgStore/Bridge/FloydRose.png'),
-(3, 'Tune-o-Matic', '/ImgStore/Bridge/TuneOMatic.png'),
-(5, 'Vintage Tremolo', '/ImgStore/Bridge/VintageTremolo.png');
-
 insert into Parameter values
 (1, NULL, 'корпус', 'корпуса'),
 (2, 1, 'форма', 'формы'),
 (3, 1, 'цвет', 'цвета'),
 (4, NULL, 'бридж', 'бриджа'),
-(5, NULL, 'производитель', 'производителя');
+(5, NULL, 'производитель', 'производителя'),
+(6, 5, 'производитель', 'производителя'),
+(7, 4, 'бридж', 'бриджа');
 
 insert into ParameterValue values
 (1, 2, 'Stratocaster', '/ImgStore/FormWithColor/Stratocaster_NoColor.png'),
@@ -95,11 +67,11 @@ insert into ParameterValue values
 (4, 3, 'Белый', '/ImgStore/Color/White.jpg'),
 (5, 3, 'Черный', '/ImgStore/Color/Black.jpg'),
 (6, 3, 'Красный', '/ImgStore/Color/Red.jpg'),
-(7, 4, 'Floyd Rose', '/ImgStore/Bridge/FloydRose.png'),
-(8, 4, 'Tune-o-Matic', '/ImgStore/Bridge/TuneOMatic.png'),
-(9, 4, 'Vintage Tremolo', '/ImgStore/Bridge/VintageTremolo.png'),
-(10, 5, 'Fender', '/ImgStore/BrandLogo/Fender.jpg'),
-(11, 5, 'Gibson', '/ImgStore/BrandLogo/Gibson.jpg');
+(7, 7, 'Floyd Rose', '/ImgStore/Bridge/FloydRose.png'),
+(8, 7, 'Tune-o-Matic', '/ImgStore/Bridge/TuneOMatic.png'),
+(9, 7, 'Vintage Tremolo', '/ImgStore/Bridge/VintageTremolo.png'),
+(10, 6, 'Fender', '/ImgStore/BrandLogo/Fender.jpg'),
+(11, 6, 'Gibson', '/ImgStore/BrandLogo/Gibson.jpg');
 
 insert into IncompatibleParameter values
 (1, 5, 10, 2, 2),
@@ -116,9 +88,9 @@ insert into DesignerImage values
 (7, '2:3;3:6;', '/ImgStore/FormWithColor/LesPaul_Red.png'),
 (8, '2:3;3:4;', '/ImgStore/FormWithColor/LesPaul_White.png'),
 (9, '2:3;3:5;', '/ImgStore/FormWithColor/LesPaul_Black.png'),
-(10, '4:7;', '/ImgStore/Bridge/FloydRose.png'),
-(11, '4:8;', '/ImgStore/Bridge/TuneOMatic.png'),
-(12, '4:9;', '/ImgStore/Bridge/VintageTremolo.png');
+(10, '7:7;', '/ImgStore/Bridge/FloydRose.png'),
+(11, '7:8;', '/ImgStore/Bridge/TuneOMatic.png'),
+(12, '7:9;', '/ImgStore/Bridge/VintageTremolo.png');
 
 insert into DesignerImagePosition values
 (1, 1, '', 0, 0),
@@ -139,17 +111,6 @@ insert into DesignerImagePosition values
 (16, 12, '2:1;', 100, 100),
 (17, 12, '2:2;', 50, 100),
 (18, 12, '2:3;', 100, 50);
-
-insert into BridgeOnForm values
-(1, 1, 1, 100, 200),
-(2, 1, 2, 200, 100),
-(3, 1, 3, 200, 400),
-(4, 2, 1, 200, 200),
-(5, 2, 2, 200, 300),
-(6, 2, 3, 100, 400),
-(7, 3, 1, 300, 200),
-(8, 3, 2, 400, 100),
-(9, 3, 3, 300, 100);
 
 insert into ColorSimple values
 (1, 1 '/ImgStore/FormWithColor/Stratocaster_Red.png', 0, 0),

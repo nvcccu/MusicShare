@@ -85,6 +85,10 @@
     display: inline-block;
     margin-left: 4px;
     cursor: pointer;
+    opacity: 0.5;
+}
+.designer-form__param-value--active {
+    opacity: 1;
 }
 .designer-form__param-img {
     text-align: center;

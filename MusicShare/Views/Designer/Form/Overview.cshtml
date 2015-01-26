@@ -1,8 +1,8 @@
 ﻿<div id="Overview" class="designer__form" data-bind="visible: $root.parameterModel.isOverviewMode() == true">
     <div data-bind="foreach: $root.parameterModel.globalParameters">
         <div data-bind="text: NameNominative, click: $root.parameterModel.editParameter"></div>
-        @*        <div data-bind="text: name, click: $root.subparameterNavigationModel.setEditParam"></div>*@
     </div>
-    @*    <img id="FormOverview" data-bind="attr: {src: $root.subparameterNavigationModel.parameters[0].selectedImage }" />*@
-    @*    <img id="BridgeOverview" class="designer-form__bridge" data-bind="attr: {src: $root.subparameterNavigationModel.parameters[1].selectedImage }" />*@
+    <div data-bind="foreach: $root.parameterModel.globalParameters">
+        <img data-bind="attr: {src: $root.parameterModel.getGlobalParamResultImage($data) }" />
+    </div>
 </div>
