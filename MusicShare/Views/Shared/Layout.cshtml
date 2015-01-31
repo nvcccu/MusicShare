@@ -9,9 +9,9 @@
         @Html.Partial("ContentHelper")
         <title>MS</title>
         <script>
-            var musicShare;
+            var musGround;
             $(document).ready(function() {
-                musicShare = new MusicShare({
+                musGround = getMusGround({
                     logUrl: '@Url.Action("LogAction", "Log")'
                 });
             });

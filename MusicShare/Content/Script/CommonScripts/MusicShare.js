@@ -1,4 +1,6 @@
-﻿MusicShare = function (options) {
-    this.Log = new Log(options.logUrl);
-    var that = this;
+﻿getMusGround = function (options) {
+    var self = this;
+    self.logger = getLogger(options.logUrl);
+
+    return self;
 };

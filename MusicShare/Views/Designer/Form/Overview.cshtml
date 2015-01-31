@@ -2,7 +2,7 @@
     <div data-bind="foreach: $root.parameterModel.globalParameters">
         <div data-bind="text: NameNominative, click: $root.parameterModel.editParameter"></div>
     </div>
-    <div data-bind="foreach: $root.parameterModel.globalParameters">
-        <img data-bind="attr: {src: $root.parameterModel.getGlobalParamResultImage($data) }" />
+    <div data-bind="foreach: $root.parameterModel.getResultImageBundles">
+        <img data-bind="attr: {src: url }" />
     </div>
 </div>

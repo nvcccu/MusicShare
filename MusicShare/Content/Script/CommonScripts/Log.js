@@ -1,20 +1,19 @@
-﻿Log = function (logUrl) {
-    this.logUrl = logUrl;
-    var that = this;
-
+﻿getLogger = function (logUrl) {
+    var self = this;
+    self.logUrl = logUrl;
+    
     $('[data-action-id]').on('click', function() {
         $.ajax({
-            url: that.logUrl,
+            url: self.logUrl,
             type: 'POST',
             data: {
                 actionId: $(this).data('action-id')
             }
         });
     });
-
-    this.LogAction = function(actinId, target) {
+    self.logAction = function (actinId, target) {
         $.ajax({
-            url: that.logUrl,
+            url: self.logUrl,
             type: 'POST',
             data: {
                 actionId: actinId,
@@ -22,4 +21,6 @@
             }
         });
     };
+
+    return self;
 };
