@@ -29,7 +29,7 @@ namespace MusicShareWeb.Models {
     }
     public class DesignerImageModel {
         public DesignerImageDto DesignerImage { get; set; }
-        public List<DesignerImagePositionModel> Position { get; set; }
+        public List<DesignerImagePositionModel> Positions { get; set; }
     }
     public class DesignerModel : BaseModel {
         public List<ParameterModel> Parameters { get; set; }
@@ -59,7 +59,7 @@ namespace MusicShareWeb.Models {
             }).ToList();
             DesignerImageBundles = designerImages.Select(di => new DesignerImageModel {
                 DesignerImage = di.DesignerImage,
-                Position =
+                Positions =
                     di.DesignerImagePositions.Where(dip => dip.ImageId == di.DesignerImage.Id)
                         .Select(dip => new DesignerImagePositionModel {
                             Parameters = dip.Parameters,

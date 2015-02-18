@@ -96,7 +96,23 @@
                     }
                 }
                 if (isGoodImage) {
-                    return parameterModel.designerImageBundles[i].Position[0].X;
+                    var designerImageBundle = parameterModel.designerImageBundles[i];
+                    var designerImageBundlePositions = parameterModel.designerImageBundles[i].Positions;
+                    var isGoodPosition;
+                    for (var j = 0; j < designerImageBundlePositions.length; j++) {
+                        isGoodPosition = true;
+                        var positionParameters = designerImageBundlePositions[j].Parameters;
+                        for (var k = 0; k < Object.keys(positionParameters).length; k++) {
+                            var positionParametersKey = Object.keys(positionParameters)[k];
+                            var positionParametersValue = positionParameters[positionParametersKey];
+                            if (parameterModel.selectedParametersValues[positionParametersKey]() !== parseInt(positionParametersValue, 10)) {
+                                isGoodPosition = false;
+                            }
+                        }
+                        if (isGoodPosition) {
+                            return designerImageBundle.Positions[j].X;
+                        }
+                    }
                 }
             }
             return undefined;
@@ -130,7 +146,24 @@
                     }
                 }
                 if (isGoodImage) {
-                    return parameterModel.designerImageBundles[i].Position[0].Y;
+//                    debugger;
+                    var designerImageBundle = parameterModel.designerImageBundles[i];
+                    var designerImageBundlePositions = parameterModel.designerImageBundles[i].Positions;
+                    var isGoodPosition;
+                    for (var j = 0; j < designerImageBundlePositions.length; j++) {
+                        isGoodPosition = true;
+                        var positionParameters = designerImageBundlePositions[j].Parameters;
+                        for (var k = 0; k < Object.keys(positionParameters).length; k++) {
+                            var positionParametersKey = Object.keys(positionParameters)[k];
+                            var positionParametersValue = positionParameters[positionParametersKey];
+                            if (parameterModel.selectedParametersValues[positionParametersKey]() !== parseInt(positionParametersValue, 10)) {
+                                isGoodPosition = false;
+                            }
+                        }
+                        if (isGoodPosition) {
+                            return designerImageBundle.Positions[j].Y;
+                        }
+                    }
                 }
             }
             return undefined;
@@ -255,8 +288,8 @@ getGlobalPamResultImage = function (parameter) {
             parameterModel.resultImagesWithPosition()[parameter.Id].url = image.Url;
             parameterModel.resultImagesWithPosition()[parameter.Id].x = 0;
             parameterModel.resultImagesWithPosition()[parameter.Id].y = 0;
-            for (j = 0; j < imageBundle.Position.length; j++) {
-                var position = imageBundle.Position[j];
+            for (j = 0; j < imageBundle.Positions.length; j++) {
+                var position = imageBundle.Positions[j];
                 var isGoodPosition = true;
                 for (var k = 0; k < Object.keys(position.Parameters).length; k++) {
                     var positionParameterKey = Object.keys(position.Parameters)[k];
