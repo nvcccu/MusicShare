@@ -1,8 +1,12 @@
 ﻿<div id="Overview" class="designer__form" data-bind="visible: $root.parameterModel.isOverviewMode() == true">
-    <div data-bind="foreach: $root.parameterModel.globalParameters">
+    <div data-bind="foreach: Object.keys($root.parameterModel.globalParameters)">
+        <!-- ko with: $root.parameterModel.globalParameters[$data] -->
         <div data-bind="text: NameNominative, click: $root.parameterModel.editParameter"></div>
+        <!-- /ko -->
     </div>
-    <div data-bind="foreach: $root.parameterModel.getResultImageBundles">
-        <img data-bind="attr: {src: url }" />
+    <div class="result-images" data-bind="foreach: Object.keys($root.parameterModel.resultImageBundles)">
+        <!-- ko with: $root.parameterModel.resultImageBundles[$data] -->
+        <img class="form__image" data-bind="visible: url, attr: { src: url }, style: { top: y() + 'px', left: x() + 'px' }"/>
+        <!-- /ko -->
     </div>
 </div>

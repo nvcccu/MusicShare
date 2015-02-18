@@ -80,6 +80,13 @@
     width: 100%;
     padding-left: 450px;
     box-sizing: border-box;
+   
+}
+.result-images {
+    position: relative;
+}
+.form__image {
+    position: absolute;
 }
 .designer-form__param-value {
     display: inline-block;

@@ -1,5 +1,5 @@
 ﻿<div id="SubparameterValues" class="designer__form" data-bind="visible: $root.parameterModel.isOverviewMode() == false, foreach: $root.parameterModel.currentEditingSubparameter().ParameterValues">
-    <div data-bind="click: $root.parameterModel.setParameterValue,
+    <div data-bind="click: $root.parameterModel.setSubparameterValue,
                 attr: { class: $root.parameterModel.isActiveSubparameterValue($data)
                 ? 'designer-form__param-value designer-form__param-value--active'
                 : 'designer-form__param-value' }">
