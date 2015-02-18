@@ -34,12 +34,11 @@
             return result;
         };
         // Посчитать нужную картинку по выбранным параметрам.
-        var getResultImageUrl = function () {
-         //   alert('Посчитали нужную картинку');
-//            debugger;
+        var getResultImage = function () {
             // Грязный хак.
             // TODO: избавиться.
             var globalParameterId = this;
+            var result = {};
             var subparameterIds = {};
             for (var i = 0; i < Object.keys(parameterModel.subparameters).length; i++) {
                 var subparameter = parameterModel.subparameters[Object.keys(parameterModel.subparameters)[i]];
@@ -62,40 +61,7 @@
                     }
                 }
                 if (isGoodImage) {
-                    return image.Url;
-                }
-            }
-            return undefined;
-        };
-        // Посчитать x нужной картинки.
-        var getResultImageX = function () {
-            //   alert('Посчитали нужную картинку');
-            //   debugger;
-            // Грязный хак.
-            // TODO: избавиться.
-            var globalParameterId = this;
-            var subparameterIds = {};
-            for (var i = 0; i < Object.keys(parameterModel.subparameters).length; i++) {
-                var subparameter = parameterModel.subparameters[Object.keys(parameterModel.subparameters)[i]];
-                if (subparameter.ParentId === parseInt(globalParameterId)) {
-                    subparameterIds[subparameter.Id] = parameterModel.selectedParametersValues[subparameter.Id]();
-                }
-            }
-            for (i = 0; i < parameterModel.designerImageBundles.length; i++) {
-                var isGoodImage = true;
-                var image = parameterModel.designerImageBundles[i].DesignerImage;
-                if (Object.keys(image.Parameters).length !== Object.keys(subparameterIds).length) {
-                    continue;
-                }
-                var imageParametersKeys = Object.keys(image.Parameters);
-                for (var j = 0; j < imageParametersKeys.length; j++) {
-                    var key = imageParametersKeys[j];
-                    var parameterValue = image.Parameters[key];
-                    if (subparameterIds[key] !== parameterValue) {
-                        isGoodImage = false;
-                    }
-                }
-                if (isGoodImage) {
+                    result.url = image.Url;
                     var designerImageBundle = parameterModel.designerImageBundles[i];
                     var designerImageBundlePositions = parameterModel.designerImageBundles[i].Positions;
                     var isGoodPosition;
@@ -110,58 +76,9 @@
                             }
                         }
                         if (isGoodPosition) {
-                            return designerImageBundle.Positions[j].X;
-                        }
-                    }
-                }
-            }
-            return undefined;
-        };
-        // Посчитать y нужной картинки.
-        var getResultImageY = function () {
-            //   alert('Посчитали нужную картинку');
-//               debugger;
-            // Грязный хак.
-            // TODO: избавиться.
-            var globalParameterId = this;
-            var subparameterIds = {};
-            for (var i = 0; i < Object.keys(parameterModel.subparameters).length; i++) {
-                var subparameter = parameterModel.subparameters[Object.keys(parameterModel.subparameters)[i]];
-                if (subparameter.ParentId === parseInt(globalParameterId)) {
-                    subparameterIds[subparameter.Id] = parameterModel.selectedParametersValues[subparameter.Id]();
-                }
-            }
-            for (i = 0; i < parameterModel.designerImageBundles.length; i++) {
-                var isGoodImage = true;
-                var image = parameterModel.designerImageBundles[i].DesignerImage;
-                if (Object.keys(image.Parameters).length !== Object.keys(subparameterIds).length) {
-                    continue;
-                }
-                var imageParametersKeys = Object.keys(image.Parameters);
-                for (var j = 0; j < imageParametersKeys.length; j++) {
-                    var key = imageParametersKeys[j];
-                    var parameterValue = image.Parameters[key];
-                    if (subparameterIds[key] !== parameterValue) {
-                        isGoodImage = false;
-                    }
-                }
-                if (isGoodImage) {
-//                    debugger;
-                    var designerImageBundle = parameterModel.designerImageBundles[i];
-                    var designerImageBundlePositions = parameterModel.designerImageBundles[i].Positions;
-                    var isGoodPosition;
-                    for (var j = 0; j < designerImageBundlePositions.length; j++) {
-                        isGoodPosition = true;
-                        var positionParameters = designerImageBundlePositions[j].Parameters;
-                        for (var k = 0; k < Object.keys(positionParameters).length; k++) {
-                            var positionParametersKey = Object.keys(positionParameters)[k];
-                            var positionParametersValue = positionParameters[positionParametersKey];
-                            if (parameterModel.selectedParametersValues[positionParametersKey]() !== parseInt(positionParametersValue, 10)) {
-                                isGoodPosition = false;
-                            }
-                        }
-                        if (isGoodPosition) {
-                            return designerImageBundle.Positions[j].Y;
+                            result.y = designerImageBundle.Positions[j].Y;
+                            result.x = designerImageBundle.Positions[j].X;
+                            return result;
                         }
                     }
                 }
@@ -173,11 +90,7 @@
             var globalParametersKeys = Object.keys(parameterModel.globalParameters);
             for (var i = 0; i < globalParametersKeys.length; i++) {
                 var globalParameter = parameterModel.globalParameters[globalParametersKeys[i]];
-                resultImageBundles[globalParameter.Id] = {
-                    url: ko.computed(getResultImageUrl, globalParameter.Id),
-                    x: ko.computed(getResultImageX, globalParameter.Id),
-                    y: ko.computed(getResultImageY, globalParameter.Id)
-                };
+                resultImageBundles[globalParameter.Id] = ko.computed(getResultImage, globalParameter.Id);
             };
             return resultImageBundles;
         };
