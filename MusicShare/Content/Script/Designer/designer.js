@@ -154,7 +154,16 @@
         parameterModel.isActiveSubparameterValue = function (subparameterValue) {
             return parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().Id]() == subparameterValue.Id;
         };
-       
+        // доступно ли значение для выбора
+        parameterModel.isIncopatibleSubparameterValue = function (subparameterValue) {
+            for (var i = 0; i < subparameterValue.IncompatibleParameters.length; i++) {
+                var incompatibleParameter = subparameterValue.IncompatibleParameters[i];
+                if (parameterModel.selectedParametersValues[incompatibleParameter.ParameterId]() == incompatibleParameter.ParameterValueId) {
+                    return true;
+                }
+            }
+            return false;
+        };
 
         parameterModel.init = function() {
             setEditingParameter(data.Parameters[0].Id);

@@ -74,9 +74,12 @@ insert into ParameterValue values
 (11, 6, 'Gibson', '/ImgStore/BrandLogo/Gibson.jpg');
 
 insert into IncompatibleParameter values
-(1, 5, 10, 2, 2),
-(2, 5, 10, 3, 2),
-(3, 5, 11, 1, 2);
+(1, 6, 10, 2, 2),
+(2, 6, 10, 2, 3),
+(3, 6, 11, 2, 1),
+(4, 2, 2, 6, 10),
+(5, 2, 3, 6, 10),
+(6, 2, 1, 6, 11);
 
 insert into DesignerImage values
 (1, '2:1;3:6;', '/ImgStore/FormWithColor/Stratocaster_Red.png'),

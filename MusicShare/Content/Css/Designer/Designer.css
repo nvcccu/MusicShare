@@ -97,6 +97,10 @@
 .designer-form__param-value--active {
     opacity: 1;
 }
+.designer-form__param-value--disabled {
+    background-color: #AAAAAA;
+    cursor: not-allowed;
+}
 .designer-form__param-img {
     text-align: center;
 }
