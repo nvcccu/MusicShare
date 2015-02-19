@@ -60,6 +60,10 @@ insert into Parameter values
 (6, 5, 'производитель', 'производителя'),
 (7, 4, 'бридж', 'бриджа');
 
+insert into ParameterArrow values
+(1, 14, '2:', 100, 200),
+
+
 insert into ParameterValue values
 (1, 2, 'Stratocaster', '/ImgStore/FormWithColor/Stratocaster_NoColor.png'),
 (2, 2, 'Explorer', '/ImgStore/FormWithColor/Explorer_NoColor.png'),
@@ -79,7 +83,11 @@ insert into IncompatibleParameter values
 (3, 6, 11, 2, 1),
 (4, 2, 2, 6, 10),
 (5, 2, 3, 6, 10),
-(6, 2, 1, 6, 11);
+(6, 2, 1, 6, 11),
+(7, 7, 9, 2, 2),
+(8, 7, 9, 2, 3),
+(9, 2, 2, 7, 9),
+(10, 2, 3, 7, 9);
 
 insert into DesignerImage values
 (1, '2:1;3:6;', '/ImgStore/FormWithColor/Stratocaster_Red.png'),
@@ -105,15 +113,13 @@ insert into DesignerImagePosition values
 (7, 7, '', 0, 0),
 (8, 8, '', 0, 0),
 (9, 9, '', 0, 0),
-(10, 10, '2:1;', 100, 100),
-(11, 10, '2:2;', 50, 100),
-(12, 10, '2:3;', 100, 50),
-(13, 11, '2:1;', 100, 100),
-(14, 11, '2:2;', 50, 100),
-(15, 11, '2:3;', 100, 50),
-(16, 12, '2:1;', 100, 100),
-(17, 12, '2:2;', 50, 100),
-(18, 12, '2:3;', 100, 50);
+(10, 10, '2:1;', 91, 103),
+(11, 10, '2:2;', 174, 162),
+(12, 10, '2:3;', 134, 110),
+(13, 11, '2:1;', 99, 98),
+(14, 11, '2:2;', 175, 157),
+(15, 11, '2:3;', 134, 106),
+(16, 12, '2:1;', 107, 108);
 
 insert into ColorSimple values
 (1, 1 '/ImgStore/FormWithColor/Stratocaster_Red.png', 0, 0),

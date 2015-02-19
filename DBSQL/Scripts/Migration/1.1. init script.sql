@@ -48,6 +48,20 @@ WITH (
 ALTER TABLE Parameter
   OWNER TO postgres;
 
+CREATE TABLE ParameterArrow (
+  Id serial NOT NULL,
+  ParameterId int NOT NULL,
+  ParameterValues character varying(64) NOT NULL,
+  X int NOT NULL,
+  Y int NOT NULL,
+  CONSTRAINT pk_ParameterArrow PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ParameterArrow
+  OWNER TO postgres;
+
 CREATE TABLE ParameterValue (
   Id serial NOT NULL,
   ParameterId int NOT NULL,

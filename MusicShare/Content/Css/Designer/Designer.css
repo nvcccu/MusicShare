@@ -8,6 +8,7 @@
     left: 0;
     bottom: 0;
     width: 450px;
+    text-align: center;
 }
 .designer-nav__cur-param {
     height: 40px;
@@ -84,6 +85,8 @@
 }
 .result-images {
     position: relative;
+    width: 900px;
+    margin: 0 auto;
 }
 .form__image {
     position: absolute;
@@ -103,6 +106,9 @@
 }
 .designer-form__param-img {
     text-align: center;
+    height: 165px;
+    width: 100px;
+    margin-right: 50px;
 }
 .designer-form__param-name {
     text-align: center
