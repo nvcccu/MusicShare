@@ -9,7 +9,7 @@
         @Html.Partial("ContentHelper")
         <title>MS</title>
         <script>
-            var musGround;
+            var musGround = {};
             $(document).ready(function() {
                 musGround = getMusGround({
                     logUrl: '@Url.Action("LogAction", "Log")'

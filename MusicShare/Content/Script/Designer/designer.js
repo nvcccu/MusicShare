@@ -120,28 +120,23 @@
         parameterModel.subparameters = getSubparameters();
         parameterModel.globalParameters = getGlobalParameters();
         
-        // Устанавливает текущий изменяемый основной параметр.
         parameterModel.editParameter = function (globalParameter) {
             setEditingParameter(globalParameter.Id);
             parameterModel.isOverviewMode(false);
         };
-        // Устанавливает текущий изменяемый основной подпараметр.
         parameterModel.editSubarameter = function (subparameter) {
             setEditingSubparameter(subparameter.Id);
         };
         parameterModel.goToOverview = function() {
             parameterModel.isOverviewMode(true);
         };
-        // Устанавливает текущее значение параметра.
         parameterModel.setSubparameterValue = function (parameterValue) {
             parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().Id](parameterValue.Id);
             parameterModel.goToOverview();
         };
-        // выбрано ли это значение подпараметра
         parameterModel.isActiveSubparameterValue = function (subparameterValue) {
             return parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().Id]() == subparameterValue.Id;
         };
-        // доступно ли значение для выбора
         parameterModel.isIncopatibleSubparameterValue = function (subparameterValue) {
             for (var i = 0; i < subparameterValue.IncompatibleParameters.length; i++) {
                 var incompatibleParameter = subparameterValue.IncompatibleParameters[i];

@@ -8,6 +8,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         musGround = musGround || {};
+        musGround.const.formParameterId = 2;
         ko.applyBindings(getDesigner(@Html.Raw(JsonConvert.SerializeObject(Model)), document.getElementById("Designer")));
     });
 </script>
