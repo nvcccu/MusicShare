@@ -56,13 +56,10 @@ insert into Parameter values
 (2, 1, 'форма', 'формы'),
 (3, 1, 'цвет', 'цвета'),
 (4, NULL, 'бридж', 'бриджа'),
-(5, NULL, 'производитель', 'производителя'),
-(6, 5, 'производитель', 'производителя'),
-(7, 4, 'бридж', 'бриджа');
+(7, 4, 'тип', 'типа');
 
 insert into ParameterArrow values
 (1, 14, '2:', 100, 200),
-
 
 insert into ParameterValue values
 (1, 2, 'Stratocaster', '/ImgStore/FormWithColor/Stratocaster_NoColor.png'),
@@ -78,12 +75,6 @@ insert into ParameterValue values
 (11, 6, 'Gibson', '/ImgStore/BrandLogo/Gibson.jpg');
 
 insert into IncompatibleParameter values
-(1, 6, 10, 2, 2),
-(2, 6, 10, 2, 3),
-(3, 6, 11, 2, 1),
-(4, 2, 2, 6, 10),
-(5, 2, 3, 6, 10),
-(6, 2, 1, 6, 11),
 (7, 7, 9, 2, 2),
 (8, 7, 9, 2, 3),
 (9, 2, 2, 7, 9),
