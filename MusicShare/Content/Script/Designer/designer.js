@@ -108,8 +108,13 @@
             parameterModel.currentAvailableSubparameters(subparameters);
             setEditingSubparameter(parameterModel.currentAvailableSubparameters()[0].Id);
         };
+        var isFormParameterSelected = function () {
+            var tmp = parameterModel.selectedParametersValues[musGround.const.formSubparameterId];
+            return tmp && tmp();
+        }
 
         parameterModel.isOverviewMode = ko.observable(true);
+        parameterModel.isFormSelected = undefined;
         parameterModel.currentEditingParameter = ko.observable();
         parameterModel.currentAvailableSubparameters = ko.observableArray(null);
         parameterModel.currentEditingSubparameter = ko.observable(null);
@@ -118,6 +123,7 @@
         parameterModel.designerImageBundles = data.DesignerImageBundles;
         parameterModel.subparameters = getSubparameters();
         parameterModel.globalParameters = getGlobalParameters();
+        
         
         parameterModel.editParameter = function (globalParameter) {
             setEditingParameter(globalParameter.Id);
@@ -161,6 +167,11 @@
         parameterModel.dropSelectedParameter = function(subparameter) {
             parameterModel.selectedParametersValues[subparameter.Id](undefined);
         };
+        parameterModel.editFormParameter = function() {
+            setEditingParameter(musGround.const.bodyParameterId);
+            setEditingSubparameter(musGround.const.formSubparameterId);
+            parameterModel.isOverviewMode(false);
+        }
 
         parameterModel.init = function() {
             setEditingParameter(data.Parameters[0].Id);
@@ -169,7 +180,9 @@
                 parameterModel.selectedParametersValues[subparameter.Id] = ko.observable(undefined);
             }
             parameterModel.resultImageBundles = getResultImageBundles();
+            parameterModel.isFormSelected = ko.computed(isFormParameterSelected);
         };
+
 
         parameterModel.init();
         return parameterModel;

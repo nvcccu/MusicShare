@@ -1,4 +1,5 @@
 ﻿<div id="Overview" class="designer__form" data-bind="visible: $root.parameterModel.isOverviewMode() == true">
+    <!-- ko if: $root.parameterModel.isFormSelected() -->
     <div data-bind="foreach: Object.keys($root.parameterModel.globalParameters)">
         <!-- ko with: $root.parameterModel.globalParameters[$data] -->
         <div data-bind="text: NameNominative, click: $root.parameterModel.editParameter"></div>
@@ -9,4 +10,8 @@
         <img class="form__image" data-bind="visible: url, attr: { src: url }, style: { top: y + 'px', left: x + 'px' }"/>
         <!-- /ko -->
     </div>
+    <!-- /ko -->
+    <!-- ko ifnot: $root.parameterModel.isFormSelected() -->
+    <div data-bind="click: $root.parameterModel.editFormParameter">Выбрать форму</div>
+    <!-- /ko -->
 </div>
