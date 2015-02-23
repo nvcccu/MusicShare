@@ -25,9 +25,9 @@
             return result;
         };
         // Посчитать нужную картинку по выбранным параметрам.
+        // TODO: придумать название получше.
         var getResultImage = function () {
-            // Грязный хак.
-            // TODO: избавиться.
+            // Грязный хак. TODO: Избавиться. Или объяснить почему можно только так.
             var globalParameterId = this;
             var result = {};
             var subparameterIds = {};
@@ -85,7 +85,6 @@
             };
             return resultImageBundles;
         };
-        // устанавливает настраиваемый параметр
         var setEditingParameter = function (globalParameterId) {
             var parameter = data.Parameters.filter(function (e) {
                 return e.Id == globalParameterId;
@@ -93,7 +92,14 @@
             parameterModel.currentEditingParameter(parameter);
             setAvailableSubparameters(parameter.Id);
         };
+        var setEditingSubparameter = function (subparameterId) {
+            var subparameter = parameterModel.currentAvailableSubparameters().filter(function (e) {
+                return e.Id == subparameterId;
+            })[0];
+            parameterModel.currentEditingSubparameter(subparameter);
+        };
         // ищет подпараметры для параметра
+        // Поганое название. TODO: Поменять название. Без комментария непонятно.
         var setAvailableSubparameters = function (globalParameterId) {
             parameterModel.currentAvailableSubparameters.removeAll();
             var subparameters = data.Parameters.filter(function (e) {
@@ -101,13 +107,6 @@
             });
             parameterModel.currentAvailableSubparameters(subparameters);
             setEditingSubparameter(parameterModel.currentAvailableSubparameters()[0].Id);
-        };
-        // устанавливает настраиваемый подпараметр
-        var setEditingSubparameter = function (subparameterId) {
-            var subparameter = parameterModel.currentAvailableSubparameters().filter(function (e) {
-                return e.Id == subparameterId;
-            })[0];
-            parameterModel.currentEditingSubparameter(subparameter);
         };
 
         parameterModel.isOverviewMode = ko.observable(true);
@@ -156,6 +155,7 @@
             var parameterValue = parameterModel.subparameters[subparameterId].ParameterValues.filter(function(parameterValue) {
                 return parameterValue.Id === parameterModel.selectedParametersValues[subparameterId]();
             })[0];
+            // TODO: Выпилить. "не выбрано" должно быть в верстке.
             return parameterValue ? parameterValue.Name : "не выбрано";
         };
         parameterModel.dropSelectedParameter = function(subparameter) {
