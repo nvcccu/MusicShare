@@ -85,22 +85,9 @@
             };
             return resultImageBundles;
         };
-
-        parameterModel.isOverviewMode = ko.observable(true);
-        parameterModel.currentEditingParameter = ko.observable();
-        parameterModel.currentAvailableSubparameters = ko.observableArray(null);
-        parameterModel.currentEditingSubparameter = ko.observable(null);
-        parameterModel.selectedParametersValues = [];
-        parameterModel.resultImageBundles = undefined;
-
-        parameterModel.designerImageBundles = data.DesignerImageBundles;
-        parameterModel.subparameters = getSubparameters();
-        parameterModel.globalParameters = getGlobalParameters();
-        
-        
         // устанавливает настраиваемый параметр
         var setEditingParameter = function (globalParameterId) {
-            var parameter = data.Parameters.filter(function(e) {
+            var parameter = data.Parameters.filter(function (e) {
                 return e.Id == globalParameterId;
             })[0];
             parameterModel.currentEditingParameter(parameter);
@@ -122,19 +109,30 @@
             })[0];
             parameterModel.currentEditingSubparameter(subparameter);
         };
-        // клик по глобальному параметру
+
+        parameterModel.isOverviewMode = ko.observable(true);
+        parameterModel.currentEditingParameter = ko.observable();
+        parameterModel.currentAvailableSubparameters = ko.observableArray(null);
+        parameterModel.currentEditingSubparameter = ko.observable(null);
+        parameterModel.selectedParametersValues = [];
+        parameterModel.resultImageBundles = undefined;
+        parameterModel.designerImageBundles = data.DesignerImageBundles;
+        parameterModel.subparameters = getSubparameters();
+        parameterModel.globalParameters = getGlobalParameters();
+        
+        // Устанавливает текущий изменяемый основной параметр.
         parameterModel.editParameter = function (globalParameter) {
             setEditingParameter(globalParameter.Id);
             parameterModel.isOverviewMode(false);
         };
-        // клик по подпараметру
+        // Устанавливает текущий изменяемый основной подпараметр.
         parameterModel.editSubarameter = function (subparameter) {
             setEditingSubparameter(subparameter.Id);
         };
         parameterModel.goToOverview = function() {
             parameterModel.isOverviewMode(true);
         };
-        // клик по картинке для выбора значения подпараметра
+        // Устанавливает текущее значение параметра.
         parameterModel.setSubparameterValue = function (parameterValue) {
             parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().Id](parameterValue.Id);
             parameterModel.goToOverview();
