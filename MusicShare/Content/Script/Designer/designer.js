@@ -10,7 +10,6 @@
                 return e.ParentId;
             });
             subparameters.forEach(function (subparameter) {
-                subparameter.selectedValueId = ko.observable(undefined);
                 result[subparameter.Id] = subparameter;
             });
             return result;
@@ -21,14 +20,6 @@
                 return !e.ParentId;
             });
             globalParameters.forEach(function (globalParameter) {
-                globalParameter.subparametersValues = {};
-                data.Parameters.filter(function (parameter) {
-                    return parameter.ParentId == globalParameter.Id;
-                }).forEach(function(subparameter) {
-                    globalParameter.subparametersValues[subparameter] = ko.computed(function () {
-                        return parameterModel.subparameters[subparameter.Id].selectedValueId();
-                    });
-                });
                 result[globalParameter.Id] = globalParameter;
             });
             return result;
@@ -145,10 +136,8 @@
         };
         // клик по картинке для выбора значения подпараметра
         parameterModel.setSubparameterValue = function (parameterValue) {
-           // alert('Положили новое значение параметра.');
             parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().Id](parameterValue.Id);
-            //
-//            parameterModel.subparameters[parameterModel.currentEditingSubparameter().Id].selectedValueId(parameterValue.Id);
+            parameterModel.goToOverview();
         };
         // выбрано ли это значение подпараметра
         parameterModel.isActiveSubparameterValue = function (subparameterValue) {
@@ -163,6 +152,21 @@
                 }
             }
             return false;
+        };
+        parameterModel.getParentParameterName = function (parentId) {
+            var globalParameter = parameterModel.globalParameters[Object.keys(parameterModel.globalParameters).filter(function (key) {
+                return parameterModel.globalParameters[key].Id === parentId;
+            })[0]];
+            return globalParameter ? globalParameter.NameNominative : null;
+        };
+        parameterModel.getSelectedValueName = function(subparameterId) {
+            var parameterValue = parameterModel.subparameters[subparameterId].ParameterValues.filter(function(parameterValue) {
+                return parameterValue.Id === parameterModel.selectedParametersValues[subparameterId]();
+            })[0];
+            return parameterValue ? parameterValue.Name : "не выбрано";
+        };
+        parameterModel.dropSelectedParameter = function(subparameter) {
+            parameterModel.selectedParametersValues[subparameter.Id](undefined);
         };
 
         parameterModel.init = function() {
@@ -181,52 +185,4 @@
     model.parameterModel = getParameterModel();
 
     return model;
-};
-
-
-
-getGlobalPamResultImage = function (parameter) {
-    var subparameters = parameterModel.subparameters.filter(function (e) {
-        return e.ParentId == parameter.Id;
-    });
-    var subparametersValues = [];
-    subparameters.forEach(function (subparameter) {
-        subparametersValues[subparameter.Id] = parameterModel.selectedParametersValues()[subparameter.Id]();
-    });
-    for (var i = 0; i < parameterModel.designerImageBundles.length; i++) {
-        var isGoodImage = true;
-        var image = parameterModel.designerImageBundles[i].DesignerImage;
-        for (var j = 0; j < Object.keys(image.Parameters).length; j++) {
-            var key = Object.keys(image.Parameters)[j];
-            var parameterValue = image.Parameters[key];
-            if (subparametersValues[key] != parameterValue) {
-                isGoodImage = false;
-            }
-        }
-        if (isGoodImage) {
-           // debugger;
-            var imageBundle = parameterModel.designerImageBundles[i];
-            parameterModel.resultImagesWithPosition()[parameter.Id] = {};
-            parameterModel.resultImagesWithPosition()[parameter.Id].url = image.Url;
-            parameterModel.resultImagesWithPosition()[parameter.Id].x = 0;
-            parameterModel.resultImagesWithPosition()[parameter.Id].y = 0;
-            for (j = 0; j < imageBundle.Positions.length; j++) {
-                var position = imageBundle.Positions[j];
-                var isGoodPosition = true;
-                for (var k = 0; k < Object.keys(position.Parameters).length; k++) {
-                    var positionParameterKey = Object.keys(position.Parameters)[k];
-                    var positionParameterValue = position.Parameters[positionParameterKey];
-                    if (parameterModel.selectedParametersValues()[positionParameterKey]() != positionParameterValue) {
-                        isGoodPosition = false;
-                    }
-                }
-                if (isGoodPosition) {
-                    parameterModel.resultImagesWithPosition()[parameter.Id].x = position.X;
-                    parameterModel.resultImagesWithPosition()[parameter.Id].y = position.Y;
-                    return;
-                }
-            }
-        }
-    }
-    return;
 };

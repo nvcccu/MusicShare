@@ -1,7 +1,7 @@
 ﻿<div id="SubparameterNavigation" class="designer__navigation" data-bind="visible: $root.parameterModel.isOverviewMode() == false">
     <div class="designer-nav__cur-param">
         Выбор <span data-bind="text: $root.parameterModel.currentEditingParameter().NameGenitive"></span>
-        <div class="designer-nav__drop-param" data-bind="click: $root.parameterModel.goToOverview"></div>
+        <div class="mg-btn-cross" data-bind="click: $root.parameterModel.goToOverview"></div>
     </div>
     <div data-bind="foreach: $root.parameterModel.currentAvailableSubparameters()">
         <div class="designer-nav__param-category" data-bind="text: NameNominative,
@@ -11,5 +11,4 @@
             click: $root.parameterModel.editSubarameter">
         </div>
     </div>
-    <input type="button" class="designer-nav__submit" style="margin-left: -97px;" value="Сохранить" />
 </div>

@@ -2,5 +2,14 @@
     <div class="designer-nav__cur-param">
         Электрогитара
     </div>
-    <input type="button" class="designer-nav__submit" style="margin: auto;" value="Другой инструмент" />
+    <div class="designer__selected-parameters" data-bind="foreach: Object.keys($root.parameterModel.subparameters)">
+        <div data-bind="with: $root.parameterModel.subparameters[$data]">
+            <span class="selected-parameters__global-parameter" data-bind="text: $root.parameterModel.getParentParameterName($data.ParentId)"></span>
+            >
+            <span class="selected-parameters__subparameter" data-bind="text: $data.NameNominative"></span>
+            >
+            <span class="selected-parameters__selected-values" data-bind="text: $root.parameterModel.getSelectedValueName($data.Id)"></span>
+            <div class="mg-btn-cross" data-bind="click: $root.parameterModel.dropSelectedParameter"></div>
+        </div>
+    </div>
 </div>
