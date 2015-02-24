@@ -2,6 +2,7 @@
     <div class="designer-nav__cur-param">
         Электрогитара
     </div>
+    <!-- ko if: $root.parameterModel.isFormSelected()-->
     <div class="designer__selected-parameters" data-bind="foreach: Object.keys($root.parameterModel.subparameters)">
         <div data-bind="with: $root.parameterModel.subparameters[$data]">
             <span class="selected-parameters__global-parameter" data-bind="text: $root.parameterModel.getParentParameterName($data.ParentId)"></span>
@@ -12,4 +13,5 @@
             <div class="mg-btn-cross" data-bind="click: $root.parameterModel.dropSelectedParameter"></div>
         </div>
     </div>
+    <!-- /ko -->
 </div>

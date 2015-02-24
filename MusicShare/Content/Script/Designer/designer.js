@@ -181,6 +181,11 @@
             }
             parameterModel.resultImageBundles = getResultImageBundles();
             parameterModel.isFormSelected = ko.computed(isFormParameterSelected);
+            ko.computed(function () {
+                if (!parameterModel.selectedParametersValues[musGround.const.colorSubparameterId]()) {
+                    parameterModel.selectedParametersValues[musGround.const.colorSubparameterId](musGround.const.whiteColorSubparameterValueId);
+                }
+            });
         };
 
 
