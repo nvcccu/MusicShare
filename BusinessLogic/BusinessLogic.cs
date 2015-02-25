@@ -93,5 +93,8 @@ namespace BusinessLogic {
         public List<DesignerImageTransportType> GetDesignerImages() {
             return _designerProvider.GetDesignerImages();
         }
+        public List<PredefinedGuitarDto> GetPredefinedGuitars() {
+            return _designerProvider.GetPredefinedGuitars();
+        }
     }
 }

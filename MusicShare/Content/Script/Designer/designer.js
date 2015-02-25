@@ -76,7 +76,7 @@
             }
             return undefined;
         };
-        var getResultImageBundles = function () {
+        var getResultImageBundles = function() {
             var resultImageBundles = {};
             var globalParametersKeys = Object.keys(parameterModel.globalParameters);
             for (var i = 0; i < globalParametersKeys.length; i++) {
@@ -84,13 +84,6 @@
                 resultImageBundles[globalParameter.Id] = ko.computed(getResultImage, globalParameter.Id);
             };
             return resultImageBundles;
-        };
-        var setEditingParameter = function (globalParameterId) {
-            var parameter = data.Parameters.filter(function (e) {
-                return e.Id == globalParameterId;
-            })[0];
-            parameterModel.currentEditingParameter(parameter);
-            setAvailableSubparameters(parameter.Id);
         };
         var setEditingSubparameter = function (subparameterId) {
             var subparameter = parameterModel.currentAvailableSubparameters().filter(function (e) {
@@ -108,10 +101,27 @@
             parameterModel.currentAvailableSubparameters(subparameters);
             setEditingSubparameter(parameterModel.currentAvailableSubparameters()[0].Id);
         };
-        var isFormParameterSelected = function () {
+        var setEditingParameter = function(globalParameterId) {
+            var parameter = data.Parameters.filter(function (e) {
+                return e.Id == globalParameterId;
+            })[0];
+            parameterModel.currentEditingParameter(parameter);
+            setAvailableSubparameters(parameter.Id);
+        };
+        var isFormParameterSelected = function() {
             var tmp = parameterModel.selectedParametersValues[musGround.const.formSubparameterId];
             return tmp && tmp();
         }
+//        var generateRandomGuitar = function() {
+//            parameterModel.globalParameters.forEach(function(globalParameter) {
+//                if (globalParameter.ID === musGround.const.formSubparameterId) {
+//                    return;
+//                }
+//                var subparameters = parameterModel.subparameters.filter(function(subparameter) {
+//                    return subparameter.ParentId === globalParameter.Id;
+//                });
+//            });
+//        }
 
         parameterModel.isOverviewMode = ko.observable(true);
         parameterModel.isFormSelected = undefined;
@@ -137,6 +147,9 @@
         };
         parameterModel.setSubparameterValue = function (parameterValue) {
             parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().Id](parameterValue.Id);
+//            if (parameterModel.currentEditingSubparameter().Id === musGround.const.formSubparameterId) {
+//                generateRandomGuitar(musGround.const.formSubparameterId);
+//            }
             parameterModel.goToOverview();
         };
         parameterModel.isActiveSubparameterValue = function (subparameterValue) {

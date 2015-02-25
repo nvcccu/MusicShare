@@ -3,8 +3,6 @@ using System.Linq;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
 using Core.TransportTypes;
-using DAO;
-using DAO.Enums;
 
 namespace BusinessLogic.Providers {
     public class DesignerProvider : IDesignerProvider {
@@ -44,6 +42,13 @@ namespace BusinessLogic.Providers {
                     .Where(dip => dip.ImageId == i.Id)
                     .Select(dip => dip.ToDto()).ToList()
             }).ToList();
+        }
+        public List<PredefinedGuitarDto> GetPredefinedGuitars() {
+            return new PredefinedGuitar()
+                .Select()
+                .GetData()
+                .Select(p => p.ToDto())
+                .ToList();
         }
     }
 }

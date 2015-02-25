@@ -34,11 +34,14 @@ namespace MusicShareWeb.Models {
     public class DesignerModel : BaseModel {
         public List<ParameterModel> Parameters { get; set; }
         public List<DesignerImageModel> DesignerImageBundles { get; set; }
+        public List<PredefinedGuitarDto> PredefinedGuitars { get; set; }
+
         public DesignerModel() {
             var parameters = ServiceManager<IBusinessLogic>.Instance.Service.GetParameters();
             var parameterValues = ServiceManager<IBusinessLogic>.Instance.Service.GetParameterValues();
             var incompatibleParameters = ServiceManager<IBusinessLogic>.Instance.Service.GetIncompatibleParameters();
             var designerImages = ServiceManager<IBusinessLogic>.Instance.Service.GetDesignerImages();
+            PredefinedGuitars = ServiceManager<IBusinessLogic>.Instance.Service.GetPredefinedGuitars();
             Parameters = parameters.Select(p => new ParameterModel {
                 Id = p.Id,
                 ParentId = p.ParentId,
