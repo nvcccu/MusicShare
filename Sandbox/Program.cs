@@ -3,25 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
-using BusinessLogic.DaoEntities;
-using BusinessLogic.Helpers;
 using BusinessLogic.Interfaces;
-using BusinessLogic.Parser;
-using BusinessLogic.Providers;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using CommonUtils;
 using CommonUtils.Config;
-using CommonUtils.Log;
 using CommonUtils.ServiceManager;
 using Core.Enums;
 using DAO;
 using DAO.Enums;
-using MusicShareWeb;
 
 namespace Sandbox {
     // todo разобраться есть ли тут что-то полезное
@@ -153,51 +145,51 @@ namespace Sandbox {
             }
         }
 
-        private static void A() {
-            var strs = File.ReadAllLines(@"d:\cat1.txt");
-            foreach (var str in strs) {
-                var pair = str.Split(',');
-                new OfferCategory {
-                    Id = Convert.ToInt64(pair.First()),
-                    ParentId = Convert.ToInt64(pair.Last())
-                }.Save();
-            }
-        }
-
-        private static void B() {
-            var strs = File.ReadAllLines(@"d:\cat2.txt");
-            foreach (var str in strs) {
-                var pair = str.Split(',');
-                new OfferCategory()
-                    .Update()
-                    .Set(OfferCategory.Fields.Name, pair.Last())
-                    .Where(OfferCategory.Fields.Id, PredicateCondition.Equal, Convert.ToInt64(pair.First()))
-                    .ExecuteScalar();
-            }
-        }
-       
+//        private static void A() {
+//            var strs = File.ReadAllLines(@"d:\cat1.txt");
+//            foreach (var str in strs) {
+//                var pair = str.Split(',');
+//                new OfferCategory {
+//                    Id = Convert.ToInt64(pair.First()),
+//                    ParentId = Convert.ToInt64(pair.Last())
+//                }.Save();
+//            }
+//        }
+//
+//        private static void B() {
+//            var strs = File.ReadAllLines(@"d:\cat2.txt");
+//            foreach (var str in strs) {
+//                var pair = str.Split(',');
+//                new OfferCategory()
+//                    .Update()
+//                    .Set(OfferCategory.Fields.Name, pair.Last())
+//                    .Where(OfferCategory.Fields.Id, PredicateCondition.Equal, Convert.ToInt64(pair.First()))
+//                    .ExecuteScalar();
+//            }
+//        }
+//       
         private static void Main(string[] args) {
             // НЕ УДАЛЯТЬ
             ConfigHelper.LoadXml(false);
             Connector.ConnectionString = ConfigHelper.FirstTagWithTagNameInnerText("db-connection");
             // НЕ УДАЛЯТЬ
 
-            B();
+         
             Console.WriteLine("end");
             Console.ReadKey();
             return;
 
-            new DynatoneParser().Parse();
+          
 
 
 
 
-            new Brand()
-                .Update()
-                .Set(Brand.Fields.Logo, "newLogo")
-                .Set(Brand.Fields.Name, "newName")
-                .Where(Brand.Fields.Id, PredicateCondition.Equal, 3825)
-                .ExecuteScalar();
+//            new Brand()
+//                .Update()
+//                .Set(Brand.Fields.Logo, "newLogo")
+//                .Set(Brand.Fields.Name, "newName")
+//                .Where(Brand.Fields.Id, PredicateCondition.Equal, 3825)
+//                .ExecuteScalar();
 
 
 

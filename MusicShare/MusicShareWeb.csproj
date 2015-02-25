@@ -123,19 +123,11 @@
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\PlacardController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\DerzkieSchi\GuitarsModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
-    <Compile Include="Models\DropDownModel.cs" />
-    <Compile Include="Models\PromoModel.cs" />
-    <Compile Include="Models\GuitarTotalDataModel.cs" />
-    <Compile Include="Models\SearchResultModel.cs" />
-    <Compile Include="Models\Store\CategoriesModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,10 +163,6 @@
     <Content Include="ImgStore\Form\Explorer.jpg" />
     <Content Include="ImgStore\Form\RandyRhoads.jpg" />
     <Content Include="ImgStore\Form\Stratocaster.jpg" />
-    <Content Include="Views\Shared\UI\Global\UIGlobal.css" />
-    <Content Include="Views\Shared\UI\UIDropDown\UIDropDown_round.png" />
-    <Content Include="Views\Shared\UI\UIDropDown\UIDropDown.css" />
-    <Content Include="Views\Shared\UI\UIDropDown\UIDropDown.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -211,24 +199,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Search\Search.cshtml">
-      <LastGenOutput>Search.generated.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Search\Index.cshtml">
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\UI\UIDropDown\UIDropDown.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Search\SearchResults.cshtml">
-      <LastGenOutput>SearchResults.generated.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
       <Project>{148ceb38-efbd-4b48-a212-4fae27e2455e}</Project>
       <Name>BusinessLogic</Name>
@@ -261,43 +231,12 @@
     <Content Include="Views\Shared\ArticlePreview.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\PromoBlock\PromoBlock.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\PromoBlock\News.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\PromoBlock\RelevantOffer.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Search\Offers.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\OuterOffer.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="ImgStore\Guitars\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\DerzkieSchi\Guitars.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\DropDown.cshtml" />
+    <Folder Include="Models\DerzkieSchi\" />
+    <Folder Include="Models\Store\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DerzkieSchi\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\DerzkieSchi\Models.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\DerzkieSchi\Colors.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Store\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Store\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Designer\Index.cshtml" />
