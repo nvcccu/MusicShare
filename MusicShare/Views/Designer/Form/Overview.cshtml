@@ -2,7 +2,7 @@
     <!-- ko if: $root.parameterModel.isFormSelected() -->
     <div data-bind="foreach: Object.keys($root.parameterModel.globalParameters)">
         <!-- ko with: $root.parameterModel.globalParameters[$data] -->
-        <div data-bind="text: NameNominative, click: $root.parameterModel.editParameter"></div>
+        <div data-bind="text: nameNominative, click: $root.parameterModel.editParameter"></div>
         <!-- /ko -->
     </div>
     <div class="result-images" data-bind="foreach: Object.keys($root.parameterModel.resultImageBundles)">

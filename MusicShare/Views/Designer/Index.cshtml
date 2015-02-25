@@ -1,4 +1,5 @@
 ﻿@using Newtonsoft.Json;
+@using Newtonsoft.Json.Serialization
 @model MusicShareWeb.Models.DesignerModel
 
 @{
@@ -12,7 +13,8 @@
         musGround.const.formSubparameterId = 2;
         musGround.const.colorSubparameterId = 3;
         musGround.const.whiteColorSubparameterValueId = 4;
-        ko.applyBindings(getDesigner(@Html.Raw(JsonConvert.SerializeObject(Model)), document.getElementById("Designer")));
+        ko.applyBindings(getDesigner(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() })), document.getElementById("Designer")));
+       
     });
 </script>
 

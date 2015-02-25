@@ -1,8 +1,8 @@
-﻿<div id="SubparameterValues" class="designer__form" data-bind="visible: $root.parameterModel.isOverviewMode() == false, foreach: $root.parameterModel.currentEditingSubparameter().ParameterValues">
+﻿<div id="SubparameterValues" class="designer__form" data-bind="visible: $root.parameterModel.isOverviewMode() == false, foreach: $root.parameterModel.currentEditingSubparameter().parameterValues">
     <!-- ko if: $root.parameterModel.isIncopatibleSubparameterValue($data) -->
     <div data-bind="attr: { class: 'designer-form__param-value designer-form__param-value--disabled' }">
-        <img class="designer-form__param-img" data-bind="attr: { src: ImagePreviewUrl }"/>
-        <div class="designer-form__param-name" data-bind="text: Name"></div>
+        <img class="designer-form__param-img" data-bind="attr: { src: imagePreviewUrl }"/>
+        <div class="designer-form__param-name" data-bind="text: name"></div>
     </div>
     <!-- /ko-->
     <!-- ko ifnot: $root.parameterModel.isIncopatibleSubparameterValue($data) -->
@@ -11,8 +11,8 @@
         attr: { class: $root.parameterModel.isActiveSubparameterValue($data)
             ? 'designer-form__param-value designer-form__param-value--active'
             : 'designer-form__param-value' }">
-        <img class="designer-form__param-img" data-bind="attr: { src: ImagePreviewUrl }" />
-        <div class="designer-form__param-name" data-bind="text: Name"></div>
+        <img class="designer-form__param-img" data-bind="attr: { src: imagePreviewUrl }" />
+        <div class="designer-form__param-name" data-bind="text: name"></div>
     </div>
     <!-- /ko-->
 </div>

@@ -6,21 +6,21 @@
 
         var getSubparameters = function () {
             var result = {};
-            var subparameters = data.Parameters.filter(function (e) {
-                return e.ParentId;
+            var subparameters = data.parameters.filter(function (e) {
+                return e.parentId;
             });
             subparameters.forEach(function (subparameter) {
-                result[subparameter.Id] = subparameter;
+                result[subparameter.id] = subparameter;
             });
             return result;
         };
         var getGlobalParameters = function () {
             var result = {};
-            var globalParameters = data.Parameters.filter(function (e) {
-                return !e.ParentId;
+            var globalParameters = data.parameters.filter(function (e) {
+                return !e.parentId;
             });
             globalParameters.forEach(function (globalParameter) {
-                result[globalParameter.Id] = globalParameter;
+                result[globalParameter.id] = globalParameter;
             });
             return result;
         };
@@ -33,32 +33,32 @@
             var subparameterIds = {};
             for (var i = 0; i < Object.keys(parameterModel.subparameters).length; i++) {
                 var subparameter = parameterModel.subparameters[Object.keys(parameterModel.subparameters)[i]];
-                if (subparameter.ParentId === parseInt(globalParameterId)) {
-                    subparameterIds[subparameter.Id] = parameterModel.selectedParametersValues[subparameter.Id]();
+                if (subparameter.parentId === parseInt(globalParameterId)) {
+                    subparameterIds[subparameter.id] = parameterModel.selectedParametersValues[subparameter.id]();
                 }
             }
             for (i = 0; i < parameterModel.designerImageBundles.length; i++) {
                 var isGoodImage = true;
-                var image = parameterModel.designerImageBundles[i].DesignerImage;
-                if (Object.keys(image.Parameters).length !== Object.keys(subparameterIds).length) {
+                var image = parameterModel.designerImageBundles[i].designerImage;
+                if (Object.keys(image.parameters).length !== Object.keys(subparameterIds).length) {
                     continue;
                 }
-                var imageParametersKeys = Object.keys(image.Parameters);
+                var imageParametersKeys = Object.keys(image.parameters);
                 for (var j = 0; j < imageParametersKeys.length; j++) {
                     var key = imageParametersKeys[j];
-                    var parameterValue = image.Parameters[key];
+                    var parameterValue = image.parameters[key];
                     if (subparameterIds[key] !== parameterValue) {
                         isGoodImage = false;
                     }
                 }
                 if (isGoodImage) {
-                    result.url = image.Url;
+                    result.url = image.url;
                     var designerImageBundle = parameterModel.designerImageBundles[i];
-                    var designerImageBundlePositions = parameterModel.designerImageBundles[i].Positions;
+                    var designerImageBundlePositions = parameterModel.designerImageBundles[i].positions;
                     var isGoodPosition;
                     for (var j = 0; j < designerImageBundlePositions.length; j++) {
                         isGoodPosition = true;
-                        var positionParameters = designerImageBundlePositions[j].Parameters;
+                        var positionParameters = designerImageBundlePositions[j].parameters;
                         for (var k = 0; k < Object.keys(positionParameters).length; k++) {
                             var positionParametersKey = Object.keys(positionParameters)[k];
                             var positionParametersValue = positionParameters[positionParametersKey];
@@ -67,8 +67,8 @@
                             }
                         }
                         if (isGoodPosition) {
-                            result.y = designerImageBundle.Positions[j].Y;
-                            result.x = designerImageBundle.Positions[j].X;
+                            result.y = designerImageBundle.positions[j].y;
+                            result.x = designerImageBundle.positions[j].x;
                             return result;
                         }
                     }
@@ -81,13 +81,13 @@
             var globalParametersKeys = Object.keys(parameterModel.globalParameters);
             for (var i = 0; i < globalParametersKeys.length; i++) {
                 var globalParameter = parameterModel.globalParameters[globalParametersKeys[i]];
-                resultImageBundles[globalParameter.Id] = ko.computed(getResultImage, globalParameter.Id);
+                resultImageBundles[globalParameter.id] = ko.computed(getResultImage, globalParameter.id);
             };
             return resultImageBundles;
         };
         var setEditingSubparameter = function (subparameterId) {
             var subparameter = parameterModel.currentAvailableSubparameters().filter(function (e) {
-                return e.Id == subparameterId;
+                return e.id == subparameterId;
             })[0];
             parameterModel.currentEditingSubparameter(subparameter);
         };
@@ -95,18 +95,18 @@
         // Поганое название. TODO: Поменять название. Без комментария непонятно.
         var setAvailableSubparameters = function (globalParameterId) {
             parameterModel.currentAvailableSubparameters.removeAll();
-            var subparameters = data.Parameters.filter(function (e) {
-                return e.ParentId == globalParameterId;
+            var subparameters = data.parameters.filter(function (e) {
+                return e.parentId == globalParameterId;
             });
             parameterModel.currentAvailableSubparameters(subparameters);
-            setEditingSubparameter(parameterModel.currentAvailableSubparameters()[0].Id);
+            setEditingSubparameter(parameterModel.currentAvailableSubparameters()[0].id);
         };
         var setEditingParameter = function(globalParameterId) {
-            var parameter = data.Parameters.filter(function (e) {
-                return e.Id == globalParameterId;
+            var parameter = data.parameters.filter(function (e) {
+                return e.id == globalParameterId;
             })[0];
             parameterModel.currentEditingParameter(parameter);
-            setAvailableSubparameters(parameter.Id);
+            setAvailableSubparameters(parameter.id);
         };
         var isFormParameterSelected = function() {
             var tmp = parameterModel.selectedParametersValues[musGround.const.formSubparameterId];
@@ -114,11 +114,11 @@
         }
 //        var generateRandomGuitar = function() {
 //            parameterModel.globalParameters.forEach(function(globalParameter) {
-//                if (globalParameter.ID === musGround.const.formSubparameterId) {
+//                if (globalParameter.id === musGround.const.formSubparameterId) {
 //                    return;
 //                }
 //                var subparameters = parameterModel.subparameters.filter(function(subparameter) {
-//                    return subparameter.ParentId === globalParameter.Id;
+//                    return subparameter.parentId === globalParameter.id;
 //                });
 //            });
 //        }
@@ -130,35 +130,36 @@
         parameterModel.currentEditingSubparameter = ko.observable(null);
         parameterModel.selectedParametersValues = [];
         parameterModel.resultImageBundles = undefined;
-        parameterModel.designerImageBundles = data.DesignerImageBundles;
+        parameterModel.designerImageBundles = data.designerImageBundles;
+        parameterModel.predefinedGuitars = data.predefinedGuitars;
         parameterModel.subparameters = getSubparameters();
         parameterModel.globalParameters = getGlobalParameters();
         
         
         parameterModel.editParameter = function (globalParameter) {
-            setEditingParameter(globalParameter.Id);
+            setEditingParameter(globalParameter.id);
             parameterModel.isOverviewMode(false);
         };
         parameterModel.editSubarameter = function (subparameter) {
-            setEditingSubparameter(subparameter.Id);
+            setEditingSubparameter(subparameter.id);
         };
         parameterModel.goToOverview = function() {
             parameterModel.isOverviewMode(true);
         };
         parameterModel.setSubparameterValue = function (parameterValue) {
-            parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().Id](parameterValue.Id);
-//            if (parameterModel.currentEditingSubparameter().Id === musGround.const.formSubparameterId) {
+            parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().id](parameterValue.id);
+//            if (parameterModel.currentEditingSubparameter().id === musGround.const.formSubparameterId) {
 //                generateRandomGuitar(musGround.const.formSubparameterId);
 //            }
             parameterModel.goToOverview();
         };
         parameterModel.isActiveSubparameterValue = function (subparameterValue) {
-            return parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().Id]() == subparameterValue.Id;
+            return parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().id]() == subparameterValue.id;
         };
         parameterModel.isIncopatibleSubparameterValue = function (subparameterValue) {
-            for (var i = 0; i < subparameterValue.IncompatibleParameters.length; i++) {
-                var incompatibleParameter = subparameterValue.IncompatibleParameters[i];
-                if (parameterModel.selectedParametersValues[incompatibleParameter.ParameterId]() == incompatibleParameter.ParameterValueId) {
+            for (var i = 0; i < subparameterValue.incompatibleParameters.length; i++) {
+                var incompatibleParameter = subparameterValue.incompatibleParameters[i];
+                if (parameterModel.selectedParametersValues[incompatibleParameter.parameterId]() == incompatibleParameter.parameterValueId) {
                     return true;
                 }
             }
@@ -166,19 +167,19 @@
         };
         parameterModel.getParentParameterName = function (parentId) {
             var globalParameter = parameterModel.globalParameters[Object.keys(parameterModel.globalParameters).filter(function (key) {
-                return parameterModel.globalParameters[key].Id === parentId;
+                return parameterModel.globalParameters[key].id === parentId;
             })[0]];
-            return globalParameter ? globalParameter.NameNominative : null;
+            return globalParameter ? globalParameter.nameNominative : null;
         };
         parameterModel.getSelectedValueName = function(subparameterId) {
-            var parameterValue = parameterModel.subparameters[subparameterId].ParameterValues.filter(function(parameterValue) {
-                return parameterValue.Id === parameterModel.selectedParametersValues[subparameterId]();
+            var parameterValue = parameterModel.subparameters[subparameterId].parameterValues.filter(function(parameterValue) {
+                return parameterValue.id === parameterModel.selectedParametersValues[subparameterId]();
             })[0];
             // TODO: Выпилить. "не выбрано" должно быть в верстке.
-            return parameterValue ? parameterValue.Name : "не выбрано";
+            return parameterValue ? parameterValue.name : "не выбрано";
         };
         parameterModel.dropSelectedParameter = function(subparameter) {
-            parameterModel.selectedParametersValues[subparameter.Id](undefined);
+            parameterModel.selectedParametersValues[subparameter.id](undefined);
         };
         parameterModel.editFormParameter = function() {
             setEditingParameter(musGround.const.bodyParameterId);
@@ -187,10 +188,10 @@
         }
 
         parameterModel.init = function() {
-            setEditingParameter(data.Parameters[0].Id);
+            setEditingParameter(data.parameters[0].id);
             for (var i = 0; i < Object.keys(parameterModel.subparameters).length; i++) {
                 var subparameter = parameterModel.subparameters[Object.keys(parameterModel.subparameters)[i]];
-                parameterModel.selectedParametersValues[subparameter.Id] = ko.observable(undefined);
+                parameterModel.selectedParametersValues[subparameter.id] = ko.observable(undefined);
             }
             parameterModel.resultImageBundles = getResultImageBundles();
             parameterModel.isFormSelected = ko.computed(isFormParameterSelected);
