@@ -31,7 +31,7 @@ namespace MusicShareWeb {
             routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
-                new {controller = "Search", action = "Index", id = UrlParameter.Optional}
+                new {controller = "Designer", action = "Index", id = UrlParameter.Optional}
                 );
 
             routes.MapRoute(

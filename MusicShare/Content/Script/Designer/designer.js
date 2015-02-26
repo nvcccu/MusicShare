@@ -112,16 +112,6 @@
             var tmp = parameterModel.selectedParametersValues[musGround.const.formSubparameterId];
             return tmp && tmp();
         }
-//        var generateRandomGuitar = function() {
-//            parameterModel.globalParameters.forEach(function(globalParameter) {
-//                if (globalParameter.id === musGround.const.formSubparameterId) {
-//                    return;
-//                }
-//                var subparameters = parameterModel.subparameters.filter(function(subparameter) {
-//                    return subparameter.parentId === globalParameter.id;
-//                });
-//            });
-//        }
 
         parameterModel.isOverviewMode = ko.observable(true);
         parameterModel.isFormSelected = undefined;
@@ -135,7 +125,21 @@
         parameterModel.subparameters = getSubparameters();
         parameterModel.globalParameters = getGlobalParameters();
         
-        
+        parameterModel.generatePredefinedGuitar = function () {
+            var formSubparameterValue = parameterModel.selectedParametersValues[musGround.const.formSubparameterId]();
+            if (!formSubparameterValue) {
+                return;
+            }
+            var predefinedGuitars = parameterModel.predefinedGuitars.filter(function (predefinedGuitar) {
+                return predefinedGuitar.formId === formSubparameterValue;
+            });
+            var predefinedGuitar = predefinedGuitars[Math.floor(Math.random() * predefinedGuitars.length)];
+            for (var i = 0; i < Object.keys(predefinedGuitar.parameterValues).length; i++) {
+                var parameterId = Object.keys(predefinedGuitar.parameterValues)[i];
+                var parameterValueId = predefinedGuitar.parameterValues[parameterId];
+                parameterModel.selectedParametersValues[parameterId](parameterValueId);
+            }
+        }
         parameterModel.editParameter = function (globalParameter) {
             setEditingParameter(globalParameter.id);
             parameterModel.isOverviewMode(false);
@@ -148,9 +152,6 @@
         };
         parameterModel.setSubparameterValue = function (parameterValue) {
             parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().id](parameterValue.id);
-//            if (parameterModel.currentEditingSubparameter().id === musGround.const.formSubparameterId) {
-//                generateRandomGuitar(musGround.const.formSubparameterId);
-//            }
             parameterModel.goToOverview();
         };
         parameterModel.isActiveSubparameterValue = function (subparameterValue) {
