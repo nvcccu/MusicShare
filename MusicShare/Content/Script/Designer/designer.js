@@ -181,8 +181,7 @@
             var parameterValue = parameterModel.subparameters[subparameterId].parameterValues.filter(function(parameterValue) {
                 return parameterValue.id === parameterModel.selectedParametersValues[subparameterId]();
             })[0];
-            // TODO: Выпилить. "не выбрано" должно быть в верстке.
-            return parameterValue ? parameterValue.name : "не выбрано";
+            return parameterValue ? parameterValue.name : undefined;
         };
         parameterModel.dropSelectedParameter = function(subparameter) {
             parameterModel.selectedParametersValues[subparameter.id](undefined);
@@ -192,6 +191,9 @@
             setEditingSubparameter(musGround.const.formSubparameterId);
             parameterModel.isOverviewMode(false);
         }
+        parameterModel.subparameterHasValue = function (subparameterId) {
+            return parameterModel.selectedParametersValues[subparameterId]();
+        };
 
         parameterModel.init = function() {
             setEditingParameter(data.parameters[0].id);

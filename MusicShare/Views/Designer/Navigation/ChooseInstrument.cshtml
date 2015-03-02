@@ -4,14 +4,16 @@
     </div>
     <!-- ko if: $root.parameterModel.isFormSelected()-->
     <div class="designer__selected-parameters" data-bind="foreach: Object.keys($root.parameterModel.subparameters)">
+        <!-- ko if: $root.parameterModel.subparameterHasValue($data) -->
         <div data-bind="with: $root.parameterModel.subparameters[$data]">
             <span class="selected-parameters__global-parameter" data-bind="text: $root.parameterModel.getParentParameterName($data.parentId)"></span>
             >
-            <span class="selected-parameters__subparameter" data-bind="text: $data.nameNominative"></span>
-            >
+            <span class="selected-parameters__subparameter" data-bind="text: $data.nameNominative + ':'"></span>
             <span class="selected-parameters__selected-values" data-bind="text: $root.parameterModel.getSelectedValueName($data.id)"></span>
+            &times;
             <div class="mg-btn-cross" data-bind="click: $root.parameterModel.dropSelectedParameter"></div>
         </div>
+        <!-- /ko -->
     </div>
     <div class="designer-nav__submit" data-bind="click: $root.parameterModel.generatePredefinedGuitar">Собрать гитару</div>
     <!-- /ko -->
