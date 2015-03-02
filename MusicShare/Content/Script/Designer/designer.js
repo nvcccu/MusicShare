@@ -151,7 +151,12 @@
             parameterModel.isOverviewMode(true);
         };
         parameterModel.setSubparameterValue = function (parameterValue) {
+            var formWasSelected = parameterModel.isFormSelected();
             parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().id](parameterValue.id);
+            var formIsSelected = parameterModel.isFormSelected();
+            if (!formWasSelected && formIsSelected) {
+                parameterModel.generatePredefinedGuitar();
+            }
             parameterModel.goToOverview();
         };
         parameterModel.isActiveSubparameterValue = function (subparameterValue) {
