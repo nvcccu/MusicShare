@@ -2,7 +2,10 @@
     border: 1px solid #CCCCCC;
     padding: 1px;
 }
-
 body {
     margin: 0;
+}
+@font-face {
+    font-family: "FontAwesome";
+    src: url(~/Content/Font/FontAwesome/FontAwesome.otf) format("truetype");
 }

@@ -140,6 +140,7 @@
     <Content Include="Content\Css\MainPage\Search.css" />
     <Content Include="Content\Css\PromoBlock\PromoBlock.css" />
     <Content Include="Content\Css\Search\Offers.css" />
+    <Content Include="Content\Font\FontAwesome\font-awesome.min.css" />
     <Content Include="Content\Image\1.jpg" />
     <Content Include="Content\Image\exit.png" />
     <Content Include="Content\Image\form.png" />
@@ -252,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Designer\Form\SubparameterValues.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Font\FontAwesome\FontAwesome.otf" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
