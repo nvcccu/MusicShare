@@ -17,20 +17,28 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (string))]
             NameNominative,
             [DbType(typeof (string))]
-            NameGenitive
+            NameGenitive,
+            [DbType(typeof (Int32?))]
+            Height,
+            [DbType(typeof (Int32?))]
+            Width
         }
 
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string NameNominative { get; set; }
         public string NameGenitive { get; set; }
+        public int? Height { get; set; }
+        public int? Width { get; set; }
 
         public ParameterDto ToDto() {
             return new ParameterDto {
                 Id = Id,
                 ParentId = ParentId,
                 NameNominative = NameNominative,
-                NameGenitive = NameGenitive
+                NameGenitive = NameGenitive,
+                Height = Height,
+                Width = Width
             };
         }
     }

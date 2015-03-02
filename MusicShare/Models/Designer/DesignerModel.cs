@@ -20,6 +20,8 @@ namespace MusicShareWeb.Models {
         public int? ParentId { get; set; }
         public string NameNominative { get; set; }
         public string NameGenitive { get; set; }
+        public int? Height { get; set; }
+        public int? Width { get; set; }
         public List<ParameterValueModel> ParameterValues { get; set; }
     }
     public class DesignerImagePositionModel {
@@ -47,6 +49,8 @@ namespace MusicShareWeb.Models {
                 ParentId = p.ParentId,
                 NameNominative = p.NameNominative,
                 NameGenitive = p.NameGenitive,
+                Height = p.Height,
+                Width = p.Width,
                 ParameterValues =
                     parameterValues.Where(pv => pv.ParameterId == p.Id).ToList().Select(pv => new ParameterValueModel {
                         Id = pv.Id,

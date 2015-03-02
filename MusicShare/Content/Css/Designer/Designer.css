@@ -106,9 +106,9 @@
 }
 .designer-form__param-img {
     text-align: center;
-    height: 165px;
-    width: 100px;
-    margin-right: 50px;
+    max-height: 100%;
+    max-width: 100%;
+    /*margin-right: 50px;*/
 }
 .designer-form__param-name {
     text-align: center
@@ -117,4 +117,10 @@
     position: absolute;
     left: 550px;
     top: 197px;
+}
+.designer__selected-parameters {
+    font-size: 16px;
+}
+.selected-parameters__subparameter {
+    font-weight: bold;
 }

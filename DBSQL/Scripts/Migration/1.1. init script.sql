@@ -3,6 +3,8 @@ CREATE TABLE Parameter (
   ParentId int,
   NameNominative character varying(64) NOT NULL,
   NameGenitive character varying(64) NOT NULL,
+  ParameterValueHeight int,
+  ParameterValueWidth int,
   CONSTRAINT pk_Parameter PRIMARY KEY (Id)
 )
 WITH (
