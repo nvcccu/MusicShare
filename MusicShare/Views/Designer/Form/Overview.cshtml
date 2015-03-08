@@ -1,4 +1,4 @@
-﻿<div id="Overview" class="designer__form" data-bind="visible: $root.parameterModel.isOverviewMode() == true">
+﻿<div id="Overview" data-bind="visible: $root.parameterModel.isOverviewMode() == true">
     <!-- ko if: $root.parameterModel.isFormSelected() -->
     <div data-bind="foreach: Object.keys($root.parameterModel.globalParameters)">
         <!-- ko with: $root.parameterModel.globalParameters[$data] -->
@@ -11,7 +11,7 @@
         <!-- /ko -->
     </div>
     <!-- /ko -->
-    <!-- ko ifnot: $root.parameterModel.isFormSelected() -->
-    <div data-bind="click: $root.parameterModel.editFormParameter">Выбрать форму</div>
-    <!-- /ko -->
+    <div class="designer__select-form" data-bind="ifnot: $root.parameterModel.isFormSelected()">
+        <div data-bind="click: $root.parameterModel.editFormParameter"></div>
+    </div>
 </div>

@@ -1,4 +1,4 @@
-﻿<div id="SubparameterValues" class="designer__form" data-bind="visible: $root.parameterModel.isOverviewMode() == false, foreach: $root.parameterModel.currentEditingSubparameter().parameterValues">
+﻿<div id="SubparameterValues" data-bind="visible: $root.parameterModel.isOverviewMode() == false, foreach: $root.parameterModel.currentEditingSubparameter().parameterValues">
     <!-- ko if: $root.parameterModel.isIncopatibleSubparameterValue($data) -->
     <div data-bind="attr: { class: 'designer-form__param-value designer-form__param-value--disabled' },
         style: { height: $root.parameterModel.currentEditingSubparameter().height + 'px', width: $root.parameterModel.currentEditingSubparameter().width + 'px' }">

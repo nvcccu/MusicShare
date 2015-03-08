@@ -1,14 +1,31 @@
 ﻿.designer {
-    position: relative;
-    background-color: #E8DFD0;
-}
-.designer__navigation {
     position: absolute;
-    top: 0;
-    left: 0;
+    background-color: #E8DFD0;
     bottom: 0;
-    width: 450px;
+    left: 0;
+    right: 0;
+    top: 191px;
+    overflow: hidden;
+    min-height: 300px;
+}
+.designer__block {
+    width: 100%;
+    height: 100%;
     text-align: center;
+}
+.designer__block > div {
+    height: 100%;
+    width: 100%;
+}
+.designer__block-left {
+    float: left;
+    height: 100%;
+    width: 25%;
+}
+.designer__block-right {
+    float: left;
+    height: 100%;
+    width: 75%;
 }
 .designer-nav__cur-param {
     height: 40px;
@@ -17,7 +34,7 @@
     letter-spacing: 1px;
     font-weight: 900;
     color: #ffffff;
-    text-shadow: #000000 0px 0px 2px;
+    text-shadow: #000000 0 0 2px;
     text-shadow: #000000 1px 1px 0, #000000 -1px -1px 0, 
                  #000000 -1px 1px 0, #000000 1px -1px 0;
     text-align: center;
@@ -67,7 +84,7 @@
     height: 55px;
     background-color: #92A903;
     color: #ffffff;
-    text-shadow: #000000 0px 0px 2px;
+    text-shadow: #000000 0 0 2px;
     text-shadow: #000000 1px 1px 0, #000000 -1px -1px 0, 
                  #000000 -1px 1px 0, #000000 1px -1px 0;
     text-align: center;
@@ -76,13 +93,41 @@
     margin: 50px auto 15px 55px;
     cursor: pointer;
 }
-.designer__form {
-    min-height: 530px;
+.designer__select-form {
+    position: relative;
+    height: 100%;
     width: 100%;
-    padding-left: 450px;
-    box-sizing: border-box;
-   
 }
+.designer__select-form > div {
+    height: 275px;
+    width: 852px;
+    background: url('/Content/Image/SelectBodyForm_Normal.png') no-repeat center;
+    margin: auto;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+@media screen and (max-width: 1400px) {
+    .designer__select-form > div,
+    .designer__select-form > div:hover {
+        height: 200px;
+        width: 600px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .designer__select-form > div,
+    .designer__select-form > div:hover {
+        height: 150px;
+        width: 450px;
+    }
+}
+.designer__select-form > div:hover {
+    background-image: url('/Content/Image/SelectBodyForm_Hover.png');
+}
+
 .result-images {
     position: relative;
     width: 900px;

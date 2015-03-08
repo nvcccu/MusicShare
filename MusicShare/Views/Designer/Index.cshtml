@@ -19,9 +19,13 @@
 </script>
 
 <div id="Designer" class="designer">
-    @Html.Partial("Navigation/ChooseInstrument")
-    @Html.Partial("Navigation/SubparameterNavigation")
-
-    @Html.Partial("Form/Overview")
-    @Html.Partial("Form/SubparameterValues")
+    <div class="designer__block designer__block-left">
+        @Html.Partial("Navigation/ChooseInstrument")
+        @Html.Partial("Navigation/SubparameterNavigation")
+    </div>
+    <div class="designer__block designer__block-right">
+        @Html.Partial("Form/Overview")
+        @Html.Partial("Form/SubparameterValues")
+    </div>
+    <div style="clear: both;"></div>
 </div>
