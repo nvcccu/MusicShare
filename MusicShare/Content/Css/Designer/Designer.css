@@ -157,12 +157,16 @@
 .designer-form__param-value:first-of-type {
     margin-left: 0;
 }
-.designer-form__param-value--active > img {
+.designer-form__param-value--active > img,
+.designer-form__param-value:hover > img {
     opacity: 1;
 }
 .designer-form__param-value--disabled {
     background-color: #AAAAAA;
     cursor: not-allowed;
+}
+.designer-form__param-value--disabled:hover > img {
+    opacity: 0.75;
 }
 .designer-form__param-img {
     text-align: center;
