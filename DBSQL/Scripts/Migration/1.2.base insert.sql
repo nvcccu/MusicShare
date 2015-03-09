@@ -3,7 +3,7 @@ insert into guest values
 
 insert into Parameter values
 (1, NULL, 'корпус', 'корпуса', null, null),
-(2, 1, 'форма', 'формы', 200, 200),
+(2, 1, 'форма', 'формы', 230, 139),
 (3, 1, 'цвет', 'цвета', 100, 100),
 (4, NULL, 'бридж', 'бриджа', null, null),
 (7, 4, 'тип', 'типа', 100, 200);
@@ -12,9 +12,9 @@ insert into ParameterArrow values
 (1, 14, '2:', 100, 200);
 
 insert into ParameterValue values
-(1, 2, 'Stratocaster', '/ImgStore/FormWithColor/Stratocaster_NoColor.png'),
-(2, 2, 'Explorer', '/ImgStore/FormWithColor/Explorer_NoColor.png'),
-(3, 2, 'Les Paul', '/ImgStore/FormWithColor/LesPaul_NoColor.png'),
+(1, 2, 'Stratocaster', '/ImgStore/Form/Stratocaster.png'),
+(2, 2, 'Explorer', '/ImgStore/Form/Explorer.png'),
+(3, 2, 'Les Paul', '/ImgStore/Form/LesPaul.png'),
 (4, 3, 'Белый', '/ImgStore/Color/White.jpg'),
 (5, 3, 'Черный', '/ImgStore/Color/Black.jpg'),
 (6, 3, 'Красный', '/ImgStore/Color/Red.jpg'),

@@ -34,7 +34,7 @@
 .designer-nav__cur-param {
     height: 40px;
     line-height: 40px;
-    font-size: 26px;
+    font-size: 25px;
     letter-spacing: 1px;
     font-weight: 900;
     color: #ffffff;
@@ -140,13 +140,24 @@
 .form__image {
     position: absolute;
 }
+.designer-form__subparameter-values {
+    text-align: left;
+    padding-top: 40px;
+}
 .designer-form__param-value {
     display: inline-block;
-    margin-left: 4px;
+    margin-left: -5px;
     cursor: pointer;
-    opacity: 0.5;
+    text-align: center;
+    padding: 0 40px;
 }
-.designer-form__param-value--active {
+.designer-form__param-value > img {
+    opacity: 0.75;
+}
+.designer-form__param-value:first-of-type {
+    margin-left: 0;
+}
+.designer-form__param-value--active > img {
     opacity: 1;
 }
 .designer-form__param-value--disabled {
@@ -160,7 +171,10 @@
     /*margin-right: 50px;*/
 }
 .designer-form__param-name {
-    text-align: center
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #382811;
 }
 .designer-form__bridge {
     position: absolute;

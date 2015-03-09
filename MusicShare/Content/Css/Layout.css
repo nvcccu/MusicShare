@@ -75,6 +75,7 @@ header, #header {
     text-decoration: none;
     color: #ffffff;
     text-align: center;
+    font-family: Tahoma, Geneva, sans-serif;
 }
 .header-navigation__btn:first-child {
     border-left: none;
