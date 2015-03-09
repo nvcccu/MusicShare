@@ -198,8 +198,8 @@
 .selected-parameters__drop-parameter {
     position: absolute;
     right: 0;
-    margin-top: -24px;
-    font-size: 23px;
+    margin-top: -22px;
+    font-size: 21px;
     font-weight: bold;
     cursor: pointer;
     color: #808080;
