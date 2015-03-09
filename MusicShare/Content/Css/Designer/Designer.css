@@ -27,6 +27,10 @@
     height: 100%;
     width: 75%;
 }
+.designer__instrument-info {
+    width: 232px;
+    margin: 0 auto;
+}
 .designer-nav__cur-param {
     height: 40px;
     line-height: 40px;
@@ -165,6 +169,43 @@
 }
 .designer__selected-parameters {
     font-size: 16px;
+    font-family: verdana, sans-serif, Lucida Sans;
+}
+.selected-parameters__parameter-block {
+    text-align: left;
+    position: relative;
+    margin-top: 19px;
+}
+.selected-parameters__parameter-block:first-of-type {
+    margin-top: 0;
+}
+.selected-parameters__global-parameter {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: bold;
+}
+.selected-parameters__subparameters {
+    display: inline-block;
+    margin-left: -4px;
+    padding-left: 6px;
+}
+.selected-parameters__selected-subparameter {
+    margin-top: 19px;
+}
+.selected-parameters__selected-subparameter:first-of-type {
+    margin-top: 0;
+}
+.selected-parameters__drop-parameter {
+    position: absolute;
+    right: 0;
+    margin-top: -24px;
+    font-size: 23px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #808080;
+}
+.selected-parameters__drop-parameter:hover {
+    color: #820017;
 }
 .selected-parameters__subparameter {
     font-weight: bold;

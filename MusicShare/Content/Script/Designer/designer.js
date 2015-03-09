@@ -171,12 +171,6 @@
             }
             return false;
         };
-        parameterModel.getParentParameterName = function (parentId) {
-            var globalParameter = parameterModel.globalParameters[Object.keys(parameterModel.globalParameters).filter(function (key) {
-                return parameterModel.globalParameters[key].id === parentId;
-            })[0]];
-            return globalParameter ? globalParameter.nameNominative : null;
-        };
         parameterModel.getSelectedValueName = function(subparameterId) {
             var parameterValue = parameterModel.subparameters[subparameterId].parameterValues.filter(function(parameterValue) {
                 return parameterValue.id === parameterModel.selectedParametersValues[subparameterId]();
@@ -191,9 +185,22 @@
             setEditingSubparameter(musGround.const.formSubparameterId);
             parameterModel.isOverviewMode(false);
         }
-        parameterModel.subparameterHasValue = function (subparameterId) {
-            return parameterModel.selectedParametersValues[subparameterId]();
+        parameterModel.globalparameterHasAnyValue = function (parameterId) {
+            var globalparameterHasAnyValue = false;
+            for (var i = 0; i < Object.keys(parameterModel.subparameters).length; i++) {
+                var subparameter = parameterModel.subparameters[Object.keys(parameterModel.subparameters)[i]];
+                if (subparameter.parentId == parameterId && parameterModel.selectedParametersValues[subparameter.id]()) {
+                    globalparameterHasAnyValue = true;
+                    break;
+                }
+            }
+            return globalparameterHasAnyValue;
         };
+        parameterModel.GetSubparametersOfGlobal = function(parameterId) {
+            return data.parameters.filter(function (e) {
+                return e.parentId == parameterId;
+            });
+        }
 
         parameterModel.init = function() {
             setEditingParameter(data.parameters[0].id);
