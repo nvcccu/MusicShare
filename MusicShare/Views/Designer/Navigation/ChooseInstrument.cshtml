@@ -13,7 +13,7 @@
                 <div class="selected-parameters__subparameters" data-bind="foreach: $root.parameterModel.GetSubparametersOfGlobal($data.id)">
                     <div class="selected-parameters__selected-subparameter">
                         <span class="selected-parameters__selected-values" data-bind="text: $root.parameterModel.getSelectedValueName($data.id)"></span>
-                        <div class="selected-parameters__drop-parameter" data-bind="click: $root.parameterModel.dropSelectedParameter">&times;</div>
+                        <div class="selected-parameters__drop-parameter" data-bind="click: $root.parameterModel.changeSelectedParameter"></div>
                     </div>
                 </div>
             </div>

@@ -14,18 +14,40 @@
         musGround.const.colorSubparameterId = 3;
         musGround.const.whiteColorSubparameterValueId = 4;
         ko.applyBindings(getDesigner(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() })), document.getElementById("Designer")));
-       
+
     });
 </script>
 
 <div id="Designer" class="designer">
-    <div class="designer__block designer__block-left">
-        @Html.Partial("Navigation/ChooseInstrument")
-        @Html.Partial("Navigation/SubparameterNavigation")
+    <div class="designer__full-block designer__full-block-flex" data-bind="visible: !$root.parameterModel.isFormSelected()">
+        <div class="designer__select-form" data-bind="visible: !$root.parameterModel.isFormSelecting()">
+            <div class="designer__guitar-shadow" data-bind="click: $root.parameterModel.editFormParameter"></div>
+        </div>
+        <div class="designer__selecting-form" data-bind="visible: $root.parameterModel.isFormSelecting()">
+            <div class="designer-nav__cur-param">
+                Выберите форму корпуса
+            </div>
+            <div data-bind="foreach: $root.parameterModel.currentEditingSubparameter().parameterValues">
+                <img class="designer-form__form-img" data-bind="
+                    click: $root.parameterModel.setSubparameterValue,
+                    attr: { src: imagePreviewUrl }, 
+                    style: { 
+                        height: $root.parameterModel.currentEditingSubparameter().height + 'px',
+                        width: $root.parameterModel.currentEditingSubparameter().width + 'px' 
+                    }"
+                />
+            </div>
+        </div>
     </div>
-    <div class="designer__block designer__block-right">
-        @Html.Partial("Form/Overview")
-        @Html.Partial("Form/SubparameterValues")
+    <div class="designer__full-block" data-bind="visible: $root.parameterModel.isFormSelected()">
+        <div class="designer__block designer__block-left">
+            @Html.Partial("Navigation/ChooseInstrument")
+            @Html.Partial("Navigation/SubparameterNavigation")
+        </div>
+        <div class="designer__block designer__block-right">
+            @Html.Partial("Form/Overview")
+            @Html.Partial("Form/SubparameterValues")
+        </div>
+        <div style="clear: both;"></div>
     </div>
-    <div style="clear: both;"></div>
 </div>

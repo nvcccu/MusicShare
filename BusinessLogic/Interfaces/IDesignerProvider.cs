@@ -8,5 +8,6 @@ namespace BusinessLogic.Interfaces {
         List<IncompatibleParameterDto> GetIncompatibleParameters();
         List<DesignerImageTransportType> GetDesignerImages();
         List<PredefinedGuitarDto> GetPredefinedGuitars();
+        List<ParameterArrowDto> GetParameterArrows();
     }
 }

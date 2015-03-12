@@ -141,7 +141,8 @@
     <Content Include="Content\Css\PromoBlock\PromoBlock.css" />
     <Content Include="Content\Css\Search\Offers.css" />
     <Content Include="Content\Font\FontAwesome\font-awesome.min.css" />
-    <Content Include="Content\Image\1.jpg" />
+    <Content Include="Content\Image\ChangeValue.png" />
+    <Content Include="Content\Image\ChangeValue_Hover.png" />
     <Content Include="Content\Image\exit.png" />
     <Content Include="Content\Image\form.png" />
     <Content Include="Content\Image\guitar.png" />

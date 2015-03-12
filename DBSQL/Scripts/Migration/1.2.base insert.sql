@@ -3,10 +3,15 @@ insert into guest values
 
 insert into Parameter values
 (1, NULL, 'корпус', 'корпуса', null, null),
-(2, 1, 'форма', 'формы', 230, 139),
+(2, 1, 'форма', 'формы', 193, 129),
 (3, 1, 'цвет', 'цвета', 100, 100),
 (4, NULL, 'бридж', 'бриджа', null, null),
-(7, 4, 'тип', 'типа', 100, 200);
+(7, 4, 'тип', 'типа', 88, 141);
+
+insert into ParameterArrow values
+(1, 1, null, -71, -48, -53, -68, '/ImgStore/Arrow/Body.png'),
+(2, 4, null, -90, -9, -81, -31, '/ImgStore/Arrow/Bridge.png'),
+(3, 4, 2, 214, 79, 344, 59, '/ImgStore/Arrow/Bridge_Explorer.png');
 
 insert into ParameterArrow values
 (1, 14, '2:', 100, 200);
@@ -15,9 +20,9 @@ insert into ParameterValue values
 (1, 2, 'Stratocaster', '/ImgStore/Form/Stratocaster.png'),
 (2, 2, 'Explorer', '/ImgStore/Form/Explorer.png'),
 (3, 2, 'Les Paul', '/ImgStore/Form/LesPaul.png'),
-(4, 3, 'Белый', '/ImgStore/Color/White.jpg'),
-(5, 3, 'Черный', '/ImgStore/Color/Black.jpg'),
-(6, 3, 'Красный', '/ImgStore/Color/Red.jpg'),
+(4, 3, 'Белый', '/ImgStore/Color/White.png'),
+(5, 3, 'Черный', '/ImgStore/Color/Black.png'),
+(6, 3, 'Красный', '/ImgStore/Color/Red.png'),
 (7, 7, 'Floyd Rose', '/ImgStore/Bridge/FloydRose.png'),
 (8, 7, 'Tune-o-Matic', '/ImgStore/Bridge/TuneOMatic.png'),
 (9, 7, 'Vintage Tremolo', '/ImgStore/Bridge/VintageTremolo.png');
@@ -62,9 +67,9 @@ insert into DesignerImagePosition values
 (8, 8, '', 0, 0),
 (9, 9, '', 0, 0),
 (10, 10, '2:1;', 81, 97),
-(11, 10, '2:2;', 171, 154),
+(11, 10, '2:2;', 177, 161),
 (12, 10, '2:3;', 113, 93),
 (13, 11, '2:1;', 91, 93),
-(14, 11, '2:2;', 177, 149),
+(14, 11, '2:2;', 185, 156),
 (15, 11, '2:3;', 121, 88),
 (16, 12, '2:1;', 98, 103);

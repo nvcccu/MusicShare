@@ -40,5 +40,8 @@ namespace BusinessLogic {
         public List<PredefinedGuitarDto> GetPredefinedGuitars() {
             return _designerProvider.GetPredefinedGuitars();
         }
+        public List<ParameterArrowDto> GetParameterArrows() {
+            return _designerProvider.GetParameterArrows();
+        }
     }
 }

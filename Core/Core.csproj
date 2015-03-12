@@ -45,6 +45,7 @@
     <Compile Include="Enums\ActionId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransportTypes\DesignerImageTransportType.cs" />
+    <Compile Include="TransportTypes\ParameterArrowDto.cs" />
     <Compile Include="TransportTypes\PredefinedGuitarDto.cs" />
     <Compile Include="TransportTypes\ParameterValueDto.cs" />
     <Compile Include="TransportTypes\IncompatibleParameterDto.cs" />

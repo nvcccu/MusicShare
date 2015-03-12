@@ -37,6 +37,7 @@ namespace MusicShareWeb.Models {
         public List<ParameterModel> Parameters { get; set; }
         public List<DesignerImageModel> DesignerImageBundles { get; set; }
         public List<PredefinedGuitarDto> PredefinedGuitars { get; set; }
+        public List<ParameterArrowDto> ParameterArrows { get; set; }
 
         public DesignerModel() {
             var parameters = ServiceManager<IBusinessLogic>.Instance.Service.GetParameters();
@@ -44,6 +45,7 @@ namespace MusicShareWeb.Models {
             var incompatibleParameters = ServiceManager<IBusinessLogic>.Instance.Service.GetIncompatibleParameters();
             var designerImages = ServiceManager<IBusinessLogic>.Instance.Service.GetDesignerImages();
             PredefinedGuitars = ServiceManager<IBusinessLogic>.Instance.Service.GetPredefinedGuitars();
+            ParameterArrows = ServiceManager<IBusinessLogic>.Instance.Service.GetParameterArrows();
             Parameters = parameters.Select(p => new ParameterModel {
                 Id = p.Id,
                 ParentId = p.ParentId,
