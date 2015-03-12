@@ -170,11 +170,6 @@
     display: flex;
     align-items: center;
 }
-.result-images {
-    position: relative;
-    width: 900px;
-    margin: 0 auto;
-}
 .form__image {
     position: absolute;
 }
