@@ -9,9 +9,10 @@ insert into Parameter values
 (7, 4, 'тип', 'типа', 88, 141);
 
 insert into ParameterArrow values
-(1, 1, null, -71, -48, -53, -68, '/ImgStore/Arrow/Body.png'),
-(2, 4, null, -90, -9, -81, -31, '/ImgStore/Arrow/Bridge.png'),
-(3, 4, 2, 214, 79, 344, 59, '/ImgStore/Arrow/Bridge_Explorer.png');
+(1, 1, null, -71, -82, -53, -103, '/ImgStore/Arrow/Body.png'),
+(2, 1, 2, -71, -48, -53, -68, '/ImgStore/Arrow/Body.png'),
+(3, 4, null, -90, -9, -81, -31, '/ImgStore/Arrow/Bridge.png'),
+(4, 4, 2, 214, 79, 344, 59, '/ImgStore/Arrow/Bridge_Explorer.png');
 
 insert into ParameterArrow values
 (1, 14, '2:', 100, 200);
