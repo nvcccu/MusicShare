@@ -28,14 +28,13 @@ insert into ParameterValue values
 (8, 7, 'Tune-o-Matic', '/ImgStore/Bridge/TuneOMatic.png'),
 (9, 7, 'Vintage Tremolo', '/ImgStore/Bridge/VintageTremolo.png');
 
-
 insert into PredefinedGuitar values
-(1, 1, '7:8;'),
-(2, 1, '7:9;'),
-(3, 2, '7:7;'),
-(4, 2, '7:8;'),
-(5, 3, '7:7;'),
-(6, 3, '7:8;');
+(1, 1, '7:8;3:4'),
+(2, 1, '7:9;3:5'),
+(3, 2, '7:7;3:6'),
+(4, 2, '7:8;3:4'),
+(5, 3, '7:7;3:5'),
+(6, 3, '7:8;3:6');
 
 insert into IncompatibleParameter values
 (7, 7, 9, 2, 2),
