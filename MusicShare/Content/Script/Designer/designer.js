@@ -34,7 +34,7 @@
             for (var i = 0; i < Object.keys(parameterModel.subparameters).length; i++) {
                 var subparameter = parameterModel.subparameters[Object.keys(parameterModel.subparameters)[i]];
                 if (subparameter.parentId === parseInt(globalParameterId)) {
-                    subparameterIds[subparameter.id] = parameterModel.selectedParametersValues[subparameter.id]();
+                    subparameterIds[subparameter.id] = parameterModel.selectedParametersValueIds[subparameter.id]();
                 }
             }
             for (i = 0; i < parameterModel.designerImageBundles.length; i++) {
@@ -62,7 +62,7 @@
                         for (var k = 0; k < Object.keys(positionParameters).length; k++) {
                             var positionParametersKey = Object.keys(positionParameters)[k];
                             var positionParametersValue = positionParameters[positionParametersKey];
-                            if (parameterModel.selectedParametersValues[positionParametersKey]() !== parseInt(positionParametersValue, 10)) {
+                            if (parameterModel.selectedParametersValueIds[positionParametersKey]() !== parseInt(positionParametersValue, 10)) {
                                 isGoodPosition = false;
                             }
                         }
@@ -109,7 +109,7 @@
             setAvailableSubparameters(parameter.id);
         };
         var isFormParameterSelected = function() {
-            var tmp = parameterModel.selectedParametersValues[musGround.const.formSubparameterId];
+            var tmp = parameterModel.selectedParametersValueIds[musGround.const.formSubparameterId];
             return tmp && tmp();
         }
 
@@ -118,7 +118,7 @@
         parameterModel.currentEditingParameter = ko.observable();
         parameterModel.currentAvailableSubparameters = ko.observableArray(null);
         parameterModel.currentEditingSubparameter = ko.observable(null);
-        parameterModel.selectedParametersValues = [];
+        parameterModel.selectedParametersValueIds = [];
         parameterModel.resultImageBundles = undefined;
         parameterModel.designerImageBundles = data.designerImageBundles;
         parameterModel.predefinedGuitars = data.predefinedGuitars;
@@ -127,7 +127,7 @@
         parameterModel.globalParameters = getGlobalParameters();
         
         parameterModel.generatePredefinedGuitar = function () {
-            var formSubparameterValue = parameterModel.selectedParametersValues[musGround.const.formSubparameterId]();
+            var formSubparameterValue = parameterModel.selectedParametersValueIds[musGround.const.formSubparameterId]();
             if (!formSubparameterValue) {
                 return;
             }
@@ -138,7 +138,7 @@
             for (var i = 0; i < Object.keys(predefinedGuitar.parameterValues).length; i++) {
                 var parameterId = Object.keys(predefinedGuitar.parameterValues)[i];
                 var parameterValueId = predefinedGuitar.parameterValues[parameterId];
-                parameterModel.selectedParametersValues[parameterId](parameterValueId);
+                parameterModel.selectedParametersValueIds[parameterId](parameterValueId);
             }
         }
         parameterModel.editParameter = function (globalParameter) {
@@ -153,7 +153,7 @@
         };
         parameterModel.setSubparameterValue = function (parameterValue) {
             var formWasSelected = parameterModel.isFormSelected();
-            parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().id](parameterValue.id);
+            parameterModel.selectedParametersValueIds[parameterModel.currentEditingSubparameter().id](parameterValue.id);
             var formIsSelected = parameterModel.isFormSelected();
             if (!formWasSelected && formIsSelected) {
                 parameterModel.generatePredefinedGuitar();
@@ -161,20 +161,46 @@
             parameterModel.goToOverview();
         };
         parameterModel.isActiveSubparameterValue = function (subparameterValue) {
-            return parameterModel.selectedParametersValues[parameterModel.currentEditingSubparameter().id]() == subparameterValue.id;
+            return parameterModel.selectedParametersValueIds[parameterModel.currentEditingSubparameter().id]() == subparameterValue.id;
         };
         parameterModel.isIncopatibleSubparameterValue = function (subparameterValue) {
             for (var i = 0; i < subparameterValue.incompatibleParameters.length; i++) {
                 var incompatibleParameter = subparameterValue.incompatibleParameters[i];
-                if (parameterModel.selectedParametersValues[incompatibleParameter.parameterId]() == incompatibleParameter.parameterValueId) {
+                if (parameterModel.selectedParametersValueIds[incompatibleParameter.parameterId]() == incompatibleParameter.parameterValueId) {
                     return true;
                 }
             }
             return false;
         };
+        parameterModel.warningIncompatibleWithForm = function (formSubparameterValue) {
+            var alertText = 'Форма корпуса ' + formSubparameterValue.name + ' несовместима со следующими параметрами\n';
+            for (var i = 0; i < formSubparameterValue.incompatibleParameters.length; i++) {
+                var incompatibleParameter = formSubparameterValue.incompatibleParameters[i];
+                if (parameterModel.selectedParametersValueIds[incompatibleParameter.parameterId]() == incompatibleParameter.parameterValueId) {
+                    var incompatibleSubparameter = parameterModel.subparameters[incompatibleParameter.parameterId];
+                    var incompatibleSubparameterValueName = incompatibleSubparameter.parameterValues.filter(function(parameterValue) {
+                        return parameterValue.id == incompatibleParameter.parameterValueId;
+                    })[0].name;
+                    for (var i = 0; i < Object.keys(parameterModel.globalParameters).length; i++) {
+                        var globalParameter = parameterModel.globalParameters[Object.keys(parameterModel.globalParameters)[i]];
+                        if (globalParameter.id == incompatibleSubparameter.parentId) {
+                            var incompatibleGlobalParameterName = globalParameter.nameNominative;
+                        }
+                    }
+                    alertText += incompatibleGlobalParameterName + ' ' + incompatibleSubparameter.nameGenitive + ' ' + incompatibleSubparameterValueName + ';\n';
+                }
+            }
+            alertText += 'Сменить форму? Все параметры буду сброшены.';
+            if (confirm(alertText)) {
+                parameterModel.selectedParametersValueIds[musGround.const.formSubparameterId](undefined);
+                parameterModel.setSubparameterValue(formSubparameterValue);
+            } else {
+                return;
+            }
+        }
         parameterModel.getSelectedValueName = function(subparameterId) {
             var parameterValue = parameterModel.subparameters[subparameterId].parameterValues.filter(function(parameterValue) {
-                return parameterValue.id === parameterModel.selectedParametersValues[subparameterId]();
+                return parameterValue.id === parameterModel.selectedParametersValueIds[subparameterId]();
             })[0];
             return parameterValue ? parameterValue.name : undefined;
         };
@@ -198,7 +224,7 @@
             var globalparameterHasAnyValue = false;
             for (var i = 0; i < Object.keys(parameterModel.subparameters).length; i++) {
                 var subparameter = parameterModel.subparameters[Object.keys(parameterModel.subparameters)[i]];
-                if (subparameter.parentId == parameterId && parameterModel.selectedParametersValues[subparameter.id]()) {
+                if (subparameter.parentId == parameterId && parameterModel.selectedParametersValueIds[subparameter.id]()) {
                     globalparameterHasAnyValue = true;
                     break;
                 }
@@ -219,7 +245,7 @@
                 parameterArrow = parameterArrows[0];
             } else {
                 parameterArrow = parameterArrows.filter(function (parameterArrow) {
-                    return parameterArrow.formId === parameterModel.selectedParametersValues[musGround.const.formSubparameterId]();
+                    return parameterArrow.formId === parameterModel.selectedParametersValueIds[musGround.const.formSubparameterId]();
                 })[0];
                 if (!parameterArrow) {
                     parameterArrow = parameterArrows.filter(function (parameterArrow) {
@@ -234,7 +260,7 @@
             setEditingParameter(data.parameters[0].id);
             for (var i = 0; i < Object.keys(parameterModel.subparameters).length; i++) {
                 var subparameter = parameterModel.subparameters[Object.keys(parameterModel.subparameters)[i]];
-                parameterModel.selectedParametersValues[subparameter.id] = ko.observable(undefined);
+                parameterModel.selectedParametersValueIds[subparameter.id] = ko.observable(undefined);
             }
             parameterModel.resultImageBundles = getResultImageBundles();
             parameterModel.isFormSelected = ko.computed(isFormParameterSelected);
