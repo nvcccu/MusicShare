@@ -115,7 +115,6 @@
 
         parameterModel.isOverviewMode = ko.observable(true);
         parameterModel.isFormSelected = undefined;
-        parameterModel.isFormSelecting = ko.observable(false);
         parameterModel.currentEditingParameter = ko.observable();
         parameterModel.currentAvailableSubparameters = ko.observableArray(null);
         parameterModel.currentEditingSubparameter = ko.observable(null);
@@ -193,7 +192,6 @@
         parameterModel.editFormParameter = function() {
             setEditingParameter(musGround.const.bodyParameterId);
             setEditingSubparameter(musGround.const.formSubparameterId);
-            parameterModel.isFormSelecting(true);
             parameterModel.isOverviewMode(false);
         }
         parameterModel.globalparameterHasAnyValue = function (parameterId) {
@@ -240,6 +238,7 @@
             }
             parameterModel.resultImageBundles = getResultImageBundles();
             parameterModel.isFormSelected = ko.computed(isFormParameterSelected);
+            parameterModel.editFormParameter();
         };
 
 

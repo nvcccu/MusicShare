@@ -18,10 +18,7 @@
 
 <div id="Designer" class="designer">
     <div class="designer__full-block designer__full-block-flex" data-bind="visible: !$root.parameterModel.isFormSelected()">
-        <div class="designer__select-form" data-bind="visible: !$root.parameterModel.isFormSelecting()">
-            <div class="designer__guitar-shadow" data-bind="click: $root.parameterModel.editFormParameter"></div>
-        </div>
-        <div class="designer__selecting-form" data-bind="visible: $root.parameterModel.isFormSelecting()">
+        <div class="designer__selecting-form">
             <div class="designer-nav__cur-param" style="margin-top: 0;">
                 Выберите форму корпуса
             </div>
