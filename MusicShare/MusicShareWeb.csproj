@@ -120,6 +120,7 @@
     <Compile Include="Controllers\DerzkieSchiController.cs" />
     <Compile Include="Controllers\DesignerController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\AskController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\PlacardController.cs" />
@@ -259,6 +260,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Font\FontAwesome\FontAwesome.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Ask\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

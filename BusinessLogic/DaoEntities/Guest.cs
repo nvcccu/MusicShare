@@ -10,31 +10,17 @@ namespace BusinessLogic.DaoEntities {
         public Guest() : base("Guest") {}
 
         public enum Fields {
-            /// <summary>
-            /// уникальный идентификатор гостя
-            /// </summary>
             [DbType(typeof (Int64))]
             GuestId,
-
-            /// <summary>
-            /// его useragent
-            /// </summary>
             [DbType(typeof (string))]
             UserAgent,
         }
 
-        /// <summary>
-        /// уникальный идентификатор гостя
-        /// </summary>
         public long GuestId { get; set; }
-
-        /// <summary>
-        /// его useragent
-        /// </summary>
         public string UserAgent { get; set; }
 
-        public GuestTransportType ToTransport() {
-            return new GuestTransportType {
+        public GuestDto ToDto() {
+            return new GuestDto {
                 GuestId = GuestId,
                 UserAgent = UserAgent
             };

@@ -52,9 +52,9 @@
     <Compile Include="TransportTypes\DesignerImageDto.cs" />
     <Compile Include="TransportTypes\DesignerImagePositionDto.cs" />
     <Compile Include="TransportTypes\ParameterDto.cs" />
-    <Compile Include="TransportTypes\GuestTransportType.cs" />
-    <Compile Include="TransportTypes\NewsTransportType.cs" />
-    <Compile Include="TransportTypes\UserActionLogTransportType.cs" />
+    <Compile Include="TransportTypes\GuestDto.cs" />
+    <Compile Include="TransportTypes\NewsDto.cs" />
+    <Compile Include="TransportTypes\UserActionLogDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

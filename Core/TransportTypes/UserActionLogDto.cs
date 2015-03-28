@@ -1,5 +1,5 @@
 ﻿namespace Core.TransportTypes {
-    public class UserActionLogTransportType {
+    public class UserActionLogDto {
         public long Id { get; set; }
         public long GuestId { get; set; }
         public int ActionId { get; set; }

@@ -1,5 +1,5 @@
 ﻿namespace Core.TransportTypes {
-    public class GuestTransportType {
+    public class GuestDto {
         public long GuestId;
         public string UserAgent;
     }
