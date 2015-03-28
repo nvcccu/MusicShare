@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
+    <Compile Include="DaoEntities\Answer.cs" />
     <Compile Include="DaoEntities\Question.cs" />
     <Compile Include="DaoEntities\ParameterArrow.cs" />
     <Compile Include="DaoEntities\PredefinedGuitar.cs" />

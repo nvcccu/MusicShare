@@ -132,6 +132,38 @@ WITH (
 ALTER TABLE UserActionLog
   OWNER TO postgres;
 
+CREATE TABLE Question (
+  Id bigserial NOT NULL,
+  AccountId int NOT NULL,
+  Title character varying(512) NOT NULL,
+  Text character varying(8192),
+  DateCreated timestamp without time zone NOT NULL,
+  WatchNumber int NOT NULL DEFAULT 0,
+  VoteNumber int NOT NULL DEFAULT 0,
+  CONSTRAINT pk_Question PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Question
+  OWNER TO postgres;
+
+CREATE TABLE Answer (
+  Id bigserial NOT NULL,
+  AccountId int NOT NULL,
+  AnswerTo character varying(512) NOT NULL,
+  Text character varying(8192),
+  DateCreated timestamp without time zone NOT NULL,
+  IsSolution boolean NOT NULL DEFAULT FALSE,
+  VoteNumber int NOT NULL DEFAULT 0,
+  CONSTRAINT pk_Answer PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Answer
+  OWNER TO postgres;
+
 
 /*
 CREATE TABLE SchemaVersion (

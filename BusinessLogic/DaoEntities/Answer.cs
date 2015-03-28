@@ -4,44 +4,44 @@ using DAO;
 using DAO.Attributes;
 
 namespace BusinessLogic.DaoEntities {
-    public class Question : AbstractEntity<Guest> {
-        public Question(string tableName) : base(tableName) {}
+    public class Answer : AbstractEntity<Guest> {
+        public Answer(string tableName) : base(tableName) {}
 
-        public Question() : base("Question") {}
+        public Answer() : base("Answer") {}
 
         public enum Fields {
             [DbType(typeof (Int64))]
             Id,
             [DbType(typeof (Int32))]
             AccountId,
-            [DbType(typeof (string))]
-            Title,
-            [DbType(typeof (string))]
+            [DbType(typeof (Int64))]
+            AnswerTo,
+            [DbType(typeof (String))]
             Text,
             [DbType(typeof (DateTime))]
             DateCreated,
-            [DbType(typeof (Int32))]
-            WatchNumber,
+            [DbType(typeof (Boolean))]
+            IsSolution,
             [DbType(typeof (Int32))]
             VoteNumber
         }
 
         public long Id { get; set; }
-        public string Title { get; set; }
-        public string Text { get; set; }
         public int AccountId { get; set; }
+        public long AnswerTo { get; set; }
+        public string Text { get; set; }
         public DateTime DateCreated { get; set; }
-        public int WatchNumber { get; set; }
+        public bool IsSolution { get; set; }
         public int VoteNumber { get; set; }
 
-        public QuestionDto ToDto() {
-            return new QuestionDto {
+        public AnswerDto ToDto() {
+            return new AnswerDto {
                 Id = Id,
-                Title = Title,
-                Text = Text,
                 AccountId = AccountId,
+                AnswerTo = AnswerTo,
+                Text = Text,
                 DateCreated = DateCreated,
-                WatchNumber = WatchNumber,
+                IsSolution = IsSolution,
                 VoteNumber = VoteNumber
             };
         }

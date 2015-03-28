@@ -19,7 +19,7 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (Int32))]
             IncompatibleParameterId,
             [DbType(typeof (Int32))]
-            IncompatibleParameterValueId,
+            IncompatibleParameterValueId
         }
 
         public int Id { get; set; }

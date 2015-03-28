@@ -10,10 +10,14 @@ namespace BusinessLogic.DaoEntities {
         public UserActionLog() : base("UserActionLog") { }
 
         public enum Fields {
-            [DbType(typeof (Int64))] Id,
-            [DbType(typeof (Int64))] GuestId,
-            [DbType(typeof (Int32))] ActionId,
-            [DbType(typeof (Int64))] Target,
+            [DbType(typeof (Int64))]
+            Id,
+            [DbType(typeof (Int64))]
+            GuestId,
+            [DbType(typeof (Int32))]
+            ActionId,
+            [DbType(typeof (Int64))]
+            Target
         }
 
         public long Id { get; set; }

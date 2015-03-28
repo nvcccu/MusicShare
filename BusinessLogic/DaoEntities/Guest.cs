@@ -13,7 +13,7 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (Int64))]
             GuestId,
             [DbType(typeof (string))]
-            UserAgent,
+            UserAgent
         }
 
         public long GuestId { get; set; }

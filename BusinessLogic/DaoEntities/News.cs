@@ -17,7 +17,7 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (string))]
             Text,
             [DbType(typeof (string))]
-            Image,
+            Image
         }
 
         public int Id { get; set; }
