@@ -4,7 +4,7 @@ using DAO;
 using DAO.Attributes;
 
 namespace BusinessLogic.DaoEntities {
-    public class Question : AbstractEntity<Guest> {
+    public class Question : AbstractEntity<Question> {
         public Question(string tableName) : base(tableName) {}
 
         public Question() : base("Question") {}
@@ -27,9 +27,9 @@ namespace BusinessLogic.DaoEntities {
         }
 
         public long Id { get; set; }
+        public int AccountId { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
-        public int AccountId { get; set; }
         public DateTime DateCreated { get; set; }
         public int WatchNumber { get; set; }
         public int VoteNumber { get; set; }

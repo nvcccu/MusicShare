@@ -12,6 +12,7 @@ namespace BusinessLogic {
         private readonly LogProvider _logProvider = new LogProvider();
         private readonly DerzkieSchiProvider _derzkieSchiProvider = new DerzkieSchiProvider();
         private readonly DesignerProvider _designerProvider = new DesignerProvider();
+        private readonly AskProvider _askProvider = new AskProvider();
         public BusinessLogic() {
             Initial();
         }
@@ -42,6 +43,9 @@ namespace BusinessLogic {
         }
         public List<ParameterArrowDto> GetParameterArrows() {
             return _designerProvider.GetParameterArrows();
+        }
+        public AskThreadTransportType GetAskThread(long questionId) {
+            return _askProvider.GetAskThread(questionId);
         }
     }
 }

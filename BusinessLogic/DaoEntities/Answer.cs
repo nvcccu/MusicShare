@@ -4,7 +4,7 @@ using DAO;
 using DAO.Attributes;
 
 namespace BusinessLogic.DaoEntities {
-    public class Answer : AbstractEntity<Guest> {
+    public class Answer : AbstractEntity<Answer> {
         public Answer(string tableName) : base(tableName) {}
 
         public Answer() : base("Answer") {}

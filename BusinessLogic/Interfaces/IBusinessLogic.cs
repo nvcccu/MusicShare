@@ -3,7 +3,8 @@
         IUserProvider,
         ILogProvider,
         IDerzkieSchiProvider,
-        IDesignerProvider {
-        void Initial();
+        IDesignerProvider,
+        IAskProvider {
+            void Initial();
     }
 }

@@ -18,6 +18,7 @@
             <a class="header-navigation__btn @CssIfActive(controllerName, "Search")" href="#">Старый подбор</a><!--
             --><a class="header-navigation__btn @CssIfActive(controllerName, "Article")" href="@Url.Action("Index", "Article")">Статьи</a><!--
             --><a class="header-navigation__btn @CssIfActive(controllerName, "Designer")" href="@Url.Action("Index", "Designer")">Конструктор</a><!--
-            --><a class="header-navigation__btn @CssIfActive(controllerName, "Store")" href="#">Магазин</a></div>
+            --><a class="header-navigation__btn @CssIfActive(controllerName, "Store")" href="@Url.Action("Index", "Ask")">Задать вопрос</a>
+        </div>
     </div>
 </header>

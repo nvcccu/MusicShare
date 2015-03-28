@@ -44,7 +44,7 @@ header, #header {
     height: 144px;
 }
 .header-logo__img {
-    margin: 30px 150px 30px 50px;
+    margin: 30px 150px 0 50px;
     cursor: pointer;
 }
 .header__img {

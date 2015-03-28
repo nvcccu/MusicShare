@@ -1,9 +1,11 @@
 ﻿using System.Web.Mvc;
+using MusicShareWeb.Models.Ask;
 
 namespace MusicShareWeb.Controllers {
     public class AskController : Controller {
-        public ActionResult Index() {
-            return View("Index");
+        [HttpGet]
+        public ActionResult Index(long q) {
+            return View("Index", new AskThreadModel(q));
         }
     }
 }
