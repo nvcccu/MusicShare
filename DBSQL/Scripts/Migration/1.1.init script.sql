@@ -151,7 +151,7 @@ ALTER TABLE Question
 CREATE TABLE Answer (
   Id bigserial NOT NULL,
   AccountId int NOT NULL,
-  AnswerTo character varying(512) NOT NULL,
+  AnswerTo bigint NOT NULL,
   Text character varying(8192),
   DateCreated timestamp without time zone NOT NULL,
   IsSolution boolean NOT NULL DEFAULT FALSE,

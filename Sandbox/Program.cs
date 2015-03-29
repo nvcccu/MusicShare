@@ -12,7 +12,9 @@ using Castle.Windsor;
 using CommonUtils.Config;
 using CommonUtils.ServiceManager;
 using Core.Enums;
+using Core.TransportTypes;
 using DAO;
+using DAO.Attributes;
 using DAO.Enums;
 
 namespace Sandbox {
@@ -168,12 +170,33 @@ namespace Sandbox {
 //            }
 //        }
 //       
+
+        public class OfferCategory : AbstractEntity<OfferCategory> {
+        public OfferCategory(string tableName) : base(tableName) {}
+
+        public OfferCategory() : base("OfferCategory") {}
+
+        public enum Fields {
+            [DbType(typeof (Int64))]
+            Id,
+            [DbType(typeof (Int64))]
+            ParentId
+        }
+
+        public long Id { get; set; }
+        public long ParentId { get; set; }
+    }
+
         private static void Main(string[] args) {
             // НЕ УДАЛЯТЬ
-            ConfigHelper.LoadXml(false);
+            ConfigHelper.LoadXml(true);
             Connector.ConnectionString = ConfigHelper.FirstTagWithTagNameInnerText("db-connection");
             // НЕ УДАЛЯТЬ
-
+            
+            new OfferCategory {
+                Id = Convert.ToInt64(15),
+                ParentId = Convert.ToInt64(21)
+            }.Save();
          
             Console.WriteLine("end");
             Console.ReadKey();

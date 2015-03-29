@@ -132,12 +132,12 @@ namespace DAO {
             property = properties[properties.Count() - 1];
             propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
             _query += propValue.IsNullOrEmpty() ? "NULL" : ("'" + propValue.Replace("'", "''") + "'");
-            _query += ")";
+            _query += ") RETURNING " + properties.First().Name + ";";
             Console.WriteLine(_query);
             _dbAdapter.Command = new NpgsqlCommand(_query, _dbAdapter.Connection);
             _dbAdapter.OpenConnection();
             try {
-                _dbAdapter.Command.ExecuteScalar();
+                var q = _dbAdapter.Command.ExecuteScalar();
             } catch (Exception ex) {
                 Console.WriteLine(ex);
             }
