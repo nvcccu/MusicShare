@@ -7,11 +7,22 @@
 <div class="ask-list">
     @foreach (var question in @Model.Questions) {
         <div class="ask-list__ask">
-            @if (@question.HasSolution) {
-                <div>solution</div>
+            @if (!String.IsNullOrEmpty(question.SolutionText)) {
+                <div class="ask__has-solution" title="На этот вопрос есть правильный ответ."></div>
             }
             <div class="ask__body">
-                Вопрос: @question.Question.Text
+                <div class="ask__question-text">
+                    @question.Question.Text
+                </div>
+                <div class="ask_solution-text">
+                    @question.SolutionText
+                </div>
+                <div class="ask__watch-number">
+                    Просмотров: @question.Question.WatchNumber
+                </div>
+                <div class="ask__vote-number">
+                    Рейтинг: @question.Question.VoteNumber
+                </div>
             </div>
         </div>
     }

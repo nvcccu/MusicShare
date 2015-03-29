@@ -452,7 +452,7 @@ namespace DAO {
                     }
                     return result.Substring(0, result.Length - 2) + ")";
                 } else {
-                    throw new Exception("Недопустимый аргумент для IN");
+                    throw new Exception("Недопустимый аргумент для перечисления в IN");
                 }
             }
             else {

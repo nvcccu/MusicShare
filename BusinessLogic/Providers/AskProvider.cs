@@ -28,8 +28,6 @@ namespace BusinessLogic.Providers {
         public List<QuestionTransportType> GetAllQuestions() {
             var questions = new Question()
                 .Select()
-//                .Join(JoinType.Left, new Answer(), RetrieveMode.Retrieve)
-//                .On(Question.Fields.Id, PredicateCondition.Equal, Answer.Fields.AnswerTo)
                 .OrderBy(Question.Fields.Id, OrderType.Desc)
                 .GetData()
                 .ToList();
@@ -38,10 +36,12 @@ namespace BusinessLogic.Providers {
                 .Where(Answer.Fields.AnswerTo, PredicateCondition.In, questions.Select(q => q.Id).ToList())
                 .GetData()
                 .ToList();
-
-            return questions.Select(q => new QuestionTransportType {
-                Question = q.ToDto(),
-                HasSolution = answers.Any(a => a.AnswerTo == q.Id && a.IsSolution)
+            return questions.Select(q => {
+                var solution = answers.SingleOrDefault(a => a.AnswerTo == q.Id && a.IsSolution);
+                return new QuestionTransportType {
+                    Question = q.ToDto(),
+                    SolutionText = solution != null ? solution.Text : null
+                };
             }).ToList();
         }
     }

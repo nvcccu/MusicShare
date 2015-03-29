@@ -152,6 +152,7 @@
     <Content Include="Content\Image\guitar.png" />
     <Content Include="Content\Image\header-img.png" />
     <Content Include="Content\Image\index.jpg" />
+    <Content Include="Content\Image\IsSolution.jpg" />
     <Content Include="Content\Image\list.png" />
     <Content Include="Content\Image\logo.png" />
     <Content Include="Content\Image\SelectBodyForm_Hover.png" />
