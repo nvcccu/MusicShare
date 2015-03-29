@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -260,6 +261,10 @@ namespace DAO {
                     return " = ";
                 case PredicateCondition.Greater:
                     return " > ";
+                case PredicateCondition.In:
+                    return " IN ";
+                case PredicateCondition.NotIn:
+                    return " NOT IN ";
                     // todo: лень сразу писать все операторы :-)
                 default:
                     return null;
@@ -434,6 +439,28 @@ namespace DAO {
         }
 
         /// <summary>
+        /// Приводит правое значение к соответствующему условию виду
+        /// </summary>
+        /// <returns></returns>
+        private string PrepareTargetValue(PredicateCondition predicateCondition, object value) {
+            if (predicateCondition == PredicateCondition.In || predicateCondition == PredicateCondition.NotIn) {
+                if (value is IEnumerable) {
+                    var result = "(";
+                    IEnumerable valueList = ((IEnumerable)value);
+                    foreach (var val in valueList) {
+                        result = result + " '" + val.ToString() + "', ";
+                    }
+                    return result.Substring(0, result.Length - 2) + ")";
+                } else {
+                    throw new Exception("Недопустимый аргумент для IN");
+                }
+            }
+            else {
+                return "'" + value + "' ";
+            }
+        }
+
+        /// <summary>
         /// Транслирует все условия where в SQL
         /// </summary>
         /// <returns></returns>
@@ -443,12 +470,12 @@ namespace DAO {
             }
             var where = "WHERE ";
             var field = _filterWhere.First().Field;
-            where += field.GetType().DeclaringType.Name + "." + field + GetMathOper(_filterWhere.First().Oper) + "'" +
-                     _filterWhere.First().Value + "' ";
+            where += field.GetType().DeclaringType.Name + "." + field + GetMathOper(_filterWhere.First().Oper) + 
+                     PrepareTargetValue(_filterWhere.First().Oper, _filterWhere.First().Value);
             for (var i = 1; i < _filterWhere.Count; i++) {
                 field = _filterWhere[i].Field;
-                where += "AND " + field.GetType().DeclaringType.Name + "." + field + GetMathOper(_filterWhere[i].Oper) + "'" +
-                         _filterWhere[i].Value + "' ";
+                where += "AND " + field.GetType().DeclaringType.Name + "." + field + GetMathOper(_filterWhere[i].Oper) +
+                         PrepareTargetValue(_filterWhere[i].Oper, _filterWhere[i].Value);
             }
             _query += where;
             _filterWhere = new List<FilterWhere>();
