@@ -16,7 +16,6 @@ namespace MusicShareWeb.Controllers {
         [HttpPost]
         public ActionResult New(QuestionModel question) {
             return RedirectToAction("Index", new {q = question.CreateNewQuestion()});
-//            return View("Thread", new AskThreadModel(question.CreateNewQuestion()));
         }
     }
 }
