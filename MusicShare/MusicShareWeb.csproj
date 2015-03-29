@@ -128,12 +128,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Ask\AskThreadModel.cs" />
+    <Compile Include="Models\Ask\QuestionListModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Css\Article\ArticlePreview.css" />
+    <Content Include="Content\Css\Ask\Ask.css" />
     <Content Include="Content\Css\Button.css" />
     <Content Include="Content\Css\DerzkieSchi\Guitars.css" />
     <Content Include="Content\Css\Designer\Designer.css" />
@@ -264,6 +266,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Ask\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Ask\Thread.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,16 +1,18 @@
-﻿@model MusicShareWeb.Models.Ask.AskThreadModel
+﻿@model MusicShareWeb.Models.Ask.QuestionListModel
 
 @{
     Layout = "../Shared/Layout.cshtml";
 }
 
-<div>
-    <div>
-        Вопрос: @Model.Question.Text
-    </div>
-    @foreach (var answer in @Model.Answers) {
-        <div>
-            Ответ: @answer.Text
+<div class="ask-list">
+    @foreach (var question in @Model.Questions) {
+        <div class="ask-list__ask">
+            @if (@question.HasSolution) {
+                <div>solution</div>
+            }
+            <div class="ask__body">
+                Вопрос: @question.Question.Text
+            </div>
         </div>
     }
 </div>

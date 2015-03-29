@@ -47,5 +47,8 @@ namespace BusinessLogic {
         public AskThreadTransportType GetAskThread(long questionId) {
             return _askProvider.GetAskThread(questionId);
         }
+        public List<QuestionTransportType> GetAllQuestions() {
+            return _askProvider.GetAllQuestions();
+        }
     }
 }
