@@ -1,0 +1,20 @@
+﻿@model Core.TransportTypes.QuestionDto
+
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+<div class="ask-question">
+    Задать вопрос
+    @using (Html.BeginForm("New", "Ask", FormMethod.Post, new { @class = "ask-question__question" })) {
+        <div class="question__title">
+            Заголовок: @Html.TextBoxFor(m => m.Title)
+        </div>
+        <div class="question__text">
+            Текст: @Html.TextBoxFor(m => m.Text)
+        </div>
+        <div class="question__submit">
+            <input type="submit" value="Задать вопрос"/>
+        </div>
+    }
+</div>

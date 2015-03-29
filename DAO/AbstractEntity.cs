@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using Castle.Core.Internal;
@@ -12,7 +11,7 @@ namespace DAO {
     public interface IAbstractEntity {
         string TableName { get; set; }
         List<IAbstractEntity> JoinedEntities { get; set; }
-        void Insert();
+        object Insert();
     }
 
     /// <summary>
@@ -76,10 +75,19 @@ namespace DAO {
             return this;
         }
 
+        private string FixDate(object value) {
+            if (value is DateTime) {
+                return String.Format("{0:yyyy-MM-dd HH:mm:ss}", value);
+            } else {
+                return value.ToString();
+            }
+        }
+
         /// <summary>
-        /// Сохраняет сущность в базу БЕЗ АЙДИШКИ
+        /// Сохраняет сущность в базу БЕЗ АЙДИШКИ и возвращает АЙДИШКУ
         /// </summary>
-        public void Insert() {
+        public object Insert() {
+            object id = null;
             PropertyInfo property;
             var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
             _query = "INSERT INTO " + TableName + " (";
@@ -92,26 +100,27 @@ namespace DAO {
             string propValue;
             for (var i = 1; i < properties.Count() - 1; i++) {
                 property = properties[i];
-                propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
+                propValue = FixDate(property.GetValue(this, null));
                 _query += propValue.IsNullOrEmpty() ? "NULL, " : ("'" + propValue.Replace("'", "''") + "', ");
             }
             property = properties[properties.Count() - 1];
-            propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
+            propValue = FixDate(property.GetValue(this, null));
             _query += propValue.IsNullOrEmpty() ? "NULL" : ("'" + propValue.Replace("'", "''") + "'");
-            _query += ")";
+            _query += ") RETURNING " + properties.First().Name + ";";
             Console.WriteLine(_query);
             _dbAdapter.Command = new NpgsqlCommand(_query, _dbAdapter.Connection);
             _dbAdapter.OpenConnection();
             try {
-                _dbAdapter.Command.ExecuteScalar();
+                id = _dbAdapter.Command.ExecuteScalar();
             } catch (Exception ex) {
                 Console.WriteLine(ex);
             }
             _dbAdapter.CloseConnection();
+            return id;
         }
-
         /// <summary>
         /// Сохраняет сущность в базу С АЙДИШКОЙ
+        /// TODO: Подставлять имя первичного ключа по атрибуту, а не брать первую пропертю
         /// </summary>
         public void Save() {
             PropertyInfo property;
@@ -126,18 +135,18 @@ namespace DAO {
             string propValue;
             for (var i = 0; i < properties.Count() - 1; i++) {
                 property = properties[i];
-                propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
+                propValue = FixDate(property.GetValue(this, null));
                 _query += propValue.IsNullOrEmpty() ? "NULL, " : ("'" + propValue.Replace("'", "''") + "', ");
             }
             property = properties[properties.Count() - 1];
-            propValue = Convert.ToString(property.GetValue(this, null), CultureInfo.InvariantCulture);
+            propValue = FixDate(property.GetValue(this, null));
             _query += propValue.IsNullOrEmpty() ? "NULL" : ("'" + propValue.Replace("'", "''") + "'");
             _query += ") RETURNING " + properties.First().Name + ";";
             Console.WriteLine(_query);
             _dbAdapter.Command = new NpgsqlCommand(_query, _dbAdapter.Connection);
             _dbAdapter.OpenConnection();
             try {
-                var q = _dbAdapter.Command.ExecuteScalar();
+                _dbAdapter.Command.ExecuteScalar();
             } catch (Exception ex) {
                 Console.WriteLine(ex);
             }

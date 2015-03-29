@@ -28,3 +28,10 @@
     width: 100%;
     height: 100%;
 }
+
+/* new ask*/
+.ask-question {
+    min-width: 600px;
+    max-width: 900px;
+    margin: 0 auto;
+}

@@ -50,5 +50,8 @@ namespace BusinessLogic {
         public List<QuestionTransportType> GetAllQuestions() {
             return _askProvider.GetAllQuestions();
         }
+        public long CreateNewQuestion(QuestionDto question) {
+            return _askProvider.CreateNewQuestion(question);
+        }
     }
 }

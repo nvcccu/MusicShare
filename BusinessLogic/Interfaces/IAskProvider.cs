@@ -5,5 +5,6 @@ namespace BusinessLogic.Interfaces {
     public interface IAskProvider {
         AskThreadTransportType GetAskThread(long questionId);
         List<QuestionTransportType> GetAllQuestions();
+        long CreateNewQuestion(QuestionDto question);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
@@ -43,6 +44,16 @@ namespace BusinessLogic.Providers {
                     SolutionText = solution != null ? solution.Text : null
                 };
             }).ToList();
+        }
+        public long CreateNewQuestion(QuestionDto question) {
+            return Convert.ToInt64(new Question {
+                Title = question.Title,
+                Text = question.Text,
+                AccountId = question.AccountId,
+                DateCreated = DateTime.Now,
+                VoteNumber = 0,
+                WatchNumber = 0
+            }.Insert());
         }
     }
 }
