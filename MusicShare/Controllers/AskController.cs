@@ -7,7 +7,7 @@ namespace MusicShareWeb.Controllers {
         public ActionResult Index(long? q) {
             return q.HasValue
                 ? View("Thread", new AskThreadModel(q.Value))
-                : View("Index", new QuestionListModel());
+                : View("List", new QuestionListModel());
         }
         [HttpGet]
         public ActionResult New() {

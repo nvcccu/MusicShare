@@ -269,7 +269,7 @@
     <Content Include="Content\Font\FontAwesome\FontAwesome.otf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Ask\Index.cshtml" />
+    <Content Include="Views\Ask\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Ask\Thread.cshtml" />
