@@ -141,6 +141,7 @@
     <Content Include="Content\Css\Ask\Ask.css" />
     <Content Include="Content\Css\Button.css" />
     <Content Include="Content\Css\DerzkieSchi\Guitars.css" />
+    <Content Include="Content\Css\Designer\Navigation.css" />
     <Content Include="Content\Css\Designer\Designer.css" />
     <Content Include="Content\Css\Global.css" />
     <Content Include="Content\Css\Layout.css" />

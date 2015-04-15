@@ -1,6 +1,6 @@
 ﻿<div id="SubparameterNavigation" data-bind="visible: $root.parameterModel.isOverviewMode() == false">
     <div class="designer-nav__cur-param">
-        Выбор <span data-bind="text: $root.parameterModel.currentEditingParameter().nameGenitive"></span>
+        Выбор <span data-bind="text: $root.parameterModel.currentEditingGlobalParameter().nameGenitive"></span>
         <div class="mg-btn-cross" data-bind="click: $root.parameterModel.goToOverview"></div>
     </div>
     <div data-bind="foreach: $root.parameterModel.currentAvailableSubparameters()">

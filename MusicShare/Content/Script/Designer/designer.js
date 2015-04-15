@@ -105,7 +105,7 @@
             var parameter = data.parameters.filter(function (e) {
                 return e.id == globalParameterId;
             })[0];
-            parameterModel.currentEditingParameter(parameter);
+            parameterModel.currentEditingGlobalParameter(parameter);
             setAvailableSubparameters(parameter.id);
         };
         var isFormParameterSelected = function() {
@@ -115,7 +115,12 @@
 
         parameterModel.isOverviewMode = ko.observable(true);
         parameterModel.isFormSelected = undefined;
-        parameterModel.currentEditingParameter = ko.observable();
+
+        parameterModel.selectingGlobalParameter = ko.observable(true);
+        parameterModel.selectedGlobalParameter = ko.observable(null);
+        parameterModel.selectedSubparameter = ko.observable(null);
+
+        parameterModel.currentEditingGlobalParameter = ko.observable();
         parameterModel.currentAvailableSubparameters = ko.observableArray(null);
         parameterModel.currentEditingSubparameter = ko.observable(null);
         parameterModel.selectedParametersValueIds = [];
@@ -255,6 +260,16 @@
             }
             return parameterArrow;
         }
+
+        ////
+        parameterModel.selectGlobalParameter = function (globalParameterId) {
+            parameterModel.selectedGlobalParameter(parameterModel.globalParameters[globalParameterId]);
+            setAvailableSubparameters(globalParameterId);
+            parameterModel.selectingGlobalParameter(false);
+        }
+
+
+        ////
 
         parameterModel.init = function() {
             setEditingParameter(data.parameters[0].id);

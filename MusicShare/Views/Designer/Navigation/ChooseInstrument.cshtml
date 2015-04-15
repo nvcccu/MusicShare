@@ -1,24 +1,22 @@
-﻿<div id="SelectedParameters" data-bind="visible: $root.parameterModel.isOverviewMode() == true">
-    <div class="designer__instrument-info">
-        <div class="designer-nav__cur-param">
-            Электрогитара
-        </div>
-        <!-- ko if: $root.parameterModel.isFormSelected()-->
-        <div class="designer__selected-parameters" data-bind="foreach: Object.keys($root.parameterModel.globalParameters)">
-            <!-- ko if: $root.parameterModel.globalparameterHasAnyValue($data) -->
-            <div class="selected-parameters__parameter-block" data-bind="with: $root.parameterModel.globalParameters[$data]">
-                <div class="selected-parameters__global-parameter">
-                    <span data-bind="text: nameNominative + ':'"></span>
-                </div>
-                <div class="selected-parameters__subparameters" data-bind="foreach: $root.parameterModel.GetSubparametersOfGlobal($data.id)">
-                    <div class="selected-parameters__selected-subparameter">
-                        <span class="selected-parameters__selected-values" data-bind="text: $root.parameterModel.getSelectedValueName($data.id)"></span>
-                        <div class="selected-parameters__drop-parameter" data-bind="click: $root.parameterModel.changeSelectedParameter"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- /ko -->
-        </div>
+﻿<div id="Navigation">
+    <div id="GlobalParameters" class="navigation__global-parameters" data-bind="visible: $root.parameterModel.selectingGlobalParameter() == true">
+        <!-- ko foreach: Object.keys($root.parameterModel.globalParameters) -->
+        <div data-bind="text: $root.parameterModel.globalParameters[$data].nameNominative, click: $root.parameterModel.selectGlobalParameter"></div>
         <!-- /ko -->
+    </div>
+    <div id="Subparameters" class="navigation__details" data-bind="visible: $root.parameterModel.selectedGlobalParameter()">
+        <div class="details__selected-parameters">
+            <div class="selected-parameters__global" data-bind="text: $root.parameterModel.selectedGlobalParameter() ? $root.parameterModel.selectedGlobalParameter().nameNominative : ''"></div>
+            <div class="selected-parameters__subparameter" data-bind="
+                visible: $root.parameterModel.selectedSubparameter(),
+                text: $root.parameterModel.currentEditingSubparameter() ? $root.parameterModel.currentEditingSubparameter().nameNominative : ''"></div>
+        </div>
+        <div class="details__subparameters" data-bind="foreach: $root.parameterModel.currentAvailableSubparameters()">
+            <div data-bind="text: $data.nameNominative"></div>
+        </div>
+        <div class="details__values" data-bind="foreach: $root.parameterModel.currentEditingSubparameter().parameterValues">
+            <img class="values__value-img" data-bind="attr: { src: imagePreviewUrl }"/>
+            <div class="values__value-name" data-bind="text: name"></div>
+        </div>
     </div>
 </div>
