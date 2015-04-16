@@ -255,16 +255,10 @@
     <Content Include="Views\Designer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Designer\Navigation\Navigation.cshtml" />
+    <Content Include="Views\Designer\Navigation.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Designer\Navigation\SubparameterNavigation.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Designer\Form\Overview.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Designer\Form\SubparameterValues.cshtml" />
+    <Content Include="Views\Designer\Overview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Font\FontAwesome\FontAwesome.otf" />

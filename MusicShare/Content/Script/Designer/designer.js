@@ -158,12 +158,10 @@
             parameterModel.isOverviewMode(true);
         };
         parameterModel.setSubparameterValue = function (parameterValue) {
-            debugger;
             var formWasSelected = parameterModel.isFormSelected();
             parameterModel.selectedParametersValueIds[parameterModel.selectedSubparameter().id](parameterValue.id);
             var formIsSelected = parameterModel.isFormSelected();
             if (!formWasSelected && formIsSelected) {
-                debugger;
                 parameterModel.generatePredefinedGuitar();
             }
             parameterModel.goToOverview();
@@ -272,8 +270,15 @@
         }
 
         parameterModel.selectSubparameter = function (subparameter) {
-            debugger;
             parameterModel.selectedSubparameter(subparameter);
+        }
+        parameterModel.dropSelectedSubparameter = function() {
+            parameterModel.selectedSubparameter(undefined);
+        }
+        parameterModel.dropSelectedGlobalParameter = function () {
+            parameterModel.selectedSubparameter(undefined);
+            parameterModel.selectedGlobalParameter(undefined);
+            parameterModel.selectingGlobalParameter(true);
         }
 
 
@@ -291,7 +296,6 @@
 
 
             //
-            debugger;
             parameterModel.selectedSubparameter(parameterModel.subparameters[musGround.const.formSubparameterId]);
             //
         };

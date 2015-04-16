@@ -36,12 +36,10 @@
     </div>
     <div class="designer__full-block" data-bind="visible: $root.parameterModel.isFormSelected()">
         <div class="designer__block designer__block-left">
-            @Html.Partial("Navigation/Navigation")
-            @Html.Partial("Navigation/SubparameterNavigation")
+            @Html.Partial("Navigation")
         </div>
         <div class="designer__block designer__block-right">
-            @Html.Partial("Form/Overview")
-            @Html.Partial("Form/SubparameterValues")
+            @Html.Partial("Overview")
         </div>
         <div style="clear: both;"></div>
     </div>

@@ -1,5 +1,12 @@
 ﻿.navigation__global-parameters {
+    width: 256px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.navigation__global-parameters-inner {
     background-color: #30281f;
+    width: 100%;
 }
 .global-parameters__parameter {
     -webkit-box-sizing: border-box;
@@ -8,9 +15,10 @@
     margin: 0 20px;
     border-bottom: 1px solid #e8dfd0;
     color: #e8dfd0;
-    height: 38px;
+    height: 68px;
+    line-height: 68px;
+    font-size: 20px;
 }
-
 .global-parameters__parameter:last-of-type {
     border-bottom: none; 
 }

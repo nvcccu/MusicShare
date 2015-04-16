@@ -2,11 +2,11 @@ insert into guest values
 (1, '');
 
 insert into Parameter values
-(1, NULL, 'корпус', 'корпуса', null, null),
-(2, 1, 'форма', 'формы', 193, 129),
-(3, 1, 'цвет', 'цвета', 100, 100),
-(4, NULL, 'бридж', 'бриджа', null, null),
-(7, 4, 'тип', 'типа', 88, 141);
+(1, NULL, 'Корпус', 'корпуса', null, null),
+(2, 1, 'Форма', 'формы', 193, 129),
+(3, 1, 'Цвет', 'цвета', 100, 100),
+(4, NULL, 'Бридж', 'бриджа', null, null),
+(7, 4, 'Тип', 'типа', 88, 141);
 
 insert into ParameterArrow values
 (1, 1, null, -71, -82, -53, -103, '/ImgStore/Arrow/Body.png'),
