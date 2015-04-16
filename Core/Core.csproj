@@ -49,7 +49,6 @@
     <Compile Include="TransportTypes\AnswerDto.cs" />
     <Compile Include="TransportTypes\QuestionTransportType.cs" />
     <Compile Include="TransportTypes\QuestionDto .cs" />
-    <Compile Include="TransportTypes\ParameterArrowDto.cs" />
     <Compile Include="TransportTypes\PredefinedGuitarDto.cs" />
     <Compile Include="TransportTypes\ParameterValueDto.cs" />
     <Compile Include="TransportTypes\IncompatibleParameterDto.cs" />

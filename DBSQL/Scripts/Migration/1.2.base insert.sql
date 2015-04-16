@@ -8,15 +8,6 @@ insert into Parameter values
 (4, NULL, 'Бридж', 'бриджа', null, null),
 (7, 4, 'Тип', 'типа', 88, 141);
 
-insert into ParameterArrow values
-(1, 1, null, -71, -82, -53, -103, '/ImgStore/Arrow/Body.png'),
-(2, 1, 2, -71, -48, -53, -68, '/ImgStore/Arrow/Body.png'),
-(3, 4, null, -90, -9, -81, -31, '/ImgStore/Arrow/Bridge.png'),
-(4, 4, 2, 214, 79, 344, 59, '/ImgStore/Arrow/Bridge_Explorer.png');
-
-insert into ParameterArrow values
-(1, 14, '2:', 100, 200);
-
 insert into ParameterValue values
 (1, 2, 'Stratocaster', '/ImgStore/Form/Stratocaster.png'),
 (2, 2, 'Explorer', '/ImgStore/Form/Explorer.png'),

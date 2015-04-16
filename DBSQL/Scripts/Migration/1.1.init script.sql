@@ -13,23 +13,6 @@ WITH (
 ALTER TABLE Parameter
   OWNER TO postgres;
 
-CREATE TABLE ParameterArrow (
-  Id serial NOT NULL,
-  ParameterId int NOT NULL,
-  FormId int,
-  ArrowLeft int NOT NULL,
-  ArrowTop int NOT NULL,
-  TextLeft int NOT NULL,
-  TextTop int NOT NULL,
-  Url character varying(1024) NOT NULL,
-  CONSTRAINT pk_ParameterArrow PRIMARY KEY (Id)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE ParameterArrow
-  OWNER TO postgres;
-
 CREATE TABLE ParameterValue (
   Id serial NOT NULL,
   ParameterId int NOT NULL,

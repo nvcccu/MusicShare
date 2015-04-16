@@ -50,12 +50,5 @@ namespace BusinessLogic.Providers {
                 .Select(p => p.ToDto())
                 .ToList();
         }
-        public List<ParameterArrowDto> GetParameterArrows() {
-            return new ParameterArrow()
-                .Select()
-                .GetData()
-                .Select(p => p.ToDto())
-                .ToList();
-        }
     }
 }
