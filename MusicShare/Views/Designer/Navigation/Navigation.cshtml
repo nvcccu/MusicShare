@@ -1,0 +1,28 @@
+﻿<div id="Navigation">
+    <div id="GlobalParameters" class="navigation__global-parameters" data-bind="
+    visible: $root.parameterModel.selectingGlobalParameter() == true,
+    foreach: Object.keys($root.parameterModel.globalParameters)">
+        <div class="global-parameters__parameter" data-bind="text: $root.parameterModel.globalParameters[$data].nameNominative, click: $root.parameterModel.selectGlobalParameter"></div>
+    </div>
+    <div id="Subparameters" class="navigation__details" data-bind="visible: $root.parameterModel.selectedGlobalParameter()">
+        <div class="details__selected-parameters">
+            <div class="selected-parameters__global" data-bind="text: $root.parameterModel.selectedGlobalParameter() ? $root.parameterModel.selectedGlobalParameter().nameNominative : ''"></div>
+            <div class="selected-parameters__subparameter" data-bind="
+                visible: $root.parameterModel.selectedSubparameter(),
+                text: $root.parameterModel.currentEditingSubparameter() ? $root.parameterModel.currentEditingSubparameter().nameNominative : ''"></div>
+        </div>
+        <div class="details__subparameters" data-bind="visible: !$root.parameterModel.selectedSubparameter(), foreach: $root.parameterModel.currentAvailableSubparameters()">
+            <div class="subparameters__subparameter-name" data-bind="text: $data.nameNominative, click: $root.parameterModel.selectSubparameter"></div>
+        </div>
+        <!-- ko if: $root.parameterModel.selectedSubparameter() -->
+        <div id="NavigationArrowTop" class="navigation__arrow-top"></div>
+        <div class="details__values" data-bind="foreach: $root.parameterModel.selectedSubparameter().parameterValues">
+            <div class="values__value" data-bind="click: $root.parameterModel.setSubparameterValue">
+                <img class="values__value-img" data-bind="attr: { src: imagePreviewUrl }"/>
+                <div class="values__value-name" data-bind="text: name"></div>
+            </div>
+        </div>
+        <div id="NavigationArrowBottom" class="navigation__arrow-bottom"></div>
+        <!-- /ko -->
+    </div>
+</div>

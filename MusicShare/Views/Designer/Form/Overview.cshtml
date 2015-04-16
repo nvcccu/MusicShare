@@ -1,13 +1,7 @@
-﻿<div id="Overview" class="overview" data-bind="visible: $root.parameterModel.isOverviewMode() == true">
+﻿<div id="Overview" class="overview">
     <div style="position: relative; width: 1000px; height: 300px; margin: 0 auto;">
         <!-- ko if: $root.parameterModel.isFormSelected() -->
         <div data-bind="foreach: Object.keys($root.parameterModel.globalParameters)">
-            <!-- ko with: $root.parameterModel.globalParameters[$data] -->
-            <!-- ko with: $root.parameterModel.getArrow($data.id)-->
-            <div class="parameter-arrow-text" data-bind="text: $parent.nameNominative, click: $root.parameterModel.editParameter($parent), style: { top: textTop + 'px', left: textLeft + 'px' }"></div>
-            <img class="parameter-arrow" data-bind="attr: { src: url }, style: { top: arrowTop + 'px', left: arrowLeft + 'px' }" />
-            <!-- /ko -->
-            <!-- /ko -->
             <!-- ko with: $root.parameterModel.resultImageBundles[$data]() -->
             <img class="form__image" data-bind="visible: url, attr: { src: url }, style: { top: y + 'px', left: x + 'px' }" />
             <!-- /ko -->

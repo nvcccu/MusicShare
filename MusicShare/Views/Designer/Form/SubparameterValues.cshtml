@@ -1,32 +1,32 @@
-﻿<div id="SubparameterValues" class="designer-form__subparameter-values" data-bind="
-        visible: $root.parameterModel.isOverviewMode() == false, 
-        foreach: $root.parameterModel.currentEditingSubparameter().parameterValues">
-    <!-- ko if: $root.parameterModel.isIncopatibleSubparameterValue($data)-->
-    <div data-bind="attr: { class: $root.parameterModel.currentEditingSubparameter().id != musGround.const.formSubparameterId
-        ? 'designer-form__param-value designer-form__param-value--disabled'
-        : 'designer-form__param-value' },
-        click: $root.parameterModel.currentEditingSubparameter().id == musGround.const.formSubparameterId ? $root.parameterModel.warningIncompatibleWithForm : ''">
-        <img class="designer-form__param-img" data-bind="attr: {
-            src: imagePreviewUrl },
-            style: {
-                height: $root.parameterModel.currentEditingSubparameter().height + 'px',
-                width: $root.parameterModel.currentEditingSubparameter().width + 'px' }" />
-        <div class="designer-form__param-name" data-bind="text: name"></div>
-    </div>
-    <!-- /ko-->
-    <!-- ko ifnot: $root.parameterModel.isIncopatibleSubparameterValue($data) -->
-    <div data-bind="
-    click: $root.parameterModel.setSubparameterValue,
-    attr: { class: $root.parameterModel.isActiveSubparameterValue($data)
-        ? 'designer-form__param-value designer-form__param-value--active'
-        : 'designer-form__param-value' }">
-        <img class="designer-form__param-img" data-bind="attr: {
-            src: imagePreviewUrl },
-            style: {
-                height: $root.parameterModel.currentEditingSubparameter().height + 'px',
-                width: $root.parameterModel.currentEditingSubparameter().width + 'px' }"
-        />
-        <div class="designer-form__param-name" data-bind="text: name"></div>
-    </div>
-    <!-- /ko-->
-</div>
+﻿@*<div id="SubparameterValues" class="designer-form__subparameter-values" data-bind="*@
+@*        visible: $root.parameterModel.isOverviewMode() == false, *@
+@*        foreach: $root.parameterModel.currentEditingSubparameter().parameterValues">*@
+@*    <!-- ko if: $root.parameterModel.isIncopatibleSubparameterValue($data)-->*@
+@*    <div data-bind="attr: { class: $root.parameterModel.currentEditingSubparameter().id != musGround.const.formSubparameterId*@
+@*        ? 'designer-form__param-value designer-form__param-value--disabled'*@
+@*        : 'designer-form__param-value' },*@
+@*        click: $root.parameterModel.currentEditingSubparameter().id == musGround.const.formSubparameterId ? $root.parameterModel.warningIncompatibleWithForm : ''">*@
+@*        <img class="designer-form__param-img" data-bind="attr: {*@
+@*            src: imagePreviewUrl },*@
+@*            style: {*@
+@*                height: $root.parameterModel.currentEditingSubparameter().height + 'px',*@
+@*                width: $root.parameterModel.currentEditingSubparameter().width + 'px' }" />*@
+@*        <div class="designer-form__param-name" data-bind="text: name"></div>*@
+@*    </div>*@
+@*    <!-- /ko-->*@
+@*    <!-- ko ifnot: $root.parameterModel.isIncopatibleSubparameterValue($data) -->*@
+@*    <div data-bind="*@
+@*    click: $root.parameterModel.setSubparameterValue,*@
+@*    attr: { class: $root.parameterModel.isActiveSubparameterValue($data)*@
+@*        ? 'designer-form__param-value designer-form__param-value--active'*@
+@*        : 'designer-form__param-value' }">*@
+@*        <img class="designer-form__param-img" data-bind="attr: {*@
+@*            src: imagePreviewUrl },*@
+@*            style: {*@
+@*                height: $root.parameterModel.currentEditingSubparameter().height + 'px',*@
+@*                width: $root.parameterModel.currentEditingSubparameter().width + 'px' }"*@
+@*        />*@
+@*        <div class="designer-form__param-name" data-bind="text: name"></div>*@
+@*    </div>*@
+@*    <!-- /ko-->*@
+@*</div>*@

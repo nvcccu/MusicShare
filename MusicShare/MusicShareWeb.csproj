@@ -255,7 +255,7 @@
     <Content Include="Views\Designer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Designer\Navigation\ChooseInstrument.cshtml" />
+    <Content Include="Views\Designer\Navigation\Navigation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Designer\Navigation\SubparameterNavigation.cshtml" />

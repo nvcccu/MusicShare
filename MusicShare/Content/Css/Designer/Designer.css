@@ -258,6 +258,3 @@
 .selected-parameters__drop-parameter:hover {
     background-image: url('/Content/Image/ChangeValue_Hover.png')
 }
-.selected-parameters__subparameter {
-    font-weight: bold;
-}

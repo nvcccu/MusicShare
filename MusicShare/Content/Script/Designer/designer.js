@@ -145,6 +145,7 @@
                 var parameterValueId = predefinedGuitar.parameterValues[parameterId];
                 parameterModel.selectedParametersValueIds[parameterId](parameterValueId);
             }
+            parameterModel.selectedSubparameter(null);
         }
         parameterModel.editParameter = function (globalParameter) {
             setEditingParameter(globalParameter.id);
@@ -157,10 +158,12 @@
             parameterModel.isOverviewMode(true);
         };
         parameterModel.setSubparameterValue = function (parameterValue) {
+            debugger;
             var formWasSelected = parameterModel.isFormSelected();
-            parameterModel.selectedParametersValueIds[parameterModel.currentEditingSubparameter().id](parameterValue.id);
+            parameterModel.selectedParametersValueIds[parameterModel.selectedSubparameter().id](parameterValue.id);
             var formIsSelected = parameterModel.isFormSelected();
             if (!formWasSelected && formIsSelected) {
+                debugger;
                 parameterModel.generatePredefinedGuitar();
             }
             parameterModel.goToOverview();
@@ -268,6 +271,11 @@
             parameterModel.selectingGlobalParameter(false);
         }
 
+        parameterModel.selectSubparameter = function (subparameter) {
+            debugger;
+            parameterModel.selectedSubparameter(subparameter);
+        }
+
 
         ////
 
@@ -280,6 +288,12 @@
             parameterModel.resultImageBundles = getResultImageBundles();
             parameterModel.isFormSelected = ko.computed(isFormParameterSelected);
             parameterModel.editFormParameter();
+
+
+            //
+            debugger;
+            parameterModel.selectedSubparameter(parameterModel.subparameters[musGround.const.formSubparameterId]);
+            //
         };
 
 
