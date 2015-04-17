@@ -32,6 +32,10 @@
                 <!-- ko ifnot: $root.parameterModel.isIncopatibleSubparameterValue($data) -->
                 <div data-bind="
                     click: $root.parameterModel.setSubparameterValue,
+                    event: {
+                        mouseover: $root.parameterModel.setPreviewValue,
+                        mouseout: $root.parameterModel.restoreActiveValue
+                    },
                     attr: { class: $root.parameterModel.isActiveSubparameterValue($data)
                         ? 'values__value values__value--active'
                         : 'values__value' }">
