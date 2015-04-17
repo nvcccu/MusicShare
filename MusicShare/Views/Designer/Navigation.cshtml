@@ -20,12 +20,25 @@
         <div class="details__value-list" data-bind="if: $root.parameterModel.selectedSubparameter()">
             <div id="NavigationArrowTop" class="navigation__arrow navigation__arrow-top">Вверх</div>
             <div class="details__values" data-bind="foreach: $root.parameterModel.selectedSubparameter().parameterValues">
-                <div data-bind="
-                    click: $root.parameterModel.isIncopatibleSubparameterValue($data) ? '' : $root.parameterModel.setSubparameterValue,
-                    attr: {class: $root.parameterModel.isIncopatibleSubparameterValue($data) ? 'values__value values__value--incompatible' : 'values__value'}">
+                <!-- ko if: $root.parameterModel.isIncopatibleSubparameterValue($data)-->
+                <div data-bind="attr: { class: $root.parameterModel.selectedSubparameter().id != musGround.const.formSubparameterId
+                    ? 'values__value values__value--incompatible'
+                    : 'values__value' },
+                    click: $root.parameterModel.selectedSubparameter().id == musGround.const.formSubparameterId ? $root.parameterModel.warningIncompatibleWithForm : ''">
                     <img class="values__value-img" data-bind="attr: { src: imagePreviewUrl }" />
                     <div class="values__value-name" data-bind="text: name"></div>
                 </div>
+                <!-- /ko-->
+                <!-- ko ifnot: $root.parameterModel.isIncopatibleSubparameterValue($data) -->
+                <div data-bind="
+                    click: $root.parameterModel.setSubparameterValue,
+                    attr: { class: $root.parameterModel.isActiveSubparameterValue($data)
+                        ? 'values__value values__value--active'
+                        : 'values__value' }">
+                    <img class="values__value-img" data-bind="attr: { src: imagePreviewUrl }" />
+                    <div class="values__value-name" data-bind="text: name"></div>
+                </div>
+                <!-- /ko-->
             </div>
             <div id="NavigationArrowBottom" class="navigation__arrow navigation__arrow-bottom">Вниззззз</div>
         </div>

@@ -36,10 +36,6 @@
     height: 100%;
     width: 75%;
 }
-.designer__instrument-info {
-    width: 232px;
-    margin: 0 auto;
-}
 .designer-nav__cur-param {
     height: 40px;
     line-height: 40px;
@@ -68,78 +64,6 @@
     background-color: #92A903;
     cursor: pointer;
 }
-.designer-nav__param-category {
-    position: relative;
-    margin: 0 0 12px 55px;
-    width: 240px;
-    height: 86px;
-    line-height: 86px;
-    text-align: center;
-    font-size: 24px;
-    font-weight: 500;
-    cursor: pointer;
-}
-.designer-nav__param-category--active {
-     background-color: #92A903;
-}
-.designer-nav__param-category--active:after {
-    position: absolute;
-    right: -40px;
-    display: inline-block;
-    border-bottom: 43px solid transparent;
-    border-left: 40px solid #92A903;
-    border-top: 43px solid transparent;
-    content: '';
-    background-color: transparent;
-}
-.designer-nav__submit {
-    width: 240px;
-    height: 55px;
-    background-color: #92A903;
-    color: #ffffff;
-    text-shadow: #000000 0 0 2px;
-    text-shadow: #000000 1px 1px 0, #000000 -1px -1px 0, 
-                 #000000 -1px 1px 0, #000000 1px -1px 0;
-    text-align: center;
-    font-size: 24px;
-    border-radius: 8px;
-    margin: 50px auto 15px 55px;
-    cursor: pointer;
-}
-.designer__select-form {
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-.designer__select-form > .designer__guitar-shadow {
-    height: 275px;
-    width: 852px;
-    background: url('/Content/Image/SelectBodyForm_Normal.png') no-repeat center;
-    margin: auto;
-    background-size: 100% 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-.designer__select-form > .designer__guitar-shadow:hover {
-    background-image: url('/Content/Image/SelectBodyForm_Hover.png');
-}
-@media screen and (max-width: 1400px) {
-    .designer__select-form > .designer__guitar-shadow,
-    .designer__select-form > .designer__guitar-shadow:hover {
-        height: 200px;
-        width: 600px;
-    }
-}
-@media screen and (max-width: 1000px) {
-    .designer__select-form > .designer__guitar-shadow,
-    .designer__select-form > .designer__guitar-shadow:hover {
-        height: 150px;
-        width: 450px;
-    }
-}
 .designer__selecting-form {
     max-height: 600px;
     max-width: 600px;
@@ -156,15 +80,6 @@
 .designer-form__form-img:hover {
     opacity: 1;
 }
-.parameter-arrow {
-    position: absolute;
-    z-index: 100;
-}
-.parameter-arrow-text {
-    position: absolute;
-    z-index: 100;
-    cursor: pointer;
-}
 .overview {
     position: relative;
     display: flex;
@@ -172,89 +87,4 @@
 }
 .form__image {
     position: absolute;
-}
-.designer-form__subparameter-values {
-    text-align: left;
-    padding-top: 40px;
-}
-.designer-form__param-value {
-    display: inline-block;
-    margin-left: -5px;
-    cursor: pointer;
-    text-align: center;
-    padding: 0 40px;
-}
-.designer-form__param-value > img {
-    opacity: 0.75;
-}
-.designer-form__param-value:first-of-type {
-    margin-left: 0;
-}
-.designer-form__param-value--active > img,
-.designer-form__param-value:hover > img {
-    opacity: 1;
-}
-.designer-form__param-value--disabled {
-    background-color: #AAAAAA;
-    cursor: not-allowed;
-}
-.designer-form__param-value--disabled:hover > img {
-    opacity: 0.75;
-}
-.designer-form__param-img {
-    text-align: center;
-    max-height: 100%;
-    max-width: 100%;
-    /*margin-right: 50px;*/
-}
-.designer-form__param-name {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 14px;
-    color: #382811;
-}
-.designer-form__bridge {
-    position: absolute;
-    left: 550px;
-    top: 197px;
-}
-.designer__selected-parameters {
-    font-size: 16px;
-    font-family: verdana, sans-serif, Lucida Sans;
-}
-.selected-parameters__parameter-block {
-    text-align: left;
-    position: relative;
-    margin-top: 19px;
-}
-.selected-parameters__parameter-block:first-of-type {
-    margin-top: 0;
-}
-.selected-parameters__global-parameter {
-    display: inline-block;
-    vertical-align: top;
-    font-weight: bold;
-}
-.selected-parameters__subparameters {
-    display: inline-block;
-    margin-left: -4px;
-    padding-left: 6px;
-}
-.selected-parameters__selected-subparameter {
-    margin-top: 19px;
-}
-.selected-parameters__selected-subparameter:first-of-type {
-    margin-top: 0;
-}
-.selected-parameters__drop-parameter {
-    position: absolute;
-    right: 0;
-    width: 18px;
-    height: 18px;
-    margin-top: -18px;
-    cursor: pointer;
-    background: url('/Content/Image/ChangeValue.png') no-repeat center;
-}
-.selected-parameters__drop-parameter:hover {
-    background-image: url('/Content/Image/ChangeValue_Hover.png')
 }

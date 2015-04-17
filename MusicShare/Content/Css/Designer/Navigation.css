@@ -144,6 +144,12 @@
 .values__value--incompatible {
     background-color: black;
 }
+.values__value--active {
+    background-color: #92a803;
+}
+.values__value--active:hover {
+    background-color: #92a803;
+}
 .values__value-img {
     width: 38px;
     height: 38px;
