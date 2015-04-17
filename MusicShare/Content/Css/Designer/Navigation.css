@@ -103,8 +103,27 @@
 .subparameters__subparameter-name:hover {
     background-color: #afc047;
 }
+.navigation__arrow {
+    background-color: #c0b8ad;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+}
+.navigation__arrow:hover {
+    background-color: #d0ccc3;
+}
+.navigation__arrow-top {
+   border-bottom: 1px solid #ffffff;
+}
+.navigation__arrow-bottom {
+    border-top: 1px solid #ffffff;
+    margin-top: -60px;
+}
+.details__value-list {
+    height: 100%;
+}
 .details__values {
-    float: left;
+    padding-left: 33px;
     width: 223px;
     background-color: #c0b8ad;
     height: 100%;
@@ -116,14 +135,14 @@
     font-size: 20px;
     text-align: center;
     color: #ffffff;
-    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
     background-color: #c0b8ad;
 }
 .values__value:hover {
     background-color: #d0ccc3;
 }
-.values__value:last-of-type {
-    border-bottom: 1px solid #ffffff;
+.values__value--incompatible {
+    background-color: black;
 }
 .values__value-img {
     width: 38px;

@@ -172,8 +172,8 @@
                         return parameterValue.id === incompatibleParameter.parameterValueId;
                     })[0].name;
                     var incompatibleGlobalParameterName = undefined;
-                    for (var i = 0; i < Object.keys(parameterModel.globalParameters).length; i++) {
-                        var globalParameter = parameterModel.globalParameters[Object.keys(parameterModel.globalParameters)[i]];
+                    for (var j = 0; j < Object.keys(parameterModel.globalParameters).length; j++) {
+                        var globalParameter = parameterModel.globalParameters[Object.keys(parameterModel.globalParameters)[j]];
                         if (globalParameter.id === incompatibleSubparameter.parentId) {
                             incompatibleGlobalParameterName = globalParameter.nameNominative;
                         }
