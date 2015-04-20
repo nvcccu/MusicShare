@@ -163,6 +163,7 @@
     <Content Include="Content\Image\SelectBodyForm_Normal.png" />
     <Content Include="Content\Script\CommonScripts\Log.js" />
     <Content Include="Content\Script\CommonScripts\MusicShare.js" />
+    <Content Include="Content\Script\Designer\MenuAnimateHelper.js" />
     <Content Include="Content\Script\Designer\designer.js" />
     <Content Include="Content\Script\jquery.form.js" />
     <Content Include="Content\Script\knockout-3.2.0.js" />

@@ -1,18 +1,20 @@
-﻿<div id="Navigation">
+﻿<div id="Navigation" class="navigation">
     <div id="GlobalParameters" class="navigation__global-parameters" data-bind="visible: $root.parameterModel.selectingGlobalParameter() == true">
         <div class="navigation__global-parameters-inner" data-bind="foreach: Object.keys($root.parameterModel.globalParameters)">
-            <div class="global-parameters__parameter" data-bind="text: $root.parameterModel.globalParameters[$data].nameNominative, click: $root.parameterModel.selectGlobalParameter"></div>
+            <div class="global-parameters__parameter" data-bind="
+            text: $root.parameterModel.globalParameters[$data].nameNominative,
+            click: $root.parameterModel.selectGlobalParameter"></div>
         </div>
     </div>
     <div id="Subparameters" class="navigation__details" data-bind="visible: $root.parameterModel.selectedGlobalParameter()">
-        <div class="details__selected-parameters">
-            <div class="selected-parameters__global" data-bind="
+        <div class="details__menu-level">
+            <div class="menu-level__main" data-bind="click: $root.parameterModel.gotoMainMenu">Основное меню</div>
+            <div class="menu-level__global-parameter" data-bind="
                 text: $root.parameterModel.selectedGlobalParameter() ? $root.parameterModel.selectedGlobalParameter().nameNominative : '',
-                click: $root.parameterModel.dropSelectedGlobalParameter"></div>
-            <div class="selected-parameters__subparameter" data-bind="
+                click: $root.parameterModel.gotoSubparametersMenu"></div>
+            <div class="menu-level__subparameter" data-bind="
                 visible: $root.parameterModel.selectedSubparameter(),
-                text: $root.parameterModel.currentEditingSubparameter() ? $root.parameterModel.currentEditingSubparameter().nameNominative : '',
-                click: $root.parameterModel.dropSelectedSubparameter"></div>
+                text: $root.parameterModel.currentEditingSubparameter() ? $root.parameterModel.currentEditingSubparameter().nameNominative : ''"></div>
         </div>
         <div class="details__subparameters" data-bind="visible: !$root.parameterModel.selectedSubparameter(), foreach: $root.parameterModel.currentAvailableSubparameters()">
             <div class="subparameters__subparameter-name" data-bind="text: $data.nameNominative, click: $root.parameterModel.selectSubparameter"></div>

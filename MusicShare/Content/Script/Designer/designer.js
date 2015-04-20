@@ -125,6 +125,7 @@
         parameterModel.predefinedGuitars = data.predefinedGuitars;
         parameterModel.subparameters = getSubparameters();
         parameterModel.globalParameters = getGlobalParameters();
+        parameterModel.menuAnimateHelper = getMenuAnimateHelper();
         
         parameterModel.generatePredefinedGuitar = function () {
             var formSubparameterValue = parameterModel.selectedParametersValueIds[musGround.const.formSubparameterId]();
@@ -192,24 +193,32 @@
                 return;
             }
         };
-        parameterModel.selectGlobalParameter = function(globalParameterId) {
+//        var afterSelectGlobalParameter = function (globalParameterId) {
+//            return function() {
+//                parameterModel.selectedGlobalParameter(parameterModel.globalParameters[globalParameterId]);
+//                setAvailableSubparameters(globalParameterId);
+//                parameterModel.selectingGlobalParameter(false);
+//            }
+//        };
+        parameterModel.selectGlobalParameter = function (globalParameterId) {
             parameterModel.selectedGlobalParameter(parameterModel.globalParameters[globalParameterId]);
             setAvailableSubparameters(globalParameterId);
             parameterModel.selectingGlobalParameter(false);
+//            parameterModel.menuAnimateHelper.onGlobalParameterChange(afterSelectGlobalParameter(globalParameterId));
         };
         parameterModel.selectSubparameter = function(subparameter) {
             parameterModel.selectedSubparameter(subparameter);
             parameterModel.selectedValue(parameterModel.selectedParametersValueIds[parameterModel.selectedSubparameter().id]());
         };
-        parameterModel.dropSelectedSubparameter = function() {
-            parameterModel.selectedSubparameter(undefined);
-            parameterModel.selectedValue(undefined);
-        };
-        parameterModel.dropSelectedGlobalParameter = function() {
+        parameterModel.gotoMainMenu = function() {
             parameterModel.selectedSubparameter(undefined);
             parameterModel.selectedValue(undefined);
             parameterModel.selectedGlobalParameter(undefined);
             parameterModel.selectingGlobalParameter(true);
+        };
+        parameterModel.gotoSubparametersMenu = function() {
+            parameterModel.selectedSubparameter(undefined);
+            parameterModel.selectedValue(undefined);
         };
         parameterModel.setPreviewValue = function (parameterValue) {
             parameterModel.selectedParametersValueIds[parameterModel.selectedSubparameter().id](parameterValue.id);

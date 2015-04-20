@@ -1,8 +1,15 @@
-﻿.navigation__global-parameters {
-    width: 256px;
-    height: 100%;
+﻿.navigation {
     display: flex;
     align-items: center;
+}
+.navigation__global-parameters {
+    box-sizing: border-box;
+    width: 256px;
+    height: auto;
+    display: flex;
+    color: #e8dfd0;
+    padding: 0 20px;
+    background-color: #30281f;
 }
 .navigation__global-parameters-inner {
     background-color: #30281f;
@@ -12,9 +19,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    margin: 0 20px;
     border-bottom: 1px solid #e8dfd0;
-    color: #e8dfd0;
     height: 68px;
     line-height: 68px;
     font-size: 20px;
@@ -30,7 +35,7 @@
     width: 256px;
     text-align: left;
 }
-.details__selected-parameters {
+.details__menu-level {
     position: relative;
     background-color: #30281f;
     width: 33px;
@@ -38,7 +43,7 @@
     font-size: 16px;
     float: left;
 }
-.selected-parameters__global {
+.menu-level__main {
     text-align: center;
     position: absolute;
     color: #ffffff;
@@ -58,10 +63,32 @@
     -o-transform-origin: right bottom 0;
     transform-origin: right bottom 0;
 }
-.selected-parameters__subparameter {
-    background-color: #92a803;
+.menu-level__global-parameter {
+    text-align: center;
     position: absolute;
+    color: #ffffff;
+    width: 210px;
+    height: 33px;
+    line-height: 33px;
     top: 177px;
+    right: 0;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -webkit-transform-origin: right bottom 0;
+    -moz-transform-origin: right bottom 0;
+    -ms-transform-origin: right bottom 0;
+    -o-transform-origin: right bottom 0;
+    transform-origin: right bottom 0;
+    background-color: #92a803;
+    border-bottom: 1px solid #ffffff;
+    box-sizing: border-box;
+}
+.menu-level__subparameter {
+    position: absolute;
+    top: 387px;
     right: 0;
     height: 33px;
     -webkit-transform: rotate(-90deg);
@@ -79,8 +106,10 @@
     line-height: 33px;
     color: #ffffff;
     padding-right: 50px;
+    background-color: #c0b8ad;
+    border-bottom: 1px solid #ffffff;
+    box-sizing: border-box;
 }
-
 .details__subparameters {
     float: left;
     width: 223px;
