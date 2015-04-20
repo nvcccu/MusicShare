@@ -9,9 +9,11 @@
     <div id="Subparameters" class="navigation__details" data-bind="visible: $root.parameterModel.selectedGlobalParameter()">
         <div class="details__menu-level">
             <div class="menu-level__main" data-bind="click: $root.parameterModel.gotoMainMenu">Основное меню</div>
-            <div class="menu-level__global-parameter" data-bind="
-                text: $root.parameterModel.selectedGlobalParameter() ? $root.parameterModel.selectedGlobalParameter().nameNominative : '',
-                click: $root.parameterModel.gotoSubparametersMenu"></div>
+            <div data-bind="
+                click: $root.parameterModel.gotoSubparametersMenu,
+                attr: {class: ! $root.parameterModel.selectedSubparameter() ? 'menu-level__global-parameter menu-level__global-parameter--active' : 'menu-level__global-parameter'}">
+                <span class="menu-level__main-text" data-bind="text: $root.parameterModel.selectedGlobalParameter() ? $root.parameterModel.selectedGlobalParameter().nameNominative : ''"></span>
+            </div>
             <div class="menu-level__subparameter" data-bind="
                 visible: $root.parameterModel.selectedSubparameter(),
                 text: $root.parameterModel.currentEditingSubparameter() ? $root.parameterModel.currentEditingSubparameter().nameNominative : ''"></div>

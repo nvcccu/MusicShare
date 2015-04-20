@@ -83,8 +83,15 @@
     -o-transform-origin: right bottom 0;
     transform-origin: right bottom 0;
     background-color: #92a803;
+}
+.menu-level__global-parameter--active {
     border-bottom: 1px solid #ffffff;
     box-sizing: border-box;
+    width: 3800px;
+}
+.menu-level__main-text {
+    width: 210px;
+    float: right;
 }
 .menu-level__subparameter {
     position: absolute;
@@ -139,7 +146,7 @@
     text-align: center;
 }
 .navigation__arrow:hover {
-    background-color: #d0ccc3;
+    background-color: #d0cbc2;
 }
 .navigation__arrow-top {
    border-bottom: 1px solid #ffffff;
@@ -168,7 +175,7 @@
     background-color: #c0b8ad;
 }
 .values__value:hover {
-    background-color: #d0ccc3;
+    background-color: #d0cbc2;
 }
 .values__value--incompatible {
     background-color: black;

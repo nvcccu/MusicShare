@@ -152,6 +152,7 @@
             } else {
                 parameterModel.selectedValue(parameterValue.id);
             }
+            parameterModel.gotoSubparametersMenu();
         };
         parameterModel.isActiveSubparameterValue = function (subparameterValue) {
             return parameterModel.selectedValue() === subparameterValue.id;
@@ -189,6 +190,7 @@
             if (confirm(alertText)) {
                 parameterModel.selectedParametersValueIds[musGround.const.formSubparameterId](undefined);
                 parameterModel.setSubparameterValue(formSubparameterValue);
+                parameterModel.gotoMainMenu();
             } else {
                 return;
             }
