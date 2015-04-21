@@ -1,11 +1,18 @@
-﻿input {
+﻿@font-face {
+    font-family: "FontAwesome";
+    src: url(~/Content/Font/FontAwesome/FontAwesome.otf) format("truetype");
+}
+input {
     border: 1px solid #CCCCCC;
     padding: 1px;
 }
 body {
     margin: 0;
+    background: #ffffff;
+    font-family: arial, verdana, sans-serif, Lucida Sans;
+    min-width: 600px;
 }
-@font-face {
-    font-family: "FontAwesome";
-    src: url(~/Content/Font/FontAwesome/FontAwesome.otf) format("truetype");
+.content {
+    background-color: #E8DFD0;
+    width: 100%;
 }

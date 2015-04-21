@@ -1,13 +1,4 @@
-﻿.all-space {
-    background: #ffffff;
-    font-family: arial, verdana, sans-serif, Lucida Sans;
-    min-width: 600px;
-}
-.content {
-    background-color: #E8DFD0;
-    width: 100%;
-}
-/* header */
+﻿/* header */
 header, #header {
     width: 100%;
     height: 120px;

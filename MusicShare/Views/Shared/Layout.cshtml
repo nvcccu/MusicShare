@@ -19,12 +19,10 @@
         </script>
     </head>
     <body>
-        <div class="all-space">
-            @Html.Partial("Header")
-            <div class="content">
-                @RenderBody()
-            </div>
-@*            @Html.Partial("Footer")*@
+        @Html.Partial("Header")
+        <div class="content">
+            @RenderBody()
         </div>
+@*            @Html.Partial("Footer")*@
     </body>
 </html>
