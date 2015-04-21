@@ -173,6 +173,7 @@
     color: #ffffff;
     border-bottom: 1px solid #ffffff;
     background-color: #c0b8ad;
+    display: flex;
 }
 .values__value:hover {
     background-color: #d0cbc2;
@@ -187,11 +188,11 @@
     background-color: #92a803;
 }
 .values__value-img {
-    width: 38px;
-    height: 38px;
-    float: left;
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 33px;
+    height: 50px;
 }
 .values__value-name {
-    float: left;
-    margin-left: 20px;
+    width: 170px;
 }

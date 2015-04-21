@@ -152,6 +152,7 @@
     <Content Include="Content\Image\ChangeValue.png" />
     <Content Include="Content\Image\ChangeValue_Hover.png" />
     <Content Include="Content\Image\exit.png" />
+    <Content Include="Content\Image\favicon.jpg" />
     <Content Include="Content\Image\form.png" />
     <Content Include="Content\Image\guitar.png" />
     <Content Include="Content\Image\header-img.png" />
