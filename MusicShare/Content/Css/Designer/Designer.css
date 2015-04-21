@@ -4,7 +4,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    top: 191px;
+    top: 125px;
     overflow: hidden;
     min-height: 300px;
 }
@@ -49,20 +49,6 @@
     text-align: center;
     margin-top: 36px;
     margin-bottom: 40px;
-}
-.mg-btn-cross {
-    display: inline-block;
-    vertical-align: top;
-    height: 33px;
-    width: 33px;
-    margin-top: 5px;
-    margin-left: 10px;
-    border-radius: 4px;
-    background-image: url('/Content/Image/exit.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #92A903;
-    cursor: pointer;
 }
 .designer__selecting-form {
     max-height: 600px;

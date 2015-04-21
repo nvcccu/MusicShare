@@ -10,9 +10,8 @@
 }
 <header id="header">
     <div class="header">
-        <div class="header__top">
-            <img class="header-logo__img" src="~/Content/Image/logo.png" />
-            <div class="header__img"></div>
+        <div class="header__logo">
+            <img class="header__logo-img" src="/Content/Image/logo.png" alt="" />
         </div>
         <div class="header-navigation">
             <a class="header-navigation__btn @CssIfActive(controllerName, "Search")" href="#">Старый подбор</a><!--
@@ -20,5 +19,6 @@
             --><a class="header-navigation__btn @CssIfActive(controllerName, "Designer")" href="@Url.Action("Index", "Designer")">Конструктор</a><!--
             --><a class="header-navigation__btn @CssIfActive(controllerName, "Ask")" href="@Url.Action("New", "Ask")">Задать вопрос</a>
         </div>
+        <div class="header__contacts"></div>
     </div>
 </header>
