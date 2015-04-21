@@ -126,6 +126,7 @@
         parameterModel.subparameters = getSubparameters();
         parameterModel.globalParameters = getGlobalParameters();
         parameterModel.menuAnimateHelper = getMenuAnimateHelper();
+        parameterModel.scrolling = undefined;
         
         parameterModel.generatePredefinedGuitar = function () {
             var formSubparameterValue = parameterModel.selectedParametersValueIds[musGround.const.formSubparameterId]();
@@ -228,6 +229,37 @@
         parameterModel.restoreActiveValue = function () {
             parameterModel.selectedParametersValueIds[parameterModel.selectedSubparameter().id](parameterModel.selectedValue());
         };
+
+        parameterModel.scrollToBottom = function () {  
+            var list = $('.details__values');
+            parameterModel.scrolling = setInterval(function () {
+                var top = parseInt(list.css('top'), 10);
+                var height = parseInt(list.css('height'), 10);
+                var containerHeight = parseInt($('.details__value-list').css('height'), 10) - 60;
+                if (-top >= $('.details__values > div').length * 71 - height + 2) {
+                    parameterModel.stopScrolling();
+                    return false;
+                }
+                list.css('top', (top - 1) + 'px');
+            }, 5);
+            return false;
+        };
+        parameterModel.scrollToTop = function () {  
+            var list = $('.details__values');
+            parameterModel.scrolling = setInterval(function () {
+                var top = parseInt(list.css('top'), 10);
+                if (top >= 31) {
+                    parameterModel.stopScrolling();
+                    return false;
+                }
+                list.css('top', (top + 1) + 'px');
+            }, 5);
+            return false;
+        };
+        parameterModel.stopScrolling = function() {
+            clearInterval(parameterModel.scrolling);
+        };
+
         parameterModel.init = function () {
             setEditingParameter(data.parameters[0].id);
             for (var i = 0; i < Object.keys(parameterModel.subparameters).length; i++) {
@@ -238,7 +270,7 @@
             parameterModel.isFormSelected = ko.computed(isFormParameterSelected);
             parameterModel.selectedSubparameter(parameterModel.subparameters[musGround.const.formSubparameterId]);
         };
-
+       
         parameterModel.init();
         return parameterModel;
     };

@@ -149,20 +149,31 @@
     background-color: #d0cbc2;
 }
 .navigation__arrow-top {
-   border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    position: absolute;
+    top: 0;
+    left: 33px;
+    width: 223px;
+    z-index: 10;
 }
 .navigation__arrow-bottom {
     border-top: 1px solid #ffffff;
     margin-top: -60px;
+    position: absolute;
+    bottom: 0;
+    left: 33px;
+    width: 223px;
 }
 .details__value-list {
     height: 100%;
 }
 .details__values {
-    padding-left: 33px;
     width: 223px;
     background-color: #c0b8ad;
     height: 100%;
+    position: absolute;
+    left: 33px;
+    top: 31px;
 }
 .values__value {
     height: 68px;
