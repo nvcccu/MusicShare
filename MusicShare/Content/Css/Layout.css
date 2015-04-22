@@ -4,7 +4,7 @@ header, #header {
     height: 120px;
     background-color: rgb(48, 40, 31);
     border-bottom: 5px solid #92A903;
-    min-width: 1130px;
+    min-width: inherit;
 }
 .header {
     height: 100%;
@@ -42,7 +42,7 @@ header, #header {
     text-align: center;
     margin-right: 90px;
 }
-@media (max-width: 1270px) {
+@media (max-width: 1315px) {
     .header-navigation__btn {
         margin-right: 40px;
     }

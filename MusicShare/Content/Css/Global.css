@@ -6,11 +6,14 @@ input {
     border: 1px solid #CCCCCC;
     padding: 1px;
 }
+html {
+    min-width: 1120px;
+}
 body {
     margin: 0;
     background: #ffffff;
     font-family: arial, verdana, sans-serif, Lucida Sans;
-    min-width: 600px;
+    min-width: inherit;
 }
 .content {
     background-color: #E8DFD0;

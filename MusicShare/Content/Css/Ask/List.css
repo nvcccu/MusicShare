@@ -1,30 +1,74 @@
 ﻿.ask-list {
-    min-width: 600px;
-    max-width: 900px;
+    width: 1120px;
     margin: 0 auto;
-    padding: 20px 0;
+    background-color: #30281f;
+    padding: 50px 0;
 }
 .ask-list__ask {
-    width: 100%;
-    margin: 20px auto;
-    padding: 20px 20px;
-    box-sizing: border-box;
-    position: relative;
+    width: 950px;
+    margin: 38px auto 0;
     background-color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 1px solid #999;
-    border: 1px solid rgba(0,0,0,.2);
-    border-radius: 6px;
-    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
-    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    position: relative;
 }
 .ask-list__ask:first-of-type {
     margin-top: 0;
 }
-.ask-list__ask:last-of-type {
-    margin-bottom: 0;
+.ask-list__ask-info {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 80px;
+    color: #ffffff;
+    font-size: 24px;
 }
+.ask-info__total-answer {
+    position: absolute;
+    top: 0;
+    bottom: 60px;
+    text-align: center;
+    padding-top: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #92A903;
+    border-bottom: 1px solid #ffffff;
+}
+.ask-info__has-solution {
+    position: absolute;
+    height: 60px;
+    line-height: 60px;
+    font-weight: bold;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    background-color: #7b7b7b;
+}
+.ask-list__ask-body {
+    margin-left: 80px;
+}
+.ask-body__title{
+    padding: 20px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+.ask-body__title a {
+    color: #0077cc;
+    text-decoration: none;
+}
+.ask-body__title a:hover {
+    color: #30a7fc;
+}
+.ask-body__title a:visited {
+    color: #0c65a5;
+}
+.ask-body__view-numer {
+    height: 60px;
+    line-height: 60px;
+    padding-left: 20px;
+}
+
+
 .ask__has-solution {
     background: url('/Content/Image/IsSolution.jpg');
     width: 25px;
@@ -33,14 +77,6 @@
     position: absolute;
     top: -4px;
     left: -20px;
-}
-.ask__body {
-    box-sizing: border-box;
-    background-color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.5);
-    opacity: 1;
-    width: 100%;
-    height: 100%;
 }
 .ask__question-title {
     font-weight: bold;

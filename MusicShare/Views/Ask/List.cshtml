@@ -4,35 +4,26 @@
     Layout = "../Shared/Layout.cshtml";
 }
 
-<div class="ask-list">
-    @foreach (var question in @Model.Questions) {
-        <div class="ask-list__ask">
-            <div class="ask__body">
-                <div class="ask__question-title">
-                    <a href="@Url.Action("Index", new { q = question.Question.Id })">@question.Question.Title</a>
+<div style="background-color: #1a1511">
+    <div class="ask-list">
+        @foreach (var question in @Model.Questions) {
+            <div class="ask-list__ask">
+                <div class="ask-list__ask-info">
+                    <div class="ask-info__total-answer">38</div>
+                    <div class="ask-info__has-solution">@(!String.IsNullOrEmpty(question.SolutionText) ? "@" : "?")</div>
                 </div>
-                <div class="ask__question-text">
-                    @question.Question.Text
-                </div>
-                @if (!String.IsNullOrEmpty(question.SolutionText)) {
-                    <div class="ask__preshow-solution">
-                        <div class="ask__has-solution" title="На этот вопрос есть правильный ответ."></div>
+                <div class="ask-list__ask-body">
+                    <div class="ask-body__title">
+                        <a href="@Url.Action("Index", new {q = question.Question.Id})">@question.Question.Text</a>
                     </div>
-                    <hr>
-                    <div class="ask_solution-text">
-                        @question.SolutionText
+                    <div class="ask-body__view-numer">
+                        Просмотров: @question.Question.WatchNumber
                     </div>
-                }
-                <div class="ask__total-answer-number">
-                    <b>Всего ответов:</b> 4
                 </div>
-                <div class="ask__watch-number">
-                    <b>Просмотров:</b> @question.Question.WatchNumber
-                </div>
-@*                <div class="ask__vote-number">*@
-@*                    Рейтинг: @question.Question.VoteNumber*@
-@*                </div>*@
             </div>
-        </div>
-    }
+            if (!String.IsNullOrEmpty(question.SolutionText)) {
+                 <div class="ask-list__answer"></div>
+            }
+        }
+    </div>
 </div>
