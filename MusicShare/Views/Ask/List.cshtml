@@ -7,23 +7,31 @@
 <div style="background-color: #1a1511">
     <div class="ask-list">
         @foreach (var question in @Model.Questions) {
-            <div class="ask-list__ask">
-                <div class="ask-list__ask-info">
-                    <div class="ask-info__total-answer">38</div>
-                    <div class="ask-info__has-solution">@(!String.IsNullOrEmpty(question.SolutionText) ? "@" : "?")</div>
-                </div>
-                <div class="ask-list__ask-body">
-                    <div class="ask-body__title">
-                        <a href="@Url.Action("Index", new {q = question.Question.Id})">@question.Question.Text</a>
+            <div class="ask-list__thread">
+                <div class="ask-list__ask">
+                    <div class="ask-list__ask-info">
+                        <div class="ask-info__total-answer">38</div>
+                        <div class="@(!String.IsNullOrEmpty(question.SolutionText) ? "ask-info__solution ask-info__has-solution" : "ask-info__solution ask-info__no-solution")">@(!String.IsNullOrEmpty(question.SolutionText) ? "@" : "?")</div>
                     </div>
-                    <div class="ask-body__view-numer">
-                        Просмотров: @question.Question.WatchNumber
+                    <div class="ask-list__ask-body">
+                        <div class="ask-body__title">
+                            <a href="@Url.Action("Index", new {q = question.Question.Id})">@question.Question.Text</a>
+                        </div>
+                        <div class="ask-body__view-numer">
+                            Просмотров: @question.Question.WatchNumber
+                        </div>
                     </div>
                 </div>
+                @if (!String.IsNullOrEmpty(question.SolutionText)) {
+                    <div class="ask-list__answer">
+                        <div class="answer__text">@question.SolutionText</div>
+                        <div class="answer__voting">
+                            <span class="answer__vote-up">Полезно: 38</span>
+                            <span class="answer__vote-down">Вредно: 25</span>
+                        </div>
+                    </div>
+                }
             </div>
-            if (!String.IsNullOrEmpty(question.SolutionText)) {
-                 <div class="ask-list__answer"></div>
-            }
         }
     </div>
 </div>

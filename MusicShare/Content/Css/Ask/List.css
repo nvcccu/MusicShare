@@ -4,14 +4,16 @@
     background-color: #30281f;
     padding: 50px 0;
 }
+.ask-list__thread {
+     margin: 38px auto 0;
+}
+.ask-list__thread:first-of-type {
+    margin-top: 0;
+}
 .ask-list__ask {
     width: 950px;
-    margin: 38px auto 0;
-    background-color: #fff;
     position: relative;
-}
-.ask-list__ask:first-of-type {
-    margin-top: 0;
+    margin-left: 50px;
 }
 .ask-list__ask-info {
     position: absolute;
@@ -34,7 +36,7 @@
     background-color: #92A903;
     border-bottom: 1px solid #ffffff;
 }
-.ask-info__has-solution {
+.ask-info__solution {
     position: absolute;
     height: 60px;
     line-height: 60px;
@@ -42,10 +44,18 @@
     text-align: center;
     bottom: 0;
     width: 100%;
+    
+}
+.ask-info__has-solution {
+    background-color: #92A903;
+}
+.ask-info__no-solution {
     background-color: #7b7b7b;
 }
 .ask-list__ask-body {
     margin-left: 80px;
+    width: 500px;
+    background-color: #fff;
 }
 .ask-body__title{
     padding: 20px;
@@ -67,23 +77,18 @@
     line-height: 60px;
     padding-left: 20px;
 }
-
-
-.ask__has-solution {
-    background: url('/Content/Image/IsSolution.jpg');
-    width: 25px;
-    height: 25px;
-    background-size: cover;
-    position: absolute;
-    top: -4px;
-    left: -20px;
+.ask-list__answer {
+    width: 500px;
+    margin: 20px auto auto 500px;
+    background-color: #fff;
 }
-.ask__question-title {
-    font-weight: bold;
+.answer__text {
+    padding: 20px;
 }
-.ask__question-text, .ask__watch-number, .ask__total-answer-number {
-    margin-top: 10px;
+.answer__voting {
+    padding: 0  0 20px 20px;
 }
-.ask__preshow-solution {
-    position: relative;
+.answer__vote-up { }
+.answer__vote-down {
+    margin-left: 25px;
 }
