@@ -146,6 +146,10 @@
     <Content Include="Content\Css\Layout.css" />
     <Content Include="Content\Css\Search\Offers.css" />
     <Content Include="Content\Font\FontAwesome\font-awesome.min.css" />
+    <Content Include="Content\Image\Designer\ScrollBottomInactive.png" />
+    <Content Include="Content\Image\Designer\ScrollBottom_Active.png" />
+    <Content Include="Content\Image\Designer\ScrollTop_Active.png" />
+    <Content Include="Content\Image\Designer\ScrollTop_Inactive.png" />
     <Content Include="Content\Image\favicon.jpg" />
     <Content Include="Content\Image\index.jpg" />
     <Content Include="Content\Image\IsSolution.jpg" />

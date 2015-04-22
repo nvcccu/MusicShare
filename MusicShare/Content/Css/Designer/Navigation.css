@@ -144,19 +144,21 @@
     height: 30px;
     width: 100%;
     text-align: center;
+    z-index: 10;
 }
 .navigation__arrow:hover {
     background-color: #d0cbc2;
 }
 .navigation__arrow-top {
+    background: url('/Content/Image/Designer/ScrollTop_Active.png') center no-repeat #c0b8ad;
     border-bottom: 1px solid #ffffff;
     position: absolute;
     top: 0;
     left: 33px;
     width: 223px;
-    z-index: 10;
 }
 .navigation__arrow-bottom {
+    background: url('/Content/Image/Designer/ScrollBottom_Active.png') center no-repeat #c0b8ad;
     border-top: 1px solid #ffffff;
     margin-top: -60px;
     position: absolute;
