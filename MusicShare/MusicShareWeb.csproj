@@ -135,8 +135,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Css\Article\ArticlePreview.css" />
-    <Content Include="Content\Css\Layout.css" />
     <Content Include="Content\Font\FontAwesome\font-awesome.min.css" />
     <Content Include="Content\Image\Designer\ScrollBottomInactive.png" />
     <Content Include="Content\Image\Designer\ScrollBottom_Active.png" />
@@ -146,6 +144,12 @@
     <Content Include="Content\Image\index.jpg" />
     <Content Include="Content\Image\IsSolution.jpg" />
     <Content Include="Content\Image\logo.png" />
+    <Content Include="Content\Less\Article\ArticlePreview.css">
+      <DependentUpon>ArticlePreview.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Article\ArticlePreview.min.css">
+      <DependentUpon>ArticlePreview.css</DependentUpon>
+    </Content>
     <Content Include="Content\Less\Ask\Ask.css">
       <DependentUpon>Ask.less</DependentUpon>
     </Content>
@@ -174,6 +178,10 @@
     <Content Include="Content\Less\Ask\List.less" />
     <Content Include="Content\Less\Ask\List.css.map">
       <DependentUpon>List.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Article\ArticlePreview.less" />
+    <Content Include="Content\Less\Article\ArticlePreview.css.map">
+      <DependentUpon>ArticlePreview.css</DependentUpon>
     </Content>
     <None Include="Content\Less\Designer\Designer.less" />
     <Content Include="Content\Less\Designer\Designer.css">
