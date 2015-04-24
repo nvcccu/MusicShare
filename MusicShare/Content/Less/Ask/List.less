@@ -1,7 +1,13 @@
-﻿.ask-list {
-    width: 1120px;
+﻿@import "../Mixin.less";
+@import "../Const.less";
+
+@ask-answer-state-height: 60px;
+@ask-info-block-width: 80px;
+
+.ask-list {
+    width: @mg-min-width;
     margin: 0 auto;
-    background-color: #30281f;
+    background-color: @mg-brown--ordinal;
     padding: 50px 0;
 }
 .ask-list__thread {
@@ -21,25 +27,25 @@
     bottom: 0;
     left: 0;
     height: 100%;
-    width: 80px;
+    width: @ask-info-block-width;
     color: #ffffff;
     font-size: 24px;
 }
 .ask-info__total-answer {
     position: absolute;
     top: 0;
-    bottom: 60px;
+    bottom: @ask-answer-state-height;
     text-align: center;
     padding-top: 10px;
-    box-sizing: border-box;
+    .box-sizing__border-box;
     width: 100%;
-    background-color: #92A903;
+    background-color: @mg-green--ordinal;
     border-bottom: 1px solid #ffffff;
 }
 .ask-info__solution {
     position: absolute;
-    height: 60px;
-    line-height: 60px;
+    height: @ask-answer-state-height;
+    line-height: @ask-answer-state-height;
     font-weight: bold;
     text-align: center;
     bottom: 0;
@@ -47,19 +53,19 @@
     
 }
 .ask-info__has-solution {
-    background-color: #92A903;
+    background-color: @mg-green--ordinal;
 }
 .ask-info__no-solution {
     background-color: #7b7b7b;
 }
 .ask-list__ask-body {
-    margin-left: 80px;
+    margin-left: @ask-info-block-width;
     width: 500px;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 .ask-body__title{
     padding: 20px;
-    box-sizing: border-box;
+    .box-sizing__border-box;
     font-weight: bold;
 }
 .ask-body__title a {
@@ -80,7 +86,7 @@
 .ask-list__answer {
     width: 500px;
     margin: 20px auto auto 500px;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 .answer__text {
     padding: 20px;

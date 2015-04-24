@@ -136,9 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Css\Article\ArticlePreview.css" />
-    <Content Include="Content\Css\Ask\Thread.css" />
-    <Content Include="Content\Css\Ask\List.css" />
-    <Content Include="Content\Css\Ask\Ask.css" />
     <Content Include="Content\Css\Layout.css" />
     <Content Include="Content\Font\FontAwesome\font-awesome.min.css" />
     <Content Include="Content\Image\Designer\ScrollBottomInactive.png" />
@@ -149,6 +146,18 @@
     <Content Include="Content\Image\index.jpg" />
     <Content Include="Content\Image\IsSolution.jpg" />
     <Content Include="Content\Image\logo.png" />
+    <Content Include="Content\Less\Ask\Ask.css">
+      <DependentUpon>Ask.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Ask\Ask.min.css">
+      <DependentUpon>Ask.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Ask\List.css">
+      <DependentUpon>List.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Ask\List.min.css">
+      <DependentUpon>List.css</DependentUpon>
+    </Content>
     <Content Include="Content\Less\Const.css">
       <DependentUpon>Const.less</DependentUpon>
     </Content>
@@ -157,6 +166,14 @@
     </Content>
     <Content Include="Content\Less\Designer\Designer.css.map">
       <DependentUpon>Designer.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Ask\Ask.less" />
+    <Content Include="Content\Less\Ask\Ask.css.map">
+      <DependentUpon>Ask.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Ask\List.less" />
+    <Content Include="Content\Less\Ask\List.css.map">
+      <DependentUpon>List.css</DependentUpon>
     </Content>
     <None Include="Content\Less\Designer\Designer.less" />
     <Content Include="Content\Less\Designer\Designer.css">
@@ -176,6 +193,12 @@
     </Content>
     <Content Include="Content\Less\Global.min.css">
       <DependentUpon>Global.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Layout.css">
+      <DependentUpon>Layout.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Layout.min.css">
+      <DependentUpon>Layout.css</DependentUpon>
     </Content>
     <Content Include="Content\Less\Mixin.css">
       <DependentUpon>Mixin.less</DependentUpon>
@@ -221,6 +244,10 @@
     <Content Include="Content\Less\Designer\Navigation.less" />
     <Content Include="Content\Less\Designer\Navigation.css.map">
       <DependentUpon>Navigation.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Layout.less" />
+    <Content Include="Content\Less\Layout.css.map">
+      <DependentUpon>Layout.css</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
