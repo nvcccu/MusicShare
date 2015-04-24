@@ -139,12 +139,7 @@
     <Content Include="Content\Css\Ask\Thread.css" />
     <Content Include="Content\Css\Ask\List.css" />
     <Content Include="Content\Css\Ask\Ask.css" />
-    <Content Include="Content\Css\DerzkieSchi\Guitars.css" />
-    <Content Include="Content\Css\Designer\Navigation.css" />
-    <Content Include="Content\Css\Designer\Designer.css" />
-    <Content Include="Content\Css\Global.css" />
     <Content Include="Content\Css\Layout.css" />
-    <Content Include="Content\Css\Search\Offers.css" />
     <Content Include="Content\Font\FontAwesome\font-awesome.min.css" />
     <Content Include="Content\Image\Designer\ScrollBottomInactive.png" />
     <Content Include="Content\Image\Designer\ScrollBottom_Active.png" />
@@ -154,6 +149,40 @@
     <Content Include="Content\Image\index.jpg" />
     <Content Include="Content\Image\IsSolution.jpg" />
     <Content Include="Content\Image\logo.png" />
+    <Content Include="Content\Less\Const.css">
+      <DependentUpon>Const.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Const.min.css">
+      <DependentUpon>Const.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Designer\Designer.css.map">
+      <DependentUpon>Designer.css</DependentUpon>
+    </Content>
+    <None Include="Content\Less\Designer\Designer.less" />
+    <Content Include="Content\Less\Designer\Designer.css">
+      <DependentUpon>Designer.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Designer\Designer.min.css">
+      <DependentUpon>Designer.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Designer\Navigation.css">
+      <DependentUpon>Navigation.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Designer\Navigation.min.css">
+      <DependentUpon>Navigation.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Global.css">
+      <DependentUpon>Global.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Global.min.css">
+      <DependentUpon>Global.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Mixin.css">
+      <DependentUpon>Mixin.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Mixin.min.css">
+      <DependentUpon>Mixin.css</DependentUpon>
+    </Content>
     <Content Include="Content\Script\CommonScripts\Log.js" />
     <Content Include="Content\Script\CommonScripts\MusicShare.js" />
     <Content Include="Content\Script\Designer\MenuAnimateHelper.js" />
@@ -185,6 +214,14 @@
       <LastGenOutput>Layout.generated.cs</LastGenOutput>
     </Content>
     <Content Include="Content\Script\jquery-1.10.2.min.map" />
+    <Content Include="Content\Less\Mixin.less" />
+    <Content Include="Content\Less\Mixin.css.map">
+      <DependentUpon>Mixin.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Designer\Navigation.less" />
+    <Content Include="Content\Less\Designer\Navigation.css.map">
+      <DependentUpon>Navigation.css</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -264,6 +301,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Ask\New.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Less\Global.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Less\Global.css.map">
+      <DependentUpon>Global.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Less\Const.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Less\Const.css.map">
+      <DependentUpon>Const.css</DependentUpon>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

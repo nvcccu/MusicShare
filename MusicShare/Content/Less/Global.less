@@ -1,4 +1,6 @@
-﻿@font-face {
+﻿@import "Const.less";
+
+@font-face {
     font-family: "FontAwesome";
     src: url(~/Content/Font/FontAwesome/FontAwesome.otf) format("truetype");
 }
@@ -7,7 +9,7 @@ input {
     padding: 1px;
 }
 html {
-    min-width: 1120px;
+    min-width: @mg-min-width;
 }
 body {
     margin: 0;
@@ -16,6 +18,6 @@ body {
     min-width: inherit;
 }
 .content {
-    background-color: #E8DFD0;
+    background-color: @mg-beige--ordinal;
     width: 100%;
 }
