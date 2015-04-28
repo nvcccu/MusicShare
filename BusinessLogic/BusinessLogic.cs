@@ -13,6 +13,7 @@ namespace BusinessLogic {
         private readonly DerzkieSchiProvider _derzkieSchiProvider = new DerzkieSchiProvider();
         private readonly DesignerProvider _designerProvider = new DesignerProvider();
         private readonly AskProvider _askProvider = new AskProvider();
+        private readonly AuthProvider _authProvider = new AuthProvider();
         public BusinessLogic() {
             Initial();
         }
@@ -49,6 +50,12 @@ namespace BusinessLogic {
         }
         public long CreateNewQuestion(QuestionDto question) {
             return _askProvider.CreateNewQuestion(question);
+        }
+        public bool SignUp(AuthTransportType auth) {
+            return _authProvider.SignUp(auth);
+        }
+        public bool Login(AuthTransportType auth) {
+            return _authProvider.Login(auth);
         }
     }
 }

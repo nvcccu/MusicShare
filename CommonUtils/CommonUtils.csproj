@@ -43,6 +43,7 @@
     <Compile Include="Log\LoggerManager.cs" />
     <Compile Include="Log\LoggerWrapper.cs" />
     <Compile Include="Metrics\Mixpanel.cs" />
+    <Compile Include="PasswordHelper\PasswordHelper.cs" />
     <Compile Include="ServiceManager\ServiceManager.cs" />
     <Compile Include="ServiceManager\ServiceManagerBase.cs" />
     <Compile Include="Patterns\Singleton.cs" />

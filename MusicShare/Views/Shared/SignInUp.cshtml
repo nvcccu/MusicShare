@@ -1,0 +1,85 @@
+﻿<div id="SignInUpModal" name="SignInUpModal" class="modal fade" role="dialog" aria-labelledby="SignInUpModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-12 col-md-offset-3">
+            <div class="panel panel-info">
+                <div style="padding-top: 30px" class="panel-body">
+                    @using (Html.BeginForm("SignIn", "Auth", FormMethod.Post, new { id = "SignInForm", @class = "form-horizontal", role = "form", onsubmit = "return onSubmit();" })) {
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" name="Email" placeholder="Почта">
+                        </div>
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" class="form-control" name="Password" placeholder="Пароль">
+                        </div>
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBox("RememberMe")Не спрашивать пароль снова
+                                </label>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px" class="form-group">
+                            <div class="col-sm-12 controls">
+                                <input type="submit" class="btn btn-primary" value="Войти"/>
+                                <a id="btn-fblogin" href="#" class="btn btn-primary">Зайти через Вконтакте</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 control">
+                                <div style="border-top: 1px solid #888; padding-top: 15px; font-size: 85%">
+                                    Еще не зарегистрировались?
+                                    <a href="#" onclick=" $('#loginbox').hide(); $('#signupbox').show(); ">
+                                        Создать аккаунт
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-12 col-md-offset-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Sign Up</div>
+                    <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show();">Sign In</a></div>
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("SignUp", "Auth", FormMethod.Post, new { id = "SignUpForm", @class = "form-horizontal", role = "form", onsubmit = "return onSubmit();" })) {
+                        <div class="form-group">
+                            <label for="Email" class="col-md-3 control-label">Email</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Email" placeholder="Почта" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Password" class="col-md-3 control-label">Пароль</label>
+                            <div class="col-md-9">
+                                <input type="password" name="Password" placeholder="Пароль" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox col-md-offset-3 col-md-9">
+                                <label>
+                                    @Html.CheckBox("RememberMe")Не спрашивать пароль снова
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-9">
+                                <i class="icon-hand-right"></i><input id="SignUp" type="submit" class="btn btn-info" value="Зарегестрироваться" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var onSubmit = function () {
+        return musGround.submitWithoutReload(event.target);
+    }
+</script>

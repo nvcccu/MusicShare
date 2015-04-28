@@ -236,7 +236,7 @@
                 var top = parseInt(list.css('top'), 10);
                 var height = parseInt(list.css('height'), 10);
                 var containerHeight = parseInt($('.details__value-list').css('height'), 10) - 60;
-                if (-top >= $('.details__values > div').length * 71 - height + 2) {
+                if (-top >= $('.details__values > div').length * 71 - height - 13) {
                     parameterModel.stopScrolling();
                     return false;
                 }

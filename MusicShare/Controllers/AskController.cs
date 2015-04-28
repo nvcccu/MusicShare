@@ -2,7 +2,7 @@
 using MusicShareWeb.Models.Ask;
 
 namespace MusicShareWeb.Controllers {
-    public class AskController : Controller {
+    public class AskController : BaseController {
         [HttpGet]
         public ActionResult Index(long? q) {
             return q.HasValue

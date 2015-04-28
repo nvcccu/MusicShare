@@ -115,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CookieBaseController.cs" />
     <Compile Include="Controllers\DerzkieSchiController.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Models\Ask\AskThreadModel.cs" />
     <Compile Include="Models\Ask\QuestionModel.cs" />
     <Compile Include="Models\Ask\QuestionListModel.cs" />
+    <Compile Include="Models\Auth\EmailAuthModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,6 +216,11 @@
     <Content Include="Content\Less\Mixin.min.css">
       <DependentUpon>Mixin.css</DependentUpon>
     </Content>
+    <Content Include="Content\Libraries\Bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\Libraries\Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Libraries\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Libraries\Bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Libraries\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\Script\CommonScripts\Log.js" />
     <Content Include="Content\Script\CommonScripts\MusicShare.js" />
     <Content Include="Content\Script\Designer\MenuAnimateHelper.js" />
@@ -257,6 +264,11 @@
     <Content Include="Content\Less\Layout.css.map">
       <DependentUpon>Layout.css</DependentUpon>
     </Content>
+    <Content Include="Content\Libraries\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Libraries\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Libraries\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Libraries\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Views\Shared\SignInUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
