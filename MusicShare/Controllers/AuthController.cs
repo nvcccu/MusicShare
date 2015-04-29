@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using CommonUtils.PasswordHelper;
 using MusicShareWeb.Models.Auth;
 
 namespace MusicShareWeb.Controllers {
@@ -17,9 +18,14 @@ namespace MusicShareWeb.Controllers {
             return new EmptyResult();
         }
         [HttpPost]
-        public ActionResult SignIn(EmailAuthModel auth) {
-//            return RedirectToAction("Index", new {q = question.CreateNewQuestion()});
-            return new EmptyResult();
+        public ActionResult SignInViaEmail(EmailAuthModel auth) {
+            var accountId = auth.SignInViaEmail();
+            if (accountId.HasValue && !Id.HasValue) {
+                SetAuthCookie(0L, PasswordHelper.EncryptInt(accountId.Value), auth.RememberMe);
+                return RedirectToAction("Index", "Designer");
+            } else {
+                return new EmptyResult();
+            }
         }
     }
 }

@@ -24,5 +24,9 @@ namespace MusicShareWeb.Models.Auth {
         private int? RegisterViaEmail(long guestId) {
             return ServiceManager<IBusinessLogic>.Instance.Service.RegisterViaEmail(guestId, Email, Password);
         }
+        public int? SignInViaEmail() {
+            var account = ServiceManager<IBusinessLogic>.Instance.Service.GetUserByEmail(Email);
+            return account != null ? account.Id : (int?)null;
+        }
     }
 }

@@ -62,5 +62,8 @@ namespace BusinessLogic {
         public AccountDto GetUser(long guestId) {
             return _userProvider.GetUser(guestId);
         }
+        public AccountDto GetUserByEmail(string email) {
+            return _userProvider.GetUserByEmail(email);
+        }
     }
 }

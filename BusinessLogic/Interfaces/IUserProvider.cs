@@ -5,6 +5,7 @@ namespace BusinessLogic.Interfaces {
         long GetNextGuestId(string userAgent);
         bool IsEmailFree(string email);
         int? RegisterViaEmail(long guestId, string email, string password);
+        AccountDto GetUserByEmail(string email);
         bool Login(AuthTransportType auth);
         AccountDto GetUser(long guestId);
     }

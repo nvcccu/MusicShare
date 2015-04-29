@@ -106,5 +106,13 @@ namespace BusinessLogic.Providers {
                 .Single()
                 .ToDto();
         }
+        public AccountDto GetUserByEmail(string email) {
+            return new Account()
+                .Select()
+                .Where(Account.Fields.Email, PredicateCondition.Equal, email)
+                .GetData()
+                .Single()
+                .ToDto();
+        }
     }
 }

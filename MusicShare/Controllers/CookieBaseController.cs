@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using BusinessLogic.Interfaces;
+using CommonUtils.PasswordHelper;
 using CommonUtils.ServiceManager;
 
 namespace MusicShareWeb.Controllers {
@@ -9,9 +10,17 @@ namespace MusicShareWeb.Controllers {
         private const string GuestIdCookieName = "GuestId";
         protected const string AuthCookieName = "MgAuth";
         private long? _guestId;
-
         protected long GuestId {
             get { return _guestId ?? SetGuestIdCookie(); }
+        }
+        private int? _id;
+        protected int? Id {
+            get {
+                if (!_id.HasValue) {
+                    _id = GetIdFromAuthCookie();
+                }
+                return _id;
+            }
         }
 
         private long SetGuestIdCookie() {
@@ -39,6 +48,17 @@ namespace MusicShareWeb.Controllers {
                 });
 
             }
+        }
+        public int? GetIdFromAuthCookie() {
+            int? id = null;
+            var authCookie = Request.Cookies[AuthCookieName];
+            if (authCookie != null) {
+                var authCookieValue = authCookie.Value;
+                if (authCookieValue != null) {
+                    id = PasswordHelper.DecryptInt(authCookieValue);
+                }
+            }
+            return id;
         }
         protected override bool DisableAsyncSupport {
             get { return true; }
