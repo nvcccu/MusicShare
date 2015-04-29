@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Interfaces;
 using CommonUtils.ServiceManager;
 using Core.TransportTypes;
+using MusicShareWeb.Models.User;
 
 namespace MusicShareWeb.Models.Ask {
     public class QuestionModel : BaseModel {
@@ -8,6 +9,7 @@ namespace MusicShareWeb.Models.Ask {
         public string Text { get; set; }
         public int AccountId { get; set; }
 
+        public QuestionModel(Account currentUser) : base(currentUser) {}
         public long CreateNewQuestion() {
             return ServiceManager<IBusinessLogic>.Instance.Service.CreateNewQuestion(ToDto());
         }

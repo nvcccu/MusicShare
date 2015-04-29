@@ -52,7 +52,6 @@
     <Compile Include="DaoEntities\Guest.cs" />
     <Compile Include="DaoEntities\News.cs" />
     <Compile Include="DaoEntities\UserActionLog.cs" />
-    <Compile Include="Interfaces\IAuthProvider.cs" />
     <Compile Include="Interfaces\IBusinessLogic.cs" />
     <Compile Include="Interfaces\IDerzkieSchiProvider.cs" />
     <Compile Include="Interfaces\IAskProvider.cs" />
@@ -61,7 +60,6 @@
     <Compile Include="Interfaces\IUserProvider.cs" />
     <Compile Include="Providers\DerzkieSchiProvider.cs" />
     <Compile Include="Providers\DesignerProvider.cs" />
-    <Compile Include="Providers\AuthProvider.cs" />
     <Compile Include="Providers\LogProvider.cs" />
     <Compile Include="Providers\AskProvider.cs" />
     <Compile Include="Providers\UserProvider.cs" />

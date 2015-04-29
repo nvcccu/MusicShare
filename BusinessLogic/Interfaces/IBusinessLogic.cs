@@ -4,8 +4,7 @@
         ILogProvider,
         IDerzkieSchiProvider,
         IDesignerProvider,
-        IAskProvider,
-        IAuthProvider{
+        IAskProvider {
             void Initial();
     }
 }

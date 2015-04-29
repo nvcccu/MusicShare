@@ -79,7 +79,7 @@ namespace DAO {
             if (value is DateTime) {
                 return String.Format("{0:yyyy-MM-dd HH:mm:ss}", value);
             } else {
-                return value.ToString();
+                return value != null ? value.ToString() : "NULL";
             }
         }
 

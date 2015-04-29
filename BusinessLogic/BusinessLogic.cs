@@ -13,7 +13,6 @@ namespace BusinessLogic {
         private readonly DerzkieSchiProvider _derzkieSchiProvider = new DerzkieSchiProvider();
         private readonly DesignerProvider _designerProvider = new DesignerProvider();
         private readonly AskProvider _askProvider = new AskProvider();
-        private readonly AuthProvider _authProvider = new AuthProvider();
         public BusinessLogic() {
             Initial();
         }
@@ -51,11 +50,17 @@ namespace BusinessLogic {
         public long CreateNewQuestion(QuestionDto question) {
             return _askProvider.CreateNewQuestion(question);
         }
-        public bool SignUp(AuthTransportType auth) {
-            return _authProvider.SignUp(auth);
+        public int? RegisterViaEmail(long guestId, string email, string password) {
+            return _userProvider.RegisterViaEmail(guestId, email, password);
         }
         public bool Login(AuthTransportType auth) {
-            return _authProvider.Login(auth);
+            return _userProvider.Login(auth);
+        }
+        public bool IsEmailFree(string email) {
+            return _userProvider.IsEmailFree(email);
+        }
+        public AccountDto GetUser(long guestId) {
+            return _userProvider.GetUser(guestId);
         }
     }
 }

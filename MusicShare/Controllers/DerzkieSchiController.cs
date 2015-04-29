@@ -4,7 +4,7 @@ using MusicShareWeb.Models;
 namespace MusicShareWeb.Controllers {
     public class DerzkieSchiController : BaseController {
         public ActionResult Index() {
-            return View("Index", new BaseModel());
+            return View("Index", new BaseModel(CurrentUser));
         }
     }
 }

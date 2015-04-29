@@ -147,6 +147,23 @@ WITH (
 ALTER TABLE Answer
   OWNER TO postgres;
 
+CREATE TABLE Account (
+  Id serial NOT NULL,
+  GuestId int NOT NULL,
+  NickName character varying(128) UNIQUE,
+  Name character varying(128),
+  DateRegistered timestamp without time zone NOT NULL,
+  Email character varying(128) UNIQUE,
+  Salt character varying(128),
+  Password character varying(128),
+  CONSTRAINT pk_Account PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Account
+  OWNER TO postgres;
+
 
 /*
 CREATE TABLE SchemaVersion (

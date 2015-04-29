@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using MusicShareWeb.Models.User;
 
 namespace MusicShareWeb.Models {
     public class BaseModel {
-        public List<string> Test { get; set; }
+        public Account CurrentUser { get; set; }
 
-        public BaseModel() {
-            Test = new List<string>();
+        public BaseModel(Account currentUser) {
+            CurrentUser = currentUser;
         }
     }
 }

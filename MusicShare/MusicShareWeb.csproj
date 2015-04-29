@@ -134,6 +134,7 @@
     <Compile Include="Models\Auth\EmailAuthModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
+    <Compile Include="Models\User\Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -322,8 +323,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ImgStore\Guitars\" />
-    <Folder Include="Models\DerzkieSchi\" />
-    <Folder Include="Models\Store\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DerzkieSchi\Index.cshtml" />

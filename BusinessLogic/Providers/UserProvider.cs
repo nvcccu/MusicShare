@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
+using CommonUtils.PasswordHelper;
+using Core.TransportTypes;
 using DAO;
+using DAO.Enums;
 
 namespace BusinessLogic.Providers {
     public class UserProvider : IUserProvider {
@@ -61,6 +65,46 @@ namespace BusinessLogic.Providers {
                 UserAgent = userAgent
             }.Insert();
             return lastGuestId;
+        }
+        public bool IsEmailFree(string email) {
+            return !new Account().Select().Where(Account.Fields.Email, PredicateCondition.Equal, email).GetData().Any();
+        }
+        public int? RegisterViaEmail(long guestId, string email, string password) {
+            if (!String.IsNullOrEmpty(email) && !String.IsNullOrEmpty(password)) {
+                var salt = PasswordHelper.GenerateSalt();
+                var hashedPassword = PasswordHelper.HashPassword(password, salt);
+                var accountId = Convert.ToInt64(new Account {
+                    Email = email,
+                    Password = hashedPassword,
+                    Salt = salt,
+                    GuestId = guestId,
+                    DateRegistered = DateTime.UtcNow
+                }.Insert());
+                new Account().Update()
+                    .Set(Account.Fields.NickName, "User" + accountId)
+                    .Where(Account.Fields.Id, PredicateCondition.Equal, accountId)
+                    .ExecuteScalar();
+                return Convert.ToInt32(accountId);
+            }
+            return null;
+        }
+        public bool Login(AuthTransportType auth) {
+            if (!String.IsNullOrEmpty(auth.Email) && !String.IsNullOrEmpty(auth.Password)) {
+                var account = new Account()
+                    .Where(Account.Fields.Email, PredicateCondition.Equal, auth.Email)
+                    .GetData()
+                    .First();
+                return PasswordHelper.CheckPasswordEqual(auth.Password, account.Salt, account.Password);
+            }
+            return false;
+        }
+        public AccountDto GetUser(long guestId) {
+            return new Account()
+                .Select()
+                .Where(Account.Fields.GuestId, PredicateCondition.Equal, guestId)
+                .GetData()
+                .Single()
+                .ToDto();
         }
     }
 }

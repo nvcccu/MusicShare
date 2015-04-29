@@ -3,6 +3,7 @@ using System.Linq;
 using BusinessLogic.Interfaces;
 using CommonUtils.ServiceManager;
 using Core.TransportTypes;
+using MusicShareWeb.Models.User;
 
 namespace MusicShareWeb.Models {
     public class IncompatibleParameterModel {
@@ -38,7 +39,7 @@ namespace MusicShareWeb.Models {
         public List<DesignerImageModel> DesignerImageBundles { get; set; }
         public List<PredefinedGuitarDto> PredefinedGuitars { get; set; }
 
-        public DesignerModel() {
+        public DesignerModel(Account currentUser) : base(currentUser) {
             var parameters = ServiceManager<IBusinessLogic>.Instance.Service.GetParameters();
             var parameterValues = ServiceManager<IBusinessLogic>.Instance.Service.GetParameterValues();
             var incompatibleParameters = ServiceManager<IBusinessLogic>.Instance.Service.GetIncompatibleParameters();
