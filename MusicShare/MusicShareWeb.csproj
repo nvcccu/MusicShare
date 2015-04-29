@@ -123,6 +123,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\AskController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\MyController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\PlacardController.cs" />
     <Compile Include="Global.asax.cs">
@@ -270,6 +271,7 @@
     <Content Include="Content\Libraries\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Libraries\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Views\Shared\SignInUp.cshtml" />
+    <Content Include="Views\My\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

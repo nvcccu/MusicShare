@@ -7,11 +7,17 @@ using CommonUtils.ServiceManager;
 
 namespace MusicShareWeb.Controllers {
     public class CookieBaseController : Controller {
-        private const string GuestIdCookieName = "GuestId";
+        private const string GuestCookieName = "GuestId";
         protected const string AuthCookieName = "MgAuth";
         private long? _guestId;
         protected long GuestId {
-            get { return _guestId ?? SetGuestIdCookie(); }
+            get {
+                if (_guestId == null) {
+                    _guestId = TryGetGuestIdFromCookie();
+                    _guestId = _guestId ?? GetNextGuestId();
+                }
+                return _guestId.Value;
+            }
         }
         private int? _id;
         protected int? Id {
@@ -23,30 +29,42 @@ namespace MusicShareWeb.Controllers {
             }
         }
 
-        private long SetGuestIdCookie() {
-            var guestIdCookie = Request.Cookies.Get(GuestIdCookieName);
+        private long? TryGetGuestIdFromCookie() {
+            long? guestId = null;
+            var guestIdCookie = Request.Cookies.Get(GuestCookieName);
             if (guestIdCookie != null) {
-                _guestId = Convert.ToInt64(guestIdCookie.Value);
-            } else {
-                _guestId = ServiceManager<IBusinessLogic>.Instance.Service.GetNextGuestId(Request.UserAgent);
-                guestIdCookie = new HttpCookie(GuestIdCookieName, _guestId.ToString()) {
+                guestId = Convert.ToInt64(guestIdCookie.Value);
+            }
+            return guestId;
+        }
+        private long GetNextGuestId() {
+            return ServiceManager<IBusinessLogic>.Instance.Service.GetNextGuestId(Request.UserAgent);
+        }
+        private void SetGuestIdCookie() {
+            var guestIdCookie = Request.Cookies[GuestCookieName];
+            if (guestIdCookie == null || guestIdCookie.Value == null) {
+                var guestId = GetNextGuestId();
+                guestIdCookie = guestIdCookie ?? new HttpCookie(GuestCookieName, guestId.ToString()) {
                     Expires = new DateTime(DateTime.Now.AddYears(5).Year, 1, 1)
                 };
                 Response.Cookies.Add(guestIdCookie);
             }
-            return _guestId.Value;
         }
-        protected void SetAuthCookie(long guestId, string authData, bool rememberMe) {
+        protected void SetAuthCookie(long guestId, int id, bool rememberMe) {
             var expirationDate = rememberMe ? DateTime.Now.AddYears(1) : DateTime.MinValue;
+            var encryptedAuthCookieValue = PasswordHelper.EncryptInt(id);
             var authCookie = Request.Cookies[AuthCookieName];
+            var guestCookie = Request.Cookies[GuestCookieName];
             if (authCookie != null) {
-                authCookie.Value = authData;
+                authCookie.Value = encryptedAuthCookieValue;
                 authCookie.Expires = expirationDate;
             } else {
-                Response.Cookies.Add(new HttpCookie(AuthCookieName, authData) {
+                Response.Cookies.Add(new HttpCookie(AuthCookieName, encryptedAuthCookieValue) {
                     Expires = expirationDate
                 });
-
+            }
+            if (guestCookie != null) {
+                guestCookie.Value = guestId.ToString();  
             }
         }
         public int? GetIdFromAuthCookie() {

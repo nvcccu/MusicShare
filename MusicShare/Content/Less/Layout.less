@@ -45,12 +45,19 @@ header, #header {
     color: #ffffff;
     text-align: center;
     margin-right: 90px;
+    &:hover {
+        text-decoration: none;
+        color: #ffffff;
+    }
     @media @header-resize-width {
         margin-right: 40px;
     }
 }
 .header-navigation__btn--active {
     color: @mg-green--ordinal;
+    &:hover {
+        color: @mg-green--ordinal;
+    }
 }
 .header__contacts {
     float: right;
