@@ -53,6 +53,10 @@ namespace MusicShareWeb.Controllers {
                 Response.Cookies.Add(guestIdCookie);
             }
         }
+        protected void DropAuthCookie() {
+            Request.Cookies.Remove(AuthCookieName);
+            Response.Cookies.Remove(AuthCookieName);
+        }
         protected void SetAuthCookie(long guestId, int id, bool rememberMe) {
             var expirationDate = rememberMe ? DateTime.Now.AddYears(1) : DateTime.MinValue;
             var encryptedAuthCookieValue = PasswordHelper.EncryptInt(id);

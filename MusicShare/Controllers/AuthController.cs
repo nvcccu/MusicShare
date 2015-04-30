@@ -29,5 +29,10 @@ namespace MusicShareWeb.Controllers {
                 return new EmptyResult();
             }
         }
+        [HttpGet]
+        public ActionResult SignOut() {
+            DropAuthCookie();
+            return RedirectToAction("Index", "Designer");
+        }
     }
 }

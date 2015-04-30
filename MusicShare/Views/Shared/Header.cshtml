@@ -22,7 +22,7 @@
         </div>
         <div class="header__contacts">
             @if (Model.CurrentUser != null && Model.CurrentUser.IsAuthorized) {
-                <div class="header__login">@(Model.CurrentUser != null ? Model.CurrentUser.NickName : "")</div>
+                <a class="header__login" href="@Url.Action("SignOut", "Auth")">@(Model.CurrentUser != null ? Model.CurrentUser.NickName : "")</a>
             } else {
                 <div class="header__login" data-target="#SignInUpModal" data-toggle="modal">Войти на сайт</div>
             }
