@@ -45,11 +45,11 @@ namespace MusicShareWeb {
             Exception ex = Server.GetLastError();
             _logger.Info(ex);
             if (ex is HttpException) {
-                if (((HttpException) ex).GetHttpCode() == 404) {
-                    Response.Redirect("Error/NotFound");
-                } else {
-                    Response.Redirect("Error/InternalError");
-                }
+//                if (((HttpException) ex).GetHttpCode() == 404) {
+//                    Response.Redirect("Error/NotFound");
+//                } else {
+//                    Response.Redirect("Error/InternalError");
+//                }
             }
         }
     }

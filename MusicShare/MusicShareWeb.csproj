@@ -223,6 +223,26 @@
     <Content Include="Content\Libraries\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Libraries\Bootstrap\js\bootstrap.js" />
     <Content Include="Content\Libraries\Bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Libraries\MarkItUp\css\base.css" />
+    <Content Include="Content\Libraries\MarkItUp\css\style.css" />
+    <Content Include="Content\Libraries\MarkItUp\images\bg-container.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\bg-editor.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\bold.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\h1.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\h2.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\h3.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\h4.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\h5.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\h6.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\handle.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\italic.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\link.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\list-bullet.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\list-numeric.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\picture.png" />
+    <Content Include="Content\Libraries\MarkItUp\js\jquery.markitup.js" />
+    <Content Include="Content\Libraries\MarkItUp\js\set.js" />
+    <Content Include="Content\Libraries\Showdown\Showdown.js" />
     <Content Include="Content\Script\CommonScripts\Log.js" />
     <Content Include="Content\Script\CommonScripts\MusicShare.js" />
     <Content Include="Content\Script\Designer\MenuAnimateHelper.js" />
@@ -272,6 +292,7 @@
     <Content Include="Content\Libraries\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Views\Shared\SignInUp.cshtml" />
     <Content Include="Views\My\Profile.cshtml" />
+    <Content Include="Views\Article\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
