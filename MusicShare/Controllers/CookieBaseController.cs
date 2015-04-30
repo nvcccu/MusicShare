@@ -67,8 +67,13 @@ namespace MusicShareWeb.Controllers {
                 });
             }
             if (guestCookie != null) {
-                guestCookie.Value = guestId.ToString();  
+                Request.Cookies.Remove(GuestCookieName);
             }
+            Response.Cookies.Add(new HttpCookie(GuestCookieName, guestId.ToString()) {
+                Expires = new DateTime(DateTime.Now.AddYears(5).Year, 1, 1)
+            });
+            GuestId = guestId;
+            
         }
         public int? GetIdFromAuthCookie() {
             int? id = null;
