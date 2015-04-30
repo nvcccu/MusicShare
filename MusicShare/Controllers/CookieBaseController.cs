@@ -18,6 +18,9 @@ namespace MusicShareWeb.Controllers {
                 }
                 return _guestId.Value;
             }
+            private set {
+                _guestId = value;
+            }
         }
         private int? _id;
         protected int? Id {
@@ -40,7 +43,7 @@ namespace MusicShareWeb.Controllers {
         private long GetNextGuestId() {
             return ServiceManager<IBusinessLogic>.Instance.Service.GetNextGuestId(Request.UserAgent);
         }
-        private void SetGuestIdCookie() {
+        private void CheckGuestIdCookieIsSet() {
             var guestIdCookie = Request.Cookies[GuestCookieName];
             if (guestIdCookie == null || guestIdCookie.Value == null) {
                 var guestId = GetNextGuestId();
@@ -78,12 +81,21 @@ namespace MusicShareWeb.Controllers {
             }
             return id;
         }
+        // Не использовать лишний раз этот метод. Сделан для того, чтобы у двух аккаунтов не могло быть одинакового GuestId'а
+        protected void RegenerateGuestId() {
+            Response.Cookies.Remove(GuestCookieName);
+            var guestId = GetNextGuestId();
+            var guestIdCookie = new HttpCookie(GuestCookieName, guestId.ToString()) {
+                Expires = new DateTime(DateTime.Now.AddYears(5).Year, 1, 1)
+            };
+            Response.Cookies.Add(guestIdCookie);
+            GuestId = guestId;
+        }
         protected override bool DisableAsyncSupport {
             get { return true; }
         }
-
         protected override void ExecuteCore() {
-            SetGuestIdCookie();
+            CheckGuestIdCookieIsSet();
             base.ExecuteCore();
         }
     }

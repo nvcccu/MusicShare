@@ -22,5 +22,8 @@ namespace MusicShareWeb.Models.Auth {
         public AccountDto SignInViaEmail() {
             return ServiceManager<IBusinessLogic>.Instance.Service.GetUserByEmail(Email);
         }
+        public bool IsGuestAlreadyHasAccount(long guestId) {
+            return ServiceManager<IBusinessLogic>.Instance.Service.IsGuestAlreadyHasAccount(guestId);
+        }
     }
 }

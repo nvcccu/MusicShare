@@ -8,5 +8,6 @@ namespace BusinessLogic.Interfaces {
         AccountDto GetUserByEmail(string email);
         bool Login(AuthTransportType auth);
         AccountDto GetUser(long guestId);
+        bool IsGuestAlreadyHasAccount(long guestId);
     }
 }

@@ -65,5 +65,8 @@ namespace BusinessLogic {
         public AccountDto GetUserByEmail(string email) {
             return _userProvider.GetUserByEmail(email);
         }
+        public bool IsGuestAlreadyHasAccount(long guestId) {
+            return _userProvider.IsGuestAlreadyHasAccount(guestId);
+        }
     }
 }

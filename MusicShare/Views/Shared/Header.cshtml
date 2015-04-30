@@ -21,7 +21,11 @@
             --><a class="header-navigation__btn @CssIfActive(controllerName, "Ask")" href="@Url.Action("New", "Ask")">Задать вопрос</a>
         </div>
         <div class="header__contacts">
-            <div class="header__login" data-target="#SignInUpModal" data-toggle="modal">Войти на сайт | Я @(Model.CurrentUser != null ? Model.CurrentUser.NickName : "")</div>
+            @if (Model.CurrentUser != null && Model.CurrentUser.IsAuthorized) {
+                <div class="header__login">@(Model.CurrentUser != null ? Model.CurrentUser.NickName : "")</div>
+            } else {
+                <div class="header__login" data-target="#SignInUpModal" data-toggle="modal">Войти на сайт</div>
+            }
             <ul class="header__social">
                 <li class="header__social-item">В</li>
                 <li class="header__social-item">f</li>

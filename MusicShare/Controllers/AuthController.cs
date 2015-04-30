@@ -6,6 +6,9 @@ namespace MusicShareWeb.Controllers {
         [HttpPost]
         public ActionResult SignUp(EmailAuthModel auth) {
             if (auth.IsEmailFree()) {
+                if (auth.IsGuestAlreadyHasAccount(GuestId)) {
+                    RegenerateGuestId();
+                }
                 var newAccountId = auth.Register(GuestId);
                 if (newAccountId.HasValue) {
                     SetAuthCookie(GuestId, newAccountId.Value, auth.RememberMe);

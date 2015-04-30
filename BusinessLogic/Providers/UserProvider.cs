@@ -70,10 +70,11 @@ namespace BusinessLogic.Providers {
             return !new Account().Select().Where(Account.Fields.Email, PredicateCondition.Equal, email).GetData().Any();
         }
         public int? RegisterViaEmail(long guestId, string email, string password) {
+            int? accountId = null;
             if (!String.IsNullOrEmpty(email) && !String.IsNullOrEmpty(password)) {
                 var salt = PasswordHelper.GenerateSalt();
                 var hashedPassword = PasswordHelper.HashPassword(password, salt);
-                var accountId = Convert.ToInt64(new Account {
+                accountId = Convert.ToInt32(new Account {
                     Email = email,
                     Password = hashedPassword,
                     Salt = salt,
@@ -84,9 +85,8 @@ namespace BusinessLogic.Providers {
                     .Set(Account.Fields.NickName, "User" + accountId)
                     .Where(Account.Fields.Id, PredicateCondition.Equal, accountId)
                     .ExecuteScalar();
-                return Convert.ToInt32(accountId);
             }
-            return null;
+            return accountId;
         }
         public bool Login(AuthTransportType auth) {
             if (!String.IsNullOrEmpty(auth.Email) && !String.IsNullOrEmpty(auth.Password)) {
@@ -105,6 +105,13 @@ namespace BusinessLogic.Providers {
                 .GetData()
                 .Single()
                 .ToDto();
+        }
+        public bool IsGuestAlreadyHasAccount(long guestId) {
+            return new Account()
+                .Select()
+                .Where(Account.Fields.GuestId, PredicateCondition.Equal, guestId)
+                .GetData()
+                .Any();
         }
         public AccountDto GetUserByEmail(string email) {
             return new Account()
