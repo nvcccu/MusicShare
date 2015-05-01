@@ -9,16 +9,35 @@
     $(document).ready(function() {
         $("#MarkItUp").markItUp(mySettings);
     });
-    var showPreview = function () {
-//        debugger;
+    var showPreview = function() {
         var converter = new Showdown.converter();
         var html = converter.makeHtml($("#MarkItUp").val());
         $('#Preview').html(html);
         $('#Previewhtml').text(html);
     }
+    var saveArticle = function () {
+        $.ajax({
+            url: '@Url.Action("New")',
+            method: 'POST',
+            dataType: "json",
+            data: {
+                Title: $('#Title').val(),
+                Text: new Showdown.converter().makeHtml($("#MarkItUp").val())
+            }
+        });
+    }
 </script>
-<textarea id="MarkItUp"></textarea>
-<input type="button" value="Предпросмотр" onclick="showPreview();"/>
-<div id="Previewhtml"></div>
-<hr>
-<div id="Preview"></div>
+<style type="text/css">
+    .markItUp {
+        margin-top: 0;
+    }
+</style>
+@using (Html.BeginForm("New", "Article", FormMethod.Post)) {
+    <input id="Title" type="text"/>
+    <textarea id="MarkItUp"></textarea>
+    <input type="button" value="Предпросмотр" onclick=" showPreview(); "/>
+    <div id="Previewhtml"></div>
+    <hr>
+    <div id="Preview"></div>
+    <input type="button" onclick=" saveArticle(); " value="Сохранить"/>
+}

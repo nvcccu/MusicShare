@@ -13,6 +13,7 @@ namespace BusinessLogic {
         private readonly DerzkieSchiProvider _derzkieSchiProvider = new DerzkieSchiProvider();
         private readonly DesignerProvider _designerProvider = new DesignerProvider();
         private readonly AskProvider _askProvider = new AskProvider();
+        private readonly ArticleProvider _articleProvider = new ArticleProvider();
         public BusinessLogic() {
             Initial();
         }
@@ -67,6 +68,15 @@ namespace BusinessLogic {
         }
         public bool IsGuestAlreadyHasAccount(long guestId) {
             return _userProvider.IsGuestAlreadyHasAccount(guestId);
+        }
+        public int SaveArticle(ArticleDto article) {
+            return _articleProvider.SaveArticle(article);
+        }
+        public ArticleDto GetArticleById(int id) {
+            return _articleProvider.GetArticleById(id);
+        }
+        public List<ArticleDto> GetArticleByDateDesc(int count, int from) {
+            return _articleProvider.GetArticleByDateDesc(count, from);
         }
     }
 }

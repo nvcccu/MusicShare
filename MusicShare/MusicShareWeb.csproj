@@ -129,6 +129,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Article\ArticlePostModel.cs" />
+    <Compile Include="Models\Article\ArticleModel.cs" />
     <Compile Include="Models\Ask\AskThreadModel.cs" />
     <Compile Include="Models\Ask\QuestionModel.cs" />
     <Compile Include="Models\Ask\QuestionListModel.cs" />

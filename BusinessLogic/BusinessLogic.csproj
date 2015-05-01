@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
+    <Compile Include="DaoEntities\Article.cs" />
     <Compile Include="DaoEntities\Account.cs" />
     <Compile Include="DaoEntities\Answer.cs" />
     <Compile Include="DaoEntities\Question.cs" />
@@ -52,12 +53,14 @@
     <Compile Include="DaoEntities\Guest.cs" />
     <Compile Include="DaoEntities\News.cs" />
     <Compile Include="DaoEntities\UserActionLog.cs" />
+    <Compile Include="Interfaces\IArticleProvider.cs" />
     <Compile Include="Interfaces\IBusinessLogic.cs" />
     <Compile Include="Interfaces\IDerzkieSchiProvider.cs" />
     <Compile Include="Interfaces\IAskProvider.cs" />
     <Compile Include="Interfaces\IDesignerProvider.cs" />
     <Compile Include="Interfaces\ILogProvider.cs" />
     <Compile Include="Interfaces\IUserProvider.cs" />
+    <Compile Include="Providers\ArticleProvider.cs" />
     <Compile Include="Providers\DerzkieSchiProvider.cs" />
     <Compile Include="Providers\DesignerProvider.cs" />
     <Compile Include="Providers\LogProvider.cs" />

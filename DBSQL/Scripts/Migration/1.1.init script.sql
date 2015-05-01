@@ -164,6 +164,22 @@ WITH (
 ALTER TABLE Account
   OWNER TO postgres;
 
+CREATE TABLE Article (
+  Id int NOT NULL,
+  AuthorId int NOT NULL,
+  Title character varying(256) UNIQUE,
+  Text character varying(32768),
+  IsModerated boolean NOT NULL DEFAULT FALSE,
+  Upvote int NOT NULL DEFAULT 0,
+  Downvote int NOT NULL DEFAULT 0,
+  WatchNumber int NOT NULL DEFAULT 0,
+  CONSTRAINT pk_Article PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Article
+  OWNER TO postgres;
 
 /*
 CREATE TABLE SchemaVersion (

@@ -25,7 +25,7 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (String))]
             Salt,
             [DbType(typeof (String))]
-            Password,
+            Password
         }
 
         public int Id { get; set; }

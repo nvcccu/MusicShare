@@ -4,7 +4,8 @@
         ILogProvider,
         IDerzkieSchiProvider,
         IDesignerProvider,
-        IAskProvider {
+        IAskProvider,
+        IArticleProvider{
             void Initial();
     }
 }
