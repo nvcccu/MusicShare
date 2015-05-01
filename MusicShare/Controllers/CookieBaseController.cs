@@ -79,7 +79,7 @@ namespace MusicShareWeb.Controllers {
             GuestId = guestId;
             
         }
-        public int? GetIdFromAuthCookie() {
+        private int? GetIdFromAuthCookie() {
             int? id = null;
             var authCookie = Request.Cookies[AuthCookieName];
             if (authCookie != null) {

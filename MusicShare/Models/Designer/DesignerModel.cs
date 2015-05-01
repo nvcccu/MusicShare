@@ -39,7 +39,7 @@ namespace MusicShareWeb.Models {
         public List<DesignerImageModel> DesignerImageBundles { get; set; }
         public List<PredefinedGuitarDto> PredefinedGuitars { get; set; }
 
-        public DesignerModel(Account currentUser) : base(currentUser) {
+        public DesignerModel(BaseModel baseModel) : base(baseModel) {
             var parameters = ServiceManager<IBusinessLogic>.Instance.Service.GetParameters();
             var parameterValues = ServiceManager<IBusinessLogic>.Instance.Service.GetParameterValues();
             var incompatibleParameters = ServiceManager<IBusinessLogic>.Instance.Service.GetIncompatibleParameters();

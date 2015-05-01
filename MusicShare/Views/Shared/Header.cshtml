@@ -6,7 +6,7 @@
 
 @functions {
     private string CssIfActive(string curName, string name) {
-        return curName == name ? "header-navigation__btn--active" : string.Empty;
+        return String.Equals(curName, name, StringComparison.CurrentCultureIgnoreCase) ? "header-navigation__btn--active" : string.Empty;
     }
 }
 <header id="header">
@@ -16,7 +16,7 @@
         </div>
         <div class="header-navigation">
             <a class="header-navigation__btn @CssIfActive(controllerName, "Search")" href="#">Старый подбор</a><!--
-            --><a class="header-navigation__btn @CssIfActive(controllerName, "Article")" href="@Url.Action("Index", "Article")">Статьи</a><!--
+            --><a class="header-navigation__btn @CssIfActive(controllerName, "Article")" href="@Url.Action("New", "Article")">Статьи</a><!--
             --><a class="header-navigation__btn @CssIfActive(controllerName, "Designer")" href="@Url.Action("Index", "Designer")">Конструктор</a><!--
             --><a class="header-navigation__btn @CssIfActive(controllerName, "Ask")" href="@Url.Action("New", "Ask")">Задать вопрос</a>
         </div>

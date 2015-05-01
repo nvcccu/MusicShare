@@ -7,5 +7,8 @@ namespace MusicShareWeb.Models {
         public BaseModel(Account currentUser) {
             CurrentUser = currentUser;
         }
+        protected BaseModel(BaseModel baseModel) {
+            CurrentUser = baseModel.CurrentUser;
+        }
     }
 }

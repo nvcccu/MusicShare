@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using MusicShareWeb.Models;
 
 namespace MusicShareWeb.Controllers {
     public class ArticleController : BaseController {
@@ -7,7 +6,7 @@ namespace MusicShareWeb.Controllers {
             return View("Index");
         }
         public ActionResult New() {
-            return View("New", new BaseModel(CurrentUser));
+            return View("New", BaseModel);
         }
     }
 }

@@ -45,7 +45,7 @@ header, #header {
     color: #ffffff;
     text-align: center;
     margin-right: 90px;
-    &:hover {
+    &:hover, &:focus {
         text-decoration: none;
         color: #ffffff;
     }
@@ -55,8 +55,9 @@ header, #header {
 }
 .header-navigation__btn--active {
     color: @mg-green--ordinal;
-    &:hover {
+    &:hover, &:focus {
         color: @mg-green--ordinal;
+        text-decoration: none;
     }
 }
 .header__contacts {
