@@ -6,8 +6,19 @@
 
 
 <script type="text/javascript">
-   $(document).ready(function() {
-      $("#markItUp").markItUp(mySettings);
-   });
+    $(document).ready(function() {
+        $("#MarkItUp").markItUp(mySettings);
+    });
+    var showPreview = function () {
+//        debugger;
+        var converter = new Showdown.converter();
+        var html = converter.makeHtml($("#MarkItUp").val());
+        $('#Preview').html(html);
+        $('#Previewhtml').text(html);
+    }
 </script>
-<textarea id="markItUp"></textarea>
+<textarea id="MarkItUp"></textarea>
+<input type="button" value="Предпросмотр" onclick="showPreview();"/>
+<div id="Previewhtml"></div>
+<hr>
+<div id="Preview"></div>
