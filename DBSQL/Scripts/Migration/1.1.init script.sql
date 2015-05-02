@@ -165,10 +165,11 @@ ALTER TABLE Account
   OWNER TO postgres;
 
 CREATE TABLE Article (
-  Id int NOT NULL,
+  Id serial NOT NULL,
   AuthorId int NOT NULL,
   Title character varying(256) UNIQUE,
   Text character varying(32768),
+  DateCreated timestamp without time zone NOT NULL,
   IsModerated boolean NOT NULL DEFAULT FALSE,
   Upvote int NOT NULL DEFAULT 0,
   Downvote int NOT NULL DEFAULT 0,

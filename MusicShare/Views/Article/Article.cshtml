@@ -1,0 +1,14 @@
+﻿@model MusicShareWeb.Models.Article.ArticleModel
+
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+<div>
+    <div>@Model.Author.NickName накатал статью</div>
+    <div>@Model.Article.Title</div>
+    <hr>
+    <div>А в ней...</div>
+    <hr>
+    <div>@Html.Raw(Model.Article.Text)</div>
+</div>

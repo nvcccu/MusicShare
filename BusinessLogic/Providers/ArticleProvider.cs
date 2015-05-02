@@ -15,7 +15,7 @@ namespace BusinessLogic.Providers {
                 Title = article.Title,
                 Text = article.Text,
                 DateCreated = DateTime.Now,
-                IsModerated = false,
+                IsModerated = true,
                 UpVote = 0,
                 DownVote = 0,
                 WatchNumber = 0

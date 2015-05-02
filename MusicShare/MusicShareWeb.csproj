@@ -295,6 +295,7 @@
     <Content Include="Views\Shared\SignInUp.cshtml" />
     <Content Include="Views\My\Profile.cshtml" />
     <Content Include="Views\Article\New.cshtml" />
+    <Content Include="Views\Article\Article.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

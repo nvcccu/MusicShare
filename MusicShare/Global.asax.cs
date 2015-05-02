@@ -25,15 +25,22 @@ namespace MusicShareWeb {
         }
 
         private static void RegisterRoutes(RouteCollection routes) {
-
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute(
+                "ArticleNew",
+                "Article/New",
+                new {controller = "Article", action = "New"}
+                );
+            routes.MapRoute(
+                "Article",
+                "Article/{id}",
+                new {controller = "Article", action = "Index", id = UrlParameter.Optional}
+                );
             routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
                 new {controller = "Designer", action = "Index", id = UrlParameter.Optional}
                 );
-
             routes.MapRoute(
                 "Error",
                 "{controller}/{action}/{id}",

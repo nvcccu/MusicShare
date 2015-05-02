@@ -3,8 +3,10 @@ using MusicShareWeb.Models.Article;
 
 namespace MusicShareWeb.Controllers {
     public class ArticleController : BaseController {
-        public ActionResult Index() {
-            return View("Index", BaseModel);
+        public ActionResult Index(int? id) {
+            return id.HasValue
+                ? View("Article", new ArticleModel(BaseModel, id.Value))
+                : View("Index", BaseModel);
         }
         [HttpGet]
         public ActionResult New() {
@@ -13,8 +15,7 @@ namespace MusicShareWeb.Controllers {
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult New(ArticlePostModel articleModel) {
-            articleModel.Save(CurrentUser.Id);
-            return RedirectToAction("Index", BaseModel);
+            return RedirectToAction("Index", new {id = articleModel.Save(CurrentUser.Id)});
         }
     }
 }

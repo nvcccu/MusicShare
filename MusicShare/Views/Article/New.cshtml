@@ -4,7 +4,6 @@
     Layout = "../Shared/Layout.cshtml";
 }
 
-
 <script type="text/javascript">
     $(document).ready(function() {
         $("#MarkItUp").markItUp(mySettings);
@@ -15,29 +14,29 @@
         $('#Preview').html(html);
         $('#Previewhtml').text(html);
     }
-    var saveArticle = function () {
-        $.ajax({
-            url: '@Url.Action("New")',
-            method: 'POST',
-            dataType: "json",
-            data: {
-                Title: $('#Title').val(),
-                Text: new Showdown.converter().makeHtml($("#MarkItUp").val())
-            }
+    var onArticleSave = function(form) {
+        $('<input />').attr('type', 'hidden')
+            .attr('name', "articleModel.Text")
+            .attr('value', new Showdown.converter().makeHtml($("#MarkItUp").val()))
+            .appendTo($(form));
+        $(form).submit(function() {
+            return true;
         });
-    }
+    };
 </script>
+
 <style type="text/css">
     .markItUp {
         margin-top: 0;
     }
 </style>
-@using (Html.BeginForm("New", "Article", FormMethod.Post)) {
-    <input id="Title" type="text"/>
+
+@using (Html.BeginForm("New", "Article", FormMethod.Post, new { onsubmit = "return onArticleSave(this);" })) {
+    <input name="articleModel.Title" type="text" />
     <textarea id="MarkItUp"></textarea>
     <input type="button" value="Предпросмотр" onclick=" showPreview(); "/>
     <div id="Previewhtml"></div>
     <hr>
     <div id="Preview"></div>
-    <input type="button" onclick=" saveArticle(); " value="Сохранить"/>
+    <input type="submit" value="Сохранить"/>
 }
