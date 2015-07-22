@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Core.TransportTypes;
 using MusicShareWeb.Models.Ask;
 
 namespace MusicShareWeb.Controllers {
@@ -11,11 +12,20 @@ namespace MusicShareWeb.Controllers {
         }
         [HttpGet]
         public ActionResult New() {
-            return View("New");
+            return View("New", new QuestionModel(BaseModel));
         }
         [HttpPost]
-        public ActionResult New(QuestionModel question) {
-            return RedirectToAction("Index", new {q = question.CreateNewQuestion()});
+        public ActionResult New(QuestionDto question) {
+            if (BaseModel.CurrentUser == null) {
+                return RedirectToAction("New", new QuestionModel(BaseModel));
+            }
+            question.AccountId = BaseModel.CurrentUser.Id;
+            var questionModel = new QuestionModel(BaseModel) {
+                AccountId = BaseModel.CurrentUser.Id,
+                Title = question.Title,
+                Text = question.Text
+            };
+            return RedirectToAction("Index", new {q = questionModel.CreateNewQuestion()});
         }
     }
 }
