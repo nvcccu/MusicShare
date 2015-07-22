@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
 using Castle.Core.Internal;
 using Castle.MicroKernel.Registration;
@@ -18,6 +19,8 @@ using Core.TransportTypes;
 using DAO;
 using DAO.Attributes;
 using DAO.Enums;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Sandbox {
     // todo разобраться есть ли тут что-то полезное
@@ -190,36 +193,20 @@ namespace Sandbox {
     }
 
         private static void Main(string[] args) {
-             var algorithm = Rijndael.Create();
-            algorithm.GenerateKey();
-            var key = algorithm.Key;
-            string strKey = string.Empty;
-            key.Select(k => k.ToString() + ", ").ForEach(k => strKey += k);
-            var strIv = string.Empty;
-            algorithm.GenerateIV();
-            var iv = algorithm.IV;
-            iv.Select(k => k.ToString() + ", ").ForEach(k => strIv += k);
-
-
-
-            var qqq = Encoding.UTF8.GetBytes(Guid.NewGuid().ToString());
-            using (var alg = SHA512.Create()) {
-                var result = alg.ComputeHash(qqq);
-                var qqqqqqq = Convert.ToBase64String(result);
-                var qqqqqq = Encoding.ASCII.GetString(result);
-                var qqqqq = Encoding.Unicode.GetString(result);
-                var qqqq = 8;
-            }
+        
 
             // НЕ УДАЛЯТЬ
             ConfigHelper.LoadXml(true);
             Connector.ConnectionString = ConfigHelper.FirstTagWithTagNameInnerText("db-connection");
             // НЕ УДАЛЯТЬ
             
-            new OfferCategory {
-                Id = Convert.ToInt64(15),
-                ParentId = Convert.ToInt64(21)
-            }.Save();
+            var qqqqq = new Article()
+                .Select()
+                .Where(Article.Fields.Id, PredicateCondition.Equal, 2)
+                .Where(Article.Fields.IsModerated, PredicateCondition.Equal, true)
+                .GetData()
+                .Single()
+                .ToDto();
          
             Console.WriteLine("end");
             Console.ReadKey();

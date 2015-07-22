@@ -3,11 +3,14 @@
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-12 col-md-offset-3">
             <div class="panel panel-info">
                 <div style="padding-top: 30px" class="panel-body">
-                    @using (Html.BeginForm("SignInViaEmail", "Auth", FormMethod.Post, new { id = "SignInForm", @class = "form-horizontal", role = "form", onsubmit = "return onSubmit();" }))
+                    @using (Html.BeginForm("SignInViaEmail", "Auth", FormMethod.Post, new { id = "SignInForm", @class = "form-horizontal", role = "form", onsubmit = "return onSignInViaEmailSubmit();" }))
                     {
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input type="text" class="form-control" name="Email" placeholder="Почта">
+                        </div>
+                        <div class="hide">
+                            Аккаунт с таким адресом уже зарегистрирован
                         </div>
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
@@ -47,7 +50,8 @@
                     <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show();">Sign In</a></div>
                 </div>
                 <div class="panel-body">
-                    @using (Html.BeginForm("SignUp", "Auth", FormMethod.Post, new { id = "SignUpForm", @class = "form-horizontal", role = "form", onsubmit = "return onSubmit();" })) {
+                    @using (Html.BeginForm("SignUp", "Auth", FormMethod.Post, new { id = "SignUpForm", @class = "form-horizontal", role = "form", onsubmit = "return onSignUpSubmit();" }))
+                    {
                         <div class="form-group">
                             <label for="Email" class="col-md-3 control-label">Email</label>
                             <div class="col-md-9">
@@ -69,7 +73,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-3 col-md-9">
-                                <i class="icon-hand-right"></i><input id="SignUp" type="submit" class="btn btn-info" value="Зарегестрироваться" />
+                                <i class="icon-hand-right"></i><input id="SignUp" type="submit" class="btn btn-info" value="Зарегистрироваться" />
                             </div>
                         </div>
                     }
@@ -83,4 +87,32 @@
     var onSubmit = function () {
         return musGround.submitWithoutReload(event.target);
     }
+    var onSignInViaEmailSubmit = function () {
+        $(event.target).ajaxSubmit({
+            success: function (data) {
+                if (data.Success) {
+                    location.href = data.Redirect;
+                } else {
+                    alert(data.Reason);
+                }
+            },
+            error: function () { alert('Fail'); }
+        });
+        return false;
+    }
+
+    var onSignUpSubmit = function () {
+        $(event.target).ajaxSubmit({
+            success: function (data) {
+                if (data.Success) {
+                    location.href = data.Redirect;
+                } else {
+                    alert(data.Reason);
+                }
+            },
+            error: function () { alert('Fail'); }
+        });
+        return false;
+    }
+
 </script>

@@ -114,12 +114,12 @@ namespace BusinessLogic.Providers {
                 .Any();
         }
         public AccountDto GetUserByEmail(string email) {
-            return new Account()
+            var account = new Account()
                 .Select()
                 .Where(Account.Fields.Email, PredicateCondition.Equal, email)
                 .GetData()
-                .Single()
-                .ToDto();
+                .SingleOrDefault();
+            return account != null ? account.ToDto() : null;
         }
     }
 }

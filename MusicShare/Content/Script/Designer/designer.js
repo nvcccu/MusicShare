@@ -40,14 +40,14 @@
             for (i = 0; i < parameterModel.designerImageBundles.length; i++) {
                 var isGoodImage = true;
                 var image = parameterModel.designerImageBundles[i].designerImage;
-                if (Object.keys(image.parameters).length !== Object.keys(subparameterIds).length) {
+                if (Object.keys(image.parameters).length != Object.keys(subparameterIds).length) {
                     continue;
                 }
                 var imageParametersKeys = Object.keys(image.parameters);
                 for (var j = 0; j < imageParametersKeys.length; j++) {
                     var key = imageParametersKeys[j];
                     var parameterValue = image.parameters[key];
-                    if (subparameterIds[key] !== parameterValue) {
+                    if (subparameterIds[key] != parameterValue) {
                         isGoodImage = false;
                     }
                 }
@@ -62,7 +62,7 @@
                         for (var k = 0; k < Object.keys(positionParameters).length; k++) {
                             var positionParametersKey = Object.keys(positionParameters)[k];
                             var positionParametersValue = positionParameters[positionParametersKey];
-                            if (parameterModel.selectedParametersValueIds[positionParametersKey]() !== parseInt(positionParametersValue, 10)) {
+                            if (parameterModel.selectedParametersValueIds[positionParametersKey]() != parseInt(positionParametersValue, 10)) {
                                 isGoodPosition = false;
                             }
                         }
@@ -110,6 +110,36 @@
         var isFormParameterSelected = function() {
             var tmp = parameterModel.selectedParametersValueIds[musGround.const.formSubparameterId];
             return tmp && tmp();
+        };
+        var makeUrl = function () {
+            var url = undefined;
+            if (Object.keys(parameterModel.selectedParametersValueIds).length > 0) {
+                var parameterId = Object.keys(parameterModel.selectedParametersValueIds)[0];
+                var valueId = parameterModel.selectedParametersValueIds[parameterId]();
+                url = '?g=' + parameterId + '-' + valueId;
+                for (var i = 1; i < Object.keys(parameterModel.selectedParametersValueIds).length; i++) {
+                    parameterId = Object.keys(parameterModel.selectedParametersValueIds)[i];
+                    valueId = parameterModel.selectedParametersValueIds[parameterId]();
+                    url += '_' + parameterId + '-' + valueId;
+                }
+            }
+            return url;
+        };
+        var makeGuitarFromUrl = function() {
+            var data = window.location.href.substr(window.location.href.indexOf('?g=') + 3);
+            var parsed = data.split('_').map(function(pair) {
+                return pair.split('-');
+            });
+            for (var i = 0; i < Object.keys(parsed).length; i++) {
+                var key = parsed[Object.keys(parsed)[i]][0];
+                var value = parsed[Object.keys(parsed)[i]][1];
+                parameterModel.selectedParametersValueIds[key](value);
+            }
+        };
+        var tryMakeGuitarFromUrl = function () {
+            if (window.location.href.substr(window.location.href.indexOf('?') + 1).indexOf('g=') > -1) {
+                makeGuitarFromUrl();
+            }
         }
 
         parameterModel.isFormSelected = undefined;
@@ -153,7 +183,13 @@
             } else {
                 parameterModel.selectedValue(parameterValue.id);
             }
+            window.history.pushState({}, "", makeUrl());
             parameterModel.gotoSubparametersMenu();
+        };
+        window.onpopstate = function (e) {
+            if (e.state) {
+                makeGuitarFromUrl();
+            }
         };
         parameterModel.isActiveSubparameterValue = function (subparameterValue) {
             return parameterModel.selectedValue() === subparameterValue.id;
@@ -269,6 +305,7 @@
             parameterModel.resultImageBundles = getResultImageBundles();
             parameterModel.isFormSelected = ko.computed(isFormParameterSelected);
             parameterModel.selectedSubparameter(parameterModel.subparameters[musGround.const.formSubparameterId]);
+            tryMakeGuitarFromUrl();
         };
        
         parameterModel.init();

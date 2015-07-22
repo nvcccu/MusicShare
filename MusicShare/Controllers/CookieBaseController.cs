@@ -54,8 +54,13 @@ namespace MusicShareWeb.Controllers {
             }
         }
         protected void DropAuthCookie() {
-            Request.Cookies.Remove(AuthCookieName);
+            var cookie = Request.Cookies[AuthCookieName];
             Response.Cookies.Remove(AuthCookieName);
+            if (cookie != null) {
+                cookie.Expires = DateTime.Now.AddDays(-10);
+                cookie.Value = null;
+                Response.SetCookie(cookie);
+            }
         }
         protected void SetAuthCookie(long guestId, int id, bool rememberMe) {
             var expirationDate = rememberMe ? DateTime.Now.AddYears(1) : DateTime.MinValue;

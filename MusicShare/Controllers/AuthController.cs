@@ -12,22 +12,39 @@ namespace MusicShareWeb.Controllers {
                 var newAccountId = auth.Register(GuestId);
                 if (newAccountId.HasValue) {
                     SetAuthCookie(GuestId, newAccountId.Value, auth.RememberMe);
-                    return new JsonResult();
-                } else {
-                    return new EmptyResult();
+                    return new JsonResult {
+                        Data = new {
+                            Success = true,
+                            Redirect = "http://localhost"
+                        },
+                    };
                 }
             }
-            return new EmptyResult();
+            return new JsonResult {
+                Data = new {
+                    Success = false,
+                    Reason = "Email занят",
+                },
+            };
         }
         [HttpPost]
-        public ActionResult SignInViaEmail(EmailAuthModel auth) {
+        public JsonResult SignInViaEmail(EmailAuthModel auth) {
             var account = auth.SignInViaEmail();
             if (account != null) {
                 SetAuthCookie(account.GuestId, account.Id, auth.RememberMe);
-                return RedirectToAction("Index", "Designer");
-            } else {
-                return new EmptyResult();
-            }
+                return new JsonResult {
+                    Data = new {
+                        Success = true,
+                        Redirect = "http://localhost"
+                    },
+                };
+            } 
+            return new JsonResult {
+                Data = new {
+                    Success = false,
+                    Reason = "Неверные email или пароль",
+                },
+            };
         }
         [HttpGet]
         public ActionResult SignOut() {

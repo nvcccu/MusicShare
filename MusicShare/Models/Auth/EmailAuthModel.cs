@@ -1,5 +1,6 @@
 ﻿using System;
 using BusinessLogic.Interfaces;
+using CommonUtils.PasswordHelper;
 using CommonUtils.ServiceManager;
 using Core.TransportTypes;
 
@@ -20,7 +21,10 @@ namespace MusicShareWeb.Models.Auth {
             return ServiceManager<IBusinessLogic>.Instance.Service.IsEmailFree(Email);
         }
         public AccountDto SignInViaEmail() {
-            return ServiceManager<IBusinessLogic>.Instance.Service.GetUserByEmail(Email);
+            var account = ServiceManager<IBusinessLogic>.Instance.Service.GetUserByEmail(Email);
+            return account != null && PasswordHelper.CheckPasswordEqual(Password, account.Salt, account.Password)
+                ? account
+                : null;
         }
         public bool IsGuestAlreadyHasAccount(long guestId) {
             return ServiceManager<IBusinessLogic>.Instance.Service.IsGuestAlreadyHasAccount(guestId);
