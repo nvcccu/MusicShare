@@ -148,7 +148,7 @@ namespace Sandbox {
         {
             if (value != null)
             {
-                ds.Where(field, oper, value);
+                ds.Where(field, oper, value.ToString());
             }
         }
 

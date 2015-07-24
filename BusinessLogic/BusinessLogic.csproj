@@ -52,7 +52,13 @@
     <Compile Include="DaoEntities\Parameter.cs" />
     <Compile Include="DaoEntities\Guest.cs" />
     <Compile Include="DaoEntities\News.cs" />
+    <Compile Include="DaoEntities\Property.cs" />
+    <Compile Include="DaoEntities\PropertyValue.cs" />
+    <Compile Include="DaoEntities\ProductPropertyValue.cs" />
+    <Compile Include="DaoEntities\Product.cs" />
+    <Compile Include="DaoEntities\ProductType.cs" />
     <Compile Include="DaoEntities\UserActionLog.cs" />
+    <Compile Include="Interfaces\IMarketProvider.cs" />
     <Compile Include="Interfaces\IArticleProvider.cs" />
     <Compile Include="Interfaces\IBusinessLogic.cs" />
     <Compile Include="Interfaces\IDerzkieSchiProvider.cs" />
@@ -60,6 +66,7 @@
     <Compile Include="Interfaces\IDesignerProvider.cs" />
     <Compile Include="Interfaces\ILogProvider.cs" />
     <Compile Include="Interfaces\IUserProvider.cs" />
+    <Compile Include="Providers\MarketProvider.cs" />
     <Compile Include="Providers\ArticleProvider.cs" />
     <Compile Include="Providers\DerzkieSchiProvider.cs" />
     <Compile Include="Providers\DesignerProvider.cs" />

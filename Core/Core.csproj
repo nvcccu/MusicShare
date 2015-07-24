@@ -60,6 +60,11 @@
     <Compile Include="TransportTypes\ParameterDto.cs" />
     <Compile Include="TransportTypes\GuestDto.cs" />
     <Compile Include="TransportTypes\NewsDto.cs" />
+    <Compile Include="TransportTypes\ProductTypeDto.cs" />
+    <Compile Include="TransportTypes\PropertyDto.cs" />
+    <Compile Include="TransportTypes\PropertyValueDto.cs" />
+    <Compile Include="TransportTypes\ProductPropertyValueDto.cs" />
+    <Compile Include="TransportTypes\ProductDto.cs" />
     <Compile Include="TransportTypes\UserActionLogDto.cs" />
     <Compile Include="TransportTypes\UserTransportType.cs" />
   </ItemGroup>

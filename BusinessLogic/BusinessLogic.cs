@@ -14,6 +14,7 @@ namespace BusinessLogic {
         private readonly DesignerProvider _designerProvider = new DesignerProvider();
         private readonly AskProvider _askProvider = new AskProvider();
         private readonly ArticleProvider _articleProvider = new ArticleProvider();
+        private readonly MarketProvider _marketProvider = new MarketProvider();
         public BusinessLogic() {
             Initial();
         }
@@ -63,6 +64,9 @@ namespace BusinessLogic {
         public AccountDto GetUser(long guestId) {
             return _userProvider.GetUser(guestId);
         }
+        public AccountDto GetUserById(long id) {
+            return _userProvider.GetUserById(id);
+        }
         public AccountDto GetUserByEmail(string email) {
             return _userProvider.GetUserByEmail(email);
         }
@@ -77,6 +81,12 @@ namespace BusinessLogic {
         }
         public List<ArticleDto> GetArticleByDateDesc(int count, int from) {
             return _articleProvider.GetArticleByDateDesc(count, from);
+        }
+        public List<ProductTypeDto> GetAllProductTypes() {
+            return _marketProvider.GetAllProductTypes();
+        }
+        public Dictionary<PropertyDto, List<PropertyValueDto>> GetAllProductProperties(long productType) {
+            return _marketProvider.GetAllProductProperties(productType);
         }
     }
 }

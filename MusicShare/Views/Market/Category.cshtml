@@ -1,0 +1,14 @@
+﻿@model MusicShareWeb.Models.Market.CategoryListModel
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+<div style="margin: 0 auto; font-size: 30px;">
+    @foreach (var category in @Model.Categories) {
+        <div>
+            <a href="@Url.Action("Selecting", "Market", new { categoryId = category.Id })">
+                @category.Name
+            </a>
+        </div>
+    }
+</div>

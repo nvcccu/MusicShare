@@ -4,7 +4,7 @@
         public int? ParentId { get; set; }
         public string NameNominative { get; set; }
         public string NameGenitive { get; set; }
-        public int? Height { get; set; }
-        public int? Width { get; set; }
+        public int? ParameterValueHeight { get; set; }
+        public int? ParameterValueWidth { get; set; }
     }
 }

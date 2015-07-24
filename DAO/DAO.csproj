@@ -40,7 +40,25 @@
     <Compile Include="Attributes\DbType.cs" />
     <Compile Include="Connector.cs" />
     <Compile Include="DbAdapter.cs" />
+    <Compile Include="Enums\JoinType.cs" />
+    <Compile Include="Enums\LogicOperator.cs" />
+    <Compile Include="Enums\OrderType.cs" />
     <Compile Include="Enums\PredicateCondition.cs" />
+    <Compile Include="Enums\RetrieveMode.cs" />
+    <Compile Include="Extensions\JoinTypeExtension.cs" />
+    <Compile Include="Extensions\LogicOperatorExtension .cs" />
+    <Compile Include="Extensions\PredicateConditionExtension.cs" />
+    <Compile Include="Filters\Join\FilterJoin.cs" />
+    <Compile Include="Filters\Join\JoinCondition.cs" />
+    <Compile Include="Filters\Order\FilterOrder.cs" />
+    <Compile Include="Filters\Set\FilterSet.cs" />
+    <Compile Include="Filters\Where\FilterWhereBase.cs" />
+    <Compile Include="Filters\Where\FilterWhereCollectionBase.cs" />
+    <Compile Include="Filters\Where\FilterWhereDate.cs" />
+    <Compile Include="Filters\Where\FilterWhereEnumerableDateTime.cs" />
+    <Compile Include="Filters\Where\FilterWhereEnumerableSimple.cs" />
+    <Compile Include="Filters\Where\FilterWhereSimple.cs" />
+    <Compile Include="Helpers\WhereHelper.cs" />
     <Compile Include="Sandbox.cs" />
     <Compile Include="TableEntity.cs" />
   </ItemGroup>

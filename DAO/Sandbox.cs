@@ -61,9 +61,8 @@ namespace DAO
             var test = new TableEntity("test");
             var results = test
                 .Select()
-                .Where(new[] {
-                    new FilterWhere(TableEntity.Fields.Id, PredicateCondition.Equal, 1),
-                    new FilterWhere(TableEntity.Fields.Id, PredicateCondition.Equal, 1) })
+                .Where(TableEntity.Fields.Id, PredicateCondition.Equal, 1)
+                .Where(TableEntity.Fields.Id, PredicateCondition.Equal, 1)
                 .GetData();
 //            foreach (var result in results) {
 //                Console.WriteLine(result.Id + " " + result.Data);

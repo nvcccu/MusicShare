@@ -1,0 +1,13 @@
+﻿@model MusicShareWeb.Models.Market.SelectingModel
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+@foreach (var productProperty in Model.Properties) {
+    @productProperty.Key.Name<br>
+    <div style="margin-bottom: 38px; border-bottom: 2px solid green;">
+        @foreach (var productPropertyValue in productProperty.Value) {
+            @productPropertyValue.Name<br>
+        }
+    </div>
+}

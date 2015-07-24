@@ -15,7 +15,7 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (Int32))]
             Id,
             [DbType(typeof (Int32))]
-            ImageId,
+            DesignerImageId,
             [DbType(typeof (string))]
             Parameters,
             [DbType(typeof (Int32))]
@@ -25,7 +25,7 @@ namespace BusinessLogic.DaoEntities {
         }
 
         public int Id { get; set; }
-        public int ImageId { get; set; }
+        public int DesignerImageId { get; set; }
         public string Parameters { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
@@ -51,7 +51,7 @@ namespace BusinessLogic.DaoEntities {
         public DesignerImagePositionDto ToDto() {
             return new DesignerImagePositionDto {
                 Id = Id,
-                ImageId = ImageId,
+                DesignerImageId = DesignerImageId,
                 Parameters = ParseParameters(Parameters),
                 X = X,
                 Y = Y

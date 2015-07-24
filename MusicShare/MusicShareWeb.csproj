@@ -114,6 +114,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MarketController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -122,7 +123,6 @@
     <Compile Include="Controllers\DesignerController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\AskController.cs" />
-    <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\MyController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\PlacardController.cs" />
@@ -137,6 +137,8 @@
     <Compile Include="Models\Auth\EmailAuthModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
+    <Compile Include="Models\Market\SelectingModel.cs" />
+    <Compile Include="Models\Market\CategoryListModel.cs" />
     <Compile Include="Models\User\Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -296,6 +298,8 @@
     <Content Include="Views\My\Profile.cshtml" />
     <Content Include="Views\Article\New.cshtml" />
     <Content Include="Views\Article\Article.cshtml" />
+    <Content Include="Views\Market\Selecting.cshtml" />
+    <Content Include="Views\Market\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -334,9 +338,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Placard\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Forum\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Footer.cshtml" />

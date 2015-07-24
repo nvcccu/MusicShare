@@ -43,7 +43,7 @@ CREATE TABLE IncompatibleParameter (
   ParameterId int NOT NULL,
   ParameterValueId int NOT NULL,
   IncompatibleParameterId int NOT NULL,
-  IncompatibleParameterValue int NOT NULL,
+  IncompatibleParameterValueId int NOT NULL,
   CONSTRAINT pk_IncompatibleParameter PRIMARY KEY (Id)
 )
 WITH (
@@ -79,9 +79,9 @@ ALTER TABLE DesignerImagePosition
   OWNER TO postgres;
 
 CREATE TABLE Guest (
-  guestid bigserial NOT NULL,
-  useragent character varying(1024),
-  CONSTRAINT pk_Guest PRIMARY KEY (guestid)
+  GuestId bigserial NOT NULL,
+  UserAgent character varying(1024),
+  CONSTRAINT pk_Guest PRIMARY KEY (GuestId)
 )
 WITH (
   OIDS=FALSE
@@ -90,11 +90,11 @@ ALTER TABLE Guest
   OWNER TO postgres;
 
 CREATE TABLE News (
-  id serial NOT NULL,
-  title character varying(1024),
-  text character varying(16384),
-  image character varying(512),
-  CONSTRAINT pk_News PRIMARY KEY (id)
+  Id serial NOT NULL,
+  Title character varying(1024),
+  Text character varying(16384),
+  Image character varying(512),
+  CONSTRAINT pk_News PRIMARY KEY (Id)
 )
 WITH (
   OIDS=FALSE
@@ -103,11 +103,11 @@ ALTER TABLE News
   OWNER TO postgres;
 
 CREATE TABLE UserActionLog (
-  id bigserial NOT NULL,
-  guestId bigint NOT NULL,
-  actionId int NOT NULL,
-  target bigint,
-  CONSTRAINT pk_UserActionLog PRIMARY KEY (id)
+  Id bigserial NOT NULL,
+  GuestId bigint NOT NULL,
+  ActionId int NOT NULL,
+  Target bigint,
+  CONSTRAINT pk_UserActionLog PRIMARY KEY (Id)
 )
 WITH (
   OIDS=FALSE
@@ -180,6 +180,70 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE Article
+  OWNER TO postgres;
+
+CREATE TABLE ProductType (
+  Id bigserial NOT NULL,
+  Name character varying(256) UNIQUE NOT NULL,
+  CONSTRAINT pk_ProductType PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ProductType
+  OWNER TO postgres;
+
+CREATE TABLE Property (
+  Id bigserial NOT NULL,
+  Name character varying(256) NOT NULL,
+  ProductTypeId bigint NOT NULL,
+  CONSTRAINT pk_Property PRIMARY KEY (Id),
+  UNIQUE (Name, ProductTypeId)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Property
+  OWNER TO postgres;
+
+CREATE TABLE PropertyValue (
+  Id bigserial NOT NULL,
+  Name character varying(256) NOT NULL,
+  PropertyId bigint,
+  CONSTRAINT pk_PropertyValue PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE PropertyValue
+  OWNER TO postgres;
+
+CREATE TABLE Product (
+  Id bigserial NOT NULL,
+  ProductTypeId bigint,
+  Name character varying(512) NOT NULL,
+  Price int,
+  CONSTRAINT pk_Product PRIMARY KEY (Id),
+  UNIQUE (Name, PropertyId)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Product
+  OWNER TO postgres;
+
+CREATE TABLE ProductPropertyValue (
+  Id bigserial NOT NULL,
+  ProductId bigint NOT NULL,
+  PropertyId bigint NOT NULL,
+  PropertyValueId bigint NOT NULL,
+  CONSTRAINT pk_ProductPropertyValue PRIMARY KEY (Id),
+  UNIQUE (ProductId, PropertyId, PropertyValueId)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ProductPropertyValue
   OWNER TO postgres;
 
 /*

@@ -50,8 +50,8 @@ namespace MusicShareWeb.Models {
                 ParentId = p.ParentId,
                 NameNominative = p.NameNominative,
                 NameGenitive = p.NameGenitive,
-                Height = p.Height,
-                Width = p.Width,
+                Height = p.ParameterValueHeight,
+                Width = p.ParameterValueWidth,
                 ParameterValues =
                     parameterValues.Where(pv => pv.ParameterId == p.Id).ToList().Select(pv => new ParameterValueModel {
                         Id = pv.Id,
@@ -68,7 +68,7 @@ namespace MusicShareWeb.Models {
             DesignerImageBundles = designerImages.Select(di => new DesignerImageModel {
                 DesignerImage = di.DesignerImage,
                 Positions =
-                    di.DesignerImagePositions.Where(dip => dip.ImageId == di.DesignerImage.Id)
+                    di.DesignerImagePositions.Where(dip => dip.DesignerImageId == di.DesignerImage.Id)
                         .Select(dip => new DesignerImagePositionModel {
                             Parameters = dip.Parameters,
                             X = dip.X,

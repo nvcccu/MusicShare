@@ -81,9 +81,10 @@ namespace BusinessLogic.Providers {
                     GuestId = guestId,
                     DateRegistered = DateTime.UtcNow
                 }.Insert());
-                new Account().Update()
+                new Account()
+                    .Update()
                     .Set(Account.Fields.NickName, "User" + accountId)
-                    .Where(Account.Fields.Id, PredicateCondition.Equal, accountId)
+                    .Where(Account.Fields.Id, PredicateCondition.Equal, accountId.Value)
                     .ExecuteScalar();
             }
             return accountId;
@@ -102,6 +103,14 @@ namespace BusinessLogic.Providers {
             return new Account()
                 .Select()
                 .Where(Account.Fields.GuestId, PredicateCondition.Equal, guestId)
+                .GetData()
+                .Single()
+                .ToDto();
+        }
+        public AccountDto GetUserById(long id) {
+            return new Account()
+                .Select()
+                .Where(Account.Fields.Id, PredicateCondition.Equal, id)
                 .GetData()
                 .Single()
                 .ToDto();

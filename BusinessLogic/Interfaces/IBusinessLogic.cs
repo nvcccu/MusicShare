@@ -5,7 +5,8 @@
         IDerzkieSchiProvider,
         IDesignerProvider,
         IAskProvider,
-        IArticleProvider{
+        IArticleProvider,
+        IMarketProvider {
             void Initial();
     }
 }
