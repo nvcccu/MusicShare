@@ -108,12 +108,12 @@ namespace BusinessLogic.Providers {
                 .ToDto();
         }
         public AccountDto GetUserById(long id) {
-            return new Account()
+            var user = new Account()
                 .Select()
                 .Where(Account.Fields.Id, PredicateCondition.Equal, id)
                 .GetData()
-                .Single()
-                .ToDto();
+                .SingleOrDefault();
+            return user != null ? user.ToDto() : null;
         }
         public bool IsGuestAlreadyHasAccount(long guestId) {
             return new Account()

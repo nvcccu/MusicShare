@@ -22,13 +22,13 @@ namespace BusinessLogic.Providers {
             }.Insert());
         }
         public ArticleDto GetArticleById(int id) {
-            return new Article()
+            var article = new Article()
                 .Select()
                 .Where(Article.Fields.Id, PredicateCondition.Equal, id)
                 .Where(Article.Fields.IsModerated, PredicateCondition.Equal, true)
                 .GetData()
-                .Single()
-                .ToDto();
+                .SingleOrDefault();
+            return article != null ? article.ToDto() : null;
         }
         public List<ArticleDto> GetArticleByDateDesc(int count, int from) {
             return new Article()

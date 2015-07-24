@@ -10,7 +10,7 @@ namespace MusicShareWeb.Models.Article {
         public ArticleModel(BaseModel baseModel) : base(baseModel) {}
         public ArticleModel(BaseModel baseModel, int id) : base(baseModel) {
             Article = ServiceManager<IBusinessLogic>.Instance.Service.GetArticleById(id);
-            Author = ServiceManager<IBusinessLogic>.Instance.Service.GetUserById(Article.AuthorId);
+            Author = Article != null ? ServiceManager<IBusinessLogic>.Instance.Service.GetUserById(Article.AuthorId) : null;
         }
     }
 }

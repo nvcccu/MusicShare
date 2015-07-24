@@ -3,12 +3,15 @@
 @{
     Layout = "../Shared/Layout.cshtml";
 }
-
-<div>
-    <div>@Model.Author.NickName накатал статью</div>
-    <div>@Model.Article.Title</div>
-    <hr>
-    <div>А в ней...</div>
-    <hr>
-    <div>@Html.Raw(Model.Article.Text)</div>
-</div>
+@if (@Model.Article != null) {
+    <div>
+        <div>@Model.Author.NickName накатал статью</div>
+        <div>@Model.Article.Title</div>
+        <hr>
+        <div>А в ней...</div>
+        <hr>
+        <div>@Html.Raw(Model.Article.Text)</div>
+    </div>
+} else {
+    <div>Нет такой статьи</div>
+}
