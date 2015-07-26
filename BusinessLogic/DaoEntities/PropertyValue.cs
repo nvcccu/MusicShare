@@ -10,7 +10,7 @@ namespace BusinessLogic.DaoEntities {
         public PropertyValue() : base("PropertyValue") { }
 
         public enum Fields {
-            [DbType(typeof (Int64))]
+            [DbType(typeof (Int32))]
             Id,
             [DbType(typeof (String))]
             Name,
@@ -18,7 +18,7 @@ namespace BusinessLogic.DaoEntities {
             PropertyId
         }
 
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public long PropertyId { get; set; }
 

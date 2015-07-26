@@ -136,6 +136,8 @@
     <Compile Include="Models\Ask\QuestionListModel.cs" />
     <Compile Include="Models\Auth\EmailAuthModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\DerzkieSchi\NewProductsModel.cs" />
+    <Compile Include="Models\DerzkieSchi\ProductsModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
     <Compile Include="Models\Market\SelectingModel.cs" />
     <Compile Include="Models\Market\CategoryListModel.cs" />
@@ -144,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Font\FontAwesome\font-awesome.min.css" />
+    <Content Include="Content\Image\DefaultProduct.png" />
     <Content Include="Content\Image\Designer\ScrollBottomInactive.png" />
     <Content Include="Content\Image\Designer\ScrollBottom_Active.png" />
     <Content Include="Content\Image\Designer\ScrollTop_Active.png" />
@@ -249,6 +252,7 @@
     <Content Include="Content\Libraries\Showdown\Showdown.js" />
     <Content Include="Content\Script\CommonScripts\Log.js" />
     <Content Include="Content\Script\CommonScripts\MusicShare.js" />
+    <Content Include="Content\Script\DerzkieSchi\productAdmin.js" />
     <Content Include="Content\Script\Designer\MenuAnimateHelper.js" />
     <Content Include="Content\Script\Designer\designer.js" />
     <Content Include="Content\Script\jquery.form.js" />
@@ -300,6 +304,7 @@
     <Content Include="Views\Article\Article.cshtml" />
     <Content Include="Views\Market\Selecting.cshtml" />
     <Content Include="Views\Market\Category.cshtml" />
+    <Content Include="Views\DerzkieSchi\Products.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

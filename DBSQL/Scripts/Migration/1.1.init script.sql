@@ -183,7 +183,7 @@ ALTER TABLE Article
   OWNER TO postgres;
 
 CREATE TABLE ProductType (
-  Id bigserial NOT NULL,
+  Id serial NOT NULL,
   Name character varying(256) UNIQUE NOT NULL,
   CONSTRAINT pk_ProductType PRIMARY KEY (Id)
 )
@@ -194,7 +194,7 @@ ALTER TABLE ProductType
   OWNER TO postgres;
 
 CREATE TABLE Property (
-  Id bigserial NOT NULL,
+  Id serial NOT NULL,
   Name character varying(256) NOT NULL,
   ProductTypeId bigint NOT NULL,
   CONSTRAINT pk_Property PRIMARY KEY (Id),
@@ -207,7 +207,7 @@ ALTER TABLE Property
   OWNER TO postgres;
 
 CREATE TABLE PropertyValue (
-  Id bigserial NOT NULL,
+  Id serial NOT NULL,
   Name character varying(256) NOT NULL,
   PropertyId bigint,
   CONSTRAINT pk_PropertyValue PRIMARY KEY (Id)
@@ -219,12 +219,12 @@ ALTER TABLE PropertyValue
   OWNER TO postgres;
 
 CREATE TABLE Product (
-  Id bigserial NOT NULL,
+  Id serial NOT NULL,
   ProductTypeId bigint,
   Name character varying(512) NOT NULL,
+  ImageUrl character varying(1024),
   Price int,
-  CONSTRAINT pk_Product PRIMARY KEY (Id),
-  UNIQUE (Name, PropertyId)
+  CONSTRAINT pk_Product PRIMARY KEY (Id)
 )
 WITH (
   OIDS=FALSE
@@ -233,7 +233,7 @@ ALTER TABLE Product
   OWNER TO postgres;
 
 CREATE TABLE ProductPropertyValue (
-  Id bigserial NOT NULL,
+  Id serial NOT NULL,
   ProductId bigint NOT NULL,
   PropertyId bigint NOT NULL,
   PropertyValueId bigint NOT NULL,

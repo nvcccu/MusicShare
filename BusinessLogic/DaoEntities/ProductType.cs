@@ -10,19 +10,19 @@ namespace BusinessLogic.DaoEntities {
         public ProductType() : base("ProductType") { }
 
         public enum Fields {
-            [DbType(typeof (Int64))]
+            [DbType(typeof (Int32))]
             Id,
             [DbType(typeof (String))]
             Name
         }
 
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public ProductTypeDto ToDto() {
             return new ProductTypeDto {
                 Id = Id,
-                Name = Name,
+                Name = Name
             };
         }
     }

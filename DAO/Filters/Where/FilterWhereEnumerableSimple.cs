@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DAO.Enums;
 using DAO.Extensions;
 
@@ -17,7 +18,9 @@ namespace DAO.Filters.Where {
             return "(" + String.Join(", ", Value) + ") ";
         }
         public override string TranslateToSql(bool isFirst) {
-            return String.Format(StringFormat, isFirst ? String.Empty : LogicOperator.GetLogicOperator() + " ", Field.GetType().DeclaringType.Name, Field, Oper.GetPredicateCondition(),
+            return (Value == null || !Value.Any())
+                ? null
+                : String.Format(StringFormat, isFirst ? String.Empty : LogicOperator.GetLogicOperator() + " ", Field.GetType().DeclaringType.Name, Field, Oper.GetPredicateCondition(),
                 ValueToString());
         }
     }

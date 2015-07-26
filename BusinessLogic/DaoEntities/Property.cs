@@ -7,10 +7,10 @@ namespace BusinessLogic.DaoEntities {
     internal class Property : AbstractEntity<Property> {
         public Property(string tableName) : base(tableName) {}
 
-        public Property() : base("UserActionLog") { }
+        public Property() : base("Property") { }
 
         public enum Fields {
-            [DbType(typeof (Int64))]
+            [DbType(typeof (Int32))]
             Id,
             [DbType(typeof (String))]
             Name,
@@ -18,7 +18,7 @@ namespace BusinessLogic.DaoEntities {
             ProductTypeId
         }
 
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public long ProductTypeId { get; set; }
 

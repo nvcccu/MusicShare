@@ -88,5 +88,8 @@ namespace BusinessLogic {
         public Dictionary<PropertyDto, List<PropertyValueDto>> GetAllProductProperties(long productType) {
             return _marketProvider.GetAllProductProperties(productType);
         }
+        public Dictionary<ProductTypeDto, Dictionary<PropertyDto, List<PropertyValueDto>>> GetAllProperties(){
+            return _derzkieSchiProvider.GetAllProperties();
+        }
     }
 }

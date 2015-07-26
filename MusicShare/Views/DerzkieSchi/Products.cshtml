@@ -1,0 +1,34 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model MusicShareWeb.Models.DerzkieSchi.ProductsModel
+
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+<div id="ProductAdmin">
+    <span style="cursor: pointer;" data-bind="click: $root.setNewProductActive">Добавить новый</span><span style="margin-left: 50px; cursor: pointer;" data-bind="click: $root.setNewProductInactive">Редактировать существующий</span>
+    <div id="NewProduct" data-bind="visible: $root.newProductActive()">
+        <div style="display: flex; flex-direction: row;">
+            <div style="width: 400px;">
+                <select data-bind="options: $root.productTypes, value: $root.newProductType, optionsValue: 'id', optionsText: 'name', optionsCaption: 'Выберите тип продукта', valueAllowUnset: true"></select>
+                <div data-bind="foreach: $root.activeProperties">
+                    <div style="margin-bottom: 10px;">
+                        <div data-bind="text: property.name"></div>
+                        <select data-bind="options: propertyValues, optionsValue: 'id', optionsText: 'name', optionsCaption: 'Выберите Значение свойства', valueAllowUnset: true"></select>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <input type="text" data-bind="value: $root.newProductImageUrl, valueUpdate: 'input'" /><br>
+                <img data-bind="attr: {src: $root.newProductImageUrl() ? $root.newProductImageUrl : '/Content/Image/DefaultProduct.png' }" />
+            </div>
+        </div>
+    </div>
+    <div id="ExistingProduct" data-bind="visible: !$root.newProductActive()">cvbnc</div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        ko.applyBindings(getProductAdmin(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()})), document.getElementById("ProductAdmin")));
+    });
+</script>

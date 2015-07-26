@@ -31,9 +31,13 @@ namespace DAO.Filters.Where {
                 if (!isFirst) {
                     where += Oper.GetLogicOperator();
                 }
-                where += "WHERE (";
                 if (FilterWhereBaseCollection != null && FilterWhereBaseCollection.Any()) {
                     where += FilterWhereBaseCollection.First().TranslateToSql(true);
+                    // Жесточайший костылль
+                    // TODO: переделать
+                    if (!String.IsNullOrWhiteSpace(where)) {
+                        where = "WHERE (" + where;
+                    }
                     for (var i = 1; i < FilterWhereBaseCollection.Count; i++) {
                         where += FilterWhereBaseCollection[i].TranslateToSql(false);
                     }
@@ -44,7 +48,7 @@ namespace DAO.Filters.Where {
                         where += FilterWhereCollectionCollection[i].TranslateToSql(false);
                     }
                 }
-                where += ")";
+                where += String.IsNullOrWhiteSpace(where) ? String.Empty : ")";
             }
             return where;
         }
