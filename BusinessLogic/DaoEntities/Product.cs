@@ -13,7 +13,7 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (Int32))]
             Id,
             [DbType(typeof (Int64))]
-            ProductTypeIdId,
+            ProductTypeId,
             [DbType(typeof (String))]
             Name,
             [DbType(typeof (String))]
@@ -23,7 +23,7 @@ namespace BusinessLogic.DaoEntities {
         }
 
         public int Id { get; set; }
-        public long ProductTypeIdId { get; set; }
+        public long ProductTypeId { get; set; }
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public int Price { get; set; }
@@ -31,7 +31,7 @@ namespace BusinessLogic.DaoEntities {
         public ProductDto ToDto() {
             return new ProductDto {
                 Id = Id,
-                ProductTypeIdId = ProductTypeIdId,
+                ProductTypeId = ProductTypeId,
                 Name = Name,
                 ImageUrl = ImageUrl,
                 Price = Price

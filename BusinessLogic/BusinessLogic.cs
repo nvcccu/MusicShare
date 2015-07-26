@@ -91,5 +91,8 @@ namespace BusinessLogic {
         public Dictionary<ProductTypeDto, Dictionary<PropertyDto, List<PropertyValueDto>>> GetAllProperties(){
             return _derzkieSchiProvider.GetAllProperties();
         }
+        public int? SaveNewProduct(int productTypeId, Dictionary<int, int?> propertyValuePairs, string imageUrl, string name, int price){
+            return _derzkieSchiProvider.SaveNewProduct(productTypeId, propertyValuePairs, imageUrl, name, price);
+        }
     }
 }

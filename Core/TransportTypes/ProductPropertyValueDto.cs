@@ -1,8 +1,8 @@
 ﻿namespace Core.TransportTypes {
     public class ProductPropertyValueDto {
-        public long Id { get; set; }
-        public long ProductId { get; set; }
-        public long PropertyId { get; set; }
-        public long PropertyValueId { get; set; }
+        public int Id { get; set; }
+        public int ProductId { get; set; }
+        public int PropertyId { get; set; }
+        public int? PropertyValueId { get; set; }
     }
 }

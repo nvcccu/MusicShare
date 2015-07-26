@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
@@ -31,6 +32,25 @@ namespace BusinessLogic.Providers {
                     .ToDictionary(pp => pp,
                         pp => propertyValues
                             .Where(pv => pv.PropertyId == pp.Id).ToList()));
+        }
+        public int? SaveNewProduct(int productTypeId, Dictionary<int, int?> propertyValuePairs, string imageUrl, string name, int price) {
+            int? id;
+            id = Convert.ToInt32(new Product {
+                ProductTypeId = productTypeId,
+                ImageUrl = imageUrl,
+                Name = name,
+                Price = price
+            }.Insert());
+            foreach (var propertyValuePair in propertyValuePairs) {
+                if (propertyValuePair.Value.HasValue) {
+                    new ProductPropertyValue {
+                        ProductId = id.Value,
+                        PropertyId = propertyValuePair.Key,
+                        PropertyValueId = propertyValuePair.Value
+                    }.Insert();
+                }
+            }
+            return id;
         }
     }
 }

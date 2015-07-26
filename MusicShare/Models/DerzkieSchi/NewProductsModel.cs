@@ -1,20 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BusinessLogic.Interfaces;
 using CommonUtils.ServiceManager;
-using Core.TransportTypes;
 
 namespace MusicShareWeb.Models.DerzkieSchi {
     public class NewProductsModel {
-        public long ProductTypeId { get; set; }
-        public Dictionary<int, int?> PropertyValuePairs { get; set; }
+        public int ProductTypeId { get; set; }
+        public Dictionary<string, string> PropertyValuePairs { get; set; }
         public string ImageUrl { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
 
-        public NewProductsModel() {
-//            var propertiesDictionary = ServiceManager<IBusinessLogic>.Instance.Service.GetAllProperties();
-//            ProductTypes = ServiceManager<IBusinessLogic>.Instance.Service.GetAllProductTypes();
-//            Properties = propertiesDictionary.Select(pd => pd.Value).SelectMany(pdv => pdv.Keys).ToList();
-//            PropertyValues = propertiesDictionary.Select(pd => pd.Value).SelectMany(pdv => pdv.Values).SelectMany(pdv => pdv).ToList();
+        public int? SaveNewProduct() {
+            int tmpInt;
+            var propertyValuePairs = PropertyValuePairs.ToDictionary(apvp => Convert.ToInt32(apvp.Key), apvp => Int32.TryParse(apvp.Value, out tmpInt) ? tmpInt : (int?)null);
+            return ServiceManager<IBusinessLogic>.Instance.Service.SaveNewProduct(ProductTypeId, propertyValuePairs, ImageUrl, Name, Price);
         }
     }
 }

@@ -9,8 +9,9 @@ namespace MusicShareWeb.Controllers {
         public ActionResult Products() {
             return View("Products", new ProductsModel(BaseModel));
         }
-        public JsonResult AddNewProduct() {
-            return new JsonResult();
+        public ActionResult AddNewProduct(NewProductsModel newProductsModel) {
+            newProductsModel.SaveNewProduct();
+            return null;
         }
     }
 }
