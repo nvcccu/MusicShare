@@ -12,23 +12,25 @@
         <div style="display: flex; flex-direction: row;">
             <div style="width: 400px;">
                 <select data-bind="options: $root.productTypes, value: $root.newProductType, optionsValue: 'id', optionsText: 'name', optionsCaption: 'Выберите тип продукта', valueAllowUnset: true"></select>
+                <!-- ko if: Object.keys($root.activePropertyValueList()).length != 0 -->
                 <div data-bind="foreach: $root.activePropertyValueList">
                     <div style="margin-bottom: 10px;">
                         <div data-bind="text: property.name"></div>
                         <select data-bind="attr: { 'data-property-id' : property.id }, options: propertyValues, optionsValue: 'id', optionsText: 'name', optionsCaption: 'Выберите Значение свойства', valueAllowUnset: true"></select>
                     </div>
                 </div>
+                <!-- /ko-->
             </div>
             <div>
-                Цена <input type="number" data-bind="value: $root.newProductPrice, valueUpdate: 'input'"/><br>
-                Название <input type="text" data-bind="value: $root.newProductName, valueUpdate: 'input'"/>
+                Цена <input type="number" data-bind="value: $root.newProductPrice, valueUpdate: 'input'" /><br>
+                Название <input type="text" data-bind="value: $root.newProductName, valueUpdate: 'input'" />
             </div>
             <div>
-                <input type="text" data-bind="value: $root.newProductImageUrl, valueUpdate: 'input'"/><br>
-                <img data-bind="attr: {src: $root.newProductImageUrl() ? $root.newProductImageUrl : '/Content/Image/DefaultProduct.png' }"/>
+                <input type="text" data-bind="value: $root.newProductImageUrl, valueUpdate: 'input'" /><br>
+                <img data-bind="attr: {src: $root.newProductImageUrl() ? $root.newProductImageUrl : '/Content/Image/DefaultProduct.png' }" />
             </div>
         </div>
-        <input type="button" data-bind="click: $root.saveNewProduct" value="Сохранить"/>
+        <input type="button" data-bind="click: $root.saveNewProduct" value="Сохранить" />
     </div>
     <div id="ExistingProduct" data-bind="visible: !$root.newProductActive()">cvbnc</div>
 </div>

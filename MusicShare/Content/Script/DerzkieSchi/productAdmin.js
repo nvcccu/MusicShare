@@ -4,7 +4,7 @@
 
     var actualizeActiveProperties = function () {
         if (model.newProductType() == undefined) {
-            return {};
+            return [];
         }
         var activeProperties = model.properties.filter(function (property) {
             return property.productTypeId === model.newProductType();
@@ -20,12 +20,11 @@
     };
 
     model.addNewProductUrl = addNewProductUrl;
-
-    model.newProductActive = ko.observable(true);
     model.productTypes = data.productTypes;
     model.properties = data.properties;
     model.propertyValues = data.propertyValues;
 
+    model.newProductActive = ko.observable(true);
     model.newProductType = ko.observable(null);
     model.newProductName = ko.observable(null);
     model.newProductPrice = ko.observable(null);
@@ -57,6 +56,10 @@
             }),
             success: function (result) {
                 alert('ok');
+                model.newProductName(null);
+                model.newProductPrice(null);
+                model.newProductImageUrl(null);
+                model.newProductType(null);
             },
             error: function (result) {
                 alert('error');
