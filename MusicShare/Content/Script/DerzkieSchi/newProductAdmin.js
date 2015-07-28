@@ -1,13 +1,13 @@
-﻿getProductAdmin = function (data, addNewProductUrl) {
+﻿getNewProductAdmin = function (data, saveProductUrl) {
 
     var model = {};
 
     var actualizeActiveProperties = function () {
-        if (model.newProductType() == undefined) {
+        if (model.productType() == undefined) {
             return [];
         }
         var activeProperties = model.properties.filter(function (property) {
-            return property.productTypeId === model.newProductType();
+            return property.productTypeId === model.productType();
         });
         return activeProperties.map(function (property) {
             return {
@@ -19,47 +19,41 @@
         });
     };
 
-    model.addNewProductUrl = addNewProductUrl;
+    model.saveProductUrl = saveProductUrl;
     model.productTypes = data.productTypes;
     model.properties = data.properties;
     model.propertyValues = data.propertyValues;
 
-    model.newProductActive = ko.observable(true);
-    model.newProductType = ko.observable(null);
-    model.newProductName = ko.observable(null);
-    model.newProductPrice = ko.observable(null);
-    model.newProductImageUrl = ko.observable(null);
+    model.productType = ko.observable(null);
+    model.productName = ko.observable(null);
+    model.productPrice = ko.observable(null);
+    model.productImageUrl = ko.observable(null);
     model.activePropertyValueList = ko.computed(actualizeActiveProperties);
 
-    model.setNewProductActive = function() {
-        model.newProductActive(true);
-    };
-    model.setNewProductInactive = function() {
-        model.newProductActive(false);
-    };
-    model.saveNewProduct = function () {
+
+    model.saveProduct = function () {
         var propertyValuePairs = {};
         ko.utils.arrayForEach(model.activePropertyValueList(), function(propertyValue) {
             propertyValuePairs[propertyValue.property.id.toString()] = $('[data-property-id=' + propertyValue.property.id + '] option:selected').val().toString();
         });
         $.ajax({
-            url: model.addNewProductUrl,
+            url: model.saveProductUrl,
             type: 'POST',
             traditional: true,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
-                ProductTypeId: model.newProductType(),
+                ProductTypeId: model.productType(),
                 PropertyValuePairs: propertyValuePairs,
-                ImageUrl: model.newProductImageUrl(),
-                Name: model.newProductName(),
-                Price: model.newProductPrice()
+                ImageUrl: model.productImageUrl(),
+                Name: model.productName(),
+                Price: model.productPrice()
             }),
             success: function (result) {
                 alert('ok');
-                model.newProductName(null);
-                model.newProductPrice(null);
-                model.newProductImageUrl(null);
-                model.newProductType(null);
+                model.productName(null);
+                model.productPrice(null);
+                model.productImageUrl(null);
+                model.productType(null);
             },
             error: function (result) {
                 alert('error');

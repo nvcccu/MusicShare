@@ -1,0 +1,38 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model MusicShareWeb.Models.DerzkieSchi.ProductsModel
+
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+<div id="NewProduct">
+    <div style="display: flex; flex-direction: row;">
+        <div style="width: 400px;">
+            <select data-bind="options: $root.productTypes, value: $root.productType, optionsValue: 'id', optionsText: 'name', optionsCaption: 'Выберите тип продукта', valueAllowUnset: true"></select>
+            <!-- ko if: Object.keys($root.activePropertyValueList()).length != 0 -->
+            <div data-bind="foreach: $root.activePropertyValueList">
+                <div style="margin-bottom: 10px;">
+                    <div data-bind="text: property.name"></div>
+                    <select data-bind="attr: { 'data-property-id' : property.id }, options: propertyValues, optionsValue: 'id', optionsText: 'name', optionsCaption: 'Выберите Значение свойства', valueAllowUnset: true"></select>
+                </div>
+            </div>
+            <!-- /ko-->
+        </div>
+        <div>
+            Цена <input type="number" data-bind="value: $root.productPrice, valueUpdate: 'input'"/><br>
+            Название <input type="text" data-bind="value: $root.productName, valueUpdate: 'input'"/>
+        </div>
+        <div>
+            <input type="text" data-bind="value: $root.productImageUrl, valueUpdate: 'input'"/><br>
+            <img data-bind="attr: {src: $root.productImageUrl() ? $root.productImageUrl : '/Content/Image/DefaultProduct.png' }"/>
+        </div>
+    </div>
+    <input type="button" data-bind="click: $root.saveProduct" value="Сохранить"/>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        ko.applyBindings(getNewProductAdmin(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()})), '@Url.Action("SaveProduct")'), document.getElementById("NewProduct"));
+    });
+</script>

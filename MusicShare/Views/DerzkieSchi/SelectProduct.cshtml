@@ -1,0 +1,38 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model MusicShareWeb.Models.DerzkieSchi.ProductsModel
+
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+<div id="FilterProduct" style="display: flex;">
+    <div>
+        <select data-bind="options: $root.productTypes, value: $root.productType, optionsValue: 'id', optionsText: 'name', optionsCaption: 'Выберите тип продукта', valueAllowUnset: true"></select>
+        <!-- ko if: $root.productType() -->
+        <div data-bind="foreach: $root.activePropertyValueList">
+            <div style="margin-bottom: 10px;">
+                <div data-bind="text: property.name"></div>
+                <select data-bind="attr: { 'data-property-id' : property.id }, options: propertyValues, optionsValue: 'id', optionsText: 'name', optionsCaption: 'Выберите Значение свойства', valueAllowUnset: true, event: { change: $root.filterProduct }"></select>
+            </div>
+        </div>
+        <!-- /ko-->
+    </div>
+    <div data-bind="foreach: $root.products()">
+        <div style="margin-bottom: 3px; border-bottom: 1px solid black; margin-bottom: 8px; padding-bottom: 8px;">
+            <a data-bind="text: name, attr: {'href': '@Url.Action("ChangeProduct")' + '/' + id}"></a>
+            <div>
+                Цена: <span data-bind="text: price"></span> деревянных
+            </div>
+            <div>
+                <img data-bind="attr: {'src': imageUrl ? imageUrl : '/Content/Image/DefaultProduct.png' }" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        ko.applyBindings(getSelectProductAdmin(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()})), '@Url.Action("GetFilteredProduct")', '@Url.Action("ChangeProduct")'), document.getElementById("FilterProduct"));
+    });
+</script>

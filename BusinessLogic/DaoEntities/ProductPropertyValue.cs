@@ -10,13 +10,13 @@ namespace BusinessLogic.DaoEntities {
         public ProductPropertyValue() : base("ProductPropertyValue") { }
 
         public enum Fields {
-            [DbType(typeof (Int64))]
+            [DbType(typeof (Int32))]
             Id,
-            [DbType(typeof (Int64))]
+            [DbType(typeof (Int32))]
             ProductId,
-            [DbType(typeof (Int64))]
+            [DbType(typeof (Int32))]
             PropertyId,
-            [DbType(typeof (Int64))]
+            [DbType(typeof (Int32))]
             PropertyValueId
         }
 

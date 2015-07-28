@@ -196,7 +196,7 @@ ALTER TABLE ProductType
 CREATE TABLE Property (
   Id serial NOT NULL,
   Name character varying(256) NOT NULL,
-  ProductTypeId bigint NOT NULL,
+  ProductTypeId int NOT NULL,
   CONSTRAINT pk_Property PRIMARY KEY (Id),
   UNIQUE (Name, ProductTypeId)
 )
@@ -209,7 +209,7 @@ ALTER TABLE Property
 CREATE TABLE PropertyValue (
   Id serial NOT NULL,
   Name character varying(256) NOT NULL,
-  PropertyId bigint,
+  PropertyId int,
   CONSTRAINT pk_PropertyValue PRIMARY KEY (Id)
 )
 WITH (
@@ -220,7 +220,7 @@ ALTER TABLE PropertyValue
 
 CREATE TABLE Product (
   Id serial NOT NULL,
-  ProductTypeId bigint,
+  ProductTypeId int,
   Name character varying(512) NOT NULL,
   ImageUrl character varying(1024),
   Price int,
@@ -234,9 +234,9 @@ ALTER TABLE Product
 
 CREATE TABLE ProductPropertyValue (
   Id serial NOT NULL,
-  ProductId bigint NOT NULL,
-  PropertyId bigint NOT NULL,
-  PropertyValueId bigint NOT NULL,
+  ProductId int NOT NULL,
+  PropertyId int NOT NULL,
+  PropertyValueId int NOT NULL,
   CONSTRAINT pk_ProductPropertyValue PRIMARY KEY (Id),
   UNIQUE (ProductId, PropertyId, PropertyValueId)
 )

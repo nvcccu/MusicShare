@@ -252,7 +252,9 @@
     <Content Include="Content\Libraries\Showdown\Showdown.js" />
     <Content Include="Content\Script\CommonScripts\Log.js" />
     <Content Include="Content\Script\CommonScripts\MusicShare.js" />
-    <Content Include="Content\Script\DerzkieSchi\productAdmin.js" />
+    <Content Include="Content\Script\DerzkieSchi\selectProductAdmin.js" />
+    <Content Include="Content\Script\DerzkieSchi\changeProductAdmin.js" />
+    <Content Include="Content\Script\DerzkieSchi\newProductAdmin.js" />
     <Content Include="Content\Script\Designer\MenuAnimateHelper.js" />
     <Content Include="Content\Script\Designer\designer.js" />
     <Content Include="Content\Script\jquery.form.js" />
@@ -304,7 +306,9 @@
     <Content Include="Views\Article\Article.cshtml" />
     <Content Include="Views\Market\Selecting.cshtml" />
     <Content Include="Views\Market\Category.cshtml" />
-    <Content Include="Views\DerzkieSchi\Products.cshtml" />
+    <Content Include="Views\DerzkieSchi\AddProduct.cshtml" />
+    <Content Include="Views\DerzkieSchi\ChangeProduct.cshtml" />
+    <Content Include="Views\DerzkieSchi\SelectProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -355,9 +359,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ImgStore\Guitars\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\DerzkieSchi\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Designer\Index.cshtml" />

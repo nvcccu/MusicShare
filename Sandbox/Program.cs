@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
+using BusinessLogic.Providers;
 using Castle.Core.Internal;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
@@ -196,17 +197,11 @@ namespace Sandbox {
         
 
             // НЕ УДАЛЯТЬ
-            ConfigHelper.LoadXml(true);
+            ConfigHelper.LoadXml(false);
             Connector.ConnectionString = ConfigHelper.FirstTagWithTagNameInnerText("db-connection");
             // НЕ УДАЛЯТЬ
-            
-            var qqqqq = new Article()
-                .Select()
-                .Where(Article.Fields.Id, PredicateCondition.Equal, 2)
-                .Where(Article.Fields.IsModerated, PredicateCondition.Equal, true)
-                .GetData()
-                .Single()
-                .ToDto();
+
+            var qqqqq = new DerzkieSchiProvider().GetFilteredProducts(1, "", new Dictionary<int, int> { {1, 3}, {2, 4} });
          
             Console.WriteLine("end");
             Console.ReadKey();

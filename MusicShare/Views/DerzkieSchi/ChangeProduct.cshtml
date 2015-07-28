@@ -1,0 +1,26 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model MusicShareWeb.Models.DerzkieSchi.ProductsModel
+
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+<div id="ProductAdmin">
+    <div id="ExistingProduct" data-bind="visible: !$root.newProductActive()">
+        <select data-bind="options: $root.productTypes, value: $root.existProductType, optionsValue: 'id', optionsText: 'name', optionsCaption: 'Выберите тип продукта', valueAllowUnset: true"></select>
+        <!-- ko if: Object.keys($root.existActivePropertyValueList()).length != 0 -->
+        <div data-bind="foreach: $root.existActivePropertyValueList">
+            <div style="margin-bottom: 10px;">
+                <div data-bind="text: property.name"></div>
+                <select data-bind="attr: { 'data-property-id' : property.id }, options: propertyValues, optionsValue: 'id', optionsText: 'name', optionsCaption: 'Выберите Значение свойства', valueAllowUnset: true"></select>
+            </div>
+        </div>
+        <!-- /ko-->
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        ko.applyBindings(getProductAdmin(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()})), '@Url.Action("SaveProduct")'), document.getElementById("ProductAdmin"));
+    });
+</script>

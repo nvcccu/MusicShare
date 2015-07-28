@@ -178,6 +178,7 @@ namespace DAO {
                     var properties = typeof (T).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly).ToList();
                     int i;
                     int j;
+                    var shift = 0;
                     var propertiesCount = properties.Count();
                     var values = new object[propertiesCount];
                     if (_dbAdapter.DataReader.GetValues(values) != propertiesCount) {
@@ -192,16 +193,18 @@ namespace DAO {
                         }
                     }
                     foreach (var joinedEntity in JoinedEntities) {
+                        shift += propertiesCount;
                         var type = joinedEntity.GetType();
                         var entity = Activator.CreateInstance(type);
                         properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly).ToList();
                         propertiesCount = properties.Count();
-                        values = new object[propertiesCount];
-                        if (_dbAdapter.DataReader.GetValues(values) != propertiesCount) {
+                        values = new object[shift + propertiesCount];
+                        if (_dbAdapter.DataReader.GetValues(values) != propertiesCount + shift) {
                             throw new Exception("Число полей в сущности не равно числу полей, возвращенных из запроса.");
                         }
+                        values = values.Skip(shift).ToArray();
                         for (j = 0; j < properties.Count(); j++) {
-                            var name = _dbAdapter.DataReader.GetName(i);
+                            var name = _dbAdapter.DataReader.GetName(i + j);
                             var val = values[j];
                             var propertyIndex = properties.FindIndex(p => String.Equals(p.Name, name, StringComparison.CurrentCultureIgnoreCase));
                             if (properties[propertyIndex] != null && !String.IsNullOrEmpty(name) && !(val is DBNull)) {

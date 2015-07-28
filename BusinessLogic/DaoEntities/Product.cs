@@ -12,7 +12,7 @@ namespace BusinessLogic.DaoEntities {
         public enum Fields {
             [DbType(typeof (Int32))]
             Id,
-            [DbType(typeof (Int64))]
+            [DbType(typeof (Int32))]
             ProductTypeId,
             [DbType(typeof (String))]
             Name,
@@ -23,7 +23,7 @@ namespace BusinessLogic.DaoEntities {
         }
 
         public int Id { get; set; }
-        public long ProductTypeId { get; set; }
+        public int ProductTypeId { get; set; }
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public int Price { get; set; }

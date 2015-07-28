@@ -94,5 +94,8 @@ namespace BusinessLogic {
         public int? SaveNewProduct(int productTypeId, Dictionary<int, int?> propertyValuePairs, string imageUrl, string name, int price){
             return _derzkieSchiProvider.SaveNewProduct(productTypeId, propertyValuePairs, imageUrl, name, price);
         }
+        public List<ProductDto> GetFilteredProducts(int productTypeId, string namePart, Dictionary<int, int> propertyValuePairs) {
+            return _derzkieSchiProvider.GetFilteredProducts(productTypeId, namePart, propertyValuePairs);
+        }
     }
 }
