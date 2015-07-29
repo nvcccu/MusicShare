@@ -18,7 +18,8 @@
             <a class="header-navigation__btn @CssIfActive(controllerName, "Market")" href="@Url.Action("Index", "Market")">Магазин</a><!--
             --><a class="header-navigation__btn @CssIfActive(controllerName, "Article")" href="@Url.Action("New", "Article")">Статьи</a><!--
             --><a class="header-navigation__btn @CssIfActive(controllerName, "Designer")" href="@Url.Action("Index", "Designer")">Конструктор</a><!--
-            --><a class="header-navigation__btn @CssIfActive(controllerName, "Ask")" href="@Url.Action("New", "Ask")">Задать вопрос</a>
+            --><a class="header-navigation__btn @CssIfActive(controllerName, "Ask")" href="@Url.Action("New", "Ask")">Задать вопрос</a><!--
+            --><a class="header-navigation__btn @CssIfActive(controllerName, "Lesson")" href="@Url.Action("Index", "Lesson")">Уроки для Костяна</a>
         </div>
         <div class="header__contacts">
             @if (Model.CurrentUser != null && Model.CurrentUser.IsAuthorized) {

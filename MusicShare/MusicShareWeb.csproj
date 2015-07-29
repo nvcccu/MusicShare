@@ -114,6 +114,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\MarketController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
@@ -139,12 +140,14 @@
     <Compile Include="Models\DerzkieSchi\NewProductsModel.cs" />
     <Compile Include="Models\DerzkieSchi\ProductsModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
+    <Compile Include="Models\Lesson\ExerciseModel.cs" />
     <Compile Include="Models\Market\SelectingModel.cs" />
     <Compile Include="Models\Market\CategoryListModel.cs" />
     <Compile Include="Models\User\Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bit.mp3" />
     <Content Include="Content\Font\FontAwesome\font-awesome.min.css" />
     <Content Include="Content\Image\DefaultProduct.png" />
     <Content Include="Content\Image\Designer\ScrollBottomInactive.png" />
@@ -218,6 +221,12 @@
     </Content>
     <Content Include="Content\Less\Layout.min.css">
       <DependentUpon>Layout.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Lesson\Lesson.css">
+      <DependentUpon>Lesson.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Lesson\Lesson.min.css">
+      <DependentUpon>Lesson.css</DependentUpon>
     </Content>
     <Content Include="Content\Less\Mixin.css">
       <DependentUpon>Mixin.less</DependentUpon>
@@ -309,6 +318,12 @@
     <Content Include="Views\DerzkieSchi\AddProduct.cshtml" />
     <Content Include="Views\DerzkieSchi\ChangeProduct.cshtml" />
     <Content Include="Views\DerzkieSchi\SelectProduct.cshtml" />
+    <Content Include="Views\Lesson\Exercise.cshtml" />
+    <Content Include="Views\Lesson\Index.cshtml" />
+    <Content Include="Content\Less\Lesson\Lesson.less" />
+    <Content Include="Content\Less\Lesson\Lesson.css.map">
+      <DependentUpon>Lesson.css</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
