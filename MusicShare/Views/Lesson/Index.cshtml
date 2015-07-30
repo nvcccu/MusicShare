@@ -8,7 +8,7 @@
 
 
 <div>
-    Главное не обновлять страницу<br>
+    <input type="button" value="Начать катать как Стив Вай*" style="width: 380px; height: 200px; font-size: 25px; background-color: red;" data-bind="click: $root.usch"/>
     <audio id="BitSound" src="/Content/bit.mp3"></audio>
     @*    <input type="button" value="Запустить" data-bind="attr: { 'value': $root.isRun() ? 'Остановить' : 'Запустить' }, click: $root.isRun() ? $root.stop : $root.run" /><br>*@
     @*    <input type="button" value="Быстрее" data-bind="click: $root.speedUp" /><br>*@
@@ -189,10 +189,7 @@
                                                                         <p class="MsoNormal"><em><a href="/images/audio/altpicking/Altpicking-2-12.mp3" title="MP3">Упражнение 12</a>.</em></p>
                                                                         <p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_12.jpg" border="0"></em>
                                                                         </p>
-                                                                        <input type="button" value="Запустить" data-bind="attr: { 'value': $root.isRun() ? 'Остановить' : 'Запустить' }, click: $root.isRun() ? $root.stop.bind($data, 11) : $root.run.bind($data, 11)" /><br>
-                                                                        <input type="button" value="Быстрее" data-bind="click: $root.speedUp.bind($data, 11)" /><br>
-                                                                        <input type="button" value="Медленнее" data-bind="click: $root.speedDown.bind($data, 11)" /><br>
-                                                                        Скорость <span data-bind="text: $root.speeds[11]()"></span> УВМ
+                                                                        @Html.Partial("Metronome", 11)
                                                                         <p class="MsoNormal">&nbsp;</p>
                                                                         <p class="MsoNormal" style="text-align: justify;">И вновь о том как надо заниматься. Заниматься нужно регулярно. Даже небольшой перерыв в занятиях может отбросить тебя далеко назад. Время, которое нужно уделять гитаре, не ограничено. Здесь действует правило: "кашу маслом не испортишь". Однако, если чувствуешь сильную усталость в руках, или боль - немедленно прекращай занятия! Поврежденные связки техники еще никому не прибавляли. Не забывай о <a href="/beginner/warming-up" title="Разминка">разминке</a>. А после нее - учишь упражнение, включаешь метроном и вперед :)</p>
                                                                         <p class="MsoNormal" style="text-align: justify;">Помни о правилах и вскоре выполнять их будет не сложнее, чем вдыхать свежий воздух. После того как будешь без проблем играть все упражнения данного урока на скорости 80 УВМ, можешь переходить к уроку <a href="/altpicking/altpickgamm" title="Переменный штрих - гаммы" style="line-height: 1.3em;">переменный штрих - гаммы</a>. Кроме этого я советую тебе, прежде чем идти дальше, выучить <a href="/practice/item/143-ac/dc-highway-to-hell-%D1%81%D0%BE%D0%BB%D0%BE" title="AC/DC - Highway to Hell">этот соляк</a>, а также уроки <a href="/tehnika/harmonics" title="Три способа взять флажолет">флажолеты</a>, <a href="/legatotechnique/legatofinger" title="Развитие независимости пальцев">развитие независимости пальцев</a>,&nbsp;<a href="/rythmguitar/rhytmmute" title="Глушение">глушение</a>. Желаю удачи!</p>
@@ -257,6 +254,9 @@
         model.stop = function () {
             model.isRun(false);
         }
+        model.usch = function() {
+            alert('Если первого шага оказалось недостаточно, придется катать эти упражнения 38 лет.');
+        };
         var playSound = function () {
             model.bitSound.play();
         }

@@ -246,6 +246,18 @@ WITH (
 ALTER TABLE ProductPropertyValue
   OWNER TO postgres;
 
+CREATE TABLE LessonStat (
+  Id serial NOT NULL,
+  AccountId int NOT NULL,
+  LessonSpeed int NOT NULL,
+  CONSTRAINT pk_LessonStat PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE LessonStat
+  OWNER TO postgres;
+
 /*
 CREATE TABLE SchemaVersion (
   id serial NOT NULL,

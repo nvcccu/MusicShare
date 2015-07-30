@@ -50,6 +50,7 @@
     <Compile Include="TransportTypes\AskThreadTransportType.cs" />
     <Compile Include="TransportTypes\DesignerImageTransportType.cs" />
     <Compile Include="TransportTypes\AnswerDto.cs" />
+    <Compile Include="TransportTypes\LessonStatDto.cs" />
     <Compile Include="TransportTypes\QuestionTransportType.cs" />
     <Compile Include="TransportTypes\QuestionDto .cs" />
     <Compile Include="TransportTypes\PredefinedGuitarDto.cs" />

@@ -6,7 +6,8 @@
         IDesignerProvider,
         IAskProvider,
         IArticleProvider,
-        IMarketProvider {
+        IMarketProvider,
+        ILessonProvider {
             void Initial();
     }
 }

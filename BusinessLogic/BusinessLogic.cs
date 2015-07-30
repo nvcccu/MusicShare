@@ -15,6 +15,7 @@ namespace BusinessLogic {
         private readonly AskProvider _askProvider = new AskProvider();
         private readonly ArticleProvider _articleProvider = new ArticleProvider();
         private readonly MarketProvider _marketProvider = new MarketProvider();
+        private readonly LessonProvider _lessonProvider = new LessonProvider();
         public BusinessLogic() {
             Initial();
         }
@@ -96,6 +97,9 @@ namespace BusinessLogic {
         }
         public List<ProductDto> GetFilteredProducts(int productTypeId, string namePart, Dictionary<int, int> propertyValuePairs) {
             return _derzkieSchiProvider.GetFilteredProducts(productTypeId, namePart, propertyValuePairs);
+        }
+        public LessonStatDto GetUsersLessonStat(int accountId) {
+            return _lessonProvider.GetUsersLessonStat(accountId);
         }
     }
 }
