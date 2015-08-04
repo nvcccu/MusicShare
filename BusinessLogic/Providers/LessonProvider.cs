@@ -13,9 +13,7 @@ namespace BusinessLogic.Providers {
             var ret = String.Empty;
             speedStat.ForEach(ss => {
                 ret += ss.Key + ":";
-                ss.Value.ForEach(l => {
-                    ret += l.Key + "-" + l.Value;
-                });
+                ret += String.Join(",", ss.Value.Select(l => l.Key + "-" + l.Value)); ;
                 ret += ";";
             });
             return ret;
@@ -23,7 +21,7 @@ namespace BusinessLogic.Providers {
         private LessonStatDto CreateBaseLessonStat(int accountId) {
             var lessonStat = new LessonStat {
                 AccountId = accountId,
-                ExerciseSpeed = "1:1-60,1-60,1-60,1-60,1-60,1-60,1-60,1-60,1-60,1-60,1-60,1-60;"
+                ExercisesSpeed = "1:1-60,2-60,3-60,4-60,5-60,6-60,7-60,8-60,9-60,10-60,11-60,12-60;"
             };
             lessonStat.Id = Convert.ToInt32(lessonStat.Insert());
             return lessonStat.ToDto();
@@ -47,8 +45,12 @@ namespace BusinessLogic.Providers {
                 .GetData()
                 .SingleOrDefault();
             if(lessonStat != null) {
-                lessonStat.ExerciseSpeed = ArchiveExerciseSpeed(lessonStatDto.ExerciseSpeed);
-                lessonStat.Save();
+                new LessonStat()
+                    .Select()
+                    .Update()
+                    .Set(LessonStat.Fields.ExercisesSpeed, ArchiveExerciseSpeed(lessonStatDto.ExercisesSpeed))
+                    .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, lessonStatDto.AccountId)
+                    .ExecuteScalar();
             } else {
                 CreateBaseLessonStat(lessonStatDto.AccountId);
             }

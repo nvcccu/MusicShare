@@ -18,17 +18,17 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (Int32))]
             AccountId,
             [DbType(typeof (String))]
-            ExerciseSpeed
+            ExercisesSpeed
         }
 
         public int Id { get; set; }
         public int AccountId { get; set; }
-        public string ExerciseSpeed { get; set; }
+        public string ExercisesSpeed { get; set; }
 
         private Dictionary<int, Dictionary<int, int>> ParseExerciseSpeed() {
             var parsed = new Dictionary<int, Dictionary<int, int>>();
-            if(!String.IsNullOrEmpty(ExerciseSpeed)) {
-                var parsedByLesson = ExerciseSpeed.Split(';');
+            if(!String.IsNullOrEmpty(ExercisesSpeed)) {
+                var parsedByLesson = ExercisesSpeed.Split(new []{';'}, StringSplitOptions.RemoveEmptyEntries);
                 parsedByLesson.ForEach(p => {
                     var splitedLesson = p.Split(':');
                     var lessonId = Convert.ToInt32(splitedLesson[0]);
@@ -44,7 +44,7 @@ namespace BusinessLogic.DaoEntities {
             return new LessonStatDto {
                 Id = Id,
                 AccountId = AccountId,
-                ExerciseSpeed = ParseExerciseSpeed()
+                ExercisesSpeed = ParseExerciseSpeed()
             };
         }
     }

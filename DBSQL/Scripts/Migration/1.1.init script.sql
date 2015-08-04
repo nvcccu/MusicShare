@@ -249,7 +249,7 @@ ALTER TABLE ProductPropertyValue
 CREATE TABLE LessonStat (
   Id serial NOT NULL,
   AccountId int NOT NULL,
-  LessonSpeed int NOT NULL,
+  ExercisesSpeed character varying(2048) NOT NULL,
   CONSTRAINT pk_LessonStat PRIMARY KEY (Id)
 )
 WITH (

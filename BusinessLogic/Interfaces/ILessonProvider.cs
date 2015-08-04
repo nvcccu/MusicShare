@@ -2,6 +2,7 @@
 
 namespace BusinessLogic.Interfaces {
     public interface ILessonProvider {
-        public LessonStatDto GetUsersLessonStat(int accountId)
+        LessonStatDto GetUsersLessonStat(int accountId);
+        void SaveUsersLessonStat(LessonStatDto lessonStatDto);
     }
 }

@@ -101,5 +101,8 @@ namespace BusinessLogic {
         public LessonStatDto GetUsersLessonStat(int accountId) {
             return _lessonProvider.GetUsersLessonStat(accountId);
         }
+        public void SaveUsersLessonStat(LessonStatDto lessonStatDto) {
+            _lessonProvider.SaveUsersLessonStat(lessonStatDto);
+        }
     }
 }
