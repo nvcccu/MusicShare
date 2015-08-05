@@ -258,6 +258,30 @@ WITH (
 ALTER TABLE LessonStat
   OWNER TO postgres;
 
+CREATE TABLE GuitarTechnique (
+  Id serial NOT NULL,
+  Name character varying(128) NOT NULL,
+  CONSTRAINT pk_GuitarTechnique PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE GuitarTechnique
+  OWNER TO postgres;
+
+CREATE TABLE Lesson (
+  Id serial NOT NULL,
+  GuitarTechniqueId int NOT NULL,
+  OrderNumber int NOT NULL,
+  Title character varying(256) NOT NULL,
+  Text text NOT NULL,
+  CONSTRAINT pk_Lesson PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Lesson
+  OWNER TO postgres; 
 /*
 CREATE TABLE SchemaVersion (
   id serial NOT NULL,

@@ -1,0 +1,119 @@
+﻿@using System.Text.RegularExpressions
+@model MusicShareWeb.Models.Lesson.LessonModel
+
+@{
+    Layout = "../Shared/Layout.cshtml";
+    var i = 0;
+    var text = Model.Lesson.Text;
+    const string MetronomeTag = "@@METRONOME@@";
+    var regex = new Regex(Regex.Escape(MetronomeTag));
+    var replacePattern = "<div data-bind=\"template: {{ name: 'MetronomeTemplate', data: {0} }}\"></div>";
+}
+
+<div>
+    @if(Model.CurrentUser == null) {
+        <span>Чтобы сохранять скорости метрономов надо зарегистрироваться</span>
+    } else {
+        <input type="button" value="Сохранить изменения скорости метрономов" data-bind="click: $root.saveSpeeds" style="position: fixed; top: 400px; left: 100px;"/>
+    }
+</div>
+
+<audio id="BitSound" src="/Content/bit.mp3"></audio>
+<div id="Lesson" class="lesson">
+    <div id="LessonTitle" class="lesson__title">
+        @Model.Lesson.Title
+    </div>
+    <div id="LessonBody" class="lesson__body">
+        @while (text.IndexOf(MetronomeTag, StringComparison.Ordinal) > -1) {
+            text = regex.Replace(text, String.Format(replacePattern, i), 1);
+            i++;
+        }
+        @Html.Raw(text)
+    </div>
+</div>
+
+<script type="text/html" id="MetronomeTemplate">
+    <input type="button" value="Запустить" data-bind="attr: { 'value': $root.isRun() ? 'Остановить' : 'Запустить' }, click: $root.isRun() ? $root.stop : $root.run" /><br>
+    <input type="button" value="Быстрее" data-bind="click: $root.speedUp.bind($data, $data)" /><br>
+    <input type="button" value="Медленнее" data-bind="click: $root.speedDown.bind($data, $data)" /><br>
+    Скорость <span data-bind="text: $root.speeds[$data]()"></span> УВМ
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ko.applyBindings(getLesson(null, document.getElementById("Lesson")));
+    });
+
+    getLesson = function () {
+        var model = {};
+        model.bitSound = document.getElementById('BitSound');
+        model.isRun = ko.observable(false);
+        model.speeds = [ @Html.Raw(String.Join(", ", Model.Speeds.Select(s => "ko.observable(" + s.Value + ")")))];
+        model.activeSpeedIndex = ko.observable(undefined);
+        model.loop = undefined;
+
+        model.speedUp = function (index) {
+            var wasRun = model.isRun();
+            model.stop();
+            model.speeds[index](model.speeds[index]() + 1.0);
+            if (wasRun) {
+                model.run(index);
+            }
+        }
+        model.speedDown = function (index) {
+            debugger;
+            var wasRun = model.isRun();
+            model.stop();
+            model.speeds[index](model.speeds[index]() - 1.0);
+            if (wasRun) {
+                model.run(index);
+            }
+        }
+        model.run = function (index) {
+            model.activeSpeedIndex(index);
+            model.isRun(true);
+        }
+        model.stop = function () {
+            model.isRun(false);
+        }
+        var playSound = function () {
+            model.bitSound.play();
+        }
+        ko.computed(function () {
+            if (model.isRun()) {
+                var time = 60.0 / model.speeds[model.activeSpeedIndex()]() * 1000.0;
+                playSound();
+                model.loop = setInterval(playSound, time);
+            } else {
+                clearInterval(model.loop);
+            }
+        });
+        model.saveSpeeds = function () {
+            var speeds = {};
+            var i = 0;
+            ko.utils.arrayForEach(model.speeds, function (speed) {
+                speeds[i.toString()] = speed().toString();
+                i++;
+            });
+            $.ajax({
+                url: '@Url.Action("SaveExercisesSpeed")',
+                type: 'POST',
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    lessonId: @Model.Lesson.Id,
+                    speeds: speeds
+                }),
+                success: function (result) {
+                    alert('Сохранено');
+                },
+                error: function (result) {
+                    alert('Ошибка');
+                }
+            });
+            return false;
+        };
+
+        return model;
+    }
+</script>

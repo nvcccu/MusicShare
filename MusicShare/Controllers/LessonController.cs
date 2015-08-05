@@ -6,12 +6,16 @@ using MusicShareWeb.Models.Lesson;
 
 namespace MusicShareWeb.Controllers {
     public class LessonController : BaseController {
-        public ActionResult Index(int id) {
-            return View("Index", new LessonModel(BaseModel, id));
+        public ActionResult Index(int? id) {
+            return id.HasValue
+                ? View("Lesson", new LessonModel(BaseModel, id.Value))
+                : View("Index", new LessonListModel(BaseModel));
         }
         [HttpPost]
         public JsonResult SaveExercisesSpeed(int lessonId, Dictionary<string, string> speeds) {
-            new LessonModel(BaseModel, lessonId, speeds.ToDictionary(s => Convert.ToInt32(s.Key), s => Convert.ToInt32(s.Value))).SaveExercisesSpeed();
+            new LessonModel(BaseModel) {
+                Speeds = speeds.ToDictionary(s => Convert.ToInt32(s.Key), s => Convert.ToInt32(s.Value))
+            }.SaveExercisesSpeed();
             return null;
         }
     }

@@ -140,6 +140,7 @@
     <Compile Include="Models\DerzkieSchi\NewProductsModel.cs" />
     <Compile Include="Models\DerzkieSchi\ProductsModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
+    <Compile Include="Models\Lesson\LessonListModel.cs" />
     <Compile Include="Models\Lesson\LessonModel.cs" />
     <Compile Include="Models\Market\SelectingModel.cs" />
     <Compile Include="Models\Market\CategoryListModel.cs" />
@@ -324,6 +325,7 @@
       <DependentUpon>Lesson.css</DependentUpon>
     </Content>
     <Content Include="Views\Lesson\Metronome.cshtml" />
+    <Content Include="Views\Lesson\Lesson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

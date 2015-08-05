@@ -50,6 +50,8 @@
     <Compile Include="TransportTypes\AskThreadTransportType.cs" />
     <Compile Include="TransportTypes\DesignerImageTransportType.cs" />
     <Compile Include="TransportTypes\AnswerDto.cs" />
+    <Compile Include="TransportTypes\GuestDto.cs" />
+    <Compile Include="TransportTypes\GuitarTechniqueDto.cs" />
     <Compile Include="TransportTypes\LessonStatDto.cs" />
     <Compile Include="TransportTypes\QuestionTransportType.cs" />
     <Compile Include="TransportTypes\QuestionDto .cs" />
@@ -59,7 +61,7 @@
     <Compile Include="TransportTypes\DesignerImageDto.cs" />
     <Compile Include="TransportTypes\DesignerImagePositionDto.cs" />
     <Compile Include="TransportTypes\ParameterDto.cs" />
-    <Compile Include="TransportTypes\GuestDto.cs" />
+    <Compile Include="TransportTypes\LessonDto.cs" />
     <Compile Include="TransportTypes\NewsDto.cs" />
     <Compile Include="TransportTypes\ProductTypeDto.cs" />
     <Compile Include="TransportTypes\PropertyDto.cs" />

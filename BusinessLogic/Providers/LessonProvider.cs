@@ -56,5 +56,29 @@ namespace BusinessLogic.Providers {
             }
                 
         }
+        public Dictionary<GuitarTechniqueDto, List<LessonDto>> GetAllLessonsGroupedByTechnique() {
+            var guitarTechnique = new GuitarTechnique()
+                .Select()
+                .GetData()
+                .Select(gt => gt.ToDto())
+                .ToList();
+            var lessons = new Lesson()
+                .Select()
+                .GetData()
+                .Select(gt => gt.ToDto())
+                .ToList();
+            return guitarTechnique.ToDictionary(gt => gt, gt => lessons
+                .Where(l => l.GuitarTechniqueId == gt.Id)
+                .OrderBy(l => l.OrderNumber)
+                .ToList());
+        }
+        public LessonDto GetLesson(int lessonId) {
+            return new Lesson()
+                .Select()
+                .Where(Lesson.Fields.Id, PredicateCondition.Equal, lessonId)
+                .GetData()
+                .Single()
+                .ToDto();
+        }
     }
 }

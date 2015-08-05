@@ -1,4 +1,4 @@
-﻿@model MusicShareWeb.Models.Lesson.LessonModel
+﻿@model MusicShareWeb.Models.Lesson.LessonListModel
 
 @{
     Layout = "../Shared/Layout.cshtml";
@@ -202,7 +202,7 @@
         var model = {};
         model.bitSound = document.getElementById('BitSound');
         model.isRun = ko.observable(false);
-        model.speeds = [ @Html.Raw(String.Join(", ", Model.Speeds.Select(s => "ko.observable(" + s.Value + ")")))];
+   @*     model.speeds = [ @Html.Raw(String.Join(", ", Model.Speeds.Select(s => "ko.observable(" + s.Value + ")")))];*@
         model.activeSpeedIndex = ko.observable(undefined);
         model.loop = undefined;
 

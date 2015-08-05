@@ -104,5 +104,11 @@ namespace BusinessLogic {
         public void SaveUsersLessonStat(LessonStatDto lessonStatDto) {
             _lessonProvider.SaveUsersLessonStat(lessonStatDto);
         }
+        public Dictionary<GuitarTechniqueDto, List<LessonDto>> GetAllLessonsGroupedByTechnique() {
+            return _lessonProvider.GetAllLessonsGroupedByTechnique();
+        }
+        public LessonDto GetLesson(int lessonId) {
+            return _lessonProvider.GetLesson(lessonId);
+        }
     }
 }
