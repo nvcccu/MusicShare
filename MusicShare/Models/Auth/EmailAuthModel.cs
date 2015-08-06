@@ -13,6 +13,9 @@ namespace MusicShareWeb.Models.Auth {
         public int? Register(long guestId) {
             if (!String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(Password)) {
                 var registerResult = ServiceManager<IBusinessLogic>.Instance.Service.RegisterViaEmail(guestId, Email, Password);
+                if(registerResult.HasValue) {
+                    ServiceManager<IBusinessLogic>.Instance.Service.CreateLessonStatNode(registerResult.Value);
+                }
                 return registerResult;
             }
             return null;

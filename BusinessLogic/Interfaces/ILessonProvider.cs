@@ -3,8 +3,9 @@ using Core.TransportTypes;
 
 namespace BusinessLogic.Interfaces {
     public interface ILessonProvider {
-        LessonStatDto GetUsersLessonStat(int accountId);
-        void SaveUsersLessonStat(LessonStatDto lessonStatDto);
+        void CreateLessonStatNode(int accountId);
+        Dictionary<int, int> GetUsersLessonStat(int lessonId, int accountId);
+        void SaveUsersLessonStat(int accountId, int lessonId, Dictionary<int, int> lessonStat);
         Dictionary<GuitarTechniqueDto, List<LessonDto>> GetAllLessonsGroupedByTechnique();
         LessonDto GetLesson(int lessonId);
     }

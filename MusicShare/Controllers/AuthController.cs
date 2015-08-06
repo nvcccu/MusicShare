@@ -15,7 +15,7 @@ namespace MusicShareWeb.Controllers {
                     return new JsonResult {
                         Data = new {
                             Success = true,
-                            Redirect = "http://localhost"
+                            Redirect = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/"
                         },
                     };
                 }
@@ -35,7 +35,7 @@ namespace MusicShareWeb.Controllers {
                 return new JsonResult {
                     Data = new {
                         Success = true,
-                        Redirect = "http://localhost"
+                        Redirect = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/"
                     },
                 };
             } 

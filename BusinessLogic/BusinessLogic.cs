@@ -98,17 +98,20 @@ namespace BusinessLogic {
         public List<ProductDto> GetFilteredProducts(int productTypeId, string namePart, Dictionary<int, int> propertyValuePairs) {
             return _derzkieSchiProvider.GetFilteredProducts(productTypeId, namePart, propertyValuePairs);
         }
-        public LessonStatDto GetUsersLessonStat(int accountId) {
-            return _lessonProvider.GetUsersLessonStat(accountId);
+        public Dictionary<int, int> GetUsersLessonStat(int lessonId, int accountId) {
+            return _lessonProvider.GetUsersLessonStat(lessonId, accountId);
         }
-        public void SaveUsersLessonStat(LessonStatDto lessonStatDto) {
-            _lessonProvider.SaveUsersLessonStat(lessonStatDto);
+        public void SaveUsersLessonStat(int accountId, int lessonId, Dictionary<int, int> lessonStat) {
+            _lessonProvider.SaveUsersLessonStat(accountId, lessonId, lessonStat);
         }
         public Dictionary<GuitarTechniqueDto, List<LessonDto>> GetAllLessonsGroupedByTechnique() {
             return _lessonProvider.GetAllLessonsGroupedByTechnique();
         }
         public LessonDto GetLesson(int lessonId) {
             return _lessonProvider.GetLesson(lessonId);
+        }
+        public void CreateLessonStatNode(int accountId) {
+            _lessonProvider.CreateLessonStatNode(accountId);
         }
     }
 }

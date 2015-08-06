@@ -15,7 +15,7 @@ namespace MusicShareWeb.Controllers {
         public JsonResult SaveExercisesSpeed(int lessonId, Dictionary<string, string> speeds) {
             new LessonModel(BaseModel) {
                 Speeds = speeds.ToDictionary(s => Convert.ToInt32(s.Key), s => Convert.ToInt32(s.Value))
-            }.SaveExercisesSpeed();
+            }.SaveExercisesSpeed(lessonId);
             return null;
         }
     }
