@@ -180,7 +180,7 @@ insert into lesson values
 
 
 insert into lesson values
-(2, 2, 2, 12, 'Штрих при переходе со струны на струну', '<h5><img src="/images/stories/line.jpg" border="0"></h5>
+(2, 2, 2, 12, 'Штрих при переходе со струны на струну', '<h5><img src="http://allfrets.ru/images/stories/line.jpg" border="0"></h5>
 <h5><a href="/altpicking/singlestringpicking" title="Переменный штрих на одной струне" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #40678a; font-family: Arial, Helvetica, sans-serif; line-height: 23px; text-align: justify;">&lt;&lt; ПРЕДЫДУЩИЙ УРОК</a></h5>
 <p>&nbsp;</p>
 <p class="MsoNormal" style="text-align: justify;">Привет! Я рад, что ты достиг скорости в 60 УВМ при игре переменным штрихом на одной струне. Если нет, тогда вернись к <a href="/altpicking/singlestringpicking" title="Переменный штрих на одной струне">предыдущему уроку</a>. Если же это так, тогда продолжим обучение игре на электрогитаре. Если ты еще не умеешь настраивать гитару, обратись к <a href="/beginner/howtotuneaguitar" title="Настройка гитары">соответствующему уроку</a>. То же и с <a href="/beginner/howtoreadtabs" title="Как читать табулатуры">чтением табулатур</a>.</p>
@@ -189,9 +189,9 @@ insert into lesson values
 <p class="MsoNormal" style="text-align: justify;">Обратимся к книге “Соло-гитара в стиле хэви-метал” Троя Стетины – выдающегося гитариста и преподавателя:</p>
 <p class="MsoNormal" style="text-align: justify;">«Научиться играть переменным штрихом быстро и долго, постоянно переходя со струны на струну очень трудно, но оно того стоит. Послушай Ингви Мальмстина или Эла Ди Меолу и ты услышишь великолепные примеры такой игры…</p>
 <p class="MsoNormal" style="text-align: justify;">…В следующих паттернах переход со струны на струну осуществляется с помощью внутреннего штриха. Это значит, что медиатор движется&nbsp; внутри пространства между струнами.</p>
-<p class="MsoNormal" style="text-align: center;"><img src="/images/stories/altpicking/2_shtrih_1.jpg" border="0"></p>
+<p class="MsoNormal" style="text-align: center;"><img src="http://allfrets.ru/images/stories/altpicking/2_shtrih_1.jpg" border="0"></p>
 <p class="MsoNormal">Противоположным этому является внешний штрих. Он используется в следующих примерах.</p>
-<p class="MsoNormal" style="text-align: center;"><img src="/images/stories/altpicking/2_shtrih_2.jpg" border="0"></p>
+<p class="MsoNormal" style="text-align: center;"><img src="http://allfrets.ru/images/stories/altpicking/2_shtrih_2.jpg" border="0"></p>
 <p class="MsoNormal" style="text-align: justify;">Если у тебя проблемы с каким-либо штрихом, придумай ходы и упражнения, которые помогут их решить»</p>
 <p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
 <p class="MsoNormal" style="text-align: justify;">Есть небольшая путаница насчет названия типов штриха. В некоторых пособиях тот штрих, что у Стетины назван внутренним, называется внешним, а противоположный ему - внутренним. Хорошая новость заключается в том, что тебе ничего не придется придумывать самому. Прибереги фантазию и музыкальные идеи на будущее. Плохая новость – придется провести уйму времени, отрабатывая переменный штрих, иначе ты ничего не добьешься. А сейчас вспомним основные правила, которые необходимо соблюдать при игре переменным штрих.</p>
@@ -208,34 +208,34 @@ insert into lesson values
 <p class="MsoNormal">&nbsp;</p>
 <h5>УПРАЖНЕНИЯ</h5>
 <p class="MsoNormal" style="text-align: justify;">Итак! Пришло время выучить несколько упражнений. Для начала два упражнения из видеошколы Майкла Анжэло “<span lang="EN-US">Speed</span><span lang="EN-US"> </span><span lang="EN-US">kills</span>”:</p>
-<p class="MsoNormal" style="text-align: justify;"><em><a href="/images/audio/altpicking/Altpicking-2-1.mp3" title="MP3">Упражнение 1</a>. Это упражнение чертовски важно для дальнейшего развития техники переменного штриха. Ты должен <strong>играть его на всех пяти комбинациях струн</strong> (на шестой и пятой, на пятой и четвертой, на четвертой и третьей, на третьей и второй и, <strong>ГЛАВНОЕ</strong>, на второй и первой). Кроме того, ты непременно должен при помощи него отрабатывать <strong>различные типы штриха </strong>(внешний и внутренний). Просто один раз начни играть это упражнение с удара вниз (даунстрока), второй раз - с удара вверх (апстрока).</em></p>
-<p class="MsoNormal" style="text-align: justify;"><img src="/images/stories/altpicking/2_upr_alternate_picking_1.jpg" border="0"></p>
+<p class="MsoNormal" style="text-align: justify;"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-1.mp3" title="MP3">Упражнение 1</a>. Это упражнение чертовски важно для дальнейшего развития техники переменного штриха. Ты должен <strong>играть его на всех пяти комбинациях струн</strong> (на шестой и пятой, на пятой и четвертой, на четвертой и третьей, на третьей и второй и, <strong>ГЛАВНОЕ</strong>, на второй и первой). Кроме того, ты непременно должен при помощи него отрабатывать <strong>различные типы штриха </strong>(внешний и внутренний). Просто один раз начни играть это упражнение с удара вниз (даунстрока), второй раз - с удара вверх (апстрока).</em></p>
+<p class="MsoNormal" style="text-align: justify;"><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_1.jpg" border="0"></p>
 @@METRONOME@@
 <p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
-<p class="MsoNormal"><em><a href="/images/audio/altpicking/Altpicking-2-2.mp3" title="MP3">Упражнение 2</a>. Оно как ты видишь, является более сложной версией первого.</em></p>
-<p class="MsoNormal"><em><img src="/images/stories/altpicking/2_upr_alternate_picking_2.jpg" border="0"></em></p>
+<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-2.mp3" title="MP3">Упражнение 2</a>. Оно как ты видишь, является более сложной версией первого.</em></p>
+<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_2.jpg" border="0"></em></p>
 @@METRONOME@@
 <p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
 <p class="MsoNormal">Теперь перейдем&nbsp; к упражнениям из книги Терри Сайрека &nbsp;“<span lang="EN-US">Shred</span><span lang="EN-US"> </span><span lang="EN-US">is</span><span lang="EN-US"> </span><span lang="EN-US">not</span><span lang="EN-US"> </span><span lang="EN-US">dead</span>”:</p>
-<p class="MsoNormal"><em><a href="/images/audio/altpicking/Altpicking-2-3.mp3" title="MP3">Упражнение 3</a>. Довольно длинное упражнение. Постарайся подобрать наиболее удобную для тебя пальцовку.</em></p>
-<p class="MsoNormal"><em><img src="/images/stories/altpicking/2_upr_alternate_picking_3.jpg" border="0"></em></p>
+<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-3.mp3" title="MP3">Упражнение 3</a>. Довольно длинное упражнение. Постарайся подобрать наиболее удобную для тебя пальцовку.</em></p>
+<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_3.jpg" border="0"></em></p>
 @@METRONOME@@
 <p class="MsoNormal">&nbsp;</p>
-<p class="MsoNormal"><em><a href="/images/audio/altpicking/Altpicking-2-4.mp3" title="MP3">Упражнение 4</a>. Продолжай играть последовательность, пока не дойдешь до нижних ладов (н</em><em style="line-height: 1.3em;">ижних по звучанию, т.е. самых широких)</em></p>
-<p class="MsoNormal" style="text-align: justify;"><img src="/images/stories/altpicking/2_upr_alternate_picking_4.jpg" border="0"></p>
+<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-4.mp3" title="MP3">Упражнение 4</a>. Продолжай играть последовательность, пока не дойдешь до нижних ладов (н</em><em style="line-height: 1.3em;">ижних по звучанию, т.е. самых широких)</em></p>
+<p class="MsoNormal" style="text-align: justify;"><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_4.jpg" border="0"></p>
 @@METRONOME@@
 <p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
 <p class="MsoNormal">Упражнения из<span lang="EN-US"> “Speed mechanics for lead guitar”:</span></p>
-<p class="MsoNormal" style="text-align: justify;"><em><a href="/images/audio/altpicking/Altpicking-2-5.mp3" title="MP3">Упражнение 5</a>. Это упражнение поможет тебе научиться перемещаться по грифу, а также напомнит о предыдущем уроке, так как на каждый такт здесь приходится всего по два перехода со струны на струну.</em></p>
-<p class="MsoNormal" style="text-align: justify;"><img src="/images/stories/altpicking/2_upr_alternate_picking_7.jpg" border="0"></p>
+<p class="MsoNormal" style="text-align: justify;"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-5.mp3" title="MP3">Упражнение 5</a>. Это упражнение поможет тебе научиться перемещаться по грифу, а также напомнит о предыдущем уроке, так как на каждый такт здесь приходится всего по два перехода со струны на струну.</em></p>
+<p class="MsoNormal" style="text-align: justify;"><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_7.jpg" border="0"></p>
 @@METRONOME@@
 <p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
-<p class="MsoNormal"><em><a href="/images/audio/altpicking/Altpicking-2-6.mp3" title="MP3">Упражнение 6</a>. Как и первое, рекомендуется отрабатывать на всех комбинациях струн.</em></p>
-<p class="MsoNormal"><em><img src="/images/stories/altpicking/2_upr_alternate_picking_5.jpg" border="0"></em></p>
+<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-6.mp3" title="MP3">Упражнение 6</a>. Как и первое, рекомендуется отрабатывать на всех комбинациях струн.</em></p>
+<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_5.jpg" border="0"></em></p>
 @@METRONOME@@
 <p class="MsoNormal">&nbsp;</p>
-<p class="MsoNormal"><em><a href="/images/audio/altpicking/Altpicking-2-7.mp3" title="MP3">Упражнение 7</a>.</em></p>
-<p class="MsoNormal"><em><img src="/images/stories/altpicking/2_upr_alternate_picking_6.jpg" border="0"></em></p>
+<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-7.mp3" title="MP3">Упражнение 7</a>.</em></p>
+<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_6.jpg" border="0"></em></p>
 @@METRONOME@@
 <p class="MsoNormal">&nbsp;</p>
 <p class="MsoNormal" style="text-align: justify;">Как ты мог заметить, во всех упражнениях было задействовано лишь две струны. Это и понятно – нужно идти от простого к сложному, а не наоборот. Еще раз напомню, что особое внимание стоит обратить на первое упражнение, так как переменный штрих на разных по толщине струнах отличается. Попытайся почувствовать гитару и понять в чем отличие.</p>
@@ -244,30 +244,30 @@ insert into lesson values
 <p class="MsoNormal" style="text-align: justify;">Что такое пентатоника? Особое внимание я уделил ей в <a href="/improvisation/pentatonic" title="Пентатоника">разделе импровизация</a>. Пентатоника это гамма, состоящая всего из пяти нот. Несмотря на это обстоятельство, пентатоника весьма часто используется при построении соло. Многие известные роковые соляки были построены именно на пентатонике и звучали просто великолепно. Поэтому ты обязательно должен выучить пентатонику. К тому же она поможет тебе закрепить переход со струны струну, над которым ты работал в предыдущих упражнениях.</p>
 <p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
 <p class="MsoNormal" style="text-align: justify;">Ниже ты видишь аппликатуру минорной пентатоники. Для начала нам хватит ее одной.</p>
-<p class="MsoNormal" style="text-align: justify;"><img src="/images/stories/altpicking/pentatonika.jpg" border="0"></p>
+<p class="MsoNormal" style="text-align: justify;"><img src="http://allfrets.ru/images/stories/altpicking/pentatonika.jpg" border="0"></p>
 <p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
 <p class="MsoNormal" style="text-align: justify;">Подбери удобную для тебя пальцовку. Многие на двух верхних струнах используют третий палец. Некоторые - четвертый. Черной точкой обозначена тоника. Не буду вдаваться в теорию здесь. Скажу только, что тоника это нота, с которой начинается гамма. Как видишь, выучить пентатонику совсем не сложно.</p>
 <p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
 <p class="MsoNormal" style="text-align: justify;">Пришло время выполнить несколько упражнений, основанных на пентатонике. Трой Стетина в книге “<span lang="EN-US">Speed</span><span lang="EN-US"> </span><span lang="EN-US">Mechanics</span><span lang="EN-US"> </span><span lang="EN-US">For</span><span lang="EN-US"> </span><span lang="EN-US">Lead</span><span lang="EN-US"> </span><span lang="EN-US">Guitar</span>” выделил пять основных вариантов перехода со струны на струну. Попробуй определить, какой из них наиболее труден для тебя. Над ним и работай. Каждое упражнение начинай ударом вниз. Сначала поработай над первым тактом. Потом над последними двумя. В последнем такте тебе встретится несколько скачков через струну. Возможно, понадобится определенная доля упорства, чтобы научиться играть эти моменты чисто. Но ты должен это сделать!</p>
 <p class="MsoNormal">&nbsp;</p>
-<p class="MsoNormal"><em><a href="/images/audio/altpicking/Altpicking-2-8.mp3" title="MP3">Упражнение 8</a>.</em></p>
-<p class="MsoNormal"><em><img src="/images/stories/altpicking/2_upr_alternate_picking_8.jpg" border="0"></em></p>
+<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-8.mp3" title="MP3">Упражнение 8</a>.</em></p>
+<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_8.jpg" border="0"></em></p>
 @@METRONOME@@
 <p class="MsoNormal"><em><br></em></p>
-<p class="MsoNormal"><em><a href="/images/audio/altpicking/Altpicking-2-9.mp3" title="MP3">Упражнение 9</a>.</em></p>
-<p class="MsoNormal"><em><img src="/images/stories/altpicking/2_upr_alternate_picking_9.jpg" border="0"></em></p>
+<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-9.mp3" title="MP3">Упражнение 9</a>.</em></p>
+<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_9.jpg" border="0"></em></p>
 @@METRONOME@@
 <p class="MsoNormal">&nbsp;</p>
-<p class="MsoNormal"><em><a href="/images/audio/altpicking/Altpicking-2-10.mp3" title="MP3">Упражнение 10</a>.</em></p>
-<p class="MsoNormal"><em><img src="/images/stories/altpicking/2_upr_alternate_picking_10.jpg" border="0" style="border-style: initial; border-color: initial;"></em></p>
+<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-10.mp3" title="MP3">Упражнение 10</a>.</em></p>
+<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_10.jpg" border="0" style="border-style: initial; border-color: initial;"></em></p>
 @@METRONOME@@
 <p class="MsoNormal">&nbsp;</p>
-<p class="MsoNormal"><em><a href="/images/audio/altpicking/Altpicking-2-11.mp3" title="MP3">Упражнение 11</a>.</em></p>
-<p class="MsoNormal"><em><img src="/images/stories/altpicking/2_upr_alternate_picking_11.jpg" border="0"></em></p>
+<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-11.mp3" title="MP3">Упражнение 11</a>.</em></p>
+<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_11.jpg" border="0"></em></p>
 @@METRONOME@@
 <p class="MsoNormal">&nbsp;</p>
-<p class="MsoNormal"><em><a href="/images/audio/altpicking/Altpicking-2-12.mp3" title="MP3">Упражнение 12</a>.</em></p>
-<p class="MsoNormal"><em><img src="/images/stories/altpicking/2_upr_alternate_picking_12.jpg" border="0"></em></p>
+<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-12.mp3" title="MP3">Упражнение 12</a>.</em></p>
+<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_12.jpg" border="0"></em></p>
 @@METRONOME@@
 <p class="MsoNormal">&nbsp;</p>
 <p class="MsoNormal" style="text-align: justify;">И вновь о том как надо заниматься. Заниматься нужно регулярно. Даже небольшой перерыв в занятиях может отбросить тебя далеко назад. Время, которое нужно уделять гитаре, не ограничено. Здесь действует правило: "кашу маслом не испортишь". Однако, если чувствуешь сильную усталость в руках, или боль - немедленно прекращай занятия! Поврежденные связки техники еще никому не прибавляли. Не забывай о <a href="/beginner/warming-up" title="Разминка">разминке</a>. А после нее - учишь упражнение, включаешь метроном и вперед :)</p>
@@ -275,3 +275,108 @@ insert into lesson values
 <p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
 <p class="MsoNormal" style="margin: 0.5em 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #555555; font-family: Arial, Helvetica, sans-serif; line-height: 23px; text-align: center;"><a href="/forum/viewtopic.php?f=2&amp;t=198" title="Уроки - переменный штрих" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; background-color: transparent; color: #40678a;">ОБСУДИТЬ НА ФОРУМЕ</a></p>
 <p class="MsoNormal" style="margin: 0.5em 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #555555; font-family: Arial, Helvetica, sans-serif; line-height: 23px; text-align: right;"><a href="/altpicking/altpickgamm" title="Переменный штрих - гаммы" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; background-color: transparent; color: #40678a;">СЛЕДУЮЩИЙ УРОК &gt;&gt;</a></p>');
+
+insert into lesson values
+(3, 2, 1, 7, 'Переменный штрих на одной струне', '<p class="MsoNormal" style="text-align: justify;">Первое, с чего тебе следует начать свой путь к виртуозной игре на электрогитаре – это развитие техники <strong>переменного штриха</strong>. В замечательной книге “Speed mechanics for lead guitar” сказано: "Техника переменного штриха хороша тем что, не высчитывая заранее последовательность ударов медиатора, ты можешь сыграть любую последовательность нот. Таким образом ты будешь чувствовать себя более свободно при импровизации, так как не ограничен какими-либо заранее подготовленными схемами. Ты можешь создать и сыграть любые пассажи, не отрабатывая их заранее. А если работа медиатором не требует раздумий – остается думать только о музыке"</p>
+<p class="MsoNormal" style="text-align: justify;">Эта книга есть и в русском переводе, называется она «Скоростная медиаторная техника» Автор оригинала – Трой Стетина, известный музыкант и преподаватель, на счету которого немало пособий по игре на электрогитаре (в том числе и небезызвестная "Соло гитара в стиле хэви метал"), к которым мы еще не раз обратимся.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">А теперь несколько правил, которые нужно помнить, тренируясь играть переменным штрихом:</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><strong>Во-первых</strong>, играть только переменным штрихом! И это важно так, как на начальном этапе очень легко сбиться. Нередко бывает так что после удара вниз, следующую ноту гораздо легче взять опять же ударом вниз. Этого нельзя допускать. Необходимо постоянно контролировать то что ты делаешь.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><strong>Во-вторых</strong>, глушить струны ребром ладони правой руки (для левшей соответственно левой). Как это сделать? Просто поставь руку возле бриджа и заглуши все струны, которые ниже (по высоте звучания, т.е. толще на вид) той что в данный момент звучит. И да! Я знаю, что сделать это для начинающего гитариста гораздо сложнее, чем сказать.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><strong>В-третьих</strong>, играй медленно! Не стоит пытаться сыграть соляки Джо Сатриани, Энди Джеймса и Криса Импеллиттери после первой недели тренировок. Забудь о скорости и играй в таком темпе, в котором ты можешь играть чисто. Не думай, что если двести раз ты сыграешь грязно, то еще через двести у тебя получится что-нибудь достойное. Исправить плохо поставленную технику переменного штриха очень непросто. В любом случае гораздо сложней, чем с самого начала все делать правильно.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Теперь поговорим немного о постановке рук и о том как держать медиатор. На этот счет нет однозначного ответа. Каждый гитарист придерживается своего мнения. Единственное что могу посоветовать – пересмотри видео своих кумиров, обращая внимание на эти моменты. Ты должен начать свое обучение именно с этого – с подражания более опытным гитаристам. Постарайся заметить, как держит медиатор Стив Вай,&nbsp; Ингви Мальмстин. Со временем ты привыкнешь к определенному положению руки, к положению медиатора в ней и даже не будешь обращать на это внимание. Один момент, который все-таки имеет значение это то, под каким углом держать медиатор. Не стоит наклонять его сильно ни в одну, ни в другую сторону. Отсюда вытекает <strong>четвертое правило</strong>, которое нужно помнить при игре переменным штрихом – старайся держать медиатор перпендикулярно струнам либо под небольшим углом.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><strong>В-пятых</strong>. Играй под метроном! Это поможет тебе развить чувство ритма. Многие гитаристы могут играть быстро. Но не все из них уделяют достаточного внимания игре под метроном. Но скажи, кому нужен гитарист, играющий пятнадцать нот в секунду, но не способный играть ритмично.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><strong>В-шестых</strong>. Махать медиатором из стороны в сторону не стоит. Следи за тем, чтобы медиатор&nbsp; не отдалялся от струн далеко. Чем меньше движений – тем выше скорость. Кстати о скорости. Ее мы будем измерять в <strong>ударах в минуту (УВМ)</strong> при игре <strong>шестнадцатыми</strong> нотами. Т.е. если я говорю, скажем, сыграй это упражнение со скоростью 140, ты уже знаешь, что нужно включить метроном на 140 УВМ и играть шестнадцатыми. А чтобы вопросов по этой теме больше не возникало, сразу скажу, что играть шестнадцатыми - значит играть <strong>по-четыре</strong> ноты на каждый удар метронома.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">И наконец, продолжая разговор об экономичности, выделим <strong>седьмое правило</strong> – держи пальцы левой руки на небольшом расстоянии от грифа. Два сантиметра максимум, а меньше – лучше. Тут все понятно – чем ближе пальцы к грифу, тем меньше времени потребуется на движение до него, и тем выше скорость.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Переходим непосредственно к упражнениям. Разумеется, не стоит забывать, что каждую тренировку ты должен начинать с разминки. Запомни это, как дважды два, и я даже не хочу выделять это в отдельное правило, это просто необходимость. О разминке мы говорили в <a href="/beginner/warming-up" title="Разминка и растяжка">этом уроке</a>. Если ты еще не знаешь, как читать табулатуры,&nbsp;<a href="/beginner/howtoreadtabs" title="Как читать табулатуры">жми сюда</a>.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Первая партия упражнений из той же книги Троя Стетины (<span style="line-height: 1.3em;">Speed mechanics for lead guitar</span><span style="line-height: 1.3em;">):</span></p>
+<p class="MsoNormal" style="text-align: justify;"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-1.mp3" title="MP3">Упражнение 1</a>. Повторить на всех струнах. Это упражнение отлично синхронизирует руки, что просто необходимо при игре на соло гитаре.</em></p>
+<p class="MsoNormal" style="text-align: justify;"><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_1.jpg" border="0"></p>
+@@METRONOME@@
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-2.mp3" title="MP3">Упражнение 2</a>. Повторить на всех струнах.</em></p>
+<p class="MsoNormal" style="text-align: justify;"><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_2.jpg" border="0"></em></p>
+@@METRONOME@@
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-3.mp3" title="MP3">Упражнение 3</a>. Короткая мелодическая последовательность. Играть только на первой струне. Не забывай поглядывать на пальцовку.</em></p>
+<p class="MsoNormal" style="text-align: justify;"><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_3.jpg" border="0"></em></p>
+@@METRONOME@@
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-4.mp3" title="MP3">Упражнение 4</a>. Более длинная последовательность. Я бы посоветовал сначала разучить каждый такт в отдельность без метронома, а потом играть целиком.</em></p>
+<p class="MsoNormal" style="text-align: justify;"><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_4.jpg" border="0"></em></p>
+@@METRONOME@@
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-5.mp3" title="MP3">Упражнение 5</a>. Похожее упражнение.</em></p>
+<p class="MsoNormal" style="text-align: justify;"><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_5.jpg" border="0"></em></p>
+@@METRONOME@@
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">И еще два упражнения из книги Терри Сайрека “<span lang="EN-US">Shred</span><span lang="EN-US"> </span><span lang="EN-US">is</span><span lang="EN-US"> </span><span lang="EN-US">not</span><span lang="EN-US"> </span><span lang="EN-US">dead</span>”:</p>
+<p class="MsoNormal" style="text-align: justify;"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-6.mp3" title="MP3">Упражнение 6</a>. Квазихроматика. Как и предыдущие три – играть только на первой струне.</em></p>
+<p class="MsoNormal" style="text-align: justify;"><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_6.jpg" border="0"></em></p>
+@@METRONOME@@
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-7.mp3" title="MP3">Упражнение 7</a>. Упражнение на растяжку пальцев. Играется на второй струне. Опять же не забывай про пальцовку.</em></p>
+<p class="MsoNormal" style="text-align: justify;"><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_7.jpg" border="0"></em></p>
+@@METRONOME@@
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Я привел лишь семь упражнений. И на первое время этого тебе хватит сполна. Одновременно с этим уроком я советую тебе начать изучать уроки <a href="/tehnika/tehnikaosnovi" title="Технические приемы - основы">технические приемы - основы</a>, <a href="/legatotechnique/osnlegato" title="Основы легато">основы легато</a> и <a href="/rythmguitar/rythmvvedenie" title="Введение в ритм гитару">введение в ритм гитару</a>. Чуть позже, развив технику игры и получив необходимые знания, ты сможешь сам составлять для себя упражнения на одной струне необходимой тебе сложности на основе хроматики, либо <a href="/applik/scales" title="Аппликатурное мышление - гаммы">диатонических ладов</a>. Не забывай о том что без практики развитие техники игры на гитаре невозможно и потому советую тебе время от времени разучивать соло, соответствующие твоему уровню игры. На данном этапе можешь ознакомится с <a href="/practice/item/165-led-zeppelin-stairway-to-heaven" title="Led Zeppelin - Stairway to Heaven">этим соляком</a>. Главное помни, что невозможно научится играть на электрогитаре за месяц. И если у тебя пока не получается освоить тот или иной пассаж - просто оставь его. Когда ты вернешься к нему через некоторое время, то сам удивишься, насколько легко он тебе дается.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Могу тебя поздравить. Первый урок позади. Еще пара слов о том, как нужно заниматься и закругляюсь. Для начала определись со скоростью. Ты новичок и твой максиму – 60 УВМ? ОК! Следует играть в различных темпах. В медленном, в быстром, в среднем… Но больше - в медленном. Пусть медленным будет 40, быстрым – 60. Чередуй их. Например, поиграй пятнадцать минут в медленном, потом минуты две-три в быстром, затем опять в медленном и так далее. И последнее:&nbsp; лучше уделять игре по часу ежедневно чем двенадцать часов один раз в неделю. Ты можешь даже составить график если хочешь, пример графика для продвинутых гитаристов ты найдешь <a href="/shred/grafik" title="График">здесь</a>. Можешь воспользоваться им, как образцом. Здесь все зависит только от твоей фантазии, упорства и стремления к совершенству. К уроку<a href="/altpicking/twostring" target="_self" title="Штрих при переходе со струны на струну"> штрих при переходе со струны на струну</a> переходи только после того, как сможешь играть все семь упражнений на скорости 60. Удачи!</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="margin: 0.5em 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #555555; font-family: Arial, Helvetica, sans-serif; line-height: 23px; text-align: center;"><a href="/forum/viewtopic.php?f=2&amp;t=198" title="Уроки - переменный штрих" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; background-color: transparent; color: #40678a;">ОБСУДИТЬ НА ФОРУМЕ</a></p>
+<p class="MsoNormal" style="margin: 0.5em 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #555555; font-family: Arial, Helvetica, sans-serif; line-height: 23px; text-align: right;"><a href="/altpicking/twostring" title="Штрих при переходе со струны на струну" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; background-color: transparent; color: #40678a;">СЛЕДУЮЩИЙ УРОК &gt;&gt;</a></p>');
+
+insert into lesson values
+(4, 2, 3, 0, 'Переменный штрих. Гаммы', '<p style="text-align: justify;"><a href="/altpicking/twostring" title="Штрих при переходе со струны на струну" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #40678a; font-family: Arial, Helvetica, sans-serif; line-height: 23px;">&lt;&lt; ПРЕДЫДУЩИЙ УРОК</a></p>
+<p style="text-align: justify;">&nbsp;</p>
+<p style="text-align: justify;">Твоя скорость игры на электрогитаре достигла восьмидесяти ударов в минуту. Нет? Вернись к предыдущему уроку. Если же это так, тогда вперед!</p>
+<p style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Что такое гаммы? Если очень сильно упростить, то гаммой можно назвать ряд звуков, расположенных в строго определенной последовательности полутонов, тонов, а иногда и больших интервалов. О гаммах в контексте аппликатурного мышления очень подробно рассматриваются&nbsp;<a href="/applik/scales" title="Аппликатурное мышление - гаммы">здесь</a>. В этом уроке мы будем их использовать как еще одну разновидность упражнений. Чем хороши гаммы? <strong>Во-первых</strong>, в них встречаются как внешний, так и внутренний штрихи. <strong>Во-вторых</strong>, боксы гамм перекрывают все шесть струн. <strong>В-третьих</strong>, они, как правило, являются зацикленными, что дает возможность играть одну гамму в течение продолжительного времени.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Гамм существует огромное количество. Но все они нам не понадобятся, так как этот урок направлен на развитие скорости, а не музыкального мышления. Я приведу только некоторые из &nbsp;тех, что можно использовать в своих песнях, оставив за бортом мелодические лады, гармонический минор, мажорную пентатонику, блюзовую гамму и многие другие.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Но в первую очередь я бы хотел немного рассказать о том как необходимо их играть и что представляют собой те аппликатуры, что ты видишь чуть ниже. Я получил немало вопросов на эту тему и осознал, что большинство новичков имеют весьма скудное представление о том что такое гаммы в принципе. Итак, горизонтальные линейки это струны, как ты понимаешь, вертикальные – лады. Кружки – соответственно ноты, которые следует играть. Ни в коем случае не следует принимать гамму за аккорд и пытаться взять все ноты одновременно. Начинай играть из нижнего левого угла слева направо (т.е. с самой толстой струны, из того места где лады шире). Затем поднимайся к более высоким струнам, заканчивая играть гамму в верхнем правом углу. Затем ты можешь вернуться к исходной ноте в строго противоположной последовательности. Если все еще непонятно – в конце урока ты можешь скачать Guitar Pro табулатуры всех гамм, которые здесь встретишь. Но помни, что данные аппликатуры можно с легкостью двигать вдоль грифа и гамма при этом не изменится, изменится лишь ее тональность. Так же не забывай о том, что все гаммы необходимо играть ПЕРЕМЕННЫМ ШТРИХОМ. Вниз-вверх-вниз-вверх!&nbsp;Да и о других правилах, рассмотренных в предыдущих уроках не забывай!</p>
+<p>&nbsp;</p>
+<h5>МИНОРНАЯ ПЕНТАТОНИКА</h5>
+<p class="MsoNormal" style="text-align: justify;">С минорной пентатоникой ты уже знаком из предыдущего урока. Здесь я приведу пять боксов этой гаммы в различных позициях. если ты присмотришься, то заметишь, что их можно сложить, как кусочки мозаики. В конечно счете это, то что ты должен видеть, глядя на гриф гитары - ноты, входящие в&nbsp;конкретную&nbsp;гамму, ее тонику на различных струнах и ладах, многовариантность того, как можно сыграть любой пассаж, который только может прийти тебе в голову. Над этими боксами тебе придется работать... всю твой жизнь. Не больше, не меньше. Ну, или по крайней мере, столько, сколько ты собираешься играть на гитаре.</p>
+<p class="MsoNormal" style="text-align: center;"><img src="http://allfrets.ru/images/stories/altpicking/pentatonika-3.jpg" border="0"></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Никогда не ограничивай себя игрой в одной позиции. Ты когда-нибудь видел, чтобы Зак Уайлд сыграл все соло, не перемещая руку вдоль грифа? Я тоже нет :)</p>
+<p class="MsoNormal">&nbsp;</p>
+<h5 style="text-align: justify;">ДИАТОНИЧЕСКИЕ ЛАДЫ</h5>
+<p class="MsoNormal" style="text-align: justify;">Дальше - больше! Ниже представлены пять боксов диатонических семиступенных ладов. Первый - <strong>миксолидийский мажор</strong>, часто используемый Джоном Петруччи в его прогрессивных темах. Далее идет <strong>минорная гамма (эолийский минор)</strong>. Среди роковых и металюжных соляков она по праву занимает второе место. Прочувствуй ее мрачную, средневековую атмосферу.</p>
+<p class="MsoNormal" style="text-align: center;"><img src="http://allfrets.ru/images/stories/applik/Боксы_Ионийский.jpg" border="0"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">На третьем рисунке - <strong>локрийский лад</strong>. Если сыграть его от второй ступени, получится <strong>ионийский (натуральный мажор) мажор</strong>.&nbsp;Хочешь сочинить нечто бодрящее, веселое. Возможно эпическое или пафосное? Тогда используй именно его. Старайся играть по правилу один палец - один лад (в случае с боксом натурального мажора это не сложно). На четвертом боксе ты видишь <strong style="line-height: 1.3em;">дорийский минор</strong> - еще один фаворит олдскульных рок гитаристов. И, наконец, на пятом боксе изображен <strong style="line-height: 1.3em;">фригийский минор</strong>, отличающийся от обычного всего одной ступень - второй пониженной,&nbsp;но зато какую атмосферу придает она ему! Сыграв его от этой самой второй ступени, мы получим <strong style="line-height: 1.3em;">лидийский </strong><strong style="line-height: 1.3em;">мажор</strong>. Эту гамму ты мог слышать в произведениях Джо Сатриани.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Еще раз перечислю гаммы и способ их получения на основе натурального мажора. Итак!</p>
+<p class="MsoNormal" style="text-align: justify;">1. Ионийский мажор строится на первой ступени натурального и, соответственно, идентичен ему.</p>
+<p class="MsoNormal" style="text-align: justify;">2. Дорийский минор строится на второй ступени натурального мажора.</p>
+<p class="MsoNormal" style="text-align: justify;">3. Фригийский минор - на третьей ступени натурального.</p>
+<p class="MsoNormal" style="text-align: justify;">4. Лидийский мажор - на четвертой.</p>
+<p class="MsoNormal" style="text-align: justify;">5. Миксолидийский мажор - на пятой.</p>
+<p class="MsoNormal" style="text-align: justify;">6. Эолийский (натуральный минор) - на шестой</p>
+<p class="MsoNormal" style="text-align: justify;">7. Локрийский лад строится на седьмой ступени натурального мажора.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Вот она, аппликатурная сетка, на которой ты можешь видеть все гаммы одновременно. Черной точкой обозначена тоника ионийского мажора. Присмотрись и отыщи для себя визуально приведенные выше боксы.</p>
+<p class="MsoNormal" style="text-align: justify;"><img src="http://allfrets.ru/images/stories/applik/1_Ионийский.jpg" border="0"></p>
+<p class="MsoNormal" style="text-align: justify;">На приведенном выше рисунке подписаны четыре ступени ионийского мажора - седьмая, первая, третья и четвертая. Остальные отыскать, как ты понимаешь, совсем не трудно. Но это уже тема <a href="/applik/scales" title="Аппликатурное мышление - гаммы">совсем другого раздела</a>.</p>
+<p class="MsoNormal" style="text-align: justify;"><img src="http://allfrets.ru/images/stories/applik/3_Ионийский.jpg" border="0"></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">До этого ты играл все упражнения шестнадцатыми. По четыре ноты на каждый удар метронома. Но необходимо учиться играть также и триолями. Для этого мы будем использовать гаммы, расположенные по принципу три ноты на струне. Первый бокс это бокс фригийского минора, следующий - бокс лидийского мажора, затем - бокс миксолидийского и т.д. <strong>Для расчета скорости</strong> пользуйся следующей формулой. Скорость на которой ты собирался играть <strong>раздели на три и умножь на четыре</strong>. Ты получишь скорость для восьмых триолей. Скажем, ты собирался играть на скорости в 60 УВМ. 60:3*4=80 УВМ - искомая скорость для игры триолями. Играй по три ноты на каждый удар метронома.</p>
+<p class="MsoNormal" style="text-align: center;"><img src="http://allfrets.ru/images/stories/altpicking/scales-3-notePS.jpg" border="0"></p>
+<p class="MsoNormal" style="text-align: justify;">Как видишь, первый бокс затрагивает открытые струны. Просто сдвинь его вправо. Я уже говорил, что гамма при этом не меняется, меняется лишь тоника. Этих последних гамм "по три ноты на струне" нет в табах, я уверен, ты понял принцип. А если нет - еще раз присмотрись к тем гаммам, что есть, сравни табы и рисунок, проанализируй. Развитие невозможно без этого. Ни одно пособие и ни один учитель не научит тебя играть, если ты не будешь учиться сам.</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">Здесь, пожалуй, пришла пора остановиться. Включай метроном, разучивай один из вариантов какой-либо гаммы и начинай заниматься. В следующем уроке&nbsp;жду тебя после того как ты сможешь играть ВСЕ гаммы на скорости 100 УВМ. Удачи!</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="margin: 0.5em 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #555555; font-family: Arial, Helvetica, sans-serif; line-height: 23px; text-align: center;"><a href="/forum/viewtopic.php?f=2&amp;t=198" title="Уроки - переменный штрих" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; background-color: transparent; color: #40678a;">ОБСУДИТЬ НА ФОРУМЕ</a></p>
+<p class="MsoNormal" style="margin: 0.5em 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #555555; font-family: Arial, Helvetica, sans-serif; line-height: 23px; text-align: right;"><a href="/altpicking/sekvencii" title="Переменный штрих - секвенции" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; background-color: transparent; color: #40678a;">СЛЕДУЮЩИЙ УРОК &gt;&gt;</a></p>');

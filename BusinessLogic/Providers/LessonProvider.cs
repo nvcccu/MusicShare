@@ -82,10 +82,10 @@ namespace BusinessLogic.Providers {
                 .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, accountId)
                 .GetData()
                 .Single();
-                var lessonStatDto = lessonStat.ToDto();
-                return lessonStatDto.ExercisesSpeed.ContainsKey(lessonId)
-                    ? lessonStatDto.ExercisesSpeed[lessonId]
-                    : UpdateExercisesSpeedWithNewLesson(lessonStat, lessonId);
+            var lessonStatDto = lessonStat.ToDto();
+            return lessonStatDto.ExercisesSpeed.ContainsKey(lessonId)
+                ? lessonStatDto.ExercisesSpeed[lessonId]
+                : UpdateExercisesSpeedWithNewLesson(lessonStat, lessonId);
         }
         public void SaveUsersLessonStat(int accountId, int lessonId, Dictionary<int, int> lessonStat) {
             var lessonStatDto = new LessonStat()
