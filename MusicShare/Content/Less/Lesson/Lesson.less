@@ -1,18 +1,110 @@
-﻿.lesson {
-    background: #fff;
-    overflow: hidden;
-    padding: 18px;
-    clear: both;
-    margin-bottom: 18px;
-    margin: 0 auto;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    width: 800px;
+﻿@import "../Const.less";
+@import "../Mixin.less";
+
+.lesson-layout {
+    background: rgb(25, 21, 17);
+    width: 100%;
 }
-.lesson__title{
-    margin-bottom: 18px;
+.lesson-page {
+    color: @mg-lesson-white;
+    background: @mg-lesson-background;
+    margin: 0 auto;
+    width: 1100px;
+}
+.lesson {
+    width: 680px;
+    padding: 30px 40px 0;
+    .box-sizing__border-box;
+    display: inline-block;
+    font-size: 16px;
+}
+.lesson p {
+    text-align: justify;
+}
+.lesson-additions {
+    width: 420px;
+    display: inline-block;
+    .box-sizing__border-box;
+    margin-left: -4px;
+}
+.lesson-hierarchy__link,
+.lesson-hierarchy__link:visited {
+    color: @mg-lesson-white;
+    text-decoration: none;
+}
+.lesson-hierarchy__link:hover,
+.lesson-hierarchy__link:focus {
+    color: @mg-green--hover;
+    text-decoration: none;
+}
+.lesson__name{
+    margin-top: 20px;
+    font-size: 20px;
+
 }
 .lesson__body{
-   
+   margin-top: 20px;
+}
+
+.metronome {
+    height: 40px;
+    margin-bottom: 20px;
+}
+.metronome__speed-control {
+    vertical-align: top;
+    height: 100%;
+    width: 40px;
+    display: inline-block;
+}
+.speed-control__up,
+.speed-control__down {
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    background-color: @mg-green--ordinal;
+    cursor: pointer;
+    .box-sizing__border-box;
+}
+.speed-control__up:hover,
+.speed-control__down:hover {
+    background-color: @mg-green--hover;
+}
+.metronome-speed {
+    vertical-align: top;
+    width: 80px;
+    height: 100%;
+    display: inline-block;
+    margin-left: -4px;
+    font-size: 20px;
+    background-color: white;
+    color: rgb(26, 21, 17);
+    text-align: center;
+    line-height: 40px;
+}
+.metronome-start-stop {
+    vertical-align: top;
+    width: 40px;
+    height: 100%;
+    display: inline-block;
+    margin-left: -4px;
+}
+.metronome-start-stop--start {
+    background: url('/Content/Image/Lesson/Stop.png') center no-repeat;
+}
+.metronome-start-stop--stop {
+    background: url('/Content/Image/Lesson/Start.png') center no-repeat;
+}
+
+.save-exercises-speed {
+    position: fixed;
+    top: 200px;
+    color: black;
+    background-color: #92a803; border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
 }

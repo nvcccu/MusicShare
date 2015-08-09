@@ -10,34 +10,49 @@
     var replacePattern = "<div data-bind=\"template: {{ name: 'MetronomeTemplate', data: {0} }}\"></div>";
 }
 
-<div>
-    @if(Model.CurrentUser == null) {
-        <span>Чтобы сохранять скорости метрономов надо зарегистрироваться</span>
-    } else {
-        <input type="button" value="Сохранить изменения скорости метрономов" data-bind="click: $root.saveSpeeds" style="position: fixed; top: 400px; left: 100px;"/>
-    }
-</div>
+<audio id="BitSound" preload="auto">
+    <source src="/Content/bit.ogg" type='audio/ogg; codecs="vorbis"'>
+    <source src="/Content/bit.mp3" type='audio/mpeg; codecs="mp3"'>
+    <source src="/Content/bit.wav" type='audio/wav; codecs="1"'>
+    <source src="/Content/bit.aac" type='audio/mp4; codecs="mp4a.40.5"'>
+</audio>
 
-<audio id="BitSound" src="/Content/bit.mp3"></audio>
-<div id="Lesson" class="lesson">
-    <div id="LessonTitle" class="lesson__title">
-        @Model.Lesson.Title
-    </div>
-    <div id="LessonBody" class="lesson__body">
-        @while (text.IndexOf(MetronomeTag, StringComparison.Ordinal) > -1) {
-            text = regex.Replace(text, String.Format(replacePattern, i), 1);
-            i++;
-        }
-        @Html.Raw(text)
+<div class="lesson-layout">
+    <div id="LessonPage" class="lesson-page">
+        <div class="lesson">
+            <div class="lesson-hierarchy">
+                <a class="lesson-hierarchy__link" href="@Url.Action("Index", "Lesson", new {id = ""})">Самоучитель</a> > <a class="lesson-hierarchy__link" href="#">@Model.GutarTechique.Name</a>
+            </div>
+            <div class="lesson__name">
+                Урок @Model.Lesson.OrderNumber. @Model.Lesson.Title
+            </div>
+            <div class="lesson__body">
+                @while(text.IndexOf(MetronomeTag, StringComparison.Ordinal) > -1) {
+                    text = regex.Replace(text, String.Format(replacePattern, i), 1);
+                    i++;
+                }
+                @Html.Raw(text)
+            </div>
+        </div>
+        <div class="lesson-additions">
+            <input type="button" class="save-exercises-speed" value="Сохранить изменения" data-bind="click: $root.saveSpeeds" />
+        </div>
     </div>
 </div>
 
 <script type="text/html" id="MetronomeTemplate">
-    <input type="button" value="Запустить" data-bind="attr: { 'value': $root.isRun() ? 'Остановить' : 'Запустить' }, click: $root.isRun() ? $root.stop : $root.run" /><br>
-    <input type="button" value="Быстрее" data-bind="click: $root.speedUp.bind($data, $data)" /><br>
-    <input type="button" value="Медленнее" data-bind="click: $root.speedDown.bind($data, $data)" /><br>
-    Скорость <span data-bind="text: $root.speeds[$data]()"></span> УВМ
+    <div class="metronome">
+        <div class="metronome__speed-control">
+            <div class="speed-control__up" data-bind="click: $root.speedUp.bind($data, $data)">+</div>
+            <div class="speed-control__down" data-bind="click: $root.speedDown.bind($data, $data)">-</div>
+        </div>
+        <input type="text" class="metronome-speed" data-bind="value: $root.speeds[$data], event: {'change': $root.speedChange.bind($data, $data)}" />
+        <div class="metronome-start-stop" data-bind="attr: {'value': $root.isRun() ? 'Остановить' : 'Запустить', class: $root.isRun() ? 'metronome-start-stop metronome-start-stop--start' : 'metronome-start-stop metronome-start-stop--stop'},
+            click: $root.isRun() ? $root.stop.bind($data, $data) : $root.run.bind($data, $data)"></div>
+    </div>
 </script>
+
+
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -47,6 +62,10 @@
     getLesson = function () {
         var model = {};
         model.bitSound = document.getElementById('BitSound');
+//        if (!model.bitSound.src) {
+//            model.bitSound.src = model.bitSound.currentSrc;
+//            alert('Пытаемся сыграть ' + model.bitSound.src + '\nСыграем? -- '+ model.bitSound.canPlayType('video/ogg;codecs="theora, vorbis"'));
+//        }
         model.isRun = ko.observable(false);
         model.speeds = [ @Html.Raw(String.Join(", ", Model.Speeds.Select(s => "ko.observable(" + s.Value + ")")))];
         model.activeSpeedIndex = ko.observable(undefined);
@@ -61,10 +80,17 @@
             }
         }
         model.speedDown = function (index) {
-            debugger;
             var wasRun = model.isRun();
             model.stop();
             model.speeds[index](model.speeds[index]() - 1.0);
+            if (wasRun) {
+                model.run(index);
+            }
+        }
+        model.speedChange = function (index) {
+            var wasRun = model.isRun();
+            model.stop();
+            model.speeds[index](parseInt(model.speeds[index](), 10));
             if (wasRun) {
                 model.run(index);
             }
@@ -79,7 +105,7 @@
         var playSound = function () {
             model.bitSound.play();
         }
-        ko.computed(function () {
+        model.isRun.subscribe(function() {
             if (model.isRun()) {
                 var time = 60.0 / model.speeds[model.activeSpeedIndex()]() * 1000.0;
                 playSound();

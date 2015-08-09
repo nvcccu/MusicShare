@@ -124,6 +124,14 @@ namespace BusinessLogic.Providers {
                 .Single()
                 .ToDto();
         }
+        public GuitarTechniqueDto GetGuitarTechnique(int guitarTechniqueId) {
+            return new GuitarTechnique()
+                .Select()
+                .Where(GuitarTechnique.Fields.Id, PredicateCondition.Equal, guitarTechniqueId)
+                .GetData()
+                .Single()
+                .ToDto();
+        }
         public void CreateLessonStatNode(int accountId) {
             var lessonStat = new LessonStat()
                 .Select()

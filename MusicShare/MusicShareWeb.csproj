@@ -148,7 +148,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bit.aac" />
     <Content Include="Content\bit.mp3" />
+    <Content Include="Content\bit.wav" />
     <Content Include="Content\Font\FontAwesome\font-awesome.min.css" />
     <Content Include="Content\Image\DefaultProduct.png" />
     <Content Include="Content\Image\Designer\ScrollBottomInactive.png" />
@@ -158,6 +160,8 @@
     <Content Include="Content\Image\favicon.jpg" />
     <Content Include="Content\Image\index.jpg" />
     <Content Include="Content\Image\IsSolution.jpg" />
+    <Content Include="Content\Image\Lesson\Start.png" />
+    <Content Include="Content\Image\Lesson\Stop.png" />
     <Content Include="Content\Image\logo.png" />
     <Content Include="Content\Less\Article\ArticlePreview.css">
       <DependentUpon>ArticlePreview.less</DependentUpon>
@@ -197,6 +201,10 @@
     <Content Include="Content\Less\Article\ArticlePreview.less" />
     <Content Include="Content\Less\Article\ArticlePreview.css.map">
       <DependentUpon>ArticlePreview.css</DependentUpon>
+    </Content>
+    <Content Include="Content\bit.ogg" />
+    <Content Include="Content\Less\Const.css.map">
+      <DependentUpon>Const.css</DependentUpon>
     </Content>
     <None Include="Content\Less\Designer\Designer.less" />
     <Content Include="Content\Less\Designer\Designer.css">
@@ -408,11 +416,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Less\Const.less" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\Less\Const.css.map">
-      <DependentUpon>Const.css</DependentUpon>
-    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

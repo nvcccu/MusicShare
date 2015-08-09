@@ -110,6 +110,9 @@ namespace BusinessLogic {
         public LessonDto GetLesson(int lessonId) {
             return _lessonProvider.GetLesson(lessonId);
         }
+        public GuitarTechniqueDto GetGuitarTechnique(int guitarTechniqueId) {
+            return _lessonProvider.GetGuitarTechnique(guitarTechniqueId);
+        }
         public void CreateLessonStatNode(int accountId) {
             _lessonProvider.CreateLessonStatNode(accountId);
         }

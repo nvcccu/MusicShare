@@ -10,7 +10,7 @@
             <div>@technique.Key.Name</div>
             <div style="margin-left: 38px;">
                 @foreach(var lesson in technique.Value) {
-                    <a href="@Url.Action("Index", new {id = @lesson.Id})">@lesson.Title</a>
+                    <a href="@Url.Action("Index", new {id = @lesson.Id})">@lesson.Title</a><br>
                 }
             </div>
         </div>

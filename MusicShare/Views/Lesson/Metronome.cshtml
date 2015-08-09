@@ -1,6 +1,10 @@
 ﻿@model int
 
-<input type="button" value="Запустить" data-bind="attr: { 'value': $root.isRun() ? 'Остановить' : 'Запустить' }, click: $root.isRun() ? $root.stop.bind($data, @Model) : $root.run.bind($data, @Model)" /><br>
-<input type="button" value="Быстрее" data-bind="click: $root.speedUp.bind($data, @Model)" /><br>
-<input type="button" value="Медленнее" data-bind="click: $root.speedDown.bind($data, @Model)" /><br>
-Скорость <span data-bind="text: $root.speeds[@Model]()"></span> УВМ
+<div class="metronome">
+    <div class="metronome__speed-control">
+        <div class="speed-control__up" data-bind="click: $root.speedUp.bind($data, @Model)">+</div>
+        <div class="speed-control__down" data-bind="click: $root.speedDown.bind($data, @Model)">-</div>
+    </div>
+    <div class="metronome-speed" data-bind="text: $root.speeds[@Model]()"></div>
+    <div class="metronome-start-stop" data-bind="attr: { 'value': $root.isRun() ? 'Остановить' : 'Запустить' }, click: $root.isRun() ? $root.stop.bind($data, @Model) : $root.run.bind($data, @Model)"></div>
+</div>
