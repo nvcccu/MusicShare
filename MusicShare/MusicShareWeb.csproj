@@ -332,7 +332,6 @@
     <Content Include="Content\Less\Lesson\Lesson.css.map">
       <DependentUpon>Lesson.css</DependentUpon>
     </Content>
-    <Content Include="Views\Lesson\Metronome.cshtml" />
     <Content Include="Views\Lesson\Lesson.cshtml" />
   </ItemGroup>
   <ItemGroup>

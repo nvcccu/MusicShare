@@ -173,9 +173,22 @@ insert into lesson values
 @@EXERCISE 7@@
 <p>Легатная техника – чертовски полезная вещь! Постарайся не обойти ее своим вниманием, и уделить ее развитию время. В итоге ты сможешь играть гораздо быстрее и слитнее – а это один из признаков хорошего гитариста. В следующем уроке ты будешь работать над независимостью пальцев, затем мы перейдем к полностью легатным пассажам. Апофеозом этой части станет трюк, который ты мог видеть на концертах Джо Сатриани и Стива Вая – ты научишься играть одной левой рукой, при этом правая будет глушить струны ниже левой. Круто, не правда ли! Если что-то осталось непонятным - спрашивай! Удачи!</p>');
 
+insert into Exercise values
+(8, 2, 'Упражнение 1', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_1.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-1.mp3', 0, true),
+(9, 2, 'Упражнение 2', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_2.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-2.mp3', 0, true),
+(10, 2, 'Упражнение 3', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_3.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-3.mp3', 0, true),
+(11, 2, 'Упражнение 4', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_4.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-4.mp3', 0, true),
+(12, 2, 'Упражнение 5', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-5.mp3', 0, true),
+(13, 2, 'Упражнение 6', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_5.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-6.mp3', 0, true),
+(14, 2, 'Упражнение 7', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_6.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-7.mp3', 0, true),
+(15, 2, 'Упражнение 8', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_8.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-8.mp3', 0, true),
+(16, 2, 'Упражнение 9', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_9.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-9.mp3', 0, true),
+(17, 2, 'Упражнение 10', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_10.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-10.mp3', 0, true),
+(18, 2, 'Упражнение 11', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_11.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-11.mp3', 0, true),
+(19, 2, 'Упражнение 12', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_12.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-12.mp3', 0, true);
 
 insert into lesson values
-(2, 2, 2, 12, 'Штрих при переходе со струны на струну', '<p>Привет! Я рад, что ты достиг скорости в 60 УВМ при игре переменным штрихом на одной струне. Если нет, тогда вернись к <a href="/altpicking/singlestringpicking" title="Переменный штрих на одной струне">предыдущему уроку</a>. Если же это так, тогда продолжим обучение игре на электрогитаре. Если ты еще не умеешь настраивать гитару, обратись к <a href="/beginner/howtotuneaguitar" title="Настройка гитары">соответствующему уроку</a>. То же и с <a href="/beginner/howtoreadtabs" title="Как читать табулатуры">чтением табулатур</a>.</p>
+(2, 2, 2, 12, 'Штрих при переходе со струны на струну', '<p>Привет! Я рад, что ты достиг скорости в 60 УВМ при игре переменным штрихом на одной струне, давай продолжим обучение игре на электрогитаре.</p>
 <h5 style="text-align: justify;">РАЗНОВИДНОСТИ ШТРИХА</h5>
 <p>Обратимся к книге “Соло-гитара в стиле хэви-метал” Троя Стетины – выдающегося гитариста и преподавателя:</p>
 <p>«Научиться играть переменным штрихом быстро и долго, постоянно переходя со струны на струну очень трудно, но оно того стоит. Послушай Ингви Мальмстина или Эла Ди Меолу и ты услышишь великолепные примеры такой игры…</p>
@@ -194,29 +207,22 @@ insert into lesson values
 <p><strong>Четвертый пункт</strong> говорит нам, что необходимо играть медленно, кроме того, как я уже говорил в прошлом уроке, следует чередовать игру <strong>на разных скоростях</strong>. Вычисли свою максимальную скорость, для этого выбери какое-нибудь несложное упражнение и, постепенно повышая скорость на метрономе, выясни, с какой максимальной скоростью ты можешь играть его чисто. После этого прими пятьдесят процентов от этой скорости за низкую скорость, шестьдесят - за среднюю, а семьдесят - за высокую. Так или иначе для тебя это будет медленно. Больше всего играй на низкой скорости, меньше на средней, минимальное время уделяй игре на высокой скорости.</p>
 <h5>УПРАЖНЕНИЯ</h5>
 <p>Итак! Пришло время выучить несколько упражнений. Для начала два упражнения из видеошколы Майкла Анжэло “<span lang="EN-US">Speed</span><span lang="EN-US"> </span><span lang="EN-US">kills</span>”:</p>
-<p><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-1.mp3" title="MP3">Упражнение 1</a>. Это упражнение чертовски важно для дальнейшего развития техники переменного штриха. Ты должен <strong>играть его на всех пяти комбинациях струн</strong> (на шестой и пятой, на пятой и четвертой, на четвертой и третьей, на третьей и второй и, <strong>ГЛАВНОЕ</strong>, на второй и первой). Кроме того, ты непременно должен при помощи него отрабатывать <strong>различные типы штриха </strong>(внешний и внутренний). Просто один раз начни играть это упражнение с удара вниз (даунстрока), второй раз - с удара вверх (апстрока).</em></p>
-<p><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_1.jpg" border="0"></p>
-@@METRONOME@@
-<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-2.mp3" title="MP3">Упражнение 2</a>. Оно как ты видишь, является более сложной версией первого.</em></p>
-<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_2.jpg" border="0"></em></p>
-@@METRONOME@@
-<p class="MsoNormal">Теперь перейдем&nbsp; к упражнениям из книги Терри Сайрека &nbsp;“<span lang="EN-US">Shred</span><span lang="EN-US"> </span><span lang="EN-US">is</span><span lang="EN-US"> </span><span lang="EN-US">not</span><span lang="EN-US"> </span><span lang="EN-US">dead</span>”:</p>
-<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-3.mp3" title="MP3">Упражнение 3</a>. Довольно длинное упражнение. Постарайся подобрать наиболее удобную для тебя пальцовку.</em></p>
-<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_3.jpg" border="0"></em></p>
-@@METRONOME@@
-<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-4.mp3" title="MP3">Упражнение 4</a>. Продолжай играть последовательность, пока не дойдешь до нижних ладов (н</em><em style="line-height: 1.3em;">ижних по звучанию, т.е. самых широких)</em></p>
-<p><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_4.jpg" border="0"></p>
-@@METRONOME@@
-<p class="MsoNormal">Упражнения из<span lang="EN-US"> “Speed mechanics for lead guitar”:</span></p>
-<p><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-5.mp3" title="MP3">Упражнение 5</a>. Это упражнение поможет тебе научиться перемещаться по грифу, а также напомнит о предыдущем уроке, так как на каждый такт здесь приходится всего по два перехода со струны на струну.</em></p>
-<p><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_7.jpg" border="0"></p>
-@@METRONOME@@
-<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-6.mp3" title="MP3">Упражнение 6</a>. Как и первое, рекомендуется отрабатывать на всех комбинациях струн.</em></p>
-<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_5.jpg" border="0"></em></p>
-@@METRONOME@@
-<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-7.mp3" title="MP3">Упражнение 7</a>.</em></p>
-<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_6.jpg" border="0"></em></p>
-@@METRONOME@@
+<p><em>Это упражнение чертовски важно для дальнейшего развития техники переменного штриха. Ты должен <strong>играть его на всех пяти комбинациях струн</strong> (на шестой и пятой, на пятой и четвертой, на четвертой и третьей, на третьей и второй и, <strong>ГЛАВНОЕ</strong>, на второй и первой). Кроме того, ты непременно должен при помощи него отрабатывать <strong>различные типы штриха </strong>(внешний и внутренний). Просто один раз начни играть это упражнение с удара вниз (даунстрока), второй раз - с удара вверх (апстрока).</em></p>
+@@EXERCISE 8@@
+<p><em>Еще одно упражнение. Оно, как ты видишь, является более сложной версией первого:</em></p>
+@@EXERCISE 9@@
+<p>Теперь перейдем к упражнениям из книги Терри Сайрека &nbsp;“<span lang="EN-US">Shred</span><span lang="EN-US"> </span><span lang="EN-US">is</span><span lang="EN-US"> </span><span lang="EN-US">not</span><span lang="EN-US"> </span><span lang="EN-US">dead</span>”:</p>
+<p><em>Довольно длинное упражнение. Постарайся подобрать наиболее удобную для тебя пальцовку:</em></p>
+@@EXERCISE 10@@
+<p><em>Еще одно упражнение. Продолжай играть последовательность, пока не дойдешь до нижних ладов </em><em style="line-height: 1.3em;">(нижних по звучанию, т.е. самых широких)</em></p>
+@@EXERCISE 11@@
+<p>Упражнения из<span lang="EN-US"> “Speed mechanics for lead guitar”:</span></p>
+<p><em>Это упражнение поможет тебе научиться перемещаться по грифу, а также напомнит о предыдущем уроке, так как на каждый такт здесь приходится всего по два перехода со струны на струну:</em></p>
+@@EXERCISE 12@@
+<p><em>Это упражнение, как и первое, рекомендуется отрабатывать на всех комбинациях струн:</em></p>
+@@EXERCISE 13@@
+<p><em>Еще одно упражнение:</em></p>
+@@EXERCISE 14@@
 <p>Как ты мог заметить, во всех упражнениях было задействовано лишь две струны. Это и понятно – нужно идти от простого к сложному, а не наоборот. Еще раз напомню, что особое внимание стоит обратить на первое упражнение, так как переменный штрих на разных по толщине струнах отличается. Попытайся почувствовать гитару и понять в чем отличие.</p>
 <h5 style="text-align: justify;">ПЕНТАТОНИКА</h5>
 <p>Что такое пентатоника? Особое внимание я уделил ей в <a href="/improvisation/pentatonic" title="Пентатоника">разделе импровизация</a>. Пентатоника это гамма, состоящая всего из пяти нот. Несмотря на это обстоятельство, пентатоника весьма часто используется при построении соло. Многие известные роковые соляки были построены именно на пентатонике и звучали просто великолепно. Поэтому ты обязательно должен выучить пентатонику. К тому же она поможет тебе закрепить переход со струны струну, над которым ты работал в предыдущих упражнениях.</p>
@@ -224,24 +230,23 @@ insert into lesson values
 <p><img src="http://allfrets.ru/images/stories/altpicking/pentatonika.jpg" border="0"></p>
 <p>Подбери удобную для тебя пальцовку. Многие на двух верхних струнах используют третий палец. Некоторые - четвертый. Черной точкой обозначена тоника. Не буду вдаваться в теорию здесь. Скажу только, что тоника это нота, с которой начинается гамма. Как видишь, выучить пентатонику совсем не сложно.</p>
 <p>Пришло время выполнить несколько упражнений, основанных на пентатонике. Трой Стетина в книге “<span lang="EN-US">Speed</span><span lang="EN-US"> </span><span lang="EN-US">Mechanics</span><span lang="EN-US"> </span><span lang="EN-US">For</span><span lang="EN-US"> </span><span lang="EN-US">Lead</span><span lang="EN-US"> </span><span lang="EN-US">Guitar</span>” выделил пять основных вариантов перехода со струны на струну. Попробуй определить, какой из них наиболее труден для тебя. Над ним и работай. Каждое упражнение начинай ударом вниз. Сначала поработай над первым тактом. Потом над последними двумя. В последнем такте тебе встретится несколько скачков через струну. Возможно, понадобится определенная доля упорства, чтобы научиться играть эти моменты чисто. Но ты должен это сделать!</p>
-<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-8.mp3" title="MP3">Упражнение 8</a>.</em></p>
-<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_8.jpg" border="0"></em></p>
-@@METRONOME@@
-<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-9.mp3" title="MP3">Упражнение 9</a>.</em></p>
-<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_9.jpg" border="0"></em></p>
-@@METRONOME@@
-<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-10.mp3" title="MP3">Упражнение 10</a>.</em></p>
-<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_10.jpg" border="0" style="border-style: initial; border-color: initial;"></em></p>
-@@METRONOME@@
-<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-11.mp3" title="MP3">Упражнение 11</a>.</em></p>
-<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_11.jpg" border="0"></em></p>
-@@METRONOME@@
-<p class="MsoNormal"><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-2-12.mp3" title="MP3">Упражнение 12</a>.</em></p>
-<p class="MsoNormal"><em><img src="http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_12.jpg" border="0"></em></p>
-@@METRONOME@@
+@@EXERCISE 15@@
+@@EXERCISE 16@@
+@@EXERCISE 17@@
+@@EXERCISE 18@@
+@@EXERCISE 19@@
 <p>И вновь о том как надо заниматься. Заниматься нужно регулярно. Даже небольшой перерыв в занятиях может отбросить тебя далеко назад. Время, которое нужно уделять гитаре, не ограничено. Здесь действует правило: "кашу маслом не испортишь". Однако, если чувствуешь сильную усталость в руках, или боль - немедленно прекращай занятия! Поврежденные связки техники еще никому не прибавляли. Не забывай о <a href="/beginner/warming-up" title="Разминка">разминке</a>. А после нее - учишь упражнение, включаешь метроном и вперед :)</p>
 <p>Помни о правилах и вскоре выполнять их будет не сложнее, чем вдыхать свежий воздух. После того как будешь без проблем играть все упражнения данного урока на скорости 80 УВМ, можешь переходить к уроку <a href="/altpicking/altpickgamm" title="Переменный штрих - гаммы" style="line-height: 1.3em;">переменный штрих - гаммы</a>. Кроме этого я советую тебе, прежде чем идти дальше, выучить <a href="/practice/item/143-ac/dc-highway-to-hell-%D1%81%D0%BE%D0%BB%D0%BE" title="AC/DC - Highway to Hell">этот соляк</a>, а также уроки <a href="/tehnika/harmonics" title="Три способа взять флажолет">флажолеты</a>, <a href="/legatotechnique/legatofinger" title="Развитие независимости пальцев">развитие независимости пальцев</a>,&nbsp;<a href="/rythmguitar/rhytmmute" title="Глушение">глушение</a>. Желаю удачи!</p>
 ');
+
+insert into Exercise values
+(20, 3, 'Упражнение 1', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_1.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-1.mp3', 0, true),
+(21, 3, 'Упражнение 2', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_2.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-2.mp3', 0, true),
+(22, 3, 'Упражнение 3', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_3.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-3.mp3', 0, true),
+(23, 3, 'Упражнение 4', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_4.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-4.mp3', 0, true),
+(24, 3, 'Упражнение 5', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_5.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-5.mp3', 0, true),
+(25, 3, 'Упражнение 6', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_6.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-6.mp3', 0, true),
+(26, 3, 'Упражнение 6', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-7.mp3', 0, true);
 
 insert into lesson values
 (3, 2, 1, 7, 'Переменный штрих на одной струне', '<p>Первое, с чего тебе следует начать свой путь к виртуозной игре на электрогитаре – это развитие техники <strong>переменного штриха</strong>. В замечательной книге “Speed mechanics for lead guitar” сказано: "Техника переменного штриха хороша тем что, не высчитывая заранее последовательность ударов медиатора, ты можешь сыграть любую последовательность нот. Таким образом ты будешь чувствовать себя более свободно при импровизации, так как не ограничен какими-либо заранее подготовленными схемами. Ты можешь создать и сыграть любые пассажи, не отрабатывая их заранее. А если работа медиатором не требует раздумий – остается думать только о музыке"</p>
@@ -256,28 +261,21 @@ insert into lesson values
 <p>И наконец, продолжая разговор об экономичности, выделим <strong>седьмое правило</strong> – держи пальцы левой руки на небольшом расстоянии от грифа. Два сантиметра максимум, а меньше – лучше. Тут все понятно – чем ближе пальцы к грифу, тем меньше времени потребуется на движение до него, и тем выше скорость.</p>
 <p>Переходим непосредственно к упражнениям. Разумеется, не стоит забывать, что каждую тренировку ты должен начинать с разминки. Запомни это, как дважды два, и я даже не хочу выделять это в отдельное правило, это просто необходимость. О разминке мы говорили в <a href="/beginner/warming-up" title="Разминка и растяжка">этом уроке</a>. Если ты еще не знаешь, как читать табулатуры,&nbsp;<a href="/beginner/howtoreadtabs" title="Как читать табулатуры">жми сюда</a>.</p>
 <p>Первая партия упражнений из той же книги Троя Стетины (<span style="line-height: 1.3em;">Speed mechanics for lead guitar</span><span style="line-height: 1.3em;">):</span></p>
-<p><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-1.mp3" title="MP3">Упражнение 1</a>. Повторить на всех струнах. Это упражнение отлично синхронизирует руки, что просто необходимо при игре на соло гитаре.</em></p>
-<p><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_1.jpg" border="0"></p>
-@@METRONOME@@
-<p><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-2.mp3" title="MP3">Упражнение 2</a>. Повторить на всех струнах.</em></p>
-<p><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_2.jpg" border="0"></em></p>
-@@METRONOME@@
-<p><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-3.mp3" title="MP3">Упражнение 3</a>. Короткая мелодическая последовательность. Играть только на первой струне. Не забывай поглядывать на пальцовку.</em></p>
-<p><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_3.jpg" border="0"></em></p>
-@@METRONOME@@
-<p><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-4.mp3" title="MP3">Упражнение 4</a>. Более длинная последовательность. Я бы посоветовал сначала разучить каждый такт в отдельность без метронома, а потом играть целиком.</em></p>
-<p><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_4.jpg" border="0"></em></p>
-@@METRONOME@@
-<p><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-5.mp3" title="MP3">Упражнение 5</a>. Похожее упражнение.</em></p>
-<p><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_5.jpg" border="0"></em></p>
-@@METRONOME@@
+<p><em>Повторить на всех струнах. Это упражнение отлично синхронизирует руки, что просто необходимо при игре на соло гитаре:</em></p>
+@@EXERCISE 20@@
+<p><em>Это упражнение надо повторить на всех струнах:</em></p>
+@@EXERCISE 21@@
+<p><em>Короткая мелодическая последовательность. Играть только на первой струне. Не забывай поглядывать на пальцовку:</em></p>
+@@EXERCISE 22@@
+<p><em>Более длинная последовательность. Я бы посоветовал сначала разучить каждый такт в отдельность без метронома, а потом играть целиком:</em></p>
+@@EXERCISE 23@@
+<p><em>Похожее упражнение:</em></p>
+@@EXERCISE 24@@
 <p>И еще два упражнения из книги Терри Сайрека “<span lang="EN-US">Shred</span><span lang="EN-US"> </span><span lang="EN-US">is</span><span lang="EN-US"> </span><span lang="EN-US">not</span><span lang="EN-US"> </span><span lang="EN-US">dead</span>”:</p>
-<p><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-6.mp3" title="MP3">Упражнение 6</a>. Квазихроматика. Как и предыдущие три – играть только на первой струне.</em></p>
-<p><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_6.jpg" border="0"></em></p>
-@@METRONOME@@
-<p><em><a href="http://allfrets.ru/images/audio/altpicking/Altpicking-1-7.mp3" title="MP3">Упражнение 7</a>. Упражнение на растяжку пальцев. Играется на второй струне. Опять же не забывай про пальцовку.</em></p>
-<p><em><img src="http://allfrets.ru/images/stories/altpicking/1_single_string_picking_7.jpg" border="0"></em></p>
-@@METRONOME@@
+<p><em>Квазихроматика. Как и предыдущие три – играть только на первой струне:</em></p>
+@@EXERCISE 25@@
+<p><em>Упражнение на растяжку пальцев. Играется на второй струне. Опять же не забывай про пальцовку:</em></p>
+@@EXERCISE 26@@
 <p>Я привел лишь семь упражнений. И на первое время этого тебе хватит сполна. Одновременно с этим уроком я советую тебе начать изучать уроки <a href="/tehnika/tehnikaosnovi" title="Технические приемы - основы">технические приемы - основы</a>, <a href="/legatotechnique/osnlegato" title="Основы легато">основы легато</a> и <a href="/rythmguitar/rythmvvedenie" title="Введение в ритм гитару">введение в ритм гитару</a>. Чуть позже, развив технику игры и получив необходимые знания, ты сможешь сам составлять для себя упражнения на одной струне необходимой тебе сложности на основе хроматики, либо <a href="/applik/scales" title="Аппликатурное мышление - гаммы">диатонических ладов</a>. Не забывай о том что без практики развитие техники игры на гитаре невозможно и потому советую тебе время от времени разучивать соло, соответствующие твоему уровню игры. На данном этапе можешь ознакомится с <a href="/practice/item/165-led-zeppelin-stairway-to-heaven" title="Led Zeppelin - Stairway to Heaven">этим соляком</a>. Главное помни, что невозможно научится играть на электрогитаре за месяц. И если у тебя пока не получается освоить тот или иной пассаж - просто оставь его. Когда ты вернешься к нему через некоторое время, то сам удивишься, насколько легко он тебе дается.</p>
 <p>Могу тебя поздравить. Первый урок позади. Еще пара слов о том, как нужно заниматься и закругляюсь. Для начала определись со скоростью. Ты новичок и твой максиму – 60 УВМ? ОК! Следует играть в различных темпах. В медленном, в быстром, в среднем… Но больше - в медленном. Пусть медленным будет 40, быстрым – 60. Чередуй их. Например, поиграй пятнадцать минут в медленном, потом минуты две-три в быстром, затем опять в медленном и так далее. И последнее:&nbsp; лучше уделять игре по часу ежедневно чем двенадцать часов один раз в неделю. Ты можешь даже составить график если хочешь, пример графика для продвинутых гитаристов ты найдешь <a href="/shred/grafik" title="График">здесь</a>. Можешь воспользоваться им, как образцом. Здесь все зависит только от твоей фантазии, упорства и стремления к совершенству. К уроку<a href="/altpicking/twostring" target="_self" title="Штрих при переходе со струны на струну"> штрих при переходе со струны на струну</a> переходи только после того, как сможешь играть все семь упражнений на скорости 60. Удачи!</p>');
 
