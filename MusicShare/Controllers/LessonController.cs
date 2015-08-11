@@ -8,11 +8,11 @@ namespace MusicShareWeb.Controllers {
     public class LessonController : BaseController {
         public ActionResult Index(int? id) {
             return id.HasValue
-                ? View("Lesson", new LessonModel(BaseModel, id.Value))
+                ? View("Lesson", new LessonModel(BaseModel, id.Value, false))
                 : View("Index", new LessonListModel(BaseModel));
         }
         public ActionResult MinimizedLesson(int id) {
-            return View("MinimizedLesson", new MinimizedLessonModel(BaseModel, id));
+            return View("Lesson", new LessonModel(BaseModel, id, true));
         }
         [HttpPost]
         public JsonResult SaveExercisesSpeed(int lessonId, Dictionary<string, string> speeds) {

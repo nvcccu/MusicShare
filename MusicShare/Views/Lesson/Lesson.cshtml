@@ -1,10 +1,9 @@
 ﻿@using System.Text.RegularExpressions
-@using WebGrease.Css.Extensions
 @model MusicShareWeb.Models.Lesson.LessonModel
 
 @{
     Layout = "../Shared/Layout.cshtml";
-    var text = Model.Lesson.Text;
+    string text;
     const string ExerciseTag = "@@EXERCISE {0}@@";
     const string ReplacePattern = "<div data-bind=\"template: {{ name: 'ExerciseTemplate', data: {{'exerciseId': {0}, 'exerciseName': '{1}', 'audioUrl': {2}, 'imageUrl': '{3}' }} }}\"></div>";
 }
@@ -26,6 +25,11 @@
                 Урок @Model.Lesson.OrderNumber. @Model.Lesson.Title
             </div>
             <div class="lesson__body">
+                @if(Model.IsMinimized) {
+                    text = String.Join("\n", Model.Exercises.Select(e => String.Format(ExerciseTag, e.Id)));
+                } else {
+                    text = Model.Lesson.Text;
+                }
                 @foreach (var exercise in Model.Exercises) {
                     var regex = new Regex(String.Format(ExerciseTag, exercise.Id));
                     text = regex.Replace(text, String.Format(ReplacePattern, exercise.Id, exercise.Name, !String.IsNullOrEmpty(exercise.AudioUrl) ? exercise.AudioUrl : "undefined", exercise.ImageUrl), 1);
@@ -34,7 +38,17 @@
             </div>
         </div>
         <div class="lesson-additions">
-            <input type="button" class="save-exercises-speed" value="Сохранить изменения" data-bind="click: $root.saveSpeeds" />
+            <div>
+                <input type="button" class="save-exercises-speed" value="Сохранить изменения" data-bind="click: $root.saveSpeeds"/>
+            </div>
+            <div>
+                @if(Model.IsMinimized) {
+                    <a href="@Url.Action("Index", new {id = Model.Lesson.Id})" style="position: fixed; top: 300px;">К полной версии урока</a>
+                }
+                else {
+                    <a href="@Url.Action("MinimizedLesson", new {id = Model.Lesson.Id})" style="position: fixed; top: 300px;">К сокращенной версии урока</a>
+                }
+            </div>
         </div>
     </div>
 </div>
