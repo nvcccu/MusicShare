@@ -282,17 +282,20 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE Lesson
-  OWNER TO postgres; 
-/*
-CREATE TABLE SchemaVersion (
-  id serial NOT NULL,
-  CurrentMajorVersion int NOT NULL,
-  LastMinorUpdate int NOT NULL,
-  CONSTRAINT pk_SchemaVersion PRIMARY KEY (id)
+  OWNER TO postgres;
+
+CREATE TABLE Exercise (
+  Id serial NOT NULL,
+  LessonId int,
+  Name character varying(256) NOT NULL,
+  ImageUrl character varying(1024) NOT NULL,
+  AudioUrl character varying(1024),
+  AuthorAccountId int NOT NULL,
+  IsPublic boolean NOT NULL DEFAULT FALSE,
+  CONSTRAINT pk_Exercise PRIMARY KEY (Id)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE SchemaVersion
+ALTER TABLE Exercise
   OWNER TO postgres;
-*/

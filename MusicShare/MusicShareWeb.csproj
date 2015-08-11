@@ -334,6 +334,7 @@
     </Content>
     <Content Include="Views\Lesson\Metronome.cshtml" />
     <Content Include="Views\Lesson\Lesson.cshtml" />
+    <Content Include="Views\Lesson\MinimizedLesson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

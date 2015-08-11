@@ -1,13 +1,12 @@
 ﻿@using System.Text.RegularExpressions
+@using WebGrease.Css.Extensions
 @model MusicShareWeb.Models.Lesson.LessonModel
 
 @{
     Layout = "../Shared/Layout.cshtml";
-    var i = 0;
     var text = Model.Lesson.Text;
-    const string MetronomeTag = "@@METRONOME@@";
-    var regex = new Regex(Regex.Escape(MetronomeTag));
-    var replacePattern = "<div data-bind=\"template: {{ name: 'MetronomeTemplate', data: {0} }}\"></div>";
+    const string ExerciseTag = "@@EXERCISE {0}@@";
+    const string ReplacePattern = "<div data-bind=\"template: {{ name: 'ExerciseTemplate', data: {{'exerciseId': {0}, 'exerciseName': '{1}', 'audioUrl': {2}, 'imageUrl': '{3}' }} }}\"></div>";
 }
 
 <audio id="BitSound" preload="auto">
@@ -27,9 +26,9 @@
                 Урок @Model.Lesson.OrderNumber. @Model.Lesson.Title
             </div>
             <div class="lesson__body">
-                @while(text.IndexOf(MetronomeTag, StringComparison.Ordinal) > -1) {
-                    text = regex.Replace(text, String.Format(replacePattern, i), 1);
-                    i++;
+                @foreach (var exercise in Model.Exercises) {
+                    var regex = new Regex(String.Format(ExerciseTag, exercise.Id));
+                    text = regex.Replace(text, String.Format(ReplacePattern, exercise.Id, exercise.Name, !String.IsNullOrEmpty(exercise.AudioUrl) ? exercise.AudioUrl : "undefined", exercise.ImageUrl), 1);
                 }
                 @Html.Raw(text)
             </div>
@@ -40,15 +39,26 @@
     </div>
 </div>
 
-<script type="text/html" id="MetronomeTemplate">
+<script type="text/html" id="ExerciseTemplate">
+    <!-- ko if: audioUrl -->
+    <div style="text-align: right;">
+        <a data-bind="text: exerciseName, attr: {href: audioUrl}"></a>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: !audioUrl -->
+    <div data-bind="text: exerciseName" style="text-align: right;"></div>
+    <!-- /ko -->
+    <p>
+        <img data-bind="attr: {src: imageUrl}" />
+    </p>
     <div class="metronome">
         <div class="metronome__speed-control">
-            <div class="speed-control__up" data-bind="click: $root.speedUp.bind($data, $data)">+</div>
-            <div class="speed-control__down" data-bind="click: $root.speedDown.bind($data, $data)">-</div>
+            <div class="speed-control__up" data-bind="click: $root.speedUp.bind($data, exerciseId)">+</div>
+            <div class="speed-control__down" data-bind="click: $root.speedDown.bind($data, exerciseId)">-</div>
         </div>
-        <input type="text" class="metronome-speed" data-bind="value: $root.speeds[$data], event: {'change': $root.speedChange.bind($data, $data)}" />
+        <input type="text" class="metronome-speed" data-bind="value: $root.speeds[exerciseId], event: {'change': $root.speedChange.bind($data, exerciseId)}" />
         <div class="metronome-start-stop" data-bind="attr: {'value': $root.isRun() ? 'Остановить' : 'Запустить', class: $root.isRun() ? 'metronome-start-stop metronome-start-stop--start' : 'metronome-start-stop metronome-start-stop--stop'},
-            click: $root.isRun() ? $root.stop.bind($data, $data) : $root.run.bind($data, $data)"></div>
+            click: $root.isRun() ? $root.stop.bind($data, exerciseId) : $root.run.bind($data, exerciseId)"></div>
     </div>
 </script>
 
@@ -62,12 +72,13 @@
     getLesson = function () {
         var model = {};
         model.bitSound = document.getElementById('BitSound');
-//        if (!model.bitSound.src) {
-//            model.bitSound.src = model.bitSound.currentSrc;
-//            alert('Пытаемся сыграть ' + model.bitSound.src + '\nСыграем? -- '+ model.bitSound.canPlayType('video/ogg;codecs="theora, vorbis"'));
-//        }
+        //        if (!model.bitSound.src) {
+        //            model.bitSound.src = model.bitSound.currentSrc;
+        //            alert('Пытаемся сыграть ' + model.bitSound.src + '\nСыграем? -- '+ model.bitSound.canPlayType('video/ogg;codecs="theora, vorbis"'));
+        //        }
         model.isRun = ko.observable(false);
-        model.speeds = [ @Html.Raw(String.Join(", ", Model.Speeds.Select(s => "ko.observable(" + s.Value + ")")))];
+        model.speeds = {};
+        @Html.Raw(String.Join("\n", Model.Speeds.Select(s => "model.speeds['" + s.Key + "'] = ko.observable(" + s.Value + ");")))
         model.activeSpeedIndex = ko.observable(undefined);
         model.loop = undefined;
 
@@ -116,11 +127,10 @@
         });
         model.saveSpeeds = function () {
             var speeds = {};
-            var i = 0;
-            ko.utils.arrayForEach(model.speeds, function (speed) {
-                speeds[i.toString()] = speed().toString();
-                i++;
-            });
+            var keys = Object.keys(model.speeds);
+            for (var i = 0; i < keys.length; i++) {
+                speeds[keys[i].toString()] = model.speeds[keys[i]]().toString();
+            }
             $.ajax({
                 url: '@Url.Action("SaveExercisesSpeed")',
                 type: 'POST',

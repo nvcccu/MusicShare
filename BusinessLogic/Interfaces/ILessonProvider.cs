@@ -8,6 +8,7 @@ namespace BusinessLogic.Interfaces {
         void SaveUsersLessonStat(int accountId, int lessonId, Dictionary<int, int> lessonStat);
         Dictionary<GuitarTechniqueDto, List<LessonDto>> GetAllLessonsGroupedByTechnique();
         LessonDto GetLesson(int lessonId);
+        List<ExerciseDto> GetLessonExercises(int lessonId);
         GuitarTechniqueDto GetGuitarTechnique(int guitarTechniqueId);
     }
 }

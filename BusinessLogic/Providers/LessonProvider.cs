@@ -10,65 +10,33 @@ using DAO.Enums;
 
 namespace BusinessLogic.Providers {
     public class LessonProvider : ILessonProvider {
-        private string ArchiveLessonStat(int lessonId, Dictionary<int, int> speedStat) {
-            return lessonId + ":" + String.Join(",", speedStat.Select(l => l.Key + "-" + l.Value)) + ";";
-        }
-
-        private string UpdateExerciseSpeed(string exercisesSpeed, Dictionary<int, Dictionary<int, int>> speedStat) {
+        private string UpdateExerciseSpeed(string exercisesSpeed, Dictionary<int, int> speedStat) {
             var ret = exercisesSpeed ?? String.Empty;
             speedStat.ForEach(ss => {
-                var tmp = ArchiveLessonStat(ss.Key, ss.Value);
-                if(ret.IndexOf(ss.Key + ":", StringComparison.Ordinal) > -1) {
-                    var regex = new Regex(ss.Key + ":" + ".+?;");
+                var tmp = ss.Key + "-" + ss.Value;
+                if(ret.IndexOf(ss.Key + "-", StringComparison.Ordinal) > -1) {
+                    var regex = new Regex(ss.Key + "-" + "\\d+");
                     ret = regex.Replace(ret, tmp);
                 } else {
-                    ret += tmp;
+                    ret += tmp + ";";
                 }
             });
             return ret;
         }
-//        private string GenerateBaseLessonStat() {
-//            var lessons = new Lesson()
-//                .Select()
-//                .OrderBy(Lesson.Fields.Id, OrderType.Asc)
-//                .GetData()
-//                .Select(l => l.ToDto())
-//                .ToList();
-//            var speedStat = new Dictionary<int, Dictionary<int, int>>();
-//            foreach(var lesson in lessons) {
-//                var lessonStat = new Dictionary<int, int>();
-//                for(var i = 0; i < lesson.ExerciseNumber; i++) {
-//                    lessonStat.Add(i, 60);
-//                }
-//                speedStat.Add(lesson.Id, lessonStat);
-//            }
-//            return UpdateExerciseSpeed("", speedStat);
-//        }
-//        private LessonStatDto CreateBaseLessonStat(int accountId) {
-//            var lessonStats = new LessonStat {
-//                AccountId = accountId,
-//                ExercisesSpeed = GenerateBaseLessonStat()
-//            };
-//            lessonStats.Id = Convert.ToInt32(lessonStats.Insert());
-//            return lessonStats.ToDto();
-//        }
         private Dictionary<int, int> GenerateBaseLessonExerciseStat(int lessonId) {
-            var lessonExerciseNumber = new Lesson()
-                .Select()
-                .Where(Lesson.Fields.Id, PredicateCondition.Equal, lessonId)
-                .GetData()
-                .Single()
-                .ToDto()
-                .ExerciseNumber;
             var dict = new Dictionary<int, int>();
-            for(var i = 0; i < lessonExerciseNumber; i++) {
-                dict.Add(i, 60);
-            }
+            var lessonExerciseIds = new Exercise()
+                .Select()
+                .Where(Exercise.Fields.LessonId, PredicateCondition.Equal, lessonId)
+                .GetData()
+                .Select(e => e.Id)
+                .ToList();
+            lessonExerciseIds.ForEach(id => dict.Add(id, 60));
             return dict;
         }
         private Dictionary<int, int> UpdateExercisesSpeedWithNewLesson(LessonStat lessonStat, int lessonId) {
             var newLessonStat = GenerateBaseLessonExerciseStat(lessonId);
-            var newExercisesSpeed = UpdateExerciseSpeed(lessonStat.ExercisesSpeed, new Dictionary<int, Dictionary<int, int>> {{lessonId, newLessonStat}});
+            var newExercisesSpeed = UpdateExerciseSpeed(lessonStat.ExercisesSpeed, newLessonStat);
             new LessonStat()
                 .Update()
                 .Set(LessonStat.Fields.ExercisesSpeed, newExercisesSpeed)
@@ -83,8 +51,14 @@ namespace BusinessLogic.Providers {
                 .GetData()
                 .Single();
             var lessonStatDto = lessonStat.ToDto();
-            return lessonStatDto.ExercisesSpeed.ContainsKey(lessonId)
-                ? lessonStatDto.ExercisesSpeed[lessonId]
+            var exerciseIds = new Exercise()
+                .Select()
+                .Where(Exercise.Fields.LessonId, PredicateCondition.Equal, lessonId)
+                .GetData()
+                .Select(e => e.Id)
+                .ToList();
+            return lessonStatDto.ExercisesSpeed.Count > 0 && lessonStatDto.ExercisesSpeed.Select(e => e.Key).All(e => exerciseIds.Contains(e))
+                ? lessonStatDto.ExercisesSpeed
                 : UpdateExercisesSpeedWithNewLesson(lessonStat, lessonId);
         }
         public void SaveUsersLessonStat(int accountId, int lessonId, Dictionary<int, int> lessonStat) {
@@ -96,7 +70,7 @@ namespace BusinessLogic.Providers {
             new LessonStat()
                 .Select()
                 .Update()
-                .Set(LessonStat.Fields.ExercisesSpeed, UpdateExerciseSpeed(lessonStatDto.ExercisesSpeed, new Dictionary<int, Dictionary<int, int>>(){{lessonId, lessonStat}}))
+                .Set(LessonStat.Fields.ExercisesSpeed, UpdateExerciseSpeed(lessonStatDto.ExercisesSpeed, lessonStat))
                 .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, lessonStatDto.AccountId)
                 .ExecuteScalar();
         }
@@ -123,6 +97,14 @@ namespace BusinessLogic.Providers {
                 .GetData()
                 .Single()
                 .ToDto();
+        }
+        public List<ExerciseDto> GetLessonExercises(int lessonId) {
+            return new Exercise()
+                .Select()
+                .Where(Exercise.Fields.LessonId, PredicateCondition.Equal, lessonId)
+                .GetData()
+                .Select(e => e.ToDto())
+                .ToList();
         }
         public GuitarTechniqueDto GetGuitarTechnique(int guitarTechniqueId) {
             return new GuitarTechnique()

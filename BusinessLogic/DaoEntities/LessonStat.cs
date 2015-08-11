@@ -25,16 +25,13 @@ namespace BusinessLogic.DaoEntities {
         public int AccountId { get; set; }
         public string ExercisesSpeed { get; set; }
 
-        private Dictionary<int, Dictionary<int, int>> ParseExerciseSpeed() {
-            var parsed = new Dictionary<int, Dictionary<int, int>>();
+        private Dictionary<int, int> ParseExerciseSpeed() {
+            var parsed = new Dictionary<int, int>();
             if(!String.IsNullOrEmpty(ExercisesSpeed)) {
-                var parsedByLesson = ExercisesSpeed.Split(new []{';'}, StringSplitOptions.RemoveEmptyEntries);
-                parsedByLesson.ForEach(p => {
-                    var splitedLesson = p.Split(':');
-                    var lessonId = Convert.ToInt32(splitedLesson[0]);
-                    var exerciseData = splitedLesson[1];
-                    var parsedByExercise = exerciseData.Split(',');
-                    parsed.Add(lessonId, parsedByExercise.ToDictionary(pbe => Convert.ToInt32(pbe.Split('-')[0]), pbe => Convert.ToInt32(pbe.Split('-')[1])));
+                var parsedByExercise = ExercisesSpeed.Split(new []{';'}, StringSplitOptions.RemoveEmptyEntries);
+                parsedByExercise.ForEach(e => {
+                    var splitedExercise = e.Split('-');
+                    parsed.Add(Convert.ToInt32(splitedExercise[0]), Convert.ToInt32(splitedExercise[1]));
                 });
             }
             return parsed;
