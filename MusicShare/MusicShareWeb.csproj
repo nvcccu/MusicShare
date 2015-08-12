@@ -333,6 +333,7 @@
       <DependentUpon>Lesson.css</DependentUpon>
     </Content>
     <Content Include="Views\Lesson\Lesson.cshtml" />
+    <Content Include="Views\Lesson\Exercise.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

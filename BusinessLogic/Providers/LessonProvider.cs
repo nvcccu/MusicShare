@@ -57,7 +57,8 @@ namespace BusinessLogic.Providers {
                 .GetData()
                 .Select(e => e.Id)
                 .ToList();
-            return lessonStatDto.ExercisesSpeed.Count > 0 && lessonStatDto.ExercisesSpeed.Select(e => e.Key).All(e => exerciseIds.Contains(e))
+            var exercisesSpeedIds = lessonStatDto.ExercisesSpeed.Select(e => e.Key);
+            return lessonStatDto.ExercisesSpeed.Count > 0 && exerciseIds.All(ei => exercisesSpeedIds.Contains(ei))
                 ? lessonStatDto.ExercisesSpeed
                 : UpdateExercisesSpeedWithNewLesson(lessonStat, lessonId);
         }

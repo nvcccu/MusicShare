@@ -117,14 +117,17 @@ insert into GuitarTechnique values
 (10, 'Седьмая струна'),
 (11, 'Пригоревшие упражнения от дяди Егора');
 
+insert into Exercise values
+(27, 1, 'Упражнение 1', 'http://www.zaburuev.ru/uploads/uploaded_file/file/265/Tab.png', null, 0, true),
+(28, 1, 'Упражнение 2', 'http://www.zaburuev.ru/uploads/uploaded_file/file/279/Tab.png', null, 0, true),
+(29, 1, 'Упражнение 3', 'http://www.zaburuev.ru/uploads/uploaded_file/file/322/Tab.png', null, 0, true),
+(30, 1, 'Упражнение 4', 'http://www.zaburuev.ru/uploads/uploaded_file/file/272/Tab.png', null, 0, true);
+
 insert into lesson values
-(4, 11, 1, 4, '4 упражнения', '<p><img src="http://www.zaburuev.ru/uploads/uploaded_file/file/265/Tab.png" /></p>@@METRONOME@@
-<p><img src="http://www.zaburuev.ru/uploads/uploaded_file/file/279/Tab.png" /></p>
-@@METRONOME@@
-<p><img src="http://www.zaburuev.ru/uploads/uploaded_file/file/322/Tab.png" /></p>
-@@METRONOME@@
-<p><img src="http://zaburuev.ru/uploads/uploaded_file/file/272/Tab.png" /></p>
-@@METRONOME@@');
+(5, 11, 1, 4, '4 упражнения', '@@EXERCISE 27@@
+@@EXERCISE 28@@
+@@EXERCISE 29@@
+@@EXERCISE 30@@');
 
 insert into Exercise values
 (1, 1, 'Упражнение 1', 'http://allfrets.ru/images/stories/legato/1_legato_1.jpg', null, 0, true),
@@ -246,7 +249,7 @@ insert into Exercise values
 (23, 3, 'Упражнение 4', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_4.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-4.mp3', 0, true),
 (24, 3, 'Упражнение 5', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_5.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-5.mp3', 0, true),
 (25, 3, 'Упражнение 6', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_6.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-6.mp3', 0, true),
-(26, 3, 'Упражнение 6', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-7.mp3', 0, true);
+(26, 3, 'Упражнение 7', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-7.mp3', 0, true);
 
 insert into lesson values
 (3, 2, 1, 7, 'Переменный штрих на одной струне', '<p>Первое, с чего тебе следует начать свой путь к виртуозной игре на электрогитаре – это развитие техники <strong>переменного штриха</strong>. В замечательной книге “Speed mechanics for lead guitar” сказано: "Техника переменного штриха хороша тем что, не высчитывая заранее последовательность ударов медиатора, ты можешь сыграть любую последовательность нот. Таким образом ты будешь чувствовать себя более свободно при импровизации, так как не ограничен какими-либо заранее подготовленными схемами. Ты можешь создать и сыграть любые пассажи, не отрабатывая их заранее. А если работа медиатором не требует раздумий – остается думать только о музыке"</p>

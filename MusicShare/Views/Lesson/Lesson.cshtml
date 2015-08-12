@@ -44,8 +44,7 @@
             <div>
                 @if(Model.IsMinimized) {
                     <a href="@Url.Action("Index", new {id = Model.Lesson.Id})" style="position: fixed; top: 300px;">К полной версии урока</a>
-                }
-                else {
+                } else {
                     <a href="@Url.Action("MinimizedLesson", new {id = Model.Lesson.Id})" style="position: fixed; top: 300px;">К сокращенной версии урока</a>
                 }
             </div>
@@ -53,42 +52,7 @@
     </div>
 </div>
 
-<script type="text/html" id="ExerciseTemplate">
-    <div class="exercise">
-        <!-- ko if: min -->
-        <div class="exercise-toggle" data-bind="click: $root.toggle.bind($data, exerciseId)">
-            <div class="exercise-toggle__icon" data-bind="text: $root.exerciseHide[exerciseId]() ? '+' : '-'"></div>
-            <!-- ko if: $root.exerciseHide[exerciseId]() -->
-            <span class="exercise-toggle__name" data-bind="text: exerciseName"></span>
-            <!-- /ko -->
-        </div>
-        <!-- /ko -->
-        <div data-bind="attr: {id: 'Exercise' + exerciseId}">
-            <!-- ko if: audioUrl -->
-            <div style="text-align: right;">
-                <a data-bind="text: exerciseName, attr: {href: audioUrl}" target="_blank"></a>
-            </div>
-            <!-- /ko -->
-            <!-- ko if: !audioUrl -->
-            <div data-bind="text: exerciseName" style="text-align: right;"></div>
-            <!-- /ko -->
-            <p>
-                <img data-bind="attr: {src: imageUrl}" />
-            </p>
-            <div class="metronome">
-                <div class="metronome__speed-control">
-                    <div class="speed-control__up" data-bind="click: $root.speedUp.bind($data, exerciseId)">+</div>
-                    <div class="speed-control__down" data-bind="click: $root.speedDown.bind($data, exerciseId)">-</div>
-                </div>
-                <input type="text" class="metronome-speed" data-bind="value: $root.speeds[exerciseId], event: {'change': $root.speedChange.bind($data, exerciseId)}" />
-                <div class="metronome-start-stop" data-bind="attr: {'value': $root.isRun() ? 'Остановить' : 'Запустить', class: $root.isRun() ? 'metronome-start-stop metronome-start-stop--start' : 'metronome-start-stop metronome-start-stop--stop'},
-            click: $root.isRun() ? $root.stop.bind($data, exerciseId) : $root.run.bind($data, exerciseId)"></div>
-            </div>
-        </div>
-    </div>
-</script>
-
-
+@Html.Partial("Exercise")
 
 <script type="text/javascript">
     $(document).ready(function () {
