@@ -5,7 +5,6 @@ using System.Text.RegularExpressions;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
 using Castle.Core.Internal;
-using Core.Enums;
 using Core.TransportTypes;
 using DAO.Enums;
 
@@ -13,10 +12,11 @@ namespace BusinessLogic.Providers {
     public class LessonProvider : ILessonProvider {
         private string UpdateExerciseSpeed(string exercisesSpeed, Dictionary<int, int> speedStat) {
             var ret = exercisesSpeed ?? String.Empty;
+            const string RegexpPattern = "^{0}-\\d+|(?<=;){0}-\\d+";
             speedStat.ForEach(ss => {
+                var regex = new Regex(String.Format(RegexpPattern, ss.Key));
                 var tmp = ss.Key + "-" + ss.Value;
-                if(ret.IndexOf(ss.Key + "-", StringComparison.Ordinal) > -1) {
-                    var regex = new Regex(ss.Key + "-" + "\\d+");
+                if(regex.IsMatch(ret)) {
                     ret = regex.Replace(ret, tmp);
                 } else {
                     ret += tmp + ";";

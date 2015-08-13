@@ -15,15 +15,17 @@
                 <div class="plan__all-exercises" data-bind="foreach: { data: $root.sortedGuitarTechniques, as: 'guitarTechnique' }">
                     <!-- ko if: $root.isTechniqueActive(guitarTechnique.id) -->
                     <div class="all-exercises__guitar-technique">
-                        <span class="plan__toggle" data-bind="click: $root.toggleTechnique.bind($data, $data)">&#9660;</span><span data-bind="text: guitarTechnique.name"></span>
-                        <div data-bind="foreach: { data: $root.getLessonByGuitarTechnique($data), as: 'lesson' }">
+                        <span class="plan__toggle" data-bind="click: $root.toggleTechnique.bind($data, guitarTechnique)">-</span><span data-bind="text: guitarTechnique.name"></span>
+                        <div data-bind="foreach: { data: $root.getLessonByGuitarTechnique(guitarTechnique), as: 'lesson' }">
+                            <!-- ko if: $root.isLessonActive(lesson.id) -->
                             <div class="guitar-technique__lesson">
-                                <span class="plan__toggle">&#9660;</span><span data-bind="text: lesson.name"></span>
+                                <span class="plan__toggle" data-bind="click: $root.toggleLesson.bind($data, lesson)">-</span><span data-bind="text: lesson.name"></span>
                                 <div data-bind="foreach: { data: $root.getExercisesByLesson(lesson), as: 'exercise' }">
+                                    <!-- ko if: $root.isExerciseActive(exercise.id)-->
                                     <div class="lesson__exercise">
-                                        <div style="margin-bottom: 15px;">
+                                        <div style="margin-bottom: 25px;">
                                             <div style="position: relative;">
-                                                <span class="plan__toggle">&#9660;</span>
+                                                <span class="plan__toggle" data-bind="click: $root.toggleExercise.bind($data, exercise)">-</span>
                                                 <span data-bind="text: exercise.name + '. ' + $root.speeds[exercise.id.toString()] + ' УВМ'"></span>
                                                 <span class="plan__add-exercise" data-bind="visible: !$root.exerciseWasAdded(exercise.id), click: $root.addExercise.bind($data, exercise.id, guitarTechnique.shortName, lesson.orderNumber, exercise.name)">&#8658;</span>
                                             </div>
@@ -32,13 +34,27 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: $root.isExerciseActive(exercise.id)-->
+                                    <div style="margin-left: 25px;">
+                                        <span class="plan__toggle" data-bind="click: $root.toggleExercise.bind($data, exercise)">+</span><span data-bind="text: exercise.name"></span>
+                                    </div>
+                                    <!-- /ko -->
                                 </div>
                             </div>
+                            <!-- /ko -->
+                            <!-- ko: ifnot: $root.isLessonActive(lesson.id) -->
+                            <div style="margin-left: 15px;">
+                                <span class="plan__toggle" data-bind="click: $root.toggleLesson.bind($data, lesson)">+</span><span data-bind="text: lesson.name"></span>
+                            </div>
+                            <!-- /ko-->
                         </div>
                     </div>
                     <!-- /ko -->
                     <!-- ko ifnot: $root.isTechniqueActive(guitarTechnique.id) -->
-                    <span class="plan__toggle" data-bind="click: $root.toggleTechnique.bind($data, $data)">+</span><span data-bind="text: guitarTechnique.name"></span>
+                    <div>
+                        <span class="plan__toggle" data-bind="click: $root.toggleTechnique.bind($data, $data)">+</span><span data-bind="text: guitarTechnique.name"></span>
+                    </div>
                     <!-- /ko -->
                 </div>
                 <div class="plan__selected-exercises">
@@ -80,8 +96,6 @@
     getLesson = function(data) {
         var model = {};
         model.guitarTechniques = data.guitarTechniques;
-        model.lessons = data.lessons;
-        model.exercises = data.exercises;
         model.speeds = data.speeds;
         model.plan = data.plan;
        
@@ -107,6 +121,64 @@
             return model.activeTechniqueIds.indexOf(id) > -1;
         };
 
+        model.lessons = data.lessons.map(function (lesson) {
+            return ko.observable(lesson);
+        });
+        model.activeLessonIds = ko.observableArray(model.lessons.map(function (lesson) {
+            return lesson().id;
+        }));
+        model.getLessonByGuitarTechnique = function (guitarTechnique) {
+            return model.lessons.filter(function (lesson) {
+                return lesson().guitarTechniqueId === guitarTechnique.id;
+            }).sort(function (a, b) {
+                return a().orderNumber - b().orderNumber;
+            }).map(function (lesson) {
+                return lesson();
+            });
+        };
+        model.toggleLesson = function (lesson) {
+            if (model.activeLessonIds.indexOf(lesson.id) > -1) {
+                model.activeLessonIds.remove(lesson.id);
+            } else {
+                model.activeLessonIds.push(lesson.id);
+                model.activeLessonIds.sort(function (a, b) {
+                    return a - b;
+                });
+            }
+        };
+        model.isLessonActive = function (id) {
+            return model.activeLessonIds.indexOf(id) > -1;
+        };
+
+        model.exercises = data.exercises.map(function (exercise) {
+            return ko.observable(exercise);
+        });
+        model.activeExerciseIds = ko.observableArray(model.exercises.map(function (exercise) {
+            return exercise().id;
+        }));
+        model.getExercisesByLesson = function (lesson) {
+            return model.exercises.filter(function (exercise) {
+                return exercise().lessonId === lesson.id;
+            }).sort(function (a, b) {
+                return a().id - b().id;
+            }).map(function (exercise) {
+                return exercise();
+            });
+        };
+        model.toggleExercise = function (exercise) {
+            if (model.activeExerciseIds.indexOf(exercise.id) > -1) {
+                model.activeExerciseIds.remove(exercise.id);
+            } else {
+                model.activeExerciseIds.push(exercise.id);
+                model.activeExerciseIds.sort(function (a, b) {
+                    return a - b;
+                });
+            }
+        };
+        model.isExerciseActive = function (id) {
+            return model.activeExerciseIds.indexOf(id) > -1;
+        };
+
         var getPlannedExercise = function(id, guitarTechniqueShortName, lessonOrderNumber, exerciseName) {
             return {
                 id: id,
@@ -118,20 +190,7 @@
 
         model.planName = ko.observable(null);
         model.addedExercises = ko.observableArray(null);
-        model.getLessonByGuitarTechnique = function(guitarTechnique) {
-            return model.lessons.filter(function(lesson) {
-                return lesson.guitarTechniqueId === guitarTechnique.id;
-            }).sort(function(a, b) {
-                return a.orderNumber - b.orderNumber;
-            });
-        };
-        model.getExercisesByLesson = function(lesson) {
-            return model.exercises.filter(function(exercise) {
-                return exercise.lessonId === lesson.id;
-            }).sort(function(a, b) {
-                return a.id - b.id;
-            });
-        };
+        
         model.addExercise = function(id, guitarTechniqueShortName, lessonOrderNumber, exerciseName) {
             model.addedExercises.push(getPlannedExercise(id, guitarTechniqueShortName, lessonOrderNumber, exerciseName));
         };
@@ -200,11 +259,11 @@
                 model.planName(model.plan.name);
                 model.plan.exerciseIds.forEach(function(exerciseId) {
                     var exercise = model.exercises.filter(function(exercise) {
-                        return exercise.id === exerciseId;
-                    })[0];
+                        return exercise().id === exerciseId;
+                    })[0]();
                     var lesson = model.lessons.filter(function(lesson) {
-                        return lesson.id === exercise.lessonId;
-                    })[0];
+                        return lesson().id === exercise.lessonId;
+                    })[0]();
                     var guitarTechnique = model.guitarTechniques.filter(function (guitarTechnique) {
                         return guitarTechnique.id === lesson.guitarTechniqueId;
                     })[0];
