@@ -303,10 +303,11 @@ ALTER TABLE Exercise
 
 CREATE TABLE Plan (
   Id serial NOT NULL,
-  AccountId int NOT NULL,
+  OwnerAccountId int NOT NULL,
   Name character varying(1024) NOT NULL,
   Exercises character varying(2048) NOT NULL,
-  PlanType int NOT NULL,
+  Type int NOT NULL,
+  IsPublic boolean NOT NULL DEFAULT FALSE,
   CONSTRAINT pk_Plan PRIMARY KEY (Id)
 )
 WITH (
