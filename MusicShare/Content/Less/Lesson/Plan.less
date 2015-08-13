@@ -1,0 +1,53 @@
+﻿@import "../Const.less";
+@import "../Mixin.less";
+
+.plan-layout {
+    background-color: @mg-brown-layout;
+    width: 100%;
+}
+.plan {
+    background-color: @mg-brown--ordinal;
+    width: 1100px;
+    margin: 20px auto 0;
+    color: @mg-text-white;
+}
+.plan__toggle,
+.plan__add-exercise {
+    text-align: center;
+    cursor: pointer;
+    background-color: #92a803;
+    height: 16px;
+    width: 16px;
+    .border-radius(8px);
+    line-height: 16px;
+    font-size: 16px;
+    display: inline-block;
+}
+.plan__add-exercise {
+    margin-left: 485px;
+}
+.plan__all-exercises {
+    display: inline-block;
+    .box-sizing__border-box;
+    width: 700px;
+    padding: 20px;
+    .border-radius(5px);
+}
+.all-exercises__guitar-technique {
+
+}
+.guitar-technique__lesson {
+    margin-left: 15px;
+}
+.lesson__exercise {
+    margin-left: 15px;
+}
+.plan__selected-exercises {
+    padding: 20px;
+    vertical-align: top;
+    display: inline-block;
+    margin-left: -4px;
+    .box-sizing__border-box;
+    width: 400px;
+    .border-radius(5px);
+}

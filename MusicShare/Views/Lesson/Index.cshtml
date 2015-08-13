@@ -4,15 +4,16 @@
     Layout = "../Shared/Layout.cshtml";
 }
 
-<div style="width: 400px; margin: 0 auto;">
+<div style="width: 400px; margin: 0 auto; position: relative;">
     @foreach(var technique in @Model.Lessons) {
         <div style="margin-bottom: 15px;">
             <div>@technique.Key.Name</div>
             <div style="margin-left: 38px;">
                 @foreach(var lesson in technique.Value) {
-                    <a href="@Url.Action("Index", new {id = @lesson.Id})">@lesson.Title</a><br>
+                    <a href="@Url.Action("Index", new {id = @lesson.Id})">@lesson.Name</a><br>
                 }
             </div>
         </div>
     }
+    <a href="@Url.Action("Plan")" style="position: fixed; left: 500px; top: 200px;">Составить расписание</a>
 </div>

@@ -22,7 +22,7 @@
                 <a class="lesson-hierarchy__link" href="@Url.Action("Index", "Lesson", new {id = ""})">Самоучитель</a> > <a class="lesson-hierarchy__link" href="#">@Model.GutarTechique.Name</a>
             </div>
             <div class="lesson__name">
-                Урок @Model.Lesson.OrderNumber. @Model.Lesson.Title
+                Урок @Model.Lesson.OrderNumber. @Model.Lesson.Name
             </div>
             <div class="lesson__body">
                 @if(Model.IsMinimized) {
@@ -56,7 +56,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        ko.applyBindings(getLesson(null, document.getElementById("Lesson")));
+        ko.applyBindings(getLesson(), document.getElementById("Lesson"));
     });
 
     getLesson = function () {

@@ -37,7 +37,7 @@ namespace BusinessLogic.DaoEntities {
                 GuitarTechniqueId = GuitarTechniqueId,
                 OrderNumber = OrderNumber,
                 ExerciseNumber = ExerciseNumber,
-                Title = Title,
+                Name = Title,
                 Text = Text
             };
         }

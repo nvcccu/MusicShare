@@ -119,5 +119,29 @@ namespace BusinessLogic {
         public void CreateLessonStatNode(int accountId) {
             _lessonProvider.CreateLessonStatNode(accountId);
         }
+         public void CreatePlanNode(int accountId) {
+            _lessonProvider.CreatePlanNode(accountId);
+        }
+        public List<GuitarTechniqueDto> GetAllGuitarTechniques() {
+            return _lessonProvider.GetAllGuitarTechniques();
+        }
+        public List<LessonDto> GetAllLessons() {
+            return _lessonProvider.GetAllLessons();
+        }
+        public List<ExerciseDto> GetAllExercises() {
+            return _lessonProvider.GetAllExercises();
+        }
+        public Dictionary<int, int> GetUsersExercisesStat(int accountId) {
+            return _lessonProvider.GetUsersExercisesStat(accountId);
+        }
+        public PlanDto GetPlan(int id) {
+            return _lessonProvider.GetPlan(id);
+        }
+        public int SavePlan(PlanDto plan) {
+            return _lessonProvider.SavePlan(plan);
+        }
+        public void UpdatePlan(PlanDto plan) {
+            _lessonProvider.UpdatePlan(plan);
+        }
     }
 }
