@@ -13,9 +13,10 @@
         <div class="plan-layout">
             <div class="plan">
                 <div class="plan__all-exercises" data-bind="foreach: { data: $root.sortedGuitarTechniques, as: 'guitarTechnique' }">
+                    <!-- ko if: $root.isTechniqueActive(guitarTechnique.id) -->
                     <div class="all-exercises__guitar-technique">
-                        <span class="plan__toggle">&#9660;</span><span data-bind="text: guitarTechnique.name"></span>
-                        <div data-bind="foreach: { data: $root.getLessonByGuitarTechnique(guitarTechnique), as: 'lesson' }">
+                        <span class="plan__toggle" data-bind="click: $root.toggleTechnique.bind($data, $data)">&#9660;</span><span data-bind="text: guitarTechnique.name"></span>
+                        <div data-bind="foreach: { data: $root.getLessonByGuitarTechnique($data), as: 'lesson' }">
                             <div class="guitar-technique__lesson">
                                 <span class="plan__toggle">&#9660;</span><span data-bind="text: lesson.name"></span>
                                 <div data-bind="foreach: { data: $root.getExercisesByLesson(lesson), as: 'exercise' }">
@@ -27,7 +28,7 @@
                                                 <span class="plan__add-exercise" data-bind="visible: !$root.exerciseWasAdded(exercise.id), click: $root.addExercise.bind($data, exercise.id, guitarTechnique.shortName, lesson.orderNumber, exercise.name)">&#8658;</span>
                                             </div>
                                             <div>
-                                                <img data-bind="attr: { 'src' : exercise.imageUrl }"/>
+                                                <img data-bind="attr: { 'src' : exercise.imageUrl }" />
                                             </div>
                                         </div>
                                     </div>
@@ -35,6 +36,10 @@
                             </div>
                         </div>
                     </div>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $root.isTechniqueActive(guitarTechnique.id) -->
+                    <span class="plan__toggle" data-bind="click: $root.toggleTechnique.bind($data, $data)">+</span><span data-bind="text: guitarTechnique.name"></span>
+                    <!-- /ko -->
                 </div>
                 <div class="plan__selected-exercises">
                     <div>
@@ -55,6 +60,19 @@
 </div>
 
 <script type="text/javascript">
+    ko.bindingHandlers.fadeVisible = {
+        init: function (element, valueAccessor) {
+            // Initially set the element to be instantly visible/hidden depending on the value
+            var value = valueAccessor();
+            $(element).toggle(ko.unwrap(value)); // Use "unwrapObservable" so we can handle values that may or may not be observable
+        },
+        update: function (element, valueAccessor) {
+            // Whenever the value subsequently changes, slowly fade the element in or out
+            var value = valueAccessor();
+            ko.unwrap(value) ? $(element).fadeIn() : $(element).fadeOut();
+        }
+    };
+
     $(document).ready(function () {
         ko.applyBindings(getLesson(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }))), document.getElementById("Plan"));
     });
@@ -66,9 +84,28 @@
         model.exercises = data.exercises;
         model.speeds = data.speeds;
         model.plan = data.plan;
+       
         model.sortedGuitarTechniques = model.guitarTechniques.sort(function(a, b) {
             return a.id - b.id;
+        }).map(function (guitarTechnique) {
+            return ko.observable(guitarTechnique);
         });
+        model.activeTechniqueIds = ko.observableArray(model.guitarTechniques.map(function (guitarTechnique) {
+            return guitarTechnique.id;
+        }));
+        model.toggleTechnique = function (guitarTechnique) {
+            if (model.activeTechniqueIds.indexOf(guitarTechnique.id) > -1) {
+                model.activeTechniqueIds.remove(guitarTechnique.id);
+            } else {
+                model.activeTechniqueIds.push(guitarTechnique.id);
+                model.activeTechniqueIds.sort(function(a, b) {
+                    return a - b;
+                });
+            }
+        };
+        model.isTechniqueActive = function (id) {
+            return model.activeTechniqueIds.indexOf(id) > -1;
+        };
 
         var getPlannedExercise = function(id, guitarTechniqueShortName, lessonOrderNumber, exerciseName) {
             return {
@@ -154,6 +191,9 @@
                 });
             }
         };
+
+//        model.showExercise = function (elem) { if (elem.nodeType === 1) $(elem).hide().slideDown() }
+//        model.hideExercise = function (elem) { if (elem.nodeType === 1) $(elem).slideUp(function () { $(elem).remove(); }) }
 
         var init = function () {
             if (model.plan) {
