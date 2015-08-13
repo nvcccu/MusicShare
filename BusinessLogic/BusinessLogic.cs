@@ -101,8 +101,8 @@ namespace BusinessLogic {
         public Dictionary<int, int> GetUsersLessonStat(int lessonId, int accountId) {
             return _lessonProvider.GetUsersLessonStat(lessonId, accountId);
         }
-        public void SaveUsersLessonStat(int accountId, int lessonId, Dictionary<int, int> lessonStat) {
-            _lessonProvider.SaveUsersLessonStat(accountId, lessonId, lessonStat);
+        public void SaveUsersLessonStat(int accountId, Dictionary<int, int> lessonStat) {
+            _lessonProvider.SaveUsersLessonStat(accountId, lessonStat);
         }
         public Dictionary<GuitarTechniqueDto, List<LessonDto>> GetAllLessonsGroupedByTechnique() {
             return _lessonProvider.GetAllLessonsGroupedByTechnique();
@@ -130,6 +130,9 @@ namespace BusinessLogic {
         }
         public List<ExerciseDto> GetAllExercises() {
             return _lessonProvider.GetAllExercises();
+        }
+        public List<ExerciseDto> GetExercisesByPlan(int planId) {
+            return _lessonProvider.GetExercisesByPlan(planId);
         }
         public Dictionary<int, int> GetUsersExercisesStat(int accountId) {
             return _lessonProvider.GetUsersExercisesStat(accountId);

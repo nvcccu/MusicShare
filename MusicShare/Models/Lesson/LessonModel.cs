@@ -25,8 +25,8 @@ namespace MusicShareWeb.Models.Lesson {
         }
         public LessonModel(BaseModel baseModel) : base(baseModel) { }
 
-        public void SaveExercisesSpeed(int lessonId) {
-            ServiceManager<IBusinessLogic>.Instance.Service.SaveUsersLessonStat(CurrentUser.Id, lessonId, Speeds);
+        public void SaveExercisesSpeed() {
+            ServiceManager<IBusinessLogic>.Instance.Service.SaveUsersLessonStat(CurrentUser.Id, Speeds);
         }
     }
 }

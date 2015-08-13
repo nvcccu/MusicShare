@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Routing;
-using Core.Enums;
 using Core.TransportTypes;
 using MusicShareWeb.Models.Lesson;
 
@@ -20,10 +18,10 @@ namespace MusicShareWeb.Controllers {
             return View("Lesson", new LessonModel(BaseModel, id, true));
         }
         [HttpPost]
-        public JsonResult SaveExercisesSpeed(int lessonId, Dictionary<string, string> speeds) {
+        public JsonResult SaveExercisesSpeed(Dictionary<string, string> speeds) {
             new LessonModel(BaseModel) {
                 Speeds = speeds.ToDictionary(s => Convert.ToInt32(s.Key), s => Convert.ToInt32(s.Value))
-            }.SaveExercisesSpeed(lessonId);
+            }.SaveExercisesSpeed();
             return null;
         }
         [HttpGet]
@@ -52,6 +50,10 @@ namespace MusicShareWeb.Controllers {
                     redirectUrl = url
                 }
             };
+        }
+        [HttpGet]
+        public ActionResult Train(int planId) {
+            return View("Train", new TrainModel(BaseModel, planId));
         }
     }
 }

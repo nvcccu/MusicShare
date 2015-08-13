@@ -15,7 +15,6 @@ namespace MusicShareWeb.Models.Lesson {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
             Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetAllExercises();
-            Speeds = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersExercisesStat(CurrentUser.Id);
             if(CurrentUser != null) {
                 Speeds = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersExercisesStat(CurrentUser.Id);
             } else {
@@ -27,7 +26,6 @@ namespace MusicShareWeb.Models.Lesson {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
             Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetAllExercises();
-            Speeds = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersExercisesStat(CurrentUser.Id);
             if(CurrentUser != null) {
                 Speeds = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersExercisesStat(CurrentUser.Id);
             } else {

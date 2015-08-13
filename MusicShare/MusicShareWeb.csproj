@@ -141,6 +141,7 @@
     <Compile Include="Models\DerzkieSchi\ProductsModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
     <Compile Include="Models\Lesson\LessonListModel.cs" />
+    <Compile Include="Models\Lesson\TrainModel.cs" />
     <Compile Include="Models\Lesson\PlanModel.cs" />
     <Compile Include="Models\Lesson\LessonModel.cs" />
     <Compile Include="Models\Market\SelectingModel.cs" />
@@ -341,12 +342,12 @@
     </Content>
     <Content Include="Views\Lesson\Lesson.cshtml" />
     <Content Include="Views\Lesson\Exercise.cshtml" />
-    <Content Include="Views\Lesson\Plan.cshtml" />
+    <Content Include="Views\Lesson\Train.cshtml" />
     <Content Include="Content\Less\Lesson\Plan.less" />
     <Content Include="Content\Less\Lesson\Plan.css.map">
       <DependentUpon>Plan.css</DependentUpon>
     </Content>
-    <Content Include="Views\Lesson\NewPlan.cshtml" />
+    <Content Include="Views\Lesson\Plan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

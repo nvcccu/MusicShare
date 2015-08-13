@@ -63,7 +63,7 @@ namespace BusinessLogic.Providers {
                 ? lessonStatDto.ExercisesSpeed
                 : UpdateExercisesSpeedWithNewLesson(lessonStat, lessonId);
         }
-        public void SaveUsersLessonStat(int accountId, int lessonId, Dictionary<int, int> lessonStat) {
+        public void SaveUsersLessonStat(int accountId, Dictionary<int, int> lessonStat) {
             var lessonStatDto = new LessonStat()
                 .Select()
                 .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, accountId)
@@ -160,6 +160,22 @@ namespace BusinessLogic.Providers {
                 .GetData()
                 .Select(gt => gt.ToDto())
                 .ToList();
+        }
+        public List<ExerciseDto> GetExercisesByPlan(int planId) {
+            var planExerciseIds = new Plan()
+                .Select()
+                .Where(Plan.Fields.Id, PredicateCondition.Equal, planId)
+                .GetData()
+                .Single()
+                .ToDto()
+                .ExerciseIds;
+            var exercises = new Exercise()
+                .Select()
+                .Where(Exercise.Fields.Id, PredicateCondition.In, planExerciseIds)
+                .GetData()
+                .Select(e => e.ToDto())
+                .ToList();
+            return planExerciseIds.Select(i => exercises.Single(e => e.Id == i)).ToList();
         }
         public Dictionary<int, int> GetUsersExercisesStat(int accountId) {
             return new LessonStat()

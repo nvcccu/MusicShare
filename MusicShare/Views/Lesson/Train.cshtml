@@ -1,12 +1,12 @@
-﻿@using System.Text.RegularExpressions
-@model MusicShareWeb.Models.Lesson.LessonModel
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model MusicShareWeb.Models.Lesson.TrainModel
 
 @{
     Layout = "../Shared/Layout.cshtml";
-    string text;
-    const string ExerciseTag = "@@EXERCISE {0}@@";
-    const string ReplacePattern = "<div data-bind=\"template: {{ name: 'ExerciseTemplate', data: {{'exerciseId': {0}, 'exerciseName': '{1}', 'audioUrl': '{2}', 'imageUrl': '{3}', 'min': {4} }} }}\"></div>";
 }
+
+@Html.Partial("Exercise")
 
 <audio id="BitSound" preload="auto">
     <source src="/Content/bit.ogg" type='audio/ogg; codecs="vorbis"'>
@@ -15,52 +15,37 @@
     <source src="/Content/bit.aac" type='audio/mp4; codecs="mp4a.40.5"'>
 </audio>
 
-<div class="lesson-layout">
-    <div id="LessonPage" class="lesson-page">
-        <div class="lesson">
-            <div class="lesson-hierarchy">
-                <a class="lesson-hierarchy__link" href="@Url.Action("Index", "Lesson", new {id = ""})">Самоучитель</a> > <a class="lesson-hierarchy__link" href="#">@Model.GutarTechique.Name</a>
-            </div>
-            <div class="lesson__name">
-                Урок @Model.Lesson.OrderNumber. @Model.Lesson.Name
-            </div>
-            <div class="lesson__body">
-                @if(Model.IsMinimized) {
-                    text = String.Join("\n", Model.Exercises.Select(e => String.Format(ExerciseTag, e.Id)));
-                } else {
-                    text = Model.Lesson.Text;
-                }
-                @foreach (var exercise in Model.Exercises) {
-                    var regex = new Regex(String.Format(ExerciseTag, exercise.Id));
-                    text = regex.Replace(text, String.Format(ReplacePattern, exercise.Id, exercise.Name, !String.IsNullOrEmpty(exercise.AudioUrl) ? exercise.AudioUrl : "undefined", exercise.ImageUrl, Model.IsMinimized.ToString().ToLower()), 1);
-                }
-                @Html.Raw(text)
+<div id="Train">
+    @if (Model.CurrentUser == null) {
+        <span>Для загрузки данных плана занятий необходимо войти на сайт.</span>
+    } else {
+        <div class="plan-layout">
+            <div class="plan">
+                <div class="plan__all-exercises" data-bind="foreach: { data: $root.exercises, as: 'exercise' }">
+                    <div data-bind="template: { name: 'ExerciseTemplate', data: {'exerciseId': exercise.id, 'exerciseName': $root.getExerciseTitle(exercise), 'audioUrl': exercise.audioUrl, 'imageUrl': exercise.imageUrl, 'min': false } }"></div>
+                </div>
+                <div class="plan__selected-exercises">
+                    <div>
+                        <input type="button" class="save-exercises-speed" value="Сохранить изменения" data-bind="click: $root.saveSpeeds" />
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="lesson-additions">
-            <div>
-                <input type="button" class="save-exercises-speed" value="Сохранить изменения" data-bind="click: $root.saveSpeeds"/>
-            </div>
-            <div>
-                @if(Model.IsMinimized) {
-                    <a href="@Url.Action("Index", new {id = Model.Lesson.Id})" style="position: fixed; top: 300px;">К полной версии урока</a>
-                } else {
-                    <a href="@Url.Action("MinimizedLesson", new {id = Model.Lesson.Id})" style="position: fixed; top: 300px;">К сокращенной версии урока</a>
-                }
-            </div>
-        </div>
-    </div>
+    }
 </div>
-
-@Html.Partial("Exercise")
 
 <script type="text/javascript">
     $(document).ready(function () {
-        ko.applyBindings(getLesson(), document.getElementById("Lesson"));
+        ko.applyBindings(getTrain(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }))), document.getElementById("Train"));
     });
 
-    getLesson = function () {
+    getTrain = function (data) {
         var model = {};
+        model.guitarTechniques = data.guitarTechniques;
+        model.lessons = data.lessons;
+        model.exercises = data.exercises;
+        model.speeds = data.speeds;
+
         model.bitSound = document.getElementById('BitSound');
         //        if (!model.bitSound.src) {
         //            model.bitSound.src = model.bitSound.currentSrc;
@@ -149,6 +134,16 @@
             return false;
         };
 
+        model.getExerciseTitle = function (exercise) {
+            var lesson = model.lessons.filter(function (lesson) {
+                return exercise.lessonId === lesson.id;
+            })[0];
+            var guitarTechnique = model.guitarTechniques.filter(function (guitarTechnique) {
+                return lesson.guitarTechniqueId === guitarTechnique.id;
+            })[0];
+            return guitarTechnique.shortName + ' ' + lesson.name + '. ' + exercise.name;
+        };
+
         return model;
-    }
+    };
 </script>
