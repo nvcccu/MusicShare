@@ -20,8 +20,8 @@
                                 <span class="plan__toggle">&#9660;</span><span data-bind="text: lesson.name"></span>
                                 <div data-bind="foreach: { data: $root.getExercisesByLesson(lesson), as: 'exercise' }">
                                     <div class="lesson__exercise">
-                                        <div>
-                                            <div>
+                                        <div style="margin-bottom: 15px;">
+                                            <div style="position: relative;">
                                                 <span class="plan__toggle">&#9660;</span>
                                                 <span data-bind="text: exercise.name + '. ' + $root.speeds[exercise.id.toString()] + ' УВМ'"></span>
                                                 <span class="plan__add-exercise" data-bind="visible: !$root.exerciseWasAdded(exercise.id), click: $root.addExercise.bind($data, exercise.id, guitarTechnique.shortName, lesson.orderNumber, exercise.name)">&#8658;</span>
@@ -38,9 +38,10 @@
                 </div>
                 <div class="plan__selected-exercises">
                     <div>
-                        <input type="button" value="Сохранить план занятий" style="color: black;" data-bind="click: $root.savePlan" /><br><br>
-                        <input type="text" style="color: black;" data-bind="value: $root.planName" /><br><br>
+                        <input type="button" value="Сохранить план занятий" style="color: black;" data-bind="click: $root.savePlan"/><br><br>
+                        Название: <input type="text" style="color: black;" data-bind="value: $root.planName"/><br><br>
                     </div>
+                    Упражнения:
                     <div data-bind="foreach: { data: $root.addedExercises(), as: 'exercise' }">
                         <div>
                             <span class="plan__toggle" data-bind="click: $root.removeExercise.bind($data, exercise.id)">&#215;</span>

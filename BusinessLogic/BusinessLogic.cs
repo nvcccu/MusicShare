@@ -116,6 +116,9 @@ namespace BusinessLogic {
         public GuitarTechniqueDto GetGuitarTechnique(int guitarTechniqueId) {
             return _lessonProvider.GetGuitarTechnique(guitarTechniqueId);
         }
+        public List<PlanDto> GetAllUsersPlans(int accountId) {
+            return _lessonProvider.GetAllUsersPlans(accountId);
+        }
         public void CreateLessonStatNode(int accountId) {
             _lessonProvider.CreateLessonStatNode(accountId);
         }

@@ -5,15 +5,20 @@
 }
 
 <div style="width: 400px; margin: 0 auto; position: relative;">
-    @foreach(var technique in @Model.Lessons) {
+    @foreach(var technique in Model.Lessons) {
         <div style="margin-bottom: 15px;">
             <div>@technique.Key.Name</div>
             <div style="margin-left: 38px;">
                 @foreach(var lesson in technique.Value) {
-                    <a href="@Url.Action("Index", new {id = @lesson.Id})">@lesson.Name</a><br>
+                    <a href="@Url.Action("Index", new {id = lesson.Id})">@lesson.Name</a><br>
                 }
             </div>
         </div>
     }
-    <a href="@Url.Action("Plan")" style="position: fixed; left: 500px; top: 200px;">Составить расписание</a>
+    @if(Model.CurrentUser == null) {
+        <div style="position: fixed; left: 500px; top: 200px;">Чтобы составить план занятий, необходимо войти на сайт</div>
+    } else {
+        <a href="@Url.Action("Plans")" style="position: fixed; left: 500px; top: 250px;">Мои планы занятий</a>
+    <a href="@Url.Action("Plan")" style="position: fixed; left: 500px; top: 200px;">Составить новый план занятий</a>
+    }
 </div>

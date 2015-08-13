@@ -1,0 +1,17 @@
+﻿@model MusicShareWeb.Models.Lesson.PlanListModel
+
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+<div style="width: 400px; margin: 0 auto; position: relative;">
+    Мои планы занятий:
+    @foreach(var plan in Model.Plans) {
+        <div style="margin-bottom: 15px;">
+            <a href="@Url.Action("Train", new {planId = plan.Id})">@plan.Name</a><a style="margin-left: 38px;" href="@Url.Action("Plan", new {id = plan.Id})">редактировать</a><br>
+        </div>
+    }
+    <br>
+    <br>
+    <a href="@Url.Action("Plan")" style="position: fixed; left: 500px; top: 200px;">Составить новый план занятий</a>
+</div>

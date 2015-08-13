@@ -12,6 +12,7 @@ namespace BusinessLogic.Interfaces {
         List<ExerciseDto> GetLessonExercises(int lessonId);
         GuitarTechniqueDto GetGuitarTechnique(int guitarTechniqueId);
         List<GuitarTechniqueDto> GetAllGuitarTechniques();
+        List<PlanDto> GetAllUsersPlans(int accountId);
         List<LessonDto> GetAllLessons();
         List<ExerciseDto> GetAllExercises();
         List<ExerciseDto> GetExercisesByPlan(int planId);

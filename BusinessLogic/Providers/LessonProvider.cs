@@ -147,6 +147,14 @@ namespace BusinessLogic.Providers {
                 .Select(gt => gt.ToDto())
                 .ToList();
         }
+        public List<PlanDto> GetAllUsersPlans(int accountId) {
+            return new Plan()
+                .Select()
+                .Where(Plan.Fields.OwnerAccountId, PredicateCondition.Equal, accountId)
+                .GetData()
+                .Select(p => p.ToDto())
+                .ToList();
+        }
         public List<LessonDto> GetAllLessons() {
             return new Lesson()
                 .Select()
