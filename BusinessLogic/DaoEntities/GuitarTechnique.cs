@@ -13,16 +13,20 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (Int32))]
             Id,
             [DbType(typeof (string))]
-            Name
+            Name,
+            [DbType(typeof (string))]
+            ShortName
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
+        public string ShortName { get; set; }
 
         public GuitarTechniqueDto ToDto() {
             return new GuitarTechniqueDto {
                 Id = Id,
-                Name = Name
+                Name = Name,
+                ShortName = ShortName
             };
         }
     }

@@ -1,0 +1,177 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model MusicShareWeb.Models.Lesson.PlanModel
+
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+<div id="Plan">
+    @if (Model.CurrentUser == null) {
+        <span>Для составления плана занятий необходимо зарегистрироваться.</span>
+    } else {
+        <div class="plan-layout">
+            <div class="plan">
+                <div class="plan__all-exercises" data-bind="foreach: { data: $root.sortedGuitarTechniques, as: 'guitarTechnique' }">
+                    <div class="all-exercises__guitar-technique">
+                        <span class="plan__toggle">&#9660;</span><span data-bind="text: guitarTechnique.name"></span>
+                        <div data-bind="foreach: { data: $root.getLessonByGuitarTechnique(guitarTechnique), as: 'lesson' }">
+                            <div class="guitar-technique__lesson">
+                                <span class="plan__toggle">&#9660;</span><span data-bind="text: lesson.name"></span>
+                                <div data-bind="foreach: { data: $root.getExercisesByLesson(lesson), as: 'exercise' }">
+                                    <div class="lesson__exercise">
+                                        <div>
+                                            <div>
+                                                <span class="plan__toggle">&#9660;</span>
+                                                <span data-bind="text: exercise.name"></span>
+                                                <span class="plan__add-exercise" data-bind="visible: !$root.exerciseWasAdded(exercise.id), click: $root.addExercise.bind($data, exercise.id, guitarTechnique.shortName, lesson.orderNumber, exercise.name)">&#8658;</span>
+                                            </div>
+                                            <div>
+                                                <img data-bind="attr: { 'src' : exercise.imageUrl }"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plan__selected-exercises">
+                    <div>
+                        <input type="button" value="Сохранить план занятий" style="color: black;" data-bind="click: $root.savePlan" /><br><br>
+                        <input type="text" style="color: black;" data-bind="value: $root.planName" /><br><br>
+                    </div>
+                    <div data-bind="foreach: { data: $root.addedExercises(), as: 'exercise' }">
+                        <div>
+                            <span class="plan__toggle" data-bind="click: $root.removeExercise.bind($data, exercise.id)">&#215;</span>
+                            <span data-bind="text: exercise.guitarTechniqueShortName + '. Урок ' + exercise.lessonOrderNumber + '. ' + exercise.exerciseName"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ko.applyBindings(getLesson(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }))), document.getElementById("Plan"));
+    });
+
+    getLesson = function(data) {
+        var model = {};
+        model.guitarTechniques = data.guitarTechniques;
+        model.lessons = data.lessons;
+        model.exercises = data.exercises;
+        model.speeds = data.speeds;
+        model.plan = data.plan;
+        model.sortedGuitarTechniques = model.guitarTechniques.sort(function(a, b) {
+            return a.id - b.id;
+        });
+
+        var getPlannedExercise = function(id, guitarTechniqueShortName, lessonOrderNumber, exerciseName) {
+            return {
+                id: id,
+                guitarTechniqueShortName: guitarTechniqueShortName,
+                lessonOrderNumber: lessonOrderNumber,
+                exerciseName: exerciseName
+            };
+        };
+
+        model.planName = ko.observable(null);
+        model.addedExercises = ko.observableArray(null);
+        model.getLessonByGuitarTechnique = function(guitarTechnique) {
+            return model.lessons.filter(function(lesson) {
+                return lesson.guitarTechniqueId === guitarTechnique.id;
+            }).sort(function(a, b) {
+                return a.orderNumber - b.orderNumber;
+            });
+        };
+        model.getExercisesByLesson = function(lesson) {
+            return model.exercises.filter(function(exercise) {
+                return exercise.lessonId === lesson.id;
+            }).sort(function(a, b) {
+                return a.id - b.id;
+            });
+        };
+        model.addExercise = function(id, guitarTechniqueShortName, lessonOrderNumber, exerciseName) {
+            model.addedExercises.push(getPlannedExercise(id, guitarTechniqueShortName, lessonOrderNumber, exerciseName));
+        };
+        model.removeExercise = function(id) {
+            model.addedExercises.remove(function(exercise) {
+                return exercise.id === id;
+            });
+        };
+        model.exerciseWasAdded = function(exerciseId) {
+            return model.addedExercises().filter(function(exercise) {
+                return exercise.id === exerciseId;
+            }).length > 0;
+        };
+        model.savePlan = function() {
+            if (model.plan) {
+                $.ajax({
+                    url: '@Url.Action("UpdatePlan")',
+                    type: 'POST',
+                    traditional: true,
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({
+                        id: model.plan.id,
+                        name: model.planName(),
+                        type: 1,
+                        isPublic: true,
+                        exerciseIds: model.addedExercises().map(function(exercise) {
+                            return exercise.id;
+                        })
+                    }),
+                    success: function(data) {
+                        alert('Сохранено');
+                    },
+                    error: function() {
+                        location.reload();
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: '@Url.Action("SavePlan")',
+                    type: 'POST',
+                    traditional: true,
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({
+                        name: model.planName(),
+                        type: 1,
+                        isPublic: true,
+                        exerciseIds: model.addedExercises().map(function (exercise) {
+                            return exercise.id;
+                        })
+                    }),
+                    success: function (data) {
+                        window.location.href = data.redirectUrl;
+                    },
+                    error: function () {
+                        alert('Ошибка');
+                    }
+                });
+            }
+        };
+
+        var init = function () {
+            if (model.plan) {
+                model.planName(model.plan.name);
+                model.plan.exerciseIds.forEach(function(exerciseId) {
+                    var exercise = model.exercises.filter(function(exercise) {
+                        return exercise.id === exerciseId;
+                    })[0];
+                    var lesson = model.lessons.filter(function(lesson) {
+                        return lesson.id === exercise.lessonId;
+                    })[0];
+                    var guitarTechnique = model.guitarTechniques.filter(function (guitarTechnique) {
+                        return guitarTechnique.id === lesson.guitarTechniqueId;
+                    })[0];
+                    model.addExercise(exerciseId, guitarTechnique.shortName, lesson.orderNumber, exercise.name);
+                });
+            }
+        };
+        init();
+        return model;
+    };
+</script>

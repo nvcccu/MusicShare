@@ -47,6 +47,21 @@ namespace MusicShareWeb {
                 new {controller = "Lesson", action = "MinimizedLesson"}
                 );
             routes.MapRoute(
+                "SavePlan",
+                "Lesson/SavePlan",
+                new {controller = "Lesson", action = "SavePlan", id = UrlParameter.Optional}
+                );
+            routes.MapRoute(
+                "UpdatePlan",
+                "Lesson/UpdatePlan",
+                new {controller = "Lesson", action = "UpdatePlan", id = UrlParameter.Optional}
+                );
+            routes.MapRoute(
+                "Plan",
+                "Plan/{id}",
+                new {controller = "Lesson", action = "Plan", id = UrlParameter.Optional}
+                );
+            routes.MapRoute(
                 "Lesson",
                 "Lesson/{id}",
                 new {controller = "Lesson", action = "Index", id = UrlParameter.Optional}

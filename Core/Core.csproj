@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\PlanType.cs" />
     <Compile Include="Enums\ActionId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransportTypes\ArticleDto.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="TransportTypes\GuestDto.cs" />
     <Compile Include="TransportTypes\GuitarTechniqueDto.cs" />
     <Compile Include="TransportTypes\ExerciseDto.cs" />
+    <Compile Include="TransportTypes\PlanDto.cs" />
     <Compile Include="TransportTypes\LessonStatDto.cs" />
     <Compile Include="TransportTypes\QuestionTransportType.cs" />
     <Compile Include="TransportTypes\QuestionDto .cs" />

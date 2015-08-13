@@ -261,6 +261,7 @@ ALTER TABLE LessonStat
 CREATE TABLE GuitarTechnique (
   Id serial NOT NULL,
   Name character varying(128) NOT NULL,
+  ShortName character varying(32) NOT NULL,
   CONSTRAINT pk_GuitarTechnique PRIMARY KEY (Id)
 )
 WITH (
@@ -298,4 +299,18 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE Exercise
+  OWNER TO postgres;
+
+CREATE TABLE Plan (
+  Id serial NOT NULL,
+  AccountId int NOT NULL,
+  Name character varying(1024) NOT NULL,
+  Exercises character varying(2048) NOT NULL,
+  PlanType int NOT NULL,
+  CONSTRAINT pk_Plan PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Plan
   OWNER TO postgres;

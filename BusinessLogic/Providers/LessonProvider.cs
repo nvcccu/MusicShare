@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
 using Castle.Core.Internal;
+using Core.Enums;
 using Core.TransportTypes;
 using DAO.Enums;
 
@@ -126,6 +127,78 @@ namespace BusinessLogic.Providers {
                     AccountId = accountId
                 }.Insert();
             }
+        }
+        public void CreatePlanNode(int accountId) {
+            var plan = new Plan()
+                .Select()
+                .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, accountId)
+                .GetData()
+                .SingleOrDefault();
+            if(plan == null) {
+                new Plan {
+                    OwnerAccountId = accountId
+                }.Insert();
+            }
+        }
+        public List<GuitarTechniqueDto> GetAllGuitarTechniques() {
+            return new GuitarTechnique()
+                .Select()
+                .GetData()
+                .Select(gt => gt.ToDto())
+                .ToList();
+        }
+        public List<LessonDto> GetAllLessons() {
+            return new Lesson()
+                .Select()
+                .GetData()
+                .Select(gt => gt.ToDto())
+                .ToList();
+        }
+        public List<ExerciseDto> GetAllExercises() {
+            return new Exercise()
+                .Select()
+                .GetData()
+                .Select(gt => gt.ToDto())
+                .ToList();
+        }
+        public Dictionary<int, int> GetUsersExercisesStat(int accountId) {
+            return new LessonStat()
+                .Select()
+                .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, accountId)
+                .GetData()
+                .Single()
+                .ToDto()
+                .ExercisesSpeed;
+        }
+        public PlanDto GetPlan(int id) {
+            return new Plan()
+                .Select()
+                .Where(Plan.Fields.Id, PredicateCondition.Equal, id)
+                .GetData()
+                .Single()
+                .ToDto();
+        }
+        private string SerializePlanExercises(List<int> exerciseIds) {
+            return String.Join(",", exerciseIds);
+        }
+        public int SavePlan(PlanDto plan) {
+            return Convert.ToInt32(new Plan {
+                OwnerAccountId = plan.OwnerAccountId,
+                Name = plan.Name,
+                Exercises = SerializePlanExercises(plan.ExerciseIds),
+                Type = (int)plan.Type,
+                IsPublic = plan.IsPublic
+            }.Insert());
+        }
+        public void UpdatePlan(PlanDto plan) {
+            new Plan()
+                .Update()
+                .Set(Plan.Fields.Name, plan.Name)
+                .Set(Plan.Fields.Exercises, SerializePlanExercises(plan.ExerciseIds))
+                .Set(Plan.Fields.Type, (int)plan.Type)
+                .Set(Plan.Fields.IsPublic, plan.IsPublic)
+                .Where(Plan.Fields.Id, PredicateCondition.Equal, plan.Id)
+                .ExecuteScalar();
         }
     }
 }
