@@ -48,16 +48,19 @@ namespace MusicShareWeb.Controllers {
             plan.OwnerAccountId = CurrentUser.Id;
             new PlanModel(BaseModel).Update(plan);
             var createdPlanId = new PlanModel(BaseModel, plan.Id);
-            var url = Url.Action("Plan", new {id = createdPlanId});
             return new JsonResult {
                 Data = new {
-                    redirectUrl = url
+                    redirectUrl = Url.Action("Plan", new {id = createdPlanId})
                 }
             };
         }
         [HttpGet]
         public ActionResult Train(int planId) {
             return View("Train", new TrainModel(BaseModel, planId));
+        }
+        [HttpGet]
+        public ActionResult Stat() {
+            return View("Stat", new StatModel(BaseModel));
         }
     }
 }

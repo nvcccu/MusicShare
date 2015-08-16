@@ -18,7 +18,8 @@
     @if(Model.CurrentUser == null) {
         <div style="position: fixed; left: 300px; top: 200px; color: red;">Чтобы составить план занятий, необходимо войти на сайт</div>
     } else {
+        <a href="@Url.Action("Plan")" style="position: fixed; left: 500px; top: 200px;">Составить новый план занятий</a>
         <a href="@Url.Action("Plans")" style="position: fixed; left: 500px; top: 250px;">Мои планы занятий</a>
-    <a href="@Url.Action("Plan")" style="position: fixed; left: 500px; top: 200px;">Составить новый план занятий</a>
+        <a href="@Url.Action("Stat")" style="position: fixed; left: 500px; top: 300px;">Статистика</a>
     }
 </div>

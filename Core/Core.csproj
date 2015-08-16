@@ -51,6 +51,7 @@
     <Compile Include="TransportTypes\AskThreadTransportType.cs" />
     <Compile Include="TransportTypes\DesignerImageTransportType.cs" />
     <Compile Include="TransportTypes\AnswerDto.cs" />
+    <Compile Include="TransportTypes\ExerciseSpeedInDate.cs" />
     <Compile Include="TransportTypes\GuestDto.cs" />
     <Compile Include="TransportTypes\GuitarTechniqueDto.cs" />
     <Compile Include="TransportTypes\ExerciseDto.cs" />

@@ -140,6 +140,9 @@ namespace BusinessLogic {
         public Dictionary<int, int> GetUsersExercisesStat(int accountId) {
             return _lessonProvider.GetUsersExercisesStat(accountId);
         }
+        public Dictionary<int, List<ExerciseSpeedInDate>> GetUsersExercisesTotalStat(int accountId) {
+            return _lessonProvider.GetUsersExercisesTotalStat(accountId);
+        }
         public PlanDto GetPlan(int id) {
             return _lessonProvider.GetPlan(id);
         }

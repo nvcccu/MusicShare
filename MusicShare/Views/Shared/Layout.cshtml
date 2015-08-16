@@ -4,26 +4,26 @@
 
 <!DOCTYPE html>
 
-<html>
-    <head>
-        @Html.Partial("ContentHelper")
-        <title>MusGround</title>
-        <link href="/Content/Image/favicon.jpg" rel="shortcut icon" type="image/jpg" />
-        <script>
-            var musGround = {};
-            $(document).ready(function() {
-                musGround = getMusGround({
-                    logUrl: '@Url.Action("LogAction", "Log")'
-                });
+<html lang="ru">
+<head>
+    @Html.Partial("ContentHelper")
+    <title>MusGround</title>
+    <link href="/Content/Image/favicon.jpg" rel="shortcut icon" type="image/jpg" />
+    <script>
+        var musGround = {};
+        $(document).ready(function () {
+            musGround = getMusGround({
+                logUrl: '@Url.Action("LogAction", "Log")'
             });
-        </script>
-    </head>
-    <body>
-        @Html.Partial("SignInUp")
-        @Html.Partial("Header")
-        <div class="content">
-            @RenderBody()
-        </div>
-@*            @Html.Partial("Footer")*@
-    </body>
+        });
+    </script>
+</head>
+<body>
+    @Html.Partial("SignInUp")
+    @Html.Partial("Header")
+    <div class="content">
+        @RenderBody()
+    </div>
+    @*            @Html.Partial("Footer")*@
+</body>
 </html>

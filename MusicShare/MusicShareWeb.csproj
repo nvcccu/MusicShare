@@ -142,6 +142,7 @@
     <Compile Include="Models\Designer\DesignerModel.cs" />
     <Compile Include="Models\Lesson\LessonListModel.cs" />
     <Compile Include="Models\Lesson\PlanListModel.cs" />
+    <Compile Include="Models\Lesson\StatModel.cs" />
     <Compile Include="Models\Lesson\TrainModel.cs" />
     <Compile Include="Models\Lesson\PlanModel.cs" />
     <Compile Include="Models\Lesson\LessonModel.cs" />
@@ -257,6 +258,8 @@
     <Content Include="Content\Libraries\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Libraries\Bootstrap\js\bootstrap.js" />
     <Content Include="Content\Libraries\Bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Libraries\ChartJs\Chart.js" />
+    <Content Include="Content\Libraries\ChartJs\Chart.min.js" />
     <Content Include="Content\Libraries\MarkItUp\css\base.css" />
     <Content Include="Content\Libraries\MarkItUp\css\style.css" />
     <Content Include="Content\Libraries\MarkItUp\images\bg-container.png" />
@@ -350,6 +353,10 @@
     </Content>
     <Content Include="Views\Lesson\Plan.cshtml" />
     <Content Include="Views\Lesson\Plans.cshtml" />
+    <Content Include="Views\Lesson\Stat.cshtml" />
+    <Content Include="Content\Libraries\ChartJs\Chart.min.js.map">
+      <DependentUpon>Chart.min.js</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

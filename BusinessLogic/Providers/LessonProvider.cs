@@ -49,8 +49,9 @@ namespace BusinessLogic.Providers {
             var lessonStat = new LessonStat()
                 .Select()
                 .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, accountId)
+                .OrderBy(LessonStat.Fields.Id, OrderType.Desc)
                 .GetData()
-                .Single();
+                .First();
             var lessonStatDto = lessonStat.ToDto();
             var exerciseIds = new Exercise()
                 .Select()
@@ -64,17 +65,29 @@ namespace BusinessLogic.Providers {
                 : UpdateExercisesSpeedWithNewLesson(lessonStat, lessonId);
         }
         public void SaveUsersLessonStat(int accountId, Dictionary<int, int> lessonStat) {
+            var now = DateTime.Today;
             var lessonStatDto = new LessonStat()
                 .Select()
                 .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, accountId)
+                .OrderBy(LessonStat.Fields.Id, OrderType.Desc)
                 .GetData()
-                .Single();
-            new LessonStat()
-                .Select()
-                .Update()
-                .Set(LessonStat.Fields.ExercisesSpeed, UpdateExerciseSpeed(lessonStatDto.ExercisesSpeed, lessonStat))
-                .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, lessonStatDto.AccountId)
-                .ExecuteScalar();
+                .First();
+            var exercisesSpeed = UpdateExerciseSpeed(lessonStatDto.ExercisesSpeed, lessonStat);
+            if(now - lessonStatDto.Date > new TimeSpan(1, 0, 0)) {
+                new LessonStat {
+                    AccountId = accountId,
+                    Date = now,
+                    ExercisesSpeed = exercisesSpeed
+                }
+                .Insert();
+            } else {
+                new LessonStat()
+                    .Select()
+                    .Update()
+                    .Set(LessonStat.Fields.ExercisesSpeed, exercisesSpeed)
+                    .Where(LessonStat.Fields.Id, PredicateCondition.Equal, lessonStatDto.Id)
+                    .ExecuteScalar();
+            }
         }
         public Dictionary<GuitarTechniqueDto, List<LessonDto>> GetAllLessonsGroupedByTechnique() {
             var guitarTechnique = new GuitarTechnique()
@@ -124,7 +137,8 @@ namespace BusinessLogic.Providers {
                 .SingleOrDefault();
             if(lessonStat == null) {
                 new LessonStat {
-                    AccountId = accountId
+                    AccountId = accountId,
+                    Date = DateTime.Today
                 }.Insert();
             }
         }
@@ -189,10 +203,29 @@ namespace BusinessLogic.Providers {
             return new LessonStat()
                 .Select()
                 .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, accountId)
+                .OrderBy(LessonStat.Fields.Id, OrderType.Asc)
                 .GetData()
-                .Single()
+                .First()
                 .ToDto()
                 .ExercisesSpeed;
+        }
+        public Dictionary<int, List<ExerciseSpeedInDate>> GetUsersExercisesTotalStat(int accountId) {
+            var exercises = new Exercise()
+                .Select()
+                .GetData()
+                .Select(e => e.ToDto())
+                .ToList();
+            var lessonStats = new LessonStat()
+                .Select()
+                .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, accountId)
+                .OrderBy(LessonStat.Fields.Id, OrderType.Asc)
+                .GetData()
+                .Select(ls => ls.ToDto())
+                .ToList();
+            return exercises.ToDictionary(e => e.Id, e => lessonStats.Select(ls => new ExerciseSpeedInDate {
+                Date = ls.Date,
+                Speed = ls.ExercisesSpeed.ContainsKey(e.Id) ? ls.ExercisesSpeed[e.Id] : 60
+            }).ToList());
         }
         public PlanDto GetPlan(int id) {
             return new Plan()

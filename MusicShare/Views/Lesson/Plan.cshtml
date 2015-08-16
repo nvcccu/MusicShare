@@ -59,6 +59,9 @@
                 </div>
                 <div class="plan__selected-exercises">
                     <div>
+                        @if (Model.Plan != null) {
+                            <a href="@Url.Action("Train", new {planId = Model.Plan.Id})">Заниматься по этому плану</a><br><br>
+                        }
                         <input type="button" value="Сохранить план занятий" style="color: black;" data-bind="click: $root.savePlan"/><br><br>
                         Название: <input type="text" style="color: black;" data-bind="value: $root.planName"/><br><br>
                     </div>

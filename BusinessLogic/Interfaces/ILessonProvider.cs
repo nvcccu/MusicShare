@@ -17,6 +17,7 @@ namespace BusinessLogic.Interfaces {
         List<ExerciseDto> GetAllExercises();
         List<ExerciseDto> GetExercisesByPlan(int planId);
         Dictionary<int, int> GetUsersExercisesStat(int accountId);
+        Dictionary<int, List<ExerciseSpeedInDate>> GetUsersExercisesTotalStat(int accountId);
         PlanDto GetPlan(int id);  
         int SavePlan(PlanDto plan);
         void UpdatePlan(PlanDto plan);

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Castle.Core.Internal;
 using Core.TransportTypes;
 using DAO;
@@ -18,12 +17,15 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (Int32))]
             AccountId,
             [DbType(typeof (String))]
-            ExercisesSpeed
+            ExercisesSpeed,
+            [DbType(typeof (DateTime))]
+            Date
         }
 
         public int Id { get; set; }
         public int AccountId { get; set; }
         public string ExercisesSpeed { get; set; }
+        public DateTime Date { get; set; }
 
         private Dictionary<int, int> ParseExerciseSpeed() {
             var parsed = new Dictionary<int, int>();
@@ -41,7 +43,8 @@ namespace BusinessLogic.DaoEntities {
             return new LessonStatDto {
                 Id = Id,
                 AccountId = AccountId,
-                ExercisesSpeed = ParseExerciseSpeed()
+                ExercisesSpeed = ParseExerciseSpeed(),
+                Date = Date
             };
         }
     }
