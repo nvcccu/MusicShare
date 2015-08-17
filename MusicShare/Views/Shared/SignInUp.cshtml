@@ -1,92 +1,198 @@
 ﻿<div id="SignInUpModal" name="SignInUpModal" class="modal fade" role="dialog" aria-labelledby="SignInUpModal" aria-hidden="true">
     <div class="modal-dialog">
-        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-12 col-md-offset-3">
-            <div class="panel panel-info">
-                <div style="padding-top: 30px" class="panel-body">
-                    @using (Html.BeginForm("SignInViaEmail", "Auth", FormMethod.Post, new { id = "SignInForm", @class = "form-horizontal", role = "form", onsubmit = "return onSignInViaEmailSubmit();" }))
-                    {
-                        <div style="margin-bottom: 25px" class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="text" class="form-control" name="Email" placeholder="Почта">
-                        </div>
-                        <div class="hide">
-                            Аккаунт с таким адресом уже зарегистрирован
-                        </div>
-                        <div style="margin-bottom: 25px" class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input type="password" class="form-control" name="Password" placeholder="Пароль">
-                        </div>
-                        <div class="input-group">
-                            <div class="checkbox">
-                                <label>
-                                    @Html.CheckBox("RememberMe", true)Не спрашивать пароль снова
-                                </label>
+        <div class="container">
+            <div class="col-md-6">
+                <div class="panel panel-login">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="#" class="active" id="login-form-link">Войти</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#" id="register-form-link">Зарегистрироваться</a>
                             </div>
                         </div>
-                        <div style="margin-top: 10px" class="form-group">
-                            <div class="col-sm-12 controls">
-                                <input type="submit" class="btn btn-primary" value="Войти"/>
-                                <a id="btn-fblogin" href="#" class="btn btn-primary">Зайти через Вконтакте</a>
+                        <hr>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                @using (Html.BeginForm("SignInViaEmail", "Auth", FormMethod.Post, new { id = "SignInForm", style="display: block;", role = "form", onsubmit = "return onSignInViaEmailSubmit();" })) {
+                                    <div class="form-group">
+                                        <input type="email" name="Email" tabindex="1" class="form-control" placeholder="Почта или имя на сайте" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="Password" tabindex="2" class="form-control" placeholder="Пароль">
+                                    </div>
+                                    <div class="form-group text-center">
+                                        @Html.CheckBox("RememberMe", true, new {tabindex = 3})
+                                        <span for="remember" class="remember-me">Запомнить меня</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" tabindex="4" class="form-control btn btn-login" value="Войти">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="text-center">
+                                                    <a href="#" tabindex="5" class="forgot-password">Забыли пароль?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @using (Html.BeginForm("SignUp", "Auth", FormMethod.Post, new { id = "SignUpForm", style = "display: none;", role = "form", onsubmit = "return onSignUpSubmit();" })) { 
+                                    <div class="form-group">
+                                        <input type="text" name="NickName" required tabindex="1" class="form-control" placeholder="Имя на сайте" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="Email" required tabindex="2" class="form-control" placeholder="Почта" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="Password" required tabindex="3" class="form-control" placeholder="Пароль">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="confirm-password" required id="confirm-password" tabindex="4" class="form-control" placeholder="Пароль еще раз">
+                                    </div>
+                                    <div class="form-group text-center">
+                                        @Html.CheckBox("RememberMe", true, new { tabindex = 3 })
+                                        <span for="remember" class="remember-me">Запомнить меня</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" tabindex="4" class="form-control btn btn-register" value="Зарегистрироваться">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-12 control">
-                                <div style="border-top: 1px solid #888; padding-top: 15px; font-size: 85%">
-                                    Еще не зарегистрировались?
-                                    <a href="#" onclick=" $('#loginbox').hide(); $('#signupbox').show(); ">
-                                        Создать аккаунт
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
-        <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-12 col-md-offset-3">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <div class="panel-title">Sign Up</div>
-                    <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show();">Sign In</a></div>
-                </div>
-                <div class="panel-body">
-                    @using (Html.BeginForm("SignUp", "Auth", FormMethod.Post, new { id = "SignUpForm", @class = "form-horizontal", role = "form", onsubmit = "return onSignUpSubmit();" }))
-                    {
-                        <div class="form-group">
-                            <label for="Email" class="col-md-3 control-label">Email</label>
-                            <div class="col-md-9">
-                                <input type="text" name="Email" placeholder="Почта" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Password" class="col-md-3 control-label">Пароль</label>
-                            <div class="col-md-9">
-                                <input type="password" name="Password" placeholder="Пароль" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="checkbox col-md-offset-3 col-md-9">
-                                <label>
-                                    @Html.CheckBox("RememberMe", true)Не спрашивать пароль снова
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-3 col-md-9">
-                                <i class="icon-hand-right"></i><input id="SignUp" type="submit" class="btn btn-info" value="Зарегистрироваться" />
-                            </div>
-                        </div>
-                    }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script type="text/javascript">
-    var onSubmit = function () {
-        return musGround.submitWithoutReload(event.target);
+<style type="text/css">
+    .panel-login {
+        border-color: #ccc;
+        text-align: center;
     }
+    .panel-login > .panel-heading a {
+        text-decoration: none;
+        color: #666;
+        font-weight: bold;
+        font-size: 16px;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+    }
+    .panel-login > .panel-heading a.active {
+        color: #92a803;
+        font-size: 18px;
+    }
+    .panel-login > .panel-heading hr {
+        margin-top: 10px;
+        margin-bottom: 0;
+        clear: both;
+        border: 0;
+        height: 1px;
+        background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+        background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+        background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+        background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+    }
+    .panel-login input[type="text"], .panel-login input[type="email"], .panel-login input[type="password"] {
+        height: 45px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+    }
+    .panel-login input:hover,
+    .panel-login input:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border-color: #ccc;
+    }
+    .btn-login {
+        background-color: #92a803;
+        outline: none;
+        color: #fff;
+        font-size: 16px;
+        height: auto;
+        font-weight: normal;
+        padding: 14px 0;
+        border-color: #92a803;
+    }
+    .btn-login:hover,
+    .btn-login:active,
+    .btn-login:active:focus,
+    .btn-login:focus {
+        outline: none;
+        color: #fff;
+        background-color: #afc047;
+        border-color: #afc047;
+    }
+    .forgot-password {
+        text-decoration: underline;
+        color: #92a803;
+    }
+    .forgot-password:hover,
+    .forgot-password:focus {
+        text-decoration: underline;
+        color: #afc047;
+    }
+    .remember-me {
+        font-weight: 700;
+        vertical-align: top;
+    }
+    .btn-register {
+        background-color: #92a803;
+        outline: none;
+        color: #fff;
+        font-size: 16px;
+        height: auto;
+        padding: 14px 0;
+        border-color: #92a803;
+    }
+    .btn-register:hover,
+    .btn-register:active,
+    .btn-register:active:focus,
+    .btn-register:focus {
+        outline: none;
+        color: #fff;
+        background-color: #afc047;
+        border-color: #afc047;
+    }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        $('#login-form-link').click(function (e) {
+            $("#SignInForm").delay(110).fadeIn(100);
+            $("#SignUpForm").fadeOut(100);
+            $('#register-form-link').removeClass('active');
+            $(this).addClass('active');
+            e.preventDefault();
+        });
+        $('#register-form-link').click(function (e) {
+            $("#SignUpForm").delay(110).fadeIn(100);
+            $("#SignInForm").fadeOut(100);
+            $('#login-form-link').removeClass('active');
+            $(this).addClass('active');
+            e.preventDefault();
+        });
+    });
     var onSignInViaEmailSubmit = function () {
         $(event.target).ajaxSubmit({
             success: function (data) {
@@ -100,7 +206,6 @@
         });
         return false;
     }
-
     var onSignUpSubmit = function () {
         $(event.target).ajaxSubmit({
             success: function (data) {
@@ -114,5 +219,4 @@
         });
         return false;
     }
-
 </script>
