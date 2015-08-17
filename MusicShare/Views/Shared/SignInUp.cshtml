@@ -39,7 +39,7 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="text-center">
-                                                    <a href="#" tabindex="5" class="forgot-password">Забыли пароль?</a>
+                                                    <a href="#" tabindex="5" class="mg-link">Забыли пароль?</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,23 +116,13 @@
         -moz-transition: all 0.1s linear;
         transition: all 0.1s linear;
     }
-    .panel-login input:hover,
-    .panel-login input:focus {
+    .panel-login input:not(.btn):hover,
+    .panel-login input:not(.btn):focus {
         outline: none;
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
         border-color: #ccc;
-    }
-  
-    .forgot-password {
-        text-decoration: underline;
-        color: #92a803;
-    }
-    .forgot-password:hover,
-    .forgot-password:focus {
-        text-decoration: underline;
-        color: #afc047;
     }
     .remember-me {
         font-weight: 700;

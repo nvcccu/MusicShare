@@ -34,7 +34,7 @@ body {
     padding: @mg-btn-padding;
     border-radius: @mg-btn-border-radius;
     outline: none;
-    .box-shadow("inset 0 1px 1px rgba(0,0,0,.075)"); 
+    .box-shadow("inset 0 1px 1px rgba(0,0,0,.075)");
     .transition("border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 }
 .mg-btn:hover {
@@ -42,6 +42,7 @@ body {
     background-color: @mg-green--hover;
     border-color: @mg-green--hover;
     outline: none;
+    .box-shadow("inset 0 1px 1px rgba(0,0,0,.075)");
 }
 .mg-btn:active,
 .mg-btn:focus,
@@ -50,4 +51,28 @@ body {
     background-color: @mg-green--active;
     border-color: @mg-green--active;
     outline: none;
+    .box-shadow("inset 0 1px 1px rgba(0,0,0,.075)");
+}
+
+p a:not(.btn),
+.mg-link {
+    text-decoration: none;
+    color: @mg-green--ordinal;
+    .transition("all 0.1s linear");
+}
+p a:not(.btn):hover,
+.mg-link:hover {
+    outline: none;
+    text-decoration: underline;
+    color: @mg-green--hover;
+}
+p a:not(.btn):active,
+.mg-link:active,
+p a:not(.btn):focus,
+.mg-link:focus,
+p a:not(.btn):focus:active,
+.mg-link:focus:active {
+    outline: none;
+    text-decoration: underline;
+    color: @mg-green--active;
 }
