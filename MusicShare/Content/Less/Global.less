@@ -1,4 +1,5 @@
 ﻿@import "Const.less";
+@import "Mixin.less";
 
 @font-face {
     font-family: "FontAwesome";
@@ -20,4 +21,33 @@ body {
 .content {
     background-color: @mg-beige--ordinal;
     width: 100%;
+}
+
+.mg-btn {
+    font-family: @mg-font-family--ordinal;
+    color: @mg-white;
+    background-color: @mg-green--ordinal;
+    border-color: @mg-green--ordinal;
+    font-size: @mg-font-size--ordinal;
+    height: auto;
+    font-weight: normal;
+    padding: @mg-btn-padding;
+    border-radius: @mg-btn-border-radius;
+    outline: none;
+    .box-shadow("inset 0 1px 1px rgba(0,0,0,.075)"); 
+    .transition("border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+}
+.mg-btn:hover {
+    color: @mg-white;
+    background-color: @mg-green--hover;
+    border-color: @mg-green--hover;
+    outline: none;
+}
+.mg-btn:active,
+.mg-btn:focus,
+.mg-btn:focus:active {
+    color: @mg-white;
+    background-color: @mg-green--active;
+    border-color: @mg-green--active;
+    outline: none;
 }
