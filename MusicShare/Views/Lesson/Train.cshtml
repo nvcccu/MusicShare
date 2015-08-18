@@ -71,7 +71,7 @@
             var wasRun = model.isRun();
             model.stop();
             model.speeds[index](model.speeds[index]() + 1.0);
-            if (wasRun) {
+            if (wasRun && index === model.activeSpeedIndex()) {
                 model.run(index);
             }
         }
@@ -79,7 +79,7 @@
             var wasRun = model.isRun();
             model.stop();
             model.speeds[index](model.speeds[index]() - 1.0);
-            if (wasRun) {
+            if (wasRun && index === model.activeSpeedIndex()) {
                 model.run(index);
             }
         }
@@ -87,7 +87,7 @@
             var wasRun = model.isRun();
             model.stop();
             model.speeds[index](parseInt(model.speeds[index](), 10));
-            if (wasRun) {
+            if (wasRun && index === model.activeSpeedIndex()) {
                 model.run(index);
             }
         }
