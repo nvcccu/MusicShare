@@ -32,14 +32,14 @@
                 }
                 @foreach (var exercise in Model.Exercises) {
                     var regex = new Regex(String.Format(ExerciseTag, exercise.Id));
-                    text = regex.Replace(text, String.Format(ReplacePattern, exercise.Id, exercise.Name, !String.IsNullOrEmpty(exercise.AudioUrl) ? exercise.AudioUrl : "undefined", exercise.ImageUrl, Model.IsMinimized.ToString().ToLower()), 1);
+                    text = regex.Replace(text, String.Format(ReplacePattern, exercise.Id, exercise.Name, !String.IsNullOrEmpty(exercise.AudioUrl) ? exercise.AudioUrl : null, exercise.ImageUrl, Model.IsMinimized.ToString().ToLower()), 1);
                 }
                 @Html.Raw(text)
             </div>
         </div>
         <div class="lesson-additions">
             <div>
-                <input type="button" class="save-exercises-speed" value="Сохранить изменения" data-bind="click: $root.saveSpeeds"/>
+                <input type="button" class="mg-btn save-exercises-speed" value="Сохранить изменения" data-bind="click: $root.saveSpeeds"/>
             </div>
             <div>
                 @if(Model.IsMinimized) {
@@ -86,7 +86,7 @@
             var wasRun = model.isRun();
             model.stop();
             model.speeds[index](model.speeds[index]() + 1.0);
-            if (wasRun) {
+            if (wasRun && index === model.activeSpeedIndex()) {
                 model.run(index);
             }
         }
@@ -94,7 +94,7 @@
             var wasRun = model.isRun();
             model.stop();
             model.speeds[index](model.speeds[index]() - 1.0);
-            if (wasRun) {
+            if (wasRun && index === model.activeSpeedIndex()) {
                 model.run(index);
             }
         }
@@ -102,7 +102,7 @@
             var wasRun = model.isRun();
             model.stop();
             model.speeds[index](parseInt(model.speeds[index](), 10));
-            if (wasRun) {
+            if (wasRun && index === model.activeSpeedIndex()) {
                 model.run(index);
             }
         }
