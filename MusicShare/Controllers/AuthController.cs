@@ -5,25 +5,35 @@ namespace MusicShareWeb.Controllers {
     public class AuthController : BaseController {
         [HttpPost]
         public ActionResult SignUp(EmailAuthModel auth) {
-            if (auth.IsEmailFree()) {
-                if (auth.IsGuestAlreadyHasAccount(GuestId)) {
-                    RegenerateGuestId();
+            if(auth.IsNickNameFree()) {
+                if(auth.IsEmailFree()) {
+                    if(auth.IsGuestAlreadyHasAccount(GuestId)) {
+                        RegenerateGuestId();
+                    }
+                    var newAccountId = auth.Register(GuestId);
+                    if(newAccountId.HasValue) {
+                        SetAuthCookie(GuestId, newAccountId.Value, auth.RememberMe);
+                        return new JsonResult {
+                            Data = new {
+                                Success = true,
+                                Redirect =
+                                    Request.Url.Scheme + "://" + Request.Url.Authority +
+                                    Request.ApplicationPath.TrimEnd('/') + "/"
+                            }
+                        };
+                    }
                 }
-                var newAccountId = auth.Register(GuestId);
-                if (newAccountId.HasValue) {
-                    SetAuthCookie(GuestId, newAccountId.Value, auth.RememberMe);
-                    return new JsonResult {
-                        Data = new {
-                            Success = true,
-                            Redirect = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/"
-                        },
-                    };
-                }
+                return new JsonResult {
+                    Data = new {
+                        Success = false,
+                        Reason = "Email занят",
+                    },
+                };
             }
             return new JsonResult {
                 Data = new {
                     Success = false,
-                    Reason = "Email занят",
+                    Reason = "Ник занят",
                 },
             };
         }

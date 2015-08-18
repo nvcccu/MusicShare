@@ -6,13 +6,14 @@ using Core.TransportTypes;
 
 namespace MusicShareWeb.Models.Auth {
     public class EmailAuthModel{
+        public string NickName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public bool RememberMe { get; set; }
 
         public int? Register(long guestId) {
             if (!String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(Password)) {
-                var registerResult = ServiceManager<IBusinessLogic>.Instance.Service.RegisterViaEmail(guestId, Email, Password);
+                var registerResult = ServiceManager<IBusinessLogic>.Instance.Service.RegisterViaEmail(guestId, Email, Password, NickName);
                 if(registerResult.HasValue) {
                     ServiceManager<IBusinessLogic>.Instance.Service.CreateLessonStatNode(registerResult.Value);
                     ServiceManager<IBusinessLogic>.Instance.Service.CreatePlanNode(registerResult.Value);
@@ -23,6 +24,9 @@ namespace MusicShareWeb.Models.Auth {
         }
         public bool IsEmailFree() {
             return ServiceManager<IBusinessLogic>.Instance.Service.IsEmailFree(Email);
+        }
+        public bool IsNickNameFree() {
+            return ServiceManager<IBusinessLogic>.Instance.Service.IsNickNameFree(NickName);
         }
         public AccountDto SignInViaEmail() {
             var account = ServiceManager<IBusinessLogic>.Instance.Service.GetUserByEmail(Email);

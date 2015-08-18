@@ -5,7 +5,6 @@ using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
 using CommonUtils.PasswordHelper;
 using Core.TransportTypes;
-using DAO;
 using DAO.Enums;
 
 namespace BusinessLogic.Providers {
@@ -69,7 +68,10 @@ namespace BusinessLogic.Providers {
         public bool IsEmailFree(string email) {
             return !new Account().Select().Where(Account.Fields.Email, PredicateCondition.Equal, email).GetData().Any();
         }
-        public int? RegisterViaEmail(long guestId, string email, string password) {
+        public bool IsNickNameFree(string nickName) {
+            return !new Account().Select().Where(Account.Fields.NickName, PredicateCondition.Equal, nickName).GetData().Any();
+        }
+        public int? RegisterViaEmail(long guestId, string email, string password, string nickName) {
             int? accountId = null;
             if (!String.IsNullOrEmpty(email) && !String.IsNullOrEmpty(password)) {
                 var salt = PasswordHelper.GenerateSalt();
@@ -79,13 +81,9 @@ namespace BusinessLogic.Providers {
                     Password = hashedPassword,
                     Salt = salt,
                     GuestId = guestId,
+                    NickName = nickName,
                     DateRegistered = DateTime.UtcNow
                 }.Insert());
-                new Account()
-                    .Update()
-                    .Set(Account.Fields.NickName, "User" + accountId)
-                    .Where(Account.Fields.Id, PredicateCondition.Equal, accountId.Value)
-                    .ExecuteScalar();
             }
             return accountId;
         }

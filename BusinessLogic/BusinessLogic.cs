@@ -53,14 +53,17 @@ namespace BusinessLogic {
         public long CreateNewQuestion(QuestionDto question) {
             return _askProvider.CreateNewQuestion(question);
         }
-        public int? RegisterViaEmail(long guestId, string email, string password) {
-            return _userProvider.RegisterViaEmail(guestId, email, password);
+        public int? RegisterViaEmail(long guestId, string email, string password, string nickName) {
+            return _userProvider.RegisterViaEmail(guestId, email, password, nickName);
         }
         public bool Login(AuthTransportType auth) {
             return _userProvider.Login(auth);
         }
         public bool IsEmailFree(string email) {
             return _userProvider.IsEmailFree(email);
+        }
+        public bool IsNickNameFree(string nickName) {
+            return _userProvider.IsNickNameFree(nickName);
         }
         public AccountDto GetUser(long guestId) {
             return _userProvider.GetUser(guestId);
