@@ -156,6 +156,7 @@
     <Content Include="Content\bit.mp3" />
     <Content Include="Content\bit.wav" />
     <Content Include="Content\Font\FontAwesome\font-awesome.min.css" />
+    <Content Include="Content\Font\FontAwesome\fontawesome-webfont.svg" />
     <Content Include="Content\Image\DefaultProduct.png" />
     <Content Include="Content\Image\Designer\ScrollBottomInactive.png" />
     <Content Include="Content\Image\Designer\ScrollBottom_Active.png" />
@@ -210,6 +211,11 @@
     <Content Include="Content\Less\Const.css.map">
       <DependentUpon>Const.css</DependentUpon>
     </Content>
+    <Content Include="Content\Font\FontAwesome\fontawesome-webfont.eot" />
+    <Content Include="Content\Font\FontAwesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\Font\FontAwesome\fontawesome-webfont.woff" />
+    <Content Include="Content\Font\FontAwesome\fontawesome-webfont.woff2" />
+    <Content Include="Content\Font\OpenSans-Light.ttf" />
     <None Include="Content\Less\Designer\Designer.less" />
     <Content Include="Content\Less\Designer\Designer.css">
       <DependentUpon>Designer.less</DependentUpon>

@@ -18,16 +18,17 @@
             <div data-bind="text: exerciseName" style="text-align: right;"></div>
             <!-- /ko -->
             <p>
-                <img data-bind="attr: {src: imageUrl}" />
+                <img data-bind="attr: {src: imageUrl}"/>
             </p>
             <div class="metronome">
                 <div class="metronome__speed-control">
                     <div class="speed-control__up" data-bind="click: $root.speedUp.bind($data, exerciseId)">+</div>
                     <div class="speed-control__down" data-bind="click: $root.speedDown.bind($data, exerciseId)">-</div>
                 </div>
-                <input type="text" class="metronome-speed" data-bind="value: $root.speeds[exerciseId], event: {'change': $root.speedChange.bind($data, exerciseId)}" />
-                <div class="metronome-start-stop" data-bind="attr: {'value': $root.isRun() ? 'Остановить' : 'Запустить', class: $root.isRun() ? 'metronome-start-stop metronome-start-stop--start' : 'metronome-start-stop metronome-start-stop--stop'},
-            click: $root.isRun() ? $root.stop.bind($data, exerciseId) : $root.run.bind($data, exerciseId)"></div>
+                <input type="text" class="metronome-speed" data-bind="value: $root.speeds[exerciseId], event: {'change': $root.speedChange.bind($data, exerciseId)}"/>
+                <div class="metronome-start-stop" data-bind="click: $root.isRun() ? $root.stop.bind($data, exerciseId) : $root.run.bind($data, exerciseId)">
+                    <i data-bind="attr: {class: $root.isRun() ? 'fa fa-play' : 'fa fa-pause'}"></i>
+                </div>
             </div>
         </div>
     </div>

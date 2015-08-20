@@ -17,15 +17,20 @@
     .box-sizing__border-box;
     display: inline-block;
     font-size: 16px;
+    overflow: hidden;
 }
 .lesson p {
-    text-align: justify;
+    text-align: left;
 }
 .lesson-additions {
     width: 420px;
     display: inline-block;
     .box-sizing__border-box;
-    margin-left: -4px;
+    margin-left: -6px;
+    vertical-align: top;
+}
+.lesson-hierarchy {
+    font-family: "OpenSans-Light";
 }
 .lesson-hierarchy__link,
 .lesson-hierarchy__link:visited {
@@ -40,7 +45,8 @@
 .lesson__name{
     margin-top: 20px;
     font-size: 20px;
-
+    font-family: "OpenSans-Light";
+    font-weight: bold;
 }
 .lesson__body{
    margin-top: 20px;
@@ -87,15 +93,12 @@
     vertical-align: top;
     width: 40px;
     height: 100%;
+    line-height: 40px;
+    text-align: center;
     display: inline-block;
     margin-left: -4px;
     cursor: pointer;
-}
-.metronome-start-stop--start {
-    background: url('/Content/Image/Lesson/Stop.png') center no-repeat;
-}
-.metronome-start-stop--stop {
-    background: url('/Content/Image/Lesson/Start.png') center no-repeat;
+    background-color: @mg-green--ordinal;
 }
 .exercise {
     position: relative;
@@ -108,7 +111,7 @@
 .exercise-toggle__icon {
     text-align: center;
     cursor: pointer;
-    background-color: #92a803;
+    background-color: @mg-green--ordinal;
     left: -20px;
     height: 20px;
     width: 20px;
