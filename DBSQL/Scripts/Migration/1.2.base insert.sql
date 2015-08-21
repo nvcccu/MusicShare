@@ -117,25 +117,13 @@ insert into GuitarTechnique values
 (10, 'Седьмая струна', '7 струна');
 
 insert into Exercise values
-(27, 1, 'Упражнение 1', 'http://www.zaburuev.ru/uploads/uploaded_file/file/265/Tab.png', null, 0, true),
-(28, 1, 'Упражнение 2', 'http://www.zaburuev.ru/uploads/uploaded_file/file/279/Tab.png', null, 0, true),
-(29, 1, 'Упражнение 3', 'http://www.zaburuev.ru/uploads/uploaded_file/file/322/Tab.png', null, 0, true),
-(30, 1, 'Упражнение 4', 'http://www.zaburuev.ru/uploads/uploaded_file/file/272/Tab.png', null, 0, true);
-
-insert into lesson values
-(5, 11, 1, 4, '4 упражнения', '@@EXERCISE 27@@
-@@EXERCISE 28@@
-@@EXERCISE 29@@
-@@EXERCISE 30@@');
-
-insert into Exercise values
-(1, 1, 'Упражнение 1', 'http://allfrets.ru/images/stories/legato/1_legato_1.jpg', null, 0, true),
-(2, 1, 'Упражнение 2', 'http://allfrets.ru/images/stories/legato/1_legato_2.jpg', null, 0, true),
-(3, 1, 'Упражнение 3', 'http://allfrets.ru/images/stories/legato/1_legato_3.jpg', null, 0, true),
-(4, 1, 'Упражнение 4', 'http://allfrets.ru/images/stories/legato/1_legato_4.jpg', null, 0, true),
-(5, 1, 'Упражнение 5', 'http://allfrets.ru/images/stories/legato/1_legato_5.jpg', null, 0, true),
-(6, 1, 'Упражнение 6', 'http://allfrets.ru/images/stories/legato/1_legato_6.jpg', null, 0, true),
-(7, 1, 'Упражнение 7', 'http://allfrets.ru/images/stories/legato/1_legato_7.jpg', null, 0, true);
+(1, 1, 'Упражнение 1', 'http://allfrets.ru/images/stories/legato/1_legato_1.jpg', null, 50, 0, true),
+(2, 1, 'Упражнение 2', 'http://allfrets.ru/images/stories/legato/1_legato_2.jpg', null, 50, 0, true),
+(3, 1, 'Упражнение 3', 'http://allfrets.ru/images/stories/legato/1_legato_3.jpg', null, 50, 0, true),
+(4, 1, 'Упражнение 4', 'http://allfrets.ru/images/stories/legato/1_legato_4.jpg', null, 50, 0, true),
+(5, 1, 'Упражнение 5', 'http://allfrets.ru/images/stories/legato/1_legato_5.jpg', null, 50, 0, true),
+(6, 1, 'Упражнение 6', 'http://allfrets.ru/images/stories/legato/1_legato_6.jpg', null, 50, 0, true),
+(7, 1, 'Упражнение 7', 'http://allfrets.ru/images/stories/legato/1_legato_7.jpg', null, 50, 0, true);
 
 insert into lesson values
 (1, 3, 1, 7, 'Основы легато', '<p><img src="http://allfrets.ru/images/stories/line.jpg" border="0" style="text-align: justify;"></p>
@@ -176,18 +164,18 @@ insert into lesson values
 <p>Легатная техника – чертовски полезная вещь! Постарайся не обойти ее своим вниманием, и уделить ее развитию время. В итоге ты сможешь играть гораздо быстрее и слитнее – а это один из признаков хорошего гитариста. В следующем уроке ты будешь работать над независимостью пальцев, затем мы перейдем к полностью легатным пассажам. Апофеозом этой части станет трюк, который ты мог видеть на концертах Джо Сатриани и Стива Вая – ты научишься играть одной левой рукой, при этом правая будет глушить струны ниже левой. Круто, не правда ли! Если что-то осталось непонятным - спрашивай! Удачи!</p>');
 
 insert into Exercise values
-(8, 2, 'Упражнение 1', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_1.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-1.mp3', 0, true),
-(9, 2, 'Упражнение 2', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_2.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-2.mp3', 0, true),
-(10, 2, 'Упражнение 3', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_3.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-3.mp3', 0, true),
-(11, 2, 'Упражнение 4', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_4.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-4.mp3', 0, true),
-(12, 2, 'Упражнение 5', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-5.mp3', 0, true),
-(13, 2, 'Упражнение 6', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_5.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-6.mp3', 0, true),
-(14, 2, 'Упражнение 7', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_6.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-7.mp3', 0, true),
-(15, 2, 'Упражнение 8', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_8.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-8.mp3', 0, true),
-(16, 2, 'Упражнение 9', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_9.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-9.mp3', 0, true),
-(17, 2, 'Упражнение 10', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_10.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-10.mp3', 0, true),
-(18, 2, 'Упражнение 11', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_11.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-11.mp3', 0, true),
-(19, 2, 'Упражнение 12', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_12.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-12.mp3', 0, true);
+(8, 2, 'Упражнение 1', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_1.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-1.mp3', 60, 0, true),
+(9, 2, 'Упражнение 2', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_2.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-2.mp3', 60, 0, true),
+(10, 2, 'Упражнение 3', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_3.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-3.mp3', 60, 0, true),
+(11, 2, 'Упражнение 4', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_4.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-4.mp3', 60, 0, true),
+(12, 2, 'Упражнение 5', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-5.mp3', 60, 0, true),
+(13, 2, 'Упражнение 6', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_5.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-6.mp3', 60, 0, true),
+(14, 2, 'Упражнение 7', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_6.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-7.mp3', 60, 0, true),
+(15, 2, 'Упражнение 8', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_8.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-8.mp3', 60, 0, true),
+(16, 2, 'Упражнение 9', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_9.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-9.mp3', 60, 0, true),
+(17, 2, 'Упражнение 10', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_10.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-10.mp3', 60, 0, true),
+(18, 2, 'Упражнение 11', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_11.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-11.mp3', 60, 0, true),
+(19, 2, 'Упражнение 12', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_12.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-12.mp3', 60, 0, true);
 
 insert into lesson values
 (2, 2, 2, 12, 'Штрих при переходе со струны на струну', '<p>Привет! Я рад, что ты достиг скорости в 60 УВМ при игре переменным штрихом на одной струне, давай продолжим обучение игре на электрогитаре.</p>
@@ -242,13 +230,13 @@ insert into lesson values
 ');
 
 insert into Exercise values
-(20, 3, 'Упражнение 1', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_1.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-1.mp3', 0, true),
-(21, 3, 'Упражнение 2', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_2.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-2.mp3', 0, true),
-(22, 3, 'Упражнение 3', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_3.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-3.mp3', 0, true),
-(23, 3, 'Упражнение 4', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_4.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-4.mp3', 0, true),
-(24, 3, 'Упражнение 5', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_5.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-5.mp3', 0, true),
-(25, 3, 'Упражнение 6', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_6.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-6.mp3', 0, true),
-(26, 3, 'Упражнение 7', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-7.mp3', 0, true);
+(20, 3, 'Упражнение 1', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_1.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-1.mp3', 40, 0, true),
+(21, 3, 'Упражнение 2', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_2.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-2.mp3', 40, 0, true),
+(22, 3, 'Упражнение 3', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_3.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-3.mp3', 40, 0, true),
+(23, 3, 'Упражнение 4', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_4.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-4.mp3', 40, 0, true),
+(24, 3, 'Упражнение 5', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_5.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-5.mp3', 40, 0, true),
+(25, 3, 'Упражнение 6', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_6.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-6.mp3', 40, 0, true),
+(26, 3, 'Упражнение 7', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-7.mp3', 40, 0, true);
 
 insert into lesson values
 (3, 2, 1, 7, 'Переменный штрих на одной струне', '<p>Первое, с чего тебе следует начать свой путь к виртуозной игре на электрогитаре – это развитие техники <strong>переменного штриха</strong>. В замечательной книге “Speed mechanics for lead guitar” сказано: "Техника переменного штриха хороша тем что, не высчитывая заранее последовательность ударов медиатора, ты можешь сыграть любую последовательность нот. Таким образом ты будешь чувствовать себя более свободно при импровизации, так как не ограничен какими-либо заранее подготовленными схемами. Ты можешь создать и сыграть любые пассажи, не отрабатывая их заранее. А если работа медиатором не требует раздумий – остается думать только о музыке"</p>
@@ -281,6 +269,7 @@ insert into lesson values
 <p>Я привел лишь семь упражнений. И на первое время этого тебе хватит сполна. Одновременно с этим уроком я советую тебе начать изучать уроки <a href="/tehnika/tehnikaosnovi" title="Технические приемы - основы">технические приемы - основы</a>, <a href="/legatotechnique/osnlegato" title="Основы легато">основы легато</a> и <a href="/rythmguitar/rythmvvedenie" title="Введение в ритм гитару">введение в ритм гитару</a>. Чуть позже, развив технику игры и получив необходимые знания, ты сможешь сам составлять для себя упражнения на одной струне необходимой тебе сложности на основе хроматики, либо <a href="/applik/scales" title="Аппликатурное мышление - гаммы">диатонических ладов</a>. Не забывай о том что без практики развитие техники игры на гитаре невозможно и потому советую тебе время от времени разучивать соло, соответствующие твоему уровню игры. На данном этапе можешь ознакомится с <a href="/practice/item/165-led-zeppelin-stairway-to-heaven" title="Led Zeppelin - Stairway to Heaven">этим соляком</a>. Главное помни, что невозможно научится играть на электрогитаре за месяц. И если у тебя пока не получается освоить тот или иной пассаж - просто оставь его. Когда ты вернешься к нему через некоторое время, то сам удивишься, насколько легко он тебе дается.</p>
 <p>Могу тебя поздравить. Первый урок позади. Еще пара слов о том, как нужно заниматься и закругляюсь. Для начала определись со скоростью. Ты новичок и твой максиму – 60 УВМ? ОК! Следует играть в различных темпах. В медленном, в быстром, в среднем… Но больше - в медленном. Пусть медленным будет 40, быстрым – 60. Чередуй их. Например, поиграй пятнадцать минут в медленном, потом минуты две-три в быстром, затем опять в медленном и так далее. И последнее:&nbsp; лучше уделять игре по часу ежедневно чем двенадцать часов один раз в неделю. Ты можешь даже составить график если хочешь, пример графика для продвинутых гитаристов ты найдешь <a href="/shred/grafik" title="График">здесь</a>. Можешь воспользоваться им, как образцом. Здесь все зависит только от твоей фантазии, упорства и стремления к совершенству. К уроку<a href="/altpicking/twostring" target="_self" title="Штрих при переходе со струны на струну"> штрих при переходе со струны на струну</a> переходи только после того, как сможешь играть все семь упражнений на скорости 60. Удачи!</p>');
 
+/*
 insert into lesson values
 (4, 2, 3, 0, 'Переменный штрих. Гаммы', '<p style="text-align: justify;"><a href="/altpicking/twostring" title="Штрих при переходе со струны на струну" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #40678a; font-family: Arial, Helvetica, sans-serif; line-height: 23px;">&lt;&lt; ПРЕДЫДУЩИЙ УРОК</a></p>
 <p style="text-align: justify;">&nbsp;</p>
@@ -326,3 +315,4 @@ insert into lesson values
 <p>&nbsp;</p>
 <p class="MsoNormal" style="margin: 0.5em 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #555555; font-family: Arial, Helvetica, sans-serif; line-height: 23px; text-align: center;"><a href="/forum/viewtopic.php?f=2&amp;t=198" title="Уроки - переменный штрих" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; background-color: transparent; color: #40678a;">ОБСУДИТЬ НА ФОРУМЕ</a></p>
 <p class="MsoNormal" style="margin: 0.5em 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #555555; font-family: Arial, Helvetica, sans-serif; line-height: 23px; text-align: right;"><a href="/altpicking/sekvencii" title="Переменный штрих - секвенции" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; background-color: transparent; color: #40678a;">СЛЕДУЮЩИЙ УРОК &gt;&gt;</a></p>');
+*/

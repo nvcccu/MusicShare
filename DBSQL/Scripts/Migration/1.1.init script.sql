@@ -250,6 +250,7 @@ CREATE TABLE LessonStat (
   Id serial NOT NULL,
   AccountId int NOT NULL,
   ExercisesSpeed character varying(2048),
+  Date date NOT NULL,
   CONSTRAINT pk_LessonStat PRIMARY KEY (Id)
 )
 WITH (
@@ -291,6 +292,7 @@ CREATE TABLE Exercise (
   Name character varying(256) NOT NULL,
   ImageUrl character varying(1024) NOT NULL,
   AudioUrl character varying(1024),
+  BaseSpeed int NOT NULL,
   AuthorAccountId int NOT NULL,
   IsPublic boolean NOT NULL DEFAULT FALSE,
   CONSTRAINT pk_Exercise PRIMARY KEY (Id)

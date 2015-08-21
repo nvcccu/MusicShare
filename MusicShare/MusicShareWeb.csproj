@@ -267,6 +267,7 @@
     <Content Include="Content\Libraries\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\Libraries\ChartJs\Chart.js" />
     <Content Include="Content\Libraries\ChartJs\Chart.min.js" />
+    <Content Include="Content\Libraries\Jquery\jquery-ui.min.js" />
     <Content Include="Content\Libraries\MarkItUp\css\base.css" />
     <Content Include="Content\Libraries\MarkItUp\css\style.css" />
     <Content Include="Content\Libraries\MarkItUp\images\bg-container.png" />
@@ -296,6 +297,7 @@
     <Content Include="Content\Script\Designer\designer.js" />
     <Content Include="Content\Script\jquery.form.js" />
     <Content Include="Content\Script\knockout-3.2.0.js" />
+    <Content Include="Content\Script\knockout-sortable.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Script\jquery-1.10.2.js" />
     <Content Include="Content\Script\jquery-1.10.2.min.js" />
