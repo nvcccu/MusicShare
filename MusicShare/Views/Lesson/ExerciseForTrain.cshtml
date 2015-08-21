@@ -16,11 +16,14 @@
                 <img data-bind="attr: {src: imageUrl}"/>
             </div>
             <div class="metronome">
-                <div class="metronome__speed-control">
-                    <div class="speed-control__up" data-bind="click: $root.speedUp.bind($data, exerciseId)">+</div>
-                    <div class="speed-control__down" data-bind="click: $root.speedDown.bind($data, exerciseId)">-</div>
+                <div class="metronome__icon"></div>
+                <div class="metronome__speed-control speed-control__down" data-bind="click: $root.speedDown.bind($data, exerciseId)">
+                    <i class="fa fa-minus"></i>
                 </div>
-                <input type="text" class="metronome-speed" data-bind="value: $root.speeds[exerciseId], event: {'change': $root.speedChange.bind($data, exerciseId)}"/>
+                <input type="text" class="metronome-speed" data-bind="value: $root.speeds[exerciseId], event: {'change': $root.speedChange.bind($data, exerciseId)}" />
+                <div class="metronome__speed-control  speed-control__up" data-bind="click: $root.speedUp.bind($data, exerciseId)">
+                    <i class="fa fa-plus"></i>
+                </div>
                 <div class="metronome-start-stop" data-bind="click: $root.isRun() ? $root.stop.bind($data, exerciseId) : $root.run.bind($data, exerciseId)">
                     <i data-bind="attr: {class: $root.isRun() ? 'fa fa-pause' : 'fa fa-play'}"></i>
                 </div>

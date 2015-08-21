@@ -24,9 +24,9 @@
                 <div class="plan__all-exercises" data-bind="foreach: { data: $root.exercises, as: 'exercise' }">
                     <div data-bind="template: { name: 'ExerciseTemplate', data: {'exerciseId': exercise.id, 'exerciseName': $root.getExerciseTitle(exercise), 'audioUrl': exercise.audioUrl, 'imageUrl': exercise.imageUrl, 'min': false } }"></div>
                 </div>
-                <div class="plan__selected-exercises">
+                <div class="lesson-additions">
                     <div>
-                        <input type="button" class="mg-btn save-exercises-speed" value="Сохранить изменения" data-bind="click: $root.saveSpeeds" />
+                        <input type="button" class="mg-btn save-exercises-speed" style="padding: 16px 22px;" value="Сохранить изменения" data-bind="click: $root.saveSpeeds" />
                     </div>
                 </div>
             </div>
@@ -143,6 +143,20 @@
             })[0];
             return guitarTechnique.shortName + ' ' + lesson.name + '. ' + exercise.name;
         };
+
+        $(window).bind('scroll resize', function () {
+            if (window.pageYOffset > 150) {
+                $('.save-exercises-speed').css({
+                    'top': '50px',
+                    'position': 'fixed'
+                });
+            } else {
+                $('.save-exercises-speed').css({
+                    'top': '200px',
+                    'position': 'absolute'
+                });
+            }
+        });
 
         return model;
     };

@@ -63,47 +63,54 @@
     margin-bottom: 20px;
     float: right;
 }
+.metronome__icon {
+    width: 40px;
+    height: 40px;
+    float: left;
+    background: url('/Content/Image/Lesson/Metronome.png') center no-repeat;
+    background-color: @mg-brown-layout;
+}
 .metronome__speed-control {
     vertical-align: top;
     height: 100%;
     width: 40px;
     display: inline-block;
+    background-color: #fff;
+    color: black;
+    float: left;
 }
 .speed-control__up,
 .speed-control__down {
-    height: 50%;
-    width: 100%;
     text-align: center;
-    font-size: 20px;
-    line-height: 20px;
-    background-color: @mg-green--ordinal;
+    line-height: 40px;
     cursor: pointer;
     .box-sizing__border-box;
 }
 .speed-control__up:hover,
 .speed-control__down:hover {
-    background-color: @mg-green--hover;
+    background-color: #eee;
 }
 .metronome-speed {
+    float: left;
     vertical-align: top;
     width: 80px;
     height: 100%;
     display: inline-block;
-    margin-left: -5px;
     font-size: 20px;
     background-color: white;
     color: rgb(26, 21, 17);
     text-align: center;
     line-height: 40px;
+    border: none;
 }
 .metronome-start-stop {
+    float: left;
     vertical-align: top;
     width: 40px;
     height: 100%;
     line-height: 40px;
     text-align: center;
     display: inline-block;
-    margin-left: -6px;
     cursor: pointer;
     background-color: @mg-green--ordinal;
 }
@@ -148,7 +155,7 @@
     margin-left: 20px;
 }
 .save-exercises-speed {
-    position: fixed;
+    position: absolute;
     top: 200px;
     left: 1200px;
 }
