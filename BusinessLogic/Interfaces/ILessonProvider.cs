@@ -21,5 +21,6 @@ namespace BusinessLogic.Interfaces {
         PlanDto GetPlan(int id);  
         int SavePlan(PlanDto plan);
         void UpdatePlan(PlanDto plan);
+        void AddExerciseToPlan(int planId, int exerciseId);
     }
 }

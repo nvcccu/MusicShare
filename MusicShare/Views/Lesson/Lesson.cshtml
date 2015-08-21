@@ -1,4 +1,6 @@
 ﻿@using System.Text.RegularExpressions
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
 @model MusicShareWeb.Models.Lesson.LessonModel
 
 @{
@@ -21,8 +23,11 @@
             <div class="lesson-hierarchy">
                 <a class="lesson-hierarchy__link" href="@Url.Action("Index", "Lesson", new {id = ""})">Самоучитель</a> > <a class="lesson-hierarchy__link" href="#">@Model.GutarTechique.Name</a>
             </div>
+            <div class="lesson__order-number">
+                Урок @Model.Lesson.OrderNumber
+            </div>
             <div class="lesson__name">
-                Урок @Model.Lesson.OrderNumber. @Model.Lesson.Name
+                @Model.Lesson.Name
             </div>
             <div class="lesson__body">
                 @if(Model.IsMinimized) {
@@ -30,7 +35,7 @@
                 } else {
                     text = Model.Lesson.Text;
                 }
-                @foreach (var exercise in Model.Exercises) {
+                @foreach(var exercise in Model.Exercises) {
                     var regex = new Regex(String.Format(ExerciseTag, exercise.Id));
                     text = regex.Replace(text, String.Format(ReplacePattern, exercise.Id, exercise.Name, !String.IsNullOrEmpty(exercise.AudioUrl) ? exercise.AudioUrl : null, exercise.ImageUrl, Model.IsMinimized.ToString().ToLower()), 1);
                 }
@@ -52,14 +57,18 @@
     </div>
 </div>
 
+<div>
+    
+</div>
+
 @Html.Partial("Exercise")
 
 <script type="text/javascript">
     $(document).ready(function () {
-        ko.applyBindings(getLesson(), document.getElementById("Lesson"));
+        ko.applyBindings(getLesson(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }))), document.getElementById("Lesson"));
     });
 
-    getLesson = function () {
+    getLesson = function (data) {
         var model = {};
         model.bitSound = document.getElementById('BitSound');
         //        if (!model.bitSound.src) {
@@ -73,7 +82,17 @@
         model.loop = undefined;
         model.exerciseHide = {};
         @Html.Raw(String.Join("\n", Model.Exercises.Select(s => "model.exerciseHide['" + s.Id + "'] = ko.observable(false);")))
-        model.toggle = function(exerciseId) {
+        model.exercises = data.exercises;
+        model.plans = data.plans;
+        model.addExerciseToPlanVisible = {};
+        Object.keys(model.exercises).forEach(function (key) {
+            var exercise = model.exercises[key];
+            model.addExerciseToPlanVisible[exercise.id] = ko.observable(false);
+        });
+        model.setAddExerciseToPlanVisible = function (exerciseId, val) {
+            model.addExerciseToPlanVisible[exerciseId](val);
+        };
+        model.toggle = function (exerciseId) {
             if (model.exerciseHide[exerciseId]()) {
                 model.exerciseHide[exerciseId](false);
                 $('#Exercise' + exerciseId).css('display', 'block');
@@ -116,7 +135,7 @@
         var playSound = function () {
             model.bitSound.play();
         }
-        model.isRun.subscribe(function() {
+        model.isRun.subscribe(function () {
             if (model.isRun()) {
                 var time = 60.0 / model.speeds[model.activeSpeedIndex()]() * 1000.0;
                 playSound();
@@ -141,6 +160,23 @@
                 }),
                 success: function (result) {
                     alert('Сохранено');
+                },
+                error: function (result) {
+                    alert('Ошибка');
+                }
+            });
+            return false;
+        };
+        model.addExerciseToPlan = function(planId, exerciseId) {
+            $.ajax({
+                url: '@Url.Action("AddExrciseToPlan")',
+                type: 'POST',
+                data: {
+                    planId: planId,
+                    exerciseId: exerciseId
+                },
+                success: function () {
+                    alert('Упражнение добавлено');
                 },
                 error: function (result) {
                     alert('Ошибка');

@@ -203,7 +203,7 @@ namespace BusinessLogic.Providers {
             return new LessonStat()
                 .Select()
                 .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, accountId)
-                .OrderBy(LessonStat.Fields.Id, OrderType.Asc)
+                .OrderBy(LessonStat.Fields.Id, OrderType.Desc)
                 .GetData()
                 .First()
                 .ToDto()
@@ -255,6 +255,23 @@ namespace BusinessLogic.Providers {
                 .Set(Plan.Fields.Type, (int)plan.Type)
                 .Set(Plan.Fields.IsPublic, plan.IsPublic)
                 .Where(Plan.Fields.Id, PredicateCondition.Equal, plan.Id)
+                .ExecuteScalar();
+        }
+        public void AddExerciseToPlan(int planId, int exerciseId) {
+            var exerciseIds = new Plan()
+                .Select()
+                .Where(Plan.Fields.Id, PredicateCondition.Equal, planId)
+                .GetData()
+                .Single()
+                .ToDto()
+                .ExerciseIds;
+            if(!exerciseIds.Contains(exerciseId)) {
+                exerciseIds.Add(exerciseId);
+            }
+            new Plan()
+                .Update()
+                .Set(Plan.Fields.Exercises, SerializePlanExercises(exerciseIds))
+                .Where(Plan.Fields.Id, PredicateCondition.Equal, planId)
                 .ExecuteScalar();
         }
     }

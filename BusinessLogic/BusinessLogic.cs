@@ -155,5 +155,8 @@ namespace BusinessLogic {
         public void UpdatePlan(PlanDto plan) {
             _lessonProvider.UpdatePlan(plan);
         }
+        public void AddExerciseToPlan(int planId, int exerciseId) {
+            _lessonProvider.AddExerciseToPlan(planId, exerciseId);
+        }
     }
 }

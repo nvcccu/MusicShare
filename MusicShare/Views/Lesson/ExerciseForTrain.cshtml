@@ -10,15 +10,10 @@
         <!-- /ko -->
         <div data-bind="attr: {id: 'Exercise' + exerciseId}">
             <div style="margin-top: 35px; height: 40px;">
-                <div data-bind="text: exerciseName" style="float: left; font-size: 20px; font-family: 'OpenSans-Light';"></div>
-                <div style="float: right; font-size: 14px; text-decoration: underline;" data-bind="click: $root.setAddExerciseToPlanVisible.bind($data, exerciseId, true)">Добавить в план занятий</div>
-                <div style="clear: both;"></div>
+                <div data-bind="text: exerciseName" style="font-size: 20px; font-family: 'OpenSans-Light';"></div>
             </div>
             <div style="margin: 10px 0; position: relative;">
                 <img data-bind="attr: {src: imageUrl}"/>
-                <div class="exercise__add-to-plan-block" data-bind="foreach: { data: $root.plans, as: 'plan' }, visible: $root.addExerciseToPlanVisible[exerciseId], event: {mouseleave: $root.setAddExerciseToPlanVisible.bind($data, exerciseId, false) } ">
-                    <div class="exercise__add-to-plan" data-bind="text: plan.name, click: $root.addExerciseToPlan.bind($data, plan.id, $parent.exerciseId)"></div>
-                </div>
             </div>
             <div class="metronome">
                 <div class="metronome__speed-control">

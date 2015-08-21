@@ -363,6 +363,7 @@
     <Content Include="Content\Libraries\ChartJs\Chart.min.js.map">
       <DependentUpon>Chart.min.js</DependentUpon>
     </Content>
+    <Content Include="Views\Lesson\ExerciseForTrain.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

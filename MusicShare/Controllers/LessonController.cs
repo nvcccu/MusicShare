@@ -54,6 +54,11 @@ namespace MusicShareWeb.Controllers {
                 }
             };
         }
+        [HttpPost]
+        public ActionResult AddExrciseToPlan(int planId, int exerciseId) {
+            new PlanModel(BaseModel).AddExercise(planId, exerciseId);
+            return null;
+        }
         [HttpGet]
         public ActionResult Train(int planId) {
             return View("Train", new TrainModel(BaseModel, planId));

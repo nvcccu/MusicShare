@@ -21,6 +21,7 @@
 }
 .lesson p {
     text-align: left;
+    line-height: 1.5;
 }
 .lesson-additions {
     width: 420px;
@@ -31,6 +32,7 @@
 }
 .lesson-hierarchy {
     font-family: "OpenSans-Light";
+    font-size: 12px;
 }
 .lesson-hierarchy__link,
 .lesson-hierarchy__link:visited {
@@ -42,11 +44,15 @@
     color: @mg-green--hover;
     text-decoration: none;
 }
-.lesson__name{
-    margin-top: 20px;
+.lesson__order-number {
     font-size: 20px;
     font-family: "OpenSans-Light";
-    font-weight: bold;
+    margin-top: 50px;
+}
+.lesson__name{
+    margin-top: 20px;
+    font-size: 25px;
+    font-family: "OpenSans-Light";
 }
 .lesson__body{
    margin-top: 20px;
@@ -55,6 +61,7 @@
 .metronome {
     height: 40px;
     margin-bottom: 20px;
+    float: right;
 }
 .metronome__speed-control {
     vertical-align: top;
@@ -82,7 +89,7 @@
     width: 80px;
     height: 100%;
     display: inline-block;
-    margin-left: -4px;
+    margin-left: -5px;
     font-size: 20px;
     background-color: white;
     color: rgb(26, 21, 17);
@@ -96,13 +103,30 @@
     line-height: 40px;
     text-align: center;
     display: inline-block;
-    margin-left: -4px;
+    margin-left: -6px;
     cursor: pointer;
     background-color: @mg-green--ordinal;
 }
 .exercise {
     position: relative;
     min-height: 38px;
+}
+.exercise__add-to-plan-block {
+    position: absolute;
+    top: -50px;
+    padding-top: 50px;
+    right: 0;
+}
+.exercise__add-to-plan {
+    background-color: @mg-brown-layout;
+    border-bottom: 1px solid grey;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+.exercise__add-to-plan:last-of-type {
+    border-bottom: none;
 }
 .exercise-toggle {
     width: 100%;
@@ -126,4 +150,5 @@
 .save-exercises-speed {
     position: fixed;
     top: 200px;
+    left: 1200px;
 }

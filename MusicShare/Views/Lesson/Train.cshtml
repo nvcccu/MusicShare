@@ -6,7 +6,7 @@
     Layout = "../Shared/Layout.cshtml";
 }
 
-@Html.Partial("Exercise")
+@Html.Partial("ExerciseForTrain")
 
 <audio id="BitSound" preload="auto">
     <source src="/Content/bit.ogg" type='audio/ogg; codecs="vorbis"'>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="plan__selected-exercises">
                     <div>
-                        <input type="button" class="save-exercises-speed" value="Сохранить изменения" data-bind="click: $root.saveSpeeds" />
+                        <input type="button" class="mg-btn save-exercises-speed" value="Сохранить изменения" data-bind="click: $root.saveSpeeds" />
                     </div>
                 </div>
             </div>

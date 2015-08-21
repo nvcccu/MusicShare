@@ -40,5 +40,8 @@ namespace MusicShareWeb.Models.Lesson {
         public void Update(PlanDto plan) {
             ServiceManager<IBusinessLogic>.Instance.Service.UpdatePlan(plan);
         }
+        public void AddExercise(int planId, int exerciseId) {
+            ServiceManager<IBusinessLogic>.Instance.Service.AddExerciseToPlan(planId, exerciseId);
+        }
     }
 }
