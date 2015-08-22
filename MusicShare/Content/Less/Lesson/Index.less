@@ -2,23 +2,28 @@
 @import "../Mixin.less";
 
 .lesson-index {
+    padding: 40px 0 40px;
+}
+.lesson-index__lesson-navigation {
     width: 700px;
+    display: inline-block;
     .box-sizing__border-box;
-    padding: 40px;
+    padding: 0 40px;
 }
 .lesson-index__title {
     font-family: @mg-font-family--additional;
     font-size: 25px;
 }
-.lesson-index__lesson-list {
+.lesson-navigation__lesson-list {
     margin-top: 30px;
 }
 .lesson-list__guitar-technique {
-    .box-sizing__border-box;    
+    .box-sizing__border-box;
 }
 .guitar-technique__name {
     font-size: 18px;
     height: 40px;
+    width: 400px;
     line-height: 40px;
     cursor: pointer;
     padding-left: 40px;
@@ -40,6 +45,7 @@
 }
 .guitar-technique__binded-lessons {
     display: none;
+    width: 550px;
     padding: 20px 20px 20px 60px;
     position: relative;
     background-color: @mg-brown--addition;
@@ -71,4 +77,50 @@
 .lesson-description__description {
     margin-top: 20px;
     font-size: 16px;
+}
+
+.lesson-index__lesson-outer-navigation {
+    display: inline-block;
+    margin-left: -6px;
+    width: 400px;
+    vertical-align: top;
+    .box-sizing__border-box;
+    padding: 0 40px;
+    text-align: right;
+}
+.lesson-outer-navigation__btn {
+    width: 255px;
+    text-align: left;
+}
+.lesson-outer-navigation__block {
+    margin-top: 40px;
+    float: right;
+}
+.lesson-outer-navigation__caret {
+    float: right;
+}
+.lesson-outer-navigation__plans {
+    width: 255px;
+    text-align: right;
+}
+.plans__plan-name {
+    height: 55px;
+    line-height: 55px;
+    text-align: left;
+    padding: 0 40px;
+    .box-sizing__border-box;
+    border-bottom: 1px solid @mg-brown--ordinal;
+    background-color: @mg-brown-layout;
+    
+}
+.plans__plan-name:last-of-type {
+    border-bottom: none;
+}
+.plans__plan-link {
+    display: inline-block;
+    height: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    .text-overflow(ellipsis);
+    width: 100%;
 }

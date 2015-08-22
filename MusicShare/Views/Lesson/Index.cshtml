@@ -7,63 +7,71 @@
 }
 
 <div id="LessonIndex" class="lesson-index">
-    <div class="lesson-index__title">Техника игры на электрогитаре</div>
-    <div class="lesson-index__lesson-list" data-bind="foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' }">
-        <div class="lesson-list__guitar-technique" data-bind="attr: {class: $root.activeGuitarTechnique() === guitarTechnique.id ? 'lesson-list__guitar-technique lesson-list__guitar-technique--active' : 'lesson-list__guitar-technique'}">
-            <div class="guitar-technique__name" data-bind="click: $root.setActiveGuitarTechnique.bind($data, guitarTechnique.id), text: guitarTechnique.name"></div>
-            <div class="guitar-technique__binded-lessons" data-bind="foreach: { data: $root.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: 'lesson' }">
-                <div class="binded-lessons__lesson">
-                    <a class="mg-link" data-bind="text: lesson.name, attr: {href: $root.lessonUrlTemplate + lesson.id}"></a>
-                </div>
-                <div class="binded-lessons__lesson-description">
-                    <div class="lesson-description__title" data-bind="text: lesson.name"></div>
-                    <div class="lesson-description__description" data-bind="text: lesson.description"></div>
+    <div class="lesson-index__lesson-navigation">
+        <div class="lesson-index__title">Техника игры на электрогитаре</div>
+        <div class="lesson-navigation__lesson-list" data-bind="foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' }">
+            <div class="lesson-list__guitar-technique" data-bind="attr: {class: $root.activeGuitarTechnique() === guitarTechnique.id ? 'lesson-list__guitar-technique lesson-list__guitar-technique--active' : 'lesson-list__guitar-technique'}">
+                <div class="guitar-technique__name" data-bind="click: $root.setActiveGuitarTechnique.bind($data, guitarTechnique.id), text: guitarTechnique.name"></div>
+                <div class="guitar-technique__binded-lessons" data-bind="foreach: { data: $root.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: 'lesson' }">
+                    <div class="binded-lessons__lesson">
+                        <a class="mg-link" data-bind="text: lesson.name, attr: {href: $root.lessonUrlTemplate + lesson.id}"></a>
+                    </div>
+                    <div class="binded-lessons__lesson-description">
+                        <div class="lesson-description__title" data-bind="text: lesson.name"></div>
+                        <div class="lesson-description__description" data-bind="text: lesson.description"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    @*    @foreach(var technique in Model.Lessons) {*@
-    @*        <div style="margin-bottom: 15px;">*@
-    @*            <div>@technique.Key.Name</div>*@
-    @*            <div style="margin-left: 38px;">*@
-    @*                @foreach(var lesson in technique.Value) {*@
-    @*                    <a href="@Url.Action("Index", new {id = lesson.Id})">@lesson.Name</a><br>*@
-    @*                }*@
-    @*            </div>*@
-    @*        </div>*@
-    @*    }*@
-    @*    @if(Model.CurrentUser == null) {*@
-    @*        <div style="position: fixed; left: 300px; top: 200px; color: red;">Чтобы составить план занятий, необходимо войти на сайт</div>*@
-    @*    } else {*@
-    @*        <a href="@Url.Action("Plan")" style="position: fixed; left: 500px; top: 200px;">Составить новый план занятий</a>*@
-    @*        <a href="@Url.Action("Plans")" style="position: fixed; left: 500px; top: 250px;">Мои планы занятий</a>*@
-    @*        <a href="@Url.Action("Stat")" style="position: fixed; left: 500px; top: 300px;">Статистика</a>*@
-    @*    }*@
+    <div class="lesson-index__lesson-outer-navigation">
+        <div class="mg-btn lesson-outer-navigation__btn">
+            <a class="mg-link" href="@Url.Action("Plan")">Создать новый план</a>
+        </div>
+        <div class="lesson-outer-navigation__block">
+            <div class="mg-btn lesson-outer-navigation__btn" data-bind="click: $root.plansOpenedToggle">
+                Перейти к плану
+                <i data-bind="attr: { class: $root.arePlansOpened() ? 'fa fa-caret-left lesson-outer-navigation__caret' : 'fa fa-caret-down lesson-outer-navigation__caret' }"></i>
+            </div>
+            <div class="lesson-outer-navigation__plans" data-bind="visible: $root.arePlansOpened, foreach: {data: $root.plans, as: 'plan'}">
+                <div class="plans__plan-name">
+                    <a class="mg-link plans__plan-link" data-bind="text: plan.name, attr: { href: $root.planUrlTemplate + plan.id }"></a>
+                </div>
+            </div>
+        </div>
+
+        <div></div>
+    </div>
 </div>
-<div class="lesson-index__navigation"></div>
 
 <script type="text/javascript">
     $(document).ready(function () {
         ko.applyBindings(getIndex(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }))), document.getElementById("LessonIndex"));
     });
 
-    getIndex = function(data) {
+    getIndex = function (data) {
         var model = {};
         model.lessonUrlTemplate = '@Url.Action("Index")' + '/';
+        model.planUrlTemplate = '@Url.Action("Plan")' + '/';
         model.guitarTechniques = data.guitarTechniques;
         model.lessons = data.lessons;
+        model.plans = data.plans;
         model.activeGuitarTechnique = ko.observable(null);
+        model.arePlansOpened = ko.observable(false);
 
         model.setActiveGuitarTechnique = function (guitarTechniqueId) {
             model.activeGuitarTechnique(guitarTechniqueId);
-        }
+        };
+        model.plansOpenedToggle = function () {
+            model.arePlansOpened(!model.arePlansOpened());
+        };
         model.getLessonsByGuitarTechniqueId = function (guitarTechniqueId) {
-            return model.lessons.filter(function(lesson) {
+            return model.lessons.filter(function (lesson) {
                 return lesson.guitarTechniqueId === guitarTechniqueId;
-            }).sort(function(left, right) {
+            }).sort(function (left, right) {
                 return left.orderNumber - right.orderNumber;
             });
-        }
+        };
         return model;
     }
 </script>

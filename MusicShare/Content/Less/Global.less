@@ -31,7 +31,8 @@ body {
     background-color: @mg-green--ordinal;
     border-color: @mg-green--ordinal;
     font-size: @mg-font-size--ordinal;
-    height: auto;
+    line-height: @mg-font-size--ordinal;
+    display: inline-block;
     font-weight: normal;
     padding: @mg-btn-padding;
     border-radius: @mg-btn-border-radius;
@@ -77,4 +78,10 @@ p a:not(.btn):focus:active,
     outline: none;
     text-decoration: underline;
     color: @mg-green--active;
+}
+.mg-btn>.mg-link,
+.mg-btn>.mg-link:hover,
+.mg-btn>.mg-link:focus:active {
+    color: @mg-text-white;
+    text-decoration: none;
 }
