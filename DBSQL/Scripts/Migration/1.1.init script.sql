@@ -276,7 +276,8 @@ CREATE TABLE Lesson (
   GuitarTechniqueId int NOT NULL,
   OrderNumber int NOT NULL,
   ExerciseNumber int NOT NULL,
-  Title character varying(256) NOT NULL,
+  Description character varying(2048) NOT NULL,
+  Name character varying(256) NOT NULL,
   Text text NOT NULL,
   CONSTRAINT pk_Lesson PRIMARY KEY (Id)
 )

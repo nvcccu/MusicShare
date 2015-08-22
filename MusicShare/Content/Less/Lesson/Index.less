@@ -1,0 +1,74 @@
+﻿@import "../Const.less";
+@import "../Mixin.less";
+
+.lesson-index {
+    width: 700px;
+    .box-sizing__border-box;
+    padding: 40px;
+}
+.lesson-index__title {
+    font-family: @mg-font-family--additional;
+    font-size: 25px;
+}
+.lesson-index__lesson-list {
+    margin-top: 30px;
+}
+.lesson-list__guitar-technique {
+    .box-sizing__border-box;    
+}
+.guitar-technique__name {
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    padding-left: 40px;
+}
+.lesson-list__guitar-technique:nth-of-type(2n) .guitar-technique__name {
+    background-color: #352d23;
+}
+.lesson-list__guitar-technique:nth-of-type(2n+1) .guitar-technique__name {
+    background-color: #332b21;
+}
+.lesson-list__guitar-technique--active .guitar-technique__name {
+    background-color: @mg-green--ordinal !important;
+}
+.lesson-list__guitar-technique:hover .guitar-technique__name {
+    background-color: @mg-green--ordinal;
+}
+.lesson-list__guitar-technique--active .guitar-technique__name:hover {
+    background-color: @mg-green--hover !important;
+}
+.guitar-technique__binded-lessons {
+    display: none;
+    padding: 20px 20px 20px 60px;
+    position: relative;
+    background-color: @mg-brown--addition;
+}
+.lesson-list__guitar-technique--active .guitar-technique__binded-lessons {
+    display: block;
+}
+.binded-lessons__lesson {
+    font-size: 16px;
+    line-height: 40px;
+}
+.binded-lessons__lesson-description {
+    display: none;
+    position: absolute;
+    background-color: @mg-brown--addition;
+    width: 400px;
+    right: -410px;
+    top: 0;
+    .box-sizing__border-box;
+    padding: 20px;
+}
+.binded-lessons__lesson:hover + .binded-lessons__lesson-description {
+    display: block;
+}
+.lesson-description__title {
+    font-family: @mg-font-family--additional;
+    font-size: 20px;
+}
+.lesson-description__description {
+    margin-top: 20px;
+    font-size: 16px;
+}

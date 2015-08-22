@@ -5,10 +5,12 @@ using Core.TransportTypes;
 
 namespace MusicShareWeb.Models.Lesson {
     public class LessonListModel : BaseModel {
-        public Dictionary<GuitarTechniqueDto, List<LessonDto>> Lessons { get; set; }
-
+        public List<GuitarTechniqueDto> GuitarTechniques { get; set; }
+        public List<LessonDto> Lessons { get; set; }
+       
         public LessonListModel(BaseModel baseModel) : base(baseModel) {
-            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessonsGroupedByTechnique();
+            GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
+            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
         }
     }
 }

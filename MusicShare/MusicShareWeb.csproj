@@ -242,6 +242,12 @@
     <Content Include="Content\Less\Layout.min.css">
       <DependentUpon>Layout.css</DependentUpon>
     </Content>
+    <Content Include="Content\Less\Lesson\Index.css">
+      <DependentUpon>Index.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Lesson\Index.min.css">
+      <DependentUpon>Index.css</DependentUpon>
+    </Content>
     <Content Include="Content\Less\Lesson\Plan.css">
       <DependentUpon>Plan.less</DependentUpon>
     </Content>
@@ -367,6 +373,10 @@
       <DependentUpon>Chart.min.js</DependentUpon>
     </Content>
     <Content Include="Views\Lesson\ExerciseForTrain.cshtml" />
+    <Content Include="Content\Less\Lesson\Index.less" />
+    <Content Include="Content\Less\Lesson\Index.css.map">
+      <DependentUpon>Index.css</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

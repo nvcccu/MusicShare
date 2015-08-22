@@ -1,25 +1,69 @@
-﻿@model MusicShareWeb.Models.Lesson.LessonListModel
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model MusicShareWeb.Models.Lesson.LessonListModel
 
 @{
     Layout = "../Shared/Layout.cshtml";
 }
 
-<div style="width: 400px; margin: 0 auto; position: relative;">
-    @foreach(var technique in Model.Lessons) {
-        <div style="margin-bottom: 15px;">
-            <div>@technique.Key.Name</div>
-            <div style="margin-left: 38px;">
-                @foreach(var lesson in technique.Value) {
-                    <a href="@Url.Action("Index", new {id = lesson.Id})">@lesson.Name</a><br>
-                }
+<div id="LessonIndex" class="lesson-index">
+    <div class="lesson-index__title">Техника игры на электрогитаре</div>
+    <div class="lesson-index__lesson-list" data-bind="foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' }">
+        <div class="lesson-list__guitar-technique" data-bind="attr: {class: $root.activeGuitarTechnique() === guitarTechnique.id ? 'lesson-list__guitar-technique lesson-list__guitar-technique--active' : 'lesson-list__guitar-technique'}">
+            <div class="guitar-technique__name" data-bind="click: $root.setActiveGuitarTechnique.bind($data, guitarTechnique.id), text: guitarTechnique.name"></div>
+            <div class="guitar-technique__binded-lessons" data-bind="foreach: { data: $root.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: 'lesson' }">
+                <div class="binded-lessons__lesson">
+                    <a class="mg-link" data-bind="text: lesson.name, attr: {href: $root.lessonUrlTemplate + lesson.id}"></a>
+                </div>
+                <div class="binded-lessons__lesson-description">
+                    <div class="lesson-description__title" data-bind="text: lesson.name"></div>
+                    <div class="lesson-description__description" data-bind="text: lesson.description"></div>
+                </div>
             </div>
         </div>
-    }
-    @if(Model.CurrentUser == null) {
-        <div style="position: fixed; left: 300px; top: 200px; color: red;">Чтобы составить план занятий, необходимо войти на сайт</div>
-    } else {
-        <a href="@Url.Action("Plan")" style="position: fixed; left: 500px; top: 200px;">Составить новый план занятий</a>
-        <a href="@Url.Action("Plans")" style="position: fixed; left: 500px; top: 250px;">Мои планы занятий</a>
-        <a href="@Url.Action("Stat")" style="position: fixed; left: 500px; top: 300px;">Статистика</a>
-    }
+    </div>
+    @*    @foreach(var technique in Model.Lessons) {*@
+    @*        <div style="margin-bottom: 15px;">*@
+    @*            <div>@technique.Key.Name</div>*@
+    @*            <div style="margin-left: 38px;">*@
+    @*                @foreach(var lesson in technique.Value) {*@
+    @*                    <a href="@Url.Action("Index", new {id = lesson.Id})">@lesson.Name</a><br>*@
+    @*                }*@
+    @*            </div>*@
+    @*        </div>*@
+    @*    }*@
+    @*    @if(Model.CurrentUser == null) {*@
+    @*        <div style="position: fixed; left: 300px; top: 200px; color: red;">Чтобы составить план занятий, необходимо войти на сайт</div>*@
+    @*    } else {*@
+    @*        <a href="@Url.Action("Plan")" style="position: fixed; left: 500px; top: 200px;">Составить новый план занятий</a>*@
+    @*        <a href="@Url.Action("Plans")" style="position: fixed; left: 500px; top: 250px;">Мои планы занятий</a>*@
+    @*        <a href="@Url.Action("Stat")" style="position: fixed; left: 500px; top: 300px;">Статистика</a>*@
+    @*    }*@
 </div>
+<div class="lesson-index__navigation"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ko.applyBindings(getIndex(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }))), document.getElementById("LessonIndex"));
+    });
+
+    getIndex = function(data) {
+        var model = {};
+        model.lessonUrlTemplate = '@Url.Action("Index")' + '/';
+        model.guitarTechniques = data.guitarTechniques;
+        model.lessons = data.lessons;
+        model.activeGuitarTechnique = ko.observable(null);
+
+        model.setActiveGuitarTechnique = function (guitarTechniqueId) {
+            model.activeGuitarTechnique(guitarTechniqueId);
+        }
+        model.getLessonsByGuitarTechniqueId = function (guitarTechniqueId) {
+            return model.lessons.filter(function(lesson) {
+                return lesson.guitarTechniqueId === guitarTechniqueId;
+            }).sort(function(left, right) {
+                return left.orderNumber - right.orderNumber;
+            });
+        }
+        return model;
+    }
+</script>
