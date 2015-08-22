@@ -66,10 +66,11 @@
                         Название: <input type="text" style="color: black;" data-bind="value: $root.planName"/><br><br>
                     </div>
                     Упражнения:
-                    <div data-bind="foreach: { data: $root.addedExercises(), as: 'exercise' }">
-                        <div>
-                            <span class="plan__toggle" data-bind="click: $root.removeExercise.bind($data, exercise.id)">&#215;</span>
-                            <span data-bind="text: exercise.guitarTechniqueShortName + '. Урок ' + exercise.lessonOrderNumber + '. ' + exercise.exerciseName"></span>
+                    <div data-bind="sortable: $root.addedExercises">
+@*                    <div data-bind="foreach: { data: $root.addedExercises(), as: 'exercise' }">*@
+                        <div class="plan-exercise">
+                            <span class="plan__toggle" data-bind="click: $root.removeExercise.bind($data, $data.id)">&#215;</span>
+                            <span data-bind="text: $data.guitarTechniqueShortName + '. Урок ' + $data.lessonOrderNumber + '. ' + $data.exerciseName"></span>
                         </div>
                     </div>
                 </div>
