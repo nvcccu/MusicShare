@@ -243,6 +243,12 @@
     <Content Include="Content\Less\Layout.min.css">
       <DependentUpon>Layout.css</DependentUpon>
     </Content>
+    <Content Include="Content\Less\Lesson\Navigation.css">
+      <DependentUpon>Navigation.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Lesson\Navigation.min.css">
+      <DependentUpon>Navigation.css</DependentUpon>
+    </Content>
     <Content Include="Content\Less\Lesson\Index.css">
       <DependentUpon>Index.less</DependentUpon>
     </Content>
@@ -380,7 +386,11 @@
     </Content>
     <Content Include="Views\Lesson\Navigation\Lessons.cshtml" />
     <Content Include="Views\Lesson\Navigation\Plans.cshtml" />
-    <Content Include="Views\Lesson\Navigation\Plans.html" />
+    <Content Include="Views\Lesson\Navigation\Stat.cshtml" />
+    <Content Include="Content\Less\Lesson\Navigation.less" />
+    <Content Include="Content\Less\Lesson\Navigation.css.map">
+      <DependentUpon>Navigation.css</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

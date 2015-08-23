@@ -26,9 +26,9 @@
         </div>
     </div>
     <div class="lesson-index__lesson-outer-navigation">
-        <a class="mg-btn lesson-outer-navigation__btn" href="@Url.Action("Plan")">Создать новый план</a>
         @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
-        <a class="mg-btn lesson-outer-navigation__btn" href="@Url.Action("Stat")" style="margin-top: 40px;">Моя статистика</a>
+        @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
+        @Html.Partial("Navigation/Stat")
     </div>
     <div style="clear: both;"></div>
 </div>
@@ -41,18 +41,16 @@
     getIndex = function (data) {
         var model = {};
         model.lessonUrlTemplate = '@Url.Action("Index")' + '/';
-        model.planUrlTemplate = '@Url.Action("Train")' + '/';
         model.guitarTechniques = data.guitarTechniques;
         model.lessons = data.lessons;
-        model.plans = data.plans;
         model.activeGuitarTechnique = ko.observable(null);
-        model.arePlansOpened = ko.observable(false);
-
+        model.areLessonsOpened = ko.observable(false);
+        model.activeGuitarTechnique = ko.observable(null);
+        model.lessonsOpenedToggle = function () {
+            model.areLessonsOpened(!model.areLessonsOpened());
+        };
         model.setActiveGuitarTechnique = function (guitarTechniqueId) {
             model.activeGuitarTechnique(guitarTechniqueId);
-        };
-        model.plansOpenedToggle = function () {
-            model.arePlansOpened(!model.arePlansOpened());
         };
         model.getLessonsByGuitarTechniqueId = function (guitarTechniqueId) {
             return model.lessons.filter(function (lesson) {

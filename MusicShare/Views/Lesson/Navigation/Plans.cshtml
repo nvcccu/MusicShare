@@ -6,24 +6,28 @@
 
 <script type="text/javascript">
     plansModel = function() {
-        debugger;
         var model = {};
         var data = @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()}));
+        model.planUrlTemplate = '@Url.Action("Train")' + '/';
         model.plans = data.plans;
-
+        model.arePlansOpened = ko.observable(false);
+        model.plansOpenedToggle = function () {
+            model.arePlansOpened(!model.arePlansOpened());
+        };
         return model;
     }
 
     ko.components.register('PlansNavigation', {
         viewModel: plansModel,
-        template:   '<div class="lesson-outer-navigation__block">' +
-                        '<div class="mg-btn lesson-outer-navigation__btn" data-bind="click: $root.plansOpenedToggle">' +
+        template:   '<a class="mg-btn lesson-outer-navigation__btn" href="@Url.Action("Plan")">Создать новый план</a>' +
+                    '<div class="lesson-outer-navigation__block">' +
+                        '<div class="mg-btn lesson-outer-navigation__btn" data-bind="click: plansOpenedToggle">' +
                             'Мои планы занятий' +
-                            '<i data-bind="attr: { class: $root.arePlansOpened() ? \'fa fa-caret-left lesson-outer-navigation__caret\' : \'fa fa-caret-down lesson-outer-navigation__caret\' }"></i>' +
+                            '<i data-bind="attr: { class: arePlansOpened() ? \'fa fa-caret-left lesson-outer-navigation__caret\' : \'fa fa-caret-down lesson-outer-navigation__caret\' }"></i>' +
                         '</div>' +
-                        '<div class="lesson-outer-navigation__plans" data-bind="visible: $root.arePlansOpened, foreach: {data: $root.plans, as: \'plan\'}">' +
+                        '<div class="lesson-outer-navigation__plans" data-bind="visible: arePlansOpened, foreach: {data: plans, as: \'plan\'}">' +
                             '<div class="plans__plan-name">' +
-                                '<a class="mg-link plans__plan-link" data-bind="text: plan.name, attr: { href: $root.planUrlTemplate + plan.id }"></a>' +
+                                '<a class="mg-link plans__plan-link" data-bind="text: plan.name, attr: { href: $parent.planUrlTemplate + plan.id }"></a>' +
                             '</div>' +
                         '</div>' +
                     '</div>'

@@ -1,3 +1,52 @@
-﻿@model MusicShareWeb.Models.Lesson.LessonNavigationModel
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model MusicShareWeb.Models.Lesson.LessonNavigationModel
 
-<div></div>
+<div data-bind="component: 'LessonsNavigation'"></div>
+
+<script type="text/javascript">
+    lessonsModel = function() {
+        var model = {};
+        var data = @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()}));
+        model.lessonUrlTemplate = '@Url.Action("Index", "Lesson")' + '/';
+        model.guitarTechniques = data.guitarTechniques;
+        model.lessons = data.lessons;
+        model.areLessonsOpened = ko.observable(false);
+        model.activeGuitarTechnique = ko.observable(null);
+        model.lessonsOpenedToggle = function () {
+            model.areLessonsOpened(!model.areLessonsOpened());
+        };
+        model.setActiveGuitarTechnique = function (guitarTechniqueId) {
+            model.activeGuitarTechnique(guitarTechniqueId);
+        };
+        model.getLessonsByGuitarTechniqueId = function (guitarTechniqueId) {
+            return model.lessons.filter(function (lesson) {
+                return lesson.guitarTechniqueId === guitarTechniqueId;
+            }).sort(function (left, right) {
+                return left.orderNumber - right.orderNumber;
+            });
+        };
+        return model;
+    }
+
+    ko.components.register('LessonsNavigation', {
+        viewModel: lessonsModel,
+        template:           '<div class="lesson-outer-navigation-block">' +
+                                '<div class="mg-btn lesson-outer-navigation__btn" data-bind="click: lessonsOpenedToggle">' +
+                                    'Выбрать урок' +
+                                    '<i data-bind="attr: { class: areLessonsOpened() ? \'fa fa-caret-left lesson-outer-navigation__caret\' : \'fa fa-caret-down lesson-outer-navigation__caret\' }"></i>' +
+                                '</div>' +
+                                '<div class="lesson-navigation__nav-lesson-list" data-bind="visible: areLessonsOpened, foreach: { data: guitarTechniques, as: \'guitarTechnique\' }">' +
+                                    '<div data-bind="attr: {class: $parent.activeGuitarTechnique() === guitarTechnique.id ? \'nav-lesson-list__guitar-technique nav-lesson-list__guitar-technique--active\' : \'nav-lesson-list__guitar-technique\'}">' +
+                                        '<div class="nav-guitar-technique__name" data-bind="click: $parent.setActiveGuitarTechnique.bind($data, guitarTechnique.id), text: guitarTechnique.name"></div>' +
+                                        '<div class="nav-guitar-technique__binded-lessons" data-bind="foreach: { data: $parent.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: \'lesson\' }">' +
+                                            '<div class="nav-binded-lessons__lesson">' +
+                                                '<a class="mg-link navigation-link" data-bind="text: lesson.name, attr: {href: $root.lessonUrlTemplate + lesson.id}"></a>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div style="clear: both;"></div>'
+    });
+</script>
