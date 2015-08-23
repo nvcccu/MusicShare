@@ -1,4 +1,5 @@
-﻿@using Newtonsoft.Json
+﻿@using MusicShareWeb.Models.Lesson
+@using Newtonsoft.Json
 @using Newtonsoft.Json.Serialization
 @model MusicShareWeb.Models.Lesson.LessonListModel
 
@@ -25,23 +26,11 @@
         </div>
     </div>
     <div class="lesson-index__lesson-outer-navigation">
-        <div class="mg-btn lesson-outer-navigation__btn">
-            <a class="mg-link" href="@Url.Action("Plan")">Создать новый план</a>
-        </div>
-        <div class="lesson-outer-navigation__block">
-            <div class="mg-btn lesson-outer-navigation__btn" data-bind="click: $root.plansOpenedToggle">
-                Перейти к плану
-                <i data-bind="attr: { class: $root.arePlansOpened() ? 'fa fa-caret-left lesson-outer-navigation__caret' : 'fa fa-caret-down lesson-outer-navigation__caret' }"></i>
-            </div>
-            <div class="lesson-outer-navigation__plans" data-bind="visible: $root.arePlansOpened, foreach: {data: $root.plans, as: 'plan'}">
-                <div class="plans__plan-name">
-                    <a class="mg-link plans__plan-link" data-bind="text: plan.name, attr: { href: $root.planUrlTemplate + plan.id }"></a>
-                </div>
-            </div>
-        </div>
-
-        <div></div>
+        <a class="mg-btn lesson-outer-navigation__btn" href="@Url.Action("Plan")">Создать новый план</a>
+        @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+        <a class="mg-btn lesson-outer-navigation__btn" href="@Url.Action("Stat")" style="margin-top: 40px;">Моя статистика</a>
     </div>
+    <div style="clear: both;"></div>
 </div>
 
 <script type="text/javascript">
@@ -52,7 +41,7 @@
     getIndex = function (data) {
         var model = {};
         model.lessonUrlTemplate = '@Url.Action("Index")' + '/';
-        model.planUrlTemplate = '@Url.Action("Plan")' + '/';
+        model.planUrlTemplate = '@Url.Action("Train")' + '/';
         model.guitarTechniques = data.guitarTechniques;
         model.lessons = data.lessons;
         model.plans = data.plans;

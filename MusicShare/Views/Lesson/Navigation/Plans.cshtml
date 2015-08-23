@@ -1,0 +1,31 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model MusicShareWeb.Models.Lesson.PlanNavigationModel
+
+<div data-bind="component: 'PlansNavigation'"></div>
+
+<script type="text/javascript">
+    plansModel = function() {
+        debugger;
+        var model = {};
+        var data = @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()}));
+        model.plans = data.plans;
+
+        return model;
+    }
+
+    ko.components.register('PlansNavigation', {
+        viewModel: plansModel,
+        template:   '<div class="lesson-outer-navigation__block">' +
+                        '<div class="mg-btn lesson-outer-navigation__btn" data-bind="click: $root.plansOpenedToggle">' +
+                            'Мои планы занятий' +
+                            '<i data-bind="attr: { class: $root.arePlansOpened() ? \'fa fa-caret-left lesson-outer-navigation__caret\' : \'fa fa-caret-down lesson-outer-navigation__caret\' }"></i>' +
+                        '</div>' +
+                        '<div class="lesson-outer-navigation__plans" data-bind="visible: $root.arePlansOpened, foreach: {data: $root.plans, as: \'plan\'}">' +
+                            '<div class="plans__plan-name">' +
+                                '<a class="mg-link plans__plan-link" data-bind="text: plan.name, attr: { href: $root.planUrlTemplate + plan.id }"></a>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'
+    });
+</script>

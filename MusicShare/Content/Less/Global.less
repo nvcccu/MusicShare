@@ -37,6 +37,8 @@ body {
     padding: @mg-btn-padding;
     border-radius: @mg-btn-border-radius;
     outline: none;
+    cursor: pointer;
+    text-align: center;
     .box-shadow("inset 0 1px 1px rgba(0,0,0,.075)");
     .transition("border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 }
@@ -55,6 +57,12 @@ body {
     border-color: @mg-green--active;
     outline: none;
     .box-shadow("inset 0 1px 1px rgba(0,0,0,.075)");
+}
+a.mg-btn:hover,
+a.mg-btn:active,
+a.mg-btn:focus,
+a.mg-btn:focus:active {
+    text-decoration: none;
 }
 
 p a:not(.btn),

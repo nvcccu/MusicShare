@@ -17,7 +17,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                @using (Html.BeginForm("SignInViaEmail", "Auth", FormMethod.Post, new { id = "SignInForm", style="display: block;", role = "form", onsubmit = "return onSignInViaEmailSubmit();" })) {
+                                @using (Html.BeginForm("SignInViaEmail", "Auth", FormMethod.Post, new { id = "SignInForm", style="display: block;", role = "form", onsubmit = "return onSignInViaEmailSubmit(event);" })) {
                                     <div class="form-group">
                                         <input type="email" name="Email" required tabindex="1" class="form-control" placeholder="Почта или имя на сайте" value="">
                                     </div>
@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
                                 }
-                                @using (Html.BeginForm("SignUp", "Auth", FormMethod.Post, new { id = "SignUpForm", style = "display: none;", role = "form", onsubmit = "return onSignUpSubmit();" })) { 
+                                @using (Html.BeginForm("SignUp", "Auth", FormMethod.Post, new { id = "SignUpForm", style = "display: none;", role = "form", onsubmit = "return onSignUpSubmit(event);" })) { 
                                     <div class="form-group">
                                         <input type="text" name="NickName" required tabindex="1" class="form-control" placeholder="Имя на сайте" value="">
                                     </div>
@@ -150,7 +150,7 @@
             e.preventDefault();
         });
     });
-    var onSignInViaEmailSubmit = function () {
+    var onSignInViaEmailSubmit = function (event) {
         $(event.target).ajaxSubmit({
             success: function (data) {
                 if (data.Success) {
@@ -163,7 +163,7 @@
         });
         return false;
     }
-    var onSignUpSubmit = function () {
+    var onSignUpSubmit = function (event) {
         var form = $(event.target);
         var password = form.find('[name=Password]');
         var confirmPassword = form.find('[name=ConfirmPassword]');
