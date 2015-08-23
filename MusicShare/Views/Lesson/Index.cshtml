@@ -27,7 +27,6 @@
     </div>
     <div class="lesson-index__lesson-outer-navigation">
         @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
-        @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
         @Html.Partial("Navigation/Stat")
     </div>
     <div style="clear: both;"></div>

@@ -19,7 +19,7 @@
 
     ko.components.register('PlansNavigation', {
         viewModel: plansModel,
-        template:   '<a class="mg-btn lesson-outer-navigation__btn" href="@Url.Action("Plan")">Создать новый план</a>' +
+        template:   '<a class="mg-btn lesson-outer-navigation__btn" href="@Url.Action("Plan", "Lesson", new {id = ""})">Создать новый план</a>' +
                     '<div class="lesson-outer-navigation__block">' +
                         '<div class="mg-btn lesson-outer-navigation__btn" data-bind="click: plansOpenedToggle">' +
                             'Мои планы занятий' +

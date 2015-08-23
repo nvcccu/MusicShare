@@ -8,7 +8,7 @@
     lessonsModel = function() {
         var model = {};
         var data = @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()}));
-        model.lessonUrlTemplate = '@Url.Action("Index", "Lesson")' + '/';
+        model.lessonUrlTemplate = '@Url.Action("Index", "Lesson", new {id = ""})' + '/';
         model.guitarTechniques = data.guitarTechniques;
         model.lessons = data.lessons;
         model.areLessonsOpened = ko.observable(false);
@@ -41,7 +41,7 @@
                                         '<div class="nav-guitar-technique__name" data-bind="click: $parent.setActiveGuitarTechnique.bind($data, guitarTechnique.id), text: guitarTechnique.name"></div>' +
                                         '<div class="nav-guitar-technique__binded-lessons" data-bind="foreach: { data: $parent.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: \'lesson\' }">' +
                                             '<div class="nav-binded-lessons__lesson">' +
-                                                '<a class="mg-link navigation-link" data-bind="text: lesson.name, attr: {href: $root.lessonUrlTemplate + lesson.id}"></a>' +
+                                                '<a class="mg-link navigation-link" data-bind="text: lesson.name, attr: {href: $parents[1].lessonUrlTemplate + lesson.id}"></a>' +
                                             '</div>' +
                                         '</div>' +
                                     '</div>' +

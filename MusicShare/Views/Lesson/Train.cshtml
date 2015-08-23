@@ -1,4 +1,5 @@
-﻿@using Newtonsoft.Json
+﻿@using MusicShareWeb.Models.Lesson
+@using Newtonsoft.Json
 @using Newtonsoft.Json.Serialization
 @model MusicShareWeb.Models.Lesson.TrainModel
 
@@ -19,18 +20,18 @@
     @if (Model.CurrentUser == null) {
         <span>Для загрузки данных плана занятий необходимо войти на сайт.</span>
     } else {
-        <div class="plan-layout">
-            <div class="plan">
-                <div class="plan__all-exercises" data-bind="foreach: { data: $root.exercises, as: 'exercise' }">
-                    <div data-bind="template: { name: 'ExerciseTemplate', data: {'exerciseId': exercise.id, 'exerciseName': $root.getExerciseTitle(exercise), 'audioUrl': exercise.audioUrl, 'imageUrl': exercise.imageUrl, 'min': false } }"></div>
-                </div>
-                <div class="lesson-additions">
-                    <div>
-                        <input type="button" class="mg-btn save-exercises-speed" style="padding: 16px 22px;" value="Сохранить изменения" data-bind="click: $root.saveSpeeds" />
-                    </div>
-                </div>
+        <div class="lesson-index__lesson-navigation">
+            <div class="plan__all-exercises" data-bind="foreach: { data: $root.exercises, as: 'exercise' }">
+                <div data-bind="template: { name: 'ExerciseTemplate', data: {'exerciseId': exercise.id, 'exerciseName': $root.getExerciseTitle(exercise), 'audioUrl': exercise.audioUrl, 'imageUrl': exercise.imageUrl, 'min': false } }"></div>
             </div>
         </div>
+        <div class="lesson-index__lesson-outer-navigation">
+            <div class="lesson-outer-navigation-block">
+                <input type="button" class="mg-btn lesson-outer-navigation__btn" value="Сохранить изменения" data-bind="click: $root.saveSpeeds" />
+            </div>
+            @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
+        </div>
+        <div style="clear: both;"></div>
     }
 </div>
 
@@ -144,19 +145,19 @@
             return guitarTechnique.shortName + ' ' + lesson.name + '. ' + exercise.name;
         };
 
-        $(window).bind('scroll resize', function () {
-            if (window.pageYOffset > 150) {
-                $('.save-exercises-speed').css({
-                    'top': '50px',
-                    'position': 'fixed'
-                });
-            } else {
-                $('.save-exercises-speed').css({
-                    'top': '200px',
-                    'position': 'absolute'
-                });
-            }
-        });
+//        $(window).bind('scroll resize', function () {
+//            if (window.pageYOffset > 150) {
+//                $('.lesson-index__lesson-outer-navigation').css({
+//                    'top': '50px',
+//                    'position': 'fixed'
+//                });
+//            } else {
+//                $('.lesson-index__lesson-outer-navigation').css({
+//                    'top': '200px',
+//                    'position': 'absolute'
+//                });
+//            }
+//        });
 
         return model;
     };
