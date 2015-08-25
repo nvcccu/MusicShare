@@ -22,16 +22,16 @@
             --><a class="header-navigation__btn @CssIfActive(controllerName, "Lesson")" href="@Url.Action("Index", "Lesson", new { id = "" })">Самоучитель</a>
         </div>
         <div class="header__contacts">
-            @if (Model.CurrentUser != null && Model.CurrentUser.IsAuthorized) {
-                <a class="header__login" href="@Url.Action("SignOut", "Auth")">@(Model.CurrentUser != null ? Model.CurrentUser.NickName : "")</a>
-            } else {
-                <div class="header__login mg-link" data-target="#SignInUpModal" data-toggle="modal">Войти на сайт</div>
-            }
-            <ul class="header__social">
-                <li class="header__social-item"><a href="https://vk.com/musground">В</a></li>
-                <li class="header__social-item">f</li>
-                <li class="header__social-item">t</li>
-            </ul>
+            <div class="header__login-block">
+                @if(Model.CurrentUser != null && Model.CurrentUser.IsAuthorized) {
+                    <a class="header__login mg-link" href="@Url.Action("SignOut", "Auth")">@(Model.CurrentUser != null ? Model.CurrentUser.NickName : "")</a>
+                } else {
+                    <div class="header__login mg-link" data-target="#SignInUpModal" data-toggle="modal">Войти на сайт</div>
+                }
+            </div>
+            <div class="header__social">
+                <a class="mg-link header__social-item" href="https://vk.com/musground">В</a>
+            </div>
         </div>
     </div>
 </header>

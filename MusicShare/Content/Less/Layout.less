@@ -6,38 +6,44 @@
 /* header */
 header {
     width: 100%;
-    height: @mg-header-height;
-    background-color: @mg-brown--ordinal;
     min-width: inherit;
+    height: @mg-header-height;
+    .box-sizing__border-box;
+    background-color: @mg-brown--ordinal;
 }
 .header {
     height: 100%;
     margin: 0 auto;
     position: relative;
-    border-bottom: 5px solid @mg-green--ordinal;
+    border-bottom: 2px solid @mg-green--ordinal;
+}
+.header:after {
+    .clearfix;
 }
 .header__logo {
-    padding: 15px 0 15px 33px;
+    padding: 19px 0 21px 32px;
     height: 100%;
-    width: 256px;
+    width: 154px;
     .box-sizing__border-box;
-    display: inline-block;
+    float: left;
 }
 .header__logo-img {
     height: 100%;
 }
 .header-navigation {
     .box-sizing__border-box;
-    padding-left: 50px;
+    padding-left: 60px;
     font-size: 20px;
-    height: 50px;
-    line-height: 50px;
-    display: inline-block;
-    margin-left: -4px;
+    height: @mg-header-height;
+    line-height: @mg-header-height;
+    float: left;
     vertical-align: bottom;
+    /*
+    Вернуть когда блок навигации будет длинным
     @media @header-resize-width {
         padding-left: 20px;
     }
+    */
 }
 .header-navigation__btn {
     display: inline-block;
@@ -62,41 +68,39 @@ header {
 }
 .header__contacts {
     float: right;
-    padding-top: 15px;
+    padding: 11px 33px 11px 0;
     height: 100%;
+    width: 160px;
     .box-sizing__border-box;
-    padding-right: 33px;
 }
-
 .header__login {
-    color: @mg-green--ordinal;
-    text-decoration: underline;
-    font-size: 16px;
-    cursor: pointer;
     float: right;
 }
+.header__login-block {
+    height: 40px;
+}
+.header__login-block:after {
+    .clearfix;
+}
 .header__social {
-    height: 50px;
+    height: 25px;
     .box-sizing__border-box;
-    padding: 12px 0;
-    list-style-type: none;
-    margin: 80px 0 0 0;
+    margin-top: 11px;
+}
+.header__social:after {
+    .clearfix;
 }
 .header__social-item {
-    height: 26px;
-    width: 26px;
-    line-height: 26px;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
     border: 1px solid @mg-green--ordinal;
     .box-sizing__border-box;
-    color: @mg-green--ordinal;
     text-align: center;
     font-weight: bold;
     float: right;
     margin-left: 25px;
-    cursor: pointer;
-}
-header ul a,
-header ul a:hover {
-    text-decoration: none;
-    color: @mg-green--ordinal;
+    &:hover, &:active, &:focus {
+        text-decoration: none !important;
+    }
 }
