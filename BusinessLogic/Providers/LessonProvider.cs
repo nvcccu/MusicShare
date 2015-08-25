@@ -26,13 +26,13 @@ namespace BusinessLogic.Providers {
         }
         private Dictionary<int, int> GenerateBaseLessonExerciseStat(int lessonId) {
             var dict = new Dictionary<int, int>();
-            var lessonExerciseIds = new Exercise()
+            var lessonExercises = new Exercise()
                 .Select()
                 .Where(Exercise.Fields.LessonId, PredicateCondition.Equal, lessonId)
                 .GetData()
-                .Select(e => e.Id)
+                .Select(e => e.ToDto())
                 .ToList();
-            lessonExerciseIds.ForEach(id => dict.Add(id, 60));
+            lessonExercises.ForEach(e => dict.Add(e.Id, e.DefaultSpeed));
             return dict;
         }
         private Dictionary<int, int> UpdateExercisesSpeedWithNewLesson(LessonStat lessonStat, int lessonId) {
@@ -200,7 +200,12 @@ namespace BusinessLogic.Providers {
             return planExerciseIds.Select(i => exercises.Single(e => e.Id == i)).ToList();
         }
         public Dictionary<int, int> GetUsersExercisesStat(int accountId) {
-            return new LessonStat()
+            var exercises = new Exercise()
+                .Select()
+                .GetData()
+                .Select(e => e.ToDto())
+                .ToList();
+            var exercisesSpeed = new LessonStat()
                 .Select()
                 .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, accountId)
                 .OrderBy(LessonStat.Fields.Id, OrderType.Desc)
@@ -208,6 +213,28 @@ namespace BusinessLogic.Providers {
                 .First()
                 .ToDto()
                 .ExercisesSpeed;
+            if(exercisesSpeed.Keys.Count != exercises.Count) {
+                var lessons = new Lesson()
+                    .Select()
+                    .GetData()
+                    .Select(e => e.ToDto())
+                    .ToList();
+                var lessonStat = new LessonStat()
+                    .Select()
+                    .Where(LessonStat.Fields.AccountId, PredicateCondition.Equal, accountId)
+                    .OrderBy(LessonStat.Fields.Id, OrderType.Desc)
+                    .GetData()
+                    .First();
+                foreach(var lesson in lessons) {
+                    var tmp = UpdateExercisesSpeedWithNewLesson(lessonStat, lesson.Id);
+                    tmp.ForEach(t => {
+                        if(!exercisesSpeed.ContainsKey(t.Key)) {
+                            exercisesSpeed.Add(t.Key, t.Value);
+                        }
+                    });
+                }
+            }
+            return exercisesSpeed;
         }
         public Dictionary<int, List<ExerciseSpeedInDate>> GetUsersExercisesTotalStat(int accountId) {
             var exercises = new Exercise()

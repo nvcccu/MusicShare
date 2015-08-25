@@ -21,6 +21,8 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof(String))]
             AudioUrl,
             [DbType(typeof(Int32))]
+            DefaultSpeed,
+            [DbType(typeof(Int32))]
             AuthorAccountId,
             [DbType(typeof(Boolean))]
             IsPublic
@@ -31,6 +33,7 @@ namespace BusinessLogic.DaoEntities {
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public string AudioUrl { get; set; }
+        public int DefaultSpeed { get; set; }
         public int AuthorAccountId { get; set; }
         public bool IsPublic { get; set; }
 
@@ -41,6 +44,7 @@ namespace BusinessLogic.DaoEntities {
                 Name = Name,
                 ImageUrl = ImageUrl,
                 AudioUrl = AudioUrl,
+                DefaultSpeed = DefaultSpeed,
                 AuthorAccountId = AuthorAccountId,
                 IsPublic = IsPublic
             };

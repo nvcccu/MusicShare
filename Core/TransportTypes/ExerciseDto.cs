@@ -5,6 +5,7 @@
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public string AudioUrl { get; set; }
+        public int DefaultSpeed { get; set; }
         public int AuthorAccountId { get; set; }
         public bool IsPublic { get; set; }
     }
