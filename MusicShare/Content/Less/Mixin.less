@@ -27,6 +27,10 @@
     -moz-border-radius:     @x;
     border-radius:          @x;
 }
+.border-bottom-radius(@x) {
+    border-bottom-left-radius: @x;
+    border-bottom-right-radius: @x;
+}
 .transition(@x) {
     -webkit-transition: ~"@{x}";
     -moz-transition:    ~"@{x}";
@@ -35,6 +39,7 @@
 }
 .box-shadow(@x) {
     -webkit-box-shadow: ~"@{x}";
+    -moz-box-shadow:    ~"@{x}";
     box-shadow:         ~"@{x}";
 }
 .text-overflow(@x) {

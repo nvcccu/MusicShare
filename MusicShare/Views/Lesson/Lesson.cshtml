@@ -19,13 +19,15 @@
 </audio>
 
 <div>
+    <input type="text" class="mg-input-text" placeholder="input type text"/>
     <div id="LessonPage" class="lesson-index__lesson-navigation">
         <div class="lesson">
             <div class="lesson-hierarchy">
                 <a class="lesson-hierarchy__link" href="@Url.Action("Index", "Lesson", new {id = ""})">Самоучитель</a> > <a class="lesson-hierarchy__link" href="#">@Model.GutarTechique.Name</a>
             </div>
             <div>Автор: Rig Raizon</div>
-            <div>Источник: <a href="http://allfrets.ru">Allfrets.ru</a></div>
+            <div>Источник: <a href="http://allfrets.ru">Allfrets.ru</a>
+            </div>
             <div class="lesson__order-number">
                 Урок @Model.Lesson.OrderNumber
             </div>
@@ -48,13 +50,13 @@
     </div>
     <div class="lesson-index__lesson-outer-navigation">
         <div class="lesson-outer-navigation-block">
-            <input type="button" class="mg-btn lesson-outer-navigation__btn" value="Сохранить изменения" data-bind="click: $root.saveSpeeds"/>
+            <div class="mg-btn" data-bind="click: $root.saveSpeeds">Сохранить изменения</div>
         </div>
         <div class="lesson-outer-navigation-block">
-            @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+            @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null ? Model.CurrentUser.Id : (int?) null))
         </div>
         <div class="lesson-outer-navigation-block">
-            @if (Model.IsMinimized) {
+            @if(Model.IsMinimized) {
                 <a id="ChangeLessonType" href="@Url.Action("Index", new {id = Model.Lesson.Id})" class="mg-link">К полной версии урока</a>
             } else {
                 <a id="ChangeLessonType" href="@Url.Action("MinimizedLesson", new {id = Model.Lesson.Id})" class="mg-link">К сокращенной версии урока</a>
