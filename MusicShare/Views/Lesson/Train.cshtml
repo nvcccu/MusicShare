@@ -16,7 +16,7 @@
     <source src="/Content/bit.aac" type='audio/mp4; codecs="mp4a.40.5"'>
 </audio>
 
-<div id="Train">
+<div id="Train" class="lesson-container">
     @if (Model.CurrentUser == null) {
         <span>Для загрузки данных плана занятий необходимо войти на сайт.</span>
     } else {
@@ -33,7 +33,6 @@
                 @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
             </div>
         </div>
-        <div class="clearfix"></div>
     }
 </div>
 

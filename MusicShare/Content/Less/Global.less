@@ -112,11 +112,15 @@ p a:not(.btn):focus:active,
 }
 
 .mg-drop-down__element {
+    width: 100%;
+    white-space: nowrap;
+    .text-overflow(ellipsis);
+    overflow: hidden;
     display: block;
     height: 50px;
     line-height: 50px;
     text-align: left;
-    padding: 0 40px;
+    padding: 0 30px;
     .box-sizing__border-box;
     border-bottom: 1px solid @mg-brown--ordinal;
     background-color: @mg-brown-layout;
@@ -138,4 +142,8 @@ p a:not(.btn):focus:active,
 .mg-drop-down__element:active:focus {
     text-decoration: none;
     color: @mg-white;
+}
+.mg-drop-down__element-first {
+    text-align: center;
+    color: @mg-green--ordinal !important;
 }

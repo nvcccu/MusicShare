@@ -16,11 +16,13 @@ namespace MusicShareWeb.Models.Lesson {
 
     public class PlanNavigationModel {
         public List<PlanDto> Plans { get; set; }
+          public bool IsAuthorized { get; set; }
        
-        public PlanNavigationModel(int? accoutnId = null) {
+        public PlanNavigationModel(bool isAuthorized, int? accoutnId = null) {
             Plans = accoutnId.HasValue
                 ? ServiceManager<IBusinessLogic>.Instance.Service.GetAllUsersPlans(accoutnId.Value)
                 : new List<PlanDto>();
+            IsAuthorized = isAuthorized;
         }
     }
 }

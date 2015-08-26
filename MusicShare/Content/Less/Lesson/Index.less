@@ -9,6 +9,7 @@
     float: left;
     .box-sizing__border-box;
     padding: 40px 40px 0 40px;
+    overflow: visible;
 }
 .lesson-index__title {
     font-family: @mg-font-family--additional;
@@ -93,7 +94,8 @@
     padding: 0 40px;
     text-align: right;
 }
-.lesson-zone__right-container:after {
+.lesson-container:before,
+.lesson-container:after {
     .clearfix;
 }
 .right-container__content {

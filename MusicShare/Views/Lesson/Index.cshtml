@@ -7,7 +7,7 @@
     Layout = "../Shared/Layout.cshtml";
 }
 
-<div id="LessonIndex">
+<div id="LessonIndex" class="lesson-container">
     <div class="lesson-index__lesson-navigation">
         <div class="lesson-index__title">Техника игры на электрогитаре</div>
         <div class="lesson-navigation__lesson-list" data-bind="foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' }">
@@ -28,11 +28,10 @@
     </div>
     <div class="lesson-zone__right-container">
         <div class="right-container__content">
-            @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+            @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
             @Html.Partial("Navigation/Stat")
         </div>
     </div>
-    <div style="clear: both;"></div>
 </div>
 
 <script type="text/javascript">

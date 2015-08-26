@@ -18,7 +18,7 @@
     <source src="/Content/bit.aac" type='audio/mp4; codecs="mp4a.40.5"'>
 </audio>
 
-<div style="position: relative;">
+<div class="lesson-container">
     <div id="LessonPage" class="lesson-index__lesson-navigation">
         <div class="lesson-hierarchy">
             <a class="lesson-hierarchy__link" href="@Url.Action("Index", "Lesson", new {id = ""})">Самоучитель</a> > <a class="lesson-hierarchy__link" href="#">@Model.GutarTechique.Name</a>
@@ -51,7 +51,7 @@
             <div class="lesson-outer-navigation-block">
                 <div class="mg-btn" data-bind="click: $root.saveSpeeds">Сохранить изменения</div>
             </div>
-            @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null ? Model.CurrentUser.Id : (int?) null))
+            @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
             <div class="lesson-outer-navigation-block">
                 @if(Model.IsMinimized) {
                     <a id="ChangeLessonType" href="@Url.Action("Index", new {id = Model.Lesson.Id})" class="mg-link">К полной версии урока</a>
@@ -63,11 +63,6 @@
             @Html.Partial("Navigation/Stat")
         </div>
     </div>
-    <div class="clearfix"></div>
-</div>
-
-<div>
-
 </div>
 
 @Html.Partial("Exercise")
