@@ -374,7 +374,6 @@
       <DependentUpon>Plan.css</DependentUpon>
     </Content>
     <Content Include="Views\Lesson\Plan.cshtml" />
-    <Content Include="Views\Lesson\Plans.cshtml" />
     <Content Include="Views\Lesson\Stat.cshtml" />
     <Content Include="Content\Libraries\ChartJs\Chart.min.js.map">
       <DependentUpon>Chart.min.js</DependentUpon>

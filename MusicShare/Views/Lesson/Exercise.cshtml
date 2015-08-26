@@ -11,7 +11,7 @@
         <div data-bind="attr: {id: 'Exercise' + exerciseId}">
             <div style="margin-top: 35px; height: 40px;">
                 <div data-bind="text: exerciseName" style="float: left; font-size: 20px; font-family: 'OpenSans-Light';"></div>
-                <div style="float: right; font-size: 14px; text-decoration: underline;" data-bind="click: $root.setAddExerciseToPlanVisible.bind($data, exerciseId, true)">Добавить в план занятий</div>
+                <div style="float: right; font-size: 14px; text-decoration: underline; cursor: pointer;" data-bind="click: $root.setAddExerciseToPlanVisible.bind($data, exerciseId, true)">Добавить в план занятий</div>
                 <div style="clear: both;"></div>
             </div>
             <div style="margin: 10px 0; position: relative;">

@@ -7,7 +7,7 @@
     Layout = "../Shared/Layout.cshtml";
 }
 
-<div id="LessonIndex" class="lesson-index">
+<div id="LessonIndex">
     <div class="lesson-index__lesson-navigation">
         <div class="lesson-index__title">Техника игры на электрогитаре</div>
         <div class="lesson-navigation__lesson-list" data-bind="foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' }">
@@ -26,14 +26,24 @@
             </div>
         </div>
     </div>
-    <div class="lesson-index__lesson-outer-navigation">
-        @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
-        @Html.Partial("Navigation/Stat")
+    <div class="lesson-zone__right-container">
+        <div class="right-container__content">
+            @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+            @Html.Partial("Navigation/Stat")
+        </div>
     </div>
     <div style="clear: both;"></div>
 </div>
 
 <script type="text/javascript">
+    $(window).bind('scroll resize', function () {
+        if (window.pageYOffset > 100) {
+            $('.right-container__content').addClass('right-container__content--float');
+        } else {
+            $('.right-container__content').removeClass('right-container__content--float');
+        }
+    });
+
     $(document).ready(function () {
         ko.applyBindings(getIndex(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }))), document.getElementById("LessonIndex"));
     });

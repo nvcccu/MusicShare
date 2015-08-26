@@ -8,7 +8,7 @@
     width: 700px;
     float: left;
     .box-sizing__border-box;
-    padding: 0 40px;
+    padding: 40px 40px 0 40px;
 }
 .lesson-index__title {
     font-family: @mg-font-family--additional;
@@ -85,8 +85,7 @@
     border-bottom: 20px solid transparent;
     left: -20px;
 }
-
-.lesson-index__lesson-outer-navigation {
+.lesson-zone__right-container {
     float: left;
     width: 400px;
     vertical-align: top;
@@ -94,9 +93,23 @@
     padding: 0 40px;
     text-align: right;
 }
+.lesson-zone__right-container:after {
+    .clearfix;
+}
+.right-container__content {
+    text-align: left;
+}
+.right-container__content--float {
+    top: 0;
+    padding-right: 40px;
+    float: right;
+    position: fixed;
+}
+.lesson-index__lesson-outer-navigation {
+    
+}
 .lesson-outer-navigation__block {
     margin-top: 40px;
-    float: right;
 }
 .lesson-outer-navigation__caret {
     float: right;

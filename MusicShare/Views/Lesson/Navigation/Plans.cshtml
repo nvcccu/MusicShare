@@ -19,13 +19,15 @@
 
     ko.components.register('PlansNavigation', {
         viewModel: plansModel,
-        template:   '<a class="mg-btn" href="@Url.Action("Plan", "Lesson", new {id = ""})">Создать новый план</a>' +
-                    '<div class="lesson-outer-navigation__block">' +
-                        '<div class="mg-btn" data-bind="click: plansOpenedToggle">' +
-                            'Мои планы занятий &nbsp;<span style="font-family: FontAwesome;" data-bind="text: arePlansOpened() ? \'&#xf0d9;\' : \'&#xf0d7;\'"</span>' +
-                        '</div>' +
-                        '<div data-bind="visible: arePlansOpened, foreach: {data: plans, as: \'plan\'}">' +
-                            '<a class="mg-drop-down__element" data-bind="text: plan.name, attr: { href: $parent.planUrlTemplate + plan.id }"></a>' +
+        template:   '<div class="lesson-outer-navigation-block">' +
+                        '<a class="mg-btn" href="@Url.Action("Plan", "Lesson", new {id = ""})">Создать новый план</a>' +
+                        '<div class="lesson-outer-navigation__block">' +
+                            '<div class="mg-btn" data-bind="click: plansOpenedToggle">' +
+                                'Мои планы занятий &nbsp;<span style="font-family: FontAwesome;" data-bind="text: arePlansOpened() ? \'&#xf0d9;\' : \'&#xf0d7;\'"</span>' +
+                            '</div>' +
+                            '<div data-bind="visible: arePlansOpened, foreach: {data: plans, as: \'plan\'}">' +
+                                '<a class="mg-drop-down__element" data-bind="text: plan.name, attr: { href: $parent.planUrlTemplate + plan.id }"></a>' +
+                            '</div>' +
                         '</div>' +
                     '</div>'
     });

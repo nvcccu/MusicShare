@@ -11,7 +11,7 @@
     margin: 0 auto;
     width: 1100px;
 }
-.lesson {
+.lesson-index__lesson-navigation {
     width: 680px;
     padding: 30px 40px 0;
     .box-sizing__border-box;
@@ -19,7 +19,10 @@
     font-size: 16px;
     overflow: hidden;
 }
-.lesson p {
+.lesson-index__lesson-navigation:after {
+    .clearfix;
+}
+.lesson-index__lesson-navigation p {
     text-align: left;
     line-height: 1.5;
 }
@@ -117,6 +120,15 @@
 .exercise {
     position: relative;
     min-height: 38px;
+}
+.exercise__title {
+    margin-top: 35px;
+    height: 40px;
+    font-size: 20px;
+    font-family: 'OpenSans-Light';
+}
+.exercise__title:first-of-type {
+    margin-top: 0;
 }
 .exercise__add-to-plan-block {
     position: absolute;
