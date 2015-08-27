@@ -59,7 +59,7 @@
                     <a id="ChangeLessonType" href="@Url.Action("MinimizedLesson", new {id = Model.Lesson.Id})" class="mg-link">К сокращенной версии урока</a>
                 }
             </div>
-            @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
+            @Html.Partial("Navigation/Lessons", new LessonNavigationModel(Model.Lesson))
             @Html.Partial("Navigation/Stat")
         </div>
     </div>

@@ -276,6 +276,8 @@ CREATE TABLE Lesson (
   GuitarTechniqueId int NOT NULL,
   OrderNumber int NOT NULL,
   ExerciseNumber int NOT NULL,
+  PreviousLessonId int,
+  NextLessonId int,
   Description character varying(2048) NOT NULL,
   Name character varying(256) NOT NULL,
   Text text NOT NULL,

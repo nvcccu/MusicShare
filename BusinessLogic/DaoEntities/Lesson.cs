@@ -18,6 +18,10 @@ namespace BusinessLogic.DaoEntities {
             OrderNumber,
             [DbType(typeof (Int32))]
             ExerciseNumber,
+            [DbType(typeof (Int32))]
+            PreviousLessonId,
+            [DbType(typeof (Int32))]
+            NextLessonId,
             [DbType(typeof (string))]
             Description,
             [DbType(typeof (string))]
@@ -30,6 +34,8 @@ namespace BusinessLogic.DaoEntities {
         public int GuitarTechniqueId { get; set; }
         public int OrderNumber { get; set; }
         public int ExerciseNumber { get; set; }
+        public int PreviousLessonId { get; set; }
+        public int NextLessonId { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
         public string Text { get; set; }
@@ -40,6 +46,8 @@ namespace BusinessLogic.DaoEntities {
                 GuitarTechniqueId = GuitarTechniqueId,
                 OrderNumber = OrderNumber,
                 ExerciseNumber = ExerciseNumber,
+                PreviousLessonId = PreviousLessonId,
+                NextLessonId = NextLessonId,
                 Description = Description,
                 Name = Name,
                 Text = Text

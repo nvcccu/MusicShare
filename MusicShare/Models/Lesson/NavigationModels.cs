@@ -6,11 +6,13 @@ using Core.TransportTypes;
 namespace MusicShareWeb.Models.Lesson {
     public class LessonNavigationModel {
         public List<GuitarTechniqueDto> GuitarTechniques { get; set; }
+        public LessonDto CurrentLesson { get; set; }
         public List<LessonDto> Lessons { get; set; }
        
-        public LessonNavigationModel() {
+        public LessonNavigationModel(LessonDto currentLesson = null) {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
             Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
+            CurrentLesson = currentLesson;
         }
     }
 
