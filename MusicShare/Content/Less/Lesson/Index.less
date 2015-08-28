@@ -1,6 +1,31 @@
 ﻿@import "../Const.less";
 @import "../Mixin.less";
 
+@main-content__width: 700px;
+
+.selfteacher__container:before,
+.selfteacher__container:after {
+    .clearfix;
+}
+.selfteacher__top {
+    .clearfix;
+    height: 100px;
+}
+.selfteacher__container_top_title {
+    float: left;
+}
+.selfteacher__container_top_navigation {
+    float: right;
+}
+.selfteacher__content-main {
+    width: @main-content__width;
+    float: left;
+    .box-sizing__border-box;
+    padding: 40px 40px 0 40px;
+    overflow: visible;
+}
+
+
 .lesson-index {
     padding: 40px 0 40px;
 }

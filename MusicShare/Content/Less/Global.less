@@ -5,6 +5,9 @@
     font-family: "OpenSans-Light";
     src: url(/Content/Font/OpenSans-Light.ttf) format("truetype");
 }
+* {
+    .box-sizing__border-box;
+}
 html {
     min-width: @mg-min-width;
 }
@@ -146,4 +149,8 @@ p a:not(.btn):focus:active,
 .mg-drop-down__element-first {
     text-align: center;
     color: @mg-green--ordinal !important;
+}
+
+.mg-clearfix {
+    .clearfix;
 }

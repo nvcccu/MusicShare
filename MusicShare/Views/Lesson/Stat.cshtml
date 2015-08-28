@@ -6,44 +6,97 @@
     Layout = "../Shared/Layout.cshtml";
 }
 
-<div id="Stat">
-    <div style="display: inline-block; width: 400px;">
-        <!-- ko foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' } -->
-        <div>
-            <div data-bind="text: guitarTechnique.name"></div>
-            <div style="margin-left: 15px;" data-bind="foreach: { data: $root.getLessonByGuitarTechnique(guitarTechnique), as: 'lesson' }">
-                <div>
-                    <div data-bind="text: lesson.name"></div>
-                    <div style="margin-left: 30px;" data-bind="foreach: { data: $root.getExercisesByLesson(lesson), as: 'exercise' }">
-                        <div>
-                            <span data-bind="text: exercise.name"></span>
-                            <input type="checkbox" data-bind="checked: $root.drawExercise[exercise.id]" />
+<div id="Stat" class="selfteacher__container">
+    <div class="selfteacher__container_top mg-clearfix">
+        <div class="selfteacher__container_top_title">Статистика</div>
+        <div class="selfteacher__container_top_navigation"></div>
+    </div>
+    <div class="selfteacher__stat-left-block">
+        <div class="stat-type-select">
+            <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.speed), attr: { class: $root.statMode() == $root.statModes.speed ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Скорость</div>
+            <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.time), attr: { class: $root.statMode() == $root.statModes.time ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Время</div>
+        </div>
+        <div class="lesson-dropdown-navigation">
+            <div class="lesson-dropdown-navigation__guitar-techniques" data-bind="foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' }">
+                <div class="lesson-dropdown-navigation__guitar-technique">
+                    <div class="lesson-dropdown-navigation__guitar-technique-name" data-bind="text: guitarTechnique.name, click: $root.toggleActiveGuitarTechnique, attr: { class: $root.activeGuitarTechnique() === guitarTechnique.id ? 'lesson-dropdown-navigation__guitar-technique-name lesson-dropdown-navigation__guitar-technique-name--active' : 'lesson-dropdown-navigation__guitar-technique-name' }"></div>
+                    <!-- ko if: $root.activeGuitarTechnique() === guitarTechnique.id -->
+                    <div class="lesson-dropdown-navigation__lessons" data-bind="foreach: { data: $root.getLessonByGuitarTechnique(guitarTechnique), as: 'lesson' }">
+                        <div class="lesson-dropdown-navigation__lesson">
+                            <div class="lesson-dropdown-navigation__lesson-name" data-bind="text: lesson.name, click: $root.toggleActiveLesson"></div>
+                            <!-- ko if: $root.activeLesson() === lesson.id -->
+                            <div class="lesson-dropdown-navigation__exercises" data-bind="foreach: { data: $root.getExercisesByLesson(lesson), as: 'exercise' }">
+                                <div class="lesson-dropdown-navigation__exercise clearfix">
+                                    <div class="lesson-dropdown-navigation__exercise-name" data-bind="text: exercise.name"></div>
+                                    <div class="lesson-dropdown-navigation__exercise-checkbox clearfix">
+                                        <input type="checkbox" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /ko -->
                         </div>
                     </div>
+                    <!-- /ko -->
                 </div>
             </div>
         </div>
-        <!-- /ko -->
     </div>
-    <div style="display: inline-block; margin-left: -4px; width: 600px; vertical-align: top;">
-        <div id="linechart_material"></div>
-        <div>
-            <div>
-                Неделя<input type="radio" name="graphTime" data-bind="checked: $root.graphTime, checkedValue: 7" />
-            </div>
-            <div>
-                Месяц<input type="radio" name="graphTime" data-bind="checked: $root.graphTime, checkedValue: 31" />
-            </div>
-            <div>
-                Полгода<input type="radio" name="graphTime" data-bind="checked: $root.graphTime, checkedValue: 182" />
+    <div class="selfteacher__stat-right-block">
+        <div class="selfteacher-stat__graph"></div>
+        <div class="selfteacher-stat__graph-settings clearfix">
+            <div class="graph-settings__interval">Неделя <input type="checkbox"/></div>
+            <div class="graph-settings__interval">Месяц <input type="checkbox" /></div>
+            <div class="graph-settings__interval">Полгода <input type="checkbox" /></div>
+        </div>
+        <div class="selfteacher-stat__presets-block">
+            <div class="presets-block__title"></div>
+            <div class="presets-block__presets">
+                <div class="presets-block__preset clearfix">
+                    <div class="preset__name"></div>
+                    <div class="preset__actions"></div>
+                </div>
             </div>
         </div>
     </div>
+
+
+@*    <div style="display: inline-block; width: 400px;">*@
+@*        <!-- ko foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' } -->*@
+@*        <div>*@
+@*            <div data-bind="text: guitarTechnique.name"></div>*@
+@*            <div style="margin-left: 15px;" data-bind="foreach: { data: $root.getLessonByGuitarTechnique(guitarTechnique), as: 'lesson' }">*@
+@*                <div>*@
+@*                    <div data-bind="text: lesson.name"></div>*@
+@*                    <div style="margin-left: 30px;" data-bind="foreach: { data: $root.getExercisesByLesson(lesson), as: 'exercise' }">*@
+@*                        <div>*@
+@*                            <span data-bind="text: exercise.name"></span>*@
+@*                            <input type="checkbox" data-bind="checked: $root.drawExercise[exercise.id]" />*@
+@*                        </div>*@
+@*                    </div>*@
+@*                </div>*@
+@*            </div>*@
+@*        </div>*@
+@*        <!-- /ko -->*@
+@*    </div>*@
+@*    <div style="display: inline-block; margin-left: -4px; width: 600px; vertical-align: top;">*@
+@*        <div id="linechart_material"></div>*@
+@*        <div>*@
+@*            <div>*@
+@*                Неделя<input type="radio" name="graphTime" data-bind="checked: $root.graphTime, checkedValue: 7" />*@
+@*            </div>*@
+@*            <div>*@
+@*                Месяц<input type="radio" name="graphTime" data-bind="checked: $root.graphTime, checkedValue: 31" />*@
+@*            </div>*@
+@*            <div>*@
+@*                Полгода<input type="radio" name="graphTime" data-bind="checked: $root.graphTime, checkedValue: 182" />*@
+@*            </div>*@
+@*        </div>*@
+@*    </div>*@
 </div>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-        google.load('visualization', '1.1', { packages: ['line'] });
+//        google.load('visualization', '1.1', { packages: ['line'] });
     $(document).ready(function () {
         ko.applyBindings(getStat(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }))), document.getElementById("Stat"));
     });
@@ -56,6 +109,39 @@
         model.guitarTechniques = data.guitarTechniques;
         model.lessons = data.lessons;
         model.exercises = data.exercises;
+        //
+        model.statModes = {
+            speed: 0,
+            time: 1
+        };
+        model.statMode = ko.observable(model.statModes.speed);
+        model.activeGuitarTechnique = ko.observable(undefined);
+        model.activeLesson = ko.observable(undefined);
+
+        model.setStatMode = function(statMode) {
+            model.statMode(statMode);
+        }
+        model.toggleActiveGuitarTechnique = function (guitarTechnique) {
+            var guitarTechniqueId = guitarTechnique.id;
+            if (model.activeGuitarTechnique() === guitarTechniqueId) {
+                model.activeGuitarTechnique(undefined);
+            } else {
+                model.activeGuitarTechnique(guitarTechniqueId);
+            }
+        }
+        model.toggleActiveLesson = function (lesson) {
+            var lessonId = lesson.id;
+            if (model.activeLesson() === lessonId) {
+                model.activeLesson(undefined);
+            } else {
+                model.activeLesson(lessonId);
+            }
+        }
+        //
+
+
+
+
         model.exercisesStats = [];
         Object.keys(data.exercisesStats).forEach(function (key) {
             var exerciseStats = data.exercisesStats[key];
@@ -96,7 +182,8 @@
                 return exercise.lessonId === lesson.id;
             });
         };
-        var redrawGraph = ko.computed(function () {
+//        var redrawGraph = ko.computed(function () {
+        var redrawGraph = (function () {
             graphData = undefined;
             graphData = new google.visualization.DataTable();
             graphData.addColumn('date', 'Дата');

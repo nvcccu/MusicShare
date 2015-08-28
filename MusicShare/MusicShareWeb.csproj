@@ -243,6 +243,12 @@
     <Content Include="Content\Less\Layout.min.css">
       <DependentUpon>Layout.css</DependentUpon>
     </Content>
+    <Content Include="Content\Less\Lesson\Stat.css">
+      <DependentUpon>Stat.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Lesson\Stat.min.css">
+      <DependentUpon>Stat.css</DependentUpon>
+    </Content>
     <Content Include="Content\Less\Lesson\Navigation.css">
       <DependentUpon>Navigation.less</DependentUpon>
     </Content>
@@ -389,6 +395,10 @@
     <Content Include="Content\Less\Lesson\Navigation.less" />
     <Content Include="Content\Less\Lesson\Navigation.css.map">
       <DependentUpon>Navigation.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Lesson\Stat.less" />
+    <Content Include="Content\Less\Lesson\Stat.css.map">
+      <DependentUpon>Stat.css</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
