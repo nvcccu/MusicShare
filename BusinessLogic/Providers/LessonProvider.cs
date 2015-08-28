@@ -301,5 +301,36 @@ namespace BusinessLogic.Providers {
                 .Where(Plan.Fields.Id, PredicateCondition.Equal, planId)
                 .ExecuteScalar();
         }
+        public List<StatPresetDto> GetAllUsersStatPresets(int accountId) {
+            return new StatPreset()
+                .Select()
+                .Where(StatPreset.Fields.OwnerAccountId, PredicateCondition.Equal, accountId)
+                .GetData()
+                .Select(sp => sp.ToDto())
+                .ToList();
+        }
+        private string SerializeExercises(List<int> exercises) {
+            return String.Join(";", exercises);
+        }
+        public StatPresetDto SaveStatPresets(StatPresetDto statPreset) {
+            statPreset.Id = Convert.ToInt32(new StatPreset() {
+                OwnerAccountId = statPreset.OwnerAccountId,
+                Name = statPreset.Name,
+                Exercises = SerializeExercises(statPreset.Exercises)
+            }.Insert());
+            return statPreset;
+        }
+        public bool UpdateStatPresets(StatPresetDto statPreset) {
+            new StatPreset()
+                .Update()
+                .Set(StatPreset.Fields.Name, statPreset.Name)
+                .Set(StatPreset.Fields.Exercises, SerializeExercises(statPreset.Exercises))
+                .Where(StatPreset.Fields.OwnerAccountId, PredicateCondition.Equal, statPreset.OwnerAccountId)
+                .ExecuteScalar();
+            return true;
+        }
+        public bool DeleteStatPresets(StatPresetDto statPreset) {
+            throw new Exception("Надо сделат удаление");
+        }
     }
 }

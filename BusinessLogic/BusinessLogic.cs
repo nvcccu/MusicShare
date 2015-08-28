@@ -158,5 +158,17 @@ namespace BusinessLogic {
         public void AddExerciseToPlan(int planId, int exerciseId) {
             _lessonProvider.AddExerciseToPlan(planId, exerciseId);
         }
+        public List<StatPresetDto> GetAllUsersStatPresets(int accountId) {
+            return _lessonProvider.GetAllUsersStatPresets(accountId);
+        }
+        public StatPresetDto SaveStatPresets(StatPresetDto statPreset) {
+            return _lessonProvider.SaveStatPresets(statPreset);
+        }
+        public bool UpdateStatPresets(StatPresetDto statPreset) {
+            return _lessonProvider.UpdateStatPresets(statPreset);
+        }
+        public bool DeleteStatPresets(StatPresetDto statPreset) {
+            return _lessonProvider.DeleteStatPresets(statPreset);
+        }
     }
 }

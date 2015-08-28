@@ -14,10 +14,12 @@
 .selfteacher__stat-left-block {
     width: 360px;
     padding: 0 20px 0 40px;
+    float: left;
 }
 .selfteacher__stat-right-block {
     width: 740px;
     padding-right: 40px;
+    float: left;
 }
 .stat-type-select {
     height: 40px;
@@ -121,4 +123,81 @@
     margin-right: 20px;
     padding-top: 3px;
     height: 36px;
+}
+
+.selfteacher-stat__graph {
+    height: 500px;
+    line-height: 500px;
+    text-align: center;
+    font-size: 38px;
+    color: black;
+    background-color: @mg-text-white;
+}
+.selfteacher-stat__graph-settings {
+    height: 55px;
+    padding-top: 15px;
+}
+.graph-settings__interval {
+    float: left;
+    margin-left: 50px;
+}
+.graph-settings__interval:first-of-type {
+    margin-left: 70px;
+}
+.selfteacher-stat__presets-block {
+}
+.presets-block__title {
+    font-family: @mg-font-family--additional;
+    font-size: 25px;
+    margin-left: 20px;
+}
+.presets-block__presets {
+    margin-top: 20px;
+}
+.presets-block__preset {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.presets-block__preset:nth-of-type(2n) {
+    background-color: #4e4438;
+}
+.presets-block__preset:nth-of-type(2n+1) {
+    background-color: #60584A;
+}
+.preset__name {
+    width: 550px;
+    overflow: hidden;
+    white-space: nowrap; 
+    .text-overflow(ellipsis);
+    float: left;
+}
+.preset__name--active {
+    color: @mg-green--ordinal;
+}
+.presets-block__preset:hover {
+    background-color: @mg-brown-layout;
+}
+.preset__actions {
+    float: right;
+    padding-right: 20px;
+}
+.preset__action {
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+    margin-left: 15px;
+    background-color: @mg-green--ordinal;
+    text-align: center;
+    font-size: 20px;
+    .border-radius(1px);
+    margin-top: 5px;
+}
+.preset__action:hover {
+    background-color: @mg-green--hover;
+}
+.preset__action:active {
+    background-color: @mg-green--active;
 }

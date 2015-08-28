@@ -6,7 +6,7 @@
     Layout = "../Shared/Layout.cshtml";
 }
 
-<div id="Stat" class="selfteacher__container">
+<div id="Stat" class="selfteacher__container clearfix">
     <div class="selfteacher__container_top mg-clearfix">
         <div class="selfteacher__container_top_title">Статистика</div>
         <div class="selfteacher__container_top_navigation"></div>
@@ -42,20 +42,33 @@
         </div>
     </div>
     <div class="selfteacher__stat-right-block">
-        <div class="selfteacher-stat__graph"></div>
+        <div class="selfteacher-stat__graph">
+            Тут будет график
+        </div>
         <div class="selfteacher-stat__graph-settings clearfix">
-            <div class="graph-settings__interval">Неделя <input type="checkbox"/></div>
-            <div class="graph-settings__interval">Месяц <input type="checkbox" /></div>
-            <div class="graph-settings__interval">Полгода <input type="checkbox" /></div>
+            <div class="graph-settings__interval">Неделя <input type="radio"/></div>
+            <div class="graph-settings__interval">Месяц <input type="radio" /></div>
+            <div class="graph-settings__interval">Полгода <input type="radio" /></div>
         </div>
         <div class="selfteacher-stat__presets-block">
-            <div class="presets-block__title"></div>
-            <div class="presets-block__presets">
-                <div class="presets-block__preset clearfix">
-                    <div class="preset__name"></div>
-                    <div class="preset__actions"></div>
+            <div class="presets-block__title">Сохраненные наборы</div>
+            <!-- ko if: $root.statPresets.length > 0 -->
+            <div class="presets-block__presets" data-bind="foreach: { data: $root.statPresets, as: 'statPreset' }">
+                <div class="presets-block__preset clearfix" data-bind="click: $root.setActiveStatPreset">
+                    <div data-bind="text: statPreset.name, attr: { class: $root.activeStatPreset() === statPreset.id ? 'preset__name preset__name--active' : 'preset__name' }"></div>
+                    <div class="preset__actions">
+                        <div class="preset__action" data-bind="click: function() {}, clickBubble: false">
+                            <i class="fa fa-trash-o"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- /ko-->
+            <!-- ko ifnot: $root.statPresets.length > 0 -->
+            <div class="presets-block__presets">
+                Не добавлено ни одного набора упражнений
+            </div>
+            <!-- /ko-->
         </div>
     </div>
 
@@ -109,6 +122,7 @@
         model.guitarTechniques = data.guitarTechniques;
         model.lessons = data.lessons;
         model.exercises = data.exercises;
+        model.statPresets = data.statPresets;
         //
         model.statModes = {
             speed: 0,
@@ -117,6 +131,7 @@
         model.statMode = ko.observable(model.statModes.speed);
         model.activeGuitarTechnique = ko.observable(undefined);
         model.activeLesson = ko.observable(undefined);
+        model.activeStatPreset = ko.observable(undefined);
 
         model.setStatMode = function(statMode) {
             model.statMode(statMode);
@@ -136,6 +151,9 @@
             } else {
                 model.activeLesson(lessonId);
             }
+        }
+        model.setActiveStatPreset = function (statPreset) {
+            model.activeStatPreset(statPreset.id);
         }
         //
 

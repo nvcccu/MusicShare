@@ -9,12 +9,14 @@ namespace MusicShareWeb.Models.Lesson {
         public List<LessonDto> Lessons { get; set; }
         public List<ExerciseDto> Exercises { get; set; }
         public Dictionary<int, List<ExerciseSpeedInDate>> ExercisesStats { get; set; }
+        public List<StatPresetDto> StatPresets { get; set; }
 
         public StatModel(BaseModel baseModel) : base(baseModel) {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
             Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
             ExercisesStats = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersExercisesTotalStat(CurrentUser.Id);
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetAllExercises();
+            StatPresets = ServiceManager<IBusinessLogic>.Instance.Service.GetAllUsersStatPresets(CurrentUser.Id);
         }
     }
 }
