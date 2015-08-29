@@ -29,7 +29,7 @@
                                 <div class="lesson-dropdown-navigation__exercise clearfix">
                                     <div class="lesson-dropdown-navigation__exercise-name" data-bind="text: exercise.name"></div>
                                     <div class="lesson-dropdown-navigation__exercise-checkbox clearfix">
-                                        <input type="checkbox" />
+                                        <input type="checkbox" data-bind="checked: $root.drawExercise[exercise.id]" />
                                     </div>
                                 </div>
                             </div>
@@ -46,9 +46,9 @@
             Тут будет график
         </div>
         <div class="selfteacher-stat__graph-settings clearfix">
-            <div class="graph-settings__interval">Неделя <input type="radio"/></div>
-            <div class="graph-settings__interval">Месяц <input type="radio" /></div>
-            <div class="graph-settings__interval">Полгода <input type="radio" /></div>
+            <div class="graph-settings__interval">Неделя <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.week" /></div>
+            <div class="graph-settings__interval">Месяц <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.month" /></div>
+            <div class="graph-settings__interval">Полгода <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.halfYear" /></div>
         </div>
         <div class="selfteacher-stat__presets-block">
             <div class="presets-block__title">Сохраненные наборы</div>
@@ -128,10 +128,16 @@
             speed: 0,
             time: 1
         };
+        model.graphIntervals = {
+            week: 7,
+            month: 31,
+            halfYear: 182
+        };
         model.statMode = ko.observable(model.statModes.speed);
         model.activeGuitarTechnique = ko.observable(undefined);
         model.activeLesson = ko.observable(undefined);
         model.activeStatPreset = ko.observable(undefined);
+        model.graphInterval = ko.observable(model.graphIntervals.week);
 
         model.setStatMode = function(statMode) {
             model.statMode(statMode);
@@ -152,8 +158,18 @@
                 model.activeLesson(lessonId);
             }
         }
+        model.drawExercise = [];
+        model.exercises.forEach(function (exercise) {
+            model.drawExercise[exercise.id] = ko.observable(false);
+        });
         model.setActiveStatPreset = function (statPreset) {
             model.activeStatPreset(statPreset.id);
+            model.exercises.forEach(function (exercise) {
+                model.drawExercise[exercise.id](false);
+            });
+            statPreset.exercises.forEach(function (exerciseId) {
+                model.drawExercise[exerciseId](true);
+            });
         }
         //
 
@@ -171,10 +187,7 @@
                 };
             });
         });
-        model.drawExercise = [];
-        model.exercises.forEach(function (exercise) {
-            model.drawExercise[exercise.id] = ko.observable(false);
-        });
+        
         options = {
             chart: {
                 title: 'Прогресс скорости по упражнениям',
@@ -188,7 +201,7 @@
             },
             curveType: 'function'
         };
-        model.graphTime = ko.observable(7);
+        
        
         model.getLessonByGuitarTechnique = function (guitarTechnique) {
             return model.lessons.filter(function (lesson) {
@@ -206,13 +219,13 @@
             graphData = new google.visualization.DataTable();
             graphData.addColumn('date', 'Дата');
             var startDate = new Date();
-            startDate.setDate(startDate.getDate() - model.graphTime());
+            startDate.setDate(startDate.getDate() - model.graphInterval());
             var exercisesRaw = {};
             model.drawExercise.forEach(function(needDraw, exerciseId) {
                 if (needDraw()) {
                     graphData.addColumn('number', 'Упражнение ' + exerciseId + '  ');
                     var exerciseRaw = [];
-                    for (var i = 0; i <= model.graphTime(); i++) {
+                    for (var i = 0; i <= model.graphInterval() ; i++) {
                         var date = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
                         date.setDate(date.getDate() + i);
                         var exerciseStats = model.exercisesStats[exerciseId];
@@ -229,7 +242,7 @@
                 }
             });
             var raws = [];
-            for (var i = 0; i <= model.graphTime(); i++) {
+            for (var i = 0; i <= model.graphInterval() ; i++) {
                 var date = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
                 date.setDate(date.getDate() + i);
                 var raw = [];
