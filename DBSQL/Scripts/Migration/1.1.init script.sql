@@ -320,3 +320,16 @@ WITH (
 );
 ALTER TABLE Plan
   OWNER TO postgres;
+
+CREATE TABLE StatPreset (
+  Id serial NOT NULL,
+  OwnerAccountId int NOT NULL,
+  Name character varying(1024) NOT NULL,
+  Exercises character varying(2048) NOT NULL,
+  CONSTRAINT pk_StatPreset PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE StatPreset
+  OWNER TO postgres;
