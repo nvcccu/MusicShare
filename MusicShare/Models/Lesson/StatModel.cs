@@ -26,5 +26,8 @@ namespace MusicShareWeb.Models.Lesson {
             ServiceManager<IBusinessLogic>.Instance.Service.DeleteStatPreset(statPresetId);
             return true;
         }
+        public StatPresetDto SaveStatPreset(StatPresetDto statPreset) {
+            return ServiceManager<IBusinessLogic>.Instance.Service.SaveStatPreset(statPreset);
+        }
     }
 }

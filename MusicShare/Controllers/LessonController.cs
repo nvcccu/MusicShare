@@ -71,5 +71,17 @@ namespace MusicShareWeb.Controllers {
                 }
             };
         }
+        [HttpPost]
+        public JsonResult SaveStatPreset(StatPresetDto statPreset, List<string> exercises) {
+            statPreset.Exercises = exercises.Select(e => Convert.ToInt32(e)).ToList();
+            statPreset.OwnerAccountId = CurrentUser.Id;
+            var savedStatPreset = new StatModel().SaveStatPreset(statPreset);
+            return new JsonResult {
+                Data = new {
+                    success = savedStatPreset != null,
+                    statPreset = savedStatPreset
+                }
+            };
+        }
     }
 }

@@ -310,9 +310,9 @@ namespace BusinessLogic.Providers {
                 .ToList();
         }
         private string SerializeExercises(List<int> exercises) {
-            return String.Join(";", exercises);
+            return String.Join(";", exercises) + ";";
         }
-        public StatPresetDto SaveStatPresets(StatPresetDto statPreset) {
+        public StatPresetDto SaveStatPreset(StatPresetDto statPreset) {
             statPreset.Id = Convert.ToInt32(new StatPreset() {
                 OwnerAccountId = statPreset.OwnerAccountId,
                 Name = statPreset.Name,

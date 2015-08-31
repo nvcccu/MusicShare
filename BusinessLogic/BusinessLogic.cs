@@ -161,8 +161,8 @@ namespace BusinessLogic {
         public List<StatPresetDto> GetAllUsersStatPresets(int accountId) {
             return _lessonProvider.GetAllUsersStatPresets(accountId);
         }
-        public StatPresetDto SaveStatPresets(StatPresetDto statPreset) {
-            return _lessonProvider.SaveStatPresets(statPreset);
+        public StatPresetDto SaveStatPreset(StatPresetDto statPreset) {
+            return _lessonProvider.SaveStatPreset(statPreset);
         }
         public bool UpdateStatPresets(StatPresetDto statPreset) {
             return _lessonProvider.UpdateStatPresets(statPreset);

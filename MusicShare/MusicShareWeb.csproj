@@ -284,8 +284,6 @@
     <Content Include="Content\Libraries\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Libraries\Bootstrap\js\bootstrap.js" />
     <Content Include="Content\Libraries\Bootstrap\js\bootstrap.min.js" />
-    <Content Include="Content\Libraries\ChartJs\Chart.js" />
-    <Content Include="Content\Libraries\ChartJs\Chart.min.js" />
     <Content Include="Content\Libraries\Jquery\jquery-ui.min.js" />
     <Content Include="Content\Libraries\MarkItUp\css\base.css" />
     <Content Include="Content\Libraries\MarkItUp\css\style.css" />
@@ -381,9 +379,6 @@
     </Content>
     <Content Include="Views\Lesson\Plan.cshtml" />
     <Content Include="Views\Lesson\Stat.cshtml" />
-    <Content Include="Content\Libraries\ChartJs\Chart.min.js.map">
-      <DependentUpon>Chart.min.js</DependentUpon>
-    </Content>
     <Content Include="Views\Lesson\ExerciseForTrain.cshtml" />
     <Content Include="Content\Less\Lesson\Index.less" />
     <Content Include="Content\Less\Lesson\Index.css.map">

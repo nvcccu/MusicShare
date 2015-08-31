@@ -42,13 +42,21 @@
         </div>
     </div>
     <div class="selfteacher__stat-right-block">
-        <div class="selfteacher-stat__graph">
-            Тут будет график
+        <div id="linechart_material" data-bind="visible: $root.anyExerciseSelected()">
+            Выберите упражнения
         </div>
+        <!-- ko ifnot: $root.anyExerciseSelected() -->
+        <div class="selfteacher-stat__graph">
+            Выберите упражнения
+        </div>
+        <!-- /ko -->
         <div class="selfteacher-stat__graph-settings clearfix">
-            <div class="graph-settings__interval">Неделя <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.week" /></div>
-            <div class="graph-settings__interval">Месяц <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.month" /></div>
-            <div class="graph-settings__interval">Полгода <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.halfYear" /></div>
+            <div class="graph-settings__interval">Неделя <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.week"/>
+            </div>
+            <div class="graph-settings__interval">Месяц <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.month"/>
+            </div>
+            <div class="graph-settings__interval">Полгода <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.halfYear"/>
+            </div>
         </div>
         <div class="selfteacher-stat__presets-block">
             <div class="presets-block__title">Сохраненные наборы</div>
@@ -63,6 +71,12 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <div>
+                    <input type="text" class="mg-input-text" placeholder="Название набора" data-bind="value: $root.newStatPresetName" />
+                </div>
+                <div class="mg-btn" data-bind="click: $root.saveStatPreset">Сохранить набор</div>
+            </div>
             <!-- /ko-->
             <!-- ko ifnot: $root.statPresets().length > 0 -->
             <div class="presets-block__presets">
@@ -71,45 +85,11 @@
             <!-- /ko-->
         </div>
     </div>
-
-
-@*    <div style="display: inline-block; width: 400px;">*@
-@*        <!-- ko foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' } -->*@
-@*        <div>*@
-@*            <div data-bind="text: guitarTechnique.name"></div>*@
-@*            <div style="margin-left: 15px;" data-bind="foreach: { data: $root.getLessonByGuitarTechnique(guitarTechnique), as: 'lesson' }">*@
-@*                <div>*@
-@*                    <div data-bind="text: lesson.name"></div>*@
-@*                    <div style="margin-left: 30px;" data-bind="foreach: { data: $root.getExercisesByLesson(lesson), as: 'exercise' }">*@
-@*                        <div>*@
-@*                            <span data-bind="text: exercise.name"></span>*@
-@*                            <input type="checkbox" data-bind="checked: $root.drawExercise[exercise.id]" />*@
-@*                        </div>*@
-@*                    </div>*@
-@*                </div>*@
-@*            </div>*@
-@*        </div>*@
-@*        <!-- /ko -->*@
-@*    </div>*@
-@*    <div style="display: inline-block; margin-left: -4px; width: 600px; vertical-align: top;">*@
-@*        <div id="linechart_material"></div>*@
-@*        <div>*@
-@*            <div>*@
-@*                Неделя<input type="radio" name="graphTime" data-bind="checked: $root.graphTime, checkedValue: 7" />*@
-@*            </div>*@
-@*            <div>*@
-@*                Месяц<input type="radio" name="graphTime" data-bind="checked: $root.graphTime, checkedValue: 31" />*@
-@*            </div>*@
-@*            <div>*@
-@*                Полгода<input type="radio" name="graphTime" data-bind="checked: $root.graphTime, checkedValue: 182" />*@
-@*            </div>*@
-@*        </div>*@
-@*    </div>*@
 </div>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-    //        google.load('visualization', '1.1', { packages: ['line'] });
+    google.load('visualization', '1.1', { packages: ['line'] });
     $(document).ready(function () {
         ko.applyBindings(getStat(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }))), document.getElementById("Stat"));
     });
@@ -133,34 +113,43 @@
             month: 31,
             halfYear: 182
         };
+        model.newStatPresetName = ko.observable(undefined);
         model.statMode = ko.observable(model.statModes.speed);
         model.activeGuitarTechnique = ko.observable(undefined);
         model.activeLesson = ko.observable(undefined);
         model.activeStatPreset = ko.observable(undefined);
         model.graphInterval = ko.observable(model.graphIntervals.week);
 
+        model.saveStatPreset = function() {
+
+        };
         model.setStatMode = function(statMode) {
             model.statMode(statMode);
         }
-        model.toggleActiveGuitarTechnique = function (guitarTechnique) {
+        model.toggleActiveGuitarTechnique = function(guitarTechnique) {
             var guitarTechniqueId = guitarTechnique.id;
             if (model.activeGuitarTechnique() === guitarTechniqueId) {
                 model.activeGuitarTechnique(undefined);
             } else {
                 model.activeGuitarTechnique(guitarTechniqueId);
             }
-        }
-        model.toggleActiveLesson = function (lesson) {
+        };
+        model.toggleActiveLesson = function(lesson) {
             var lessonId = lesson.id;
             if (model.activeLesson() === lessonId) {
                 model.activeLesson(undefined);
             } else {
                 model.activeLesson(lessonId);
             }
-        }
+        };
         model.drawExercise = [];
         model.exercises.forEach(function (exercise) {
-            model.drawExercise[exercise.id] = ko.observable(false);
+            model.drawExercise[exercise.id.toString()] = ko.observable(false);
+        });
+        model.anyExerciseSelected = ko.computed(function () {
+            return model.drawExercise.filter(function (needDraw) {
+                return needDraw();
+            }).length > 0;
         });
         model.setActiveStatPreset = function (statPreset) {
             model.activeStatPreset(statPreset.id);
@@ -192,10 +181,45 @@
                 }
             });
         }
+        model.saveStatPreset = function () {
+            $.ajax({
+                url: '@Url.Action("SaveStatPreset")',
+                type: 'POST',
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    statPreset: { name: model.newStatPresetName() },
+                    exercises: model.drawExercise
+                        .map(function(needDraw, exerciseId) {
+                            return {
+                                exerciseId: exerciseId,
+                                needDraw: needDraw()
+                            };
+                        })
+                        .filter(function (tmp) {
+                            return tmp.needDraw;
+                        }).map(function (tmp) {
+                            return tmp.exerciseId.toString();
+                        })
+                }),
+                success: function (result) {
+                    if (result.success === true) {
+                        model.statPresets.push({
+                            id: result.statPreset.Id,
+                            ownerAccountId: result.statPreset.OwnerAccountId,
+                            name: result.statPreset.Name,
+                            exercises: result.statPreset.Exercises
+                        });
+                    } else {
+                        alert('Ошибка');
+                    }
+                },
+                error: function () {
+                    alert('Ошибка');
+                }
+            });
+        }
         //
-
-
-
 
         model.exercisesStats = [];
         Object.keys(data.exercisesStats).forEach(function (key) {
@@ -217,8 +241,17 @@
             width: 700,
             height: 500,
             chartArea: {
+                width: '50%',
+                height: '100%',
                 left: 38,
                 right: 38
+            },
+            legend: {
+                position: 'top',
+                textStyle: {
+                    color: 'blue', 
+                    fontSize: 16
+                }
             },
             curveType: 'function'
         };
@@ -234,8 +267,7 @@
                 return exercise.lessonId === lesson.id;
             });
         };
-//        var redrawGraph = ko.computed(function () {
-        var redrawGraph = (function () {
+        var redrawGraph = ko.computed(function () {
             graphData = undefined;
             graphData = new google.visualization.DataTable();
             graphData.addColumn('date', 'Дата');
@@ -281,10 +313,6 @@
             }
         });
 
-        var init = function () {
-            //            google.setOnLoadCallback(drawChart);
-        };
-        init();
         return model;
     }
 </script>
