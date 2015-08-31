@@ -28,10 +28,6 @@ namespace MusicShareWeb.Controllers {
         public ActionResult Plan(int? id) {
             return View("Plan", id.HasValue ? new PlanModel(BaseModel, id.Value) : new PlanModel(BaseModel));
         }
-        [HttpGet]
-        public ActionResult Plans() {
-            return View("Plans", new PlanListModel(BaseModel));
-        }
         [HttpPost]
         public JsonResult SavePlan(PlanDto plan) {
             plan.OwnerAccountId = CurrentUser.Id;
@@ -66,6 +62,14 @@ namespace MusicShareWeb.Controllers {
         [HttpGet]
         public ActionResult Stat() {
             return View("Stat", new StatModel(BaseModel));
+        }
+        [HttpPost]
+        public JsonResult DeleteStatPreset(int statPresetId) {
+            return new JsonResult {
+                Data = new {
+                    success = new StatModel().DeleteStatPreset(statPresetId)
+                }
+            };
         }
     }
 }

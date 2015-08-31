@@ -139,6 +139,15 @@ namespace DAO {
         }
 
         /// <summary>
+        /// Удаление записей
+        /// </summary>
+        /// <returns></returns>
+        public AbstractEntity<T> Delete() {
+            _query = "DELETE FROM " + TableName + " ";
+            return this;
+        }
+
+        /// <summary>
         /// выполняет запрос без возвращения данных
         /// </summary>
         public void ExecuteScalar() {

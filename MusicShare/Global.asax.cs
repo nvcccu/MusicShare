@@ -57,6 +57,11 @@ namespace MusicShareWeb {
                 new {controller = "Lesson", action = "AddExrciseToPlan"}
                 );
             routes.MapRoute(
+                "DeleteStatPreset",
+                "Lesson/DeleteStatPreset",
+                new {controller = "Lesson", action = "DeleteStatPreset"}
+                );
+            routes.MapRoute(
                 "UpdatePlan",
                 "Lesson/UpdatePlan",
                 new {controller = "Lesson", action = "UpdatePlan", id = UrlParameter.Optional}

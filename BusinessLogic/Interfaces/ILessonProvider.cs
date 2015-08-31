@@ -25,6 +25,6 @@ namespace BusinessLogic.Interfaces {
         List<StatPresetDto> GetAllUsersStatPresets(int accountId);
         StatPresetDto SaveStatPresets(StatPresetDto statPreset);
         bool UpdateStatPresets(StatPresetDto statPreset);
-        bool DeleteStatPresets(StatPresetDto statPreset);
+        bool DeleteStatPreset(int statPresetId);
     }
 }

@@ -329,8 +329,12 @@ namespace BusinessLogic.Providers {
                 .ExecuteScalar();
             return true;
         }
-        public bool DeleteStatPresets(StatPresetDto statPreset) {
-            throw new Exception("Надо сделат удаление");
+        public bool DeleteStatPreset(int statPresetId) {
+            new StatPreset()
+                .Delete()
+                .Where(StatPreset.Fields.Id, PredicateCondition.Equal, statPresetId)
+                .ExecuteScalar();
+            return true;
         }
     }
 }

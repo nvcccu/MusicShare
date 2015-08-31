@@ -2,6 +2,7 @@
 using BusinessLogic.Interfaces;
 using CommonUtils.ServiceManager;
 using Core.TransportTypes;
+using MusicShareWeb.Models.User;
 
 namespace MusicShareWeb.Models.Lesson {
     public class StatModel : BaseModel {
@@ -17,6 +18,13 @@ namespace MusicShareWeb.Models.Lesson {
             ExercisesStats = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersExercisesTotalStat(CurrentUser.Id);
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetAllExercises();
             StatPresets = ServiceManager<IBusinessLogic>.Instance.Service.GetAllUsersStatPresets(CurrentUser.Id);
+        }
+
+        public StatModel() : base((Account)null) { }
+
+        public bool DeleteStatPreset(int statPresetId) {
+            ServiceManager<IBusinessLogic>.Instance.Service.DeleteStatPreset(statPresetId);
+            return true;
         }
     }
 }
