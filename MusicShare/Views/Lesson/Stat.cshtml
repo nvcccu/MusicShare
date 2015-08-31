@@ -71,18 +71,18 @@
                     </div>
                 </div>
             </div>
-            <div>
-                <div>
-                    <input type="text" class="mg-input-text" placeholder="Название набора" data-bind="value: $root.newStatPresetName" />
-                </div>
-                <div class="mg-btn" data-bind="click: $root.saveStatPreset">Сохранить набор</div>
-            </div>
             <!-- /ko-->
             <!-- ko ifnot: $root.statPresets().length > 0 -->
             <div class="presets-block__presets">
                 Не добавлено ни одного набора упражнений
             </div>
             <!-- /ko-->
+            <div class="presets__new-preset-block">
+                <div class="presets__new-preset-name">
+                    <input type="text" class="mg-input-text" placeholder="Название набора" data-bind="value: $root.newStatPresetName" />
+                </div>
+                <div class="mg-btn presets__new-preset-save-btn" data-bind="click: $root.saveStatPreset">Сохранить набор</div>
+            </div>
         </div>
     </div>
 </div>
