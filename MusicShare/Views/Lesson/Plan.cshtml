@@ -43,18 +43,18 @@
         </div>
         <div data-bind="sortable: $root.selectedExercises">
             <div class="plan-exercise">
-                <div>
-                    @*                <span class="plan__toggle" data-bind="click: $root.removeExercise.bind($data, $data.id)">&#215;</span>*@
-                    <span class="plan__toggle">&#215;</span>
+                <div class="plan__exercise-name">
                     <span data-bind="text: $data.guitarTechniqueShortName + '. Урок ' + $data.lessonOrderNumber + '. ' + $data.exerciseName"></span>
                 </div>
-                <div style="position: relative;">
+                <div class="plan__exercise-image-block">
                     <img data-bind="attr: { src: $data.imageUrl }"/>
-                    <div style="position: absolute; width: 30px; height: 30px; bottom: 0; left: 0; background-color: #123456; cursor: pointer;" data-bind="click: $root.unselectExercise"></div>
+                    <div class="plan__remove-exercise" data-bind="click: $root.unselectExercise">
+                        <i class="fa fa-arrow-left"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div>
+        <div class="plan__save-plan-block">
             <div class="mg-btn" data-bind="click: $root.savePlan">Сохранить изменения</div>
         </div>
     </div>
