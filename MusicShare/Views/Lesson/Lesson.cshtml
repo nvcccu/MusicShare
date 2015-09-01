@@ -19,27 +19,23 @@
 </audio>
 
 <div class="lesson-container">
+    <div class="selfteacher__container_top mg-clearfix">
+        <div class="selfteacher__container_top_title">@Model.Lesson.Name</div>
+        <div class="selfteacher__container_top_navigation clearfix">
+            <div>Автор: Rig Raizon</div>
+            <div>
+                Источник: <a href="http://allfrets.ru">Allfrets.ru</a>
+            </div>
+        </div>
+    </div>
     <div id="LessonPage" class="lesson-index__lesson-navigation">
-        <div class="lesson-hierarchy">
-            <a class="lesson-hierarchy__link" href="@Url.Action("Index", "Lesson", new {id = ""})">Самоучитель</a> > <a class="lesson-hierarchy__link" href="#">@Model.GutarTechique.Name</a>
-        </div>
-        <div>Автор: Rig Raizon</div>
-        <div>
-            Источник: <a href="http://allfrets.ru">Allfrets.ru</a>
-        </div>
-        <div class="lesson__order-number">
-            Урок @Model.Lesson.OrderNumber
-        </div>
-        <div class="lesson__name">
-            @Model.Lesson.Name
-        </div>
         <div class="lesson__body">
-            @if (Model.IsMinimized) {
+            @if(Model.IsMinimized) {
                 text = String.Join("\n", Model.Exercises.Select(e => String.Format(ExerciseTag, e.Id)));
             } else {
                 text = Model.Lesson.Text;
             }
-            @foreach (var exercise in Model.Exercises) {
+            @foreach(var exercise in Model.Exercises) {
                 var regex = new Regex(String.Format(ExerciseTag, exercise.Id));
                 text = regex.Replace(text, String.Format(ReplacePattern, exercise.Id, exercise.Name, !String.IsNullOrEmpty(exercise.AudioUrl) ? exercise.AudioUrl : null, exercise.ImageUrl, Model.IsMinimized.ToString().ToLower()), 1);
             }
@@ -51,7 +47,9 @@
             <div class="lesson-outer-navigation-block">
                 <div class="mg-btn" data-bind="click: $root.saveSpeeds">Сохранить изменения</div>
             </div>
-            @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+            <div class="lesson-outer-navigation-block">
+                @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?) null))
+            </div>
             <div class="lesson-outer-navigation-block">
                 @if(Model.IsMinimized) {
                     <a id="ChangeLessonType" href="@Url.Action("Index", new {id = Model.Lesson.Id})" class="mg-link">К полной версии урока</a>
@@ -59,8 +57,12 @@
                     <a id="ChangeLessonType" href="@Url.Action("MinimizedLesson", new {id = Model.Lesson.Id})" class="mg-link">К сокращенной версии урока</a>
                 }
             </div>
-            @Html.Partial("Navigation/Lessons", new LessonNavigationModel(Model.Lesson))
-            @Html.Partial("Navigation/Stat")
+            <div class="lesson-outer-navigation-block">
+                @Html.Partial("Navigation/Lessons", new LessonNavigationModel(Model.Lesson))
+            </div>
+            <div class="lesson-outer-navigation-block">
+                @Html.Partial("Navigation/Stat")
+            </div>
         </div>
     </div>
 </div>
@@ -69,7 +71,7 @@
 
 <script type="text/javascript">
     $(window).bind('scroll resize', function () {
-        if (window.pageYOffset > 100) {
+        if (window.pageYOffset > 160) {
             $('.right-container__content').addClass('right-container__content--float');
         } else {
             $('.right-container__content').removeClass('right-container__content--float');

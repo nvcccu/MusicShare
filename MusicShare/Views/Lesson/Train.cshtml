@@ -20,6 +20,9 @@
     @if (Model.CurrentUser == null) {
         <span>Для загрузки данных плана занятий необходимо войти на сайт.</span>
     } else {
+         <div class="selfteacher__container_top mg-clearfix">
+             <div class="selfteacher__container_top_title">@Model.Plan.Name</div>
+        </div>
         <div class="lesson-index__lesson-navigation">
             <div class="plan__all-exercises" data-bind="foreach: { data: $root.exercises, as: 'exercise' }">
                 <div data-bind="template: { name: 'ExerciseTemplate', data: {'exerciseId': exercise.id, 'exerciseName': $root.getExerciseTitle(exercise), 'audioUrl': exercise.audioUrl, 'imageUrl': exercise.imageUrl, 'min': false } }"></div>
@@ -28,9 +31,17 @@
         <div class="lesson-zone__right-container">
             <div class="right-container__content">
                 <div class="lesson-outer-navigation-block">
+                    <a class="mg-btn" href="@Url.Action("Plan", new {id = Model.Plan.Id})">Редактировать план</a>
+                </div>
+                <div class="lesson-outer-navigation-block">
                     <div class="mg-btn" data-bind="click: $root.saveSpeeds">Сохранить изменения</div>
                 </div>
-                @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
+                <div class="lesson-outer-navigation-block">
+                    @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
+                </div>
+                <div class="lesson-outer-navigation-block">
+                    @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?) null))
+                </div>
             </div>
         </div>
     }
@@ -147,7 +158,7 @@
         };
 
         $(window).bind('scroll resize', function () {
-            if (window.pageYOffset > 100) {
+            if (window.pageYOffset > 160) {
                 $('.right-container__content').addClass('right-container__content--float');
             } else {
                 $('.right-container__content').removeClass('right-container__content--float');

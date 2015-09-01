@@ -8,7 +8,7 @@
     plansModel = function() {
         var model = {};
         var data = @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()}));
-        model.planUrlTemplate = '@Url.Action("Train")' + '/';
+        model.planUrlTemplate = '@Url.Action("Train", new { planId = "" })' + '/';
         model.isAuthorized = data.isAuthorized;
         model.plans = data.plans;
         model.arePlansOpened = ko.observable(false);
@@ -20,23 +20,19 @@
 
     ko.components.register('PlansNavigation', {
         viewModel: plansModel,
-        template:   '<div class="lesson-outer-navigation-block">' +
-                        '<!-- ko if: isAuthorized -->' +
-                        '<div class="lesson-outer-navigation__block">' +
-                            '<div class="mg-btn" data-bind="click: plansOpenedToggle">' +
-                                'Мои планы занятий &nbsp;<span style="font-family: FontAwesome;" data-bind="text: arePlansOpened() ? \'&#xf0d9;\' : \'&#xf0d7;\'"</span>' +
-                            '</div>' +
-                            '<div data-bind="visible: arePlansOpened">' +
-                                '<a class="mg-drop-down__element mg-drop-down__element-first" href="@Url.Action("Plan", "Lesson", new {id = ""})">Создать новый план</a>' +
-                                '<!-- ko foreach: { data: plans, as: \'plan\' } -->' +
-                                    '<a class="mg-drop-down__element" data-bind="text: plan.name, attr: { href: $parent.planUrlTemplate + plan.id }"></a>' +
-                                '<!-- /ko -->' +
-                            '</div>' +
-                        '</div>' +
+        template:   '<!-- ko if: isAuthorized -->' +
+                    '<div class="mg-btn" data-bind="click: plansOpenedToggle">' +
+                        'Мои планы занятий &nbsp;<span style="font-family: FontAwesome;" data-bind="text: arePlansOpened() ? \'&#xf0d9;\' : \'&#xf0d7;\'"</span>' +
+                    '</div>' +
+                    '<div data-bind="visible: arePlansOpened" style="position: absolute; z-index: 10; max-width: 220px;">' +
+                        '<a class="mg-drop-down__element mg-drop-down__element-first" href="@Url.Action("Plan", "Lesson", new {id = ""})">Создать новый план</a>' +
+                        '<!-- ko foreach: { data: plans, as: \'plan\' } -->' +
+                            '<a class="mg-drop-down__element" data-bind="text: plan.name, attr: { href: $parent.planUrlTemplate + plan.id }"></a>' +
                         '<!-- /ko -->' +
-                        '<!-- ko ifnot: isAuthorized -->' +
-                        '<a class="mg-btn" href="#" data-target="#SignInUpModal" data-toggle="modal">Создать план занятий</a>' +
-                        '<!-- /ko -->' +
-                    '</div>'
+                    '</div>' +
+                    '<!-- /ko -->' +
+                    '<!-- ko ifnot: isAuthorized -->' +
+                    '<a class="mg-btn" href="#" data-target="#SignInUpModal" data-toggle="modal">Создать план занятий</a>' +
+                    '<!-- /ko -->'
     });
 </script>

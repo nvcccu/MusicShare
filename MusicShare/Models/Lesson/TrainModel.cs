@@ -11,9 +11,11 @@ namespace MusicShareWeb.Models.Lesson {
         public List<LessonDto> Lessons { get; set; }
         public List<ExerciseDto> Exercises { get; set; }
         public Dictionary<int, int> Speeds { get; set; }
+        public PlanDto Plan { get; set; }
 
         public TrainModel(BaseModel baseModel) : base(baseModel) {}
         public TrainModel(BaseModel baseModel, int planId) : base(baseModel) {
+            Plan = ServiceManager<IBusinessLogic>.Instance.Service.GetPlan(planId);
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
             Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetExercisesByPlan(planId);

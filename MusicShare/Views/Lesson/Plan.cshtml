@@ -1,4 +1,5 @@
-﻿@using Newtonsoft.Json
+﻿@using MusicShareWeb.Models.Lesson
+@using Newtonsoft.Json
 @using Newtonsoft.Json.Serialization
 @model MusicShareWeb.Models.Lesson.PlanModel
 
@@ -9,7 +10,14 @@
 <div id="Plan" class="selfteacher__container clearfix">
     <div class="selfteacher__container_top mg-clearfix">
         <div class="selfteacher__container_top_title">Статистика</div>
-        <div class="selfteacher__container_top_navigation"></div>
+        <div class="selfteacher__container_top_navigation clearfix">
+            <div class="selfteacher__container_top_navigation_btn">
+                @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+            </div>
+            <div class="selfteacher__container_top_navigation_btn">
+                <a class="mg-btn" href="@Url.Action("Train", new {planId = Model.Plan.Id})">Начать занятие</a>
+            </div>
+        </div>
     </div>
     <div class="selfteacher__stat-left-block">
         <div class="lesson-dropdown-navigation" style="margin-top: 0;">
@@ -37,9 +45,9 @@
             </div>
         </div>
     </div>
-    <div class="selfteacher__stat-right-block">
+    <div class="selfteacher__stat-right-block" style="padding-left: 50px;">
         <div>
-            <input type="text" class="mg-input-text" data-bind="value: $root.planName" placeholder="Название плана"/>
+            <input type="text" class="mg-input-text" data-bind="value: $root.planName" placeholder="Название плана" />
         </div>
         <div data-bind="sortable: $root.selectedExercises">
             <div class="plan-exercise">
@@ -47,7 +55,7 @@
                     <span data-bind="text: $data.guitarTechniqueShortName + '. Урок ' + $data.lessonOrderNumber + '. ' + $data.exerciseName"></span>
                 </div>
                 <div class="plan__exercise-image-block">
-                    <img data-bind="attr: { src: $data.imageUrl }"/>
+                    <img data-bind="attr: { src: $data.imageUrl }" />
                     <div class="plan__remove-exercise" data-bind="click: $root.unselectExercise">
                         <i class="fa fa-arrow-left"></i>
                     </div>
@@ -59,80 +67,6 @@
         </div>
     </div>
 </div>
-
-
-@*<div id="Plan">*@
-@*    @if (Model.CurrentUser == null) {*@
-@*        <span>Для составления плана занятий необходимо зарегистрироваться.</span>*@
-@*    } else {*@
-@*        <div class="plan-layout">*@
-@*            <div class="plan">*@
-@*                <div class="plan__all-exercises" data-bind="foreach: { data: $root.sortedGuitarTechniques, as: 'guitarTechnique' }">*@
-@*                    <!-- ko if: $root.isTechniqueActive(guitarTechnique.id) -->*@
-@*                    <div class="all-exercises__guitar-technique">*@
-@*                        <span class="plan__toggle" data-bind="click: $root.toggleTechnique.bind($data, guitarTechnique)">-</span><span data-bind="text: guitarTechnique.name"></span>*@
-@*                        <div data-bind="foreach: { data: $root.getLessonByGuitarTechnique(guitarTechnique), as: 'lesson' }">*@
-@*                            <!-- ko if: $root.isLessonActive(lesson.id) -->*@
-@*                            <div class="guitar-technique__lesson">*@
-@*                                <span class="plan__toggle" data-bind="click: $root.toggleLesson.bind($data, lesson)">-</span><span data-bind="text: lesson.name"></span>*@
-@*                                <div data-bind="foreach: { data: $root.getExercisesByLesson(lesson), as: 'exercise' }">*@
-@*                                    <!-- ko if: $root.isExerciseActive(exercise.id)-->*@
-@*                                    <div class="lesson__exercise">*@
-@*                                        <div style="margin-bottom: 25px;">*@
-@*                                            <div style="position: relative;">*@
-@*                                                <span class="plan__toggle" data-bind="click: $root.toggleExercise.bind($data, exercise)">-</span>*@
-@*                                                <span data-bind="text: exercise.name + '. ' + $root.speeds[exercise.id.toString()] + ' УВМ'"></span>*@
-@*                                                <span class="plan__add-exercise" data-bind="visible: !$root.exerciseWasAdded(exercise.id), click: $root.addExercise.bind($data, exercise.id, guitarTechnique.shortName, lesson.orderNumber, exercise.name)">&#8658;</span>*@
-@*                                            </div>*@
-@*                                            <div>*@
-@*                                                <img data-bind="attr: { 'src' : exercise.imageUrl }" />*@
-@*                                            </div>*@
-@*                                        </div>*@
-@*                                    </div>*@
-@*                                    <!-- /ko -->*@
-@*                                    <!-- ko ifnot: $root.isExerciseActive(exercise.id)-->*@
-@*                                    <div style="margin-left: 25px;">*@
-@*                                        <span class="plan__toggle" data-bind="click: $root.toggleExercise.bind($data, exercise)">+</span><span data-bind="text: exercise.name"></span>*@
-@*                                    </div>*@
-@*                                    <!-- /ko -->*@
-@*                                </div>*@
-@*                            </div>*@
-@*                            <!-- /ko -->*@
-@*                            <!-- ko: ifnot: $root.isLessonActive(lesson.id) -->*@
-@*                            <div style="margin-left: 15px;">*@
-@*                                <span class="plan__toggle" data-bind="click: $root.toggleLesson.bind($data, lesson)">+</span><span data-bind="text: lesson.name"></span>*@
-@*                            </div>*@
-@*                            <!-- /ko-->*@
-@*                        </div>*@
-@*                    </div>*@
-@*                    <!-- /ko -->*@
-@*                    <!-- ko ifnot: $root.isTechniqueActive(guitarTechnique.id) -->*@
-@*                    <div>*@
-@*                        <span class="plan__toggle" data-bind="click: $root.toggleTechnique.bind($data, $data)">+</span><span data-bind="text: guitarTechnique.name"></span>*@
-@*                    </div>*@
-@*                    <!-- /ko -->*@
-@*                </div>*@
-@*                <div class="plan__selected-exercises">*@
-@*                    <div>*@
-@*                        @if (Model.Plan != null) {*@
-@*                            <a href="@Url.Action("Train", new {planId = Model.Plan.Id})">Заниматься по этому плану</a><br><br>*@
-@*                        }*@
-@*                        <input type="button" value="Сохранить план занятий" style="color: black;" data-bind="click: $root.savePlan"/><br><br>*@
-@*                        Название: <input type="text" style="color: black;" data-bind="value: $root.planName"/><br><br>*@
-@*                    </div>*@
-@*                    Упражнения:*@
-@*                    <div data-bind="sortable: $root.addedExercises">*@
-@*$1$                    <div data-bind="foreach: { data: $root.addedExercises(), as: 'exercise' }">#1#*@
-@*                        <div class="plan-exercise">*@
-@*                            <span class="plan__toggle" data-bind="click: $root.removeExercise.bind($data, $data.id)">&#215;</span>*@
-@*                            <span data-bind="text: $data.guitarTechniqueShortName + '. Урок ' + $data.lessonOrderNumber + '. ' + $data.exerciseName"></span>*@
-@*                        </div>*@
-@*                    </div>*@
-@*                </div>*@
-@*            </div>*@
-@*        </div>*@
-@*    }*@
-@*</div>*@
 
 <script type="text/javascript">
 //    ko.bindingHandlers.fadeVisible = {
@@ -234,138 +168,6 @@
         }
         //
 
-        var init = function () {
-            if (model.plan) {
-                model.planName(model.plan.name);
-                model.plan.exerciseIds.forEach(function(exerciseId) {
-                    var exercise = model.exercises.filter(function(exercise) {
-                        return exercise.id === exerciseId;
-                    })[0];
-                    var lesson = model.lessons.filter(function(lesson) {
-                        return lesson.id === exercise.lessonId;
-                    })[0];
-                    var guitarTechnique = model.guitarTechniques.filter(function (guitarTechnique) {
-                        return guitarTechnique.id === lesson.guitarTechniqueId;
-                    })[0];
-                    model.selectedExercises.push(buildPlannedExercise(exerciseId, guitarTechnique.shortName, lesson.orderNumber, exercise.name, exercise.imageUrl));
-
-                    model.selectedExerciseIds[exerciseId](true);
-                });
-            }
-        };
-        init();
-
-
-
-//        model.guitarTechniques = data.guitarTechniques;
-//        model.speeds = data.speeds;
-//        model.plan = data.plan;
-//       
-//        model.sortedGuitarTechniques = model.guitarTechniques.sort(function(a, b) {
-//            return a.id - b.id;
-//        }).map(function (guitarTechnique) {
-//            return ko.observable(guitarTechnique);
-//        });
-//        model.activeTechniqueIds = ko.observableArray(model.guitarTechniques.map(function (guitarTechnique) {
-//            return guitarTechnique.id;
-//        }));
-//        model.toggleTechnique = function (guitarTechnique) {
-//            if (model.activeTechniqueIds.indexOf(guitarTechnique.id) > -1) {
-//                model.activeTechniqueIds.remove(guitarTechnique.id);
-//            } else {
-//                model.activeTechniqueIds.push(guitarTechnique.id);
-//                model.activeTechniqueIds.sort(function(a, b) {
-//                    return a - b;
-//                });
-//            }
-//        };
-//        model.isTechniqueActive = function (id) {
-//            return model.activeTechniqueIds.indexOf(id) > -1;
-//        };
-//
-//        model.lessons = data.lessons.map(function (lesson) {
-//            return ko.observable(lesson);
-//        });
-//        model.activeLessonIds = ko.observableArray(model.lessons.map(function (lesson) {
-//            return lesson().id;
-//        }));
-//        model.getLessonByGuitarTechnique = function (guitarTechnique) {
-//            return model.lessons.filter(function (lesson) {
-//                return lesson().guitarTechniqueId === guitarTechnique.id;
-//            }).sort(function (a, b) {
-//                return a().orderNumber - b().orderNumber;
-//            }).map(function (lesson) {
-//                return lesson();
-//            });
-//        };
-//        model.toggleLesson = function (lesson) {
-//            if (model.activeLessonIds.indexOf(lesson.id) > -1) {
-//                model.activeLessonIds.remove(lesson.id);
-//            } else {
-//                model.activeLessonIds.push(lesson.id);
-//                model.activeLessonIds.sort(function (a, b) {
-//                    return a - b;
-//                });
-//            }
-//        };
-//        model.isLessonActive = function (id) {
-//            return model.activeLessonIds.indexOf(id) > -1;
-//        };
-//
-//        model.exercises = data.exercises.map(function (exercise) {
-//            return ko.observable(exercise);
-//        });
-//        model.activeExerciseIds = ko.observableArray(model.exercises.map(function (exercise) {
-//            return exercise().id;
-//        }));
-//        model.getExercisesByLesson = function (lesson) {
-//            return model.exercises.filter(function (exercise) {
-//                return exercise().lessonId === lesson.id;
-//            }).sort(function (a, b) {
-//                return a().id - b().id;
-//            }).map(function (exercise) {
-//                return exercise();
-//            });
-//        };
-//        model.toggleExercise = function (exercise) {
-//            if (model.activeExerciseIds.indexOf(exercise.id) > -1) {
-//                model.activeExerciseIds.remove(exercise.id);
-//            } else {
-//                model.activeExerciseIds.push(exercise.id);
-//                model.activeExerciseIds.sort(function (a, b) {
-//                    return a - b;
-//                });
-//            }
-//        };
-//        model.isExerciseActive = function (id) {
-//            return model.activeExerciseIds.indexOf(id) > -1;
-//        };
-//
-//        var getPlannedExercise = function(id, guitarTechniqueShortName, lessonOrderNumber, exerciseName) {
-//            return {
-//                id: id,
-//                guitarTechniqueShortName: guitarTechniqueShortName,
-//                lessonOrderNumber: lessonOrderNumber,
-//                exerciseName: exerciseName
-//            };
-//        };
-//
-//        model.planName = ko.observable(null);
-//        model.addedExercises = ko.observableArray(null);
-//        
-//        model.addExercise = function(id, guitarTechniqueShortName, lessonOrderNumber, exerciseName) {
-//            model.addedExercises.push(getPlannedExercise(id, guitarTechniqueShortName, lessonOrderNumber, exerciseName));
-//        };
-//        model.removeExercise = function(id) {
-//            model.addedExercises.remove(function(exercise) {
-//                return exercise.id === id;
-//            });
-//        };
-//        model.exerciseWasAdded = function(exerciseId) {
-//            return model.addedExercises().filter(function(exercise) {
-//                return exercise.id === exerciseId;
-//            }).length > 0;
-        //        };
         var getAddedExerciseIds = function () {
             var addedExerciseIds = model.selectedExercises().map(function (selectedExercise) {
                 return selectedExercise.id;
@@ -415,6 +217,27 @@
                 });
             }
         };
+
+        var init = function () {
+            if (model.plan) {
+                model.planName(model.plan.name);
+                model.plan.exerciseIds.forEach(function (exerciseId) {
+                    var exercise = model.exercises.filter(function (exercise) {
+                        return exercise.id === exerciseId;
+                    })[0];
+                    var lesson = model.lessons.filter(function (lesson) {
+                        return lesson.id === exercise.lessonId;
+                    })[0];
+                    var guitarTechnique = model.guitarTechniques.filter(function (guitarTechnique) {
+                        return guitarTechnique.id === lesson.guitarTechniqueId;
+                    })[0];
+                    model.selectedExercises.push(buildPlannedExercise(exerciseId, guitarTechnique.shortName, lesson.orderNumber, exercise.name, exercise.imageUrl));
+
+                    model.selectedExerciseIds[exerciseId](true);
+                });
+            }
+        };
+        init();
 
         return model;
     };
