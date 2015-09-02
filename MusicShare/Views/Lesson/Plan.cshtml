@@ -12,11 +12,13 @@
         <div class="selfteacher__container_top_title">Статистика</div>
         <div class="selfteacher__container_top_navigation clearfix">
             <div class="selfteacher__container_top_navigation_btn">
-                @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+                @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?) null))
             </div>
-            <div class="selfteacher__container_top_navigation_btn">
-                <a class="mg-btn" href="@Url.Action("Train", new {planId = Model.Plan.Id})">Начать занятие</a>
-            </div>
+            @if (Model.Plan != null) {
+                <div class="selfteacher__container_top_navigation_btn">
+                    <a class="mg-btn" href="@Url.Action("Train", new {planId = Model.Plan.Id})">Начать занятие</a>
+                </div>
+            }
         </div>
     </div>
     <div class="selfteacher__stat-left-block">
