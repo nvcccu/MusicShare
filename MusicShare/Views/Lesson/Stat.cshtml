@@ -1,4 +1,5 @@
-﻿@using Newtonsoft.Json
+﻿@using MusicShareWeb.Models.Lesson
+@using Newtonsoft.Json
 @using Newtonsoft.Json.Serialization
 @model MusicShareWeb.Models.Lesson.StatModel
 
@@ -9,7 +10,14 @@
 <div id="Stat" class="selfteacher__container clearfix">
     <div class="selfteacher__container_top mg-clearfix">
         <div class="selfteacher__container_top_title">Статистика</div>
-        <div class="selfteacher__container_top_navigation"></div>
+        <div class="selfteacher__container_top_navigation">
+            <div class="selfteacher__container_top_navigation_btn">
+                @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+            </div>
+            <div class="selfteacher__container_top_navigation_btn">
+                @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
+            </div>
+        </div>
     </div>
     <div class="selfteacher__stat-left-block">
         <div class="stat-type-select">

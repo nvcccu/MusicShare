@@ -9,16 +9,17 @@
 
 <div id="Plan" class="selfteacher__container clearfix">
     <div class="selfteacher__container_top mg-clearfix">
-        <div class="selfteacher__container_top_title">Статистика</div>
+        <div class="selfteacher__container_top_title">План занятий</div>
         <div class="selfteacher__container_top_navigation clearfix">
+            <div class="selfteacher__container_top_navigation_btn">
+                @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
+            </div>
+            <div class="selfteacher__container_top_navigation_btn">
+                @Html.Partial("Navigation/Stat")
+            </div>
             <div class="selfteacher__container_top_navigation_btn">
                 @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?) null))
             </div>
-            @if (Model.Plan != null) {
-                <div class="selfteacher__container_top_navigation_btn">
-                    <a class="mg-btn" href="@Url.Action("Train", new {planId = Model.Plan.Id})">Начать занятие</a>
-                </div>
-            }
         </div>
     </div>
     <div class="selfteacher__stat-left-block">
@@ -49,7 +50,10 @@
     </div>
     <div class="selfteacher__stat-right-block" style="padding-left: 50px;">
         <div>
-            <input type="text" class="mg-input-text" data-bind="value: $root.planName" placeholder="Название плана" />
+            <input type="text" class="mg-input-text" data-bind="value: $root.planName" placeholder="Название плана"/>
+            @if (Model.Plan != null) {
+                <a class="mg-btn" style="width: 195px;" href="@Url.Action("Train", new {planId = Model.Plan.Id})">Начать занятие</a>
+            }
         </div>
         <div data-bind="sortable: $root.selectedExercises">
             <div class="plan-exercise">

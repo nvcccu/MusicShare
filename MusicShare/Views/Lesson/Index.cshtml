@@ -30,9 +30,13 @@
     </div>
     <div class="lesson-zone__right-container">
         <div class="right-container__content">
-            @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+            <div class="lesson-outer-navigation-block">
+                @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+            </div>
             @if (Model.CurrentUser != null) {
-                @Html.Partial("Navigation/Stat")
+                <div class="lesson-outer-navigation-block">
+                    @Html.Partial("Navigation/Stat")
+                </div>
             }
         </div>
     </div>

@@ -22,6 +22,18 @@
     } else {
          <div class="selfteacher__container_top mg-clearfix">
              <div class="selfteacher__container_top_title">@Model.Plan.Name</div>
+             <div class="selfteacher__container_top_navigation clearfix">
+                 <div class="selfteacher__container_top_navigation_btn">
+                     @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
+                 </div>
+                 <div class="selfteacher__container_top_navigation_btn">
+                     @Html.Partial("Navigation/Stat")
+                 </div>
+                 <div class="selfteacher__container_top_navigation_btn">
+                     @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+                 </div>
+             </div>
+
         </div>
         <div class="lesson-index__lesson-navigation">
             <div class="plan__all-exercises" data-bind="foreach: { data: $root.exercises, as: 'exercise' }">
@@ -35,12 +47,6 @@
                 </div>
                 <div class="lesson-outer-navigation-block">
                     <div class="mg-btn" data-bind="click: $root.saveSpeeds">Сохранить изменения</div>
-                </div>
-                <div class="lesson-outer-navigation-block">
-                    @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
-                </div>
-                <div class="lesson-outer-navigation-block">
-                    @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?) null))
                 </div>
             </div>
         </div>
