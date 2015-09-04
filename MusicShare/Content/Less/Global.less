@@ -5,25 +5,34 @@
     font-family: "OpenSans-Light";
     src: url(/Content/Font/OpenSans-Light.ttf) format("truetype");
 }
-* {
-    .box-sizing__border-box;
-}
 html {
     min-width: @mg-min-width;
+    min-height: 100%;
+    height: 100%;
 }
 body {
     margin: 0;
     background: @mg-brown-layout;
     font-family: verdana, sans-serif, Lucida Sans;
     min-width: inherit;
+    min-height: 100%;
+    height: 100%;
 }
 .content {
     background-color: @mg-brown--ordinal;
     width: 1100px;
-    margin: 0 auto;
+    /* todo: Разобраться с -2*/
+    margin: -@mg-header-height - @mg-footer-height - 2 auto 0;
     color: @mg-white;
+    min-height: 100%;
+    padding-bottom: 40px;
 }
 
+input[type=button].mg-btn,
+input[type=submit].mg-btn {
+    padding: 0;
+    border: 0;
+}
 .mg-btn {
     line-height: @mg-element-height--ordinal;
     height: @mg-element-height--ordinal;
@@ -41,7 +50,7 @@ body {
     text-align: center;
     .box-shadow(@mg-btn__box-shadow);
     text-shadow: @mg-btn__text-shadow;
-    .transition("border-color ease-in-out .25s, box-shadow ease-in-out .25s");
+    .transition("all ease-in-out .05s");
 }
 .mg-btn:hover {
     color: @mg-white;

@@ -17,9 +17,6 @@ header {
     position: relative;
     border-bottom: 2px solid @mg-green--ordinal;
 }
-.header:after {
-    //.clearfix;
-}
 .header__logo {
     padding: 19px 0 21px 32px;
     height: 100%;
@@ -79,16 +76,10 @@ header {
 .header__login-block {
     height: 40px;
 }
-.header__login-block:after {
-    //.clearfix;
-}
 .header__social {
     height: 25px;
     .box-sizing__border-box;
     margin-top: 11px;
-}
-.header__social:after {
-  //  .clearfix;
 }
 .header__social-item {
     height: 25px;
@@ -103,4 +94,19 @@ header {
     &:hover, &:active, &:focus {
         text-decoration: none !important;
     }
+}
+
+#footer {
+    width: 100%;
+    background-color: @mg-brown--ordinal;
+    height: @mg-footer-height;
+    .box-sizing__border-box;
+    border-top: 2px solid @mg-green--ordinal;
+    color: @mg-white;
+}
+.footer {
+    margin: 0 auto;
+    width: @mg-min-width;
+    line-height: @mg-footer-height;
+    text-align: center;
 }

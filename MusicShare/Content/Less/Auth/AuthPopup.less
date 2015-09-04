@@ -1,0 +1,63 @@
+﻿@import "../Mixin.less";
+@import "../Const.less";
+
+.auth-popup {
+    background-color: white;
+    width: 600px;
+    padding: 40px 100px;
+    .box-sizing__border-box;
+    background-color: @mg-brown--ordinal;
+}
+.auth-popup__nav {
+    height: 40px;
+    color: @mg-white;
+    font-size: 16px;
+}
+.auth-popup__nav_elem {
+    .box-sizing__border-box;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    border-bottom: 5px solid @mg-green--ordinal;
+    cursor: pointer;
+    text-align: center;
+    background-color: @mg-brown--addition;
+}
+.auth-popup__nav_elem:hover {
+    background-color: @mg-brown--hover;
+}
+.auth-popup__nav_elem--active {
+    background-color: @mg-green--ordinal;
+}
+.auth-popup__nav_elem--active:hover {
+    background-color: @mg-green--ordinal;
+}
+.auth-popup__input-block {
+    margin-top: 40px;
+}
+.auth-popup__input-row {
+    width: 100%;
+    margin-top: 20px;
+}
+.auth-popup__input-row:first-of-type {
+    margin-top: 0;
+}
+.auth-popup__input {
+    width: 100%;
+}
+.auth-popup__remember-me-block {
+    margin-top: 26px;
+    color: @mg-white;
+    text-align: center;
+    font-size: 16px;
+}
+.auth-popup__remember-me {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: -1px;
+}
+.auth-popup__submit {
+    margin-top: 26px;
+    text-align: center;
+}

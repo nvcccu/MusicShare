@@ -16,9 +16,7 @@ namespace MusicShareWeb.Controllers {
                         return new JsonResult {
                             Data = new {
                                 Success = true,
-                                Redirect =
-                                    Request.Url.Scheme + "://" + Request.Url.Authority +
-                                    Request.ApplicationPath.TrimEnd('/') + "/"
+                                Redirect = Url.Action("Index", "Lesson", new {id = ""})
                             }
                         };
                     }
@@ -26,14 +24,14 @@ namespace MusicShareWeb.Controllers {
                 return new JsonResult {
                     Data = new {
                         Success = false,
-                        Reason = "Email занят",
+                        Reason = "Email занят"
                     },
                 };
             }
             return new JsonResult {
                 Data = new {
                     Success = false,
-                    Reason = "Ник занят",
+                    Reason = "Ник занят"
                 },
             };
         }
@@ -45,7 +43,7 @@ namespace MusicShareWeb.Controllers {
                 return new JsonResult {
                     Data = new {
                         Success = true,
-                        Redirect = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/"
+                        Redirect = Url.Action("Index", "Lesson", new {id = ""})
                     },
                 };
             } 
@@ -59,7 +57,7 @@ namespace MusicShareWeb.Controllers {
         [HttpGet]
         public ActionResult SignOut() {
             DropAuthCookie();
-            return RedirectToAction("Index", "Designer");
+            return RedirectToAction("Index", "Lesson");
         }
     }
 }

@@ -12,10 +12,10 @@
         <div class="selfteacher__container_top_title">Статистика</div>
         <div class="selfteacher__container_top_navigation">
             <div class="selfteacher__container_top_navigation_btn">
-                @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+                @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
             </div>
             <div class="selfteacher__container_top_navigation_btn">
-                @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
+                @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
             </div>
         </div>
     </div>
@@ -51,19 +51,22 @@
     </div>
     <div class="selfteacher__stat-right-block">
         <div id="linechart_material" data-bind="visible: $root.anyExerciseSelected()">
-            Выберите упражнения
         </div>
         <!-- ko ifnot: $root.anyExerciseSelected() -->
         <div class="selfteacher-stat__graph">
-            Выберите упражнения
+            Для построения графика выберите<br>
+            упражнения в списке слева
         </div>
         <!-- /ko -->
         <div class="selfteacher-stat__graph-settings clearfix">
-            <div class="graph-settings__interval">Неделя <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.week"/>
+            <div class="graph-settings__interval">
+                Неделя <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.week" />
             </div>
-            <div class="graph-settings__interval">Месяц <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.month"/>
+            <div class="graph-settings__interval">
+                Месяц <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.month" />
             </div>
-            <div class="graph-settings__interval">Полгода <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.halfYear"/>
+            <div class="graph-settings__interval">
+                Полгода <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.halfYear" />
             </div>
         </div>
         <div class="selfteacher-stat__presets-block">
@@ -128,13 +131,13 @@
         model.activeStatPreset = ko.observable(undefined);
         model.graphInterval = ko.observable(model.graphIntervals.week);
 
-        model.saveStatPreset = function() {
+        model.saveStatPreset = function () {
 
         };
-        model.setStatMode = function(statMode) {
+        model.setStatMode = function (statMode) {
             model.statMode(statMode);
         }
-        model.toggleActiveGuitarTechnique = function(guitarTechnique) {
+        model.toggleActiveGuitarTechnique = function (guitarTechnique) {
             var guitarTechniqueId = guitarTechnique.id;
             if (model.activeGuitarTechnique() === guitarTechniqueId) {
                 model.activeGuitarTechnique(undefined);
@@ -142,7 +145,7 @@
                 model.activeGuitarTechnique(guitarTechniqueId);
             }
         };
-        model.toggleActiveLesson = function(lesson) {
+        model.toggleActiveLesson = function (lesson) {
             var lessonId = lesson.id;
             if (model.activeLesson() === lessonId) {
                 model.activeLesson(undefined);
@@ -168,7 +171,7 @@
                 model.drawExercise[exerciseId](true);
             });
         }
-        model.deleteStatPreset = function(statPresetId) {
+        model.deleteStatPreset = function (statPresetId) {
             $.ajax({
                 url: '@Url.Action("DeleteStatPreset")',
                 type: 'POST',
@@ -177,7 +180,7 @@
                 },
                 success: function (result) {
                     if (result.success === true) {
-                        model.statPresets.remove(function(statPreset) {
+                        model.statPresets.remove(function (statPreset) {
                             return statPreset.id === statPresetId;
                         });
                     } else {
@@ -198,7 +201,7 @@
                 data: JSON.stringify({
                     statPreset: { name: model.newStatPresetName() },
                     exercises: model.drawExercise
-                        .map(function(needDraw, exerciseId) {
+                        .map(function (needDraw, exerciseId) {
                             return {
                                 exerciseId: exerciseId,
                                 needDraw: needDraw()
@@ -257,7 +260,7 @@
             legend: {
                 position: 'top',
                 textStyle: {
-                    color: 'blue', 
+                    color: 'blue',
                     fontSize: 16
                 }
             },
@@ -282,7 +285,7 @@
             var startDate = new Date();
             startDate.setDate(startDate.getDate() - model.graphInterval());
             var exercisesRaw = {};
-            model.drawExercise.forEach(function(needDraw, exerciseId) {
+            model.drawExercise.forEach(function (needDraw, exerciseId) {
                 if (needDraw()) {
                     graphData.addColumn('number', 'Упражнение ' + exerciseId + '  ');
                     var exerciseRaw = [];
@@ -308,7 +311,7 @@
                 date.setDate(date.getDate() + i);
                 var raw = [];
                 raw.push(date);
-                Object.keys(exercisesRaw).forEach(function(key) {
+                Object.keys(exercisesRaw).forEach(function (key) {
                     var exerciseRaw = exercisesRaw[key];
                     raw.push(exerciseRaw[i]);
                 });

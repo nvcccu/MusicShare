@@ -24,13 +24,13 @@
              <div class="selfteacher__container_top_title">@Model.Plan.Name</div>
              <div class="selfteacher__container_top_navigation clearfix">
                  <div class="selfteacher__container_top_navigation_btn">
-                     @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
-                 </div>
-                 <div class="selfteacher__container_top_navigation_btn">
                      @Html.Partial("Navigation/Stat")
                  </div>
                  <div class="selfteacher__container_top_navigation_btn">
-                     @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
+                     @Html.Partial("Navigation/Lessons", new LessonNavigationModel())
+                 </div>
+                 <div class="selfteacher__container_top_navigation_btn">
+                     @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?) null))
                  </div>
              </div>
 

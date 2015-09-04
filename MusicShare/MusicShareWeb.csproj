@@ -188,6 +188,12 @@
     <Content Include="Content\Less\Ask\List.min.css">
       <DependentUpon>List.css</DependentUpon>
     </Content>
+    <Content Include="Content\Less\Auth\AuthPopup.css">
+      <DependentUpon>AuthPopup.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Auth\AuthPopup.min.css">
+      <DependentUpon>AuthPopup.css</DependentUpon>
+    </Content>
     <Content Include="Content\Less\Const.css">
       <DependentUpon>Const.less</DependentUpon>
     </Content>
@@ -218,6 +224,10 @@
     <Content Include="Content\Font\FontAwesome\fontawesome-webfont.woff" />
     <Content Include="Content\Font\FontAwesome\fontawesome-webfont.woff2" />
     <Content Include="Content\Font\OpenSans-Light.ttf" />
+    <Content Include="Content\Less\Auth\AuthPopup.less" />
+    <Content Include="Content\Less\Auth\AuthPopup.css.map">
+      <DependentUpon>AuthPopup.css</DependentUpon>
+    </Content>
     <None Include="Content\Less\Designer\Designer.less" />
     <Content Include="Content\Less\Designer\Designer.css">
       <DependentUpon>Designer.less</DependentUpon>
