@@ -166,9 +166,12 @@
     <Content Include="Content\Image\favicon.jpg" />
     <Content Include="Content\Image\index.jpg" />
     <Content Include="Content\Image\IsSolution.jpg" />
+    <Content Include="Content\Image\Layout.png" />
     <Content Include="Content\Image\Lesson\Metronome.png" />
     <Content Include="Content\Image\Lesson\Start.png" />
     <Content Include="Content\Image\Lesson\Stop.png" />
+    <Content Include="Content\Image\Lesson\TriangleBig.png" />
+    <Content Include="Content\Image\Lesson\TriangleSmall.png" />
     <Content Include="Content\Image\logo.png" />
     <Content Include="Content\Less\Article\ArticlePreview.css">
       <DependentUpon>ArticlePreview.less</DependentUpon>

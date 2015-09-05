@@ -134,6 +134,7 @@
     top: -50px;
     padding-top: 50px;
     right: 0;
+    width: 200px;
 }
 .exercise__add-to-plan {
     background-color: @mg-brown-layout;
@@ -143,6 +144,12 @@
     text-align: center;
     line-height: 40px;
     cursor: pointer;
+    width: 100%;
+    white-space: nowrap;
+    .text-overflow(ellipsis);
+    overflow: hidden;
+    .box-sizing__border-box;
+    padding: 0 5px;
 }
 .exercise__add-to-plan:last-of-type {
     border-bottom: none;

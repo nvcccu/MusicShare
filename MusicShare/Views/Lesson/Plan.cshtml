@@ -36,7 +36,15 @@
                                 <div class="lesson-dropdown-navigation__exercise clearfix">
                                     <div class="lesson-dropdown-navigation__exercise-name" data-bind="text: exercise.name"></div>
                                     <div class="lesson-dropdown-navigation__exercise-checkbox clearfix">
-                                        <input type="checkbox" data-bind="checked: $root.selectedExerciseIds[exercise.id], event: { change: $root.updateSelectedExrcises }" />
+                                        <input type="checkbox" data-bind="checked: $root.selectedExerciseIds[exercise.id], click: $root.updateSelectedExrcises"/>
+                                    </div>
+                                    <div class="exercise-img-preshow-form">
+                                        <div class="triangle-left" style="left: -2px; top: 20px;"></div>
+                                        <div class="exercise-img-preshow-block">
+                                            <div class="exercise-img-preshow">
+                                                <img data-bind="attr: { src: exercise.imageUrl }" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -150,9 +158,10 @@
         //
         // Жесткая жесть, связанная с порядком обработки change и click.
         // todo: переписать этот момент на более надежную механику.
+        // note 5/09/2015: немного поменял логику, но все еще криво.
         //
         model.updateSelectedExrcises = function(exercise) {
-            if (!model.selectedExerciseIds[exercise.id]()) {
+            if (model.selectedExerciseIds[exercise.id]()) {
                 var lesson = model.lessons.filter(function(lesson) {
                     return lesson.id === exercise.lessonId;
                 })[0];
@@ -165,12 +174,13 @@
                     return selectedExercise.id === exercise.id;
                 });
             }
+            return true;
         }
         model.unselectExercise = function (exercise) {
+            model.selectedExerciseIds[exercise.id](false);
             model.updateSelectedExrcises(model.exercises.filter(function (e) {
                 return e.id === exercise.id;
             })[0]);
-            model.selectedExerciseIds[exercise.id](false);
         }
         //
 

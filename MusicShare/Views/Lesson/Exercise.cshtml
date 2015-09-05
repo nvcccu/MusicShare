@@ -16,8 +16,13 @@
             </div>
             <div style="margin: 10px 0; position: relative;">
                 <img data-bind="attr: {src: imageUrl}"/>
-                <div class="exercise__add-to-plan-block" data-bind="foreach: { data: $root.plans, as: 'plan' }, visible: $root.addExerciseToPlanVisible[exerciseId], event: {mouseleave: $root.setAddExerciseToPlanVisible.bind($data, exerciseId, false) } ">
+                <div class="exercise__add-to-plan-block" data-bind="visible: $root.addExerciseToPlanVisible[exerciseId], event: {mouseleave: $root.setAddExerciseToPlanVisible.bind($data, exerciseId, false) } ">
+                    <div class="exercise__add-to-plan">
+                        <a class="mg-link exercise__add-to-plan" href="@Url.Action("Plan", "Lesson", new {id = ""})">Создать новый план</a>
+                    </div>
+                    <!-- ko foreach: { data: $root.plans, as: 'plan' } -->
                     <div class="exercise__add-to-plan" data-bind="text: plan.name, click: $root.addExerciseToPlan.bind($data, plan.id, $parent.exerciseId)"></div>
+                    <!-- /ko-->
                 </div>
             </div>
             <div class="metronome">
@@ -25,7 +30,7 @@
                 <div class="metronome__speed-control speed-control__down" data-bind="click: $root.speedDown.bind($data, exerciseId)">
                     <i class="fa fa-minus"></i>
                 </div>
-                <input type="text" class="metronome-speed" data-bind="value: $root.speeds[exerciseId], event: {'change': $root.speedChange.bind($data, exerciseId)}"/>
+                <input type="text" class="metronome-speed" data-bind="value: $root.speeds[exerciseId], event: {'change': $root.speedChange.bind($data, exerciseId)}" />
                 <div class="metronome__speed-control  speed-control__up" data-bind="click: $root.speedUp.bind($data, exerciseId)">
                     <i class="fa fa-plus"></i>
                 </div>

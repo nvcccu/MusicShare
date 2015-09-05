@@ -112,6 +112,7 @@
     height: 36px;
     line-height: 36px;
     padding-left: 40px;
+    position: relative;
 }
 .lesson-dropdown-navigation__exercise:hover {
     background-color: #4e4438;
@@ -124,6 +125,31 @@
     margin-right: 20px;
     padding-top: 3px;
     height: 36px;
+}
+.exercise-img-preshow-form {
+    display: none;
+    overflow: hidden;
+    left: 290px;
+    top: -20px;
+    position: absolute;
+    .box-sizing__border-box;
+    padding: 0 30px 30px 20px;
+    height: 177px;
+    width: 720px;
+}
+.exercise-img-preshow {
+    background-color: @mg-brown--addition;
+    height: 110px;
+    width: 600px;
+    overflow: hidden;
+}
+.exercise-img-preshow-block {
+    padding: 30px;
+    background-color: @mg-brown--addition;
+    .box-shadow("1.5px 2.598px 5px 0px rgba(0, 0, 0, 0.4)");
+}
+.lesson-dropdown-navigation__exercise:hover .exercise-img-preshow-form {
+    display: block;
 }
 
 .selfteacher-stat__graph {

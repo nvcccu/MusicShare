@@ -15,9 +15,14 @@ namespace MusicShareWeb.Models.Lesson {
         public StatModel(BaseModel baseModel) : base(baseModel) {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
             Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
-            ExercisesStats = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersExercisesTotalStat(CurrentUser.Id);
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetAllExercises();
-            StatPresets = ServiceManager<IBusinessLogic>.Instance.Service.GetAllUsersStatPresets(CurrentUser.Id);
+            if(CurrentUser != null) {
+                ExercisesStats = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersExercisesTotalStat(CurrentUser.Id);
+                StatPresets = ServiceManager<IBusinessLogic>.Instance.Service.GetAllUsersStatPresets(CurrentUser.Id);
+            } else {
+                ExercisesStats = new Dictionary<int, List<ExerciseSpeedInDate>>();
+                StatPresets = new List<StatPresetDto>();
+            }
         }
 
         public StatModel() : base((Account)null) { }

@@ -20,81 +20,95 @@
         </div>
     </div>
     <div class="selfteacher__stat-left-block">
-        <div class="stat-type-select">
-            <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.speed), attr: { class: $root.statMode() == $root.statModes.speed ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Скорость</div>
-            <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.time), attr: { class: $root.statMode() == $root.statModes.time ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Время</div>
-        </div>
-        <div class="lesson-dropdown-navigation">
-            <div class="lesson-dropdown-navigation__guitar-techniques" data-bind="foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' }">
-                <div class="lesson-dropdown-navigation__guitar-technique">
-                    <div class="lesson-dropdown-navigation__guitar-technique-name" data-bind="text: guitarTechnique.name, click: $root.toggleActiveGuitarTechnique, attr: { class: $root.activeGuitarTechnique() === guitarTechnique.id ? 'lesson-dropdown-navigation__guitar-technique-name lesson-dropdown-navigation__guitar-technique-name--active' : 'lesson-dropdown-navigation__guitar-technique-name' }"></div>
-                    <!-- ko if: $root.activeGuitarTechnique() === guitarTechnique.id -->
-                    <div class="lesson-dropdown-navigation__lessons" data-bind="foreach: { data: $root.getLessonByGuitarTechnique(guitarTechnique), as: 'lesson' }">
-                        <div class="lesson-dropdown-navigation__lesson">
-                            <div class="lesson-dropdown-navigation__lesson-name" data-bind="text: lesson.name, click: $root.toggleActiveLesson"></div>
-                            <!-- ko if: $root.activeLesson() === lesson.id -->
-                            <div class="lesson-dropdown-navigation__exercises" data-bind="foreach: { data: $root.getExercisesByLesson(lesson), as: 'exercise' }">
-                                <div class="lesson-dropdown-navigation__exercise clearfix">
-                                    <div class="lesson-dropdown-navigation__exercise-name" data-bind="text: exercise.name"></div>
-                                    <div class="lesson-dropdown-navigation__exercise-checkbox clearfix">
-                                        <input type="checkbox" data-bind="checked: $root.drawExercise[exercise.id]" />
+        @if(Model.CurrentUser != null) {
+            <div class="stat-type-select">
+                <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.speed), attr: { class: $root.statMode() == $root.statModes.speed ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Скорость</div>
+                <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.time), attr: { class: $root.statMode() == $root.statModes.time ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Время</div>
+            </div>
+            <div class="lesson-dropdown-navigation">
+                <div class="lesson-dropdown-navigation__guitar-techniques" data-bind="foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' }">
+                    <div class="lesson-dropdown-navigation__guitar-technique">
+                        <div class="lesson-dropdown-navigation__guitar-technique-name" data-bind="text: guitarTechnique.name, click: $root.toggleActiveGuitarTechnique, attr: { class: $root.activeGuitarTechnique() === guitarTechnique.id ? 'lesson-dropdown-navigation__guitar-technique-name lesson-dropdown-navigation__guitar-technique-name--active' : 'lesson-dropdown-navigation__guitar-technique-name' }"></div>
+                        <!-- ko if: $root.activeGuitarTechnique() === guitarTechnique.id -->
+                        <div class="lesson-dropdown-navigation__lessons" data-bind="foreach: { data: $root.getLessonByGuitarTechnique(guitarTechnique), as: 'lesson' }">
+                            <div class="lesson-dropdown-navigation__lesson">
+                                <div class="lesson-dropdown-navigation__lesson-name" data-bind="text: lesson.name, click: $root.toggleActiveLesson"></div>
+                                <!-- ko if: $root.activeLesson() === lesson.id -->
+                                <div class="lesson-dropdown-navigation__exercises" data-bind="foreach: { data: $root.getExercisesByLesson(lesson), as: 'exercise' }">
+                                    <div class="lesson-dropdown-navigation__exercise clearfix">
+                                        <div class="lesson-dropdown-navigation__exercise-name" data-bind="text: exercise.name"></div>
+                                        <div class="lesson-dropdown-navigation__exercise-checkbox clearfix">
+                                            <input type="checkbox" data-bind="checked: $root.drawExercise[exercise.id]"/>
+                                        </div>
+                                        <div class="exercise-img-preshow-form">
+                                            <div class="triangle-left" style="left: -2px; top: 20px;"></div>
+                                            <div class="exercise-img-preshow-block">
+                                                <div class="exercise-img-preshow">
+                                                    <img data-bind="attr: { src: exercise.imageUrl }" />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- /ko -->
                             </div>
-                            <!-- /ko -->
                         </div>
+                        <!-- /ko -->
                     </div>
-                    <!-- /ko -->
                 </div>
             </div>
-        </div>
+        } else {
+            <div>Войдите в систему, чтобы начать пользоваться системой статистики</div>
+        }
     </div>
     <div class="selfteacher__stat-right-block">
-        <div id="linechart_material" data-bind="visible: $root.anyExerciseSelected()">
-        </div>
-        <!-- ko ifnot: $root.anyExerciseSelected() -->
-        <div class="selfteacher-stat__graph">
-            Для построения графика выберите<br>
-            упражнения в списке слева
-        </div>
-        <!-- /ko -->
-        <div class="selfteacher-stat__graph-settings clearfix">
-            <div class="graph-settings__interval">
-                Неделя <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.week" />
+        @if(Model.CurrentUser != null) {
+            <div id="linechart_material" data-bind="visible: $root.anyExerciseSelected()">
             </div>
-            <div class="graph-settings__interval">
-                Месяц <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.month" />
+            <!-- ko ifnot: $root.anyExerciseSelected() -->
+            <div class="selfteacher-stat__graph">
+                Для построения графика выберите<br>
+                упражнения в списке слева
             </div>
-            <div class="graph-settings__interval">
-                Полгода <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.halfYear" />
+            <!-- /ko -->
+            <div class="selfteacher-stat__graph-settings clearfix">
+                <div class="graph-settings__interval">
+                    Неделя <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.week"/>
+                </div>
+                <div class="graph-settings__interval">
+                    Месяц <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.month"/>
+                </div>
+                <div class="graph-settings__interval">
+                    Полгода <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.halfYear"/>
+                </div>
             </div>
-        </div>
-        <div class="selfteacher-stat__presets-block">
-            <div class="presets-block__title">Сохраненные наборы</div>
-            <!-- ko if: $root.statPresets().length > 0 -->
-            <div class="presets-block__presets" data-bind="foreach: { data: $root.statPresets(), as: 'statPreset' }">
-                <div class="presets-block__preset clearfix" data-bind="click: $root.setActiveStatPreset">
-                    <div data-bind="text: statPreset.name, attr: { class: $root.activeStatPreset() === statPreset.id ? 'preset__name preset__name--active' : 'preset__name' }"></div>
-                    <div class="preset__actions">
-                        <div class="preset__action" data-bind="click: function() {}, clickBubble: false">
-                            <i class="fa fa-trash-o" data-bind="click: $root.deleteStatPreset.bind($data, statPreset.id), clickBubble: false"></i>
+            <div class="selfteacher-stat__presets-block">
+                <div class="presets-block__title">Сохраненные наборы</div>
+                <!-- ko if: $root.statPresets().length > 0 -->
+                <div class="presets-block__presets" data-bind="foreach: { data: $root.statPresets(), as: 'statPreset' }">
+                    <div class="presets-block__preset clearfix" data-bind="click: $root.setActiveStatPreset">
+                        <div data-bind="text: statPreset.name, attr: { class: $root.activeStatPreset() === statPreset.id ? 'preset__name preset__name--active' : 'preset__name' }"></div>
+                        <div class="preset__actions">
+                            <div class="preset__action" data-bind="click: function() {}, clickBubble: false">
+                                <i class="fa fa-trash-o" data-bind="click: $root.deleteStatPreset.bind($data, statPreset.id), clickBubble: false"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- /ko-->
-            <!-- ko ifnot: $root.statPresets().length > 0 -->
-            <div class="presets-block__presets">
-                Не добавлено ни одного набора упражнений
-            </div>
-            <!-- /ko-->
-            <div class="presets__new-preset-block">
-                <div class="presets__new-preset-name">
-                    <input type="text" class="mg-input-text" placeholder="Название набора" data-bind="value: $root.newStatPresetName" />
+                <!-- /ko-->
+                <!-- ko ifnot: $root.statPresets().length > 0 -->
+                <div class="presets-block__presets">
+                    Не добавлено ни одного набора упражнений
                 </div>
-                <div class="mg-btn presets__new-preset-save-btn" data-bind="click: $root.saveStatPreset">Сохранить набор</div>
+                <!-- /ko-->
+                <div class="presets__new-preset-block">
+                    <div class="presets__new-preset-name">
+                        <input type="text" class="mg-input-text" placeholder="Название набора" data-bind="value: $root.newStatPresetName"/>
+                    </div>
+                    <div class="mg-btn presets__new-preset-save-btn" data-bind="click: $root.saveStatPreset">Сохранить набор</div>
+                </div>
             </div>
-        </div>
+        }
     </div>
 </div>
 
