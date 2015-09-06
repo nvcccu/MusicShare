@@ -84,10 +84,10 @@ namespace MusicShareWeb.Controllers {
             };
         }
         [HttpPost]
-        public JsonResult UpdateStatPreset(int id, string name) {
+        public JsonResult UpdateStatPreset(int id, string name, List<string> exercises) {
             return new JsonResult {
                 Data = new {
-                    success = new StatModel().UpdateStatPresetName(id, name, CurrentUser.Id)
+                    success = new StatModel().UpdateStatPresetName(id, name, exercises, CurrentUser.Id)
                 }
             };
         }
