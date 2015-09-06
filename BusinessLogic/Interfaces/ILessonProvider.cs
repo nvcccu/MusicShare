@@ -24,7 +24,7 @@ namespace BusinessLogic.Interfaces {
         void AddExerciseToPlan(int planId, int exerciseId);
         List<StatPresetDto> GetAllUsersStatPresets(int accountId);
         StatPresetDto SaveStatPreset(StatPresetDto statPreset);
-        bool UpdateStatPresets(StatPresetDto statPreset);
+        bool UpdateStatPreset(StatPresetDto statPreset);
         bool DeleteStatPreset(int statPresetId);
     }
 }

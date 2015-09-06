@@ -189,6 +189,10 @@
     padding-left: 20px;
     font-size: 16px;
     cursor: pointer;
+    position: relative;
+}
+.presets-block__preset--active {
+    background-color: @mg-green--ordinal
 }
 .presets-block__preset:nth-of-type(2n) {
     background-color: #4e4438;
@@ -203,11 +207,24 @@
     .text-overflow(ellipsis);
     float: left;
 }
-.preset__name--active {
-    color: @mg-green--ordinal;
-}
 .presets-block__preset:hover {
-    background-color: @mg-brown-layout;
+    background-color: @mg-green--ordinal
+}
+.preset__change-name {
+    display: none;
+    position: absolute;
+    left: 300px;
+    padding-left: 20px;
+    .box-sizing__border-box;
+    background: url('/Content/Image/Lesson/TriangleSmall.png') no-repeat 8px 9px
+}
+.preset__change-name-inner {
+    padding: 0 5px;
+    background-color: @mg-brown--addition;
+}
+.presets-block__preset--active .preset__name:hover + .preset__change-name,
+.preset__change-name:hover {
+    display: block;
 }
 .preset__actions {
     float: right;

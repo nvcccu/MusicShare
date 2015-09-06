@@ -164,8 +164,8 @@ namespace BusinessLogic {
         public StatPresetDto SaveStatPreset(StatPresetDto statPreset) {
             return _lessonProvider.SaveStatPreset(statPreset);
         }
-        public bool UpdateStatPresets(StatPresetDto statPreset) {
-            return _lessonProvider.UpdateStatPresets(statPreset);
+        public bool UpdateStatPreset(StatPresetDto statPreset) {
+            return _lessonProvider.UpdateStatPreset(statPreset);
         }
         public bool DeleteStatPreset(int statPresetId) {
             return _lessonProvider.DeleteStatPreset(statPresetId);

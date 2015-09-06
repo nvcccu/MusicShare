@@ -320,11 +320,17 @@ namespace BusinessLogic.Providers {
             }.Insert());
             return statPreset;
         }
-        public bool UpdateStatPresets(StatPresetDto statPreset) {
-            new StatPreset()
-                .Update()
-                .Set(StatPreset.Fields.Name, statPreset.Name)
-                .Set(StatPreset.Fields.Exercises, SerializeExercises(statPreset.Exercises))
+        public bool UpdateStatPreset(StatPresetDto statPreset) {
+            var tmp = new StatPreset()
+                .Update();
+            if(!String.IsNullOrEmpty(statPreset.Name)) {
+                tmp = tmp.Set(StatPreset.Fields.Name, statPreset.Name);
+            }
+            if(statPreset.Exercises != null && statPreset.Exercises.Any()) {
+                tmp = tmp.Set(StatPreset.Fields.Exercises, SerializeExercises(statPreset.Exercises));
+            }
+            tmp
+                .Where(StatPreset.Fields.Id, PredicateCondition.Equal, statPreset.Id)
                 .Where(StatPreset.Fields.OwnerAccountId, PredicateCondition.Equal, statPreset.OwnerAccountId)
                 .ExecuteScalar();
             return true;

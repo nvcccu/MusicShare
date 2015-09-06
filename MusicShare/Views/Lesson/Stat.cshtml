@@ -86,8 +86,16 @@
                 <div class="presets-block__title">Сохраненные наборы</div>
                 <!-- ko if: $root.statPresets().length > 0 -->
                 <div class="presets-block__presets" data-bind="foreach: { data: $root.statPresets(), as: 'statPreset' }">
-                    <div class="presets-block__preset clearfix" data-bind="click: $root.setActiveStatPreset">
-                        <div data-bind="text: statPreset.name, attr: { class: $root.activeStatPreset() === statPreset.id ? 'preset__name preset__name--active' : 'preset__name' }"></div>
+                    <div data-bind="click: $root.activeStatPreset() !== statPreset.id ? $root.setActiveStatPreset : '', attr: { class: $root.activeStatPreset() === statPreset.id ? 'presets-block__preset presets-block__preset--active clearfix' : 'presets-block__preset clearfix' }">
+                        <div data-bind="visible: $root.changedPresetId() === statPreset.id">
+                            <input type="text" class="mg-input-text" data-bind="value: $root.changedPresetName" />
+                            <i class="fa fa-check" data-bind="click: $root.updateStatPresetName"></i>
+                            <i class="fa fa-close" data-bind="click: $root.closeUpdateStat"></i>
+                        </div>
+                        <div class="preset__name" data-bind="visible: $root.changedPresetId() !== statPreset.id, text: statPreset.name()"></div>
+                        <div class="preset__change-name" data-bind="click: $root.changePresetName, clickBubble: false">
+                            <div class="preset__change-name-inner">Изменить название</div>
+                        </div>
                         <div class="preset__actions">
                             <div class="preset__action" data-bind="click: function() {}, clickBubble: false">
                                 <i class="fa fa-trash-o" data-bind="click: $root.deleteStatPreset.bind($data, statPreset.id), clickBubble: false"></i>
@@ -128,6 +136,11 @@
         model.lessons = data.lessons;
         model.exercises = data.exercises;
         model.statPresets = ko.observableArray(data.statPresets);
+        model.statPresets().forEach(function (statPreset) {
+            statPreset.name = ko.observable(statPreset.name);
+        });
+        model.changedPresetId = ko.observable(null);
+        model.changedPresetName = ko.observable(null);
         //
         model.statModes = {
             speed: 0,
@@ -177,6 +190,7 @@
             }).length > 0;
         });
         model.setActiveStatPreset = function (statPreset) {
+            model.changedPresetId(null);
             model.activeStatPreset(statPreset.id);
             model.exercises.forEach(function (exercise) {
                 model.drawExercise[exercise.id](false);
@@ -185,21 +199,58 @@
                 model.drawExercise[exerciseId](true);
             });
         }
-        model.deleteStatPreset = function (statPresetId) {
+        model.changePresetName = function (statPreset) {
+            model.changedPresetId(statPreset.id);
+            var index = model.statPresets().findIndex(function (sp) {
+                return sp.id === statPreset.id;
+            });
+            model.changedPresetName(model.statPresets()[index].name());
+            return false;
+        }
+        model.deleteStatPreset = function(statPresetId) {
             $.ajax({
                 url: '@Url.Action("DeleteStatPreset")',
                 type: 'POST',
                 data: {
                     statPresetId: statPresetId
                 },
-                success: function (result) {
+                success: function(result) {
                     if (result.success === true) {
-                        model.statPresets.remove(function (statPreset) {
+                        model.statPresets.remove(function(statPreset) {
                             return statPreset.id === statPresetId;
                         });
                     } else {
                         alert('Ошибка');
                     }
+                },
+                error: function() {
+                    alert('Ошибка');
+                }
+            });
+        };
+        model.closeUpdateStat = function() {
+            model.changedPresetName(null);
+            model.changedPresetId(null);
+        };
+        model.updateStatPresetName = function (statPreset) {
+            $.ajax({
+                url: '@Url.Action("UpdateStatPreset")',
+                type: 'POST',
+                data: {
+                    id: statPreset.id,
+                    name: model.changedPresetName()
+                },
+                success: function (result) {
+                    if (result.success === true) {
+                        var index = model.statPresets().findIndex(function (sp) {
+                            return sp.id === statPreset.id;
+                        });
+                        model.statPresets()[index].name(model.changedPresetName());
+                    } else {
+                        alert('Ошибка');
+                    }
+                    model.changedPresetName(null);
+                    model.changedPresetId(null);
                 },
                 error: function () {
                     alert('Ошибка');
@@ -232,7 +283,7 @@
                         model.statPresets.push({
                             id: result.statPreset.Id,
                             ownerAccountId: result.statPreset.OwnerAccountId,
-                            name: result.statPreset.Name,
+                            name: ko.observable(result.statPreset.Name),
                             exercises: result.statPreset.Exercises
                         });
                     } else {

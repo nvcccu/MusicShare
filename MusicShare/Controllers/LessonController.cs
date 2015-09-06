@@ -83,5 +83,13 @@ namespace MusicShareWeb.Controllers {
                 }
             };
         }
+        [HttpPost]
+        public JsonResult UpdateStatPreset(int id, string name) {
+            return new JsonResult {
+                Data = new {
+                    success = new StatModel().UpdateStatPresetName(id, name, CurrentUser.Id)
+                }
+            };
+        }
     }
 }

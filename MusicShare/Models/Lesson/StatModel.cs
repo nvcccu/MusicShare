@@ -34,5 +34,12 @@ namespace MusicShareWeb.Models.Lesson {
         public StatPresetDto SaveStatPreset(StatPresetDto statPreset) {
             return ServiceManager<IBusinessLogic>.Instance.Service.SaveStatPreset(statPreset);
         }
+        public bool UpdateStatPresetName(int id, string name, int ownerAccountId) {
+            return ServiceManager<IBusinessLogic>.Instance.Service.UpdateStatPreset(new StatPresetDto {
+                Id = id,
+                Name = name,
+                OwnerAccountId = ownerAccountId
+            });
+        }
     }
 }
