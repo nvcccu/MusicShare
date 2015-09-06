@@ -28,19 +28,24 @@
                 Источник: <a href="http://allfrets.ru">Allfrets.ru</a>
             </div>
         </div>
+        <div class="selfteacher__container_top_navigation clearfix">
+            <div class="selfteacher__container_top_navigation_btn">
+                @Html.Partial("Navigation/Stat")
+            </div>
+            <div class="selfteacher__container_top_navigation_btn">
+                @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?) null))
+            </div>
+        </div>
+
     </div>
     <div id="LessonPage" class="lesson-index__lesson-navigation">
         <div class="lesson__body">
-            @if (Model.IsMinimized)
-            {
+            @if (Model.IsMinimized) {
                 text = String.Join("\n", Model.Exercises.Select(e => String.Format(ExerciseTag, e.Id)));
-            }
-            else
-            {
+            } else {
                 text = Model.Lesson.Text;
             }
-            @foreach (var exercise in Model.Exercises)
-            {
+            @foreach (var exercise in Model.Exercises) {
                 var regex = new Regex(String.Format(ExerciseTag, exercise.Id));
                 text = regex.Replace(text, String.Format(ReplacePattern, exercise.Id, exercise.Name, !String.IsNullOrEmpty(exercise.AudioUrl) ? exercise.AudioUrl : null, exercise.ImageUrl, Model.IsMinimized.ToString().ToLower()), 1);
             }
@@ -53,23 +58,14 @@
                 <div class="mg-btn" data-bind="click: $root.saveSpeeds">Сохранить изменения</div>
             </div>
             <div class="lesson-outer-navigation-block">
-                @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?)null))
-            </div>
-            <div class="lesson-outer-navigation-block">
-                @if (Model.IsMinimized)
-                {
+                @if (Model.IsMinimized) {
                     <a id="ChangeLessonType" href="@Url.Action("Index", new {id = Model.Lesson.Id})" class="mg-link">К полной версии урока</a>
-                }
-                else
-                {
+                } else {
                     <a id="ChangeLessonType" href="@Url.Action("MinimizedLesson", new {id = Model.Lesson.Id})" class="mg-link">К сокращенной версии урока</a>
                 }
             </div>
             <div class="lesson-outer-navigation-block">
                 @Html.Partial("Navigation/Lessons", new LessonNavigationModel(Model.Lesson))
-            </div>
-            <div class="lesson-outer-navigation-block">
-                @Html.Partial("Navigation/Stat")
             </div>
         </div>
     </div>

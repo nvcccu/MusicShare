@@ -10,7 +10,7 @@
                     @using (Html.BeginForm("SignInViaEmail", "Auth", FormMethod.Post, new { id = "SignInForm", style = "display: block;", role = "form", onsubmit = "return onSignInViaEmailSubmit(event);" })) {
                         <div class="auth-popup__input-block">
                             <div class="auth-popup__input-row">
-                                <input type="email" name="Email" required tabindex="1" class="mg-input-text auth-popup__input" placeholder="Почта или имя на сайте" value="">
+                                <input type="email" name="Email" required tabindex="1" class="mg-input-text auth-popup__input" placeholder="Почта" value="">
                             </div>
                             <div class="auth-popup__input-row">
                                 <input type="password" name="Password" required tabindex="2" class="mg-input-text auth-popup__input" placeholder="Пароль">

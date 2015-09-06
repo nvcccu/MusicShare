@@ -23,7 +23,7 @@
         @if(Model.CurrentUser != null) {
             <div class="stat-type-select">
                 <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.speed), attr: { class: $root.statMode() == $root.statModes.speed ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Скорость</div>
-                <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.time), attr: { class: $root.statMode() == $root.statModes.time ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Время</div>
+@*                <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.time), attr: { class: $root.statMode() == $root.statModes.time ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Время</div>*@
             </div>
             <div class="lesson-dropdown-navigation">
                 <div class="lesson-dropdown-navigation__guitar-techniques" data-bind="foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' }">
@@ -204,8 +204,13 @@
         }
         model.changePresetName = function (statPreset) {
             model.changedPresetId(statPreset.id);
-            var index = model.statPresets().findIndex(function (sp) {
-                return sp.id === statPreset.id;
+            var index = undefined;
+            model.statPresets().forEach(function (sp, i) {
+                if (sp.id === statPreset.id) {
+                    index = i;
+                    return false;
+                }
+                return true;
             });
             model.changedPresetName(model.statPresets()[index].name());
             return false;
@@ -245,8 +250,13 @@
                 },
                 success: function(result) {
                     if (result.success === true) {
-                        var index = model.statPresets().findIndex(function(sp) {
-                            return sp.id === statPreset.id;
+                        var index = undefined;
+                        model.statPresets().forEach(function (sp, i) {
+                            if (sp.id === statPreset.id) {
+                                index = i;
+                                return false;
+                            }
+                            return true;
                         });
                         model.statPresets()[index].name(model.changedPresetName());
                     } else {
@@ -285,8 +295,13 @@
                 }),
                 success: function (result) {
                     if (result.success === true) {
-                        var index = model.statPresets().findIndex(function (sp) {
-                            return sp.id === statPreset.id;
+                        var index = undefined;
+                        model.statPresets().forEach(function (sp, i) {
+                            if (sp.id === statPreset.id) {
+                                index = i;
+                                return false;
+                            }
+                            return true;
                         });
                         model.statPresets()[index].exercises = model.drawExercise
                             .map(function (needDraw, exerciseId) {

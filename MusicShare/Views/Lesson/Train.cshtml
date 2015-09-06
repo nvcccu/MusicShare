@@ -33,7 +33,6 @@
                      @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?) null))
                  </div>
              </div>
-
         </div>
         <div class="lesson-index__lesson-navigation">
             <div class="plan__all-exercises" data-bind="foreach: { data: $root.exercises, as: 'exercise' }">
