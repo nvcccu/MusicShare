@@ -190,7 +190,11 @@
             });
             return addedExerciseIds;
         };
-        model.savePlan = function() {
+        model.savePlan = function () {
+            if (!model.planName()) {
+                alert('Напишите название плана');
+                return false;
+            }
             if (model.plan) {
                 $.ajax({
                     url: '@Url.Action("UpdatePlan")',
