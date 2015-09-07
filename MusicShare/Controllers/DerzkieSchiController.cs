@@ -26,5 +26,9 @@ namespace MusicShareWeb.Controllers {
             newProductsModel.SaveNewProduct();
             return null;
         }
+        [HttpGet]
+        public ActionResult Lesson(int? id) {
+            return View("AdminLesson", id.HasValue ? new AdminLessonModel(id.Value, BaseModel) : new AdminLessonModel(BaseModel));
+        }
     }
 }

@@ -1,0 +1,155 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model MusicShareWeb.Models.DerzkieSchi.AdminLessonModel
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+<div id="AdminLesson">
+    <div class="admin-lesson__form">
+        <div class="admin-lesson__form-row mg-clearfix">
+            <div class="admin-lesson__form-row_text-block">
+                <span class="admin-lesson__form-row_text">Гитарная техника</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <select data-bind="options: $root.guitarTechniques, value: $root.lesson.guitarTechniqueId, optionsValue: 'id', optionsText: 'name', optionsCaption: 'Выберите гитарную технику', valueAllowUnset: false"></select>
+            </div>
+        </div>
+        <div class="admin-lesson__form-row mg-clearfix">
+            <div class="admin-lesson__form-row_text-block">
+                <span class="admin-lesson__form-row_text">Номер урока в технике</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <input type="text" class="mg-input-text admin-lesson__form-row_input" data-bind="value: $root.lesson.orderNumber" placeholder="Номер урока в технике"/>
+            </div>
+        </div>
+        <div class="admin-lesson__form-row mg-clearfix">
+            <div class="admin-lesson__form-row_text-block">
+                <span class="admin-lesson__form-row_text">Число упражнений в уроке</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <input type="text" class="mg-input-text admin-lesson__form-row_input" data-bind="value: $root.lesson.exerciseNumber" placeholder="Число упражнений в уроке"/>
+            </div>
+        </div>
+        <div class="admin-lesson__form-row mg-clearfix">
+            <div class="admin-lesson__form-row_text-block">
+                <span class="admin-lesson__form-row_text">Предыдущий урок</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <select data-bind="value: $root.lesson.previousLessonId, valueAllowUnset: true, foreach: { data :$root.guitarTechniques, as: 'guitarTechnique' }">
+                    <optgroup data-bind="attr: {label: guitarTechnique.name}, foreach: { data: $root.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: 'lesson' }">
+                        <option data-bind="value: id, text: lesson.name"></option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+        <div class="admin-lesson__form-row mg-clearfix">
+            <div class="admin-lesson__form-row_text-block">
+                <span class="admin-lesson__form-row_text">Следующий урок</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <select data-bind="value: $root.lesson.nextLessonId, valueAllowUnset: true, foreach: { data :$root.guitarTechniques, as: 'guitarTechnique' }">
+                    <optgroup data-bind="attr: {label: guitarTechnique.name}, foreach: { data: $root.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: 'lesson' }">
+                        <option data-bind="value: id, text: lesson.name"></option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+        <div data-bind="text: $root.lesson.nextLessonId"></div>
+        <div class="admin-lesson__form-row mg-clearfix">
+            <div class="admin-lesson__form-row_text-block admin-lesson__form-row_text-block-big">
+                <span class="admin-lesson__form-row_text">Краткое описание</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <textarea class="admin-lesson__form-row_textarea" data-bind="textInput: $root.lesson.description"></textarea>
+            </div>
+        </div>
+        <div class="admin-lesson__form-row mg-clearfix">
+            <div class="admin-lesson__form-row_text-block">
+                <span class="admin-lesson__form-row_text">Название урока</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <input type="text" class="mg-input-text admin-lesson__form-row_input" data-bind="value: $root.lesson.name" placeholder="Название урока"/>
+            </div>
+        </div>
+        <div class="admin-lesson__form-row mg-clearfix">
+            <div class="admin-lesson__form-row_text-block">
+                <span class="admin-lesson__form-row_text">Ссылка на оригинал на allfrets.ru</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <input type="text" class="mg-input-text admin-lesson__form-row_input" data-bind="value: $root.lesson.originalLessonUrl" placeholder="Ссылка на оригинал на allfrets.ru"/>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>Текст урока:</div>
+    <textarea id="MarkItUp" data-bind="textInput: $root.lesson.text"></textarea>
+    <input type="button" class="mg-btn" value="Предпросмотр" data-bind="click: $root.togglePreview"/>
+    <div class="admin-lesson__preview" data-bind="if: $root.previewMode()">
+        <div id="Preview" data-bind="text: $root.previewData"></div>
+        <div id="PreviewHtml" data-bind="html: $root.previewData"></div>
+    </div>
+    <input type="button" class="mg-btn admin-lesson__submit-btn" data-bind="value: $root.lesson.id ? 'Сохранить урок' : 'Создать урок'" />
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       ko.applyBindings(getAdminLesson(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()}))), document.getElementById("AdminLesson"));
+    });
+  
+    getAdminLesson = function (data) {
+        ko.bindingHandlers.option = {
+            update: function (element, valueAccessor) {
+                var value = ko.utils.unwrapObservable(valueAccessor());
+                ko.selectExtensions.writeValue(element, value, true);
+            }
+        };
+
+        var model = {};
+        $("#MarkItUp").markItUp(mgMurkitupSettings);
+        model.converter = new Showdown.converter();
+        model.guitarTechniques = data.guitarTechniques;
+        model.lessons = data.lessons;
+        model.lesson = data.lesson ? data.lesson : {};
+        model.lesson.guitarTechniqueId = ko.observable(model.lesson.guitarTechniqueId ? model.lesson.guitarTechniqueId : undefined);
+        model.lesson.orderNumber = ko.observable(model.lesson.orderNumber ? model.lesson.orderNumber : undefined);
+        model.lesson.exerciseNumber = ko.observable(model.lesson.exerciseNumber ? model.lesson.exerciseNumber : undefined);
+        model.lesson.previousLessonId = ko.observable(model.lesson.previousLessonId ? model.lesson.previousLessonId : undefined);
+        model.lesson.nextLessonId = ko.observable(model.lesson.nextLessonId ? model.lesson.nextLessonId : undefined);
+        model.lesson.description = ko.observable(model.lesson.description ? model.lesson.description : undefined);
+        model.lesson.name = ko.observable(model.lesson.name ? model.lesson.name : undefined);
+        model.lesson.originalLessonUrl = ko.observable(model.lesson.originalLessonUrl ? model.lesson.originalLessonUrl : undefined);
+        model.lesson.text = ko.observable(model.lesson.text ? model.lesson.text : '');
+        model.previewData = ko.computed(function() {
+            return model.converter.makeHtml(model.lesson.text());
+        });
+        model.previewMode = ko.observable(false);
+
+        model.getLessonsByGuitarTechniqueId = function (guitarTechniqueId) {
+            return model.lessons.filter(function (lesson) {
+                return lesson.guitarTechniqueId === guitarTechniqueId;
+            }).sort(function (left, right) {
+                return left.orderNumber - right.orderNumber;
+            });
+        };
+        model.togglePreview = function() {
+            model.previewMode(!model.previewMode());
+        }
+
+        return model;
+    }
+</script>
+<style type="text/css">
+    #MarkItUp {
+        margin-top: 0;
+        color: black;
+    }
+    select {
+        color: black;
+        height: 40px;
+        width: 300px;
+        outline: none;
+    }
+    textarea {
+        color: black;
+    }
+</style>

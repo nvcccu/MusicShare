@@ -137,6 +137,7 @@
     <Compile Include="Models\Ask\QuestionListModel.cs" />
     <Compile Include="Models\Auth\EmailAuthModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\DerzkieSchi\AdminLessonModel.cs" />
     <Compile Include="Models\DerzkieSchi\NewProductsModel.cs" />
     <Compile Include="Models\DerzkieSchi\ProductsModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
@@ -203,6 +204,12 @@
     <Content Include="Content\Less\Const.min.css">
       <DependentUpon>Const.css</DependentUpon>
     </Content>
+    <Content Include="Content\Less\DerzkieSchi\AdminLesson.css">
+      <DependentUpon>AdminLesson.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\DerzkieSchi\AdminLesson.min.css">
+      <DependentUpon>AdminLesson.css</DependentUpon>
+    </Content>
     <Content Include="Content\Less\Designer\Designer.css.map">
       <DependentUpon>Designer.css</DependentUpon>
     </Content>
@@ -230,6 +237,10 @@
     <Content Include="Content\Less\Auth\AuthPopup.less" />
     <Content Include="Content\Less\Auth\AuthPopup.css.map">
       <DependentUpon>AuthPopup.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\DerzkieSchi\AdminLesson.less" />
+    <Content Include="Content\Less\DerzkieSchi\AdminLesson.css.map">
+      <DependentUpon>AdminLesson.css</DependentUpon>
     </Content>
     <None Include="Content\Less\Designer\Designer.less" />
     <Content Include="Content\Less\Designer\Designer.css">
@@ -303,6 +314,7 @@
     <Content Include="Content\Libraries\MarkItUp\images\bg-container.png" />
     <Content Include="Content\Libraries\MarkItUp\images\bg-editor.png" />
     <Content Include="Content\Libraries\MarkItUp\images\bold.png" />
+    <Content Include="Content\Libraries\MarkItUp\images\exercise.png" />
     <Content Include="Content\Libraries\MarkItUp\images\h1.png" />
     <Content Include="Content\Libraries\MarkItUp\images\h2.png" />
     <Content Include="Content\Libraries\MarkItUp\images\h3.png" />
@@ -326,7 +338,8 @@
     <Content Include="Content\Script\Designer\MenuAnimateHelper.js" />
     <Content Include="Content\Script\Designer\designer.js" />
     <Content Include="Content\Script\jquery.form.js" />
-    <Content Include="Content\Script\knockout-3.2.0.js" />
+    <Content Include="Content\Script\knockout-3.3.0.js" />
+    <Content Include="Content\Script\knockout-3.3.0.min.js" />
     <Content Include="Content\Script\knockout-sortable.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Script\jquery-1.10.2.js" />
@@ -407,6 +420,10 @@
     <Content Include="Content\Less\Lesson\Stat.less" />
     <Content Include="Content\Less\Lesson\Stat.css.map">
       <DependentUpon>Stat.css</DependentUpon>
+    </Content>
+    <Content Include="Views\DerzkieSchi\AdminLesson.cshtml" />
+    <Content Include="Content\Script\knockout-3.3.0.min.js.map">
+      <DependentUpon>knockout-3.3.0.min.js</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

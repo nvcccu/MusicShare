@@ -10,7 +10,7 @@
 // -------------------------------------------------------------------
 // Feel free to add more tags
 // -------------------------------------------------------------------
-mySettings = {
+mgMurkitupSettings = {
 	previewParserPath:	'',
 	onShiftEnter:		{keepDefault:false, openWith:'\n\n'},
 	markupSet: [
@@ -30,7 +30,9 @@ mySettings = {
 		}},
 		{separator:'---------------' },
 		{name:'Picture', key:'P', replaceWith:'![[![Alternative text]!]]([![Url:!:http://]!] "[![Title]!]")'},
-		{name:'Link', key:'L', openWith:'[', closeWith:']([![Url:!:http://]!] "[![Title]!]")', placeHolder:'Your text to link here...' }
+		{ name: 'Link', key: 'L', openWith: '[', closeWith: ']([![Url:!:http://]!] "[![Title]!]")', placeHolder: 'Your text to link here...' },
+        { separator: '---------------' },
+		{name:'Exercise', key:'E', openWith:'@@EXERCISE ', closeWith:'@@', placeHolder:'Exercise number' }
 	]
 }
 
