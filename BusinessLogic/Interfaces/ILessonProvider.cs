@@ -14,6 +14,7 @@ namespace BusinessLogic.Interfaces {
         List<GuitarTechniqueDto> GetAllGuitarTechniques();
         List<PlanDto> GetAllUsersPlans(int accountId);
         List<LessonDto> GetAllLessons();
+        ExerciseDto GetExercise(int id);
         List<ExerciseDto> GetAllExercises();
         List<ExerciseDto> GetExercisesByPlan(int planId);
         Dictionary<int, int> GetUsersExercisesStat(int accountId);

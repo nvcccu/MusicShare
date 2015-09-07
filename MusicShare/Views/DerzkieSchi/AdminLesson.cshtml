@@ -6,6 +6,14 @@
 }
 <div id="AdminLesson">
     <div class="admin-lesson__form">
+        <div class="admin-lesson__form-row mg-clearfix" style="background-color: red;">
+            <div class="admin-lesson__form-row_text-block">
+                <span class="admin-lesson__form-row_text">НЕ СТЫДНО ПОКАЗАТЬ ЛЮДЯМ</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <input type="checkbox" data-bind="checked: $root.lesson.isModerated" />
+            </div>
+        </div>
         <div class="admin-lesson__form-row mg-clearfix">
             <div class="admin-lesson__form-row_text-block">
                 <span class="admin-lesson__form-row_text">Гитарная техника</span>
@@ -115,6 +123,7 @@
         model.lessons = data.lessons;
         model.lesson = data.lesson ? data.lesson : {};
         model.lesson.id = ko.observable(model.lesson.id ? model.lesson.id : undefined);
+        model.lesson.isModerated = ko.observable(model.lesson.isModerated ? model.lesson.isModerated : false);
         model.lesson.guitarTechniqueId = ko.observable(model.lesson.guitarTechniqueId ? model.lesson.guitarTechniqueId : undefined);
         model.lesson.orderNumber = ko.observable(model.lesson.orderNumber ? model.lesson.orderNumber : undefined);
         model.lesson.exerciseNumber = ko.observable(model.lesson.exerciseNumber ? model.lesson.exerciseNumber : undefined);
@@ -155,7 +164,8 @@
                         description: model.lesson.description(),
                         name: model.lesson.name(),
                         originalLessonUrl: model.lesson.originalLessonUrl(),
-                        text: model.lesson.text()
+                        text: model.lesson.text(),
+                        isModerated: model.lesson.isModerated()
                     }
                 }),
                 success: function (result) {
@@ -181,7 +191,7 @@
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({
                     lesson: {
-                        id: model.lesson.id,
+                        id: model.lesson.id(),
                         guitarTechniqueId: model.lesson.guitarTechniqueId(),
                         orderNumber: model.lesson.orderNumber(),
                         exerciseNumber: model.lesson.exerciseNumber(),
@@ -190,7 +200,8 @@
                         description: model.lesson.description(),
                         name: model.lesson.name(),
                         originalLessonUrl: model.lesson.originalLessonUrl(),
-                        text: model.lesson.text()
+                        text: model.lesson.text(),
+                        isModerated: model.lesson.isModerated()
                     }
                 }),
                 success: function (result) {

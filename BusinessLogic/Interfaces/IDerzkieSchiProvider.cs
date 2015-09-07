@@ -8,5 +8,7 @@ namespace BusinessLogic.Interfaces {
         List<ProductDto> GetFilteredProducts(int productTypeId, string namePart, Dictionary<int, int> propertyValuePairs);
         bool UpdateLesson(LessonDto lesson);
         int CreateLesson(LessonDto lesson);
+        bool UpdateExercise(ExerciseDto exercise);
+        int CreateExercise(ExerciseDto exercise);
     }
 }

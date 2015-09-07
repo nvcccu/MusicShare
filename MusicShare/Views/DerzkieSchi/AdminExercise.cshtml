@@ -1,0 +1,123 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model MusicShareWeb.Models.DerzkieSchi.AdminExerciseModel
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+<div id="AdminExercise">
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ko.applyBindings(getAdminExercise(@Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented, new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()}))), document.getElementById("AdminExercise"));
+    });
+
+    getAdminExercise = function (data) {
+        var model = {};
+
+        model.exercise = data.exercise ? data.exercise : {};
+        model.exercise.id = ko.observable(model.lesson.id ? model.exercise.id : undefined);
+        model.exercise.lessonId = ko.observable(model.exercise.lessonId ? model.exercise.lessonId : undefined);
+        model.exercise.name = ko.observable(model.exercise.name ? model.exercise.name : undefined);
+        model.exercise.imageUrl = ko.observable(model.exercise.imageUrl ? model.exercise.imageUrl : undefined);
+        model.exercise.audioUrl = ko.observable(model.exercise.audioUrl ? model.exercise.audioUrl : undefined);
+        model.exercise.defaultSpeed = ko.observable(model.exercise.defaultSpeed ? model.exercise.defaultSpeed : undefined);
+        //        model.exercise.authorAccountId = ko.observable(model.exercise.authorAccountId ? model.exercise.authorAccountId : undefined);
+        //        model.exercise.isPublic = ko.observable(model.exercise.isPublic ? model.exercise.isPublic : undefined);
+
+        model.getLessonsByGuitarTechniqueId = function (guitarTechniqueId) {
+            return model.lessons.filter(function (lesson) {
+                return lesson.guitarTechniqueId === guitarTechniqueId;
+            }).sort(function (left, right) {
+                return left.orderNumber - right.orderNumber;
+            });
+        };
+        model.togglePreview = function () {
+            model.previewMode(!model.previewMode());
+        };
+        model.createExercise = function () {
+            $.ajax({
+                @*    url: '@Url.Action("CreateExercise")',*@
+                type: 'POST',
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    exercise: {
+                        lessonId: model.exercise.lessonId(),
+                        name: model.exercise.name(),
+                        imageUrl: model.exercise.imageUrl(),
+                        audioUrl: model.exercise.audioUrl(),
+                        defaultSpeed: model.exercise.defaultSpeed(),
+                        authorAccountId: 0,
+                        isPublic: true
+                    }
+                }),
+                success: function (result) {
+                    if (result.success === true) {
+                        window.location = result.redirectUrl;
+                    } else {
+                        alert('Ошибка');
+                        document.location.reload(true);
+                    }
+                },
+                error: function () {
+                    alert('Ошибка');
+                    document.location.reload(true);
+                }
+            });
+            return false;
+        };
+        model.updateLesson = function () {
+            $.ajax({
+                @*       url: '@Url.Action("UpdateExercise")',*@
+                type: 'POST',
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    exercise: {
+                        id: model.exercise.id(),
+                        lessonId: model.exercise.lessonId(),
+                        name: model.exercise.name(),
+                        imageUrl: model.exercise.imageUrl(),
+                        audioUrl: model.exercise.audioUrl(),
+                        defaultSpeed: model.exercise.defaultSpeed(),
+                        authorAccountId: 0,
+                        isPublic: true
+                    }
+                }),
+                success: function (result) {
+                    if (result.success === true) {
+                        alert('Сохранено');
+                    } else {
+                        alert('Ошибка');
+                        document.location.reload(true);
+                    }
+                },
+                error: function () {
+                    alert('Ошибка');
+                    document.location.reload(true);
+                }
+            });
+            return false;
+        };
+
+        return model;
+    }
+</script>
+<style type="text/css">
+    #MarkItUp {
+        margin-top: 0;
+        color: black;
+    }
+    select {
+        color: black;
+        height: 40px;
+        width: 300px;
+        outline: none;
+    }
+    textarea {
+        color: black;
+    }
+</style>

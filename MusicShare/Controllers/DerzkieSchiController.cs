@@ -48,5 +48,26 @@ namespace MusicShareWeb.Controllers {
                 }
             };
         }
+//        [HttpGet]
+//        public ActionResult Exercise(int? id) {
+//            return View("AdminExercise", id.HasValue ? new AdminExerciseModel(id.Value, BaseModel) : new AdminExerciseModel(BaseModel));
+//        }
+//        [HttpPost]
+//        public ActionResult CreateExercise(ExerciseDto exercise) {
+//            return new JsonResult {
+//                Data = new {
+//                    success = true,
+//                    redirectUrl = Url.Action("Exercise", "DerzkieSchi", new {id = new AdminExerciseModel().CreateExercise(exercise)})
+//                }
+//            };
+//        }
+//        [HttpPost]
+//        public JsonResult UpdateExercise(ExerciseDto exercise) {
+//            return new JsonResult {
+//                Data = new {
+//                    success = new AdminExerciseModel().UpdateExercise(exercise)
+//                }
+//            };
+//        }
     }
 }

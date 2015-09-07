@@ -97,13 +97,13 @@ namespace BusinessLogic.Providers {
                 .Update()
                 .Set(Lesson.Fields.GuitarTechniqueId, lesson.GuitarTechniqueId)
                 .Set(Lesson.Fields.OrderNumber, lesson.OrderNumber)
-                .Set(Lesson.Fields.ExerciseNumber, lesson.ExerciseNumber)
                 .Set(Lesson.Fields.PreviousLessonId, lesson.PreviousLessonId)
                 .Set(Lesson.Fields.NextLessonId, lesson.NextLessonId)
                 .Set(Lesson.Fields.Description, lesson.Description)
                 .Set(Lesson.Fields.Name, lesson.Name)
                 .Set(Lesson.Fields.Text, lesson.Text)
                 .Set(Lesson.Fields.OriginalLessonUrl, lesson.OriginalLessonUrl)
+                .Set(Lesson.Fields.IsModerated, lesson.IsModerated)
                 .Where(Lesson.Fields.Id, PredicateCondition.Equal, lesson.Id)
                 .ExecuteScalar();
             return true;
@@ -112,13 +112,38 @@ namespace BusinessLogic.Providers {
             return Convert.ToInt32(new Lesson {
                 GuitarTechniqueId = lesson.GuitarTechniqueId,
                 OrderNumber = lesson.OrderNumber,
-                ExerciseNumber = lesson.ExerciseNumber,
                 PreviousLessonId = lesson.PreviousLessonId,
                 NextLessonId = lesson.NextLessonId,
                 Description = lesson.Description,
                 Name = lesson.Name,
                 Text = lesson.Text,
                 OriginalLessonUrl = lesson.OriginalLessonUrl,
+                IsModerated = lesson.IsModerated
+            }.Insert());
+        }
+        public bool UpdateExercise(ExerciseDto exercise) {
+            new Exercise()
+                .Update()
+                .Set(Exercise.Fields.LessonId, exercise.LessonId)
+                .Set(Exercise.Fields.Name, exercise.Name)
+                .Set(Exercise.Fields.ImageUrl, exercise.ImageUrl)
+                .Set(Exercise.Fields.AudioUrl, exercise.AudioUrl)
+                .Set(Exercise.Fields.DefaultSpeed, exercise.DefaultSpeed)
+                .Set(Exercise.Fields.AuthorAccountId, exercise.AuthorAccountId)
+                .Set(Exercise.Fields.IsPublic, exercise.IsPublic)
+                .Where(Exercise.Fields.Id, PredicateCondition.Equal, exercise.Id)
+                .ExecuteScalar();
+            return true;
+        }
+        public int CreateExercise(ExerciseDto exercise) {
+            return Convert.ToInt32(new Exercise {
+                LessonId = exercise.LessonId,
+                Name = exercise.Name,
+                ImageUrl = exercise.ImageUrl,
+                AudioUrl = exercise.AudioUrl,
+                DefaultSpeed = exercise.DefaultSpeed,
+                AuthorAccountId = exercise.AuthorAccountId,
+                IsPublic = exercise.IsPublic
             }.Insert());
         }
     }

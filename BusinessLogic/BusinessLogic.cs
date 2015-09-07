@@ -107,6 +107,12 @@ namespace BusinessLogic {
         public int CreateLesson(LessonDto lesson) {
             return _derzkieSchiProvider.CreateLesson(lesson);
         }
+        public bool UpdateExercise(ExerciseDto exercise) {
+            return _derzkieSchiProvider.UpdateExercise(exercise);
+        }
+        public int CreateExercise(ExerciseDto exercise) {
+            return _derzkieSchiProvider.CreateExercise(exercise);
+        }
         public Dictionary<int, int> GetUsersLessonStat(int lessonId, int accountId) {
             return _lessonProvider.GetUsersLessonStat(lessonId, accountId);
         }
@@ -139,6 +145,9 @@ namespace BusinessLogic {
         }
         public List<LessonDto> GetAllLessons() {
             return _lessonProvider.GetAllLessons();
+        }
+        public ExerciseDto GetExercise(int id) {
+            return _lessonProvider.GetExercise(id);
         }
         public List<ExerciseDto> GetAllExercises() {
             return _lessonProvider.GetAllExercises();

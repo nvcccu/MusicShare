@@ -137,6 +137,7 @@
     <Compile Include="Models\Ask\QuestionListModel.cs" />
     <Compile Include="Models\Auth\EmailAuthModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\DerzkieSchi\AdminExerciseModel.cs" />
     <Compile Include="Models\DerzkieSchi\AdminLessonModel.cs" />
     <Compile Include="Models\DerzkieSchi\NewProductsModel.cs" />
     <Compile Include="Models\DerzkieSchi\ProductsModel.cs" />
@@ -430,6 +431,7 @@
     <Content Include="Content\Script\knockout-3.3.0.min.js.map">
       <DependentUpon>knockout-3.3.0.min.js</DependentUpon>
     </Content>
+    <Content Include="Views\DerzkieSchi\AdminExercise.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

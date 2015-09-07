@@ -275,13 +275,13 @@ CREATE TABLE Lesson (
   Id serial NOT NULL,
   GuitarTechniqueId int NOT NULL,
   OrderNumber int NOT NULL,
-  ExerciseNumber int NOT NULL,
   PreviousLessonId int,
   NextLessonId int,
   Description character varying(2048) NOT NULL,
   Name character varying(256) NOT NULL,
   Text text NOT NULL,
   OriginalLessonUrl character varying(1024) NOT NULL,
+  isModerated boolean NOT NULL DEFAULT FALSE,
   CONSTRAINT pk_Lesson PRIMARY KEY (Id)
 )
 WITH (

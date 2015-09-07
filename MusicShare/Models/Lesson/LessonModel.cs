@@ -20,8 +20,8 @@ namespace MusicShareWeb.Models.Lesson {
                 Plans = ServiceManager<IBusinessLogic>.Instance.Service.GetAllUsersPlans(CurrentUser.Id);
                 Speeds = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersLessonStat(lessonId, CurrentUser.Id);
             } else {
-                Speeds = new Dictionary<int, int>(Lesson.ExerciseNumber);
-                Exercises.ForEach(e => Speeds.Add(e.Id, 60));
+                Speeds = new Dictionary<int, int>(Exercises.Count);
+                Exercises.ForEach(e => Speeds.Add(e.Id, e.DefaultSpeed));
                 Plans = new List<PlanDto>();
             }
             IsMinimized = isMinimized;

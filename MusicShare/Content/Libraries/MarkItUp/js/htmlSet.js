@@ -33,6 +33,6 @@ mgMarkitupHtmlSettings = {
 		{name:'Picture', key:'P', replaceWith:'<img src="[![Source:!:http://]!]" alt="[![Alternative text]!]" />' },
 		{ name: 'Link', key: 'L', openWith: '<a href="[![Link:!:http://]!]"(!( title="[![Title]!]")!)>', closeWith: '</a>', placeHolder: 'Your text to link...' },
         { separator: '---------------' },
-		{name:'Exercise', key:'E', openWith:'@@EXERCISE ', closeWith:'@@', placeHolder:'Exercise number' }
+		{name:'Exercise', key:'E', openWith:'<p>@@EXERCISE ', closeWith:'@@</p>', placeHolder:'Exercise number' }
 	]
 }

@@ -97,6 +97,7 @@ namespace BusinessLogic.Providers {
                 .ToList();
             var lessons = new Lesson()
                 .Select()
+                .Where(Lesson.Fields.IsModerated, PredicateCondition.Equal, true)
                 .GetData()
                 .Select(gt => gt.ToDto())
                 .ToList();
@@ -172,6 +173,7 @@ namespace BusinessLogic.Providers {
         public List<LessonDto> GetAllLessons() {
             return new Lesson()
                 .Select()
+                .Where(Lesson.Fields.IsModerated, PredicateCondition.Equal, true)
                 .GetData()
                 .Select(gt => gt.ToDto())
                 .ToList();
@@ -182,6 +184,14 @@ namespace BusinessLogic.Providers {
                 .GetData()
                 .Select(gt => gt.ToDto())
                 .ToList();
+        }
+        public ExerciseDto GetExercise(int id) {
+            return new Exercise()
+                .Select()
+                .Where(Exercise.Fields.Id, PredicateCondition.Equal, id)
+                .GetData()
+                .Single()
+                .ToDto();
         }
         public List<ExerciseDto> GetExercisesByPlan(int planId) {
             var planExerciseIds = new Plan()
@@ -251,7 +261,7 @@ namespace BusinessLogic.Providers {
                 .ToList();
             return exercises.ToDictionary(e => e.Id, e => lessonStats.Select(ls => new ExerciseSpeedInDate {
                 Date = ls.Date,
-                Speed = ls.ExercisesSpeed.ContainsKey(e.Id) ? ls.ExercisesSpeed[e.Id] : 60
+                Speed = ls.ExercisesSpeed.ContainsKey(e.Id) ? ls.ExercisesSpeed[e.Id] : e.DefaultSpeed
             }).ToList());
         }
         public PlanDto GetPlan(int id) {
