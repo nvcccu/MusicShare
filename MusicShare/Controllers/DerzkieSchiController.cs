@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Core.TransportTypes;
 using MusicShareWeb.Models.DerzkieSchi;
 
 namespace MusicShareWeb.Controllers {
@@ -29,6 +30,23 @@ namespace MusicShareWeb.Controllers {
         [HttpGet]
         public ActionResult Lesson(int? id) {
             return View("AdminLesson", id.HasValue ? new AdminLessonModel(id.Value, BaseModel) : new AdminLessonModel(BaseModel));
+        }
+        [HttpPost]
+        public ActionResult CreateLesson(LessonDto lesson) {
+            return new JsonResult {
+                Data = new {
+                    success = true,
+                    redirectUrl = Url.Action("Lesson", "DerzkieSchi", new {id = new AdminLessonModel().CreateLesson(lesson)})
+                }
+            };
+        }
+        [HttpPost]
+        public JsonResult UpdateLesson(LessonDto lesson) {
+            return new JsonResult {
+                Data = new {
+                    success = new AdminLessonModel().UpdateLesson(lesson)
+                }
+            };
         }
     }
 }

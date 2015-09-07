@@ -85,11 +85,15 @@
     <textarea id="MarkItUp" data-bind="textInput: $root.lesson.text"></textarea>
     <input type="button" class="mg-btn" value="Предпросмотр" data-bind="click: $root.togglePreview"/>
     <div class="admin-lesson__preview" data-bind="if: $root.previewMode()">
-        <div id="Preview" data-bind="text: $root.previewData"></div>
-        <div id="PreviewHtml" data-bind="html: $root.previewData"></div>
+        <div id="Preview" data-bind="html: $root.previewData"></div>
     </div>
-    <input type="button" class="mg-btn admin-lesson__submit-btn" data-bind="value: $root.lesson.id ? 'Сохранить урок' : 'Создать урок'" />
+    <input type="button" class="mg-btn admin-lesson__submit-btn" data-bind="value: $root.lesson.id() ? 'Сохранить урок' : 'Создать урок', click: $root.lesson.id() ? $root.updateLesson : $root.createLesson"/>
+    <a class="mg-btn admin-lesson__goto-lesson-btn" data-bind="attr: { href: '@Url.Action("Index", "Lesson", new {id = ""})' + '/' + $root.lesson.id() }, visible: $root.lesson.id()">Перейти к уроку</a>
 </div>
+
+<script type="text/javascript" src="/Content/Libraries/MarkItUp/js/htmlSet.js"></script>
+<link rel="stylesheet" href="/Content/Libraries/MarkItUp/css/htmlStyle.css" type="text/css" />
+
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -105,11 +109,12 @@
         };
 
         var model = {};
-        $("#MarkItUp").markItUp(mgMurkitupSettings);
+        $("#MarkItUp").markItUp(mgMarkitupHtmlSettings);
         model.converter = new Showdown.converter();
         model.guitarTechniques = data.guitarTechniques;
         model.lessons = data.lessons;
         model.lesson = data.lesson ? data.lesson : {};
+        model.lesson.id = ko.observable(model.lesson.id ? model.lesson.id : undefined);
         model.lesson.guitarTechniqueId = ko.observable(model.lesson.guitarTechniqueId ? model.lesson.guitarTechniqueId : undefined);
         model.lesson.orderNumber = ko.observable(model.lesson.orderNumber ? model.lesson.orderNumber : undefined);
         model.lesson.exerciseNumber = ko.observable(model.lesson.exerciseNumber ? model.lesson.exerciseNumber : undefined);
@@ -133,7 +138,76 @@
         };
         model.togglePreview = function() {
             model.previewMode(!model.previewMode());
-        }
+        };
+        model.createLesson = function () {
+            $.ajax({
+                url: '@Url.Action("CreateLesson")',
+                type: 'POST',
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    lesson: {
+                        guitarTechniqueId: model.lesson.guitarTechniqueId(),
+                        orderNumber: model.lesson.orderNumber(),
+                        exerciseNumber: model.lesson.exerciseNumber(),
+                        previousLessonId: model.lesson.previousLessonId() !== 0 ? model.lesson.previousLessonId() : null,
+                        nextLessonId: model.lesson.nextLessonId() !== 0 ? model.lesson.nextLessonId() : null,
+                        description: model.lesson.description(),
+                        name: model.lesson.name(),
+                        originalLessonUrl: model.lesson.originalLessonUrl(),
+                        text: model.lesson.text()
+                    }
+                }),
+                success: function (result) {
+                    if (result.success === true) {
+                        window.location = result.redirectUrl;
+                    } else {
+                        alert('Ошибка');
+                        document.location.reload(true);
+                    }
+                },
+                error: function () {
+                    alert('Ошибка');
+                    document.location.reload(true);
+                }
+            });
+            return false;
+        };
+        model.updateLesson = function() {
+            $.ajax({
+                url: '@Url.Action("UpdateLesson")',
+                type: 'POST',
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    lesson: {
+                        id: model.lesson.id,
+                        guitarTechniqueId: model.lesson.guitarTechniqueId(),
+                        orderNumber: model.lesson.orderNumber(),
+                        exerciseNumber: model.lesson.exerciseNumber(),
+                        previousLessonId: model.lesson.previousLessonId() !== 0 ? model.lesson.previousLessonId() : null,
+                        nextLessonId: model.lesson.nextLessonId() !== 0 ? model.lesson.nextLessonId() : null,
+                        description: model.lesson.description(),
+                        name: model.lesson.name(),
+                        originalLessonUrl: model.lesson.originalLessonUrl(),
+                        text: model.lesson.text()
+                    }
+                }),
+                success: function (result) {
+                    if (result.success === true) {
+                        alert('Сохранено');
+                    } else {
+                        alert('Ошибка');
+                        document.location.reload(true);
+                    }
+                },
+                error: function () {
+                    alert('Ошибка');
+                    document.location.reload(true);
+                }
+            });
+            return false;
+        };
 
         return model;
     }

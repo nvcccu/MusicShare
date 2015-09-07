@@ -92,5 +92,34 @@ namespace BusinessLogic.Providers {
             }
             return ret;    
         }
+        public bool UpdateLesson(LessonDto lesson) {
+            new Lesson()
+                .Update()
+                .Set(Lesson.Fields.GuitarTechniqueId, lesson.GuitarTechniqueId)
+                .Set(Lesson.Fields.OrderNumber, lesson.OrderNumber)
+                .Set(Lesson.Fields.ExerciseNumber, lesson.ExerciseNumber)
+                .Set(Lesson.Fields.PreviousLessonId, lesson.PreviousLessonId)
+                .Set(Lesson.Fields.NextLessonId, lesson.NextLessonId)
+                .Set(Lesson.Fields.Description, lesson.Description)
+                .Set(Lesson.Fields.Name, lesson.Name)
+                .Set(Lesson.Fields.Text, lesson.Text)
+                .Set(Lesson.Fields.OriginalLessonUrl, lesson.OriginalLessonUrl)
+                .Where(Lesson.Fields.Id, PredicateCondition.Equal, lesson.Id)
+                .ExecuteScalar();
+            return true;
+        }
+        public int CreateLesson(LessonDto lesson) {
+            return Convert.ToInt32(new Lesson {
+                GuitarTechniqueId = lesson.GuitarTechniqueId,
+                OrderNumber = lesson.OrderNumber,
+                ExerciseNumber = lesson.ExerciseNumber,
+                PreviousLessonId = lesson.PreviousLessonId,
+                NextLessonId = lesson.NextLessonId,
+                Description = lesson.Description,
+                Name = lesson.Name,
+                Text = lesson.Text,
+                OriginalLessonUrl = lesson.OriginalLessonUrl,
+            }.Insert());
+        }
     }
 }

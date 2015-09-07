@@ -101,6 +101,12 @@ namespace BusinessLogic {
         public List<ProductDto> GetFilteredProducts(int productTypeId, string namePart, Dictionary<int, int> propertyValuePairs) {
             return _derzkieSchiProvider.GetFilteredProducts(productTypeId, namePart, propertyValuePairs);
         }
+        public bool UpdateLesson(LessonDto lesson) {
+            return _derzkieSchiProvider.UpdateLesson(lesson);
+        }
+        public int CreateLesson(LessonDto lesson) {
+            return _derzkieSchiProvider.CreateLesson(lesson);
+        }
         public Dictionary<int, int> GetUsersLessonStat(int lessonId, int accountId) {
             return _lessonProvider.GetUsersLessonStat(lessonId, accountId);
         }

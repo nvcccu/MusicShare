@@ -408,10 +408,10 @@ namespace DAO {
             }
             var set = "SET ";
             var firstSet = _filterSet.First();
-            set += firstSet.Field + " = '" + firstSet.Value + "'";
+            set += firstSet.Field + " = " + (firstSet.Value != null ? ("'" + firstSet.Value + "'") : "null");
             for (var i = 1; i < _filterSet.Count; i++) {
                 var curSet = _filterSet[i];
-                set += ", " + curSet.Field + " = '" + curSet.Value + "'";
+                set += ", " + curSet.Field + " = " + (curSet.Value != null ? ("'" + curSet.Value + "'") : "null");
             }
             _query += set;
             _filterSet = new List<FilterSet>();

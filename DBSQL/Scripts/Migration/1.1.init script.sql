@@ -281,7 +281,7 @@ CREATE TABLE Lesson (
   Description character varying(2048) NOT NULL,
   Name character varying(256) NOT NULL,
   Text text NOT NULL,
-  OriginalTextUrl character varying(1024) NOT NULL,
+  OriginalLessonUrl character varying(1024) NOT NULL,
   CONSTRAINT pk_Lesson PRIMARY KEY (Id)
 )
 WITH (
