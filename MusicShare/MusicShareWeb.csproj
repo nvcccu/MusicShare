@@ -432,6 +432,7 @@
       <DependentUpon>knockout-3.3.0.min.js</DependentUpon>
     </Content>
     <Content Include="Views\DerzkieSchi\AdminExercise.cshtml" />
+    <Content Include="Views\DerzkieSchi\NotEnoughDerzkiy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

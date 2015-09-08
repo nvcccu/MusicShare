@@ -113,6 +113,9 @@ namespace BusinessLogic {
         public int CreateExercise(ExerciseDto exercise) {
             return _derzkieSchiProvider.CreateExercise(exercise);
         }
+        public bool IsDerzkiy(int accountId) {
+            return _derzkieSchiProvider.IsDerzkiy(accountId);
+        }
         public Dictionary<int, int> GetUsersLessonStat(int lessonId, int accountId) {
             return _lessonProvider.GetUsersLessonStat(lessonId, accountId);
         }

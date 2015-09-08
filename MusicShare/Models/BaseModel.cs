@@ -1,4 +1,6 @@
-﻿using MusicShareWeb.Models.User;
+﻿using BusinessLogic.Interfaces;
+using CommonUtils.ServiceManager;
+using MusicShareWeb.Models.User;
 
 namespace MusicShareWeb.Models {
     public class BaseModel {
@@ -9,6 +11,9 @@ namespace MusicShareWeb.Models {
         }
         protected BaseModel(BaseModel baseModel) {
             CurrentUser = baseModel.CurrentUser;
+        }
+        public bool IsDerzkiy(int accountId) {
+             return ServiceManager<IBusinessLogic>.Instance.Service.IsDerzkiy(accountId);
         }
     }
 }

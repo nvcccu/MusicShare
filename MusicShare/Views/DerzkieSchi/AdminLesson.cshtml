@@ -32,14 +32,6 @@
         </div>
         <div class="admin-lesson__form-row mg-clearfix">
             <div class="admin-lesson__form-row_text-block">
-                <span class="admin-lesson__form-row_text">Число упражнений в уроке</span>
-            </div>
-            <div class="admin-lesson__form-row_input">
-                <input type="text" class="mg-input-text admin-lesson__form-row_input" data-bind="value: $root.lesson.exerciseNumber" placeholder="Число упражнений в уроке"/>
-            </div>
-        </div>
-        <div class="admin-lesson__form-row mg-clearfix">
-            <div class="admin-lesson__form-row_text-block">
                 <span class="admin-lesson__form-row_text">Предыдущий урок</span>
             </div>
             <div class="admin-lesson__form-row_input">
@@ -126,7 +118,6 @@
         model.lesson.isModerated = ko.observable(model.lesson.isModerated ? model.lesson.isModerated : false);
         model.lesson.guitarTechniqueId = ko.observable(model.lesson.guitarTechniqueId ? model.lesson.guitarTechniqueId : undefined);
         model.lesson.orderNumber = ko.observable(model.lesson.orderNumber ? model.lesson.orderNumber : undefined);
-        model.lesson.exerciseNumber = ko.observable(model.lesson.exerciseNumber ? model.lesson.exerciseNumber : undefined);
         model.lesson.previousLessonId = ko.observable(model.lesson.previousLessonId ? model.lesson.previousLessonId : undefined);
         model.lesson.nextLessonId = ko.observable(model.lesson.nextLessonId ? model.lesson.nextLessonId : undefined);
         model.lesson.description = ko.observable(model.lesson.description ? model.lesson.description : undefined);
@@ -158,7 +149,6 @@
                     lesson: {
                         guitarTechniqueId: model.lesson.guitarTechniqueId(),
                         orderNumber: model.lesson.orderNumber(),
-                        exerciseNumber: model.lesson.exerciseNumber(),
                         previousLessonId: model.lesson.previousLessonId() !== 0 ? model.lesson.previousLessonId() : null,
                         nextLessonId: model.lesson.nextLessonId() !== 0 ? model.lesson.nextLessonId() : null,
                         description: model.lesson.description(),
@@ -194,7 +184,6 @@
                         id: model.lesson.id(),
                         guitarTechniqueId: model.lesson.guitarTechniqueId(),
                         orderNumber: model.lesson.orderNumber(),
-                        exerciseNumber: model.lesson.exerciseNumber(),
                         previousLessonId: model.lesson.previousLessonId() !== 0 ? model.lesson.previousLessonId() : null,
                         nextLessonId: model.lesson.nextLessonId() !== 0 ? model.lesson.nextLessonId() : null,
                         description: model.lesson.description(),

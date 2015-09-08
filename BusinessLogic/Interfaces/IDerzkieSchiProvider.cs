@@ -10,5 +10,6 @@ namespace BusinessLogic.Interfaces {
         int CreateLesson(LessonDto lesson);
         bool UpdateExercise(ExerciseDto exercise);
         int CreateExercise(ExerciseDto exercise);
+        bool IsDerzkiy(int accountId);
     }
 }

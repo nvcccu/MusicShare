@@ -334,3 +334,13 @@ WITH (
 );
 ALTER TABLE StatPreset
   OWNER TO postgres;
+
+CREATE TABLE DerzkiyAccount (
+  Id serial NOT NULL,
+  CONSTRAINT pk_DerzkiyAccount PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE DerzkiyAccount
+  OWNER TO postgres;

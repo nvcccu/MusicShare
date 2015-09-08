@@ -146,5 +146,12 @@ namespace BusinessLogic.Providers {
                 IsPublic = exercise.IsPublic
             }.Insert());
         }
+        public bool IsDerzkiy(int accountId) {
+            return new DerzkiyAccount()
+                .Select()
+                .Where(DerzkiyAccount.Fields.Id, PredicateCondition.Equal, accountId)
+                .GetData()
+                .Any();
+        }
     }
 }
