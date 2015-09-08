@@ -170,10 +170,17 @@ namespace BusinessLogic.Providers {
                 .Select(p => p.ToDto())
                 .ToList();
         }
-        public List<LessonDto> GetAllLessons() {
+        public List<LessonDto> GetAllModeratedLessons() {
             return new Lesson()
                 .Select()
                 .Where(Lesson.Fields.IsModerated, PredicateCondition.Equal, true)
+                .GetData()
+                .Select(gt => gt.ToDto())
+                .ToList();
+        }
+        public List<LessonDto> GetAllLessons() {
+            return new Lesson()
+                .Select()
                 .GetData()
                 .Select(gt => gt.ToDto())
                 .ToList();

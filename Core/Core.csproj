@@ -56,6 +56,7 @@
     <Compile Include="TransportTypes\GuitarTechniqueDto.cs" />
     <Compile Include="TransportTypes\ExerciseDto.cs" />
     <Compile Include="TransportTypes\DerzkiyAccountDto.cs" />
+    <Compile Include="TransportTypes\LessonHistoryDto.cs" />
     <Compile Include="TransportTypes\StatPresetDto.cs" />
     <Compile Include="TransportTypes\PlanDto.cs" />
     <Compile Include="TransportTypes\LessonStatDto.cs" />

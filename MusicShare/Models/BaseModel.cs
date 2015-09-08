@@ -12,6 +12,7 @@ namespace MusicShareWeb.Models {
         protected BaseModel(BaseModel baseModel) {
             CurrentUser = baseModel.CurrentUser;
         }
+        protected BaseModel() { }
         public bool IsDerzkiy(int accountId) {
              return ServiceManager<IBusinessLogic>.Instance.Service.IsDerzkiy(accountId);
         }

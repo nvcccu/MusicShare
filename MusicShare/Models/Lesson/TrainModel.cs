@@ -17,7 +17,7 @@ namespace MusicShareWeb.Models.Lesson {
         public TrainModel(BaseModel baseModel, int planId) : base(baseModel) {
             Plan = ServiceManager<IBusinessLogic>.Instance.Service.GetPlan(planId);
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
-            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
+            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllModeratedLessons();
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetExercisesByPlan(planId);
             if(CurrentUser != null) {
                 var exerciseIds = Exercises.Select(e => e.Id).ToList();

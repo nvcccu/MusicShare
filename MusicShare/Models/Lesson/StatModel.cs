@@ -16,7 +16,7 @@ namespace MusicShareWeb.Models.Lesson {
 
         public StatModel(BaseModel baseModel) : base(baseModel) {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
-            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
+            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllModeratedLessons();
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetAllExercises();
             if(CurrentUser != null) {
                 ExercisesStats = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersExercisesTotalStat(CurrentUser.Id);

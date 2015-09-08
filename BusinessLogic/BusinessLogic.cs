@@ -101,11 +101,11 @@ namespace BusinessLogic {
         public List<ProductDto> GetFilteredProducts(int productTypeId, string namePart, Dictionary<int, int> propertyValuePairs) {
             return _derzkieSchiProvider.GetFilteredProducts(productTypeId, namePart, propertyValuePairs);
         }
-        public bool UpdateLesson(LessonDto lesson) {
-            return _derzkieSchiProvider.UpdateLesson(lesson);
+        public bool UpdateLesson(LessonDto lesson, int redactorAccountId, string comment) {
+            return _derzkieSchiProvider.UpdateLesson(lesson, redactorAccountId, comment);
         }
-        public int CreateLesson(LessonDto lesson) {
-            return _derzkieSchiProvider.CreateLesson(lesson);
+        public int CreateLesson(LessonDto lesson, int redactorAccountId, string comment) {
+            return _derzkieSchiProvider.CreateLesson(lesson, redactorAccountId, comment);
         }
         public bool UpdateExercise(ExerciseDto exercise) {
             return _derzkieSchiProvider.UpdateExercise(exercise);
@@ -115,6 +115,9 @@ namespace BusinessLogic {
         }
         public bool IsDerzkiy(int accountId) {
             return _derzkieSchiProvider.IsDerzkiy(accountId);
+        }
+        public List<LessonHistoryDto> GetAllLessonHistory() {
+            return _derzkieSchiProvider.GetAllLessonHistory();
         }
         public Dictionary<int, int> GetUsersLessonStat(int lessonId, int accountId) {
             return _lessonProvider.GetUsersLessonStat(lessonId, accountId);
@@ -145,6 +148,9 @@ namespace BusinessLogic {
         }
         public List<GuitarTechniqueDto> GetAllGuitarTechniques() {
             return _lessonProvider.GetAllGuitarTechniques();
+        }
+        public List<LessonDto> GetAllModeratedLessons() {
+            return _lessonProvider.GetAllModeratedLessons();
         }
         public List<LessonDto> GetAllLessons() {
             return _lessonProvider.GetAllLessons();

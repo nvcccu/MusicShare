@@ -13,19 +13,19 @@ namespace MusicShareWeb.Models.DerzkieSchi {
         public AdminLessonModel() : base((Account)null) { }
         public AdminLessonModel(BaseModel baseModel) : base(baseModel) {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
-            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
+            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllModeratedLessons();
         }
         public AdminLessonModel(int lessonId, BaseModel baseModel) : base(baseModel) {
             Lesson = ServiceManager<IBusinessLogic>.Instance.Service.GetLesson(lessonId);
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
-            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
+            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllModeratedLessons();
         }
 
-        public bool UpdateLesson(LessonDto lesson) {
-            return ServiceManager<IBusinessLogic>.Instance.Service.UpdateLesson(lesson);
+        public bool UpdateLesson(LessonDto lesson, int redactorAccountId, string comment) {
+            return ServiceManager<IBusinessLogic>.Instance.Service.UpdateLesson(lesson, redactorAccountId, comment);
         }
-        public int CreateLesson(LessonDto lesson) {
-            return ServiceManager<IBusinessLogic>.Instance.Service.CreateLesson(lesson);
+        public int CreateLesson(LessonDto lesson, int redactorAccountId, string comment) {
+            return ServiceManager<IBusinessLogic>.Instance.Service.CreateLesson(lesson, redactorAccountId, comment);
         }
     }
 }

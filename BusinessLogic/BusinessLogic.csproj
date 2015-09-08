@@ -45,6 +45,7 @@
     <Compile Include="DaoEntities\Answer.cs" />
     <Compile Include="DaoEntities\Exercise.cs" />
     <Compile Include="DaoEntities\DerzkiyAccount.cs" />
+    <Compile Include="DaoEntities\LessonHistory.cs" />
     <Compile Include="DaoEntities\StatPreset.cs" />
     <Compile Include="DaoEntities\Plan.cs" />
     <Compile Include="DaoEntities\Lesson.cs" />

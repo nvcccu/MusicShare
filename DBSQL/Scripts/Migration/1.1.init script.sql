@@ -344,3 +344,18 @@ WITH (
 );
 ALTER TABLE DerzkiyAccount
   OWNER TO postgres;
+
+CREATE TABLE LessonHistory (
+  Id serial NOT NULL,
+  AccountId int NOT NULL,
+  LessonId int NOT NULL,
+  Text text NOT NULL,
+  DateCreated timestamp without time zone NOT NULL,
+  Comment character varying(2048) NOT NULL,
+  CONSTRAINT pk_LessonHistory PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE LessonHistory
+  OWNER TO postgres;

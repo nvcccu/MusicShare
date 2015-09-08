@@ -7,14 +7,14 @@ namespace MusicShareWeb.Controllers {
         [HttpGet]
         public ActionResult AddProduct() {
             if(CurrentUser == null || !BaseModel.IsDerzkiy(CurrentUser.Id)) {
-                return View("NotEnoughDerzkiy", new ProductsModel(BaseModel));
+                return View("NotEnoughDerzkiy", BaseModel);
             }
             return View("AddProduct", new ProductsModel(BaseModel));
         }
         [HttpGet]
         public ActionResult ChangeProduct(int? id) {
             if(CurrentUser == null || !BaseModel.IsDerzkiy(CurrentUser.Id)) {
-                return View("NotEnoughDerzkiy", new ProductsModel(BaseModel));
+                return View("NotEnoughDerzkiy", BaseModel);
             }
             return id.HasValue 
                 ? View("ChangeProduct", new ProductsModel(BaseModel))
@@ -34,26 +34,33 @@ namespace MusicShareWeb.Controllers {
             return null;
         }
         [HttpGet]
+        public ActionResult LessonOverview() {
+            if(CurrentUser == null || !BaseModel.IsDerzkiy(CurrentUser.Id)) {
+                return View("NotEnoughDerzkiy", BaseModel);
+            }
+            return View("LessonOverview", new LessonOverviewModel(BaseModel));
+        }
+        [HttpGet]
         public ActionResult Lesson(int? id) {
             if(CurrentUser == null || !BaseModel.IsDerzkiy(CurrentUser.Id)) {
-                return View("NotEnoughDerzkiy", new ProductsModel(BaseModel));
+                return View("NotEnoughDerzkiy", BaseModel);
             }
             return View("AdminLesson", id.HasValue ? new AdminLessonModel(id.Value, BaseModel) : new AdminLessonModel(BaseModel));
         }
         [HttpPost]
-        public ActionResult CreateLesson(LessonDto lesson) {
+        public ActionResult CreateLesson(LessonDto lesson, string comment) {
             return new JsonResult {
                 Data = new {
                     success = true,
-                    redirectUrl = Url.Action("Lesson", "DerzkieSchi", new {id = new AdminLessonModel().CreateLesson(lesson)})
+                    redirectUrl = Url.Action("Lesson", "DerzkieSchi", new {id = new AdminLessonModel().CreateLesson(lesson, CurrentUser.Id, comment)})
                 }
             };
         }
         [HttpPost]
-        public JsonResult UpdateLesson(LessonDto lesson) {
+        public JsonResult UpdateLesson(LessonDto lesson, string  comment) {
             return new JsonResult {
                 Data = new {
-                    success = new AdminLessonModel().UpdateLesson(lesson)
+                    success = new AdminLessonModel().UpdateLesson(lesson, CurrentUser.Id, comment)
                 }
             };
         }

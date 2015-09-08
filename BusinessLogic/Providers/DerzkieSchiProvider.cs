@@ -92,34 +92,46 @@ namespace BusinessLogic.Providers {
             }
             return ret;    
         }
-        public bool UpdateLesson(LessonDto lesson) {
+        private void CreateLessonHistory(int lessonId, string lessonText, int redactorAccountId, string comment) {
+            new LessonHistory {
+                AccountId = redactorAccountId,
+                Comment = comment,
+                DateCreated = DateTime.Now,
+                LessonId = lessonId,
+                Text = lessonText
+            }.Insert();
+        }
+        public bool UpdateLesson(LessonDto lessonDto, int redactorAccountId, string comment) {
+            CreateLessonHistory(lessonDto.Id, lessonDto.Text, redactorAccountId, comment);
             new Lesson()
                 .Update()
-                .Set(Lesson.Fields.GuitarTechniqueId, lesson.GuitarTechniqueId)
-                .Set(Lesson.Fields.OrderNumber, lesson.OrderNumber)
-                .Set(Lesson.Fields.PreviousLessonId, lesson.PreviousLessonId)
-                .Set(Lesson.Fields.NextLessonId, lesson.NextLessonId)
-                .Set(Lesson.Fields.Description, lesson.Description)
-                .Set(Lesson.Fields.Name, lesson.Name)
-                .Set(Lesson.Fields.Text, lesson.Text)
-                .Set(Lesson.Fields.OriginalLessonUrl, lesson.OriginalLessonUrl)
-                .Set(Lesson.Fields.IsModerated, lesson.IsModerated)
-                .Where(Lesson.Fields.Id, PredicateCondition.Equal, lesson.Id)
+                .Set(Lesson.Fields.GuitarTechniqueId, lessonDto.GuitarTechniqueId)
+                .Set(Lesson.Fields.OrderNumber, lessonDto.OrderNumber)
+                .Set(Lesson.Fields.PreviousLessonId, lessonDto.PreviousLessonId)
+                .Set(Lesson.Fields.NextLessonId, lessonDto.NextLessonId)
+                .Set(Lesson.Fields.Description, lessonDto.Description)
+                .Set(Lesson.Fields.Name, lessonDto.Name)
+                .Set(Lesson.Fields.Text, lessonDto.Text)
+                .Set(Lesson.Fields.OriginalLessonUrl, lessonDto.OriginalLessonUrl)
+                .Set(Lesson.Fields.IsModerated, lessonDto.IsModerated)
+                .Where(Lesson.Fields.Id, PredicateCondition.Equal, lessonDto.Id)
                 .ExecuteScalar();
             return true;
         }
-        public int CreateLesson(LessonDto lesson) {
-            return Convert.ToInt32(new Lesson {
-                GuitarTechniqueId = lesson.GuitarTechniqueId,
-                OrderNumber = lesson.OrderNumber,
-                PreviousLessonId = lesson.PreviousLessonId,
-                NextLessonId = lesson.NextLessonId,
-                Description = lesson.Description,
-                Name = lesson.Name,
-                Text = lesson.Text,
-                OriginalLessonUrl = lesson.OriginalLessonUrl,
-                IsModerated = lesson.IsModerated
+        public int CreateLesson(LessonDto lessonDto, int redactorAccountId, string comment) {
+            var lessonId = Convert.ToInt32(new Lesson {
+                GuitarTechniqueId = lessonDto.GuitarTechniqueId,
+                OrderNumber = lessonDto.OrderNumber,
+                PreviousLessonId = lessonDto.PreviousLessonId,
+                NextLessonId = lessonDto.NextLessonId,
+                Description = lessonDto.Description,
+                Name = lessonDto.Name,
+                Text = lessonDto.Text,
+                OriginalLessonUrl = lessonDto.OriginalLessonUrl,
+                IsModerated = lessonDto.IsModerated
             }.Insert());
+            CreateLessonHistory(lessonId, lessonDto.Text, redactorAccountId, comment);
+            return lessonId;
         }
         public bool UpdateExercise(ExerciseDto exercise) {
             new Exercise()
@@ -152,6 +164,17 @@ namespace BusinessLogic.Providers {
                 .Where(DerzkiyAccount.Fields.Id, PredicateCondition.Equal, accountId)
                 .GetData()
                 .Any();
+        }
+        public List<LessonHistoryDto> GetAllLessonHistory() {
+            var lessonsHistory = new LessonHistory()
+                .Select()
+                .GetData()
+                .Select(lh => lh.ToDto())
+                .ToList();
+            return
+                lessonsHistory.GroupBy(lhs => lhs.LessonId)
+                    .Select(lhs => lhs.OrderByDescending(lh => lh.DateCreated).First())
+                    .ToList();
         }
     }
 }

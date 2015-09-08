@@ -79,6 +79,14 @@
                 <input type="text" class="mg-input-text admin-lesson__form-row_input" data-bind="value: $root.lesson.originalLessonUrl" placeholder="Ссылка на оригинал на allfrets.ru"/>
             </div>
         </div>
+        <div class="admin-lesson__form-row mg-clearfix">
+            <div class="admin-lesson__form-row_text-block">
+                <span class="admin-lesson__form-row_text">Комментарий редактора</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <input type="text" class="mg-input-text admin-lesson__form-row_input" data-bind="value: $root.lessonHistory.comment" placeholder="Комментарий редактора" />
+            </div>
+        </div>
     </div>
     <br>
     <div>Текст урока:</div>
@@ -124,6 +132,8 @@
         model.lesson.name = ko.observable(model.lesson.name ? model.lesson.name : undefined);
         model.lesson.originalLessonUrl = ko.observable(model.lesson.originalLessonUrl ? model.lesson.originalLessonUrl : undefined);
         model.lesson.text = ko.observable(model.lesson.text ? model.lesson.text : '');
+        model.lessonHistory = {};
+        model.lessonHistory.comment = ko.observable(undefined);
         model.previewData = ko.computed(function() {
             return model.converter.makeHtml(model.lesson.text());
         });
@@ -156,7 +166,8 @@
                         originalLessonUrl: model.lesson.originalLessonUrl(),
                         text: model.lesson.text(),
                         isModerated: model.lesson.isModerated()
-                    }
+                    },
+                    comment: model.lessonHistory.comment()
                 }),
                 success: function (result) {
                     if (result.success === true) {
@@ -191,7 +202,8 @@
                         originalLessonUrl: model.lesson.originalLessonUrl(),
                         text: model.lesson.text(),
                         isModerated: model.lesson.isModerated()
-                    }
+                    },
+                    comment: model.lessonHistory.comment()
                 }),
                 success: function (result) {
                     if (result.success === true) {

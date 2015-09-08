@@ -1,0 +1,42 @@
+﻿@model MusicShareWeb.Models.DerzkieSchi.LessonOverviewModel
+@{
+    Layout = "../Shared/Layout.cshtml";
+}
+
+<div id="LessonOverview">
+    @foreach (var lesson in Model.Lessons) {
+        <div class="lesson-overview__row mg-clearfix">
+            <div class="lesson-overview__row-column">
+                <a href="@Url.Action("Lesson", new {id = lesson.Id})">@lesson.Name</a>
+            </div>
+            <div class="lesson-overview__row-column">
+                <div>Опубликовано</div>
+                <div>@(lesson.IsModerated ? "Да" : "Нет")</div>
+            </div>
+            @{ var lessonHistory = Model.LessonHistory.FirstOrDefault(lh => lh.LessonId == lesson.Id);}
+            @if (lessonHistory != null) {
+                <div class="lesson-overview__row-column">
+                    <div>Дата последнего изменения</div>
+                    <div>@lessonHistory.DateCreated</div>
+                </div>
+                <div class="lesson-overview__row-column">
+                    <div>Комментарий</div>
+                    <div>@lessonHistory.Comment</div>
+                </div>
+            }
+        </div>
+    }
+    <style type="text/css">
+        .lesson-overview__row {
+            height: 40px;
+            margin-top: 15px;
+            border: 1px solid black;
+        }
+        .lesson-overview__row-column {
+            float: left;
+            margin-left: 15px;
+            border-left: 1px solid black;
+            height: 100%;
+        }
+    </style>
+</div>

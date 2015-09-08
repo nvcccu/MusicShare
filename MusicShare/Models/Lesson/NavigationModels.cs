@@ -11,7 +11,7 @@ namespace MusicShareWeb.Models.Lesson {
        
         public LessonNavigationModel(LessonDto currentLesson = null) {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
-            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
+            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllModeratedLessons();
             CurrentLesson = currentLesson;
         }
     }

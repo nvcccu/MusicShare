@@ -11,7 +11,7 @@ namespace MusicShareWeb.Models.Lesson {
        
         public LessonListModel(BaseModel baseModel) : base(baseModel) {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
-            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
+            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllModeratedLessons();
             Plans = CurrentUser != null ? ServiceManager<IBusinessLogic>.Instance.Service.GetAllUsersPlans(CurrentUser.Id) : new List<PlanDto>();
         }
     }

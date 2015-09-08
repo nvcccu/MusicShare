@@ -13,7 +13,7 @@ namespace MusicShareWeb.Models.Lesson {
 
         public PlanModel(BaseModel baseModel) : base(baseModel) {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
-            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
+            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllModeratedLessons();
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetAllExercises();
             if(CurrentUser != null) {
                 Speeds = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersExercisesStat(CurrentUser.Id);
@@ -24,7 +24,7 @@ namespace MusicShareWeb.Models.Lesson {
 
         public PlanModel(BaseModel baseModel, int planId) : base(baseModel) {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
-            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllLessons();
+            Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllModeratedLessons();
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetAllExercises();
             if(CurrentUser != null) {
                 Speeds = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersExercisesStat(CurrentUser.Id);

@@ -139,6 +139,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\DerzkieSchi\AdminExerciseModel.cs" />
     <Compile Include="Models\DerzkieSchi\AdminLessonModel.cs" />
+    <Compile Include="Models\DerzkieSchi\LessonOverviewModel.cs" />
     <Compile Include="Models\DerzkieSchi\NewProductsModel.cs" />
     <Compile Include="Models\DerzkieSchi\ProductsModel.cs" />
     <Compile Include="Models\Designer\DesignerModel.cs" />
@@ -433,6 +434,7 @@
     </Content>
     <Content Include="Views\DerzkieSchi\AdminExercise.cshtml" />
     <Content Include="Views\DerzkieSchi\NotEnoughDerzkiy.cshtml" />
+    <Content Include="Views\DerzkieSchi\LessonOverview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
