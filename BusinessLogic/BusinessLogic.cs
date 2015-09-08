@@ -128,8 +128,11 @@ namespace BusinessLogic {
         public Dictionary<GuitarTechniqueDto, List<LessonDto>> GetAllLessonsGroupedByTechnique() {
             return _lessonProvider.GetAllLessonsGroupedByTechnique();
         }
-        public LessonDto GetLesson(int lessonId) {
+        public LessonDto GetLesson(int lessonId)  {
             return _lessonProvider.GetLesson(lessonId);
+        }
+        public LessonDto GetModeratedLesson(int lessonId) {
+            return _lessonProvider.GetModeratedLesson(lessonId);
         }
         public List<ExerciseDto> GetLessonExercises(int lessonId) {
             return _lessonProvider.GetLessonExercises(lessonId);

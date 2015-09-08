@@ -13,7 +13,7 @@ namespace MusicShareWeb.Models.Lesson {
         public bool IsMinimized { get; set; }
 
         public LessonModel(BaseModel baseModel, int lessonId, bool isMinimized) : base(baseModel) {
-            Lesson = ServiceManager<IBusinessLogic>.Instance.Service.GetLesson(lessonId);
+            Lesson = ServiceManager<IBusinessLogic>.Instance.Service.GetModeratedLesson(lessonId);
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetLessonExercises(lessonId);
             GutarTechique = ServiceManager<IBusinessLogic>.Instance.Service.GetGuitarTechnique(Lesson.GuitarTechniqueId);
             if(CurrentUser != null) {

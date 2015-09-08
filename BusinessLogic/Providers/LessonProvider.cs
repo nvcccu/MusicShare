@@ -114,6 +114,15 @@ namespace BusinessLogic.Providers {
                 .Single()
                 .ToDto();
         }
+        public LessonDto GetModeratedLesson(int lessonId) {
+            return new Lesson()
+                .Select()
+                .Where(Lesson.Fields.Id, PredicateCondition.Equal, lessonId)
+                .Where(Lesson.Fields.IsModerated, PredicateCondition.Equal, true)
+                .GetData()
+                .Single()
+                .ToDto();
+        }
         public List<ExerciseDto> GetLessonExercises(int lessonId) {
             return new Exercise()
                 .Select()
