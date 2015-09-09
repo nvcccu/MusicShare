@@ -80,6 +80,22 @@
         </div>
         <div class="admin-lesson__form-row mg-clearfix">
             <div class="admin-lesson__form-row_text-block">
+                <span class="admin-lesson__form-row_text">Ключевые слова через запятую</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <input type="text" class="mg-input-text admin-lesson__form-row_input" data-bind="value: $root.lesson.keywords" placeholder="самоучитель, гитара, легато" />
+            </div>
+        </div>
+        <div class="admin-lesson__form-row mg-clearfix">
+            <div class="admin-lesson__form-row_text-block">
+                <span class="admin-lesson__form-row_text">Заголовок страницы урока</span>
+            </div>
+            <div class="admin-lesson__form-row_input">
+                <input type="text" class="mg-input-text admin-lesson__form-row_input" data-bind="value: $root.lesson.title" placeholder="Заголовок страницы урока" />
+            </div>
+        </div>
+        <div class="admin-lesson__form-row mg-clearfix">
+            <div class="admin-lesson__form-row_text-block">
                 <span class="admin-lesson__form-row_text">Комментарий редактора</span>
             </div>
             <div class="admin-lesson__form-row_input">
@@ -131,6 +147,8 @@
         model.lesson.name = ko.observable(model.lesson.name ? model.lesson.name : undefined);
         model.lesson.originalLessonUrl = ko.observable(model.lesson.originalLessonUrl ? model.lesson.originalLessonUrl : undefined);
         model.lesson.text = ko.observable(model.lesson.text ? model.lesson.text : '');
+        model.lesson.keywords = ko.observable(model.lesson.keywords ? model.lesson.keywords : undefined);
+        model.lesson.title = ko.observable(model.lesson.title ? model.lesson.title : undefined);
         model.lessonHistory = {};
         model.lessonHistory.comment = ko.observable(undefined);
         model.previewData = ko.computed(function() {
@@ -164,7 +182,9 @@
                         name: model.lesson.name(),
                         originalLessonUrl: model.lesson.originalLessonUrl(),
                         text: model.lesson.text(),
-                        isModerated: model.lesson.isModerated()
+                        isModerated: model.lesson.isModerated(),
+                        keywords: model.lesson.keywords(),
+                        title: model.lesson.title()
                     },
                     comment: model.lessonHistory.comment()
                 }),
@@ -200,7 +220,9 @@
                         name: model.lesson.name(),
                         originalLessonUrl: model.lesson.originalLessonUrl(),
                         text: model.lesson.text(),
-                        isModerated: model.lesson.isModerated()
+                        isModerated: model.lesson.isModerated(),
+                        keywords: model.lesson.keywords(),
+                        title: model.lesson.title()
                     },
                     comment: model.lessonHistory.comment()
                 }),

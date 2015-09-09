@@ -29,7 +29,11 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (string))]
             OriginalLessonUrl,
             [DbType(typeof (Boolean))]
-            IsModerated
+            IsModerated,
+            [DbType(typeof (String))]
+            Keywords,
+            [DbType(typeof (String))]
+            Title
         }
 
         public int Id { get; set; }
@@ -42,6 +46,8 @@ namespace BusinessLogic.DaoEntities {
         public string Text { get; set; }
         public string OriginalLessonUrl { get; set; }
         public bool IsModerated { get; set; }
+        public string Keywords { get; set; }
+        public string Title { get; set; }
 
         public LessonDto ToDto() {
             return new LessonDto {
@@ -54,7 +60,9 @@ namespace BusinessLogic.DaoEntities {
                 Name = Name,
                 Text = Text,
                 OriginalLessonUrl = OriginalLessonUrl,
-                IsModerated = IsModerated
+                IsModerated = IsModerated,
+                Keywords = Keywords,
+                Title = Title,
             };
         }
     }

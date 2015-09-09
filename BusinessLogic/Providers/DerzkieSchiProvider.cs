@@ -114,6 +114,8 @@ namespace BusinessLogic.Providers {
                 .Set(Lesson.Fields.Text, lessonDto.Text)
                 .Set(Lesson.Fields.OriginalLessonUrl, lessonDto.OriginalLessonUrl)
                 .Set(Lesson.Fields.IsModerated, lessonDto.IsModerated)
+                .Set(Lesson.Fields.Keywords, lessonDto.Keywords)
+                .Set(Lesson.Fields.Title, lessonDto.Title)
                 .Where(Lesson.Fields.Id, PredicateCondition.Equal, lessonDto.Id)
                 .ExecuteScalar();
             return true;
@@ -128,7 +130,9 @@ namespace BusinessLogic.Providers {
                 Name = lessonDto.Name,
                 Text = lessonDto.Text,
                 OriginalLessonUrl = lessonDto.OriginalLessonUrl,
-                IsModerated = lessonDto.IsModerated
+                IsModerated = lessonDto.IsModerated,
+                Title = lessonDto.Title,
+                Keywords = lessonDto.Keywords
             }.Insert());
             CreateLessonHistory(lessonId, lessonDto.Text, redactorAccountId, comment);
             return lessonId;

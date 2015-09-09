@@ -5,6 +5,9 @@
 @model MusicShareWeb.Models.Lesson.LessonModel
 
 @{
+    ViewBag.Title = Model.Lesson.Title;
+    ViewBag.Keywords = Model.Lesson.Keywords;
+    ViewBag.Description = Model.Lesson.Description;
     Layout = "../Shared/Layout.cshtml";
     string text;
     const string ExerciseTag = "@@EXERCISE {0}@@";
