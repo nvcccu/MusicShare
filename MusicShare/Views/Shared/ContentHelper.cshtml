@@ -1,42 +1,7 @@
-﻿@{
+﻿@using SquishIt.Mvc
+@{
     Layout = null;
 }
 
-<link href="/Content/Libraries/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/Content/Libraries/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
-<link href="/Content/Libraries/MarkItUp/css/base.css" rel="stylesheet" type="text/css"/>
-<link href="/Content/Libraries/MarkItUp/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="/Content/Font/FontAwesome/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-<link href="/Content/Less/Layout.css" rel="stylesheet" type="text/css" />
-<link href="/Content/Less/Global.css" rel="stylesheet" type="text/css" />
-<link href="/Content/Less/Designer/Navigation.css" rel="stylesheet" type="text/css" />
-<link href="/Content/Less/Designer/Designer.css" rel="stylesheet" type="text/css" />
-<link href="/Content/Less/Ask/Ask.css" rel="stylesheet" type="text/css" />
-<link href="/Content/Less/Ask/List.css" rel="stylesheet" type="text/css" />
-<link href="/Content/Less/Article/ArticlePreview.css" rel="stylesheet" type="text/css"/>
-<link href="/Content/Less/Lesson/Plan.css" rel="stylesheet" type="text/css"/>
-<link href="/Content/Less/Lesson/Lesson.css" rel="stylesheet" type="text/css"/>
-<link href="/Content/Less/Lesson/Index.css" rel="stylesheet" type="text/css"/>
-<link href="/Content/Less/Lesson/Navigation.css" rel="stylesheet" type="text/css"/>
-<link href="/Content/Less/Lesson/Stat.css" rel="stylesheet" type="text/css"/>
-<link href="/Content/Less/Auth/AuthPopup.css" rel="stylesheet" type="text/css"/>
-<link href="/Content/Less/DerzkieSchi/AdminLesson.css" rel="stylesheet" type="text/css"/>
-
-<script type="text/javascript" src="/Content/Script/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="/Content/Script/jquery.form.js"></script>
-<script type="text/javascript" src="/Content/Libraries/Jquery/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/Content/Script/knockout-3.3.0.min.js"></script>
-<script type="text/javascript" src="/Content/Script/knockout-sortable.js"></script>
-<script type="text/javascript" src="/Content/Libraries/Showdown/Showdown.js"></script>
-<script type="text/javascript" src="/Content/Libraries/Bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/Content/Libraries/MarkItUp/js/jquery.markitup.js"></script>
-<script type="text/javascript" src="/Content/Libraries/MarkItUp/js/set.js"></script>
-
-<script type="text/javascript" src="/Content/Script/CommonScripts/Log.js"></script>
-<script type="text/javascript" src="/Content/Script/CommonScripts/MusicShare.js"></script>
-<script type="text/javascript" src="/Content/Script/Designer/designer.js"></script>
-<script type="text/javascript" src="/Content/Script/DerzkieSchi/newProductAdmin.js"></script>
-<script type="text/javascript" src="/Content/Script/DerzkieSchi/changeProductAdmin.js"></script>
-<script type="text/javascript" src="/Content/Script/DerzkieSchi/selectProductAdmin.js"></script>
-<script type="text/javascript" src="/Content/Script/Designer/MenuAnimateHelper.js"></script>
+@SquishIt.Framework.Bundle.Css().MvcRenderCachedAssetTag("main")
+@SquishIt.Framework.Bundle.JavaScript().MvcRenderCachedAssetTag("main")
