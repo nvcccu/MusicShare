@@ -485,6 +485,74 @@ insert into lesson values
 <p>Первый урок подошел к концу. Переходи к следующему уроку&nbsp;только после того, как сможешь играть все упражнения данного на скорости 100 УВМ. Удачи!</p>', 'http://allfrets.ru', true);
 
 
+-- Ритм-гитара урок 1
+insert into Exercise values
+(48, 7, 'Упражнение 1', '/ImgStore/Lesson/Rythm/1/1.jpg', null, 70, 0, true),
+(49, 7, 'Упражнение 2', '/ImgStore/Lesson/Rythm/1/2.jpg', null, 70, 0, true),
+(50, 7, 'Упражнение 3', '/ImgStore/Lesson/Rythm/1/3.jpg', null, 70, 0, true),
+(51, 7, 'Упражнение 4', '/ImgStore/Lesson/Rythm/1/4.jpg', null, 70, 0, true),
+(52, 7, 'Упражнение 5', '/ImgStore/Lesson/Rythm/1/5.jpg', null, 70, 0, true),
+(53, 7, 'Упражнение 6', '/ImgStore/Lesson/Rythm/1/6.jpg', null, 70, 0, true),
+(54, 7, 'Упражнение 7', '/ImgStore/Lesson/Rythm/1/7.jpg', null, 70, 0, true),
+(55, 7, 'Упражнение 8', '/ImgStore/Lesson/Rythm/1/8.jpg', null, 70, 0, true),
+(56, 7, 'Упражнение 9', '/ImgStore/Lesson/Rythm/1/9.jpg', null, 70, 0, true):
+
+-- Ритм-гитара урок 2
+insert into Exercise values
+(34, 20, 'Упражнение 1', '/ImgStore/Lesson/Rythm/2/1.jpg', null, 70, 0, true),
+(35, 20, 'Упражнение 2', '/ImgStore/Lesson/Rythm/2/2.jpg', null, 70, 0, true),
+(36, 20, 'Упражнение 3', '/ImgStore/Lesson/Rythm/2/3.jpg', null, 70, 0, true),
+(37, 20, 'Упражнение 4', '/ImgStore/Lesson/Rythm/2/4.jpg', null, 70, 0, true),
+(38, 20, 'Упражнение 5', '/ImgStore/Lesson/Rythm/2/5.jpg', null, 70, 0, true),
+(39, 20, 'Упражнение 6', '/ImgStore/Lesson/Rythm/2/6.jpg', null, 70, 0, true),
+(40, 20, 'Упражнение 7', '/ImgStore/Lesson/Rythm/2/7.jpg', null, 70, 0, true),
+(41, 20, 'Упражнение 8', '/ImgStore/Lesson/Rythm/2/8.jpg', null, 70, 0, true),
+(42, 20, 'Упражнение 9', '/ImgStore/Lesson/Rythm/2/9.jpg', null, 70, 0, true),
+(43, 20, 'Упражнение 10', '/ImgStore/Lesson/Rythm/2/10.jpg', null, 70, 0, true),
+(44, 20, 'Упражнение 11', '/ImgStore/Lesson/Rythm/2/11.jpg', null, 70, 0, true),
+(45, 20, 'Упражнение 12', '/ImgStore/Lesson/Rythm/2/12.jpg', null, 70, 0, true),
+(46, 20, 'Упражнение 13', '/ImgStore/Lesson/Rythm/2/13.jpg', null, 70, 0, true),
+(47, 20, 'Упражнение 14', '/ImgStore/Lesson/Rythm/2/14.jpg', null, 70, 0, true);
+
+-- Ритм-гитара урок 3
+insert into Exercise values
+(57, 21, 'Упражнение 1', '/ImgStore/Lesson/Rythm/3/1.jpg', null, 70, 0, true),
+(58, 21, 'Упражнение 2', '/ImgStore/Lesson/Rythm/3/2.jpg', null, 70, 0, true),
+(59, 21, 'Упражнение 3', '/ImgStore/Lesson/Rythm/3/3.jpg', null, 70, 0, true),
+(60, 21, 'Упражнение 4', '/ImgStore/Lesson/Rythm/3/4.jpg', null, 70, 0, true),
+(61, 21, 'Упражнение 5', '/ImgStore/Lesson/Rythm/3/5.jpg', null, 70, 0, true),
+(62, 21, 'Упражнение 6', '/ImgStore/Lesson/Rythm/4/6.jpg', null, 70, 0, true),
+(63, 21, 'Упражнение 7', '/ImgStore/Lesson/Rythm/5/7.jpg', null, 70, 0, true),
+(64, 21, 'Упражнение 8', '/ImgStore/Lesson/Rythm/6/8.jpg', null, 70, 0, true),
+(65, 21, 'Упражнение 9', '/ImgStore/Lesson/Rythm/7/9.jpg', null, 70, 0, true),
+(66, 21, 'Упражнение 10', '/ImgStore/Lesson/Rythm/8/10.jpg', null, 70, 0, true),
+(67, 21, 'Упражнение 11', '/ImgStore/Lesson/Rythm/9/11.jpg', null, 70, 0, true);
+
+-- Ритм-гитара урок 4
+insert into Exercise values
+(68, 22, 'Упражнение 1', '/ImgStore/Lesson/Rythm/4/1.jpg', null, 70, 0, true),
+(69, 22, 'Упражнение 2', '/ImgStore/Lesson/Rythm/4/2.jpg', null, 70, 0, true),
+(70, 22, 'Упражнение 3', '/ImgStore/Lesson/Rythm/4/3.jpg', null, 70, 0, true),
+(71, 22, 'Упражнение 4', '/ImgStore/Lesson/Rythm/4/4.jpg', null, 70, 0, true),
+(72, 22, 'Упражнение 5', '/ImgStore/Lesson/Rythm/4/5.jpg', null, 70, 0, true),
+(73, 22, 'Упражнение 6', '/ImgStore/Lesson/Rythm/4/6.jpg', null, 70, 0, true),
+(74, 22, 'Упражнение 7', '/ImgStore/Lesson/Rythm/4/7.jpg', null, 70, 0, true),
+(75, 22, 'Упражнение 8', '/ImgStore/Lesson/Rythm/4/8.jpg', null, 70, 0, true),
+(76, 22, 'Упражнение 9', '/ImgStore/Lesson/Rythm/4/9.jpg', null, 70, 0, true),
+(77, 22, 'Упражнение 10', '/ImgStore/Lesson/Rythm/4/10.jpg', null, 70, 0, true),
+(78, 22, 'Упражнение 11', '/ImgStore/Lesson/Rythm/4/11.jpg', null, 70, 0, true),
+(79, 22, 'Упражнение 12', '/ImgStore/Lesson/Rythm/4/12.jpg', null, 70, 0, true),
+(80, 22, 'Упражнение 13', '/ImgStore/Lesson/Rythm/4/13.jpg', null, 70, 0, true),
+(81, 22, 'Упражнение 14', '/ImgStore/Lesson/Rythm/4/14.jpg', null, 70, 0, true);
+
+-- Ритм-гитара урок 5
+insert into Exercise values
+(82, 24, 'Упражнение 1', '/ImgStore/Lesson/Rythm/5/1.gif', null, 180, 0, true);
+
+-- Ритм-гитара урок 7
+insert into Exercise values
+(83, 25, 'Упражнение 1', '/ImgStore/Lesson/Rythm/7/1.jpg', null, 70, 0, true);
+
 /*
 insert into lesson values
 (4, 2, 3, 0, 'Переменный штрих. Гаммы', '<p style="text-align: justify;"><a href="/altpicking/twostring" title="Штрих при переходе со струны на струну" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; color: #40678a; font-family: Arial, Helvetica, sans-serif; line-height: 23px;">&lt;&lt; ПРЕДЫДУЩИЙ УРОК</a></p>
