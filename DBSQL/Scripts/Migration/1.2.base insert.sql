@@ -116,15 +116,6 @@ insert into GuitarTechnique values
 (9, 'Фортепианная техника', 'ФТ'),
 (10, 'Седьмая струна', '7 струна');
 
-insert into Exercise values
-(1, 1, 'Упражнение 1', 'http://allfrets.ru/images/stories/legato/1_legato_1.jpg', null, 50, 0, true),
-(2, 1, 'Упражнение 2', 'http://allfrets.ru/images/stories/legato/1_legato_2.jpg', null, 50, 0, true),
-(3, 1, 'Упражнение 3', 'http://allfrets.ru/images/stories/legato/1_legato_3.jpg', null, 50, 0, true),
-(4, 1, 'Упражнение 4', 'http://allfrets.ru/images/stories/legato/1_legato_4.jpg', null, 50, 0, true),
-(5, 1, 'Упражнение 5', 'http://allfrets.ru/images/stories/legato/1_legato_5.jpg', null, 50, 0, true),
-(6, 1, 'Упражнение 6', 'http://allfrets.ru/images/stories/legato/1_legato_6.jpg', null, 50, 0, true),
-(7, 1, 'Упражнение 7', 'http://allfrets.ru/images/stories/legato/1_legato_7.jpg', null, 50, 0, true);
-
 insert into lesson values
 (1, 3, 1, null, null, 'Легатная техника добавит слитности твоему звучанию', 'Основы легато', '<p><img src="http://allfrets.ru/images/stories/line.jpg" border="0" style="text-align: justify;"></p>
 <p>Вслушиваясь в произведения таких гитаристов, к Джо Сатриани и Стив Вай, ты зачастую можешь услышать длинные слитные каскады нот, сыгранные с сумасшедшей скоростью. <span style="text-align: justify; ">Эта техника называется легатной. Пришедшее из итальянского, слово легато означает «сглаженный» и в полной мере передает суть техники.</span></p>
@@ -162,19 +153,6 @@ insert into lesson values
 <p>И в заключение еще несколько упражнений, которые так же, как и предыдущее отличаются друг от друга лишь задействованными пальцами. Каждые пять нот объединены в одну группу:</p>
 @@EXERCISE 7@@
 <p>Легатная техника – чертовски полезная вещь! Постарайся не обойти ее своим вниманием, и уделить ее развитию время. В итоге ты сможешь играть гораздо быстрее и слитнее – а это один из признаков хорошего гитариста. В следующем уроке ты будешь работать над независимостью пальцев, затем мы перейдем к полностью легатным пассажам. Апофеозом этой части станет трюк, который ты мог видеть на концертах Джо Сатриани и Стива Вая – ты научишься играть одной левой рукой, при этом правая будет глушить струны ниже левой. Круто, не правда ли! Если что-то осталось непонятным - спрашивай! Удачи!</p>', 'http://allfrets.ru', true);
-insert into Exercise values
-(8, 2, 'Упражнение 1', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_1.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-1.mp3', 60, 0, true),
-(9, 2, 'Упражнение 2', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_2.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-2.mp3', 60, 0, true),
-(10, 2, 'Упражнение 3', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_3.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-3.mp3', 60, 0, true),
-(11, 2, 'Упражнение 4', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_4.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-4.mp3', 60, 0, true),
-(12, 2, 'Упражнение 5', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-5.mp3', 60, 0, true),
-(13, 2, 'Упражнение 6', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_5.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-6.mp3', 60, 0, true),
-(14, 2, 'Упражнение 7', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_6.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-7.mp3', 60, 0, true),
-(15, 2, 'Упражнение 8', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_8.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-8.mp3', 60, 0, true),
-(16, 2, 'Упражнение 9', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_9.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-9.mp3', 60, 0, true),
-(17, 2, 'Упражнение 10', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_10.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-10.mp3', 60, 0, true),
-(18, 2, 'Упражнение 11', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_11.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-11.mp3', 60, 0, true),
-(19, 2, 'Упражнение 12', 'http://allfrets.ru/images/stories/altpicking/2_upr_alternate_picking_12.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-12.mp3', 60, 0, true);
 
 insert into lesson values
 (2, 2, 2, 3, null, 'Переменный штрих на нескольких струнах еще важнее', 'Штрих при переходе со струны на струну', '<p>Привет! Я рад, что ты достиг скорости в 60 УВМ при игре переменным штрихом на одной струне, давай продолжим обучение игре на электрогитаре.</p>
@@ -227,15 +205,6 @@ insert into lesson values
 <p>И вновь о том как надо заниматься. Заниматься нужно регулярно. Даже небольшой перерыв в занятиях может отбросить тебя далеко назад. Время, которое нужно уделять гитаре, не ограничено. Здесь действует правило: "кашу маслом не испортишь". Однако, если чувствуешь сильную усталость в руках, или боль - немедленно прекращай занятия! Поврежденные связки техники еще никому не прибавляли. Не забывай о <a href="/beginner/warming-up" title="Разминка">разминке</a>. А после нее - учишь упражнение, включаешь метроном и вперед :)</p>
 <p>Помни о правилах и вскоре выполнять их будет не сложнее, чем вдыхать свежий воздух. После того как будешь без проблем играть все упражнения данного урока на скорости 80 УВМ, можешь переходить к уроку <a href="/altpicking/altpickgamm" title="Переменный штрих - гаммы" style="line-height: 1.3em;">переменный штрих - гаммы</a>. Кроме этого я советую тебе, прежде чем идти дальше, выучить <a href="/practice/item/143-ac/dc-highway-to-hell-%D1%81%D0%BE%D0%BB%D0%BE" title="AC/DC - Highway to Hell">этот соляк</a>, а также уроки <a href="/tehnika/harmonics" title="Три способа взять флажолет">флажолеты</a>, <a href="/legatotechnique/legatofinger" title="Развитие независимости пальцев">развитие независимости пальцев</a>,&nbsp;<a href="/rythmguitar/rhytmmute" title="Глушение">глушение</a>. Желаю удачи!</p>
 ', 'http://allfrets.ru', true);
-
-insert into Exercise values
-(20, 3, 'Упражнение 1', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_1.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-1.mp3', 40, 0, true),
-(21, 3, 'Упражнение 2', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_2.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-2.mp3', 40, 0, true),
-(22, 3, 'Упражнение 3', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_3.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-3.mp3', 40, 0, true),
-(23, 3, 'Упражнение 4', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_4.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-4.mp3', 40, 0, true),
-(24, 3, 'Упражнение 5', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_5.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-5.mp3', 40, 0, true),
-(25, 3, 'Упражнение 6', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_6.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-6.mp3', 40, 0, true),
-(26, 3, 'Упражнение 7', 'http://allfrets.ru/images/stories/altpicking/1_single_string_picking_7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-7.mp3', 40, 0, true);
 
 insert into lesson values
 (3, 2, 1, null, 2, 'Переменный штрих на одной струне очень важен', 'Переменный штрих на одной струне', '<p>Первое, с чего тебе следует начать свой путь к виртуозной игре на электрогитаре – это развитие техники <strong>переменного штриха</strong>. В замечательной книге “Speed mechanics for lead guitar” сказано: "Техника переменного штриха хороша тем что, не высчитывая заранее последовательность ударов медиатора, ты можешь сыграть любую последовательность нот. Таким образом ты будешь чувствовать себя более свободно при импровизации, так как не ограничен какими-либо заранее подготовленными схемами. Ты можешь создать и сыграть любые пассажи, не отрабатывая их заранее. А если работа медиатором не требует раздумий – остается думать только о музыке"</p>
@@ -485,6 +454,131 @@ insert into lesson values
 <p>Первый урок подошел к концу. Переходи к следующему уроку&nbsp;только после того, как сможешь играть все упражнения данного на скорости 100 УВМ. Удачи!</p>', 'http://allfrets.ru', true);
 
 
+-- Новичкок урок 5
+insert into Exercise values
+(84, 41, 'Упражнение 1', '/ImgStore/Lesson/Beginner/5/1.jpg', null, 40, 0, true),
+(85, 41, 'Упражнение 2', '/ImgStore/Lesson/Beginner/5/2.jpg', null, 40, 0, true),
+(86, 41, 'Упражнение 3', '/ImgStore/Lesson/Beginner/5/3.jpg', null, 40, 0, true);
+
+-- Переменный штрих урок 1
+insert into Exercise values
+(20, 3, 'Упражнение 1', '/ImgStore/Lesson/Altpicking/1/1.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-1.mp3', 40, 0, true),
+(21, 3, 'Упражнение 2', '/ImgStore/Lesson/Altpicking/1/2.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-2.mp3', 40, 0, true),
+(22, 3, 'Упражнение 3', '/ImgStore/Lesson/Altpicking/1/3.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-3.mp3', 40, 0, true),
+(23, 3, 'Упражнение 4', '/ImgStore/Lesson/Altpicking/1/4.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-4.mp3', 40, 0, true),
+(24, 3, 'Упражнение 5', '/ImgStore/Lesson/Altpicking/1/5.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-5.mp3', 40, 0, true),
+(25, 3, 'Упражнение 6', '/ImgStore/Lesson/Altpicking/1/6.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-6.mp3', 40, 0, true),
+(26, 3, 'Упражнение 7', '/ImgStore/Lesson/Altpicking/1/7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-1-7.mp3', 40, 0, true);
+
+-- Переменный штрих урок 2
+insert into Exercise values
+(8, 2, 'Упражнение 1', '/ImgStore/Lesson/Altpicking/2/1.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-1.mp3', 60, 0, true),
+(9, 2, 'Упражнение 2', '/ImgStore/Lesson/Altpicking/2/2.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-2.mp3', 60, 0, true),
+(10, 2, 'Упражнение 3', '/ImgStore/Lesson/Altpicking/2/3.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-3.mp3', 60, 0, true),
+(11, 2, 'Упражнение 4', '/ImgStore/Lesson/Altpicking/2/4.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-4.mp3', 60, 0, true),
+(12, 2, 'Упражнение 5', '/ImgStore/Lesson/Altpicking/2/5.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-5.mp3', 60, 0, true),
+(13, 2, 'Упражнение 6', '/ImgStore/Lesson/Altpicking/2/6.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-6.mp3', 60, 0, true),
+(14, 2, 'Упражнение 7', '/ImgStore/Lesson/Altpicking/2/7.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-7.mp3', 60, 0, true),
+(15, 2, 'Упражнение 8', '/ImgStore/Lesson/Altpicking/2/8.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-8.mp3', 60, 0, true),
+(16, 2, 'Упражнение 9', '/ImgStore/Lesson/Altpicking/2/9.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-9.mp3', 60, 0, true),
+(17, 2, 'Упражнение 10', '/ImgStore/Lesson/Altpicking/2/10.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-10.mp3', 60, 0, true),
+(18, 2, 'Упражнение 11', '/ImgStore/Lesson/Altpicking/2/11.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-11.mp3', 60, 0, true),
+(19, 2, 'Упражнение 12', '/ImgStore/Lesson/Altpicking/2/12.jpg', 'http://allfrets.ru/images/audio/altpicking/Altpicking-2-12.mp3', 60, 0, true);
+
+-- Переменный штрих урок 4
+insert into Exercise values
+(87, 10, 'Упражнение 1', '/ImgStore/Lesson/Altpicking/4/1.jpg', null, 60, 0, true),
+(88, 10, 'Упражнение 2', '/ImgStore/Lesson/Altpicking/4/2.jpg', null, 60, 0, true),
+(89, 10, 'Упражнение 3', '/ImgStore/Lesson/Altpicking/4/3.jpg', null, 60, 0, true),
+(90, 10, 'Упражнение 4', '/ImgStore/Lesson/Altpicking/4/4.jpg', null, 60, 0, true),
+(91, 10, 'Упражнение 5', '/ImgStore/Lesson/Altpicking/4/5.jpg', null, 60, 0, true),
+(92, 10, 'Упражнение 6', '/ImgStore/Lesson/Altpicking/4/6.jpg', null, 60, 0, true);
+
+-- Переменный штрих урок 5
+insert into Exercise values
+(93, 12, 'Упражнение 1', '/ImgStore/Lesson/Altpicking/5/1.jpg', null, 60, 0, true),
+(94, 12, 'Упражнение 2', '/ImgStore/Lesson/Altpicking/5/2.jpg', null, 60, 0, true),
+(95, 12, 'Упражнение 3', '/ImgStore/Lesson/Altpicking/5/3.jpg', null, 60, 0, true),
+(96, 12, 'Упражнение 4', '/ImgStore/Lesson/Altpicking/5/4.jpg', null, 60, 0, true),
+(97, 12, 'Упражнение 5', '/ImgStore/Lesson/Altpicking/5/5.jpg', null, 60, 0, true),
+(98, 12, 'Упражнение 6', '/ImgStore/Lesson/Altpicking/5/6.jpg', null, 60, 0, true),
+(99, 12, 'Упражнение 7', '/ImgStore/Lesson/Altpicking/5/7.jpg', null, 60, 0, true),
+(100, 12, 'Упражнение 8', '/ImgStore/Lesson/Altpicking/5/8.jpg', null, 60, 0, true);
+
+-- Легато урок 1
+insert into Exercise values
+(1, 1, 'Упражнение 1', '/ImgStore/Lesson/Legato/1/1.jpg', null, 50, 0, true),
+(2, 1, 'Упражнение 2', '/ImgStore/Lesson/Legato/1/2.jpg', null, 50, 0, true),
+(3, 1, 'Упражнение 3', '/ImgStore/Lesson/Legato/1/3.jpg', null, 50, 0, true),
+(4, 1, 'Упражнение 4', '/ImgStore/Lesson/Legato/1/4.jpg', null, 50, 0, true),
+(5, 1, 'Упражнение 5', '/ImgStore/Lesson/Legato/1/5.jpg', null, 50, 0, true),
+(6, 1, 'Упражнение 6', '/ImgStore/Lesson/Legato/1/6.jpg', null, 50, 0, true),
+(7, 1, 'Упражнение 7', '/ImgStore/Lesson/Legato/1/7.jpg', null, 50, 0, true);
+
+-- Легато урок 2
+insert into Exercise values
+(101, 13, 'Упражнение 1', '/ImgStore/Lesson/Legato/2/1.jpg', null, 50, 0, true),
+(102, 13, 'Упражнение 2', '/ImgStore/Lesson/Legato/2/2.jpg', null, 50, 0, true),
+(103, 13, 'Упражнение 3', '/ImgStore/Lesson/Legato/2/3.jpg', null, 50, 0, true),
+(104, 13, 'Упражнение 4', '/ImgStore/Lesson/Legato/2/3.jpg', null, 50, 0, true);
+
+-- Легато урок 3
+insert into Exercise values
+(105, 14, 'Упражнение 1', '/ImgStore/Lesson/Legato/3/1.jpg', null, 50, 0, true),
+(106, 14, 'Упражнение 2', '/ImgStore/Lesson/Legato/3/2.jpg', null, 50, 0, true),
+(107, 14, 'Упражнение 3', '/ImgStore/Lesson/Legato/3/3.jpg', null, 50, 0, true),
+(108, 14, 'Упражнение 4', '/ImgStore/Lesson/Legato/3/4.jpg', null, 50, 0, true),
+(109, 14, 'Упражнение 5', '/ImgStore/Lesson/Legato/3/5.jpg', null, 50, 0, true),
+(110, 14, 'Упражнение 6', '/ImgStore/Lesson/Legato/3/6.jpg', null, 50, 0, true),
+(111, 14, 'Упражнение 7', '/ImgStore/Lesson/Legato/3/7.jpg', null, 50, 0, true);
+
+-- Легато урок 4
+insert into Exercise values
+(112, 15, 'Упражнение 1', '/ImgStore/Lesson/Legato/4/1.jpg', null, 50, 0, true),
+(113, 15, 'Упражнение 2', '/ImgStore/Lesson/Legato/4/2.jpg', null, 50, 0, true),
+(114, 15, 'Упражнение 3', '/ImgStore/Lesson/Legato/4/3.jpg', null, 50, 0, true),
+(115, 15, 'Упражнение 4', '/ImgStore/Lesson/Legato/4/4.jpg', null, 50, 0, true),
+(116, 15, 'Упражнение 5', '/ImgStore/Lesson/Legato/4/5.jpg', null, 50, 0, true),
+(117, 15, 'Упражнение 6', '/ImgStore/Lesson/Legato/4/6.jpg', null, 50, 0, true),
+(118, 15, 'Упражнение 7', '/ImgStore/Lesson/Legato/4/7.jpg', null, 50, 0, true);
+
+-- Легато урок 5
+insert into Exercise values
+(119, 16, 'Упражнение 1', '/ImgStore/Lesson/Legato/5/1.jpg', null, 50, 0, true);
+
+-- Технические приемы урок 1
+insert into Exercise values
+(120, 5, 'Упражнение 1', '/ImgStore/Lesson/Tech/1/1.jpg', null, 50, 0, true),
+(121, 5, 'Упражнение 2', '/ImgStore/Lesson/Tech/1/2.jpg', null, 50, 0, true),
+(122, 5, 'Упражнение 3', '/ImgStore/Lesson/Tech/1/3.jpg', null, 50, 0, true),
+(123, 5, 'Упражнение 4', '/ImgStore/Lesson/Tech/1/4.jpg', null, 50, 0, true),
+(124, 5, 'Упражнение 5', '/ImgStore/Lesson/Tech/1/5.jpg', null, 50, 0, true);
+
+-- Технические приемы урок 2
+insert into Exercise values
+(125, 6, 'Упражнение 1', '/ImgStore/Lesson/Tech/2/1.jpg', null, 50, 0, true),
+(126, 6, 'Упражнение 2', '/ImgStore/Lesson/Tech/2/2.jpg', null, 50, 0, true),
+(127, 6, 'Упражнение 3', '/ImgStore/Lesson/Tech/2/3.jpg', null, 50, 0, true);
+
+-- Технические приемы урок 3
+insert into Exercise values
+(128, 17, 'Упражнение 1', '/ImgStore/Lesson/Tech/3/1.jpg', null, 50, 0, true),
+(129, 17, 'Упражнение 2', '/ImgStore/Lesson/Tech/3/2.jpg', null, 50, 0, true),
+(130, 17, 'Упражнение 3', '/ImgStore/Lesson/Tech/3/3.jpg', null, 50, 0, true),
+(131, 17, 'Упражнение 4', '/ImgStore/Lesson/Tech/3/4.jpg', null, 50, 0, true),
+(132, 17, 'Упражнение 5', '/ImgStore/Lesson/Tech/3/5.jpg', null, 50, 0, true),
+(133, 17, 'Упражнение 6', '/ImgStore/Lesson/Tech/3/6.jpg', null, 50, 0, true);
+
+-- Технические приемы урок 4
+insert into Exercise values
+(134, 18, 'Упражнение 1', '/ImgStore/Lesson/Tech/3/1.jpg', null, 50, 0, true),
+(135, 18, 'Упражнение 2', '/ImgStore/Lesson/Tech/3/2.jpg', null, 50, 0, true),
+(136, 18, 'Упражнение 3', '/ImgStore/Lesson/Tech/3/3.jpg', null, 50, 0, true),
+(137, 18, 'Упражнение 4', '/ImgStore/Lesson/Tech/3/4.jpg', null, 50, 0, true),
+(138, 18, 'Упражнение 5', '/ImgStore/Lesson/Tech/3/5.jpg', null, 50, 0, true),
+(139, 18, 'Упражнение 6', '/ImgStore/Lesson/Tech/3/6.jpg', null, 50, 0, true),
+(140, 18, 'Упражнение 7', '/ImgStore/Lesson/Tech/3/7.jpg', null, 50, 0, true);
+
 -- Ритм-гитара урок 1
 insert into Exercise values
 (48, 7, 'Упражнение 1', '/ImgStore/Lesson/Rythm/1/1.jpg', null, 70, 0, true),
@@ -495,7 +589,7 @@ insert into Exercise values
 (53, 7, 'Упражнение 6', '/ImgStore/Lesson/Rythm/1/6.jpg', null, 70, 0, true),
 (54, 7, 'Упражнение 7', '/ImgStore/Lesson/Rythm/1/7.jpg', null, 70, 0, true),
 (55, 7, 'Упражнение 8', '/ImgStore/Lesson/Rythm/1/8.jpg', null, 70, 0, true),
-(56, 7, 'Упражнение 9', '/ImgStore/Lesson/Rythm/1/9.jpg', null, 70, 0, true):
+(56, 7, 'Упражнение 9', '/ImgStore/Lesson/Rythm/1/9.jpg', null, 70, 0, true);
 
 -- Ритм-гитара урок 2
 insert into Exercise values
@@ -552,6 +646,141 @@ insert into Exercise values
 -- Ритм-гитара урок 7
 insert into Exercise values
 (83, 25, 'Упражнение 1', '/ImgStore/Lesson/Rythm/7/1.jpg', null, 70, 0, true);
+
+-- Теппинг урок 1
+insert into Exercise values
+(141, 8, 'Упражнение 1', '/ImgStore/Lesson/Tapping/1/1.jpg', null, 70, 0, true),
+(142, 8, 'Упражнение 2', '/ImgStore/Lesson/Tapping/1/2.jpg', null, 70, 0, true),
+(143, 8, 'Упражнение 3', '/ImgStore/Lesson/Tapping/1/3.jpg', null, 70, 0, true),
+(144, 8, 'Упражнение 4', '/ImgStore/Lesson/Tapping/1/4.jpg', null, 70, 0, true),
+(145, 8, 'Упражнение 5', '/ImgStore/Lesson/Tapping/1/5.jpg', null, 70, 0, true),
+(146, 8, 'Упражнение 6', '/ImgStore/Lesson/Tapping/1/6.jpg', null, 70, 0, true),
+(147, 8, 'Упражнение 7', '/ImgStore/Lesson/Tapping/1/7.jpg', null, 70, 0, true);
+
+-- Теппинг урок 2
+insert into Exercise values
+(148, 26, 'Упражнение 1', '/ImgStore/Lesson/Tapping/2/1.jpg', null, 70, 0, true),
+(149, 26, 'Упражнение 2', '/ImgStore/Lesson/Tapping/2/2.jpg', null, 70, 0, true),
+(150, 26, 'Упражнение 3', '/ImgStore/Lesson/Tapping/2/3.jpg', null, 70, 0, true),
+(151, 26, 'Упражнение 4', '/ImgStore/Lesson/Tapping/2/4.jpg', null, 70, 0, true),
+(152, 26, 'Упражнение 5', '/ImgStore/Lesson/Tapping/2/5.jpg', null, 70, 0, true),
+(153, 26, 'Упражнение 6', '/ImgStore/Lesson/Tapping/2/6.jpg', null, 70, 0, true),
+(154, 26, 'Упражнение 7', '/ImgStore/Lesson/Tapping/2/7.jpg', null, 70, 0, true),
+(155, 26, 'Упражнение 8', '/ImgStore/Lesson/Tapping/2/8.jpg', null, 70, 0, true),
+(156, 26, 'Упражнение 9', '/ImgStore/Lesson/Tapping/2/9.jpg', null, 70, 0, true),
+(157, 26, 'Упражнение 10', '/ImgStore/Lesson/Tapping/2/10.jpg', null, 70, 0, true),
+(158, 26, 'Упражнение 11', '/ImgStore/Lesson/Tapping/2/11.jpg', null, 70, 0, true),
+(159, 26, 'Упражнение 12', '/ImgStore/Lesson/Tapping/2/12.jpg', null, 70, 0, true),
+(160, 26, 'Упражнение 13', '/ImgStore/Lesson/Tapping/2/13.jpg', null, 70, 0, true),
+(161, 26, 'Упражнение 14', '/ImgStore/Lesson/Tapping/2/14.jpg', null, 70, 0, true),
+(162, 26, 'Упражнение 15', '/ImgStore/Lesson/Tapping/2/15.jpg', null, 70, 0, true);
+
+-- Теппинг урок 3
+insert into Exercise values
+(163, 27, 'Упражнение 1', '/ImgStore/Lesson/Tapping/3/1.jpg', null, 70, 0, true),
+(164, 27, 'Упражнение 2', '/ImgStore/Lesson/Tapping/3/2.jpg', null, 70, 0, true),
+(165, 27, 'Упражнение 3', '/ImgStore/Lesson/Tapping/3/3.jpg', null, 70, 0, true),
+(166, 27, 'Упражнение 4', '/ImgStore/Lesson/Tapping/3/4.jpg', null, 70, 0, true),
+(167, 27, 'Упражнение 5', '/ImgStore/Lesson/Tapping/3/5.jpg', null, 70, 0, true),
+(168, 27, 'Упражнение 6', '/ImgStore/Lesson/Tapping/3/6.jpg', null, 70, 0, true),
+(169, 27, 'Упражнение 7', '/ImgStore/Lesson/Tapping/3/7.jpg', null, 70, 0, true);
+
+-- Теппинг урок 4
+insert into Exercise values
+(170, 28, 'Упражнение 1', '/ImgStore/Lesson/Tapping/4/1.jpg', null, 70, 0, true),
+(171, 28, 'Упражнение 2', '/ImgStore/Lesson/Tapping/4/2.jpg', null, 70, 0, true),
+(172, 28, 'Упражнение 3', '/ImgStore/Lesson/Tapping/4/3.jpg', null, 70, 0, true),
+(173, 28, 'Упражнение 4', '/ImgStore/Lesson/Tapping/4/4.jpg', null, 70, 0, true),
+(174, 28, 'Упражнение 5', '/ImgStore/Lesson/Tapping/4/5.jpg', null, 70, 0, true);
+
+-- Теппинг урок 5
+insert into Exercise values
+(175, 29, 'Упражнение 1', '/ImgStore/Lesson/Tapping/5/1.jpg', null, 70, 0, true);
+
+-- Свип урок 1
+insert into Exercise values
+(176, 30, 'Упражнение 1', '/ImgStore/Lesson/Sweep/1/1.jpg', null, 70, 0, true),
+(177, 30, 'Упражнение 2', '/ImgStore/Lesson/Sweep/1/2.jpg', null, 70, 0, true),
+(178, 30, 'Упражнение 3', '/ImgStore/Lesson/Sweep/1/3.jpg', null, 70, 0, true),
+(179, 30, 'Упражнение 4', '/ImgStore/Lesson/Sweep/1/4.jpg', null, 70, 0, true),
+(180, 30, 'Упражнение 5', '/ImgStore/Lesson/Sweep/1/5.jpg', null, 70, 0, true);
+
+-- Свип урок 2
+insert into Exercise values
+(181, 31, 'Упражнение 1', '/ImgStore/Lesson/Sweep/2/1.jpg', null, 70, 0, true),
+(182, 31, 'Упражнение 2', '/ImgStore/Lesson/Sweep/2/2.jpg', null, 70, 0, true),
+(183, 31, 'Упражнение 3', '/ImgStore/Lesson/Sweep/2/3.jpg', null, 70, 0, true),
+(184, 31, 'Упражнение 4', '/ImgStore/Lesson/Sweep/2/4.jpg', null, 70, 0, true),
+(185, 31, 'Упражнение 5', '/ImgStore/Lesson/Sweep/2/5.jpg', null, 70, 0, true),
+(186, 31, 'Упражнение 6', '/ImgStore/Lesson/Sweep/2/6.jpg', null, 70, 0, true),
+(187, 31, 'Упражнение 7', '/ImgStore/Lesson/Sweep/2/7.jpg', null, 70, 0, true),
+(188, 31, 'Упражнение 8', '/ImgStore/Lesson/Sweep/2/8.jpg', null, 70, 0, true),
+(189, 31, 'Упражнение 9', '/ImgStore/Lesson/Sweep/2/9.jpg', null, 70, 0, true),
+(190, 31, 'Упражнение 10', '/ImgStore/Lesson/Sweep/2/10.jpg', null, 70, 0, true);
+
+-- Свип урок 3
+insert into Exercise values
+(191, 32, 'Упражнение 1', '/ImgStore/Lesson/Sweep/3/1.jpg', null, 70, 0, true),
+(192, 32, 'Упражнение 2', '/ImgStore/Lesson/Sweep/3/2.jpg', null, 70, 0, true),
+(193, 32, 'Упражнение 3', '/ImgStore/Lesson/Sweep/3/3.jpg', null, 70, 0, true),
+(194, 32, 'Упражнение 4', '/ImgStore/Lesson/Sweep/3/4.jpg', null, 70, 0, true),
+(195, 32, 'Упражнение 5', '/ImgStore/Lesson/Sweep/3/5.jpg', null, 70, 0, true),
+(196, 32, 'Упражнение 6', '/ImgStore/Lesson/Sweep/3/6.jpg', null, 70, 0, true),
+(197, 32, 'Упражнение 7', '/ImgStore/Lesson/Sweep/3/7.jpg', null, 70, 0, true),
+(198, 32, 'Упражнение 8', '/ImgStore/Lesson/Sweep/3/8.jpg', null, 70, 0, true),
+(199, 32, 'Упражнение 9', '/ImgStore/Lesson/Sweep/3/9.jpg', null, 70, 0, true),
+(200, 32, 'Упражнение 10', '/ImgStore/Lesson/Sweep/3/10.jpg', null, 70, 0, true);
+
+-- Свип урок 4
+insert into Exercise values
+(201, 33, 'Упражнение 1', '/ImgStore/Lesson/Sweep/4/1.jpg', null, 70, 0, true),
+(202, 33, 'Упражнение 2', '/ImgStore/Lesson/Sweep/4/2.jpg', null, 70, 0, true),
+(203, 33, 'Упражнение 3', '/ImgStore/Lesson/Sweep/4/3.jpg', null, 70, 0, true),
+(204, 33, 'Упражнение 4', '/ImgStore/Lesson/Sweep/4/4.jpg', null, 70, 0, true),
+(205, 33, 'Упражнение 5', '/ImgStore/Lesson/Sweep/4/5.jpg', null, 70, 0, true),
+(206, 33, 'Упражнение 6', '/ImgStore/Lesson/Sweep/4/6.jpg', null, 70, 0, true),
+(207, 33, 'Упражнение 7', '/ImgStore/Lesson/Sweep/4/7.jpg', null, 70, 0, true),
+(208, 33, 'Упражнение 8', '/ImgStore/Lesson/Sweep/4/8.jpg', null, 70, 0, true),
+(209, 33, 'Упражнение 9', '/ImgStore/Lesson/Sweep/4/9.jpg', null, 70, 0, true),
+(210, 33, 'Упражнение 10', '/ImgStore/Lesson/Sweep/4/10.jpg', null, 70, 0, true);
+
+-- Свип урок 4
+insert into Exercise values
+(211, 34, 'Упражнение 1', '/ImgStore/Lesson/Sweep/5/1.jpg', null, 70, 0, true),
+(212, 34, 'Упражнение 2', '/ImgStore/Lesson/Sweep/5/2.jpg', null, 70, 0, true),
+(213, 34, 'Упражнение 3', '/ImgStore/Lesson/Sweep/5/3.jpg', null, 70, 0, true),
+(214, 34, 'Упражнение 4', '/ImgStore/Lesson/Sweep/5/4.jpg', null, 70, 0, true),
+(215, 34, 'Упражнение 5', '/ImgStore/Lesson/Sweep/5/5.jpg', null, 70, 0, true),
+(216, 34, 'Упражнение 6', '/ImgStore/Lesson/Sweep/5/6.jpg', null, 70, 0, true),
+(217, 34, 'Упражнение 7', '/ImgStore/Lesson/Sweep/5/7.jpg', null, 70, 0, true),
+(218, 34, 'Упражнение 8', '/ImgStore/Lesson/Sweep/5/8.jpg', null, 70, 0, true),
+(219, 34, 'Упражнение 9', '/ImgStore/Lesson/Sweep/5/9.jpg', null, 70, 0, true),
+(220, 34, 'Упражнение 10', '/ImgStore/Lesson/Sweep/5/10.jpg', null, 70, 0, true),
+(221, 34, 'Упражнение 11', '/ImgStore/Lesson/Sweep/5/11.jpg', null, 70, 0, true),
+(222, 34, 'Упражнение 12', '/ImgStore/Lesson/Sweep/5/12.jpg', null, 70, 0, true),
+(223, 34, 'Упражнение 13', '/ImgStore/Lesson/Sweep/5/13.jpg', null, 70, 0, true),
+(224, 34, 'Упражнение 14', '/ImgStore/Lesson/Sweep/5/14.jpg', null, 70, 0, true),
+(225, 34, 'Упражнение 15', '/ImgStore/Lesson/Sweep/5/15.jpg', null, 70, 0, true);
+
+-- Фортепианная техника урок 1
+insert into Exercise values
+(226, 35, 'Упражнение 1', '/ImgStore/Lesson/Touch/1/1.jpg', null, 70, 0, true),
+(227, 35, 'Упражнение 2', '/ImgStore/Lesson/Touch/1/2.jpg', null, 70, 0, true),
+(228, 35, 'Упражнение 3', '/ImgStore/Lesson/Touch/1/3.jpg', null, 70, 0, true),
+(229, 35, 'Упражнение 4', '/ImgStore/Lesson/Touch/1/4.jpg', null, 70, 0, true);
+
+-- Семиструнная гитара урок 1
+insert into Exercise values
+(230, 37, 'Упражнение 1', '/ImgStore/Lesson/Seven/1/1.jpg', null, 70, 0, true),
+(231, 37, 'Упражнение 2', '/ImgStore/Lesson/Seven/1/2.jpg', null, 70, 0, true),
+(232, 37, 'Упражнение 3', '/ImgStore/Lesson/Seven/1/3.jpg', null, 70, 0, true),
+(233, 37, 'Упражнение 4', '/ImgStore/Lesson/Seven/1/4.jpg', null, 70, 0, true),
+(234, 37, 'Упражнение 5', '/ImgStore/Lesson/Seven/1/5.jpg', null, 70, 0, true),
+(235, 37, 'Упражнение 6', '/ImgStore/Lesson/Seven/1/6.jpg', null, 70, 0, true),
+(236, 37, 'Упражнение 7', '/ImgStore/Lesson/Seven/1/7.jpg', null, 70, 0, true),
+(237, 37, 'Упражнение 8', '/ImgStore/Lesson/Seven/1/8.jpg', null, 70, 0, true),
+(238, 37, 'Упражнение 9', '/ImgStore/Lesson/Seven/1/9.jpg', null, 70, 0, true),
+(239, 37, 'Упражнение 10', '/ImgStore/Lesson/Seven/1/10.jpg', null, 70, 0, true);
 
 /*
 insert into lesson values
