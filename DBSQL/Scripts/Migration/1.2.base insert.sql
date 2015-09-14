@@ -112,7 +112,6 @@ insert into GuitarTechnique values
 (5, 'Ритм-гитара', 'РГ'),
 (6, 'Теппинг', 'Т'),
 (7, 'Свип', 'С'),
-(8, 'Шред', 'Ш'),
 (9, 'Фортепианная техника', 'ФТ'),
 (10, 'Седьмая струна', '7 струна');
 
@@ -544,7 +543,17 @@ insert into Exercise values
 
 -- Легато урок 5
 insert into Exercise values
-(119, 16, 'Упражнение 1', '/ImgStore/Lesson/Legato/5/1.jpg', null, 50, 0, true);
+(119, 16, 'Упражнение 1', '/ImgStore/Lesson/Legato/5/1.jpg', null, 70, 0, true),
+(240, 16, 'Упражнение 2', '/ImgStore/Lesson/Legato/5/2.jpg', null, 70, 0, true),
+(241, 16, 'Упражнение 3', '/ImgStore/Lesson/Legato/5/3.jpg', null, 70, 0, true),
+(242, 16, 'Упражнение 4', '/ImgStore/Lesson/Legato/5/4.jpg', null, 70, 0, true),
+(243, 16, 'Упражнение 5', '/ImgStore/Lesson/Legato/5/5.jpg', null, 70, 0, true),
+(244, 16, 'Упражнение 6', '/ImgStore/Lesson/Legato/5/6.jpg', null, 70, 0, true),
+(245, 16, 'Упражнение 7', '/ImgStore/Lesson/Legato/5/7.jpg', null, 70, 0, true),
+(246, 16, 'Упражнение 8', '/ImgStore/Lesson/Legato/5/8.jpg', null, 70, 0, true),
+(247, 16, 'Упражнение 9', '/ImgStore/Lesson/Legato/5/9.jpg', null, 70, 0, true),
+(248, 16, 'Упражнение 10', '/ImgStore/Lesson/Legato/5/10.jpg', null, 70, 0, true),
+(249, 16, 'Упражнение 11', '/ImgStore/Lesson/Legato/5/11.jpg', null, 70, 0, true);
 
 -- Технические приемы урок 1
 insert into Exercise values
@@ -556,9 +565,9 @@ insert into Exercise values
 
 -- Технические приемы урок 2
 insert into Exercise values
-(125, 6, 'Упражнение 1', '/ImgStore/Lesson/Tech/2/1.jpg', null, 50, 0, true),
-(126, 6, 'Упражнение 2', '/ImgStore/Lesson/Tech/2/2.jpg', null, 50, 0, true),
-(127, 6, 'Упражнение 3', '/ImgStore/Lesson/Tech/2/3.jpg', null, 50, 0, true);
+(125, 6, 'Упражнение 1', '/ImgStore/Lesson/Tech/2/1.gif', null, 50, 0, true),
+(126, 6, 'Упражнение 2', '/ImgStore/Lesson/Tech/2/2.gif', null, 50, 0, true),
+(127, 6, 'Упражнение 3', '/ImgStore/Lesson/Tech/2/3.gif', null, 50, 0, true);
 
 -- Технические приемы урок 3
 insert into Exercise values
@@ -571,13 +580,13 @@ insert into Exercise values
 
 -- Технические приемы урок 4
 insert into Exercise values
-(134, 18, 'Упражнение 1', '/ImgStore/Lesson/Tech/3/1.jpg', null, 50, 0, true),
-(135, 18, 'Упражнение 2', '/ImgStore/Lesson/Tech/3/2.jpg', null, 50, 0, true),
-(136, 18, 'Упражнение 3', '/ImgStore/Lesson/Tech/3/3.jpg', null, 50, 0, true),
-(137, 18, 'Упражнение 4', '/ImgStore/Lesson/Tech/3/4.jpg', null, 50, 0, true),
-(138, 18, 'Упражнение 5', '/ImgStore/Lesson/Tech/3/5.jpg', null, 50, 0, true),
-(139, 18, 'Упражнение 6', '/ImgStore/Lesson/Tech/3/6.jpg', null, 50, 0, true),
-(140, 18, 'Упражнение 7', '/ImgStore/Lesson/Tech/3/7.jpg', null, 50, 0, true);
+(134, 18, 'Упражнение 1', '/ImgStore/Lesson/Tech/4/1.jpg', null, 50, 0, true),
+(135, 18, 'Упражнение 2', '/ImgStore/Lesson/Tech/4/2.jpg', null, 50, 0, true),
+(136, 18, 'Упражнение 3', '/ImgStore/Lesson/Tech/4/3.jpg', null, 50, 0, true),
+(137, 18, 'Упражнение 4', '/ImgStore/Lesson/Tech/4/4.jpg', null, 50, 0, true),
+(138, 18, 'Упражнение 5', '/ImgStore/Lesson/Tech/4/5.jpg', null, 50, 0, true),
+(139, 18, 'Упражнение 6', '/ImgStore/Lesson/Tech/4/6.jpg', null, 50, 0, true),
+(140, 18, 'Упражнение 7', '/ImgStore/Lesson/Tech/4/7.jpg', null, 50, 0, true);
 
 -- Ритм-гитара урок 1
 insert into Exercise values
@@ -615,12 +624,12 @@ insert into Exercise values
 (59, 21, 'Упражнение 3', '/ImgStore/Lesson/Rythm/3/3.jpg', null, 70, 0, true),
 (60, 21, 'Упражнение 4', '/ImgStore/Lesson/Rythm/3/4.jpg', null, 70, 0, true),
 (61, 21, 'Упражнение 5', '/ImgStore/Lesson/Rythm/3/5.jpg', null, 70, 0, true),
-(62, 21, 'Упражнение 6', '/ImgStore/Lesson/Rythm/4/6.jpg', null, 70, 0, true),
-(63, 21, 'Упражнение 7', '/ImgStore/Lesson/Rythm/5/7.jpg', null, 70, 0, true),
-(64, 21, 'Упражнение 8', '/ImgStore/Lesson/Rythm/6/8.jpg', null, 70, 0, true),
-(65, 21, 'Упражнение 9', '/ImgStore/Lesson/Rythm/7/9.jpg', null, 70, 0, true),
-(66, 21, 'Упражнение 10', '/ImgStore/Lesson/Rythm/8/10.jpg', null, 70, 0, true),
-(67, 21, 'Упражнение 11', '/ImgStore/Lesson/Rythm/9/11.jpg', null, 70, 0, true);
+(62, 21, 'Упражнение 6', '/ImgStore/Lesson/Rythm/3/6.jpg', null, 70, 0, true),
+(63, 21, 'Упражнение 7', '/ImgStore/Lesson/Rythm/3/7.jpg', null, 70, 0, true),
+(64, 21, 'Упражнение 8', '/ImgStore/Lesson/Rythm/3/8.jpg', null, 70, 0, true),
+(65, 21, 'Упражнение 9', '/ImgStore/Lesson/Rythm/3/9.jpg', null, 70, 0, true),
+(66, 21, 'Упражнение 10', '/ImgStore/Lesson/Rythm/3/10.jpg', null, 70, 0, true),
+(67, 21, 'Упражнение 11', '/ImgStore/Lesson/Rythm/3/11.jpg', null, 70, 0, true);
 
 -- Ритм-гитара урок 4
 insert into Exercise values
@@ -641,7 +650,7 @@ insert into Exercise values
 
 -- Ритм-гитара урок 5
 insert into Exercise values
-(82, 24, 'Упражнение 1', '/ImgStore/Lesson/Rythm/5/1.gif', null, 180, 0, true);
+(82, 23, 'Упражнение 1', '/ImgStore/Lesson/Rythm/5/1.gif', null, 180, 0, true);
 
 -- Ритм-гитара урок 7
 insert into Exercise values
@@ -744,7 +753,7 @@ insert into Exercise values
 (209, 33, 'Упражнение 9', '/ImgStore/Lesson/Sweep/4/9.jpg', null, 70, 0, true),
 (210, 33, 'Упражнение 10', '/ImgStore/Lesson/Sweep/4/10.jpg', null, 70, 0, true);
 
--- Свип урок 4
+-- Свип урок 5
 insert into Exercise values
 (211, 34, 'Упражнение 1', '/ImgStore/Lesson/Sweep/5/1.jpg', null, 70, 0, true),
 (212, 34, 'Упражнение 2', '/ImgStore/Lesson/Sweep/5/2.jpg', null, 70, 0, true),
