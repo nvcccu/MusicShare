@@ -1,1 +1,1 @@
-<db-connection db-name="master">Server=localhost;Port=5432;User=postgres;Password=postgres;Database=ak_master;</db-connection>
+<db-connection db-name="master">Server=localhost;Port=5432;User=postgres;Password=postgres;Database=master;</db-connection>

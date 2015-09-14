@@ -23,10 +23,12 @@ namespace CommonUtils.Config {
                 _remotingConfigPath = Path.Combine(_remotingConfigPath, "Test");
             }
             _remotingConfigPath = Path.Combine(_remotingConfigPath, "Remoting.xml");
+            _remotingConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _remotingConfigPath.TrimStart('\\'));
             var remotingConfig = new XmlDocument();
             remotingConfig.Load(_remotingConfigPath);
             var remotingMainConfigPath = remotingConfig.FirstTagWithTagNameInnerText("path");
             remotingMainConfigPath = Path.Combine(remotingMainConfigPath, "RemotingMain.xml");
+            remotingMainConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, remotingMainConfigPath.TrimStart('\\'));
             _remotingMainConfig.Load(remotingMainConfigPath);
             if (_remotingMainConfig.InnerText == null) {
                 throw new Exception("Конфигурационный файл пуст или не прочитан.");
