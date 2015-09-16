@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BusinessLogic.Interfaces;
 using BusinessLogic.Providers;
 using CommonUtils.Config;
+using CommonUtils.Log;
 using Core.Enums;
 using Core.TransportTypes;
 using DAO;
@@ -16,6 +18,25 @@ namespace BusinessLogic {
         private readonly ArticleProvider _articleProvider = new ArticleProvider();
         private readonly MarketProvider _marketProvider = new MarketProvider();
         private readonly LessonProvider _lessonProvider = new LessonProvider();
+        private static readonly LoggerWrapper _logger = LoggerManager.GetLogger(typeof (BusinessLogic).FullName);
+
+        private T LoggedAction<T>(Func<T> action) where T : new(){
+            try {
+                return action();
+            } catch(Exception ex) {
+                _logger.Error(ex);
+                throw;
+            }
+        }
+        private void LoggedAction(Action action){
+            try {
+                action();
+            } catch(Exception ex) {
+                _logger.Error(ex);
+            }
+        }
+        
+
         public BusinessLogic() {
             Initial();
         }
@@ -24,178 +45,178 @@ namespace BusinessLogic {
             Connector.ConnectionString = ConfigHelper.FirstTagWithTagNameInnerText("db-connection");
         }
         public long GetNextGuestId(string userAgent) {
-            return _userProvider.GetNextGuestId(userAgent);
+            return LoggedAction(() => _userProvider.GetNextGuestId(userAgent));
         }
         public void AddUserAction(long guestId, ActionId actionId, long? target = null) {
-            _logProvider.AddUserAction(guestId, actionId, target);
+            LoggedAction(() => _logProvider.AddUserAction(guestId, actionId, target));
         }
         public List<ParameterDto> GetParameters() {
-            return _designerProvider.GetParameters();
+            return LoggedAction(() => _designerProvider.GetParameters());
         }
         public List<ParameterValueDto> GetParameterValues() {
-            return _designerProvider.GetParameterValues();
+            return LoggedAction(() => _designerProvider.GetParameterValues());
         }
         public List<IncompatibleParameterDto> GetIncompatibleParameters() {
-            return _designerProvider.GetIncompatibleParameters();
+            return LoggedAction(() => _designerProvider.GetIncompatibleParameters());
         }
         public List<DesignerImageTransportType> GetDesignerImages() {
-            return _designerProvider.GetDesignerImages();
+            return LoggedAction(() => _designerProvider.GetDesignerImages());
         }
         public List<PredefinedGuitarDto> GetPredefinedGuitars() {
-            return _designerProvider.GetPredefinedGuitars();
+            return LoggedAction(() =>  _designerProvider.GetPredefinedGuitars());
         }
         public AskThreadTransportType GetAskThread(long questionId) {
-            return _askProvider.GetAskThread(questionId);
+            return LoggedAction(() => _askProvider.GetAskThread(questionId));
         }
         public List<QuestionTransportType> GetAllQuestions() {
-            return _askProvider.GetAllQuestions();
+            return LoggedAction(() => _askProvider.GetAllQuestions());
         }
         public long CreateNewQuestion(QuestionDto question) {
-            return _askProvider.CreateNewQuestion(question);
+            return LoggedAction(() => _askProvider.CreateNewQuestion(question));
         }
         public int? RegisterViaEmail(long guestId, string email, string password, string nickName) {
-            return _userProvider.RegisterViaEmail(guestId, email, password, nickName);
+            return LoggedAction(() => _userProvider.RegisterViaEmail(guestId, email, password, nickName));
         }
         public bool Login(AuthTransportType auth) {
-            return _userProvider.Login(auth);
+            return LoggedAction(() => _userProvider.Login(auth));
         }
         public bool IsEmailFree(string email) {
-            return _userProvider.IsEmailFree(email);
+            return LoggedAction(() => _userProvider.IsEmailFree(email));
         }
         public bool IsNickNameFree(string nickName) {
-            return _userProvider.IsNickNameFree(nickName);
+            return LoggedAction(() => _userProvider.IsNickNameFree(nickName));
         }
         public AccountDto GetUser(long guestId) {
-            return _userProvider.GetUser(guestId);
+            return LoggedAction(() => _userProvider.GetUser(guestId));
         }
         public AccountDto GetUserById(long id) {
-            return _userProvider.GetUserById(id);
+            return LoggedAction(() =>_userProvider.GetUserById(id));
         }
         public AccountDto GetUserByEmail(string email) {
-            return _userProvider.GetUserByEmail(email);
+            return LoggedAction(() => _userProvider.GetUserByEmail(email));
         }
         public bool IsGuestAlreadyHasAccount(long guestId) {
-            return _userProvider.IsGuestAlreadyHasAccount(guestId);
+            return LoggedAction(() => _userProvider.IsGuestAlreadyHasAccount(guestId));
         }
         public int SaveArticle(ArticleDto article) {
-            return _articleProvider.SaveArticle(article);
+            return LoggedAction(() => _articleProvider.SaveArticle(article));
         }
         public ArticleDto GetArticleById(int id) {
-            return _articleProvider.GetArticleById(id);
+            return LoggedAction(() => _articleProvider.GetArticleById(id));
         }
         public List<ArticleDto> GetArticleByDateDesc(int count, int from) {
-            return _articleProvider.GetArticleByDateDesc(count, from);
+            return LoggedAction(() => _articleProvider.GetArticleByDateDesc(count, from));
         }
         public List<ProductTypeDto> GetAllProductTypes() {
-            return _marketProvider.GetAllProductTypes();
+            return LoggedAction(() => _marketProvider.GetAllProductTypes());
         }
         public Dictionary<PropertyDto, List<PropertyValueDto>> GetAllProductProperties(long productType) {
-            return _marketProvider.GetAllProductProperties(productType);
+            return LoggedAction(() => _marketProvider.GetAllProductProperties(productType));
         }
-        public Dictionary<ProductTypeDto, Dictionary<PropertyDto, List<PropertyValueDto>>> GetAllProperties(){
-            return _derzkieSchiProvider.GetAllProperties();
+        public Dictionary<ProductTypeDto, Dictionary<PropertyDto, List<PropertyValueDto>>> GetAllProperties() {
+            return LoggedAction(() => _derzkieSchiProvider.GetAllProperties());
         }
-        public int? SaveNewProduct(int productTypeId, Dictionary<int, int?> propertyValuePairs, string imageUrl, string name, int price){
-            return _derzkieSchiProvider.SaveNewProduct(productTypeId, propertyValuePairs, imageUrl, name, price);
+        public int? SaveNewProduct(int productTypeId, Dictionary<int, int?> propertyValuePairs, string imageUrl, string name, int price) {
+            return LoggedAction(() => _derzkieSchiProvider.SaveNewProduct(productTypeId, propertyValuePairs, imageUrl, name, price));
         }
         public List<ProductDto> GetFilteredProducts(int productTypeId, string namePart, Dictionary<int, int> propertyValuePairs) {
-            return _derzkieSchiProvider.GetFilteredProducts(productTypeId, namePart, propertyValuePairs);
+            return LoggedAction(() => _derzkieSchiProvider.GetFilteredProducts(productTypeId, namePart, propertyValuePairs));
         }
         public bool UpdateLesson(LessonDto lesson, int redactorAccountId, string comment) {
-            return _derzkieSchiProvider.UpdateLesson(lesson, redactorAccountId, comment);
+            return LoggedAction(() => _derzkieSchiProvider.UpdateLesson(lesson, redactorAccountId, comment));
         }
         public int CreateLesson(LessonDto lesson, int redactorAccountId, string comment) {
-            return _derzkieSchiProvider.CreateLesson(lesson, redactorAccountId, comment);
+            return LoggedAction(() => _derzkieSchiProvider.CreateLesson(lesson, redactorAccountId, comment));
         }
         public bool UpdateExercise(ExerciseDto exercise) {
-            return _derzkieSchiProvider.UpdateExercise(exercise);
+            return LoggedAction(() => _derzkieSchiProvider.UpdateExercise(exercise));
         }
         public int CreateExercise(ExerciseDto exercise) {
-            return _derzkieSchiProvider.CreateExercise(exercise);
+            return LoggedAction(() => _derzkieSchiProvider.CreateExercise(exercise));
         }
         public bool IsDerzkiy(int accountId) {
-            return _derzkieSchiProvider.IsDerzkiy(accountId);
+            return LoggedAction(() => _derzkieSchiProvider.IsDerzkiy(accountId));
         }
         public List<LessonHistoryDto> GetAllLessonHistory() {
-            return _derzkieSchiProvider.GetAllLessonHistory();
+            return LoggedAction(() => _derzkieSchiProvider.GetAllLessonHistory());
         }
         public Dictionary<int, int> GetUsersLessonStat(int lessonId, int accountId) {
-            return _lessonProvider.GetUsersLessonStat(lessonId, accountId);
+            return LoggedAction(() => _lessonProvider.GetUsersLessonStat(lessonId, accountId));
         }
         public void SaveUsersLessonStat(int accountId, Dictionary<int, int> lessonStat) {
-            _lessonProvider.SaveUsersLessonStat(accountId, lessonStat);
+            LoggedAction(() => _lessonProvider.SaveUsersLessonStat(accountId, lessonStat));
         }
         public Dictionary<GuitarTechniqueDto, List<LessonDto>> GetAllLessonsGroupedByTechnique() {
-            return _lessonProvider.GetAllLessonsGroupedByTechnique();
+            return LoggedAction(() => _lessonProvider.GetAllLessonsGroupedByTechnique());
         }
         public LessonDto GetLesson(int lessonId)  {
-            return _lessonProvider.GetLesson(lessonId);
+            return LoggedAction(() => _lessonProvider.GetLesson(lessonId));
         }
         public LessonDto GetModeratedLesson(int lessonId) {
-            return _lessonProvider.GetModeratedLesson(lessonId);
+            return LoggedAction(() => _lessonProvider.GetModeratedLesson(lessonId));
         }
         public List<ExerciseDto> GetLessonExercises(int lessonId) {
-            return _lessonProvider.GetLessonExercises(lessonId);
+            return LoggedAction(() => _lessonProvider.GetLessonExercises(lessonId));
         }
         public GuitarTechniqueDto GetGuitarTechnique(int guitarTechniqueId) {
-            return _lessonProvider.GetGuitarTechnique(guitarTechniqueId);
+            return LoggedAction(() => _lessonProvider.GetGuitarTechnique(guitarTechniqueId));
         }
         public List<PlanDto> GetAllUsersPlans(int accountId) {
-            return _lessonProvider.GetAllUsersPlans(accountId);
+            return LoggedAction(() => _lessonProvider.GetAllUsersPlans(accountId));
         }
         public void CreateLessonStatNode(int accountId) {
-            _lessonProvider.CreateLessonStatNode(accountId);
+            LoggedAction(() => _lessonProvider.CreateLessonStatNode(accountId));
         }
          public void CreatePlanNode(int accountId) {
-            _lessonProvider.CreatePlanNode(accountId);
+             LoggedAction(() => _lessonProvider.CreatePlanNode(accountId));
         }
         public List<GuitarTechniqueDto> GetAllGuitarTechniques() {
-            return _lessonProvider.GetAllGuitarTechniques();
+            return LoggedAction(() => _lessonProvider.GetAllGuitarTechniques());
         }
         public List<LessonDto> GetAllModeratedLessons() {
-            return _lessonProvider.GetAllModeratedLessons();
+            return LoggedAction(() => _lessonProvider.GetAllModeratedLessons());
         }
         public List<LessonDto> GetAllLessons() {
-            return _lessonProvider.GetAllLessons();
+            return LoggedAction(() => _lessonProvider.GetAllLessons());
         }
         public ExerciseDto GetExercise(int id) {
-            return _lessonProvider.GetExercise(id);
+            return LoggedAction(() => _lessonProvider.GetExercise(id));
         }
         public List<ExerciseDto> GetAllExercises() {
-            return _lessonProvider.GetAllExercises();
+            return LoggedAction(() => _lessonProvider.GetAllExercises());
         }
         public List<ExerciseDto> GetExercisesByPlan(int planId) {
-            return _lessonProvider.GetExercisesByPlan(planId);
+            return LoggedAction(() => _lessonProvider.GetExercisesByPlan(planId));
         }
         public Dictionary<int, int> GetUsersExercisesStat(int accountId) {
-            return _lessonProvider.GetUsersExercisesStat(accountId);
+            return LoggedAction(() => _lessonProvider.GetUsersExercisesStat(accountId));
         }
         public Dictionary<int, List<ExerciseSpeedInDate>> GetUsersExercisesTotalStat(int accountId) {
-            return _lessonProvider.GetUsersExercisesTotalStat(accountId);
+            return LoggedAction(() => _lessonProvider.GetUsersExercisesTotalStat(accountId));
         }
         public PlanDto GetPlan(int id) {
-            return _lessonProvider.GetPlan(id);
+            return LoggedAction(() => _lessonProvider.GetPlan(id));
         }
         public int SavePlan(PlanDto plan) {
-            return _lessonProvider.SavePlan(plan);
+            return LoggedAction(() => _lessonProvider.SavePlan(plan));
         }
         public void UpdatePlan(PlanDto plan) {
-            _lessonProvider.UpdatePlan(plan);
+            LoggedAction(() => _lessonProvider.UpdatePlan(plan));
         }
         public void AddExerciseToPlan(int planId, int exerciseId) {
-            _lessonProvider.AddExerciseToPlan(planId, exerciseId);
+            LoggedAction(() => _lessonProvider.AddExerciseToPlan(planId, exerciseId));
         }
         public List<StatPresetDto> GetAllUsersStatPresets(int accountId) {
-            return _lessonProvider.GetAllUsersStatPresets(accountId);
+            return LoggedAction(() => _lessonProvider.GetAllUsersStatPresets(accountId));
         }
         public StatPresetDto SaveStatPreset(StatPresetDto statPreset) {
-            return _lessonProvider.SaveStatPreset(statPreset);
+            return LoggedAction(() => _lessonProvider.SaveStatPreset(statPreset));
         }
         public bool UpdateStatPreset(StatPresetDto statPreset) {
-            return _lessonProvider.UpdateStatPreset(statPreset);
+            return LoggedAction(() => _lessonProvider.UpdateStatPreset(statPreset));
         }
         public bool DeleteStatPreset(int statPresetId) {
-            return _lessonProvider.DeleteStatPreset(statPresetId);
+            return LoggedAction(() => _lessonProvider.DeleteStatPreset(statPresetId));
         }
     }
 }

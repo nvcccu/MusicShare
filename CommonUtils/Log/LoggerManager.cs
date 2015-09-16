@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace CommonUtils.Log
-{
+namespace CommonUtils.Log {
     public class LoggerManager {
         private static Dictionary<string, LoggerWrapper> _loggers = new Dictionary<string, LoggerWrapper>();
         private static object _lock = new object();
