@@ -32,24 +32,10 @@
 
     ko.components.register('LessonsNavigation', {
         viewModel: lessonsModel,
-        template:               '<!-- ko if: currentLesson && currentLesson.previousLessonId -->' +
-                                '<div style="margin-bottom: 15px;">' +
-                                    '<a class="mg-btn" data-bind="attr: { href: \'@Url.Action("Index", "Lesson", new {id = ""})\' + \'/\' + currentLesson.previousLessonId }">' +
-                                        'Предыдущий урок' +
-                                    '</a>' +
-                                '</div>' +
-                                '<!-- /ko -->' +
-                                '<!-- ko if: currentLesson && currentLesson.nextLessonId -->' +
-                                '<div style="margin-bottom: 15px;">' +
-                                    '<a class="mg-btn" data-bind="attr: { href: \'@Url.Action("Index", "Lesson", new {id = ""})\' + \'/\' + currentLesson.nextLessonId }">' +
-                                        'Следующий урок' +
-                                    '</a>' +
-                                '</div>' +
-                                '<!-- /ko -->' +
-                                '<div class="mg-btn" data-bind="click: lessonsOpenedToggle">' +
+        template:               '<div class="mg-btn" data-bind="click: lessonsOpenedToggle">' +
                                     'Выбрать урок &nbsp;<span style="font-family: FontAwesome;" data-bind="text: areLessonsOpened() ? \'&#xf0d9;\' : \'&#xf0d7;\'"</span>' +
                                 '</div>' +
-                                '<div class="lesson-navigation__nav-lesson-list" style="position: absolute; z-index: 10;" data-bind="visible: areLessonsOpened, foreach: { data: guitarTechniques, as: \'guitarTechnique\' }">' +
+                                '<div class="lesson-navigation__nav-lesson-list" style="position: absolute; z-index: 10; max-height: 300px; overflow-y: auto;" data-bind="visible: areLessonsOpened, foreach: { data: guitarTechniques, as: \'guitarTechnique\' }">' +
                                     '<div data-bind="attr: {class: $parent.activeGuitarTechnique() === guitarTechnique.id ? \'nav-lesson-list__guitar-technique nav-lesson-list__guitar-technique--active\' : \'nav-lesson-list__guitar-technique\'}">' +
                                         '<div class="nav-guitar-technique__name" data-bind="click: $parent.setActiveGuitarTechnique.bind($data, guitarTechnique.id), text: guitarTechnique.name"></div>' +
                                         '<div class="nav-guitar-technique__binded-lessons" data-bind="foreach: { data: $parent.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: \'lesson\' }">' +
@@ -58,6 +44,20 @@
                                             '</div>' +
                                         '</div>' +
                                     '</div>' +
-                                '</div>'
+                                '</div>' +
+                                '<!-- ko if: currentLesson && currentLesson.previousLessonId -->' +
+                                '<div style="margin-top: 15px;">' +
+                                    '<a class="mg-btn" data-bind="attr: { href: \'@Url.Action("Index", "Lesson", new {id = ""})\' + \'/\' + currentLesson.previousLessonId }">' +
+                                        'Предыдущий урок' +
+                                    '</a>' +
+                                '</div>' +
+                                '<!-- /ko -->' +
+                                '<!-- ko if: currentLesson && currentLesson.nextLessonId -->' +
+                                '<div style="margin-top: 15px;">' +
+                                    '<a class="mg-btn" data-bind="attr: { href: \'@Url.Action("Index", "Lesson", new {id = ""})\' + \'/\' + currentLesson.nextLessonId }">' +
+                                        'Следующий урок' +
+                                    '</a>' +
+                                '</div>' +
+                                '<!-- /ko -->'
     });
 </script>
