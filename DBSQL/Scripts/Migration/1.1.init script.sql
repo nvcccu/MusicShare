@@ -107,6 +107,7 @@ CREATE TABLE UserActionLog (
   GuestId bigint NOT NULL,
   ActionId int NOT NULL,
   Target bigint,
+  Date timestamp without time zone NOT NULL,
   CONSTRAINT pk_UserActionLog PRIMARY KEY (Id)
 )
 WITH (
