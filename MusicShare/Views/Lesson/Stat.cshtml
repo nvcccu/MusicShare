@@ -1,4 +1,5 @@
-﻿@using MusicShareWeb.Models.Lesson
+﻿@using Core.Enums
+@using MusicShareWeb.Models.Lesson
 @using Newtonsoft.Json
 @using Newtonsoft.Json.Serialization
 @model MusicShareWeb.Models.Lesson.StatModel
@@ -73,13 +74,13 @@
             <!-- /ko -->
             <div class="selfteacher-stat__graph-settings clearfix">
                 <div class="graph-settings__interval">
-                    Неделя <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.week"/>
+                    Неделя <input type="radio" name="graphInterval" data-action-id="@ActionId.ChangeStatPeriod" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.week" />
                 </div>
                 <div class="graph-settings__interval">
-                    Месяц <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.month"/>
+                    Месяц <input type="radio" name="graphInterval" data-action-id="@ActionId.ChangeStatPeriod" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.month" />
                 </div>
                 <div class="graph-settings__interval">
-                    Полгода <input type="radio" name="graphInterval" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.halfYear"/>
+                    Полгода <input type="radio" name="graphInterval" data-action-id="@ActionId.ChangeStatPeriod" data-bind="checked: $root.graphInterval, checkedValue: $root.graphIntervals.halfYear" />
                 </div>
             </div>
             <div class="selfteacher-stat__presets-block">
@@ -201,6 +202,7 @@
             statPreset.exercises.forEach(function (exerciseId) {
                 model.drawExercise[exerciseId](true);
             });
+            musGround.logger.logAction(@ActionId.SelectStatPreset);
         }
         model.changePresetName = function (statPreset) {
             model.changedPresetId(statPreset.id);
@@ -227,6 +229,7 @@
                         model.statPresets.remove(function(statPreset) {
                             return statPreset.id === statPresetId;
                         });
+                        musGround.logger.logAction(@ActionId.DeleteStatPreset);
                     } else {
                         alert('Ошибка');
                     }
@@ -264,6 +267,7 @@
                     }
                     model.changedPresetName(null);
                     model.changedPresetId(null);
+                    musGround.logger.logAction(@ActionId.RenameStatPreset);
                     alert('Сохранено');
                 },
                 error: function() {
@@ -272,7 +276,6 @@
             });
         };
         model.updatePresetExercises = function (statPreset) {
-            debugger;
             $.ajax({
                 url: '@Url.Action("UpdateStatPreset")',
                 type: 'POST',
@@ -315,6 +318,7 @@
                             }).map(function (tmp) {
                                 return tmp.exerciseId;
                             });
+                        musGround.logger.logAction(@ActionId.SaveStatPreset);
                         alert('Сохранено');
                     } else {
                         alert('Ошибка');
@@ -354,6 +358,7 @@
                             name: ko.observable(result.statPreset.Name),
                             exercises: result.statPreset.Exercises
                         });
+                        musGround.logger.logAction(@ActionId.CreateStatPreset);
                     } else {
                         alert('Ошибка');
                     }

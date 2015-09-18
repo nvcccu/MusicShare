@@ -1,4 +1,5 @@
-﻿using BusinessLogic.DaoEntities;
+﻿using System;
+using BusinessLogic.DaoEntities;
 using BusinessLogic.Interfaces;
 using Core.Enums;
 
@@ -8,7 +9,8 @@ namespace BusinessLogic.Providers {
             new UserActionLog {
                 GuestId = guestId,
                 ActionId = (int)actionId,
-                Target = target
+                Target = target,
+                Date = DateTime.Now
             }.Insert();
         }
     }

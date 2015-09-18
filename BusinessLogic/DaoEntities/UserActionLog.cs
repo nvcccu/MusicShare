@@ -17,20 +17,24 @@ namespace BusinessLogic.DaoEntities {
             [DbType(typeof (Int32))]
             ActionId,
             [DbType(typeof (Int64))]
-            Target
+            Target,
+            [DbType(typeof (DateTime))]
+            Date
         }
 
         public long Id { get; set; }
         public long GuestId { get; set; }
         public int ActionId { get; set; }
         public long? Target { get; set; }
+        public DateTime Date { get; set; }
 
         public UserActionLogDto ToDto() {
             return new UserActionLogDto {
                 Id = Id,
                 GuestId = GuestId,
                 ActionId = ActionId,
-                Target = Target
+                Target = Target,
+                Date = Date
             };
         }
     }

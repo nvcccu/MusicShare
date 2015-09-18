@@ -459,6 +459,9 @@
     <Content Include="Views\DerzkieSchi\AdminExercise.cshtml" />
     <Content Include="Views\DerzkieSchi\NotEnoughDerzkiy.cshtml" />
     <Content Include="Views\DerzkieSchi\LessonOverview.cshtml" />
+    <Content Include="Views\Shared\FeatureIdHelper.cshtml">
+      <LastGenOutput>ContentHelper.generated.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

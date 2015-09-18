@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using BusinessLogic.Interfaces;
+using CommonUtils.ServiceManager;
+using Core.Enums;
 using Core.TransportTypes;
 using MusicShareWeb.Models.Lesson;
 
@@ -61,6 +64,7 @@ namespace MusicShareWeb.Controllers {
         }
         [HttpGet]
         public ActionResult Stat() {
+            ServiceManager<IBusinessLogic>.Instance.Service.AddUserAction(GuestId, ActionId.OpenStat);
             return View("Stat", new StatModel(BaseModel));
         }
         [HttpPost]

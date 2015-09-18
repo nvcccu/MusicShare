@@ -1,0 +1,6 @@
+﻿@using Core.Enums
+<script type="text/javascript">
+    @foreach (var actionId in Enum.GetValues(typeof(ActionId))) {
+        <text>@actionId = @Convert.ToInt32(actionId);</text>
+    }
+</script>

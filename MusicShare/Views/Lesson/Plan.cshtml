@@ -195,6 +195,10 @@
                 alert('Напишите название плана');
                 return false;
             }
+            if (model.selectedExercises().length === 0) {
+                alert('Добавьте хотя бы одно упражнение в план занятий');
+                return false;
+            }
             if (model.plan) {
                 $.ajax({
                     url: '@Url.Action("UpdatePlan")',

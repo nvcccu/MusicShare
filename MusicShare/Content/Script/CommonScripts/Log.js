@@ -11,12 +11,12 @@
             }
         });
     });
-    self.logAction = function (actinId, target) {
+    self.logAction = function (actionId, target) {
         $.ajax({
             url: self.logUrl,
             type: 'POST',
             data: {
-                actionId: actinId,
+                actionId: actionId,
                 target: target
             }
         });
