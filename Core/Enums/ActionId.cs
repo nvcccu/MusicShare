@@ -39,7 +39,7 @@
         /// <summary>
         /// Смена периода просмотра статистики
         /// </summary>
-        ChangeStatPeriod = 9,
+        ChangeStatPeriod = 10,
         
     }
 }
