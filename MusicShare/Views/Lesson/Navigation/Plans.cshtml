@@ -12,16 +12,26 @@
         model.isAuthorized = data.isAuthorized;
         model.plans = data.plans;
         model.arePlansOpened = ko.observable(false);
-        model.plansOpenedToggle = function () {
-            model.arePlansOpened(!model.arePlansOpened());
+        model.plansOpenedToggle = function (obj, event, newValue) {
+            if (event && event.isTrigger && !model.arePlansOpened()) {
+                newValue = false;
+            } else {
+                $('#LessonsToggle').trigger('click');
+            }
+            model.arePlansOpened(newValue !== undefined ? newValue : !model.arePlansOpened());
+            
+            event.stopPropagation();
         };
+        $('body').bind('click', function(event) {
+            model.plansOpenedToggle({}, event, false);
+        });
         return model;
     }
 
     ko.components.register('PlansNavigation', {
         viewModel: plansModel,
         template:   '<!-- ko if: isAuthorized -->' +
-                    '<div class="mg-btn" data-bind="click: plansOpenedToggle">' +
+                    '<div id="PlansToggle" class="mg-btn" data-bind="click: plansOpenedToggle">' +
                         'Мои планы занятий &nbsp;<span style="font-family: FontAwesome;" data-bind="text: arePlansOpened() ? \'&#xf0d9;\' : \'&#xf0d7;\'"</span>' +
                     '</div>' +
                     '<div data-bind="visible: arePlansOpened" style="position: absolute; z-index: 10; max-width: 220px; max-height: 400px; overflow-y: auto;">' +

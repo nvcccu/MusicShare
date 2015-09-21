@@ -25,7 +25,7 @@
                 <div class="guitar-technique__name" data-bind="click: $root.setActiveGuitarTechnique.bind($data, guitarTechnique.id), text: guitarTechnique.name"></div>
                 <div class="guitar-technique__binded-lessons" data-bind="foreach: { data: $root.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: 'lesson' }">
                     <div class="binded-lessons__lesson">
-                        <a class="mg-link" data-bind="text: lesson.name, attr: {href: $root.lessonUrlTemplate + lesson.id}"></a>
+                        <a class="binded-lessons__lesson-link" data-bind="text: lesson.name, attr: {href: $root.lessonUrlTemplate + lesson.id}"></a>
                     </div>
                     <div class="binded-lessons__lesson-description">
                         <div class="triangle-left"></div>
