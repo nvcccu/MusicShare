@@ -75,6 +75,10 @@ header {
     float: right;
     cursor: pointer;
 }
+.header__logout {
+    cursor: pointer;
+    font-size: 12px;
+}
 .header__login-block {
     height: 40px;
 }
@@ -99,6 +103,8 @@ header {
 }
 .header__user-name {
     background-color: #524737;
+    .border-radius(@mg-border-radius--ordinal);
+    .box-shadow("1px 1px 5px rgba(0,0,0,0.5)");
     width: 165px;
     height: 40px;
     text-align: center;
@@ -111,6 +117,7 @@ header {
     color: @mg-text-white;
     height: 30px;
     width: 30px;
+    font-size: 18px;
     line-height: 30px;
     .box-sizing__border-box;
     .border-radius(@mg-border-radius--ordinal);

@@ -32,6 +32,9 @@
         model.setActiveGuitarTechnique = function (guitarTechniqueId) {
             model.activeGuitarTechnique(guitarTechniqueId);
         };
+        model.unsetActiveGuitarTechnique = function () {
+            model.activeGuitarTechnique(null);
+        };
         model.getLessonsByGuitarTechniqueId = function (guitarTechniqueId) {
             return model.lessons.filter(function (lesson) {
                 return lesson.guitarTechniqueId === guitarTechniqueId;
@@ -48,8 +51,8 @@
                                     'Выбрать урок &nbsp;<span style="font-family: FontAwesome;" data-bind="text: areLessonsOpened() ? \'&#xf0d9;\' : \'&#xf0d7;\'"</span>' +
                                 '</div>' +
                                 '<div class="lesson-navigation__nav-lesson-list" style="position: absolute; z-index: 10; max-height: 300px; overflow-y: auto;" data-bind="visible: areLessonsOpened, foreach: { data: guitarTechniques, as: \'guitarTechnique\' }">' +
-                                    '<div data-bind="attr: {class: $parent.activeGuitarTechnique() === guitarTechnique.id ? \'nav-lesson-list__guitar-technique nav-lesson-list__guitar-technique--active\' : \'nav-lesson-list__guitar-technique\'}">' +
-                                        '<div class="nav-guitar-technique__name" data-bind="click: $parent.setActiveGuitarTechnique.bind($data, guitarTechnique.id), clickBubble: false, text: guitarTechnique.name"></div>' +
+                                    '<div data-bind="attr: { class: $parent.activeGuitarTechnique() === guitarTechnique.id ? \'nav-lesson-list__guitar-technique nav-lesson-list__guitar-technique--active\' : \'nav-lesson-list__guitar-technique\'}">' +
+                                        '<div class="nav-guitar-technique__name" data-bind="click: $parent.activeGuitarTechnique() === guitarTechnique.id ? $parent.unsetActiveGuitarTechnique : $parent.setActiveGuitarTechnique.bind($data, guitarTechnique.id), clickBubble: false, text: guitarTechnique.name"></div>' +
                                         '<div class="nav-guitar-technique__binded-lessons" data-bind="foreach: { data: $parent.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: \'lesson\' }">' +
                                             '<div class="nav-binded-lessons__lesson">' +
                                                 '<a class="mg-link navigation-link" data-bind="text: lesson.name, attr: {href: $parents[1].lessonUrlTemplate + lesson.id}"></a>' +

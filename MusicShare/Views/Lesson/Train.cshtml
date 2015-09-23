@@ -64,6 +64,7 @@
         model.lessons = data.lessons;
         model.exercises = data.exercises;
         model.speeds = data.speeds;
+        model.isAuth = @Json.Encode(Model.CurrentUser != null && Model.CurrentUser.IsAuthorized);
 
         model.bitSound = document.getElementById('BitSound');
         //        if (!model.bitSound.src) {
@@ -130,6 +131,10 @@
             }
         });
         model.saveSpeeds = function () {
+            if (!model.isAuth) {
+                alert('Для сохранения скорости метронома необходимо зарегистрироваться');
+                return false;
+            }
             var speeds = {};
             var keys = Object.keys(model.speeds);
             for (var i = 0; i < keys.length; i++) {
