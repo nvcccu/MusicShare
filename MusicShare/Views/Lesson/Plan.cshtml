@@ -66,7 +66,7 @@
         <div data-bind="sortable: $root.selectedExercises">
             <div class="plan-exercise">
                 <div class="plan__exercise-name">
-                    <span data-bind="text: $data.guitarTechniqueShortName + '. Урок ' + $data.lessonOrderNumber + '. ' + $data.exerciseName"></span>
+                    <span data-bind="text: $data.lessonName + '. ' + $data.exerciseName"></span>
                 </div>
                 <div class="plan__exercise-image-block">
                     <img data-bind="attr: { src: $data.imageUrl }" />
@@ -119,11 +119,10 @@
         });
         model.selectedExercises = ko.observableArray();
 
-        var buildPlannedExercise = function (id, guitarTechniqueShortName, lessonOrderNumber, exerciseName, imageUrl) {
+        var buildPlannedExercise = function (id, lessonName, exerciseName, imageUrl) {
             return {
                 id: id,
-                guitarTechniqueShortName: guitarTechniqueShortName,
-                lessonOrderNumber: lessonOrderNumber,
+                lessonName: lessonName,
                 exerciseName: exerciseName,
                 imageUrl: imageUrl
             };
@@ -168,7 +167,7 @@
                 var guitarTechnique = model.guitarTechniques.filter(function(guitarTechnique) {
                     return guitarTechnique.id === lesson.guitarTechniqueId;
                 })[0];
-                model.selectedExercises.push(buildPlannedExercise(exercise.id, guitarTechnique.shortName, lesson.orderNumber, exercise.name, exercise.imageUrl));
+                model.selectedExercises.push(buildPlannedExercise(exercise.id, lesson.name, exercise.name, exercise.imageUrl));
             } else {
                 model.selectedExercises.remove(function (selectedExercise) {
                     return selectedExercise.id === exercise.id;
@@ -255,7 +254,7 @@
                     var guitarTechnique = model.guitarTechniques.filter(function (guitarTechnique) {
                         return guitarTechnique.id === lesson.guitarTechniqueId;
                     })[0];
-                    model.selectedExercises.push(buildPlannedExercise(exerciseId, guitarTechnique.shortName, lesson.orderNumber, exercise.name, exercise.imageUrl));
+                    model.selectedExercises.push(buildPlannedExercise(exerciseId, lesson.name, exercise.name, exercise.imageUrl));
 
                     model.selectedExerciseIds[exerciseId](true);
                 });

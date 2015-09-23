@@ -54,7 +54,9 @@
 .lesson-dropdown-navigation__guitar-techniques {
     .box-shadow(@mg-drop-down__box-shadow);
 }
-.lesson-dropdown-navigation__guitar-technique {}
+.lesson-dropdown-navigation__guitar-technique {
+    position: relative;
+}
 .lesson-dropdown-navigation__guitar-technique-name {
     cursor: pointer;
     height: 40px;
@@ -67,10 +69,10 @@
     padding-left: 20px;
 }
 .lesson-dropdown-navigation__guitar-technique:nth-of-type(2n) .lesson-dropdown-navigation__guitar-technique-name {
-    background-color: #332b21;
+    background-color: @mg-brown--list-even;
 }
 .lesson-dropdown-navigation__guitar-technique:nth-of-type(2n+1) .lesson-dropdown-navigation__guitar-technique-name{
-    background-color: #352d23;
+    background-color: @mg-brown--list-odd;
 }
 .lesson-dropdown-navigation__guitar-technique .lesson-dropdown-navigation__guitar-technique-name:hover {
     background-color: @mg-green--hover;
@@ -80,6 +82,13 @@
 }
 .lesson-dropdown-navigation__guitar-technique .lesson-dropdown-navigation__guitar-technique-name.lesson-dropdown-navigation__guitar-technique-name--active {
     background-color: @mg-green--ordinal;
+}
+.lesson-dropdown-navigation__guitar-technique-lessons-selected {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    height: 100%;
+    line-height: 40px;
 }
 .lesson-dropdown-navigation__lessons {
      background-color: #3d352b;
@@ -209,6 +218,10 @@
 }
 .presets-block__preset:hover {
     background-color: @mg-green--ordinal
+}
+.preset__change-name-block {
+    width: 450px;
+    float: left;
 }
 .preset__change-name {
     display: none;

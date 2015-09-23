@@ -21,6 +21,9 @@
                 $('#PlansToggle').trigger('click');
             }
             model.areLessonsOpened(newValue !== undefined ? newValue : !model.areLessonsOpened());
+            if (!model.areLessonsOpened()) {
+                model.activeGuitarTechnique(null);
+            }
             event.stopPropagation();
         };
         $('body').bind('click', function(event) {
@@ -46,7 +49,7 @@
                                 '</div>' +
                                 '<div class="lesson-navigation__nav-lesson-list" style="position: absolute; z-index: 10; max-height: 300px; overflow-y: auto;" data-bind="visible: areLessonsOpened, foreach: { data: guitarTechniques, as: \'guitarTechnique\' }">' +
                                     '<div data-bind="attr: {class: $parent.activeGuitarTechnique() === guitarTechnique.id ? \'nav-lesson-list__guitar-technique nav-lesson-list__guitar-technique--active\' : \'nav-lesson-list__guitar-technique\'}">' +
-                                        '<div class="nav-guitar-technique__name" data-bind="click: $parent.setActiveGuitarTechnique.bind($data, guitarTechnique.id), text: guitarTechnique.name"></div>' +
+                                        '<div class="nav-guitar-technique__name" data-bind="click: $parent.setActiveGuitarTechnique.bind($data, guitarTechnique.id), clickBubble: false, text: guitarTechnique.name"></div>' +
                                         '<div class="nav-guitar-technique__binded-lessons" data-bind="foreach: { data: $parent.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: \'lesson\' }">' +
                                             '<div class="nav-binded-lessons__lesson">' +
                                                 '<a class="mg-link navigation-link" data-bind="text: lesson.name, attr: {href: $parents[1].lessonUrlTemplate + lesson.id}"></a>' +

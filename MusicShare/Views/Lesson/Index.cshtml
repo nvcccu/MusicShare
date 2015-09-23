@@ -21,12 +21,10 @@
     </div>
     <div class="lesson-index__lesson-navigation">
         <div class="lesson-navigation__lesson-list" data-bind="foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' }">
-            <div class="lesson-list__guitar-technique" data-bind="attr: {class: $root.activeGuitarTechnique() === guitarTechnique.id ? 'lesson-list__guitar-technique lesson-list__guitar-technique--active' : 'lesson-list__guitar-technique'}">
-                <div class="guitar-technique__name" data-bind="click: $root.setActiveGuitarTechnique.bind($data, guitarTechnique.id), text: guitarTechnique.name"></div>
+            <div class="lesson-list__guitar-technique" data-bind="attr: { class: $root.activeGuitarTechnique() === guitarTechnique.id ? 'lesson-list__guitar-technique lesson-list__guitar-technique--active' : 'lesson-list__guitar-technique'}">
+                <div class="guitar-technique__name" data-bind="click: $root.activeGuitarTechnique() === guitarTechnique.id ? $root.unsetActiveGuitarTechnique : $root.setActiveGuitarTechnique.bind($data, guitarTechnique.id), text: guitarTechnique.name"></div>
                 <div class="guitar-technique__binded-lessons" data-bind="foreach: { data: $root.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: 'lesson' }">
-                    <div class="binded-lessons__lesson">
-                        <a class="binded-lessons__lesson-link" data-bind="text: lesson.name, attr: {href: $root.lessonUrlTemplate + lesson.id}"></a>
-                    </div>
+                    <a class="binded-lessons__lesson" data-bind="text: lesson.name, attr: {href: $root.lessonUrlTemplate + lesson.id}"></a>
                     <div class="binded-lessons__lesson-description">
                         <div class="triangle-left"></div>
                         <div class="lesson-description__title" data-bind="text: lesson.name"></div>
@@ -68,6 +66,9 @@
         };
         model.setActiveGuitarTechnique = function (guitarTechniqueId) {
             model.activeGuitarTechnique(guitarTechniqueId);
+        };
+        model.unsetActiveGuitarTechnique = function () {
+            model.activeGuitarTechnique(null);
         };
         model.getLessonsByGuitarTechniqueId = function (guitarTechniqueId) {
             return model.lessons.filter(function (lesson) {

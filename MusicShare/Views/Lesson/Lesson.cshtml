@@ -62,10 +62,12 @@
                 <div class="mg-btn" data-bind="click: $root.saveSpeeds">Сохранить изменения</div>
             </div>
             <div class="lesson-outer-navigation-block">
-                @if (Model.IsMinimized) {
-                    <a id="ChangeLessonType" href="@Url.Action("Index", new {id = Model.Lesson.Id})" class="mg-link">К полной версии урока</a>
-                } else {
-                    <a id="ChangeLessonType" href="@Url.Action("MinimizedLesson", new {id = Model.Lesson.Id})" class="mg-link">К сокращенной версии урока</a>
+                @if(Model.Exercises != null && Model.Exercises.Any()) {
+                    if(Model.IsMinimized) {
+                        <a id="ChangeLessonType" href="@Url.Action("Index", new {id = Model.Lesson.Id})" class="mg-link">К полной версии урока</a>
+                    } else {
+                            <a id="ChangeLessonType" href="@Url.Action("MinimizedLesson", new {id = Model.Lesson.Id})" class="mg-link">К сокращенной версии урока</a>
+                    }
                 }
             </div>
             <div class="lesson-outer-navigation-block">
@@ -79,7 +81,7 @@
 
 <script type="text/javascript">
     $(window).bind('scroll resize', function () {
-        if (window.pageYOffset > 160) {
+        if (window.pageYOffset > 230) {
             $('.right-container__content').addClass('right-container__content--float');
         } else {
             $('.right-container__content').removeClass('right-container__content--float');

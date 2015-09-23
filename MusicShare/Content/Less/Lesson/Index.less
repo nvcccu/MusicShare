@@ -82,21 +82,20 @@
     display: block;
 }
 .binded-lessons__lesson {
+    display: block;
     font-size: 16px;
     line-height: 40px;
     padding: 0 20px 0 60px;
-}
-.binded-lessons__lesson:hover {
-    background-color: @mg-brown--hover-new;
-    .box-shadow("1px 1px 1px 0 rgba(0,0,0,.4)");
-}
-.binded-lessons__lesson-link {
     text-decoration: none;
-    color: @mg-white;
+    color:@mg-text-white;
     &:hover, &:active {
-        color: @mg-white;
+        color: @mg-text-white;
         text-decoration: none;
     }
+}
+.binded-lessons__lesson:hover {
+    background-color: @mg-brown--hover;
+    .box-shadow("1px 1px 1px 0 rgba(0,0,0,.4)");
 }
 .binded-lessons__lesson-description {
     display: none;

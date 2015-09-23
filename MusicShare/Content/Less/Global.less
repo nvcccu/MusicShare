@@ -24,7 +24,7 @@ body {
     /* todo: Разобраться с -2*/
     margin: -@mg-header-height - @mg-footer-height - 2 auto 0;
     padding-top: @mg-header-height + @mg-footer-height;
-    color: @mg-white;
+    color: @mg-text-white;
     min-height: 100%;
     padding-bottom: 40px;
 }
@@ -39,7 +39,7 @@ input[type=submit].mg-btn {
     height: @mg-element-height--ordinal;
     width: @mg-btn-width--ordinal;
     font-family: @mg-font-family--ordinal;
-    color: @mg-white;
+    color: @mg-text-white;
     background-color: @mg-green--ordinal;
     border-color: @mg-green--ordinal;
     font-size: @mg-font-size--ordinal;
@@ -54,7 +54,7 @@ input[type=submit].mg-btn {
     .transition("all ease-in-out .05s");
 }
 .mg-btn:hover {
-    color: @mg-white;
+    color: @mg-text-white;
     background-color: @mg-green--hover;
     border-color: @mg-green--hover;
     outline: none;
@@ -64,7 +64,6 @@ input[type=submit].mg-btn {
 .mg-btn:focus:active {
     color: #dddddd;
     background-color: @mg-green--active;
-    text-shadow: none;
     border-color: @mg-green--active;
     .box-shadow(@mg-btn__box-shadow--active);
     outline: none;
@@ -106,7 +105,7 @@ p a:not(.btn):focus:active,
 }
 
 .mg-input-text {
-    background-color: @mg-white;
+    background-color: @mg-text-white;
     color: @mg-black;
     .box-sizing__border-box;
     padding: 0 @mg-input-text__padding-left-right;
@@ -135,9 +134,9 @@ p a:not(.btn):focus:active,
     text-align: left;
     padding: 0 30px;
     .box-sizing__border-box;
-    border-bottom: 1px solid @mg-brown--ordinal;
+    border-bottom: 1px solid @mg-brown--hover;
     background-color: @mg-brown-layout;
-    color: @mg-white;
+    color: @mg-text-white;
     text-decoration: none;
     .box-shadow(@mg-btn__box-shadow);
 }
@@ -147,14 +146,14 @@ p a:not(.btn):focus:active,
 }
 .mg-drop-down__element:hover {
     text-decoration: none;
-    color: @mg-white;
-    background-color: @mg-brown--ordinal;
+    color: @mg-text-white;
+    background-color: @mg-brown--hover;
 }
 .mg-drop-down__element:active,
 .mg-drop-down__element:focus,
 .mg-drop-down__element:active:focus {
     text-decoration: none;
-    color: @mg-white;
+    color: @mg-text-white;
 }
 .mg-drop-down__element-first {
     text-align: center;

@@ -21,15 +21,17 @@
         </div>
     </div>
     <div class="selfteacher__stat-left-block">
-        @if(Model.CurrentUser != null) {
+        @if (Model.CurrentUser != null)
+        {
             <div class="stat-type-select">
                 <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.speed), attr: { class: $root.statMode() == $root.statModes.speed ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Скорость</div>
-@*                <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.time), attr: { class: $root.statMode() == $root.statModes.time ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Время</div>*@
+                @*                <div data-bind="click: $root.setStatMode.bind($data, $root.statModes.time), attr: { class: $root.statMode() == $root.statModes.time ? 'stat-type-select__btn stat-type-select__btn--active' : 'stat-type-select__btn' }">Время</div>*@
             </div>
             <div class="lesson-dropdown-navigation">
                 <div class="lesson-dropdown-navigation__guitar-techniques" data-bind="foreach: { data: $root.guitarTechniques, as: 'guitarTechnique' }">
                     <div class="lesson-dropdown-navigation__guitar-technique">
                         <div class="lesson-dropdown-navigation__guitar-technique-name" data-bind="text: guitarTechnique.name, click: $root.toggleActiveGuitarTechnique, attr: { class: $root.activeGuitarTechnique() === guitarTechnique.id ? 'lesson-dropdown-navigation__guitar-technique-name lesson-dropdown-navigation__guitar-technique-name--active' : 'lesson-dropdown-navigation__guitar-technique-name' }"></div>
+@*                        <div class="lesson-dropdown-navigation__guitar-technique-lessons-selected" data-bind="text: $root.selectedLessonsByTechniqueCount[guitarTechnique.id]"></div>*@
                         <!-- ko if: $root.activeGuitarTechnique() === guitarTechnique.id -->
                         <div class="lesson-dropdown-navigation__lessons" data-bind="foreach: { data: $root.getLessonByGuitarTechnique(guitarTechnique), as: 'lesson' }">
                             <div class="lesson-dropdown-navigation__lesson">
@@ -39,7 +41,7 @@
                                     <div class="lesson-dropdown-navigation__exercise clearfix">
                                         <div class="lesson-dropdown-navigation__exercise-name" data-bind="text: exercise.name"></div>
                                         <div class="lesson-dropdown-navigation__exercise-checkbox clearfix">
-                                            <input type="checkbox" data-bind="checked: $root.drawExercise[exercise.id]"/>
+                                            <input type="checkbox" data-bind="checked: $root.drawExercise[exercise.id]" />
                                         </div>
                                         <div class="exercise-img-preshow-form">
                                             <div class="triangle-left" style="left: -2px; top: 20px;"></div>
@@ -58,12 +60,15 @@
                     </div>
                 </div>
             </div>
-        } else {
+        }
+        else
+        {
             <div>Войдите в систему, чтобы начать пользоваться системой статистики</div>
         }
     </div>
     <div class="selfteacher__stat-right-block">
-        @if(Model.CurrentUser != null) {
+        @if (Model.CurrentUser != null)
+        {
             <div id="linechart_material" data-bind="visible: $root.anyExerciseSelected()">
             </div>
             <!-- ko ifnot: $root.anyExerciseSelected() -->
@@ -88,12 +93,12 @@
                 <!-- ko if: $root.statPresets().length > 0 -->
                 <div class="presets-block__presets" data-bind="foreach: { data: $root.statPresets(), as: 'statPreset' }">
                     <div data-bind="click: $root.activeStatPreset() !== statPreset.id ? $root.setActiveStatPreset : '', attr: { class: $root.activeStatPreset() === statPreset.id ? 'presets-block__preset presets-block__preset--active clearfix' : 'presets-block__preset clearfix' }">
-                        <div data-bind="visible: $root.changedPresetId() === statPreset.id">
-                            <input type="text" class="mg-input-text" data-bind="value: $root.changedPresetName"/>
+                        <div class="preset__change-name-block" data-bind="visible: $root.changedPresetId() === statPreset.id">
+                            <input type="text" class="mg-input-text" style="vertical-align: top;" data-bind="value: $root.changedPresetName" />
                             <i class="fa fa-check" data-bind="click: $root.updateStatPresetName"></i>
                             <i class="fa fa-close" data-bind="click: $root.closeUpdateStat"></i>
                         </div>
-                        <div style="float: left; height: 100%; margin-right: 20px;" data-bind="click: $root.updatePresetExercises, clickBubble: false, visible:  $root.activeStatPreset() === statPreset.id">
+                        <div style="float: left; height: 100%; margin-right: 20px;" data-bind="click: $root.updatePresetExercises, clickBubble: false, visible:  $root.activeStatPreset() === statPreset.id && $root.changedPresetId() !== statPreset.id">
                             <i class="fa fa-save" style="font-size: 20px;  line-height: 40px;"></i>
                         </div>
                         <div class="preset__name" data-bind="visible: $root.changedPresetId() !== statPreset.id, text: statPreset.name()"></div>
@@ -115,7 +120,7 @@
                 <!-- /ko-->
                 <div class="presets__new-preset-block">
                     <div class="presets__new-preset-name">
-                        <input type="text" class="mg-input-text" placeholder="Название набора" data-bind="value: $root.newStatPresetName"/>
+                        <input type="text" class="mg-input-text" placeholder="Название набора" data-bind="value: $root.newStatPresetName" />
                     </div>
                     <div class="mg-btn presets__new-preset-save-btn" data-bind="click: $root.saveStatPreset">Создать новый набор</div>
                 </div>
@@ -145,6 +150,10 @@
         });
         model.changedPresetId = ko.observable(null);
         model.changedPresetName = ko.observable(null);
+        model.selectedLessonsByTechniqueCount = {};
+        model.guitarTechniques.forEach(function(technique) {
+            model.selectedLessonsByTechniqueCount[technique.id] = ko.observable(0);
+        });
         //
         model.statModes = {
             speed: 0,
@@ -162,9 +171,6 @@
         model.activeStatPreset = ko.observable(undefined);
         model.graphInterval = ko.observable(model.graphIntervals.week);
 
-        model.saveStatPreset = function () {
-
-        };
         model.setStatMode = function (statMode) {
             model.statMode(statMode);
         }
@@ -217,16 +223,16 @@
             model.changedPresetName(model.statPresets()[index].name());
             return false;
         }
-        model.deleteStatPreset = function(statPresetId) {
+        model.deleteStatPreset = function (statPresetId) {
             $.ajax({
                 url: '@Url.Action("DeleteStatPreset")',
                 type: 'POST',
                 data: {
                     statPresetId: statPresetId
                 },
-                success: function(result) {
+                success: function (result) {
                     if (result.success === true) {
-                        model.statPresets.remove(function(statPreset) {
+                        model.statPresets.remove(function (statPreset) {
                             return statPreset.id === statPresetId;
                         });
                         musGround.logger.logAction(@ActionId.DeleteStatPreset);
@@ -234,16 +240,16 @@
                         alert('Ошибка');
                     }
                 },
-                error: function() {
+                error: function () {
                     alert('Ошибка');
                 }
             });
         };
-        model.closeUpdateStat = function() {
+        model.closeUpdateStat = function () {
             model.changedPresetName(null);
             model.changedPresetId(null);
         };
-        model.updateStatPresetName = function(statPreset) {
+        model.updateStatPresetName = function (statPreset) {
             $.ajax({
                 url: '@Url.Action("UpdateStatPreset")',
                 type: 'POST',
@@ -251,7 +257,7 @@
                     id: statPreset.id,
                     name: model.changedPresetName()
                 },
-                success: function(result) {
+                success: function (result) {
                     if (result.success === true) {
                         var index = undefined;
                         model.statPresets().forEach(function (sp, i) {
@@ -270,7 +276,7 @@
                     musGround.logger.logAction(@ActionId.RenameStatPreset);
                     alert('Сохранено');
                 },
-                error: function() {
+                error: function () {
                     alert('Ошибка');
                 }
             });
@@ -313,7 +319,7 @@
                                     needDraw: needDraw()
                                 };
                             })
-                            .filter(function(tmp) {
+                            .filter(function (tmp) {
                                 return tmp.needDraw;
                             }).map(function (tmp) {
                                 return tmp.exerciseId;
@@ -329,7 +335,7 @@
                 }
             });
         };
-        model.saveStatPreset = function() {
+        model.saveStatPreset = function () {
             $.ajax({
                 url: '@Url.Action("SaveStatPreset")',
                 type: 'POST',

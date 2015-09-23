@@ -66,13 +66,14 @@ header {
 }
 .header__contacts {
     float: right;
-    padding: 11px 33px 11px 0;
+    padding: 11px 30px 11px 0;
     height: 100%;
-    width: 160px;
+    width: 195px;
     .box-sizing__border-box;
 }
 .header__login {
     float: right;
+    cursor: pointer;
 }
 .header__login-block {
     height: 40px;
@@ -82,18 +83,50 @@ header {
     .box-sizing__border-box;
     margin-top: 11px;
 }
+.header__user-logged {
+    padding: 20px 30px 20px 0;
+    width: 270px;
+    float: right;
+}
+.header__logged-social {
+    float: left;
+    margin-right: 20px;
+    margin-top: 6px;
+}
+.header__user-actions {
+    float: left;
+    text-align: center;
+}
+.header__user-name {
+    background-color: #524737;
+    width: 165px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: @mg-text-white;
+    font-weight: bold;
+}
 .header__social-item {
-    height: 25px;
-    width: 25px;
-    line-height: 25px;
-    border: 1px solid @mg-green--ordinal;
+    background-color: @mg-green--ordinal;
+    color: @mg-text-white;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
     .box-sizing__border-box;
+    .border-radius(@mg-border-radius--ordinal);
     text-align: center;
     font-weight: bold;
     float: right;
     margin-left: 25px;
-    &:hover, &:active, &:focus {
+    &:hover {
+        background-color: @mg-green--hover;
         text-decoration: none !important;
+        color: @mg-text-white;
+    }
+    &:active, &:focus {
+        background-color: @mg-green--active;
+        text-decoration: none !important;
+        color: @mg-text-white;
     }
 }
 
@@ -103,7 +136,7 @@ header {
     height: @mg-footer-height;
     .box-sizing__border-box;
     border-top: 2px solid @mg-green--ordinal;
-    color: @mg-white;
+    color: @mg-text-white;
 }
 .footer {
     margin: 0 auto;

@@ -13,28 +13,46 @@
     <div class="header">
         <div class="header__logo">
             <a href="@Url.Action("Index", "Lesson", new {id = ""})">
-                <img class="header__logo-img" src="/Content/Image/logo.png" alt=""/>
+                <img class="header__logo-img" src="/Content/Image/logo.png" alt="" />
             </a>
         </div>
         <div class="header-navigation">
-@*            <a class="header-navigation__btn @CssIfActive(controllerName, "Market")" href="@Url.Action("Index", "Market")">Магазин</a><!--*@
-@*            <a class="header-navigation__btn @CssIfActive(controllerName, "Article")" href="@Url.Action("New", "Article")">Статьи</a><!--*@
-@*            --><a class="header-navigation__btn @CssIfActive(controllerName, "Designer")" href="@Url.Action("Index", "Designer")">Конструктор</a><!--*@
-@*            --><a class="header-navigation__btn @CssIfActive(controllerName, "Ask")" href="@Url.Action("New", "Ask")">Задать вопрос</a><!--*@
-@*            --><a class="header-navigation__btn @CssIfActive(controllerName, "Lesson")" href="@Url.Action("Index", "Lesson", new { id = "" })">Самоучитель</a>*@
-            <a class="header-navigation__btn @CssIfActive(controllerName, "Lesson")" href="@Url.Action("Index", "Lesson", new { id = "" })">Самоучитель</a>
+            @*            <a class="header-navigation__btn @CssIfActive(controllerName, "Market")" href="@Url.Action("Index", "Market")">Магазин</a><!--*@
+            @*            <a class="header-navigation__btn @CssIfActive(controllerName, "Article")" href="@Url.Action("New", "Article")">Статьи</a><!--*@
+            @*            --><a class="header-navigation__btn @CssIfActive(controllerName, "Designer")" href="@Url.Action("Index", "Designer")">Конструктор</a><!--*@
+            @*            --><a class="header-navigation__btn @CssIfActive(controllerName, "Ask")" href="@Url.Action("New", "Ask")">Задать вопрос</a><!--*@
+            @*            --><a class="header-navigation__btn @CssIfActive(controllerName, "Lesson")" href="@Url.Action("Index", "Lesson", new { id = "" })">Самоучитель</a>*@
+            <a class="header-navigation__btn @CssIfActive(controllerName, "Lesson")" href="@Url.Action("Index", "Lesson", new {id = ""})">Самоучитель</a>
         </div>
-        <div class="header__contacts">
-            <div class="header__login-block">
-                @if(Model.CurrentUser != null && Model.CurrentUser.IsAuthorized) {
-                    <a class="header__login mg-link" href="@Url.Action("SignOut", "Auth")">@(Model.CurrentUser != null ? Model.CurrentUser.NickName : "")</a>
-                } else {
-                    <div class="header__login mg-link" data-target="#SignInUpModal" data-toggle="modal">Войти на сайт</div>
-                }
+        @if(Model.CurrentUser != null && Model.CurrentUser.IsAuthorized) {
+            <div class="header__user-logged">
+                <div class="header__logged-social">
+                    <a class="header__social-item" href="https://vk.com/musground">В</a>
+                </div>
+                <div class="header__user-actions">
+                    <div class="header__user-name">
+                        @Model.CurrentUser.NickName
+                    </div>
+                    <div style="text-align: center;">
+                        <a class="mg-link" style="cursor: pointer;" href="@Url.Action("SignOut", "Auth")">Выйти из аккаунта</a>
+                    </div>
+                </div>
             </div>
-            <div class="header__social">
-                <a class="mg-link header__social-item" href="https://vk.com/musground">В</a>
+        } else {
+            <div class="header__contacts">
+                <div class="header__login-block">
+                    <div id="HeaderLogin" class="header__login mg-link" data-toggle="modal">Войти на сайт</div>
+                </div>
+                <div class="header__social">
+                    <a class="header__social-item" href="https://vk.com/musground">В</a>
+                </div>
             </div>
-        </div>
+        }
     </div>
+    <script type="text/javascript">
+        $('#HeaderLogin').on('click', function () {
+            $('#SignInUpModal').modal();
+        });
+
+    </script>
 </header>
