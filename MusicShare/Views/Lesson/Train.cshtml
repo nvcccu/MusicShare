@@ -41,12 +41,14 @@
             </div>
         </div>
         <div class="lesson-zone__right-container">
-            <div class="right-container__content">
-                <div class="lesson-outer-navigation-block">
-                    <a class="mg-btn" href="@Url.Action("Plan", new {id = Model.Plan.Id})">Редактировать план</a>
-                </div>
-                <div class="lesson-outer-navigation-block">
-                    <div class="mg-btn" data-bind="click: $root.saveSpeeds">Сохранить изменения</div>
+            <div class="lesson__nav-menu">
+                <a class="nav-menu__row mg-link--no-decorate" href="@Url.Action("Plan", new {id = Model.Plan.Id})">
+                    <div class="nav-menu__row_icon">@@</div>
+                    <div class="nav-menu__row_text">Редактировать план</div>
+                </a>
+                <div class="nav-menu__row" data-bind="click: $root.saveSpeeds">
+                    <div class="nav-menu__row_icon nav-menu__row_icon_save-speed"></div>
+                    <div class="nav-menu__row_text">Сохранить скорость</div>
                 </div>
             </div>
         </div>

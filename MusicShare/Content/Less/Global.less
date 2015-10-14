@@ -12,7 +12,7 @@ html {
 }
 body {
     margin: 0;
-    background: @mg-brown-layout;
+    background: @mg-brown--layout;
     font-family: verdana, sans-serif, Lucida Sans;
     min-width: inherit;
     min-height: 100%;
@@ -103,6 +103,15 @@ p a:not(.btn):focus:active,
     color: @mg-text-white;
     text-decoration: none;
 }
+.mg-link--no-decorate,
+.mg-link--no-decorate:hover,
+.mg-link--no-decorate:active,
+.mg-link--no-decorate:focus,
+.mg-link--no-decorate:focus:active {
+    outline: none;
+    text-decoration: none;
+    color: @mg-text-white;
+}
 
 .mg-input-text {
     background-color: @mg-text-white;
@@ -132,10 +141,10 @@ p a:not(.btn):focus:active,
     height: 50px;
     line-height: 50px;
     text-align: left;
-    padding: 0 30px;
+    padding: 0 25px;
     .box-sizing__border-box;
     border-bottom: 1px solid @mg-brown--hover;
-    background-color: @mg-brown-layout;
+    background-color: @mg-brown--layout;
     color: @mg-text-white;
     text-decoration: none;
     .box-shadow(@mg-btn__box-shadow);

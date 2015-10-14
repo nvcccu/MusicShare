@@ -47,10 +47,10 @@
 
     ko.components.register('LessonsNavigation', {
         viewModel: lessonsModel,
-        template:               '<div id="LessonsToggle" class="mg-btn" data-bind="click: lessonsOpenedToggle">' +
+        template:               '<div id="LessonsToggle" class="lesson-top-nav__btn" data-bind="click: lessonsOpenedToggle">' +
                                     'Выбрать урок &nbsp;<span style="font-family: FontAwesome;" data-bind="text: areLessonsOpened() ? \'&#xf0d9;\' : \'&#xf0d7;\'"</span>' +
                                 '</div>' +
-                                '<div class="lesson-navigation__nav-lesson-list" style="position: absolute; z-index: 10; max-height: 300px; overflow-y: auto;" data-bind="visible: areLessonsOpened, foreach: { data: guitarTechniques, as: \'guitarTechnique\' }">' +
+                                '<div class="lesson-navigation__nav-lesson-list" style="position: absolute; margin-top: 40px; margin-left: -75px; z-index: 10; max-height: 300px; overflow-y: auto;" data-bind="visible: areLessonsOpened, foreach: { data: guitarTechniques, as: \'guitarTechnique\' }">' +
                                     '<div data-bind="attr: { class: $parent.activeGuitarTechnique() === guitarTechnique.id ? \'nav-lesson-list__guitar-technique nav-lesson-list__guitar-technique--active\' : \'nav-lesson-list__guitar-technique\'}">' +
                                         '<div class="nav-guitar-technique__name" data-bind="click: $parent.activeGuitarTechnique() === guitarTechnique.id ? $parent.unsetActiveGuitarTechnique : $parent.setActiveGuitarTechnique.bind($data, guitarTechnique.id), clickBubble: false, text: guitarTechnique.name"></div>' +
                                         '<div class="nav-guitar-technique__binded-lessons" data-bind="foreach: { data: $parent.getLessonsByGuitarTechniqueId(guitarTechnique.id), as: \'lesson\' }">' +

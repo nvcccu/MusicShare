@@ -67,6 +67,10 @@ namespace MusicShareWeb.Controllers {
             ServiceManager<IBusinessLogic>.Instance.Service.AddUserAction(GuestId, ActionId.OpenStat);
             return View("Stat", new StatModel(BaseModel));
         }
+        [HttpGet]
+        public ActionResult Promo() {
+            return View("Promo", BaseModel);
+        }
         [HttpPost]
         public JsonResult DeleteStatPreset(int statPresetId) {
             return new JsonResult {

@@ -519,7 +519,7 @@ insert into Exercise values
 (101, 13, 'Упражнение 1', '/ImgStore/Lesson/Legato/2/1.jpg', null, 50, 0, true),
 (102, 13, 'Упражнение 2', '/ImgStore/Lesson/Legato/2/2.jpg', null, 50, 0, true),
 (103, 13, 'Упражнение 3', '/ImgStore/Lesson/Legato/2/3.jpg', null, 50, 0, true),
-(104, 13, 'Упражнение 4', '/ImgStore/Lesson/Legato/2/3.jpg', null, 50, 0, true);
+(104, 13, 'Упражнение 4', '/ImgStore/Lesson/Legato/2/4.jpg', null, 50, 0, true);
 
 -- Легато урок 3
 insert into Exercise values

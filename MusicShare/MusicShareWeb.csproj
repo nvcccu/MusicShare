@@ -194,7 +194,16 @@
     <Content Include="Content\Image\index.jpg" />
     <Content Include="Content\Image\IsSolution.jpg" />
     <Content Include="Content\Image\Layout.png" />
+    <Content Include="Content\Image\Lesson\BoomText.png" />
+    <Content Include="Content\Image\Lesson\Monitor.png" />
+    <Content Include="Content\Image\Lesson\PrevLesson.png" />
+    <Content Include="Content\Image\Lesson\MinLesson.png" />
+    <Content Include="Content\Image\Lesson\NextLesson.png" />
+    <Content Include="Content\Image\Lesson\LessonList.png" />
     <Content Include="Content\Image\Lesson\Metronome.png" />
+    <Content Include="Content\Image\Lesson\HomeWork.png" />
+    <Content Include="Content\Image\Lesson\PromoBackgroundImage.jpg" />
+    <Content Include="Content\Image\Lesson\PromoMiddleImage.png" />
     <Content Include="Content\Image\Lesson\Start.png" />
     <Content Include="Content\Image\Lesson\Stop.png" />
     <Content Include="Content\Image\Lesson\TriangleBig.png" />
@@ -292,6 +301,12 @@
     </Content>
     <Content Include="Content\Less\Layout.min.css">
       <DependentUpon>Layout.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Lesson\Promo.css">
+      <DependentUpon>Promo.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\Lesson\Promo.min.css">
+      <DependentUpon>Promo.css</DependentUpon>
     </Content>
     <Content Include="Content\Less\Lesson\Stat.css">
       <DependentUpon>Stat.less</DependentUpon>
@@ -461,6 +476,15 @@
     <Content Include="Views\DerzkieSchi\LessonOverview.cshtml" />
     <Content Include="Views\Shared\FeatureIdHelper.cshtml">
       <LastGenOutput>ContentHelper.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Lesson\Navigation\SideNavigation.cshtml" />
+    <Content Include="Views\Lesson\Promo.cshtml" />
+    <Content Include="Content\Less\Lesson\Promo.less" />
+    <Content Include="Content\Less\Lesson\Promo.css.map">
+      <DependentUpon>Promo.css</DependentUpon>
+    </Content>
+    <Content Include="Views\Shared\EmptyLayout.cshtml">
+      <LastGenOutput>Layout.generated.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,38 @@
 ﻿@import "../Const.less";
 @import "../Mixin.less";
 
+.lesson-top-nav__btn {
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: @mg-brown--layout;
+    color: @mg-text-white;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    float: right;
+}
+.lesson-top-nav__btn:hover,
+.lesson-top-nav__btn:active,
+.lesson-top-nav__btn:focus,
+.lesson-top-nav__btn:active:focus {
+    color: @mg-text-white;
+    text-decoration: none;
+}
+.lesson-top-nav__btn:hover {
+    background-color: @mg-brown--hover;
+}
+.lesson-top-nav__icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 16px;
+    width: 16px;
+    line-height: 20px;
+}
+
+
 .lesson-layout {
     background: #191511;
     width: 100%;
@@ -48,13 +80,13 @@
 }
 .lesson__order-number {
     font-size: 20px;
-    font-family: "OpenSans-Light";
-    margin-top: 50px;
+    font-family: @mg-font-family--additional;
 }
 .lesson__name{
-    margin-top: 20px;
+    margin-top: 8px;
+    margin-bottom: 20px;
     font-size: 25px;
-    font-family: "OpenSans-Light";
+    font-family: @mg-font-family--additional;
 }
 .lesson__body{
    margin-top: 20px;
@@ -70,7 +102,7 @@
     height: 35px;
     float: left;
     background: url('/Content/Image/Lesson/Metronome.png') center no-repeat;
-    background-color: @mg-brown-layout;
+    background-color: @mg-brown--layout;
 }
 .metronome__speed-control {
     vertical-align: top;
@@ -139,7 +171,7 @@
     z-index: 10;
 }
 .exercise__add-to-plan {
-    background-color: @mg-brown-layout;
+    background-color: @mg-brown--layout;
     border-bottom: 1px solid grey;
     width: 200px;
     height: 40px;
@@ -180,4 +212,130 @@
     position: absolute;
     top: 200px;
     left: 1200px;
+}
+
+.lesson__nav-menu {
+    width: 300px;
+    float: right;
+    padding: 20px 0;
+    background-color: @mg-brown--layout;
+}
+.nav-menu__row {
+    padding: 0 20px;
+    height: auto;
+    line-height: 40px;
+    position: relative;
+    cursor: pointer;
+    display: block;
+}
+.nav-menu__row:hover {
+    background-color: @mg-brown--hover;
+}
+.nav-menu__row:before,
+.nav-menu__row:after {
+    .clearfix;
+}
+.nav-menu__row_icon {
+    height: 24px;
+    width: 24px;
+    margin-top: 8px;
+    float: left;
+}
+.nav-menu__row_icon_prev-lesson {
+    background: url('/Content/Image/Lesson/PrevLesson.png') center no-repeat;
+}
+.nav-menu__row_icon_next-lesson {
+    background: url('/Content/Image/Lesson/NextLesson.png') center no-repeat;
+}
+.nav-menu__row_icon_lesson-list {
+    background: url('/Content/Image/Lesson/LessonList.png') center no-repeat;
+}
+.nav-menu__row_icon_home-work {
+    background: url('/Content/Image/Lesson/HomeWork.png') center no-repeat;
+}
+.nav-menu__row_icon_min-lesson {
+    background: url('/Content/Image/Lesson/MinLesson.png') center no-repeat;
+}
+.nav-menu__row_icon_save-speed {
+    background: url('/Content/Image/Lesson/Metronome.png') center no-repeat;
+}
+.nav-menu__row_text {
+    height: 100%;
+    float: left;
+    padding-left: 15px;
+}
+.nav-menu__row_info {
+    position: absolute;
+    background-color: @mg-brown--ordinal;
+    height: 24px;
+    line-height: 22px;
+    border: 1px solid @mg-brown--ordinal;
+    text-align: center;
+    font-size: 20px;
+    width: 24px;
+    left: 225px;
+    top: 8px;
+    .border-radius(@mg-border-radius--ordinal);
+}
+.lesson__homework-row--active .nav-menu__row_info {
+    color: @mg-text-white;
+    border-color: @mg-text-white;
+    background-color: @mg-green--ordinal;
+}
+.nav-menu__row_toggle-triangle {
+    float: right;
+}
+.lesson__homework-row {
+    width: 100%;
+    height: 40px;
+    padding: 0 20px;
+}
+.lesson__homework-row--active {
+    background-color: @mg-green--ordinal;
+}
+.lesson__homework-row--active:hover {
+    background-color: @mg-green--ordinal;
+}
+.lesson__homework-form {
+    padding: 20px;
+    display: none;
+    background-color: @mg-brown--addition;
+    cursor: default;
+}
+.lesson__homework-form:hover {
+    background-color: @mg-brown--addition;
+}
+.lesson__homework-row--active + .lesson__homework-form {
+    display: block;
+}
+.lesson__homework-form_text {
+    line-height: 20px;
+}
+.lesson__homework-form-block {
+    margin-top: 20px;
+    text-align: center;
+}
+.lesson__homework-toggle-triangle:before{
+    font-family: @mg-font-family--font-awesome;
+    content: "\f0d7";
+}
+.lesson__homework-row--active .lesson__homework-toggle-triangle:before{
+    font-family: @mg-font-family--font-awesome;
+    content: "\f0d9";
+}
+.nav-menu__lesson-list,
+.nav-menu__lesson-list:hover {
+    background-color: @mg-brown--addition;
+}
+.nav-menu__lesson-list-toggle--active + .nav-menu__lesson-list {
+    display: block;
+}
+.nav-menu__lesson-list {
+    display: none;
+}
+.nav-menu__lesson-list_lessons-by-tech {
+    display: none;
+}
+.nav-menu__lesson-list_lessons-by-tech--active{
+    display: block;
 }

@@ -109,7 +109,8 @@
     padding: 0 20px;
 }
 .lesson-dropdown-navigation__lesson-name:hover {
-     background-color: #423a31;
+     background-color: @mg-brown--hover;
+     .box-shadow("1px 1px 1px 0 rgba(0,0,0,.4)");
 }
 .lesson-dropdown-navigation__exercises {
     background-color: #4a4034;
@@ -124,7 +125,8 @@
     position: relative;
 }
 .lesson-dropdown-navigation__exercise:hover {
-    background-color: #4e4438;
+    background-color: @mg-brown--hover;
+    .box-shadow("1px 1px 1px 0 rgba(0,0,0,.4)");
 }
 .lesson-dropdown-navigation__exercise-name {
     float: left;
@@ -201,13 +203,13 @@
     position: relative;
 }
 .presets-block__preset--active {
-    background-color: @mg-green--ordinal
+    background-color: @mg-green--ordinal;
 }
 .presets-block__preset:nth-of-type(2n) {
-    background-color: #4e4438;
+    background-color: @mg-brown--list-even;
 }
 .presets-block__preset:nth-of-type(2n+1) {
-    background-color: #60584A;
+    background-color: @mg-brown--list-odd;
 }
 .preset__name {
     width: 550px;

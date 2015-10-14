@@ -45,6 +45,7 @@ namespace MusicShareWeb {
                 .Add("~/Content/Less/Lesson/Index.css")
                 .Add("~/Content/Less/Lesson/Navigation.css")
                 .Add("~/Content/Less/Lesson/Stat.css")
+                .Add("~/Content/Less/Lesson/Promo.css")
                 .Add("~/Content/Less/Auth/AuthPopup.css")
                 .Add("~/Content/Less/DerzkieSchi/AdminLesson.css")
                 .AsCached("main", "~/assets/css/main");
@@ -135,6 +136,11 @@ namespace MusicShareWeb {
                 "Train",
                 "Train/{planId}",
                 new {controller = "Lesson", action = "Train", planId = UrlParameter.Optional}
+                );
+            routes.MapRoute(
+                "Promo",
+                "Promo/",
+                new {controller = "Lesson", action = "Promo"}
                 );
             routes.MapRoute(
                 "Stat",

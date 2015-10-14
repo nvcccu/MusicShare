@@ -60,15 +60,12 @@
                     </div>
                 </div>
             </div>
-        }
-        else
-        {
+        } else {
             <div>Войдите в систему, чтобы начать пользоваться системой статистики</div>
         }
     </div>
     <div class="selfteacher__stat-right-block">
-        @if (Model.CurrentUser != null)
-        {
+        @if (Model.CurrentUser != null) {
             <div id="linechart_material" data-bind="visible: $root.anyExerciseSelected()">
             </div>
             <!-- ko ifnot: $root.anyExerciseSelected() -->
@@ -376,10 +373,10 @@
         }
         //
 
-        model.exercisesStats = [];
+        model.exercisesStats = {};
         Object.keys(data.exercisesStats).forEach(function (key) {
             var exerciseStats = data.exercisesStats[key];
-            model.exercisesStats[key.toString()] = exerciseStats.map(function (exerciseStat) {
+            model.exercisesStats[key] = exerciseStats.map(function (exerciseStat) {
                 var date = new Date(exerciseStat.date);
                 return {
                     date: new Date(date.getFullYear(), date.getMonth(), date.getDate()),
@@ -415,11 +412,15 @@
         model.getLessonByGuitarTechnique = function (guitarTechnique) {
             return model.lessons.filter(function (lesson) {
                 return lesson.guitarTechniqueId === guitarTechnique.id;
+            }).sort(function(a, b) {
+                return a.orderNumber - b.orderNumber;
             });
         };
         model.getExercisesByLesson = function (lesson) {
             return model.exercises.filter(function (exercise) {
                 return exercise.lessonId === lesson.id;
+            }).sort(function (a, b) {
+                return a.id - b.id;
             });
         };
         var redrawGraph = ko.computed(function () {
@@ -431,8 +432,12 @@
             var exercisesRaw = {};
             model.drawExercise.forEach(function (needDraw, exerciseId) {
                 if (needDraw()) {
-                    graphData.addColumn('number', 'Упражнение ' + exerciseId + '  ');
+                    var curExercise = model.exercises.filter(function (exercise) {
+                        return exercise.id === exerciseId;
+                    })[0];
+                    graphData.addColumn('number', curExercise.name + "\u00A0" + "\u00A0");
                     var exerciseRaw = [];
+                    var lastChangedValue = curExercise.defaultSpeed;
                     for (var i = 0; i <= model.graphInterval() ; i++) {
                         var date = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
                         date.setDate(date.getDate() + i);
@@ -441,9 +446,10 @@
                             return exerciseStat.date.getFullYear() === date.getFullYear() && exerciseStat.date.getMonth() === date.getMonth() && exerciseStat.date.getDate() === date.getDate();
                         });
                         if (exerciseStat.length > 0) {
-                            exerciseRaw[i] = exerciseStat[0].speed;
+                            lastChangedValue = exerciseStat[0].speed;
+                            exerciseRaw[i] = lastChangedValue;
                         } else {
-                            exerciseRaw[i] = 0;
+                            exerciseRaw[i] = lastChangedValue;
                         }
                     }
                     exercisesRaw[exerciseId.toString()] = exerciseRaw;

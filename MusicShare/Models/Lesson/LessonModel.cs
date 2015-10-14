@@ -7,7 +7,7 @@ namespace MusicShareWeb.Models.Lesson {
     public class LessonModel : BaseModel {
         public LessonDto Lesson { get; set; }
         public List<ExerciseDto> Exercises { get; set; }
-        public GuitarTechniqueDto GutarTechique { get; set; }
+        public GuitarTechniqueDto GuitarTechique { get; set; }
         public List<PlanDto> Plans { get; set; }
         public Dictionary<int, int> Speeds { get; set; }
         public bool IsMinimized { get; set; }
@@ -15,7 +15,7 @@ namespace MusicShareWeb.Models.Lesson {
         public LessonModel(BaseModel baseModel, int lessonId, bool isMinimized) : base(baseModel) {
             Lesson = ServiceManager<IBusinessLogic>.Instance.Service.GetModeratedLesson(lessonId);
             Exercises = ServiceManager<IBusinessLogic>.Instance.Service.GetLessonExercises(lessonId);
-            GutarTechique = ServiceManager<IBusinessLogic>.Instance.Service.GetGuitarTechnique(Lesson.GuitarTechniqueId);
+            GuitarTechique = ServiceManager<IBusinessLogic>.Instance.Service.GetGuitarTechnique(Lesson.GuitarTechniqueId);
             if(CurrentUser != null) {
                 Plans = ServiceManager<IBusinessLogic>.Instance.Service.GetAllUsersPlans(CurrentUser.Id);
                 Speeds = ServiceManager<IBusinessLogic>.Instance.Service.GetUsersLessonStat(lessonId, CurrentUser.Id);

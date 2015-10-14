@@ -1,0 +1,50 @@
+﻿@model MusicShareWeb.Models.Lesson.SideNavigationModel
+
+@if(Model.CurrentLesson != null) {
+    if(Model.CurrentLesson.PreviousLessonId.HasValue) {
+        <a class="nav-menu__row mg-link--no-decorate" href="@Url.Action("Index", new {id = Model.CurrentLesson.PreviousLessonId.Value})">
+            <div class="nav-menu__row_icon nav-menu__row_icon_prev-lesson"></div>
+            <div class="nav-menu__row_text">Предыдущий урок</div>
+        </a>
+    }
+    if(Model.CurrentLesson.NextLessonId.HasValue) {
+        <a class="nav-menu__row mg-link--no-decorate" href="@Url.Action("Index", new {id = Model.CurrentLesson.NextLessonId.Value})">
+            <div class="nav-menu__row_icon nav-menu__row_icon_next-lesson"></div>
+            <div class="nav-menu__row_text">Следующий урок</div>
+        </a>
+    }
+}
+<div class="nav-menu__row" style="padding: 0; height: auto;">
+    <div class="lesson__homework-row" data-bind="click: function () { $('.lesson__homework-row').toggleClass('lesson__homework-row--active'); }">
+        <div class="nav-menu__row_icon nav-menu__row_icon_home-work"></div>
+        <div class="nav-menu__row_text">Домашнее задание</div>
+        <div class="nav-menu__row_toggle-triangle lesson__homework-toggle-triangle"></div>
+        <div class="nav-menu__row_info">?</div>
+    </div>
+    <div class="lesson__homework-form">
+        <div class="lesson__homework-form_text">Вставьте ссылку на ваше аудио или видео и нажмите кнопку "Отправить"</div>
+        <div class="lesson__homework-form-block">
+            <input type="text" class="mg-input-text" style="width: 260px;" placeholder="Ссылка на запись"/>
+        </div>
+        <div class="lesson__homework-form-block">
+            <input type="button" class="mg-btn" value="Отправить"/>
+        </div>
+    </div>
+</div>
+@if (Model.HasMinView && Model.CurrentLesson != null) {
+    if(Model.IsMinView) {
+        <a class="nav-menu__row mg-link--no-decorate" href="@Url.Action("Index", new {id = Model.CurrentLesson.Id})">
+            <div class="nav-menu__row_icon">@@</div>
+            <div class="nav-menu__row_text">Полная версия урока</div>
+        </a>
+    } else {
+        <a class="nav-menu__row mg-link--no-decorate" href="@Url.Action("MinimizedLesson", new { id = Model.CurrentLesson.Id })">
+            <div class="nav-menu__row_icon nav-menu__row_icon_min-lesson"></div>
+            <div class="nav-menu__row_text">Сокращенная версия урока</div>
+        </a>
+    }
+}
+<div class="nav-menu__row" data-bind="click: $root.saveSpeeds">
+    <div class="nav-menu__row_icon nav-menu__row_icon_save-speed"></div>
+    <div class="nav-menu__row_text">Сохранить скорость</div>
+</div>

@@ -3,7 +3,7 @@
 @using MusicShareWeb.Models.Lesson
 @using Newtonsoft.Json
 @using Newtonsoft.Json.Serialization
-@model MusicShareWeb.Models.Lesson.LessonModel
+@model LessonModel
 
 @{
     ViewBag.Title = Model.Lesson.Title;
@@ -25,11 +25,9 @@
 <div class="lesson-container">
     <div class="selfteacher__container_top mg-clearfix">
         <div class="selfteacher__container_top_title">
-            <div style="font-size: 20px;">Урок @Model.Lesson.OrderNumber</div>
-            <div>@Model.Lesson.Name</div>
             <div style="font-size: 14px;">Автор: Rig Raizon</div>
             <div style="font-size: 14px;">
-                Источник: <a href="@Model.Lesson.OriginalLessonUrl">Allfrets.ru</a>
+                Источник: <a class="mg-link" href="@Model.Lesson.OriginalLessonUrl">Allfrets.ru</a>
             </div>
         </div>
         <div class="selfteacher__container_top_navigation clearfix">
@@ -40,16 +38,17 @@
                 @Html.Partial("Navigation/Plans", new PlanNavigationModel(Model.CurrentUser != null, Model.CurrentUser != null ? Model.CurrentUser.Id : (int?) null))
             </div>
         </div>
-
     </div>
     <div id="LessonPage" class="lesson-index__lesson-navigation">
         <div class="lesson__body">
-            @if (Model.IsMinimized) {
+            <div class="lesson__order-number">Урок @Model.Lesson.OrderNumber</div>
+            <div class="lesson__name">@Model.Lesson.Name</div>
+            @if(Model.IsMinimized) {
                 text = String.Join("\n", Model.Exercises.Select(e => String.Format(ExerciseTag, e.Id)));
             } else {
                 text = Model.Lesson.Text;
             }
-            @foreach (var exercise in Model.Exercises) {
+            @foreach(var exercise in Model.Exercises) {
                 var regex = new Regex(String.Format(ExerciseTag, exercise.Id));
                 text = regex.Replace(text, String.Format(ReplacePattern, exercise.Id, exercise.Name, !String.IsNullOrEmpty(exercise.AudioUrl) ? exercise.AudioUrl : null, exercise.ImageUrl, Model.IsMinimized.ToString().ToLower()), 1);
             }
@@ -58,20 +57,8 @@
     </div>
     <div class="lesson-zone__right-container">
         <div class="right-container__content">
-            <div class="lesson-outer-navigation-block">
-                <div class="mg-btn" data-bind="click: $root.saveSpeeds">Сохранить изменения</div>
-            </div>
-            <div class="lesson-outer-navigation-block">
-                @if(Model.Exercises != null && Model.Exercises.Any()) {
-                    if(Model.IsMinimized) {
-                        <a id="ChangeLessonType" href="@Url.Action("Index", new {id = Model.Lesson.Id})" class="mg-link">К полной версии урока</a>
-                    } else {
-                            <a id="ChangeLessonType" href="@Url.Action("MinimizedLesson", new {id = Model.Lesson.Id})" class="mg-link">К сокращенной версии урока</a>
-                    }
-                }
-            </div>
-            <div class="lesson-outer-navigation-block">
-                @Html.Partial("Navigation/Lessons", new LessonNavigationModel(Model.Lesson))
+            <div class="lesson__nav-menu">
+                @Html.Partial("Navigation/SideNavigation", new SideNavigationModel(Model.Lesson, Model.Exercises != null && Model.Exercises.Any(), Model.IsMinimized))
             </div>
         </div>
     </div>
@@ -104,6 +91,7 @@
         model.speeds = {};
         @Html.Raw(String.Join("\n", Model.Speeds.Select(s => "model.speeds['" + s.Key + "'] = ko.observable(" + s.Value + ");")))
         model.activeSpeedIndex = ko.observable(undefined);
+        model.lastActiveSpeedIndex = ko.observable(undefined);
         model.loop = undefined;
         model.exerciseHide = {};
         @Html.Raw(String.Join("\n", Model.Exercises.Select(s => "model.exerciseHide['" + s.Id + "'] = ko.observable(false);")))
@@ -150,8 +138,19 @@
                 model.run(index);
             }
         }
+        $(window).keypress(function(e) {
+            if (e.keyCode === 0 || e.keyCode === 32) {
+                if (model.isRun()) {
+                    model.stop();
+                } else if(model.lastActiveSpeedIndex()) {
+                    model.run(model.lastActiveSpeedIndex());
+                }
+                return false;
+            }
+        });
         model.run = function (index) {
             model.activeSpeedIndex(index);
+            model.lastActiveSpeedIndex(model.activeSpeedIndex());
             model.isRun(true);
         }
         model.stop = function () {
