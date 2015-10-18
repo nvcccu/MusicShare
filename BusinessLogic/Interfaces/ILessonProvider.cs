@@ -29,5 +29,6 @@ namespace BusinessLogic.Interfaces {
         StatPresetDto SaveStatPreset(StatPresetDto statPreset);
         bool UpdateStatPreset(StatPresetDto statPreset);
         bool DeleteStatPreset(int statPresetId);
+        bool SaveHomework(HomeworkDto homework);
     }
 }

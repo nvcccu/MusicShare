@@ -45,6 +45,7 @@
     <Compile Include="Enums\PlanType.cs" />
     <Compile Include="Enums\ActionId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransportTypes\HomeworkDto.cs" />
     <Compile Include="TransportTypes\ArticleDto.cs" />
     <Compile Include="TransportTypes\AuthTransportType.cs" />
     <Compile Include="TransportTypes\AccountDto.cs" />

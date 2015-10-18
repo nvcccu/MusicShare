@@ -31,5 +31,12 @@ namespace MusicShareWeb.Models.Lesson {
         public void SaveExercisesSpeed() {
             ServiceManager<IBusinessLogic>.Instance.Service.SaveUsersLessonStat(CurrentUser.Id, Speeds);
         }
+        public bool SaveHomework(int lessonId, string link) {
+            return ServiceManager<IBusinessLogic>.Instance.Service.SaveHomework(new HomeworkDto {
+                AccountId = CurrentUser.Id,
+                LessonId = lessonId,
+                Link = link
+            });
+        }
     }
 }

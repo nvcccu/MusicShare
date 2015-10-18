@@ -80,6 +80,14 @@ namespace MusicShareWeb.Controllers {
             };
         }
         [HttpPost]
+        public JsonResult SaveHomework(int lessonId, string link) {
+            return new JsonResult {
+                Data = new {
+                    success = new LessonModel(BaseModel).SaveHomework(lessonId, link)
+                }
+            };
+        }
+        [HttpPost]
         public JsonResult SaveStatPreset(StatPresetDto statPreset, List<string> exercises) {
             statPreset.Exercises = exercises.Select(e => Convert.ToInt32(e)).ToList();
             statPreset.OwnerAccountId = CurrentUser.Id;

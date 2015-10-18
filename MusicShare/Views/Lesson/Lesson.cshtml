@@ -71,7 +71,7 @@
 
 <script type="text/javascript">
     $(window).bind('scroll resize', function () {
-        if (window.pageYOffset > 230) {
+        if (window.pageYOffset > 160) {
             $('.right-container__content').addClass('right-container__content--float');
         } else {
             $('.right-container__content').removeClass('right-container__content--float');
@@ -216,28 +216,23 @@
             });
             return false;
         };
-        //
-        //        $(window).bind('scroll resize', function() {
-        //            if (window.pageYOffset > 150) {
-        //                $('.save-exercises-speed').css({
-        //                    'top': '50px',
-        //                    'position': 'fixed'
-        //                });
-        //                $('#ChangeLessonType').css({
-        //                    'top': '115px',
-        //                    'position': 'fixed'
-        //                });
-        //            } else {
-        //                $('.save-exercises-speed').css({
-        //                    'top': '200px',
-        //                    'position': 'absolute'
-        //                });
-        //                $('#ChangeLessonType').css({
-        //                    'top': '265px',
-        //                    'position': 'absolute'
-        //                });
-        //            }
-        //        });
+        model.saveHomework = function() {
+            $.ajax({
+                url: '@Url.Action("SaveHomework")',
+                type: 'POST',
+                data: {
+                    lessonId: @Model.Lesson.Id,
+                    link: $('#HomeworkLink').val()
+                },
+                success: function () {
+                    alert('Как только запись будет рассмотрена, мы вышлем рекомендации на ваш адрес электронной почты.');
+                },
+                error: function () {
+                    alert('Ошибка');
+                }
+            });
+            return false;
+        }
 
         return model;
     }

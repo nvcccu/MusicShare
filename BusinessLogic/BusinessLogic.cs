@@ -218,5 +218,8 @@ namespace BusinessLogic {
         public bool DeleteStatPreset(int statPresetId) {
             return LoggedAction(() => _lessonProvider.DeleteStatPreset(statPresetId));
         }
+        public bool SaveHomework(HomeworkDto homework) {
+            return LoggedAction(() => _lessonProvider.SaveHomework(homework));
+        }
     }
 }

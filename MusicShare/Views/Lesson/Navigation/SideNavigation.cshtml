@@ -24,10 +24,10 @@
     <div class="lesson__homework-form">
         <div class="lesson__homework-form_text">Вставьте ссылку на ваше аудио или видео и нажмите кнопку "Отправить"</div>
         <div class="lesson__homework-form-block">
-            <input type="text" class="mg-input-text" style="width: 260px;" placeholder="Ссылка на запись"/>
+            <input id="HomeworkLink" type="text" class="mg-input-text" style="width: 260px;" placeholder="Ссылка на запись"/>
         </div>
         <div class="lesson__homework-form-block">
-            <input type="button" class="mg-btn" value="Отправить"/>
+            <input type="button" class="mg-btn" data-bind="click: $root.saveHomework" value="Отправить"/>
         </div>
     </div>
 </div>

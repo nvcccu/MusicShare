@@ -368,5 +368,14 @@ namespace BusinessLogic.Providers {
                 .ExecuteScalar();
             return true;
         }
+        public bool SaveHomework(HomeworkDto homework) {
+            new Homework {
+                AccountId = homework.AccountId,
+                LessonId = homework.LessonId,
+                DateCreated = DateTime.Now,
+                Link = homework.Link
+            }.Insert();
+            return true;
+        }
     }
 }

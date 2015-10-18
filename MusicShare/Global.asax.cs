@@ -123,6 +123,11 @@ namespace MusicShareWeb {
                 new {controller = "Lesson", action = "UpdatePlan", id = UrlParameter.Optional}
                 );
             routes.MapRoute(
+                "SaveHomework",
+                "Lesson/SaveHomework",
+                new {controller = "Lesson", action = "SaveHomework"}
+                );
+            routes.MapRoute(
                 "Plan",
                 "Plan/{id}",
                 new {controller = "Lesson", action = "Plan", id = UrlParameter.Optional}

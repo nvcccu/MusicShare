@@ -362,3 +362,17 @@ WITH (
 );
 ALTER TABLE LessonHistory
   OWNER TO postgres;
+
+CREATE TABLE Homework (
+  Id serial NOT NULL,
+  AccountId int NOT NULL,
+  LessonId int NOT NULL,
+  DateCreated timestamp without time zone NOT NULL,
+  Link character varying(2048) NOT NULL,
+  CONSTRAINT pk_Homework PRIMARY KEY (Id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE Homework
+  OWNER TO postgres;
