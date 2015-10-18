@@ -29,16 +29,16 @@ namespace MusicShareWeb.Controllers {
                 return _currentUser;
             }
         }
-        public ActionResult Js(string identifier) {
-            // Set max-age to a year from now
-            Response.Cache.SetMaxAge(TimeSpan.FromDays(365));
-            return Content(Bundle.JavaScript().RenderCached(identifier), "text/javascript");
-        }
-        public ActionResult Css(string identifier) {
-            // Set max-age to a year from now
-            Response.Cache.SetMaxAge(TimeSpan.FromDays(365));
-            return Content(Bundle.Css().RenderCached(identifier), "text/css");
-        }
+//        public ActionResult Js(string identifier) {
+//            // Set max-age to a year from now
+//            Response.Cache.SetMaxAge(TimeSpan.FromDays(365));
+//            return Content(Bundle.JavaScript().RenderCached(identifier), "text/javascript");
+//        }
+//        public ActionResult Css(string identifier) {
+//            // Set max-age to a year from now
+//            Response.Cache.SetMaxAge(TimeSpan.FromDays(365));
+//            return Content(Bundle.Css().RenderCached(identifier), "text/css");
+//        }
     }
 
     public class AssetsController : SquishItController {

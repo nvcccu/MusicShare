@@ -55,7 +55,7 @@
 
     getIndex = function (data) {
         var model = {};
-        model.lessonUrlTemplate = '@Url.Action("Index")' + '/';
+        model.lessonUrlTemplate = '@Url.Action("Lesson")' + '/';
         model.guitarTechniques = data.guitarTechniques;
         model.lessons = data.lessons;
         model.activeGuitarTechnique = ko.observable(null);

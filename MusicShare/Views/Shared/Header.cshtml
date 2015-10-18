@@ -22,7 +22,7 @@
             @*            --><a class="header-navigation__btn @CssIfActive(controllerName, "Designer")" href="@Url.Action("Index", "Designer")">Конструктор</a><!--*@
             @*            --><a class="header-navigation__btn @CssIfActive(controllerName, "Ask")" href="@Url.Action("New", "Ask")">Задать вопрос</a><!--*@
             @*            --><a class="header-navigation__btn @CssIfActive(controllerName, "Lesson")" href="@Url.Action("Index", "Lesson", new { id = "" })">Самоучитель</a>*@
-            <a class="header-navigation__btn @CssIfActive(controllerName, "Lesson")" href="@Url.Action("Index", "Lesson", new {id = ""})">Самоучитель</a>
+            <a class="header-navigation__btn @CssIfActive(controllerName, "Lesson")" href="@Url.Action("Lesson", "Lesson", new {id = ""})">Самоучитель</a>
         </div>
         @if(Model.CurrentUser != null && Model.CurrentUser.IsAuthorized) {
             <div class="header__user-logged">

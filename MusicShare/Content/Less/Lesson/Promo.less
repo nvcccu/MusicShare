@@ -3,7 +3,7 @@
 
 .promo-content {
     width: 100%;
-    min-width: 900px;
+    minwidth: 1000px;
     text-align: center;
     color: @mg-white;
 }
@@ -28,13 +28,23 @@
 }
 .promo-header__logo {
     width: 250px;
+    height: 100px;
     padding-left: 30px;
+    background: url('/Content/Image/Lesson/Logo.png') center no-repeat;
 }
 .promo-header__selflearner {
     padding-left: 65px;
+    display: block;
+    color: @mg-text-white;
+    text-decoration: none;
 }
-.promo-header__sign-in {
-    padding-left: 65px;
+.promo-header__selflearner:hover,
+.promo-header__selflearner:active,
+.promo-header__selflearner:focus,
+.promo-header__selflearner:active:focus,
+.promo-header__selflearner:focus:active {
+    color: @mg-green--hover;
+    text-decoration: none;
 }
 .promo-header__help-us {
     float: right;
@@ -56,6 +66,7 @@
     .border-radius(@mg-border-radius--ordinal);
     background: url('/Content/Image/Lesson/BoomText.png') center no-repeat #00aeef;
     .box-shadow(@mg-btn__box-shadow);
+    display: block;
 }
 .header-help-us__block-boom:hover {
     .box-shadow(@mg-btn__box-shadow--active);
@@ -78,12 +89,21 @@
     margin: 75px auto 0;
 }
 .promo__learn-is_icon {
-    height: 150px;
-    line-height: 270px;
+    height: 210px;
+    line-height: 380px;
+    font-size: 20px;
     width: 120px;
     float: left;
-    background-color: #123456;
     margin-left: 200px;
+}
+.promo__learn-is_icon-weight {
+    background: url('/Content/Image/Lesson/Weight.png') center 0 no-repeat;
+}
+.promo__learn-is_icon-long {
+    background: url('/Content/Image/Lesson/Weight.png') center 0 no-repeat;
+}
+.promo__learn-is_icon-difficult {
+    background: url('/Content/Image/Lesson/Difficult.png') center 0 no-repeat;
 }
 .promo__learn-is_icon:first-of-type {
     margin-left: 0;
@@ -102,6 +122,12 @@
 .promo__what-help {
     background-color: @mg-brown--layout;
 }
+.promo__what-help-content {
+    position: relative;
+    min-width: 1000px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
 .promo__what-help_header {
     padding-top: 75px;
     font-size: 30px;
@@ -110,18 +136,24 @@
 .promo__what-help_block {
     padding-top: 80px;
     margin: 0 auto;
-    width: 900px;
+    min-width: 1000px;
+    max-width: 1400px;
+    width: 100%;
 }
 .promo__what-help_block_left {
     float: left;
-    width: 400px;
+    width: 50%;
     text-align: left;
-    padding-top: 75px;
+    padding: 75px 20px 0 30px;
+    .box-sizing__border-box;
     height: 570px;
     border-bottom: 2px solid @mg-brown--ordinal;
 }
 .promo__what-help_block_header {
     font-size: 25px;
+}
+.promo__what-help_block_header-second {
+    margin-top: 38px;
 }
 .promo__what-help_block_text-block {
     font-size: 16px;
@@ -130,8 +162,15 @@
 .promo__what-help_block_right {
     float: right;
     height: 500px;
-    width: 400px;
+    width: 50%;
+    padding-right: 30px;
+}
+.promo__what-help_float-image {
     background: url('/Content/Image/Lesson/Monitor.png') no-repeat;
+    position: absolute;
+    height: 500px;
+    width: 584px;
+    right: 30px;
 }
 .promo__what-help_block:last-of-type .promo__what-help_block_left {
     border-bottom: none;
@@ -141,6 +180,10 @@
     line-height: 180px;
     font-size: 30px;
     background: url('/Content/Image/Layout.png') repeat @mg-brown--list-even;
+}
+.promo__its-free_img {
+    display: inline;
+    margin-left: 180px;
 }
 .promo__middle-image {
     height: 300px;
@@ -157,7 +200,8 @@
     padding-top: 75px;
 }
 .promo__who-works_peoples {
-    width: 1000px;
+    min-width: 1000px;
+    max-width: 1400px;
     margin: 75px auto 0;
 }
 .promo__who-works_people {
@@ -170,6 +214,18 @@
     .border-radius(150px);
     background-color: #123456;
     margin: 0 auto;
+}
+.promo__who-works_people_photo-k {
+    background: url('/Content/Image/Lesson/K.png') no-repeat center;
+}
+.promo__who-works_people_photo-e {
+    background: url('/Content/Image/Lesson/E.png') no-repeat center;
+}
+.promo__who-works_people_photo-o {
+    background: url('/Content/Image/Lesson/O.png') no-repeat center;
+}
+.promo__who-works_people_photo-p {
+    background: url('/Content/Image/Lesson/P.png') no-repeat center;
 }
 .promo__who-works_people_name {
     font-size: 20px;
@@ -193,7 +249,8 @@
     text-align: center;
 }
 .promo__ideas_list {
-    width: 1000px;
+    min-width: 000px;
+    max-width: 1400px;
     margin: 60px auto 0;
 }
 .promo__ideas_element {
@@ -202,9 +259,21 @@
 }
 .promo__ideas_element_image {
     height: 110px;
-    width: 38px;
+    width: 130px;
     background-color: #123456;
     margin: 0 auto;
+}
+.promo__ideas_element_image-robo {
+    background: url('/Content/Image/Lesson/Robo.png') no-repeat center;
+}
+.promo__ideas_element_image-add-exercise {
+    background: url('/Content/Image/Lesson/AddExercise.png') no-repeat center;
+}
+.promo__ideas_element_image-video {
+    background: url('/Content/Image/Lesson/Video.png') no-repeat center;
+}
+.promo__ideas_element_image-mobile {
+    background: url('/Content/Image/Lesson/Mobile.png') no-repeat center;
 }
 .promo__ideas_element_title {
     font-size: 20px;
@@ -223,4 +292,82 @@
     text-align: center;
     font-size: 25px;
     font-family: @mg-font-family--additional;
+}
+.promo__help-us {
+    background: url('/Content/Image/Layout.png') repeat @mg-brown--layout;
+}
+.promo__help-us_cant-without-you {
+    font-size: 18px;
+    padding-top: 85px;
+    line-height: 38px;
+    text-align: center;
+}
+.promo__help-us_help-us {
+    font-family: @mg-font-family--additional;
+    margin-top: 125px;
+    font-size: 30px;
+    text-align: center;
+}
+.promo__help-us_button {
+    margin: 60px auto 0;
+    width: 290px;
+    height: 60px;
+    .border-radius(@mg-border-radius--ordinal);
+    background: url('/Content/Image/Lesson/BoomText.png') center no-repeat #00aeef;
+    display: block;
+   .box-shadow(@mg-btn__box-shadow);
+}
+.promo__help-us_lets-do-it {
+    margin-top: 75px;
+    text-align: center;
+    font-size: 25px;
+    padding-bottom: 125px;
+}
+.promo__footer {
+    height: 125px;
+    line-height: 125px;
+    border-top: 2px solid @mg-brown--ordinal;
+    font-size: 16px;
+}
+.promo__footer_logo {
+    float: left;
+    margin-left: 30px;
+    font-size: 35px;
+    font-family: @mg-font-family--additional;
+}
+.promo__footer_selflearner {
+    float: left;
+    margin-left: 70px;
+    color: @mg-text-white;
+    text-decoration: none;
+}
+.promo__footer_selflearner:hover,
+.promo__footer_selflearner:active,
+.promo__footer_selflearner:focus,
+.promo__footer_selflearner:active:focus {
+    color: @mg-green--hover;
+    text-decoration: none;
+}
+.promo__footer_vk {
+    float: right;
+    margin-right: 50px;
+}
+.promo__footer_vk_link {
+    display: inline-block;
+    background-color: @mg-green--ordinal;
+    .border-radius(@mg-border-radius--ordinal);
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: @mg-text-white;
+    text-decoration: none;
+    margin-left: 25px;
+}
+.promo__footer_vk_link:hover,
+.promo__footer_vk_link:active,
+.promo__footer_vk_link:focus,
+.promo__footer_vk_link:active:focus {
+    color: @mg-text-white;
+    text-decoration: none;
 }

@@ -32,6 +32,9 @@
         </div>
         <div class="selfteacher__container_top_navigation clearfix">
             <div class="selfteacher__container_top_navigation_btn">
+                @Html.Partial("Navigation/Lessons", new LessonNavigationModel(Model.Lesson))
+            </div>
+            <div class="selfteacher__container_top_navigation_btn">
                 @Html.Partial("Navigation/Stat")
             </div>
             <div class="selfteacher__container_top_navigation_btn">

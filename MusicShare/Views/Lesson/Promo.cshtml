@@ -7,65 +7,72 @@
 <div class="promo-content">
     <div class="promo__head">
         <div class="promo-header mg-clearfix">
-            <div class="promo-header-block promo-header__logo">MusGround</div>
-            <div class="promo-header-block promo-header__selflearner">Самоучитель</div>
-            <div class="promo-header-block promo-header__sign-in">Войти на сайт</div>
+            <div class="promo-header-block promo-header__logo"></div>
+            <a href="@Url.Action("Lesson", "Lesson")" class="promo-header-block promo-header__selflearner">Самоучитель</a>
             <div class="promo-header-block promo-header__help-us">
                 <div class="header-help-us__block header-help-us__block-text">
                     Поддержите<br>нас на:
                 </div>
-                <div class="header-help-us__block header-help-us__block-boom"></div>
+                <a href="http://boomstarter.ru" class="header-help-us__block header-help-us__block-boom"></a>
             </div>
         </div>
-        <div class="promo-head__text">Научиться играть на гитаре теперь можно<br>быстрее и гораздо проще</div>
+        <div class="promo-head__text">Научиться играть на гитаре теперь можно<br>быстрее и гораздо проще
+        </div>
     </div>
     <div class="promo__learn-is">
         <div class="promo__learn-is_header-text">Обучение игре на гитаре это:</div>
         <div class="promo__learn-is_icons mg-clearfix">
-            <div class="promo__learn-is_icon">Тяжело</div>
-            <div class="promo__learn-is_icon">Долго</div>
-            <div class="promo__learn-is_icon">Сложно</div>
+            <div class="promo__learn-is_icon promo__learn-is_icon-weight">Тяжело</div>
+            <div class="promo__learn-is_icon promo__learn-is_icon-long">Долго</div>
+            <div class="promo__learn-is_icon promo__learn-is_icon-difficult">Сложно</div>
         </div>
         <div class="promo__learn-is_exactly-hard">...особенно если учиться самостоятельно.</div>
     </div>
     <div class="promo__we-want-help">Поэтому мы хотим вам помочь!</div>
     <div class="promo__what-help">
-        <div class="promo__what-help_header">Чем полезен MusGround?</div>
-        <div class="promo__what-help_block mg-clearfix">
-            <div class="promo__what-help_block_left">
-                <div class="promo__what-help_block_header">Полезные уроки</div>
-                <div class="promo__what-help_block_text-block">Множество проверенных временем уроков, расчитанных на гитаристов любого уровня: от новичка к опытному музыканту.</div>
-                <div class="promo__what-help_block_text-block">В каждом уроке содержатся тщательно отобранные упражнения.</div>
+        <div class="promo__what-help-content">
+            <div class="promo__what-help_float-image"></div>
+            <div class="promo__what-help_header">Чем полезен MusGround?</div>
+            <div id="Help1" class="promo__what-help_block mg-clearfix">
+                <div class="promo__what-help_block_left">
+                    <div class="promo__what-help_block_header">Полезные уроки</div>
+                    <div class="promo__what-help_block_text-block">Множество проверенных временем уроков, расчитанных на гитаристов любого уровня: от новичка к опытному музыканту.</div>
+                    <div class="promo__what-help_block_text-block">В каждом уроке содержатся тщательно отобранные упражнения.</div>
+                </div>
+                <div class="promo__what-help_block_right"></div>
             </div>
-            <div class="promo__what-help_block_right"></div>
-        </div>
-        <div class="promo__what-help_block mg-clearfix">
-            <div class="promo__what-help_block_left">
-                <div class="promo__what-help_block_header">Планы занятий</div>
-                <div class="promo__what-help_block_text-block">Из упражнений в уроках, вы можете составлять свои планы занятий, нужные именно вам.</div>
-                <div class="promo__what-help_block_text-block">Планы помогут вам систематизировать свои занятия, сделать их более продуктивными и эффективными.</div>
+            <div class="clearfix"></div>
+            <div id="Help2" class="promo__what-help_block mg-clearfix">
+                <div class="promo__what-help_block_left">
+                    <div class="promo__what-help_block_header">Планы занятий</div>
+                    <div class="promo__what-help_block_text-block">Из упражнений в уроках, вы можете составлять свои планы занятий, нужные именно вам.</div>
+                    <div class="promo__what-help_block_text-block">Планы помогут вам систематизировать свои занятия, сделать их более продуктивными и эффективными.</div>
+                </div>
+                <div class="promo__what-help_block_right"></div>
             </div>
-            <div class="promo__what-help_block_right"></div>
-        </div>
-        <div class="promo__what-help_block mg-clearfix">
-            <div class="promo__what-help_block_left">
-                <div class="promo__what-help_block_header">Статистика</div>
-                <div class="promo__what-help_block_text-block">На графиках наглядно отображается динамика ваших занятий.</div>
-                <div class="promo__what-help_block_text-block">Это позволит вам оценить свой прогресс и скорректировать программу тренировок. Что даст еще больший рост ваших навыков игры на гитаре!</div>
+            <div class="clearfix"></div>
+            <div id="Help3" class="promo__what-help_block mg-clearfix">
+                <div class="promo__what-help_block_left">
+                    <div class="promo__what-help_block_header">Статистика</div>
+                    <div class="promo__what-help_block_text-block">На графиках наглядно отображается динамика ваших занятий.</div>
+                    <div class="promo__what-help_block_text-block">Это позволит вам оценить свой прогресс и скорректировать программу тренировок. Что даст еще больший рост ваших навыков игры на гитаре!</div>
+                </div>
+                <div class="promo__what-help_block_right"></div>
             </div>
-            <div class="promo__what-help_block_right"></div>
-        </div>
-        <div class="promo__what-help_block mg-clearfix">
-            <div class="promo__what-help_block_left">
-                <div class="promo__what-help_block_header">Скорая гитарная помощь</div>
-                <div class="promo__what-help_block_text-block">Если во время обучения у вас возникнут какие-либо вопросы: от того как держать медиатор, до помощи в составлении планов и разработки стратегии обучения, наш гитарный эксперт с радостью вам поможет!</div>
-                <div class="promo__what-help_block_header">Домашнее задание</div>
-                <div class="promo__what-help_block_text-block">Вы можете воспользоваться функцией «Домашнее задание»: записать исполнение любого упражнения из урока и отправить нам. Наш эксперт проанализирует ваше исполнение и даст необходимые рекомендации.</div>
+            <div class="clearfix"></div>
+            <div id="Help4" class="promo__what-help_block mg-clearfix">
+                <div class="promo__what-help_block_left">
+                    <div class="promo__what-help_block_header">Скорая гитарная помощь</div>
+                    <div class="promo__what-help_block_text-block">Если во время обучения у вас возникнут какие-либо вопросы: от того как держать медиатор, до помощи в составлении планов и разработки стратегии обучения, наш гитарный эксперт с радостью вам поможет!</div>
+                    <div class="promo__what-help_block_header promo__what-help_block_header-second">Домашнее задание</div>
+                    <div class="promo__what-help_block_text-block">Вы можете воспользоваться функцией «Домашнее задание»: записать исполнение любого упражнения из урока и отправить нам. Наш эксперт проанализирует ваше исполнение и даст необходимые рекомендации.</div>
+                </div>
+                <div class="promo__what-help_block_right"></div>
             </div>
-            <div class="promo__what-help_block_right"></div>
+            <div class="clearfix"></div>
         </div>
     </div>
-    <div class="promo__its-free">И еще это все абсолютно бесплатно!</div>
+    <div class="promo__its-free">И еще это все абсолютно бесплатно! <img class="promo__its-free_img" src="/Content/Image/Lesson/BreakRub.png" /></div>
     <div class="promo__middle-image"></div>
     <div class="promo__who-works">
         <div class="promo__who-works_header">Кто работает над проектом</div>
@@ -88,7 +95,8 @@
             <div class="promo__who-works_people">
                 <div class="promo__who-works_people_photo promo__who-works_people_photo-p"></div>
                 <div class="promo__who-works_people_name">Андрей Писцов</div>
-                <div class="promo__who-works_people_text">Автор сайта <a class="mg-link" href="http://allfrets.ru">allfrets.ru</a>. Именно его материалы с некоторыми доработками легли в основу нашего самоучителя. Он же поможет нам записать обучающий видеокурс.</div>
+                <div class="promo__who-works_people_text">Автор сайта <a class="mg-link" href="http://allfrets.ru">allfrets.ru</a>. Именно его материалы с некоторыми доработками легли в основу нашего самоучителя. Он же поможет нам записать обучающий видеокурс.
+                </div>
             </div>
         </div>
     </div>
@@ -96,26 +104,77 @@
         <div class="promo__ideas_header">У нас еще очень много идей:</div>
         <div class="promo__ideas_list mg-clearfix">
             <div class="promo__ideas_element">
-                <div class="promo__ideas_element_image"></div>
+                <div class="promo__ideas_element_image promo__ideas_element_image-robo"></div>
                 <div class="promo__ideas_element_title">Робот-помощник</div>
-                <div class="promo__ideas_element-description">Мы задумали помощника, задача которого помогать Вам с обучением. Он будет анализировать ваш прогресс и продвижение по урокам и давать советы по Вашему обучению.</div>
+                <div class="promo__ideas_element-description">Мы задумали помощника, задача которого помогать вам с обучением. Он будет анализировать ваш прогресс и продвижение по урокам и давать советы по вашему обучению.</div>
             </div>
             <div class="promo__ideas_element">
-                <div class="promo__ideas_element_image"></div>
+                <div class="promo__ideas_element_image promo__ideas_element_image-add-exercise"></div>
                 <div class="promo__ideas_element_title">Добавление своих упражнений</div>
-                <div class="promo__ideas_element-description">Если вы занимаетесь с преподователем и он дает вам свои упражнения, Вы сможете загрузить их на сайт и использовать в нашей системе планов и статистики.</div>
+                <div class="promo__ideas_element-description">Если вы занимаетесь с преподавателем и он дает вам свои упражнения, вы сможете загрузить их на сайт и использовать в нашей системе планов и статистики.</div>
             </div>
             <div class="promo__ideas_element">
-                <div class="promo__ideas_element_image"></div>
+                <div class="promo__ideas_element_image promo__ideas_element_image-video"></div>
                 <div class="promo__ideas_element_title">Съемка видеокурса</div>
                 <div class="promo__ideas_element-description">В интернете есть много разрозненных видеоуроков по гитарным техникам, но нет единого большого видеокурса с единой системой уроков. Мы хотим создать именно такой!</div>
             </div>
             <div class="promo__ideas_element">
-                <div class="promo__ideas_element_image"></div>
+                <div class="promo__ideas_element_image promo__ideas_element_image-mobile"></div>
                 <div class="promo__ideas_element_title">Мобильное приложение</div>
                 <div class="promo__ideas_element-description">Не всегда под рукой есть компьютер, кто-то использует вместо ПК планшет и далеко не везде есть интернет, а потребность позаниматься может быть в любой момент. Наше приложение решит эти проблемы.</div>
             </div>
         </div>
         <div class="promo__ideas_others">и многое, многое, многое другое</div>
     </div>
+    <div class="promo__help-us">
+        <div class="promo__help-us_cant-without-you">Но мы не сможем реализовать все это в одиночку,<br>поэтому нам необходима ваша помощь.
+        </div>
+        <div class="promo__help-us_help-us">Поддержите наш проект на BoomStarter</div>
+        <a href="http://boomstarter.ru" class="promo__help-us_button"></a>
+        <div class="promo__help-us_lets-do-it">Давайте сделаем обучение игре на гитаре проще, интереснее и доступнее!</div>
+    </div>
+    <div class="promo__footer">
+        <div class="promo__footer_logo"><b>Mus</b>Ground
+        </div>
+        <a class="promo__footer_selflearner" href="@Url.Action("Lesson", "Lesson")">Самоучитель</a>
+        <div class="promo__footer_vk">
+            Наша группа ВК
+            <a class="promo__footer_vk_link" href="http://vk.com/musground">В</a>
+        </div>
+    </div>
 </div>
+
+<script type="text/javascript">
+    var $help1 = $('#Help1');
+    var $help2 = $('#Help2');
+    var $help3 = $('#Help3');
+    var $help4 = $('#Help4');
+    var $window = $(window);
+    var $floatImage = $('.promo__what-help_float-image');
+    var $offset = $help1.find('.promo__what-help_block_right').offset().top - 200;
+    var addition = 150;
+    $window.bind('scroll resize', function() {
+        var totalScroll = $window.scrollTop();
+        if (0 < totalScroll + addition && totalScroll < $help1.offset().top) {
+            $floatImage.stop().animate({ top: $help1.find('.promo__what-help_block_right').offset().top - $offset + 'px' });
+            return false;
+        }
+        if ($help1.offset().top + addition < totalScroll && totalScroll < $help2.offset().top) {
+            $floatImage.stop().animate({ top: $help2.find('.promo__what-help_block_right').offset().top - $offset + 'px' });
+            return false;
+        }
+        if ($help2.offset().top + addition < totalScroll && totalScroll < $help3.offset().top) {
+            $floatImage.stop().animate({ top: $help3.find('.promo__what-help_block_right').offset().top - $offset + 'px' });
+            return false;
+        }
+        if ($help3.offset().top + addition < totalScroll && totalScroll < $help4.offset().top) {
+            $floatImage.stop().animate({ top: $help4.find('.promo__what-help_block_right').offset().top - $offset + 'px' });
+            return false;
+        }
+    });
+</script>
+<style type="text/css">
+    html {
+        min-width: 1000px;
+    }
+</style>

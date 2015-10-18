@@ -11,10 +11,14 @@ using MusicShareWeb.Models.Lesson;
 namespace MusicShareWeb.Controllers {
     public class LessonController : BaseController {
         [HttpGet]
-        public ActionResult Index(int? id) {
+        public ActionResult Index() {
+            return View("Promo", BaseModel);
+        }
+        [HttpGet]
+        public ActionResult Lesson(int? id) {
             return id.HasValue
                 ? View("Lesson", new LessonModel(BaseModel, id.Value, false))
-                : View("Index", new LessonListModel(BaseModel));
+                : View("Lessons", new LessonListModel(BaseModel));
         }
         [HttpGet]
         public ActionResult MinimizedLesson(int id) {
@@ -66,10 +70,6 @@ namespace MusicShareWeb.Controllers {
         public ActionResult Stat() {
             ServiceManager<IBusinessLogic>.Instance.Service.AddUserAction(GuestId, ActionId.OpenStat);
             return View("Stat", new StatModel(BaseModel));
-        }
-        [HttpGet]
-        public ActionResult Promo() {
-            return View("Promo", BaseModel);
         }
         [HttpPost]
         public JsonResult DeleteStatPreset(int statPresetId) {

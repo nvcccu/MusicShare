@@ -194,8 +194,17 @@
     <Content Include="Content\Image\index.jpg" />
     <Content Include="Content\Image\IsSolution.jpg" />
     <Content Include="Content\Image\Layout.png" />
+    <Content Include="Content\Image\Lesson\AddExercise.png" />
     <Content Include="Content\Image\Lesson\BoomText.png" />
+    <Content Include="Content\Image\Lesson\BreakRub.png" />
+    <Content Include="Content\Image\Lesson\Difficult.png" />
+    <Content Include="Content\Image\Lesson\E.png" />
+    <Content Include="Content\Image\Lesson\K.png" />
+    <Content Include="Content\Image\Lesson\Logo.png" />
+    <Content Include="Content\Image\Lesson\Mobile.png" />
     <Content Include="Content\Image\Lesson\Monitor.png" />
+    <Content Include="Content\Image\Lesson\O.png" />
+    <Content Include="Content\Image\Lesson\P.png" />
     <Content Include="Content\Image\Lesson\PrevLesson.png" />
     <Content Include="Content\Image\Lesson\MinLesson.png" />
     <Content Include="Content\Image\Lesson\NextLesson.png" />
@@ -204,10 +213,13 @@
     <Content Include="Content\Image\Lesson\HomeWork.png" />
     <Content Include="Content\Image\Lesson\PromoBackgroundImage.jpg" />
     <Content Include="Content\Image\Lesson\PromoMiddleImage.png" />
+    <Content Include="Content\Image\Lesson\Robo.png" />
     <Content Include="Content\Image\Lesson\Start.png" />
     <Content Include="Content\Image\Lesson\Stop.png" />
     <Content Include="Content\Image\Lesson\TriangleBig.png" />
     <Content Include="Content\Image\Lesson\TriangleSmall.png" />
+    <Content Include="Content\Image\Lesson\Video.png" />
+    <Content Include="Content\Image\Lesson\Weight.png" />
     <Content Include="Content\Image\logo.png" />
     <Content Include="Content\Less\Article\ArticlePreview.css">
       <DependentUpon>ArticlePreview.less</DependentUpon>
@@ -277,6 +289,7 @@
     <Content Include="Content\Less\DerzkieSchi\AdminLesson.css.map">
       <DependentUpon>AdminLesson.css</DependentUpon>
     </Content>
+    <Content Include="Content\Font\OpenSans-Regular.ttf" />
     <None Include="Content\Less\Designer\Designer.less" />
     <Content Include="Content\Less\Designer\Designer.css">
       <DependentUpon>Designer.less</DependentUpon>
@@ -437,7 +450,7 @@
     <Content Include="Views\DerzkieSchi\AddProduct.cshtml" />
     <Content Include="Views\DerzkieSchi\ChangeProduct.cshtml" />
     <Content Include="Views\DerzkieSchi\SelectProduct.cshtml" />
-    <Content Include="Views\Lesson\Index.cshtml" />
+    <Content Include="Views\Lesson\Lessons.cshtml" />
     <Content Include="Content\Less\Lesson\Lesson.less" />
     <Content Include="Content\Less\Lesson\Lesson.css.map">
       <DependentUpon>Lesson.css</DependentUpon>

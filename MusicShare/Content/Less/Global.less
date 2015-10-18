@@ -5,6 +5,10 @@
     font-family: "OpenSans-Light";
     src: url(/Content/Font/OpenSans-Light.ttf) format("truetype");
 }
+@font-face {
+    font-family: "OpenSans";
+    src: url(/Content/Font/OpenSans-Regular.ttf) format("truetype");
+}
 html {
     min-width: @mg-min-width;
     min-height: 100%;
@@ -13,7 +17,7 @@ html {
 body {
     margin: 0;
     background: @mg-brown--layout;
-    font-family: verdana, sans-serif, Lucida Sans;
+    font-family: @mg-font-family--ordinal;
     min-width: inherit;
     min-height: 100%;
     height: 100%;
@@ -80,6 +84,7 @@ p a:not(.btn),
     text-decoration: none;
     color: @mg-green--ordinal;
     .transition("all 0.1s linear");
+    cursor: pointer;
 }
 p a:not(.btn):hover,
 .mg-link:hover {

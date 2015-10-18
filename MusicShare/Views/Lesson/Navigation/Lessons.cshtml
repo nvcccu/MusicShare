@@ -59,20 +59,6 @@
                                             '</div>' +
                                         '</div>' +
                                     '</div>' +
-                                '</div>' +
-                                '<!-- ko if: currentLesson && currentLesson.previousLessonId -->' +
-                                '<div style="margin-top: 15px;">' +
-                                    '<a class="mg-btn" data-bind="attr: { href: \'@Url.Action("Index", "Lesson", new {id = ""})\' + \'/\' + currentLesson.previousLessonId }">' +
-                                        'Предыдущий урок' +
-                                    '</a>' +
-                                '</div>' +
-                                '<!-- /ko -->' +
-                                '<!-- ko if: currentLesson && currentLesson.nextLessonId -->' +
-                                '<div style="margin-top: 15px;">' +
-                                    '<a class="mg-btn" data-bind="attr: { href: \'@Url.Action("Index", "Lesson", new {id = ""})\' + \'/\' + currentLesson.nextLessonId }">' +
-                                        'Следующий урок' +
-                                    '</a>' +
-                                '</div>' +
-                                '<!-- /ko -->'
+                                '</div>'
     });
 </script>

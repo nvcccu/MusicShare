@@ -150,7 +150,7 @@ namespace MusicShareWeb {
             routes.MapRoute(
                 "Lesson",
                 "Lesson/{id}",
-                new {controller = "Lesson", action = "Index", id = UrlParameter.Optional}
+                new {controller = "Lesson", action = "Lesson", id = UrlParameter.Optional}
                 );
             routes.MapRoute(
                 "Default",
