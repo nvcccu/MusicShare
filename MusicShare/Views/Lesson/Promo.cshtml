@@ -11,7 +11,7 @@
             <a href="@Url.Action("Lesson", "Lesson")" class="promo-header-block promo-header__selflearner">Самоучитель</a>
             <div class="promo-header-block promo-header__help-us">
                 <div class="header-help-us__block header-help-us__block-text">
-                    Поддержите<br>нас на:
+                    Поддержите<br>нас на
                 </div>
                 <a href="http://boomstarter.ru" class="header-help-us__block header-help-us__block-boom"></a>
             </div>
@@ -31,18 +31,19 @@
     <div class="promo__we-want-help">Поэтому мы хотим вам помочь!</div>
     <div class="promo__what-help">
         <div class="promo__what-help-content">
-            <div class="promo__what-help_float-image"></div>
+            <div class="promo__what-help_float-image">
+                <div class="promo__what-help_float-image_inner"></div>
+            </div>
             <div class="promo__what-help_header">Чем полезен MusGround?</div>
             <div id="Help1" class="promo__what-help_block mg-clearfix">
                 <div class="promo__what-help_block_left">
                     <div class="promo__what-help_block_header">Полезные уроки</div>
-                    <div class="promo__what-help_block_text-block">Множество проверенных временем уроков, расчитанных на гитаристов любого уровня: от новичка к опытному музыканту.</div>
+                    <div class="promo__what-help_block_text-block">Множество проверенных временем уроков, расчитанных на гитаристов любого уровня: от новичков до опытных музыкантов.</div>
                     <div class="promo__what-help_block_text-block">В каждом уроке содержатся тщательно отобранные упражнения.</div>
                     <a class="mg-btn promo__what-help_block_header-second" href="@Url.Action("Lesson", "Lesson", new {id = ""})">К списку уроков</a>
                 </div>
                 <div class="promo__what-help_block_right"></div>
             </div>
-            <div class="clearfix"></div>
             <div id="Help2" class="promo__what-help_block mg-clearfix">
                 <div class="promo__what-help_block_left">
                     <div class="promo__what-help_block_header">Планы занятий</div>
@@ -51,7 +52,6 @@
                 </div>
                 <div class="promo__what-help_block_right"></div>
             </div>
-            <div class="clearfix"></div>
             <div id="Help3" class="promo__what-help_block mg-clearfix">
                 <div class="promo__what-help_block_left">
                     <div class="promo__what-help_block_header">Статистика</div>
@@ -60,7 +60,6 @@
                 </div>
                 <div class="promo__what-help_block_right"></div>
             </div>
-            <div class="clearfix"></div>
             <div id="Help4" class="promo__what-help_block mg-clearfix">
                 <div class="promo__what-help_block_left">
                     <div class="promo__what-help_block_header">Скорая гитарная помощь</div>
@@ -70,7 +69,6 @@
                 </div>
                 <div class="promo__what-help_block_right"></div>
             </div>
-            <div class="clearfix"></div>
         </div>
     </div>
     <div class="promo__its-free">И еще это все абсолютно бесплатно! <img class="promo__its-free_img" src="/Content/Image/Lesson/BreakRub.png" /></div>
@@ -152,24 +150,34 @@
     var $help4 = $('#Help4');
     var $window = $(window);
     var $floatImage = $('.promo__what-help_float-image');
+    var $floatImageInner = $('.promo__what-help_float-image_inner');
     var $offset = $help1.find('.promo__what-help_block_right').offset().top - 200;
-    var addition = 150;
+    var $screenHeight = $(window).height();
+    var addition = $screenHeight / 2;
+    $window.bind('scroll resize', function() {
+        $screenHeight = $(window).height();
+        addition = $screenHeight / 2;
+    });
     $window.bind('scroll resize', function() {
         var totalScroll = $window.scrollTop();
-        if (0 < totalScroll + addition && totalScroll < $help1.offset().top) {
-            $floatImage.stop().animate({ top: $help1.find('.promo__what-help_block_right').offset().top - $offset + 'px' });
+        if ($offset < totalScroll + addition && totalScroll < $help1.offset().top) {
+            $floatImage.stop().animate({ top: $help1.find('.promo__what-help_block_right').offset().top - $offset + 'px', right: '30px' });
+            $floatImageInner.css('background', 'url("/Content/Image/Lesson/LessonScreen.jpg")');
             return false;
         }
         if ($help1.offset().top + addition < totalScroll && totalScroll < $help2.offset().top) {
-            $floatImage.stop().animate({ top: $help2.find('.promo__what-help_block_right').offset().top - $offset + 'px' });
+            $floatImage.stop().animate({ top: $help2.find('.promo__what-help_block_right').offset().top - $offset + 'px', right: '30px' });
+            $floatImageInner.css('background', 'url("/Content/Image/Lesson/PlanScreen.jpg")');
             return false;
         }
         if ($help2.offset().top + addition < totalScroll && totalScroll < $help3.offset().top) {
-            $floatImage.stop().animate({ top: $help3.find('.promo__what-help_block_right').offset().top - $offset + 'px' });
+            $floatImage.stop().animate({ top: $help3.find('.promo__what-help_block_right').offset().top - $offset + 'px', right: '30px' });
+            $floatImageInner.css('background', 'url("/Content/Image/Lesson/StatScreen.jpg")');
             return false;
         }
         if ($help3.offset().top + addition < totalScroll && totalScroll < $help4.offset().top) {
-            $floatImage.stop().animate({ top: $help4.find('.promo__what-help_block_right').offset().top - $offset + 'px' });
+            $floatImage.stop().animate({ top: $help4.find('.promo__what-help_block_right').offset().top - $offset + 'px', right: '30px' });
+            $floatImageInner.css('background', 'url("/Content/Image/Lesson/HomeworkScreen.jpg")');
             return false;
         }
     });

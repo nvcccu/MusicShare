@@ -200,14 +200,17 @@
     <Content Include="Content\Image\Lesson\Clock.png" />
     <Content Include="Content\Image\Lesson\Difficult.png" />
     <Content Include="Content\Image\Lesson\E.png" />
+    <Content Include="Content\Image\Lesson\HomeworkScreen.jpg" />
     <Content Include="Content\Image\Lesson\K.png" />
     <Content Include="Content\Image\Lesson\LessonIcon.png" />
+    <Content Include="Content\Image\Lesson\LessonScreen.jpg" />
     <Content Include="Content\Image\Lesson\Logo.png" />
     <Content Include="Content\Image\Lesson\Mobile.png" />
     <Content Include="Content\Image\Lesson\Monitor.png" />
     <Content Include="Content\Image\Lesson\O.png" />
     <Content Include="Content\Image\Lesson\P.png" />
     <Content Include="Content\Image\Lesson\PlanIcon.png" />
+    <Content Include="Content\Image\Lesson\PlanScreen.jpg" />
     <Content Include="Content\Image\Lesson\PrevLesson.png" />
     <Content Include="Content\Image\Lesson\MinLesson.png" />
     <Content Include="Content\Image\Lesson\NextLesson.png" />
@@ -219,6 +222,7 @@
     <Content Include="Content\Image\Lesson\Robo.png" />
     <Content Include="Content\Image\Lesson\Start.png" />
     <Content Include="Content\Image\Lesson\StatIcon.png" />
+    <Content Include="Content\Image\Lesson\StatScreen.jpg" />
     <Content Include="Content\Image\Lesson\Stop.png" />
     <Content Include="Content\Image\Lesson\TriangleBig.png" />
     <Content Include="Content\Image\Lesson\TriangleSmall.png" />
