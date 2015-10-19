@@ -32,7 +32,7 @@
         viewModel: plansModel,
         template:   '<!-- ko if: isAuthorized -->' +
                     '<div id="PlansToggle" class="lesson-top-nav__btn" data-bind="click: plansOpenedToggle">' +
-                        '<i class="lesson-top-nav__icon lesson-top-nav__icon-plan"></i>Планы занятий &nbsp;<span style="font-family: FontAwesome; width: 5px; float: right; margin-right: 10px;" data-bind="text: arePlansOpened() ? \'&#xf0d9;\' : \'&#xf0d7;\'"</span>' +
+                        '<i class="lesson-top-nav__icon lesson-top-nav__icon-plan"></i><span style="position: absolute; width: 200px; height: 40px; line-height: 40px; left: 0;">Планы занятий</span><span style="font-family: FontAwesome; width: 5px; float: right; margin-right: 20px;" data-bind="text: arePlansOpened() ? \'&#xf0d9;\' : \'&#xf0d7;\'"</span>' +
                     '</div>' +
                     '<div data-bind="visible: arePlansOpened" style="position: absolute; margin-top: 40px; z-index: 10; width: 200px; max-height: 400px; overflow-y: auto;">' +
                         '<a class="mg-drop-down__element mg-drop-down__element-first" href="@Url.Action("Plan", "Lesson", new {id = ""})">Создать новый план</a>' +

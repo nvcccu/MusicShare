@@ -197,6 +197,7 @@
     <Content Include="Content\Image\Lesson\AddExercise.png" />
     <Content Include="Content\Image\Lesson\BoomText.png" />
     <Content Include="Content\Image\Lesson\BreakRub.png" />
+    <Content Include="Content\Image\Lesson\ChangePlanIcon.png" />
     <Content Include="Content\Image\Lesson\Clock.png" />
     <Content Include="Content\Image\Lesson\Difficult.png" />
     <Content Include="Content\Image\Lesson\E.png" />
