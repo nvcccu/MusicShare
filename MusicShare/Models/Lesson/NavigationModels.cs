@@ -22,13 +22,15 @@ namespace MusicShareWeb.Models.Lesson {
         public bool IsMinView { get; set; }
         public LessonDto CurrentLesson { get; set; }
         public List<LessonDto> Lessons { get; set; }
+        public bool IsAuth { get; set; }
        
-        public SideNavigationModel(LessonDto currentLesson = null, bool hasMinView = false, bool isMinView = false) {
+        public SideNavigationModel(bool isAuth, LessonDto currentLesson = null, bool hasMinView = false, bool isMinView = false) {
             GuitarTechniques = ServiceManager<IBusinessLogic>.Instance.Service.GetAllGuitarTechniques();
             Lessons = ServiceManager<IBusinessLogic>.Instance.Service.GetAllModeratedLessons();
             CurrentLesson = currentLesson;
             HasMinView = hasMinView;
             IsMinView = isMinView;
+            IsAuth = isAuth;
         }
     }
 

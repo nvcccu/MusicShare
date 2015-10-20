@@ -74,7 +74,7 @@
         $(event.target).ajaxSubmit({
             success: function (data) {
                 if (data.Success) {
-                    location.href = data.Redirect;
+                    location.reload();
                 } else {
                     alert(data.Reason);
                 }
@@ -94,7 +94,7 @@
         $(event.target).ajaxSubmit({
             success: function (data) {
                 if (data.Success) {
-                    location.href = data.Redirect;
+                    location.reload();
                 } else {
                     alert(data.Reason);
                 }

@@ -61,7 +61,7 @@
     <div class="lesson-zone__right-container">
         <div class="right-container__content">
             <div class="lesson__nav-menu">
-                @Html.Partial("Navigation/SideNavigation", new SideNavigationModel(Model.Lesson, Model.Exercises != null && Model.Exercises.Any(), Model.IsMinimized))
+                @Html.Partial("Navigation/SideNavigation", new SideNavigationModel(Model.CurrentUser != null, Model.Lesson, Model.Exercises != null && Model.Exercises.Any(), Model.IsMinimized))
             </div>
         </div>
     </div>

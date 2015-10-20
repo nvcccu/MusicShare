@@ -19,16 +19,20 @@
         <div class="nav-menu__row_icon nav-menu__row_icon_home-work"></div>
         <div class="nav-menu__row_text">Домашнее задание</div>
         <div class="nav-menu__row_toggle-triangle lesson__homework-toggle-triangle"></div>
-        <div class="nav-menu__row_info">?</div>
+        <div class="nav-menu__row_info" title="Если вы выполнили все упражнения из урока, можете записать их и прислать нам. Мы дадим оценку качества исполнения и рекомендации по дальнейшему развитию.">?</div>
     </div>
     <div class="lesson__homework-form">
-        <div class="lesson__homework-form_text">Вставьте ссылку на ваше аудио или видео и нажмите кнопку "Отправить"</div>
-        <div class="lesson__homework-form-block">
-            <input id="HomeworkLink" type="text" class="mg-input-text" style="width: 260px;" placeholder="Ссылка на запись"/>
-        </div>
-        <div class="lesson__homework-form-block">
-            <input type="button" class="mg-btn" data-bind="click: $root.saveHomework" value="Отправить"/>
-        </div>
+        @if(Model.IsAuth) {
+            <div class="lesson__homework-form_text">Вставьте ссылку на ваше аудио или видео и нажмите кнопку "Отправить"</div>
+            <div class="lesson__homework-form-block">
+                <input id="HomeworkLink" type="text" class="mg-input-text" style="width: 260px;" placeholder="Ссылка на запись"/>
+            </div>
+            <div class="lesson__homework-form-block">
+                <input type="button" class="mg-btn" data-bind="click: $root.saveHomework" value="Отправить"/>
+            </div>
+        } else {
+            <div class="lesson__homework-form_text">Для того, чтобы воспользоваться функцией "Домашнее задание", необходимо войти на сайт.</div>
+        }
     </div>
 </div>
 @if (Model.HasMinView && Model.CurrentLesson != null) {

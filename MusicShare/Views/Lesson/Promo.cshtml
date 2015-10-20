@@ -153,10 +153,10 @@
     var $floatImageInner = $('.promo__what-help_float-image_inner');
     var $offset = $help1.find('.promo__what-help_block_right').offset().top - 200;
     var $screenHeight = $(window).height();
-    var addition = $screenHeight / 2;
+    var addition = $screenHeight / 2.5;
     $window.bind('scroll resize', function() {
         $screenHeight = $(window).height();
-        addition = $screenHeight / 2;
+        addition = $screenHeight / 2.5;
     });
     $window.bind('scroll resize', function() {
         var totalScroll = $window.scrollTop();
