@@ -75,6 +75,11 @@ namespace MusicShareWeb.Controllers {
         public ActionResult Boomstarter() {
             return Redirect("http://www.example.com/" + (Request.Url != null ? Request.Url.Query : String.Empty));
         }
+        [HttpGet]
+        public ActionResult TestLog() {
+            BaseModel.TestLog();
+            return RedirectToAction("Index", new {id = ""});
+        }
         [HttpPost]
         public JsonResult DeleteStatPreset(int statPresetId) {
             return new JsonResult {

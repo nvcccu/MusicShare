@@ -50,6 +50,9 @@ namespace BusinessLogic {
         public void AddUserAction(long guestId, ActionId actionId, long? target = null) {
             LoggedAction(() => _logProvider.AddUserAction(guestId, actionId, target));
         }
+        public void TestLog() {
+            LoggedAction(() => _logProvider.TestLog());
+        }
         public List<ParameterDto> GetParameters() {
             return LoggedAction(() => _designerProvider.GetParameters());
         }

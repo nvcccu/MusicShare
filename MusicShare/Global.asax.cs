@@ -133,6 +133,11 @@ namespace MusicShareWeb {
                 new {controller = "Lesson", action = "Boomstarter"}
                 );
             routes.MapRoute(
+                "TestLog",
+                "TestLog",
+                new {controller = "Lesson", action = "TestLog"}
+                );
+            routes.MapRoute(
                 "Plan",
                 "Plan/{id}",
                 new {controller = "Lesson", action = "Plan", id = UrlParameter.Optional}

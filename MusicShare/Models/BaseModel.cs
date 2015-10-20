@@ -16,5 +16,8 @@ namespace MusicShareWeb.Models {
         public bool IsDerzkiy(int accountId) {
              return ServiceManager<IBusinessLogic>.Instance.Service.IsDerzkiy(accountId);
         }
+        public void TestLog() {
+             ServiceManager<IBusinessLogic>.Instance.Service.TestLog();
+        }
     }
 }

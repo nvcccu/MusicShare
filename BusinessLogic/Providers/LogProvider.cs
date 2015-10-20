@@ -13,5 +13,8 @@ namespace BusinessLogic.Providers {
                 Date = DateTime.Now
             }.Insert();
         }
+        public void TestLog() {
+            throw new Exception("Test exception");
+        }
     }
 }
